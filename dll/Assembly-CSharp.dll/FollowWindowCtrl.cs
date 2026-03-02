@@ -1,0 +1,265 @@
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+// Token: 0x0200019E RID: 414
+public class FollowWindowCtrl : PguiOpenWindowCtrl
+{
+	// Token: 0x06001B86 RID: 7046 RVA: 0x0015F858 File Offset: 0x0015DA58
+	private static void InitializeAnimation(FollowWindowCtrl.Mode mode, SimpleAnimation anime, SelCharaDeckCtrl.GUI.CharaDeck charaDeck)
+	{
+		if (anime != null && charaDeck != null)
+		{
+			anime.ExInit();
+			switch (mode)
+			{
+			case FollowWindowCtrl.Mode.DECK_TOP:
+				charaDeck.Btn_Chara.SetToggleIndex(1);
+				charaDeck.Btn_Photo.SetToggleIndex(0);
+				charaDeck.Btn_Accessory.SetToggleIndex(0);
+				anime.ExPauseAnimationLastFrame(SimpleAnimation.ExPguiStatus.END);
+				return;
+			case FollowWindowCtrl.Mode.PHOTO_TOP:
+				charaDeck.Btn_Chara.SetToggleIndex(0);
+				charaDeck.Btn_Photo.SetToggleIndex(1);
+				charaDeck.Btn_Accessory.SetToggleIndex(0);
+				anime.ExPauseAnimationLastFrame(SimpleAnimation.ExPguiStatus.START);
+				return;
+			case FollowWindowCtrl.Mode.ACCESSORY_TOP:
+				charaDeck.Btn_Chara.SetToggleIndex(0);
+				charaDeck.Btn_Photo.SetToggleIndex(0);
+				charaDeck.Btn_Accessory.SetToggleIndex(1);
+				anime.ExPauseAnimationLastFrame("START2");
+				break;
+			default:
+				return;
+			}
+		}
+	}
+
+	// Token: 0x170003DF RID: 991
+	// (get) Token: 0x06001B87 RID: 7047 RVA: 0x0015F919 File Offset: 0x0015DB19
+	// (set) Token: 0x06001B88 RID: 7048 RVA: 0x0015F921 File Offset: 0x0015DB21
+	private FollowWindowCtrl.Mode CurrentMode { get; set; }
+
+	// Token: 0x06001B89 RID: 7049 RVA: 0x0015F92C File Offset: 0x0015DB2C
+	public void Init()
+	{
+		if (this.guiData != null)
+		{
+			return;
+		}
+		this.guiData = new FollowWindowCtrl.GUI(base.transform);
+		this.CurrentMode = FollowWindowCtrl.Mode.DECK_TOP;
+		this.guiData.charaDeck.Btn_Chara.AddOnClickListener(new PguiToggleButtonCtrl.OnClick(this.OnClickCharaButton));
+		this.guiData.charaDeck.Btn_Photo.AddOnClickListener(new PguiToggleButtonCtrl.OnClick(this.OnClickPhotoButton));
+		this.guiData.charaDeck.Btn_Accessory.AddOnClickListener(new PguiToggleButtonCtrl.OnClick(this.OnClickAccessoryButton));
+		this.guiData.charaDeck.Btn_Chara.SetToggleIndex(1);
+		this.guiData.charaDeck.Btn_Photo.SetToggleIndex(0);
+		this.guiData.charaDeck.Btn_Accessory.SetToggleIndex(0);
+		for (int i = 0; i < this.guiData.charaDeck.iconCharaPacks.Count; i++)
+		{
+			this.guiData.charaDeck.iconCharaPacks[i].iconChara.Setup(new SelCharaDeckCtrl.GUI.IconChara.SetupParam
+			{
+				cbClickIconPhotoKind = delegate
+				{
+					this.OnClickPhotoButton(this.guiData.charaDeck.Btn_Photo, 0);
+					this.guiData.charaDeck.Btn_Photo.SetToggleIndex(1);
+					return true;
+				},
+				isDeck = false,
+				index = i
+			});
+		}
+	}
+
+	// Token: 0x06001B8A RID: 7050 RVA: 0x0015FA64 File Offset: 0x0015DC64
+	private bool OnClickCharaButton(PguiToggleButtonCtrl buttonCtrl, int toggleIndex)
+	{
+		if (this.CurrentMode != FollowWindowCtrl.Mode.DECK_TOP)
+		{
+			string text = ((this.CurrentMode == FollowWindowCtrl.Mode.PHOTO_TOP) ? "END" : "END2");
+			this.CurrentMode = FollowWindowCtrl.Mode.DECK_TOP;
+			foreach (SelCharaDeckCtrl.GUI.IconCharaPack iconCharaPack in this.guiData.charaDeck.iconCharaPacks)
+			{
+				if (!iconCharaPack.iconChara.PhotoIconKind.gameObject.activeSelf)
+				{
+					iconCharaPack.iconChara.PhotoIconKind.gameObject.SetActive(true);
+				}
+				iconCharaPack.iconChara.anime.ExPlayAnimation(text, null);
+			}
+			this.guiData.charaDeck.Btn_Photo.SetToggleIndex(0);
+			this.guiData.charaDeck.Btn_Accessory.SetToggleIndex(0);
+			return true;
+		}
+		return false;
+	}
+
+	// Token: 0x06001B8B RID: 7051 RVA: 0x0015FB54 File Offset: 0x0015DD54
+	private bool OnClickPhotoButton(PguiToggleButtonCtrl buttonCtrl, int toggleIndex)
+	{
+		if (this.CurrentMode != FollowWindowCtrl.Mode.PHOTO_TOP)
+		{
+			string text = ((this.CurrentMode == FollowWindowCtrl.Mode.DECK_TOP) ? "START" : "END3");
+			this.CurrentMode = FollowWindowCtrl.Mode.PHOTO_TOP;
+			foreach (SelCharaDeckCtrl.GUI.IconCharaPack iconCharaPack in this.guiData.charaDeck.iconCharaPacks)
+			{
+				iconCharaPack.iconChara.anime.ExPlayAnimation(text, null);
+			}
+			this.guiData.charaDeck.Btn_Chara.SetToggleIndex(0);
+			this.guiData.charaDeck.Btn_Accessory.SetToggleIndex(0);
+			return true;
+		}
+		return false;
+	}
+
+	// Token: 0x06001B8C RID: 7052 RVA: 0x0015FC14 File Offset: 0x0015DE14
+	private bool OnClickAccessoryButton(PguiToggleButtonCtrl buttonCtrl, int toggleIndex)
+	{
+		if (this.CurrentMode != FollowWindowCtrl.Mode.ACCESSORY_TOP)
+		{
+			string text = ((this.CurrentMode == FollowWindowCtrl.Mode.DECK_TOP) ? "START2" : "START3");
+			this.CurrentMode = FollowWindowCtrl.Mode.ACCESSORY_TOP;
+			using (List<SelCharaDeckCtrl.GUI.IconCharaPack>.Enumerator enumerator = this.guiData.charaDeck.iconCharaPacks.GetEnumerator())
+			{
+				while (enumerator.MoveNext())
+				{
+					SelCharaDeckCtrl.GUI.IconCharaPack ic = enumerator.Current;
+					ic.iconChara.anime.ExPlayAnimation(text, delegate
+					{
+						ic.iconChara.PhotoIconKind.gameObject.SetActive(false);
+					});
+				}
+			}
+			this.guiData.charaDeck.Btn_Chara.SetToggleIndex(0);
+			this.guiData.charaDeck.Btn_Photo.SetToggleIndex(0);
+			return true;
+		}
+		return false;
+	}
+
+	// Token: 0x06001B8D RID: 7053 RVA: 0x0015FCF0 File Offset: 0x0015DEF0
+	public void SetUserProfile(HelperPackData hpd)
+	{
+		foreach (SelCharaDeckCtrl.GUI.IconCharaPack iconCharaPack in this.guiData.charaDeck.iconCharaPacks)
+		{
+			FollowWindowCtrl.InitializeAnimation(this.CurrentMode, iconCharaPack.iconChara.anime, this.guiData.charaDeck);
+		}
+		this.guiData.profile.IconCharaCtrl.Setup(hpd.FavoriteChara, SortFilterDefine.SortType.LEVEL, false, new CharaWindowCtrl.DetailParamSetting(CharaWindowCtrl.DetailParamSetting.Preset.OTHER, null), 0, -1, 0);
+		this.guiData.profile.Txt_Rank.text = "探検隊Lv." + hpd.level.ToString();
+		this.guiData.profile.Txt_Name.text = hpd.userName;
+		this.guiData.profile.Txt_Comment.text = hpd.comment;
+		this.guiData.profile.Achievement.Setup(hpd.achievementId, true, false);
+		for (int i = 0; i < this.guiData.charaDeck.iconCharaPacks.Count; i++)
+		{
+			SelCharaDeckCtrl.GUI.IconChara iconChara = this.guiData.charaDeck.iconCharaPacks[i].iconChara;
+			CharaPackData helpChara = hpd.HelperCharaSetList[i].helpChara;
+			iconChara.iconCharaSet.iconCharaCtrl.Setup(helpChara, SortFilterDefine.SortType.LEVEL, iconChara.iconCharaSet.selected.activeSelf || iconChara.iconCharaSet.disable.activeSelf, new CharaWindowCtrl.DetailParamSetting(CharaWindowCtrl.DetailParamSetting.Preset.OTHER, null), 0, -1, 0);
+			iconChara.iconCharaSet.InvalidAE();
+			List<PhotoPackData> list = new List<PhotoPackData>();
+			for (int j = 0; j < hpd.HelperCharaSetList[i].helpPhotoList.Count; j++)
+			{
+				PhotoPackData photoPackData = ((hpd != null) ? hpd.HelperCharaSetList[i].helpPhotoList[j] : null);
+				iconChara.iconPhotoCtrl[j].Setup(photoPackData, SortFilterDefine.SortType.LEVEL, true, false, -1, true);
+				iconChara.iconPhotoCtrl[j].InvalidAE();
+				if (photoPackData != null && !photoPackData.IsInvalid())
+				{
+					iconChara.iconPhotoKind[j].Replace(photoPackData.staticData.baseData.type);
+				}
+				else
+				{
+					iconChara.iconPhotoKind[j].Replace(-1);
+				}
+				if (iconChara.iconBlankFrame != null)
+				{
+					bool flag = helpChara != null && !helpChara.IsInvalid() && helpChara.dynamicData.PhotoPocket[j].Flag;
+					bool flag2 = photoPackData != null && !photoPackData.IsInvalid();
+					bool flag3 = photoPackData != null && photoPackData.staticData.baseData.kizunaPhotoFlg;
+					bool flag4 = flag3 && (helpChara == null || helpChara.IsInvalid() || photoPackData.staticData.GetId() != helpChara.staticData.baseData.kizunaPhotoId);
+					int num = ((helpChara == null || helpChara.IsInvalid()) ? 0 : helpChara.dynamicData.PhotoPocket[j].Step);
+					if (iconChara != null)
+					{
+						SelCharaDeckCtrl.DecorationPhotoFrame(iconChara, j, flag2, flag, flag3, flag4, num, false);
+					}
+				}
+				if (photoPackData != null)
+				{
+					list.Add(photoPackData);
+				}
+			}
+			DataManagerCharaAccessory.Accessory accessory = ((hpd != null) ? hpd.HelperCharaSetList[i].helpAccessory : null);
+			iconChara.iconAccessoryCtrl.Setup(new IconAccessoryCtrl.SetupParam
+			{
+				acce = accessory
+			});
+			SelCharaDeckCtrl.DecorationAccessoryFrame(iconChara, helpChara != null, false);
+		}
+		this.guiData.charaDeck.SwitchHelperIcon(-1, false);
+	}
+
+	// Token: 0x040014AB RID: 5291
+	private FollowWindowCtrl.GUI guiData;
+
+	// Token: 0x02000EC6 RID: 3782
+	public enum Mode
+	{
+		// Token: 0x040054AC RID: 21676
+		INVALID,
+		// Token: 0x040054AD RID: 21677
+		DECK_TOP,
+		// Token: 0x040054AE RID: 21678
+		PHOTO_TOP,
+		// Token: 0x040054AF RID: 21679
+		ACCESSORY_TOP
+	}
+
+	// Token: 0x02000EC7 RID: 3783
+	// (Invoke) Token: 0x06004DBD RID: 19901
+	public delegate void OnClick();
+
+	// Token: 0x02000EC8 RID: 3784
+	public class GUI
+	{
+		// Token: 0x06004DC0 RID: 19904 RVA: 0x00233E14 File Offset: 0x00232014
+		public GUI(Transform baseTr)
+		{
+			this.profile = new FollowWindowCtrl.Profile(baseTr.Find("Base/Window/Profile"));
+			this.charaDeck = new SelCharaDeckCtrl.GUI.CharaDeck(baseTr.Find("Base/Window/DeckSelect"), 7);
+		}
+
+		// Token: 0x040054B0 RID: 21680
+		public FollowWindowCtrl.Profile profile;
+
+		// Token: 0x040054B1 RID: 21681
+		public SelCharaDeckCtrl.GUI.CharaDeck charaDeck;
+	}
+
+	// Token: 0x02000EC9 RID: 3785
+	public class Profile
+	{
+		// Token: 0x06004DC1 RID: 19905 RVA: 0x00233E4C File Offset: 0x0023204C
+		public Profile(Transform baseTr)
+		{
+			this.IconCharaCtrl = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Chara, baseTr.Find("Icon_Chara")).GetComponent<IconCharaCtrl>();
+			this.Txt_Rank = baseTr.Find("Txt_Rank").GetComponent<PguiTextCtrl>();
+			this.Txt_Name = baseTr.Find("Txt_Name").GetComponent<PguiTextCtrl>();
+			this.Txt_Comment = baseTr.Find("Comment/Txt_Comment").GetComponent<PguiTextCtrl>();
+			this.Achievement = baseTr.Find("Achievement").GetComponent<AchievementCtrl>();
+		}
+
+		// Token: 0x040054B2 RID: 21682
+		public IconCharaCtrl IconCharaCtrl;
+
+		// Token: 0x040054B3 RID: 21683
+		public PguiTextCtrl Txt_Rank;
+
+		// Token: 0x040054B4 RID: 21684
+		public PguiTextCtrl Txt_Name;
+
+		// Token: 0x040054B5 RID: 21685
+		public PguiTextCtrl Txt_Comment;
+
+		// Token: 0x040054B6 RID: 21686
+		public AchievementCtrl Achievement;
+	}
+}

@@ -1,0 +1,26 @@
+﻿using System;
+
+// Token: 0x02000095 RID: 149
+public enum MissionType
+{
+	// Token: 0x040005CB RID: 1483
+	INVALID,
+	// Token: 0x040005CC RID: 1484
+	DAILY,
+	// Token: 0x040005CD RID: 1485
+	WEEKLY,
+	// Token: 0x040005CE RID: 1486
+	TOTAL,
+	// Token: 0x040005CF RID: 1487
+	EVENTTOTAL,
+	// Token: 0x040005D0 RID: 1488
+	SPECIAL,
+	// Token: 0x040005D1 RID: 1489
+	BEGINNER,
+	// Token: 0x040005D2 RID: 1490
+	EVENTDAILY,
+	// Token: 0x040005D3 RID: 1491
+	FRIENDS,
+	// Token: 0x040005D4 RID: 1492
+	HIDDEN
+}
