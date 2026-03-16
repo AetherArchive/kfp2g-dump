@@ -147,7 +147,7 @@ public class DataInitializeResolver
 			yield return null;
 		}
 		MstGameAppearanceData mstGameAppearanceData = GameAppearanceUtill.GetMstGameAppearanceData(TimeManager.Now);
-		DataInitializeResolver.titleLogo = "Texture2D/Title_Logo/" + (string.IsNullOrEmpty(mstGameAppearanceData.titleTexturePath) ? "title_logo_001" : mstGameAppearanceData.titleTexturePath);
+		DataInitializeResolver.titleLogo = "Texture2D/Title_Logo/" + (string.IsNullOrEmpty(mstGameAppearanceData.titleTexturePath) ? "title_logo_011" : mstGameAppearanceData.titleTexturePath);
 		AssetManager.LoadAssetData(DataInitializeResolver.titleLogo, AssetManager.OWNER.DataInitialize, 0, null);
 		while (!AssetManager.IsLoadFinishAssetData(DataInitializeResolver.titleLogo))
 		{
@@ -532,7 +532,7 @@ public class DataInitializeResolver
 		{
 			env = DataInitializeResolver.SEVER_ENV.PROD,
 			url = "https://parade-mobile-prod-app.kemono-friends-3.jp/paradesv/",
-			ver = "2.37.0",
+			ver = "2.37.1",
 			proxy = null
 		},
 		new DataInitializeResolver.SEVER_ENV_INFO

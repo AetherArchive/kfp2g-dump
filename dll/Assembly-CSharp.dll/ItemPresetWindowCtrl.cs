@@ -90,6 +90,7 @@ public class ItemPresetWindowCtrl : MonoBehaviour
 		this.guiData.fukidashiBase.SetActive(this.isOpenByPurchase);
 		this.guiData.itemIconBase.SetActive(!this.isOpenByPurchase);
 		this.guiData.purchaseIconBase.SetActive(this.isOpenByPurchase);
+		this.guiData.apppayIconBase.SetActive(false);
 	}
 
 	public void OpenByItem(ItemData itemData)

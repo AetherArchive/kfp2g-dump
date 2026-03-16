@@ -158,10 +158,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		{
 			this.renderTextureChara = Object.Instantiate<GameObject>((GameObject)Resources.Load("RenderTextureChara/Prefab/RenderTextureCharaCtrl"), this.grandObj.transform).GetComponent<RenderTextureChara>();
 		}
-		if (QuestUtil.IsDispDhole())
-		{
-			this.currentMode = SelAssistantCtrl.Mode.TOP;
-		}
 		if (this.currentMode == SelAssistantCtrl.Mode.DISP_DHOLE)
 		{
 			this.currentChara = this.DefaultAssistant;

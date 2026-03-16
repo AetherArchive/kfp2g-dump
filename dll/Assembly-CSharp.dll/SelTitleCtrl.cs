@@ -58,7 +58,7 @@ public class SelTitleCtrl : MonoBehaviour
 		this.gotoNextScene = gotoNextScene;
 		this.guiData.AEImage_Title.gameObject.SetActive(true);
 		this.guiData.logo.gameObject.SetActive(true);
-		this.guiData.logo.SetTexture(AssetManager.GetAssetData(DataInitializeResolver.titleLogo) as Texture2D, true);
+		this.guiData.logo.SetTexture(AssetManager.GetAssetData(DataInitializeResolver.titleLogo) as Texture2D, false);
 		this.openingEnumerator = this.Opening();
 	}
 

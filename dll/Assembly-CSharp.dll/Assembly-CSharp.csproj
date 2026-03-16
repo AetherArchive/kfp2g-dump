@@ -1,9 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{349B28AE-06A1-430E-A360-294D1F4CF8E9}</ProjectGuid>
+    <ProjectGuid>{459BB1CF-78F4-4BB6-9E9D-38A6741A575E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Assembly-CSharp</RootNamespace>
@@ -32,73 +32,73 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="CriMw.CriWare.Runtime">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\CriMw.CriWare.Runtime.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\CriMw.CriWare.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Ionic.Zlib.CF">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\Ionic.Zlib.CF.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\Ionic.Zlib.CF.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\netstandard.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\netstandard.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AndroidJNIModule">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.AndroidJNIModule.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.AndroidJNIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AnimationModule">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AudioModule">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.GameCenterModule">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.GameCenterModule.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.GameCenterModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ScreenCaptureModule">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIModule">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.UIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestModule">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestWWWModule">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
     </Reference>
     <Reference Include="zxing.unity">
-      <HintPath>..\..\..\..\Games\KFP2G\けもフレ３_Data\Managed\zxing.unity.dll</HintPath>
+      <HintPath>D:\Games\KFP2G\けもフレ３_Data\Managed\zxing.unity.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
