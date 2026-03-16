@@ -1,14 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 
 namespace SGNFW.Ab
 {
-	// Token: 0x02000283 RID: 643
 	public class Initializer
 	{
-		// Token: 0x06002704 RID: 9988 RVA: 0x001A4218 File Offset: 0x001A2418
 		public virtual void Load(bool redownload = false)
 		{
 			Action _finished = null;
@@ -40,7 +38,6 @@ namespace SGNFW.Ab
 			this.Request(redownload);
 		}
 
-		// Token: 0x06002705 RID: 9989 RVA: 0x001A42B8 File Offset: 0x001A24B8
 		protected virtual void Request(bool redownload = false)
 		{
 			Action<Data> action = delegate(Data _data)
@@ -61,7 +58,6 @@ namespace SGNFW.Ab
 			this.loader.Request(data, action, false, false);
 		}
 
-		// Token: 0x06002706 RID: 9990 RVA: 0x001A4338 File Offset: 0x001A2538
 		protected virtual void Parse(Data data, bool redownload)
 		{
 			if (data == null || data.bytes == null)
@@ -134,7 +130,6 @@ namespace SGNFW.Ab
 			}
 		}
 
-		// Token: 0x06002707 RID: 9991 RVA: 0x001A446C File Offset: 0x001A266C
 		protected virtual Data ParseLine(string line)
 		{
 			string[] array = line.Split('\t', StringSplitOptions.None);
@@ -180,7 +175,6 @@ namespace SGNFW.Ab
 			return data;
 		}
 
-		// Token: 0x06002708 RID: 9992 RVA: 0x001A4570 File Offset: 0x001A2770
 		protected virtual Data ParseLine(string line, Manager.Pack pack)
 		{
 			Data data = this.ParseLine(line);
@@ -211,13 +205,10 @@ namespace SGNFW.Ab
 			return data;
 		}
 
-		// Token: 0x04001C9E RID: 7326
 		public Action onCompleted;
 
-		// Token: 0x04001C9F RID: 7327
 		public Action<string, Exception> onError;
 
-		// Token: 0x04001CA0 RID: 7328
 		protected Loader loader;
 	}
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -8,27 +8,19 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x02000174 RID: 372
 public class SelEventLargeScaleCtrl : MonoBehaviour
 {
-	// Token: 0x06001773 RID: 6003 RVA: 0x001241E3 File Offset: 0x001223E3
 	public static void SetPathEventChapterId(int id)
 	{
 	}
 
-	// Token: 0x06001774 RID: 6004 RVA: 0x001241E5 File Offset: 0x001223E5
 	public static int GetPathEventChapterId()
 	{
 		return SelEventLargeScaleCtrl.pathEventChapterId;
 	}
 
-	// Token: 0x170003A4 RID: 932
-	// (get) Token: 0x06001775 RID: 6005 RVA: 0x001241EC File Offset: 0x001223EC
-	// (set) Token: 0x06001776 RID: 6006 RVA: 0x001241F4 File Offset: 0x001223F4
 	public SelEventLargeScaleCtrl.GUI GuiData { get; private set; }
 
-	// Token: 0x170003A5 RID: 933
-	// (get) Token: 0x06001777 RID: 6007 RVA: 0x001241FD File Offset: 0x001223FD
 	public SelEventLargeScaleCtrl.MapDataGUI MapData
 	{
 		get
@@ -42,8 +34,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x170003A6 RID: 934
-	// (get) Token: 0x06001778 RID: 6008 RVA: 0x00124210 File Offset: 0x00122410
 	private Vector2Int MapDirection
 	{
 		get
@@ -57,8 +47,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x170003A7 RID: 935
-	// (get) Token: 0x06001779 RID: 6009 RVA: 0x0012424C File Offset: 0x0012244C
 	private Vector2Int MapRangeOrigin
 	{
 		get
@@ -72,8 +60,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x170003A8 RID: 936
-	// (get) Token: 0x0600177A RID: 6010 RVA: 0x00124288 File Offset: 0x00122488
 	private Vector2Int MapRangeSize
 	{
 		get
@@ -87,8 +73,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x170003A9 RID: 937
-	// (get) Token: 0x0600177B RID: 6011 RVA: 0x001242CB File Offset: 0x001224CB
 	private Vector2 MapOffset
 	{
 		get
@@ -97,7 +81,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600177C RID: 6012 RVA: 0x001242FC File Offset: 0x001224FC
 	public static Vector2 GetMapOffset(GameObject mapBoxObject, SelEventLargeScaleCtrl.MapDataGUI guiMapData, Vector2Int mapRangeSize, int eventId = 0)
 	{
 		RectTransform rectTransform = mapBoxObject.transform as RectTransform;
@@ -142,13 +125,11 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		return new Vector2(num, 0f);
 	}
 
-	// Token: 0x0600177D RID: 6013 RVA: 0x0012449F File Offset: 0x0012269F
 	public void AdjustMaskPostion()
 	{
 		SelEventLargeScaleCtrl.AdjustMaskPostion(this.GuiData.mapData, this.MapOffset);
 	}
 
-	// Token: 0x0600177E RID: 6014 RVA: 0x001244B8 File Offset: 0x001226B8
 	public static void AdjustMaskPostion(SelEventLargeScaleCtrl.MapDataGUI mapDataGUI, Vector2 MapOffset)
 	{
 		float num = ((mapDataGUI.bgObj.transform.Find("Tex_Bg").localPosition.x == 0f) ? 0f : (mapDataGUI.bgObj.transform.Find("Tex_Bg").localPosition.x + QuestUtil.MAP_MASK_IMAGE_WIDTH));
@@ -157,8 +138,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		gameObject.transform.localPosition = new Vector3(MapOffset.x + num, localPosition.y, 0f);
 	}
 
-	// Token: 0x170003AA RID: 938
-	// (get) Token: 0x0600177F RID: 6015 RVA: 0x00124560 File Offset: 0x00122760
 	private string MapFilePath
 	{
 		get
@@ -172,7 +151,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001780 RID: 6016 RVA: 0x00124598 File Offset: 0x00122798
 	private static List<string> GetTipsFilePath(int eventId)
 	{
 		DataManagerEvent.LargeEventData largeEventData = DataManager.DmEvent.GetLargeEventData(eventId);
@@ -183,8 +161,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		return new List<string> { "Texture2D/Tutorial_Window/Event_Map/001/tutorial_eventmap_001_01", "Texture2D/Tutorial_Window/Event_Map/001/tutorial_eventmap_001_02", "Texture2D/Tutorial_Window/Event_Map/001/tutorial_eventmap_001_03", "Texture2D/Tutorial_Window/Event_Map/001/tutorial_eventmap_001_04" };
 	}
 
-	// Token: 0x170003AB RID: 939
-	// (get) Token: 0x06001781 RID: 6017 RVA: 0x001245EC File Offset: 0x001227EC
 	private string MapBgFilePath
 	{
 		get
@@ -211,14 +187,11 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001782 RID: 6018 RVA: 0x001246D4 File Offset: 0x001228D4
 	public static void OpenHelpWindow(int eventId)
 	{
 		CanvasManager.HdlCmnFeedPageWindowCtrl.Open(CmnFeedPageWindowCtrl.Type.PAGE_FEED, "イベントの遊びかた", SelEventLargeScaleCtrl.GetTipsFilePath(eventId), null);
 	}
 
-	// Token: 0x170003AC RID: 940
-	// (get) Token: 0x06001783 RID: 6019 RVA: 0x001246ED File Offset: 0x001228ED
 	public string LoadAssetPath
 	{
 		get
@@ -227,7 +200,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001784 RID: 6020 RVA: 0x001246F5 File Offset: 0x001228F5
 	public IEnumerator LoadMapObject(GameObject go)
 	{
 		string path = this.LoadAssetPath;
@@ -240,7 +212,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001785 RID: 6021 RVA: 0x0012470C File Offset: 0x0012290C
 	public void Init(SelEventLargeScaleCtrl.InitParam _initParam, SelEventLargeScaleCtrl.SetupParam _setupParam)
 	{
 		SelEventLargeScaleCtrl.pathEventChapterId = _setupParam.eventData.eventChapterId;
@@ -254,7 +225,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		this.Setup(_setupParam);
 	}
 
-	// Token: 0x06001786 RID: 6022 RVA: 0x001247D4 File Offset: 0x001229D4
 	public void Setup(SelEventLargeScaleCtrl.SetupParam _setupParam)
 	{
 		this.setupParam = _setupParam;
@@ -271,17 +241,14 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001787 RID: 6023 RVA: 0x00124865 File Offset: 0x00122A65
 	public void Dest()
 	{
 	}
 
-	// Token: 0x06001788 RID: 6024 RVA: 0x00124867 File Offset: 0x00122A67
 	public void Destroy()
 	{
 	}
 
-	// Token: 0x06001789 RID: 6025 RVA: 0x0012486C File Offset: 0x00122A6C
 	public void UpdateDecoration()
 	{
 		CanvasManager.HdlHelpWindowCtrl.SetCurrentOpenHelpByLarge(true, this.setupParam.eventData.eventId);
@@ -313,7 +280,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		this.GuiData.pointSelect.Txt_Mission_Num.text = userClearEventMissionNum.ToString();
 	}
 
-	// Token: 0x0600178A RID: 6026 RVA: 0x00124AEC File Offset: 0x00122CEC
 	public void RequestUseUnlockItem(int mapId)
 	{
 		QuestStaticMap mapData = DataManager.DmQuest.QuestStaticData.mapDataMap[mapId];
@@ -327,7 +293,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600178B RID: 6027 RVA: 0x00124B54 File Offset: 0x00122D54
 	public void RemoveTouchEventTriggger(int chapterId)
 	{
 		DataManager.DmQuest.GetPlayableMapIdList(chapterId);
@@ -337,7 +302,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600178C RID: 6028 RVA: 0x00124BC4 File Offset: 0x00122DC4
 	public void SetupMapData(bool startMarkAE, UnityAction<Transform> pointTouchCB, QuestUtil.SelectData selectData)
 	{
 		SelEventLargeScaleCtrl.<>c__DisplayClass55_0 CS$<>8__locals1 = new SelEventLargeScaleCtrl.<>c__DisplayClass55_0();
@@ -443,31 +407,24 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		this.GuiData.mapData.bgObj.transform.localPosition = this.AdjustPosition(this.GuiData.mapData.bgObj.transform.localPosition);
 	}
 
-	// Token: 0x170003AD RID: 941
-	// (get) Token: 0x0600178D RID: 6029 RVA: 0x001252A4 File Offset: 0x001234A4
-	// (set) Token: 0x0600178E RID: 6030 RVA: 0x001252AC File Offset: 0x001234AC
 	public bool TouchMoving { get; private set; }
 
-	// Token: 0x0600178F RID: 6031 RVA: 0x001252B5 File Offset: 0x001234B5
 	public bool IsNotNullMapObj()
 	{
 		return this.GuiData.mapData != null;
 	}
 
-	// Token: 0x06001790 RID: 6032 RVA: 0x001252C5 File Offset: 0x001234C5
 	public bool IsNotNullMapBaseObj()
 	{
 		return this.IsNotNullMapObj() && this.GuiData.mapData.baseObj != null;
 	}
 
-	// Token: 0x06001791 RID: 6033 RVA: 0x001252E7 File Offset: 0x001234E7
 	public void SetupMapOffset()
 	{
 		this.MapData.mapObj.GetComponent<RectTransform>().anchoredPosition = this.MapOffset;
 		this.MapData.bgObj.GetComponent<RectTransform>().anchoredPosition = this.MapOffset;
 	}
 
-	// Token: 0x06001792 RID: 6034 RVA: 0x00125320 File Offset: 0x00123520
 	public static void PlayBGM(int eventId)
 	{
 		DataManagerEvent.LargeEventData largeEventData = DataManager.DmEvent.GetLargeEventData(eventId);
@@ -479,13 +436,11 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		SoundManager.PlayBGM("prd_bgm0055");
 	}
 
-	// Token: 0x06001793 RID: 6035 RVA: 0x00125352 File Offset: 0x00123552
 	public void PlayBGM()
 	{
 		SelEventLargeScaleCtrl.PlayBGM(this.setupParam.eventData.eventId);
 	}
 
-	// Token: 0x06001794 RID: 6036 RVA: 0x0012536C File Offset: 0x0012356C
 	private static float GetSafeAreaX(GameObject mapBoxObject, SelEventLargeScaleCtrl selEventLargeScaleCtrl)
 	{
 		RectTransform rectTransform = mapBoxObject.transform as RectTransform;
@@ -514,7 +469,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		return num2 + num;
 	}
 
-	// Token: 0x06001795 RID: 6037 RVA: 0x00125464 File Offset: 0x00123664
 	private static float GetSafeAreaY(GameObject mapBoxObject)
 	{
 		if ((mapBoxObject.transform as RectTransform).offsetMin.x >= 0f)
@@ -524,30 +478,25 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		return SelEventLargeScaleCtrl.MAP_MASK_IMAGE_HEIGHT;
 	}
 
-	// Token: 0x06001796 RID: 6038 RVA: 0x0012548D File Offset: 0x0012368D
 	private void OnValidate()
 	{
 	}
 
-	// Token: 0x06001797 RID: 6039 RVA: 0x0012548F File Offset: 0x0012368F
 	private void Update()
 	{
 	}
 
-	// Token: 0x06001798 RID: 6040 RVA: 0x00125494 File Offset: 0x00123694
 	private bool IsExistsMapId(List<int> playableMapIdList, QuestStaticMap mapData)
 	{
 		return playableMapIdList.Exists((int item) => item == mapData.mapId);
 	}
 
-	// Token: 0x06001799 RID: 6041 RVA: 0x001254C0 File Offset: 0x001236C0
 	private bool IsEnableGrayscale(QuestStaticMap mapData)
 	{
 		QuestUIMapInfo questUIMapInfo = QuestUIMapInfo.GetQuestUIMapInfo(mapData.mapId, SceneQuest.TimeStampInScene, this.setupParam.eventData.eventId);
 		return SceneQuest.TimeStampInScene < questUIMapInfo.openTime;
 	}
 
-	// Token: 0x0600179A RID: 6042 RVA: 0x001254FE File Offset: 0x001236FE
 	private IEnumerator RequestOpenQuestByItem(SelEventLargeScaleCtrl.MapPointRouteGUI mapPointRoute, QuestStaticMap mapData)
 	{
 		CanvasManager.SetEnableCmnTouchMask(true);
@@ -568,7 +517,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600179B RID: 6043 RVA: 0x0012551C File Offset: 0x0012371C
 	private void UpdateMaterial(List<int> playableMapIdList, SelEventLargeScaleCtrl.MapPointRouteGUI mapPointRoute, QuestStaticMap mapData)
 	{
 		bool flag = this.IsExistsMapId(playableMapIdList, mapData);
@@ -586,7 +534,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600179C RID: 6044 RVA: 0x001255F0 File Offset: 0x001237F0
 	private void UpdateRouteColor(List<int> playableMapIdList)
 	{
 		List<QuestStaticMap> mapDataList = DataManager.DmQuest.QuestStaticData.chapterDataMap[this.setupParam.eventData.eventChapterId].mapDataList;
@@ -614,7 +561,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600179D RID: 6045 RVA: 0x00125788 File Offset: 0x00123988
 	private void SwitchRouteColor(SelEventLargeScaleCtrl.MapPointRouteGUI mapPointRoute, List<int> playableMapIdList, QuestStaticMap mapData, bool sw)
 	{
 		if (playableMapIdList.Exists((int item) => item == mapData.mapId))
@@ -626,7 +572,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600179E RID: 6046 RVA: 0x001257FC File Offset: 0x001239FC
 	private void UpdateNewMark(SelEventLargeScaleCtrl.MapPointRouteGUI mapPointRoute, QuestStaticMap mapData, List<int> playableMapIdList, bool startMarkAE)
 	{
 		bool flag = this.IsExistsMapId(playableMapIdList, mapData);
@@ -690,13 +635,11 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		mapPointRoute.SetActive(!mapData.StartHideFlag || playableMapIdList.Exists((int item) => item == mapData.mapId), flag3);
 	}
 
-	// Token: 0x0600179F RID: 6047 RVA: 0x00125A1F File Offset: 0x00123C1F
 	private Vector3 AdjustPosition(Vector3 pos)
 	{
 		return SelEventLargeScaleCtrl.AdjustPosition(pos, this.MapRangeSize, this.mapBoxObject, this.MapOffset, this);
 	}
 
-	// Token: 0x060017A0 RID: 6048 RVA: 0x00125A3C File Offset: 0x00123C3C
 	public static Vector3 AdjustPosition(Vector3 pos, Vector2Int MapRangeSize, GameObject mapBoxObject, Vector2 MapOffset, SelEventLargeScaleCtrl selEventLargeScaleCtrl)
 	{
 		float num = (float)MapRangeSize.x;
@@ -722,7 +665,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		return pos;
 	}
 
-	// Token: 0x060017A1 RID: 6049 RVA: 0x00125AD0 File Offset: 0x00123CD0
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		DataManagerEvent.EventData eventData = DataManager.DmEvent.GetEventData(this.setupParam.eventData.eventId);
@@ -767,13 +709,11 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060017A2 RID: 6050 RVA: 0x00125C10 File Offset: 0x00123E10
 	private void OnClickEventInfoBanner(Transform tf)
 	{
 		QuestUtil.OpenBannerWebViewWindow(this.setupParam.eventData.eventId);
 	}
 
-	// Token: 0x060017A3 RID: 6051 RVA: 0x00125C28 File Offset: 0x00123E28
 	public void OnTouchMove(Info info)
 	{
 		if (this.setupParam.checkChapterSelectSequenceCB != null && this.setupParam.checkChapterSelectSequenceCB())
@@ -812,107 +752,77 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 		this.MapData.bgObj.transform.localPosition = this.AdjustPosition(vector2);
 	}
 
-	// Token: 0x060017A4 RID: 6052 RVA: 0x00125DFE File Offset: 0x00123FFE
 	public void OnTouchRelease(Info info)
 	{
 	}
 
-	// Token: 0x060017A5 RID: 6053 RVA: 0x00125E00 File Offset: 0x00124000
 	public void OnTouchStart(Info info)
 	{
 		this.TouchMoving = false;
 	}
 
-	// Token: 0x0400126A RID: 4714
 	private static int pathEventChapterId = 0;
 
-	// Token: 0x0400126B RID: 4715
 	private static readonly int LockByTimeReplaceId = 1;
 
-	// Token: 0x0400126C RID: 4716
 	private static readonly int LockByFreeKeyReplaceId = 2;
 
-	// Token: 0x0400126D RID: 4717
 	private static readonly int LockByPaidKeyReplaceId = 3;
 
-	// Token: 0x0400126E RID: 4718
 	public static readonly float DEFAULT_SCREEN_HEIGHT = 1760f;
 
-	// Token: 0x0400126F RID: 4719
 	public static readonly float DEFAULT_SCREEN_WIDTH = QuestUtil.DEFAULT_SCREEN_WIDTH;
 
-	// Token: 0x04001270 RID: 4720
 	private static float MAP_MASK_IMAGE_HEIGHT = SelEventLargeScaleCtrl.DEFAULT_SCREEN_HEIGHT - SelEventLargeScaleCtrl.DEFAULT_SCREEN_HEIGHT;
 
-	// Token: 0x04001271 RID: 4721
 	private static float MAP_MASK_IMAGE_WIDTH = SelEventLargeScaleCtrl.DEFAULT_SCREEN_WIDTH - SelEventLargeScaleCtrl.DEFAULT_SCREEN_WIDTH;
 
-	// Token: 0x04001273 RID: 4723
 	private SelEventLargeScaleCtrl.SetupParam setupParam = new SelEventLargeScaleCtrl.SetupParam();
 
-	// Token: 0x04001274 RID: 4724
 	private SelEventLargeScaleCtrl.InitParam initParam = new SelEventLargeScaleCtrl.InitParam();
 
-	// Token: 0x04001275 RID: 4725
 	private GameObject mapBoxObject;
 
-	// Token: 0x04001276 RID: 4726
 	private Material material;
 
-	// Token: 0x02000CF3 RID: 3315
-	// (Invoke) Token: 0x060047BF RID: 18367
 	public delegate bool OnCheck();
 
-	// Token: 0x02000CF4 RID: 3316
 	public class InitParam
 	{
-		// Token: 0x04004CFF RID: 19711
 		public UnityAction reqNextSequenceCB;
 
-		// Token: 0x04004D00 RID: 19712
 		public UnityAction reqBackSequenceCB;
 
-		// Token: 0x04004D01 RID: 19713
 		public UnityAction reqShopSequenceCB;
 	}
 
-	// Token: 0x02000CF5 RID: 3317
 	public class SetupParam
 	{
-		// Token: 0x04004D02 RID: 19714
 		public DataManagerEvent.EventData eventData;
 
-		// Token: 0x04004D03 RID: 19715
 		public SelEventLargeScaleCtrl.OnCheck checkChapterSelectSequenceCB;
 	}
 
-	// Token: 0x02000CF6 RID: 3318
 	public class GUI
 	{
-		// Token: 0x060047C4 RID: 18372 RVA: 0x002197E3 File Offset: 0x002179E3
 		public GUI(Transform baseTr)
 		{
 			this.pointSelect = new SelEventLargeScaleCtrl.PointSelectGUI(baseTr.transform);
 			this.pointSelect.baseObj.SetActive(false);
 		}
 
-		// Token: 0x060047C5 RID: 18373 RVA: 0x0021980D File Offset: 0x00217A0D
 		public void SetupMapData(GameObject mapObj, List<GameObject> carObj)
 		{
 			this.mapData = new SelEventLargeScaleCtrl.MapDataGUI(mapObj.transform, carObj);
 		}
 
-		// Token: 0x04004D04 RID: 19716
 		public SelEventLargeScaleCtrl.PointSelectGUI pointSelect;
 
-		// Token: 0x04004D05 RID: 19717
 		public SelEventLargeScaleCtrl.MapDataGUI mapData;
 	}
 
-	// Token: 0x02000CF7 RID: 3319
 	public class PointSelectGUI
 	{
-		// Token: 0x060047C6 RID: 18374 RVA: 0x00219824 File Offset: 0x00217A24
 		public PointSelectGUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -936,37 +846,26 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 			this.Txt_Mission_Num = this.Btn_Mission.transform.Find("BaseImage/Badge/Cmn_Badge/Num").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x04004D06 RID: 19718
 		public GameObject baseObj;
 
-		// Token: 0x04004D07 RID: 19719
 		public PguiButtonCtrl Btn_ShopEvent;
 
-		// Token: 0x04004D08 RID: 19720
 		public PguiButtonCtrl Btn_Gacha;
 
-		// Token: 0x04004D09 RID: 19721
 		public PguiRawImageCtrl EventBanner;
 
-		// Token: 0x04004D0A RID: 19722
 		public PguiTextCtrl Txt_Term;
 
-		// Token: 0x04004D0B RID: 19723
 		public SimpleAnimation GUI_Event_Map_PointSelect;
 
-		// Token: 0x04004D0C RID: 19724
 		public List<SelEventLargeScaleCtrl.PointSelectGUI.ItemOwnBase> itemOwnBases;
 
-		// Token: 0x04004D0D RID: 19725
 		public PguiButtonCtrl Btn_Mission;
 
-		// Token: 0x04004D0E RID: 19726
 		public PguiTextCtrl Txt_Mission_Num;
 
-		// Token: 0x020011BD RID: 4541
 		public class ItemOwnBase
 		{
-			// Token: 0x060056FF RID: 22271 RVA: 0x0025546D File Offset: 0x0025366D
 			public ItemOwnBase(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -974,34 +873,27 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 				this.Icon_Stone = baseTr.Find("Icon_Stone").GetComponent<PguiRawImageCtrl>();
 			}
 
-			// Token: 0x0400614E RID: 24910
 			public GameObject baseObj;
 
-			// Token: 0x0400614F RID: 24911
 			public PguiRawImageCtrl Icon_Stone;
 
-			// Token: 0x04006150 RID: 24912
 			public PguiTextCtrl Num_Txt;
 		}
 	}
 
-	// Token: 0x02000CF8 RID: 3320
 	public class MapDataGUI : SceneQuest.IMapData
 	{
-		// Token: 0x060047C7 RID: 18375 RVA: 0x00219980 File Offset: 0x00217B80
 		public MapDataGUI(Transform baseTr, List<GameObject> carObjList)
 			: base(baseTr, carObjList)
 		{
 			this.SetupMapData();
 		}
 
-		// Token: 0x060047C8 RID: 18376 RVA: 0x0021999B File Offset: 0x00217B9B
 		private void Setup(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
 		}
 
-		// Token: 0x060047C9 RID: 18377 RVA: 0x002199AC File Offset: 0x00217BAC
 		public void SetupMapData()
 		{
 			if (this.mapPointRoutes.Count > 0)
@@ -1037,14 +929,11 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x04004D0F RID: 19727
 		public List<SelEventLargeScaleCtrl.MapPointRouteGUI> mapPointRoutes = new List<SelEventLargeScaleCtrl.MapPointRouteGUI>();
 	}
 
-	// Token: 0x02000CF9 RID: 3321
 	public class MapPointRouteGUI
 	{
-		// Token: 0x060047CA RID: 18378 RVA: 0x00219C28 File Offset: 0x00217E28
 		public MapPointRouteGUI(Transform baseTr, int num)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1062,7 +951,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x060047CB RID: 18379 RVA: 0x00219CC4 File Offset: 0x00217EC4
 		public void SetActive(bool sw, bool startMarkAE)
 		{
 			this.baseObj.SetActive(sw);
@@ -1073,26 +961,20 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x060047CC RID: 18380 RVA: 0x00219D34 File Offset: 0x00217F34
 		public string GetName()
 		{
 			return this.baseObj.transform.parent.name;
 		}
 
-		// Token: 0x04004D10 RID: 19728
 		public GameObject baseObj;
 
-		// Token: 0x04004D11 RID: 19729
 		public SelEventLargeScaleCtrl.MapPointGUI mapPoint;
 
-		// Token: 0x04004D12 RID: 19730
 		public List<BezierLine> routeList = new List<BezierLine>();
 	}
 
-	// Token: 0x02000CFA RID: 3322
 	public class MapPointGUI
 	{
-		// Token: 0x060047CD RID: 18381 RVA: 0x00219D4C File Offset: 0x00217F4C
 		public MapPointGUI(Transform baseTr, int num)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1125,7 +1007,6 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 			this.Icon_Item = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Item, this.ItemPop.transform.Find("Icon_Item")).GetComponent<IconItemCtrl>();
 		}
 
-		// Token: 0x060047CE RID: 18382 RVA: 0x00219F5F File Offset: 0x0021815F
 		public void SetActive(bool sw, bool startMarkAE)
 		{
 			this.baseObj.SetActive(sw);
@@ -1137,43 +1018,30 @@ public class SelEventLargeScaleCtrl : MonoBehaviour
 			this.AEImage.PauseAnimationLastFrame(PguiAECtrl.AmimeType.START);
 		}
 
-		// Token: 0x04004D13 RID: 19731
 		public GameObject baseObj;
 
-		// Token: 0x04004D14 RID: 19732
 		public RectTransform baseRtf;
 
-		// Token: 0x04004D15 RID: 19733
 		public GameObject pointObj;
 
-		// Token: 0x04004D16 RID: 19734
 		public GameObject pointRtf = new GameObject();
 
-		// Token: 0x04004D17 RID: 19735
 		public PguiRawImageCtrl Tex;
 
-		// Token: 0x04004D18 RID: 19736
 		public PguiAECtrl Mark_NewPoint;
 
-		// Token: 0x04004D19 RID: 19737
 		public PguiTextCtrl Txt_MapName;
 
-		// Token: 0x04004D1A RID: 19738
 		public GameObject Mark_Complete;
 
-		// Token: 0x04004D1B RID: 19739
 		public PguiAECtrl AEImage;
 
-		// Token: 0x04004D1C RID: 19740
 		public MarkLockCtrl markLockCtrl;
 
-		// Token: 0x04004D1D RID: 19741
 		public PguiReplaceSpriteCtrl Mark_LockReason;
 
-		// Token: 0x04004D1E RID: 19742
 		public SimpleAnimation ItemPop;
 
-		// Token: 0x04004D1F RID: 19743
 		public IconItemCtrl Icon_Item;
 	}
 }

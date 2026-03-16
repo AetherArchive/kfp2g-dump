@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
@@ -6,16 +6,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x02000178 RID: 376
 public class SelMainStoryCtrl : MonoBehaviour
 {
-	// Token: 0x170003BC RID: 956
-	// (get) Token: 0x06001802 RID: 6146 RVA: 0x00127C96 File Offset: 0x00125E96
-	// (set) Token: 0x06001803 RID: 6147 RVA: 0x00127C9E File Offset: 0x00125E9E
 	public SelMainStoryCtrl.GUI GuiData { get; private set; }
 
-	// Token: 0x170003BD RID: 957
-	// (get) Token: 0x06001804 RID: 6148 RVA: 0x00127CA7 File Offset: 0x00125EA7
 	public SelMainStoryCtrl.GuiMapData MapData
 	{
 		get
@@ -29,19 +23,16 @@ public class SelMainStoryCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001805 RID: 6149 RVA: 0x00127CBA File Offset: 0x00125EBA
 	public void SetMapBoxObject(GameObject go)
 	{
 		this.mapBoxObject = go;
 	}
 
-	// Token: 0x06001806 RID: 6150 RVA: 0x00127CC3 File Offset: 0x00125EC3
 	public static SelMainStoryCtrl.GuiMapData SetupMapGUI(GameObject mapObj, List<GameObject> carObj)
 	{
 		return new SelMainStoryCtrl.GuiMapData(mapObj.transform, carObj);
 	}
 
-	// Token: 0x06001807 RID: 6151 RVA: 0x00127CD1 File Offset: 0x00125ED1
 	public void Init(SelMainStoryCtrl.InitParam _initParam, SelMainStoryCtrl.SetupParam _setupParam)
 	{
 		this.initParam = _initParam;
@@ -54,46 +45,36 @@ public class SelMainStoryCtrl : MonoBehaviour
 		this.Setup(_setupParam);
 	}
 
-	// Token: 0x06001808 RID: 6152 RVA: 0x00127D0D File Offset: 0x00125F0D
 	public void Setup(SelMainStoryCtrl.SetupParam _setupParam)
 	{
 		this.setupParam = _setupParam;
 		this.TouchMoving = false;
 	}
 
-	// Token: 0x06001809 RID: 6153 RVA: 0x00127D1D File Offset: 0x00125F1D
 	public void Dest()
 	{
 	}
 
-	// Token: 0x0600180A RID: 6154 RVA: 0x00127D1F File Offset: 0x00125F1F
 	public void Destroy()
 	{
 	}
 
-	// Token: 0x0600180B RID: 6155 RVA: 0x00127D21 File Offset: 0x00125F21
 	public void UpdateDecoration()
 	{
 	}
 
-	// Token: 0x170003BE RID: 958
-	// (get) Token: 0x0600180C RID: 6156 RVA: 0x00127D23 File Offset: 0x00125F23
-	// (set) Token: 0x0600180D RID: 6157 RVA: 0x00127D2B File Offset: 0x00125F2B
 	public bool TouchMoving { get; private set; }
 
-	// Token: 0x0600180E RID: 6158 RVA: 0x00127D34 File Offset: 0x00125F34
 	public bool IsNotNullMapObj()
 	{
 		return this.GuiData.mapData != null;
 	}
 
-	// Token: 0x0600180F RID: 6159 RVA: 0x00127D44 File Offset: 0x00125F44
 	public bool IsNotNullMapBaseObj()
 	{
 		return this.IsNotNullMapObj() && this.GuiData.mapData.baseObj != null;
 	}
 
-	// Token: 0x06001810 RID: 6160 RVA: 0x00127D68 File Offset: 0x00125F68
 	public void UpdateMapdata(int chapterId, QuestStaticChapter.Category questCategory, UnityAction<Transform> pointTouchCB)
 	{
 		if (!this.IsNotNullMapObj())
@@ -165,7 +146,6 @@ public class SelMainStoryCtrl : MonoBehaviour
 		this.UpdatePointSelect(chapterId);
 	}
 
-	// Token: 0x06001811 RID: 6161 RVA: 0x001280C0 File Offset: 0x001262C0
 	private void UpdatePointSelect(int chapterId)
 	{
 		foreach (SelMainStoryCtrl.GuiPointSelect.ChapterInfo chapterInfo in this.GuiData.pointSelect.chapterInfoList)
@@ -205,7 +185,6 @@ public class SelMainStoryCtrl : MonoBehaviour
 		reqRewardsCB();
 	}
 
-	// Token: 0x06001812 RID: 6162 RVA: 0x001283AC File Offset: 0x001265AC
 	public void UpdatePointSelect()
 	{
 		if (this.GuiData.pointSelect.baseObj.activeSelf)
@@ -240,7 +219,6 @@ public class SelMainStoryCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001813 RID: 6163 RVA: 0x00128558 File Offset: 0x00126758
 	public void UpdateMission()
 	{
 		int userClearMissionNum = DataManager.DmMission.GetUserClearMissionNum();
@@ -248,7 +226,6 @@ public class SelMainStoryCtrl : MonoBehaviour
 		this.GuiData.pointSelect.Txt_Mission_Num.text = userClearMissionNum.ToString();
 	}
 
-	// Token: 0x06001814 RID: 6164 RVA: 0x001285C0 File Offset: 0x001267C0
 	public static float GetMapOffsetPosX(QuestStaticChapter.Category category, GameObject mapBoxObject, SelMainStoryCtrl.GuiMapData guiMapData, bool isMap)
 	{
 		RectTransform rectTransform = mapBoxObject.transform as RectTransform;
@@ -310,13 +287,11 @@ public class SelMainStoryCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001815 RID: 6165 RVA: 0x001287B9 File Offset: 0x001269B9
 	public float GetMapOffsetPosX(QuestStaticChapter.Category category, bool isMap)
 	{
 		return SelMainStoryCtrl.GetMapOffsetPosX(category, this.mapBoxObject, this.GuiData.mapData, isMap);
 	}
 
-	// Token: 0x06001816 RID: 6166 RVA: 0x001287D4 File Offset: 0x001269D4
 	public static float GetSafeAreaX(QuestStaticChapter.Category category, GameObject mapBoxObject, SelMainStoryCtrl.GuiMapData guiMapData)
 	{
 		RectTransform rectTransform = mapBoxObject.transform as RectTransform;
@@ -342,13 +317,11 @@ public class SelMainStoryCtrl : MonoBehaviour
 		return num2 + num;
 	}
 
-	// Token: 0x06001817 RID: 6167 RVA: 0x00128894 File Offset: 0x00126A94
 	public static float GetScrollWidth(QuestStaticChapter.Category category, SelMainStoryCtrl.GuiMapData guiMapData)
 	{
 		return guiMapData.bgObj.transform.Find("Tex_Bg").GetComponent<RectTransform>().sizeDelta.x - QuestUtil.DEFAULT_SCREEN_WIDTH;
 	}
 
-	// Token: 0x06001818 RID: 6168 RVA: 0x001288C0 File Offset: 0x00126AC0
 	public static QuestCarType GetQuestCarType(int chapterId)
 	{
 		QuestStaticChapter questStaticChapter = DataManager.DmQuest.QuestStaticData.chapterDataMap[chapterId];
@@ -371,7 +344,6 @@ public class SelMainStoryCtrl : MonoBehaviour
 		return QuestCarType.BUS;
 	}
 
-	// Token: 0x06001819 RID: 6169 RVA: 0x00128924 File Offset: 0x00126B24
 	public void RemoveTouchEventTriggger()
 	{
 		for (int i = 0; i < this.GuiData.mapData.mapPointList.Count; i++)
@@ -380,7 +352,6 @@ public class SelMainStoryCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600181A RID: 6170 RVA: 0x00128978 File Offset: 0x00126B78
 	public static void AdjustMaskPostion(QuestStaticChapter.Category category, SelMainStoryCtrl.GuiMapData guiMapData, GameObject mapBoxObject)
 	{
 		if (SceneQuest.IsMainStoryPart1_5(category))
@@ -395,7 +366,6 @@ public class SelMainStoryCtrl : MonoBehaviour
 		gameObject2.transform.localPosition = new Vector3(SelMainStoryCtrl.GetMapOffsetPosX(category, mapBoxObject, guiMapData, false), localPosition2.y, 0f);
 	}
 
-	// Token: 0x0600181B RID: 6171 RVA: 0x00128A28 File Offset: 0x00126C28
 	private void SetupMapData(int chapterId, QuestStaticChapter.Category category, UnityAction<Transform> pointTouchCB)
 	{
 		if (!this.IsNotNullMapObj())
@@ -585,7 +555,6 @@ public class SelMainStoryCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600181C RID: 6172 RVA: 0x001295DC File Offset: 0x001277DC
 	private void UpdateMapButtonLR(int chapterId)
 	{
 		List<int> playableMapIdList = DataManager.DmQuest.GetPlayableMapIdList(chapterId - 1);
@@ -594,7 +563,6 @@ public class SelMainStoryCtrl : MonoBehaviour
 		this.GuiData.pointSelect.Btn_Yaji_Right.gameObject.SetActive(playableMapIdList2.Count > 0);
 	}
 
-	// Token: 0x06001820 RID: 6176 RVA: 0x001296B4 File Offset: 0x001278B4
 	[CompilerGenerated]
 	private void <SetupMapData>g__FuncLocalAnimCtrl|45_4(PguiAECtrl ae, bool dispFlag)
 	{
@@ -607,101 +575,71 @@ public class SelMainStoryCtrl : MonoBehaviour
 		ae.PauseAnimationLastFrame(PguiAECtrl.AmimeType.START);
 	}
 
-	// Token: 0x0400129B RID: 4763
 	public static readonly string MainStory1MapNamePrefix = "MainStory_";
 
-	// Token: 0x0400129C RID: 4764
 	public static readonly string CellvalMapNamePrefix = "CellvalStory_";
 
-	// Token: 0x0400129D RID: 4765
 	public static readonly string MainStory2MapNamePrefix = "MainStory_";
 
-	// Token: 0x0400129E RID: 4766
 	public static readonly string MainStory3MapNamePrefix = "MainStory_";
 
-	// Token: 0x0400129F RID: 4767
 	private static readonly float CellvalMapOffsetPosX = 101f;
 
-	// Token: 0x040012A1 RID: 4769
 	private SelMainStoryCtrl.SetupParam setupParam = new SelMainStoryCtrl.SetupParam();
 
-	// Token: 0x040012A2 RID: 4770
 	private SelMainStoryCtrl.InitParam initParam = new SelMainStoryCtrl.InitParam();
 
-	// Token: 0x040012A3 RID: 4771
 	private GameObject mapBoxObject;
 
-	// Token: 0x02000D23 RID: 3363
-	// (Invoke) Token: 0x06004851 RID: 18513
 	public delegate GameObject OnGetCurrentSequence();
 
-	// Token: 0x02000D24 RID: 3364
-	// (Invoke) Token: 0x06004855 RID: 18517
 	public delegate int OnGetCount();
 
-	// Token: 0x02000D25 RID: 3365
 	public class InitParam
 	{
-		// Token: 0x04004D89 RID: 19849
 		public UnityAction reqNextSequenceCB;
 
-		// Token: 0x04004D8A RID: 19850
 		public UnityAction reqBackSequenceCB;
 
-		// Token: 0x04004D8B RID: 19851
 		public UnityAction selectObjsCB;
 
-		// Token: 0x04004D8C RID: 19852
 		public Transform prefabPath;
 
-		// Token: 0x04004D8D RID: 19853
 		public QuestUtil.OnGetSelectData getSelectDataCB;
 
-		// Token: 0x04004D8E RID: 19854
 		public UnityAction reqRewardsCB;
 
-		// Token: 0x04004D8F RID: 19855
 		public QuestUtil.OnCheck checkQuestTopCB;
 
-		// Token: 0x04004D90 RID: 19856
 		public UnityAction reqIncSelectDifficultCountCB;
 
-		// Token: 0x04004D91 RID: 19857
 		public SelMainStoryCtrl.OnGetCount getSelectDifficultCountCB;
 	}
 
-	// Token: 0x02000D26 RID: 3366
 	public class SetupParam
 	{
 	}
 
-	// Token: 0x02000D27 RID: 3367
 	public class GUI
 	{
-		// Token: 0x0600485A RID: 18522 RVA: 0x0021BA55 File Offset: 0x00219C55
 		public GUI(Transform baseTr)
 		{
 			this.pointSelect = new SelMainStoryCtrl.GuiPointSelect(baseTr.transform);
 			this.pointSelect.baseObj.SetActive(false);
 		}
 
-		// Token: 0x0600485B RID: 18523 RVA: 0x0021BA7F File Offset: 0x00219C7F
 		public void SetupMapData(GameObject mapObj, List<GameObject> carObj)
 		{
 			this.mapData = new SelMainStoryCtrl.GuiMapData(mapObj.transform, carObj);
 		}
 
-		// Token: 0x04004D92 RID: 19858
 		public SelMainStoryCtrl.GuiPointSelect pointSelect;
 
-		// Token: 0x04004D93 RID: 19859
 		public SelMainStoryCtrl.GuiMapData mapData;
 	}
 
-	// Token: 0x02000D28 RID: 3368
 	public class GuiMapData : SceneQuest.IMapData
 	{
-		// Token: 0x0600485C RID: 18524 RVA: 0x0021BA94 File Offset: 0x00219C94
 		public void SetupMapData(QuestStaticChapter chapther)
 		{
 			this.mapLineList.Clear();
@@ -783,13 +721,11 @@ public class SelMainStoryCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x0600485D RID: 18525 RVA: 0x0021BE0C File Offset: 0x0021A00C
 		public GuiMapData(Transform baseTr, List<GameObject> carList)
 			: base(baseTr, carList)
 		{
 		}
 
-		// Token: 0x0600485E RID: 18526 RVA: 0x0021BE2C File Offset: 0x0021A02C
 		public override void OutAnim()
 		{
 			foreach (SelMainStoryCtrl.GuiMapData.MapPoint mapPoint in this.mapPointList)
@@ -800,7 +736,6 @@ public class SelMainStoryCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x0600485F RID: 18527 RVA: 0x0021BEA4 File Offset: 0x0021A0A4
 		public override void InAnim()
 		{
 			foreach (SelMainStoryCtrl.GuiMapData.MapPoint mapPoint in this.mapPointList)
@@ -811,23 +746,18 @@ public class SelMainStoryCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06004860 RID: 18528 RVA: 0x0021BF1C File Offset: 0x0021A11C
 		public void Destroy()
 		{
 			Object.Destroy(this.baseObj);
 			this.baseObj = null;
 		}
 
-		// Token: 0x04004D94 RID: 19860
 		public List<BezierLine> mapLineList = new List<BezierLine>();
 
-		// Token: 0x04004D95 RID: 19861
 		public List<SelMainStoryCtrl.GuiMapData.MapPoint> mapPointList = new List<SelMainStoryCtrl.GuiMapData.MapPoint>();
 
-		// Token: 0x020011C4 RID: 4548
 		public class MapPoint
 		{
-			// Token: 0x0600570D RID: 22285 RVA: 0x00255B40 File Offset: 0x00253D40
 			public MapPoint(Transform baseTr, int num)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -852,60 +782,44 @@ public class SelMainStoryCtrl : MonoBehaviour
 				this.Txt_DayName = baseTr.Find("Img_DayBase/Txt_MapName").GetComponent<PguiTextCtrl>();
 			}
 
-			// Token: 0x0600570E RID: 22286 RVA: 0x00255CFF File Offset: 0x00253EFF
 			public void SetActiveDayName(bool sw)
 			{
 				this.Txt_DayName.transform.parent.gameObject.SetActive(sw);
 			}
 
-			// Token: 0x0600570F RID: 22287 RVA: 0x00255D1C File Offset: 0x00253F1C
 			public string GetName()
 			{
 				return this.baseObj.transform.parent.name;
 			}
 
-			// Token: 0x04006180 RID: 24960
 			public GameObject baseObj;
 
-			// Token: 0x04006181 RID: 24961
 			public RectTransform baseRtf;
 
-			// Token: 0x04006182 RID: 24962
 			public GameObject pointObj;
 
-			// Token: 0x04006183 RID: 24963
 			public GameObject pointRtf = new GameObject();
 
-			// Token: 0x04006184 RID: 24964
 			public PguiRawImageCtrl Tex;
 
-			// Token: 0x04006185 RID: 24965
 			public PguiImageCtrl Mark_Batch;
 
-			// Token: 0x04006186 RID: 24966
 			public PguiAECtrl Mark_NewPoint;
 
-			// Token: 0x04006187 RID: 24967
 			public PguiAECtrl Mark_NewPoint2;
 
-			// Token: 0x04006188 RID: 24968
 			public PguiTextCtrl Txt_MapName;
 
-			// Token: 0x04006189 RID: 24969
 			public GameObject Mark_Complete;
 
-			// Token: 0x0400618A RID: 24970
 			public SimpleAnimation anim;
 
-			// Token: 0x0400618B RID: 24971
 			public PguiTextCtrl Txt_DayName;
 		}
 	}
 
-	// Token: 0x02000D29 RID: 3369
 	public class GuiPointSelect
 	{
-		// Token: 0x06004861 RID: 18529 RVA: 0x0021BF30 File Offset: 0x0021A130
 		public GuiPointSelect(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -930,7 +844,6 @@ public class SelMainStoryCtrl : MonoBehaviour
 			};
 		}
 
-		// Token: 0x06004862 RID: 18530 RVA: 0x0021C0B8 File Offset: 0x0021A2B8
 		public void UpdateCampaignInfoCategory(QuestStaticChapter.Category category, int chapterId)
 		{
 			List<string> list = new List<string>(QuestUtil.GetCampaignMessageList(category, chapterId));
@@ -938,52 +851,37 @@ public class SelMainStoryCtrl : MonoBehaviour
 			this.campaignInfo.DispCampaign(list, list2);
 		}
 
-		// Token: 0x06004863 RID: 18531 RVA: 0x0021C0EC File Offset: 0x0021A2EC
 		public void ResetCampaignInfoCategory()
 		{
 			this.campaignInfo.ResetCampaign();
 		}
 
-		// Token: 0x04004D96 RID: 19862
 		public GameObject baseObj;
 
-		// Token: 0x04004D97 RID: 19863
 		public PguiButtonCtrl Btn_ChapterChange;
 
-		// Token: 0x04004D98 RID: 19864
 		public PguiButtonCtrl Btn_Mission;
 
-		// Token: 0x04004D99 RID: 19865
 		public PguiButtonCtrl Btn_Yaji_Left;
 
-		// Token: 0x04004D9A RID: 19866
 		public PguiButtonCtrl Btn_Yaji_Right;
 
-		// Token: 0x04004D9B RID: 19867
 		public GameObject Mission_New;
 
-		// Token: 0x04004D9C RID: 19868
 		public PguiTextCtrl Txt_Mission_Num;
 
-		// Token: 0x04004D9D RID: 19869
 		public PguiButtonCtrl Btn_Sel_Difficult;
 
-		// Token: 0x04004D9E RID: 19870
 		public QuestUtil.CampaignInfo campaignInfo;
 
-		// Token: 0x04004D9F RID: 19871
 		public MarkLockCtrl markLock;
 
-		// Token: 0x04004DA0 RID: 19872
 		public PguiImageCtrl Mark_Hard;
 
-		// Token: 0x04004DA1 RID: 19873
 		public List<SelMainStoryCtrl.GuiPointSelect.ChapterInfo> chapterInfoList;
 
-		// Token: 0x020011C7 RID: 4551
 		public class ItemInfoIcon
 		{
-			// Token: 0x06005717 RID: 22295 RVA: 0x00255DC6 File Offset: 0x00253FC6
 			public ItemInfoIcon(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -991,7 +889,6 @@ public class SelMainStoryCtrl : MonoBehaviour
 				this.Mark_Get = baseTr.Find("Mark_Get").GetComponent<PguiImageCtrl>();
 			}
 
-			// Token: 0x06005718 RID: 22296 RVA: 0x00255E06 File Offset: 0x00254006
 			public void SetItemInfo(bool isGet, string text)
 			{
 				this.Txt_Episodes.gameObject.SetActive(!isGet);
@@ -999,26 +896,20 @@ public class SelMainStoryCtrl : MonoBehaviour
 				this.Mark_Get.gameObject.SetActive(isGet);
 			}
 
-			// Token: 0x06005719 RID: 22297 RVA: 0x00255E3E File Offset: 0x0025403E
 			public void SetEmptyStr()
 			{
 				this.Txt_Episodes.transform.Find("Txt_Ato").GetComponent<PguiTextCtrl>().text = string.Empty;
 			}
 
-			// Token: 0x04006191 RID: 24977
 			public GameObject baseObj;
 
-			// Token: 0x04006192 RID: 24978
 			public PguiTextCtrl Txt_Episodes;
 
-			// Token: 0x04006193 RID: 24979
 			public PguiImageCtrl Mark_Get;
 		}
 
-		// Token: 0x020011C8 RID: 4552
 		public class ChapterInfo
 		{
-			// Token: 0x0600571A RID: 22298 RVA: 0x00255E64 File Offset: 0x00254064
 			public ChapterInfo(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -1038,19 +929,14 @@ public class SelMainStoryCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x04006194 RID: 24980
 			public GameObject baseObj;
 
-			// Token: 0x04006195 RID: 24981
 			public PguiTextCtrl Txt_ChapterName;
 
-			// Token: 0x04006196 RID: 24982
 			public PguiTextCtrl Txt_Info;
 
-			// Token: 0x04006197 RID: 24983
 			public GameObject ItemInfo;
 
-			// Token: 0x04006198 RID: 24984
 			public List<SelMainStoryCtrl.GuiPointSelect.ItemInfoIcon> itemInfoIcons;
 		}
 	}

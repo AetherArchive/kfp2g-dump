@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -10,26 +10,17 @@ using SGNFW.HttpRequest.Protocol;
 using SGNFW.Mst;
 using UnityEngine;
 
-// Token: 0x02000071 RID: 113
 public class DataManagerChara
 {
-	// Token: 0x06000345 RID: 837 RVA: 0x00018B7C File Offset: 0x00016D7C
 	public DataManagerChara(DataManager p)
 	{
 		this.parentData = p;
 	}
 
-	// Token: 0x170000B6 RID: 182
-	// (get) Token: 0x06000346 RID: 838 RVA: 0x00018C51 File Offset: 0x00016E51
-	// (set) Token: 0x06000347 RID: 839 RVA: 0x00018C59 File Offset: 0x00016E59
 	public bool ShopUpdateRequired { get; set; }
 
-	// Token: 0x170000B7 RID: 183
-	// (get) Token: 0x06000348 RID: 840 RVA: 0x00018C62 File Offset: 0x00016E62
-	// (set) Token: 0x06000349 RID: 841 RVA: 0x00018C6A File Offset: 0x00016E6A
 	public bool CharaMissionUpdateRequired { get; set; }
 
-	// Token: 0x0600034A RID: 842 RVA: 0x00018C73 File Offset: 0x00016E73
 	public static int CharaId2ModelId(int charaId)
 	{
 		if (Singleton<DataManager>.Instance != null && DataManager.DmChara.charaId2modelId != null && DataManager.DmChara.charaId2modelId.ContainsKey(charaId))
@@ -39,8 +30,6 @@ public class DataManagerChara
 		return charaId;
 	}
 
-	// Token: 0x170000B8 RID: 184
-	// (get) Token: 0x0600034B RID: 843 RVA: 0x00018CB2 File Offset: 0x00016EB2
 	public List<CharaStaticData> CharaStaticDataList
 	{
 		get
@@ -51,17 +40,10 @@ public class DataManagerChara
 		}
 	}
 
-	// Token: 0x170000B9 RID: 185
-	// (get) Token: 0x0600034C RID: 844 RVA: 0x00018CE9 File Offset: 0x00016EE9
-	// (set) Token: 0x0600034D RID: 845 RVA: 0x00018CF1 File Offset: 0x00016EF1
 	private List<DataManagerChara.FilterData> FilterDataListMiracle { get; set; }
 
-	// Token: 0x170000BA RID: 186
-	// (get) Token: 0x0600034E RID: 846 RVA: 0x00018CFA File Offset: 0x00016EFA
-	// (set) Token: 0x0600034F RID: 847 RVA: 0x00018D02 File Offset: 0x00016F02
 	private List<DataManagerChara.FilterData> FilterDataListCharacteristic { get; set; }
 
-	// Token: 0x06000350 RID: 848 RVA: 0x00018D0B File Offset: 0x00016F0B
 	public CharaStaticData GetCharaStaticData(int charaId)
 	{
 		if (charaId < 0)
@@ -76,7 +58,6 @@ public class DataManagerChara
 		return this.charaStaticMap[charaId];
 	}
 
-	// Token: 0x06000351 RID: 849 RVA: 0x00018D4B File Offset: 0x00016F4B
 	public CharaStaticBase GetCharaStaticBase(int charaId)
 	{
 		if (charaId < 0)
@@ -91,7 +72,6 @@ public class DataManagerChara
 		return this.charaStaticBaseMap[charaId];
 	}
 
-	// Token: 0x06000352 RID: 850 RVA: 0x00018D8C File Offset: 0x00016F8C
 	public List<DataManagerChara.FilterData> GetFriendFilterDataList(bool filterMiracle)
 	{
 		List<DataManagerChara.FilterData> list = new List<DataManagerChara.FilterData>();
@@ -119,7 +99,6 @@ public class DataManagerChara
 		return list;
 	}
 
-	// Token: 0x06000353 RID: 851 RVA: 0x00018E18 File Offset: 0x00017018
 	public static string GetNPCName(int charaId)
 	{
 		Dictionary<int, MstNpcData> dictionary = DataManager.DmChara.npcMap;
@@ -131,7 +110,6 @@ public class DataManagerChara
 		return null;
 	}
 
-	// Token: 0x06000354 RID: 852 RVA: 0x00018E68 File Offset: 0x00017068
 	public MstCharaEffectData GetCharaEffectData(string bodyModelName)
 	{
 		if (this.mstCharaEffectDataList != null)
@@ -147,20 +125,17 @@ public class DataManagerChara
 		return null;
 	}
 
-	// Token: 0x06000355 RID: 853 RVA: 0x00018ED4 File Offset: 0x000170D4
 	public bool CheckSameChara(int charaIdA, int charaIdB)
 	{
 		return this.GetSameCharaList(charaIdA, true).Contains(charaIdB);
 	}
 
-	// Token: 0x06000356 RID: 854 RVA: 0x00018EE4 File Offset: 0x000170E4
 	public bool CheckSameChara(int charaIdA, List<int> charaIdBList)
 	{
 		HashSet<int> list = this.GetSameCharaList(charaIdA, true);
 		return charaIdBList.Exists((int item) => list.Contains(item));
 	}
 
-	// Token: 0x06000357 RID: 855 RVA: 0x00018F18 File Offset: 0x00017118
 	public HashSet<int> GetSameCharaList(int charaId, bool isInMine)
 	{
 		HashSet<int> hashSet = new HashSet<int>();
@@ -189,7 +164,6 @@ public class DataManagerChara
 		return hashSet;
 	}
 
-	// Token: 0x06000358 RID: 856 RVA: 0x00018F9B File Offset: 0x0001719B
 	public MasterStaticSkill GetMasterSkillStaticData(int id)
 	{
 		if (!this.masterSkillStaticMap.ContainsKey(id))
@@ -199,7 +173,6 @@ public class DataManagerChara
 		return this.masterSkillStaticMap[id];
 	}
 
-	// Token: 0x06000359 RID: 857 RVA: 0x00018FC8 File Offset: 0x000171C8
 	public TacticsStaticSkill GetTacticsSkillStaticData(int id)
 	{
 		if (this.tacticsSkillStaticMap.ContainsKey(id))
@@ -219,13 +192,11 @@ public class DataManagerChara
 		};
 	}
 
-	// Token: 0x0600035A RID: 858 RVA: 0x00019054 File Offset: 0x00017254
 	public List<TacticsStaticSkill> GetTacticsSkillStaticData()
 	{
 		return new List<TacticsStaticSkill>(this.tacticsSkillStaticMap.Values);
 	}
 
-	// Token: 0x0600035B RID: 859 RVA: 0x00019068 File Offset: 0x00017268
 	public TacticsParam.Tactics GetTacticsParamData(TacticsParam.Tactics.Type typ)
 	{
 		if (this.tacticsParam == null || this.tacticsParam.tacticsParam == null || this.tacticsParam.tacticsParam.Count < 1)
@@ -246,7 +217,6 @@ public class DataManagerChara
 		return tactics;
 	}
 
-	// Token: 0x0600035C RID: 860 RVA: 0x00019132 File Offset: 0x00017332
 	public List<TacticsParam.Tactics> GetTacticsParamData()
 	{
 		if (!(this.tacticsParam == null) && this.tacticsParam.tacticsParam != null)
@@ -256,7 +226,6 @@ public class DataManagerChara
 		return new List<TacticsParam.Tactics>();
 	}
 
-	// Token: 0x0600035D RID: 861 RVA: 0x00019160 File Offset: 0x00017360
 	public EnemyStaticData GetEnemyStaticData(int enemyId)
 	{
 		if (!this.enemyStaticMap.ContainsKey(enemyId))
@@ -267,13 +236,11 @@ public class DataManagerChara
 		return this.enemyStaticMap[enemyId];
 	}
 
-	// Token: 0x0600035E RID: 862 RVA: 0x0001919A File Offset: 0x0001739A
 	public Dictionary<int, EnemyStaticData> GetEnemyStaticMap()
 	{
 		return this.enemyStaticMap;
 	}
 
-	// Token: 0x0600035F RID: 863 RVA: 0x000191A2 File Offset: 0x000173A2
 	public CharaClothStatic GetCharaClothesStaticData(int clothesId)
 	{
 		if (!this.charaClothesStaticMap.ContainsKey(clothesId))
@@ -284,7 +251,6 @@ public class DataManagerChara
 		return this.charaClothesStaticMap[clothesId];
 	}
 
-	// Token: 0x06000360 RID: 864 RVA: 0x000191DC File Offset: 0x000173DC
 	public CharaContactStatic GetCharaContactStaticData(int contactId)
 	{
 		if (!this.charaContactStaticMap.ContainsKey(contactId))
@@ -295,43 +261,36 @@ public class DataManagerChara
 		return this.charaContactStaticMap[contactId];
 	}
 
-	// Token: 0x06000361 RID: 865 RVA: 0x00019216 File Offset: 0x00017416
 	public List<CharaContactStatic> GetContactByChara(int charaId)
 	{
 		return new List<CharaContactStatic>(this.charaContactStaticMapByChara.TryGetValueEx(charaId, new List<CharaContactStatic>()));
 	}
 
-	// Token: 0x06000362 RID: 866 RVA: 0x0001922E File Offset: 0x0001742E
 	public List<CharaVoiceCombi> GetCharaVoiceCombiAllList()
 	{
 		return this.charaVoiceCombiList;
 	}
 
-	// Token: 0x06000363 RID: 867 RVA: 0x00019238 File Offset: 0x00017438
 	public List<CharaVoiceCombi> GetCharaVoiceCombiList(CharaVoiceCombi.SitType type, int firstCharaId)
 	{
 		return this.charaVoiceCombiList.FindAll((CharaVoiceCombi item) => item.firstCharaId == firstCharaId && item.situationType == type);
 	}
 
-	// Token: 0x06000364 RID: 868 RVA: 0x00019270 File Offset: 0x00017470
 	public List<DataManagerChara.BonusCharaData> GetBonusCharaDataList()
 	{
 		return this.GetBonusCharaDataListInternal(0, TimeManager.Now, true);
 	}
 
-	// Token: 0x06000365 RID: 869 RVA: 0x0001927F File Offset: 0x0001747F
 	public List<DataManagerChara.BonusCharaData> GetBonusCharaDataList(int evID)
 	{
 		return this.GetBonusCharaDataListInternal(evID, TimeManager.Now, false);
 	}
 
-	// Token: 0x06000366 RID: 870 RVA: 0x0001928E File Offset: 0x0001748E
 	public List<DataManagerChara.BonusCharaData> GetBonusCharaDataList(int evID, DateTime dateTime)
 	{
 		return this.GetBonusCharaDataListInternal(evID, dateTime, false);
 	}
 
-	// Token: 0x06000367 RID: 871 RVA: 0x0001929C File Offset: 0x0001749C
 	private List<DataManagerChara.BonusCharaData> GetBonusCharaDataListInternal(int evID, DateTime dateTime, bool returnAll = false)
 	{
 		List<DataManagerChara.BonusCharaData> list;
@@ -350,7 +309,6 @@ public class DataManagerChara
 		return list;
 	}
 
-	// Token: 0x06000368 RID: 872 RVA: 0x00019318 File Offset: 0x00017518
 	public int ColothId2ImageId(int clothId)
 	{
 		if (clothId == 0)
@@ -365,7 +323,6 @@ public class DataManagerChara
 		return charaClothesStaticData.ImageId;
 	}
 
-	// Token: 0x06000369 RID: 873 RVA: 0x00019340 File Offset: 0x00017540
 	public bool ClothLongSkirt(int clothId)
 	{
 		if (clothId == 0)
@@ -376,7 +333,6 @@ public class DataManagerChara
 		return charaClothesStaticData != null && charaClothesStaticData.LongSkirt;
 	}
 
-	// Token: 0x0600036A RID: 874 RVA: 0x00019368 File Offset: 0x00017568
 	public CharaClothStatic.PlayMotionType ClothPlayMotion(int clothId)
 	{
 		if (clothId == 0)
@@ -391,7 +347,6 @@ public class DataManagerChara
 		return CharaClothStatic.PlayMotionType.Default;
 	}
 
-	// Token: 0x0600036B RID: 875 RVA: 0x0001938D File Offset: 0x0001758D
 	public CharaPackData GetUserCharaData(int charaId)
 	{
 		if (this.userCharaMap.ContainsKey(charaId))
@@ -401,24 +356,15 @@ public class DataManagerChara
 		return null;
 	}
 
-	// Token: 0x0600036C RID: 876 RVA: 0x000193AB File Offset: 0x000175AB
 	public Dictionary<int, CharaPackData> GetUserCharaMap()
 	{
 		return this.userCharaMap;
 	}
 
-	// Token: 0x170000BB RID: 187
-	// (get) Token: 0x0600036D RID: 877 RVA: 0x000193B3 File Offset: 0x000175B3
-	// (set) Token: 0x0600036E RID: 878 RVA: 0x000193BB File Offset: 0x000175BB
 	public Dictionary<int, int> UserAllCharaKemoStatusList { get; private set; } = new Dictionary<int, int>();
 
-	// Token: 0x170000BC RID: 188
-	// (get) Token: 0x0600036F RID: 879 RVA: 0x000193C4 File Offset: 0x000175C4
-	// (set) Token: 0x06000370 RID: 880 RVA: 0x000193CC File Offset: 0x000175CC
 	public bool IsNeedUpdateByUserAllCharaKemoStatusList { get; set; }
 
-	// Token: 0x170000BD RID: 189
-	// (get) Token: 0x06000371 RID: 881 RVA: 0x000193D5 File Offset: 0x000175D5
 	public int UserAllCharaKemoStatus
 	{
 		get
@@ -427,7 +373,6 @@ public class DataManagerChara
 		}
 	}
 
-	// Token: 0x06000372 RID: 882 RVA: 0x00019401 File Offset: 0x00017601
 	public MasterSkillPackData GetUserMasterSkillData(int id)
 	{
 		if (this.userMasterSkillMap.ContainsKey(id))
@@ -437,25 +382,21 @@ public class DataManagerChara
 		return null;
 	}
 
-	// Token: 0x06000373 RID: 883 RVA: 0x0001941F File Offset: 0x0001761F
 	public Dictionary<int, MasterSkillPackData> GetUserMasterSkillMap()
 	{
 		return this.userMasterSkillMap;
 	}
 
-	// Token: 0x06000374 RID: 884 RVA: 0x00019427 File Offset: 0x00017627
 	public List<MstCharaKizunaBuffData> GetMstKizunaBuffList()
 	{
 		return this.mstCharaKizunaBuffList;
 	}
 
-	// Token: 0x06000375 RID: 885 RVA: 0x0001942F File Offset: 0x0001762F
 	public CharaKizunaQualified GetUserKizunaQualified()
 	{
 		return this.userCharaKizunaQualified;
 	}
 
-	// Token: 0x06000376 RID: 886 RVA: 0x00019438 File Offset: 0x00017638
 	public PrjUtil.ParamPreset GetActiveKizunaBuff()
 	{
 		PrjUtil.ParamPreset paramPreset = new PrjUtil.ParamPreset();
@@ -483,7 +424,6 @@ public class DataManagerChara
 		return paramPreset;
 	}
 
-	// Token: 0x06000377 RID: 887 RVA: 0x000195D8 File Offset: 0x000177D8
 	public PrjUtil.ParamPreset GetActiveKizunaBuffByQualifiedCount(int count)
 	{
 		PrjUtil.ParamPreset paramPreset = new PrjUtil.ParamPreset();
@@ -508,7 +448,6 @@ public class DataManagerChara
 		return paramPreset;
 	}
 
-	// Token: 0x06000378 RID: 888 RVA: 0x0001977C File Offset: 0x0001797C
 	public DataManagerChara.KiznaRewardData GetKizunaRewardData(int kizunaLv, int charaId)
 	{
 		DataManagerChara.KiznaRewardData kiznaRewardData = new DataManagerChara.KiznaRewardData
@@ -539,19 +478,16 @@ public class DataManagerChara
 		return kiznaRewardData;
 	}
 
-	// Token: 0x06000379 RID: 889 RVA: 0x00019850 File Offset: 0x00017A50
 	public DataManagerChara.LevelLimitData GetLevelLimitData(int limitId)
 	{
 		return this.levelLimitDataList.Find((DataManagerChara.LevelLimitData x) => x.levelLimitId == limitId && x.isStartTime);
 	}
 
-	// Token: 0x0600037A RID: 890 RVA: 0x00019881 File Offset: 0x00017A81
 	public int GetLevelLimitDataListCount()
 	{
 		return this.levelLimitDataList.Count;
 	}
 
-	// Token: 0x0600037B RID: 891 RVA: 0x00019890 File Offset: 0x00017A90
 	public int GetLevelLimitOverCount(int maxLevel)
 	{
 		int num = 0;
@@ -570,7 +506,6 @@ public class DataManagerChara
 		return num;
 	}
 
-	// Token: 0x0600037C RID: 892 RVA: 0x000198F8 File Offset: 0x00017AF8
 	public int GetKizunaLevelLimitOverCount(int maxLevel)
 	{
 		int num = 0;
@@ -581,7 +516,6 @@ public class DataManagerChara
 		return maxLevel - 6;
 	}
 
-	// Token: 0x0600037D RID: 893 RVA: 0x00019910 File Offset: 0x00017B10
 	public DataManagerChara.LevelLimitRisingStatus GetLimitRisingStatus(int patternId, int charaId)
 	{
 		int num = this.levelLimitRisingStatusList.Min<DataManagerChara.LevelLimitRisingStatus>((DataManagerChara.LevelLimitRisingStatus x) => x.patternId);
@@ -593,7 +527,6 @@ public class DataManagerChara
 		return this.levelLimitRisingStatusList.Find((DataManagerChara.LevelLimitRisingStatus data) => data.patternId == patternId);
 	}
 
-	// Token: 0x0600037E RID: 894 RVA: 0x000199B0 File Offset: 0x00017BB0
 	public void UpdateUserDataByServer(List<Chara> haveCharaList)
 	{
 		bool flag = false;
@@ -621,7 +554,6 @@ public class DataManagerChara
 		}
 	}
 
-	// Token: 0x0600037F RID: 895 RVA: 0x00019A7C File Offset: 0x00017C7C
 	public void UpdateUserDataByServer(List<Item> userItemList)
 	{
 		foreach (Item item in userItemList)
@@ -633,7 +565,6 @@ public class DataManagerChara
 		}
 	}
 
-	// Token: 0x06000380 RID: 896 RVA: 0x00019B04 File Offset: 0x00017D04
 	public void UpdateUserCharasClothesData()
 	{
 		foreach (CharaPackData charaPackData in this.userCharaMap.Values)
@@ -642,7 +573,6 @@ public class DataManagerChara
 		}
 	}
 
-	// Token: 0x06000381 RID: 897 RVA: 0x00019B5C File Offset: 0x00017D5C
 	private void UpdateUserCharaClothesData(CharaPackData haveChara)
 	{
 		int id = haveChara.id;
@@ -658,7 +588,6 @@ public class DataManagerChara
 		haveChara.dynamicData.haveClothesIdList = new List<int>(list);
 	}
 
-	// Token: 0x06000382 RID: 898 RVA: 0x00019BEC File Offset: 0x00017DEC
 	public void UpdateUserCharasContactData()
 	{
 		foreach (CharaPackData charaPackData in this.userCharaMap.Values)
@@ -667,7 +596,6 @@ public class DataManagerChara
 		}
 	}
 
-	// Token: 0x06000383 RID: 899 RVA: 0x00019C44 File Offset: 0x00017E44
 	private void UpdateUserCharaContactData(CharaPackData haveChara)
 	{
 		int id = haveChara.id;
@@ -686,7 +614,6 @@ public class DataManagerChara
 		}
 	}
 
-	// Token: 0x06000384 RID: 900 RVA: 0x00019D04 File Offset: 0x00017F04
 	public void UpdateSumUserAllCharaKemoStatus(List<int> updateCharaIdList)
 	{
 		if (updateCharaIdList == null)
@@ -714,7 +641,6 @@ public class DataManagerChara
 		this.IsNeedUpdateByUserAllCharaKemoStatusList = true;
 	}
 
-	// Token: 0x06000385 RID: 901 RVA: 0x00019DEC File Offset: 0x00017FEC
 	public void UpdateUserDataByTutorial(List<CharaPackData> charaList)
 	{
 		this.userCharaMap = new Dictionary<int, CharaPackData>();
@@ -724,7 +650,6 @@ public class DataManagerChara
 		}
 	}
 
-	// Token: 0x06000386 RID: 902 RVA: 0x00019E50 File Offset: 0x00018050
 	public void UpdateUserDataByTutorial(List<MasterSkillPackData> skillList)
 	{
 		this.userMasterSkillMap = new Dictionary<int, MasterSkillPackData>();
@@ -734,13 +659,11 @@ public class DataManagerChara
 		}
 	}
 
-	// Token: 0x06000387 RID: 903 RVA: 0x00019EB4 File Offset: 0x000180B4
 	public void UpdateKizunaQualifiedByServer(CharaKizunaQualified qualified)
 	{
 		this.userCharaKizunaQualified = qualified;
 	}
 
-	// Token: 0x06000388 RID: 904 RVA: 0x00019EBD File Offset: 0x000180BD
 	public void UpdateUserDataByDebug(int charaId)
 	{
 		if (!this.userCharaMap.ContainsKey(charaId))
@@ -749,7 +672,6 @@ public class DataManagerChara
 		}
 	}
 
-	// Token: 0x06000389 RID: 905 RVA: 0x00019EDF File Offset: 0x000180DF
 	public IEnumerator InitializeMstData(MstManager mstManager)
 	{
 		long nowServerTime = PrjUtil.ConvertTicksToTime(TimeManager.Now.Ticks);
@@ -1080,7 +1002,6 @@ public class DataManagerChara
 		yield break;
 	}
 
-	// Token: 0x0600038A RID: 906 RVA: 0x00019EF8 File Offset: 0x000180F8
 	public void InitializeStaticClothes(List<MstCharaClothesData> mstClothesList)
 	{
 		List<ItemStaticBase> list = new List<ItemStaticBase>();
@@ -1101,7 +1022,6 @@ public class DataManagerChara
 		DataManager.DmItem.AddMstDataByItem(list);
 	}
 
-	// Token: 0x0600038B RID: 907 RVA: 0x00019FE8 File Offset: 0x000181E8
 	public void InitializeStaticContact(List<MstCharaMotionItemData> mstContactList)
 	{
 		List<ItemStaticBase> list = new List<ItemStaticBase>();
@@ -1143,7 +1063,6 @@ public class DataManagerChara
 		DataManager.DmItem.AddMstDataByItem(list);
 	}
 
-	// Token: 0x0600038C RID: 908 RVA: 0x0001A200 File Offset: 0x00018400
 	public void InitializeStaticEnemy(List<int> idList)
 	{
 		this.enemyStaticMap = new Dictionary<int, EnemyStaticData>();
@@ -1250,7 +1169,6 @@ public class DataManagerChara
 		}
 	}
 
-	// Token: 0x0600038D RID: 909 RVA: 0x0001A634 File Offset: 0x00018834
 	private List<int> GetPartsList(string str)
 	{
 		List<int> list = new List<int>();
@@ -1268,7 +1186,6 @@ public class DataManagerChara
 		return list;
 	}
 
-	// Token: 0x0600038E RID: 910 RVA: 0x0001A67C File Offset: 0x0001887C
 	private void InitializeStaticMasterSkill(MstManager mstManager)
 	{
 		List<MstItemCommon> mst = mstManager.GetMst<List<MstItemCommon>>(MstType.ITEM_COMMON);
@@ -1293,7 +1210,6 @@ public class DataManagerChara
 		}
 	}
 
-	// Token: 0x0600038F RID: 911 RVA: 0x0001A750 File Offset: 0x00018950
 	private void InitializeStaticTacticsSkill()
 	{
 		this.tacticsSkillStaticMap.Clear();
@@ -1310,13 +1226,11 @@ public class DataManagerChara
 		}
 	}
 
-	// Token: 0x06000390 RID: 912 RVA: 0x0001A7A7 File Offset: 0x000189A7
 	private void InitializeTacticsParam()
 	{
 		this.tacticsParam = AssetManager.GetAssetData("Charas/Parameter/TacticsParam") as TacticsParam;
 	}
 
-	// Token: 0x06000391 RID: 913 RVA: 0x0001A7C0 File Offset: 0x000189C0
 	public long GetExpByNextLevel(int charaId, int nowLevel)
 	{
 		int num = nowLevel + 1 - 1;
@@ -1330,7 +1244,6 @@ public class DataManagerChara
 		return num2;
 	}
 
-	// Token: 0x06000392 RID: 914 RVA: 0x0001A82C File Offset: 0x00018A2C
 	public long GetExpByNextKizunaLevel(int charaId, int nowLevel)
 	{
 		int num = nowLevel + 1 - 1;
@@ -1344,14 +1257,12 @@ public class DataManagerChara
 		return num2;
 	}
 
-	// Token: 0x06000393 RID: 915 RVA: 0x0001A89C File Offset: 0x00018A9C
 	public long GetNeedExpByLimitLevel(int charaId)
 	{
 		int limitLevel = DataManager.DmChara.GetUserCharaData(charaId).dynamicData.limitLevel;
 		return this.GetNeedExpByRangeLevel(charaId, limitLevel);
 	}
 
-	// Token: 0x06000394 RID: 916 RVA: 0x0001A8C8 File Offset: 0x00018AC8
 	public long GetNeedExpByRangeLevel(int charaId, int endLevel)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(charaId);
@@ -1379,7 +1290,6 @@ public class DataManagerChara
 		return num - exp;
 	}
 
-	// Token: 0x06000395 RID: 917 RVA: 0x0001A980 File Offset: 0x00018B80
 	public long GetNeedExpFromFirstLevel(int charaId, int endLevel)
 	{
 		int num = endLevel - 1;
@@ -1393,7 +1303,6 @@ public class DataManagerChara
 		return num2;
 	}
 
-	// Token: 0x06000396 RID: 918 RVA: 0x0001A9E8 File Offset: 0x00018BE8
 	public long GetKizunaExpForNextLevel(int charaId, int nowLevel)
 	{
 		int num = nowLevel + 1 - 1;
@@ -1410,7 +1319,6 @@ public class DataManagerChara
 		return num2;
 	}
 
-	// Token: 0x06000397 RID: 919 RVA: 0x0001AA54 File Offset: 0x00018C54
 	public long GetNeedKizunaExpFromFirstLevel(int charaId, int endLevel)
 	{
 		int num = endLevel - 1;
@@ -1424,14 +1332,12 @@ public class DataManagerChara
 		return num2;
 	}
 
-	// Token: 0x06000398 RID: 920 RVA: 0x0001AAC4 File Offset: 0x00018CC4
 	public long GetNeedExpByKizunaLimitLevel(int charaId)
 	{
 		int kizunaLimitLevel = DataManager.DmChara.GetUserCharaData(charaId).dynamicData.KizunaLimitLevel;
 		return this.GetNeedExpByRangeKizunaLevel(charaId, kizunaLimitLevel);
 	}
 
-	// Token: 0x06000399 RID: 921 RVA: 0x0001AAF0 File Offset: 0x00018CF0
 	public long GetNeedExpByRangeKizunaLevel(int charaId, int endLevel)
 	{
 		CharaPackData userCharaData = this.GetUserCharaData(charaId);
@@ -1460,13 +1366,11 @@ public class DataManagerChara
 		return num - kizunaExp;
 	}
 
-	// Token: 0x0600039A RID: 922 RVA: 0x0001AB98 File Offset: 0x00018D98
 	public List<CharaClothStatic> GetClothListByChara(int charaId)
 	{
 		return new List<CharaClothStatic>(this.charaClothesStaticMap.Values).FindAll((CharaClothStatic item) => item.CharaId == charaId);
 	}
 
-	// Token: 0x0600039B RID: 923 RVA: 0x0001ABD4 File Offset: 0x00018DD4
 	public int GetRankupRewardItem(int charaId, int rank)
 	{
 		CharaClothStatic charaClothStatic = new List<CharaClothStatic>(this.charaClothesStaticMap.Values).Find((CharaClothStatic item) => item.CharaId == charaId && item.GetRank == rank);
@@ -1477,29 +1381,20 @@ public class DataManagerChara
 		return charaClothStatic.GetId();
 	}
 
-	// Token: 0x170000BE RID: 190
-	// (get) Token: 0x0600039C RID: 924 RVA: 0x0001AC22 File Offset: 0x00018E22
-	// (set) Token: 0x0600039D RID: 925 RVA: 0x0001AC2A File Offset: 0x00018E2A
 	public List<ItemInput> RankUpResultKemoBoardItem { get; set; }
 
-	// Token: 0x170000BF RID: 191
-	// (get) Token: 0x0600039E RID: 926 RVA: 0x0001AC33 File Offset: 0x00018E33
-	// (set) Token: 0x0600039F RID: 927 RVA: 0x0001AC3B File Offset: 0x00018E3B
 	public CharaGrowMultiRequest CharaGrowMultiRequest { get; set; }
 
-	// Token: 0x060003A0 RID: 928 RVA: 0x0001AC44 File Offset: 0x00018E44
 	public DataManagerChara.CharaLevelupResult GetCharaLevelupResult()
 	{
 		return this.charaLevelupResult;
 	}
 
-	// Token: 0x060003A1 RID: 929 RVA: 0x0001AC4C File Offset: 0x00018E4C
 	public DataManagerChara.CharaLevelupResult GetCharaKizunaLevelupResult()
 	{
 		return this.charaKizunaLevelupResult;
 	}
 
-	// Token: 0x060003A2 RID: 930 RVA: 0x0001AC54 File Offset: 0x00018E54
 	public DataManagerChara.SimulateAddExpResult SimulateAddExp(CharaPackData charaPack, List<ItemInput> addItemList)
 	{
 		DataManagerChara.SimulateAddExpResult simulateAddExpResult = new DataManagerChara.SimulateAddExpResult
@@ -1532,7 +1427,6 @@ public class DataManagerChara
 		return simulateAddExpResult;
 	}
 
-	// Token: 0x060003A3 RID: 931 RVA: 0x0001AD80 File Offset: 0x00018F80
 	public DataManagerChara.SimulateAddExpResult SimulateAddKizunaExp(CharaPackData charaPack, List<ItemInput> addItemList)
 	{
 		DataManagerChara.SimulateAddExpResult simulateAddExpResult = new DataManagerChara.SimulateAddExpResult
@@ -1565,7 +1459,6 @@ public class DataManagerChara
 		return simulateAddExpResult;
 	}
 
-	// Token: 0x060003A4 RID: 932 RVA: 0x0001AEAC File Offset: 0x000190AC
 	public void Destory()
 	{
 		foreach (string text in this.loadAssetParameterList)
@@ -1574,13 +1467,11 @@ public class DataManagerChara
 		}
 	}
 
-	// Token: 0x060003A5 RID: 933 RVA: 0x0001AF0C File Offset: 0x0001910C
 	public void RequestActionCharaGrowMulti()
 	{
 		this.parentData.ServerRequest(CharaGrowMultiCmd.Create(this.CharaGrowMultiRequest), new Action<Command>(this.CbCharaGrowMultiCmd));
 	}
 
-	// Token: 0x060003A6 RID: 934 RVA: 0x0001AF30 File Offset: 0x00019130
 	public void RequestActionCharaLevelup(int charaId, List<ItemInput> useItemList)
 	{
 		this.charaLevelupResult = new DataManagerChara.CharaLevelupResult();
@@ -1617,7 +1508,6 @@ public class DataManagerChara
 		};
 	}
 
-	// Token: 0x060003A7 RID: 935 RVA: 0x0001B050 File Offset: 0x00019250
 	public void RequestActionCharaKizunaLevelup(int charaId, List<ItemInput> useItemList)
 	{
 		this.charaKizunaLevelupResult = new DataManagerChara.CharaLevelupResult();
@@ -1645,7 +1535,6 @@ public class DataManagerChara
 		this.parentData.ServerRequest(CharaKizunaLevelUpCmd.Create(charaId, list2), new Action<Command>(this.CbCharaKizunaLevelUpCmd));
 	}
 
-	// Token: 0x060003A8 RID: 936 RVA: 0x0001B148 File Offset: 0x00019348
 	public void RequestActionCharaPromote(int charaId, List<WildResult> promoteRequest, bool isPromoteStepUp)
 	{
 		if (this.CharaGrowMultiRequest == null)
@@ -1661,7 +1550,6 @@ public class DataManagerChara
 		};
 	}
 
-	// Token: 0x060003A9 RID: 937 RVA: 0x0001B1AE File Offset: 0x000193AE
 	public void RequestActionCharaNanairo(int charaId)
 	{
 		if (this.CharaGrowMultiRequest == null)
@@ -1675,7 +1563,6 @@ public class DataManagerChara
 		};
 	}
 
-	// Token: 0x060003AA RID: 938 RVA: 0x0001B1F0 File Offset: 0x000193F0
 	public void RequestActionCharaRankup(int charaId, int targetRank)
 	{
 		this.RankUpResultKemoBoardItem = new List<ItemInput>();
@@ -1691,13 +1578,11 @@ public class DataManagerChara
 		};
 	}
 
-	// Token: 0x060003AB RID: 939 RVA: 0x0001B24D File Offset: 0x0001944D
 	public void RequestActionCharaReleasePhotoFrame(int charaId, int targetPhotoPocketStep)
 	{
 		this.parentData.ServerRequest(CharaPpRelCmd.Create(charaId, targetPhotoPocketStep), new Action<Command>(this.CbCharaPpRelCmd));
 	}
 
-	// Token: 0x060003AC RID: 940 RVA: 0x0001B270 File Offset: 0x00019470
 	public void RequestActionCharaArtsUp(int charaId, int targetLevel)
 	{
 		if (this.CharaGrowMultiRequest == null)
@@ -1712,19 +1597,16 @@ public class DataManagerChara
 		};
 	}
 
-	// Token: 0x060003AD RID: 941 RVA: 0x0001B2C2 File Offset: 0x000194C2
 	public void RequestActoinCharaChangeClothes(int charaId, int clothId)
 	{
 		this.parentData.ServerRequest(CharaChangeClothesCmd.Create(charaId, clothId), new Action<Command>(this.CbCharaChangeClothesCmd));
 	}
 
-	// Token: 0x060003AE RID: 942 RVA: 0x0001B2E2 File Offset: 0x000194E2
 	public void RequestActoinCharaChangeIcon(int charaId, int iconId)
 	{
 		this.parentData.ServerRequest(CharaSelectFaceIconCmd.Create(charaId, iconId), new Action<Command>(this.CbCharaChangeIconCmd));
 	}
 
-	// Token: 0x060003AF RID: 943 RVA: 0x0001B304 File Offset: 0x00019504
 	public void RequestActoinCharaLimitLevelUp(int charaId, int targetLevelLimitId)
 	{
 		if (this.CharaGrowMultiRequest == null)
@@ -1739,7 +1621,6 @@ public class DataManagerChara
 		};
 	}
 
-	// Token: 0x060003B0 RID: 944 RVA: 0x0001B356 File Offset: 0x00019556
 	public void RequestActoinCharaKizunaLimitLevelUp(int charaId)
 	{
 		if (this.CharaGrowMultiRequest == null)
@@ -1753,13 +1634,11 @@ public class DataManagerChara
 		};
 	}
 
-	// Token: 0x060003B1 RID: 945 RVA: 0x0001B395 File Offset: 0x00019595
 	public void RequestActoinCharaAccessoryOpen(int charaId)
 	{
 		this.parentData.ServerRequest(CharaAccessoryOpenCmd.Create(charaId), new Action<Command>(this.CbCharaAccessoryOpenCmd));
 	}
 
-	// Token: 0x060003B2 RID: 946 RVA: 0x0001B3B4 File Offset: 0x000195B4
 	public void RequestActoinCharaAccessoryEquip(int charaId, DataManagerCharaAccessory.Accessory acc)
 	{
 		long num = ((acc == null) ? 0L : acc.UniqId);
@@ -1772,20 +1651,17 @@ public class DataManagerChara
 		this.parentData.ServerRequest(CharaAccessoryEquipCmd.Create(list), new Action<Command>(this.CbCharaAccessoryEquipCmd));
 	}
 
-	// Token: 0x060003B3 RID: 947 RVA: 0x0001B40C File Offset: 0x0001960C
 	public void RequestActoinCharaAccessoryEffectStatus(int charaId, bool effectDisp)
 	{
 		int num = (effectDisp ? 0 : 1);
 		this.parentData.ServerRequest(CharaAccessoryEffectStatusCmd.Create(charaId, num), new Action<Command>(this.CharaAccessoryEffectStatus));
 	}
 
-	// Token: 0x060003B4 RID: 948 RVA: 0x0001B43F File Offset: 0x0001963F
 	public void RequestActtionCharaFavoriteFlag(int charaId)
 	{
 		this.parentData.ServerRequest(CharaFavoriteFlagCmd.Create(charaId), new Action<Command>(this.CharaFavoriteFlag));
 	}
 
-	// Token: 0x060003B5 RID: 949 RVA: 0x0001B45E File Offset: 0x0001965E
 	public void RequestUpdateTotalKemoStatus()
 	{
 		if (this.IsNeedUpdateByUserAllCharaKemoStatusList)
@@ -1795,13 +1671,11 @@ public class DataManagerChara
 		}
 	}
 
-	// Token: 0x060003B6 RID: 950 RVA: 0x0001B491 File Offset: 0x00019691
 	public void RequestCharaTouchCount(int charaId, int count)
 	{
 		this.parentData.ServerRequest(CharaTouchCountCmd.Create(charaId, count), new Action<Command>(this.CbCharaTouchCmd));
 	}
 
-	// Token: 0x060003B7 RID: 951 RVA: 0x0001B4B4 File Offset: 0x000196B4
 	private void CbCharaGrowMultiCmd(Command cmd)
 	{
 		CharaGrowMultiResponse charaGrowMultiResponse = cmd.response as CharaGrowMultiResponse;
@@ -1817,7 +1691,6 @@ public class DataManagerChara
 		this.CharaGrowMultiRequest = null;
 	}
 
-	// Token: 0x060003B8 RID: 952 RVA: 0x0001B514 File Offset: 0x00019714
 	private void CbCharaLevelUpCmd(Command cmd)
 	{
 		CharaLevelUpResponse charaLevelUpResponse = cmd.response as CharaLevelUpResponse;
@@ -1825,7 +1698,6 @@ public class DataManagerChara
 		this.UpdateCharaLevelupResult(charaLevelUpResponse.level_result);
 	}
 
-	// Token: 0x060003B9 RID: 953 RVA: 0x0001B54C File Offset: 0x0001974C
 	private void CbCharaKizunaLevelUpCmd(Command cmd)
 	{
 		CharaKizunaLevelUpResponse charaKizunaLevelUpResponse = cmd.response as CharaKizunaLevelUpResponse;
@@ -1833,7 +1705,6 @@ public class DataManagerChara
 		this.UpdateCharaKizunaLevelupResult(charaKizunaLevelUpResponse.level_result);
 	}
 
-	// Token: 0x060003BA RID: 954 RVA: 0x0001B584 File Offset: 0x00019784
 	private void UpdateCharaLevelupResult(LevelResult level_result)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(level_result.chara_id);
@@ -1844,7 +1715,6 @@ public class DataManagerChara
 		this.charaLevelupResult.successStatus = (DataManagerChara.CharaLevelupResult.Status)level_result.success_status;
 	}
 
-	// Token: 0x060003BB RID: 955 RVA: 0x0001B604 File Offset: 0x00019804
 	private void UpdateCharaKizunaLevelupResult(KizunaLevelResult level_result)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(level_result.chara_id);
@@ -1855,21 +1725,18 @@ public class DataManagerChara
 		this.charaKizunaLevelupResult.successStatus = (DataManagerChara.CharaLevelupResult.Status)level_result.success_status;
 	}
 
-	// Token: 0x060003BC RID: 956 RVA: 0x0001B684 File Offset: 0x00019884
 	private void CbCharaWildRelCmd(Command cmd)
 	{
 		CharaWildRelResponse charaWildRelResponse = cmd.response as CharaWildRelResponse;
 		this.parentData.UpdateUserAssetByAssets(charaWildRelResponse.assets);
 	}
 
-	// Token: 0x060003BD RID: 957 RVA: 0x0001B6B0 File Offset: 0x000198B0
 	private void CbCharaNanairoReleaseCmd(Command cmd)
 	{
 		CharaNanairoAbilityReleaseResponse charaNanairoAbilityReleaseResponse = cmd.response as CharaNanairoAbilityReleaseResponse;
 		this.parentData.UpdateUserAssetByAssets(charaNanairoAbilityReleaseResponse.assets);
 	}
 
-	// Token: 0x060003BE RID: 958 RVA: 0x0001B6DC File Offset: 0x000198DC
 	private void CbCharaRankUpCmd(Command cmd)
 	{
 		CharaRankUpResponse charaRankUpResponse = cmd.response as CharaRankUpResponse;
@@ -1877,7 +1744,6 @@ public class DataManagerChara
 		this.parentData.UpdateUserAssetByAssets(charaRankUpResponse.assets);
 	}
 
-	// Token: 0x060003BF RID: 959 RVA: 0x0001B718 File Offset: 0x00019918
 	private void UpdateRankUpResultKemoBoardItem(List<Item> update_item_list)
 	{
 		List<ItemInput> list = new List<ItemInput>();
@@ -1892,97 +1758,83 @@ public class DataManagerChara
 		this.RankUpResultKemoBoardItem = list;
 	}
 
-	// Token: 0x060003C0 RID: 960 RVA: 0x0001B7AC File Offset: 0x000199AC
 	private void CbCharaPpRelCmd(Command cmd)
 	{
 		CharaPpRelResponse charaPpRelResponse = cmd.response as CharaPpRelResponse;
 		this.parentData.UpdateUserAssetByAssets(charaPpRelResponse.assets);
 	}
 
-	// Token: 0x060003C1 RID: 961 RVA: 0x0001B7D8 File Offset: 0x000199D8
 	private void CbCharaArtsUpCmd(Command cmd)
 	{
 		CharaArtsUpResponse charaArtsUpResponse = cmd.response as CharaArtsUpResponse;
 		this.parentData.UpdateUserAssetByAssets(charaArtsUpResponse.assets);
 	}
 
-	// Token: 0x060003C2 RID: 962 RVA: 0x0001B804 File Offset: 0x00019A04
 	private void CbCharaChangeClothesCmd(Command cmd)
 	{
 		CharaChangeClothesResponse charaChangeClothesResponse = cmd.response as CharaChangeClothesResponse;
 		this.parentData.UpdateUserAssetByAssets(charaChangeClothesResponse.assets);
 	}
 
-	// Token: 0x060003C3 RID: 963 RVA: 0x0001B830 File Offset: 0x00019A30
 	private void CbCharaChangeIconCmd(Command cmd)
 	{
 		CharaSelectFaceIconResponse charaSelectFaceIconResponse = cmd.response as CharaSelectFaceIconResponse;
 		this.parentData.UpdateUserAssetByAssets(charaSelectFaceIconResponse.assets);
 	}
 
-	// Token: 0x060003C4 RID: 964 RVA: 0x0001B85C File Offset: 0x00019A5C
 	private void CbCharaLimitLevelUpCmd(Command cmd)
 	{
 		CharaLimitLevelUpResponse charaLimitLevelUpResponse = cmd.response as CharaLimitLevelUpResponse;
 		this.parentData.UpdateUserAssetByAssets(charaLimitLevelUpResponse.assets);
 	}
 
-	// Token: 0x060003C5 RID: 965 RVA: 0x0001B888 File Offset: 0x00019A88
 	private void CbCharaKizunaLimitLevelUpCmd(Command cmd)
 	{
 		CharaKizunaLimitLevelUpResponse charaKizunaLimitLevelUpResponse = cmd.response as CharaKizunaLimitLevelUpResponse;
 		this.parentData.UpdateUserAssetByAssets(charaKizunaLimitLevelUpResponse.assets);
 	}
 
-	// Token: 0x060003C6 RID: 966 RVA: 0x0001B8B4 File Offset: 0x00019AB4
 	private void CbCharaAccessoryOpenCmd(Command cmd)
 	{
 		CharaAccessoryOpenResponse charaAccessoryOpenResponse = cmd.response as CharaAccessoryOpenResponse;
 		this.parentData.UpdateUserAssetByAssets(charaAccessoryOpenResponse.assets);
 	}
 
-	// Token: 0x060003C7 RID: 967 RVA: 0x0001B8E0 File Offset: 0x00019AE0
 	private void CbCharaAccessoryEquipCmd(Command cmd)
 	{
 		CharaAccessoryEquipResponse charaAccessoryEquipResponse = cmd.response as CharaAccessoryEquipResponse;
 		this.parentData.UpdateUserAssetByAssets(charaAccessoryEquipResponse.assets);
 	}
 
-	// Token: 0x060003C8 RID: 968 RVA: 0x0001B90C File Offset: 0x00019B0C
 	private void CharaAccessoryEffectStatus(Command cmd)
 	{
 		CharaAccessoryEffectStatusResponse charaAccessoryEffectStatusResponse = cmd.response as CharaAccessoryEffectStatusResponse;
 		this.parentData.UpdateUserAssetByAssets(charaAccessoryEffectStatusResponse.assets);
 	}
 
-	// Token: 0x060003C9 RID: 969 RVA: 0x0001B938 File Offset: 0x00019B38
 	private void CharaFavoriteFlag(Command cmd)
 	{
 		CharaFavoriteFlagResponse charaFavoriteFlagResponse = cmd.response as CharaFavoriteFlagResponse;
 		this.parentData.UpdateUserAssetByAssets(charaFavoriteFlagResponse.assets);
 	}
 
-	// Token: 0x060003CA RID: 970 RVA: 0x0001B964 File Offset: 0x00019B64
 	private void CbUpdateTotalKemoStatusCmd(Command cmd)
 	{
 		UpdateTotalKemoStatusResponse updateTotalKemoStatusResponse = cmd.response as UpdateTotalKemoStatusResponse;
 		this.parentData.UpdateUserAssetByAssets(updateTotalKemoStatusResponse.assets);
 	}
 
-	// Token: 0x060003CB RID: 971 RVA: 0x0001B990 File Offset: 0x00019B90
 	private void CbCharaTouchCmd(Command cmd)
 	{
 		CharaTouchCountResponse charaTouchCountResponse = cmd.response as CharaTouchCountResponse;
 		this.parentData.UpdateUserAssetByAssets(charaTouchCountResponse.assets);
 	}
 
-	// Token: 0x060003CC RID: 972 RVA: 0x0001B9BA File Offset: 0x00019BBA
 	public List<DataManagerPhoto.CalcDropBonusResult> CalcDropBonus(List<DataManagerPhoto.CalcDropBonusResult> result, List<DataManagerChara.BonusCharaData> dropBonusCharaList, List<int> pocketReleaseCountList)
 	{
 		return this.InternalCalcDropBonus(result, dropBonusCharaList, pocketReleaseCountList);
 	}
 
-	// Token: 0x060003CD RID: 973 RVA: 0x0001B9C8 File Offset: 0x00019BC8
 	private List<DataManagerPhoto.CalcDropBonusResult> InternalCalcDropBonus(List<DataManagerPhoto.CalcDropBonusResult> result, List<DataManagerChara.BonusCharaData> dropBonusCharaList, List<int> pocketReleaseCountList)
 	{
 		for (int i = 0; i < dropBonusCharaList.Count; i++)
@@ -2018,163 +1870,110 @@ public class DataManagerChara
 		return result;
 	}
 
-	// Token: 0x040004AC RID: 1196
 	private DataManager parentData;
 
-	// Token: 0x040004AD RID: 1197
 	private Dictionary<int, CharaPackData> userCharaMap = new Dictionary<int, CharaPackData>();
 
-	// Token: 0x040004AE RID: 1198
 	private Dictionary<int, MasterSkillPackData> userMasterSkillMap = new Dictionary<int, MasterSkillPackData>();
 
-	// Token: 0x040004AF RID: 1199
 	private List<CharaVoiceCombi> charaVoiceCombiList = new List<CharaVoiceCombi>();
 
-	// Token: 0x040004B0 RID: 1200
 	private List<DataManagerChara.LevelLimitData> levelLimitDataList = new List<DataManagerChara.LevelLimitData>();
 
-	// Token: 0x040004B1 RID: 1201
 	private List<DataManagerChara.LevelLimitRisingStatus> levelLimitRisingStatusList = new List<DataManagerChara.LevelLimitRisingStatus>();
 
-	// Token: 0x040004B2 RID: 1202
 	private List<string> loadAssetParameterList = new List<string>();
 
-	// Token: 0x040004B3 RID: 1203
 	private List<DataManagerChara.BonusCharaData> bonusCharaDataList;
 
-	// Token: 0x040004B4 RID: 1204
 	private Dictionary<int, CharaStaticData> charaStaticMap = new Dictionary<int, CharaStaticData>();
 
-	// Token: 0x040004B5 RID: 1205
 	private Dictionary<int, CharaStaticBase> charaStaticBaseMap = new Dictionary<int, CharaStaticBase>();
 
-	// Token: 0x040004B6 RID: 1206
 	private Dictionary<int, CharaContactStatic> charaContactStaticMap = new Dictionary<int, CharaContactStatic>();
 
-	// Token: 0x040004B7 RID: 1207
 	private Dictionary<int, List<CharaContactStatic>> charaContactStaticMapByChara = new Dictionary<int, List<CharaContactStatic>>();
 
-	// Token: 0x040004B8 RID: 1208
 	private Dictionary<int, int> charaId2modelId;
 
-	// Token: 0x040004B9 RID: 1209
 	private Dictionary<int, MstNpcData> npcMap = new Dictionary<int, MstNpcData>();
 
-	// Token: 0x040004BA RID: 1210
 	private List<MstCharaKizunaRewardData> mstCharaKizunaRewardList;
 
-	// Token: 0x040004BB RID: 1211
 	private List<MstKizunaRewardData> mstKizunaRewardList;
 
-	// Token: 0x040004BC RID: 1212
 	private List<MstCharaKizunaBuffData> mstCharaKizunaBuffList;
 
-	// Token: 0x040004BD RID: 1213
 	private List<MstCharaEffectData> mstCharaEffectDataList;
 
-	// Token: 0x040004BE RID: 1214
 	private Dictionary<int, HashSet<int>> groupCharaMapByChara = new Dictionary<int, HashSet<int>>();
 
-	// Token: 0x040004C1 RID: 1217
 	public CharaKizunaQualified userCharaKizunaQualified;
 
-	// Token: 0x040004C4 RID: 1220
 	private Dictionary<int, MasterStaticSkill> masterSkillStaticMap = new Dictionary<int, MasterStaticSkill>();
 
-	// Token: 0x040004C5 RID: 1221
 	private Dictionary<int, TacticsStaticSkill> tacticsSkillStaticMap = new Dictionary<int, TacticsStaticSkill>();
 
-	// Token: 0x040004C6 RID: 1222
 	private TacticsParam tacticsParam;
 
-	// Token: 0x040004C7 RID: 1223
 	private Dictionary<int, EnemyStaticData> enemyStaticMap = new Dictionary<int, EnemyStaticData>();
 
-	// Token: 0x040004C8 RID: 1224
 	private Dictionary<int, CharaClothStatic> charaClothesStaticMap = new Dictionary<int, CharaClothStatic>();
 
-	// Token: 0x040004CD RID: 1229
 	private DataManagerChara.CharaLevelupResult charaLevelupResult;
 
-	// Token: 0x040004CE RID: 1230
 	private DataManagerChara.CharaLevelupResult charaKizunaLevelupResult;
 
-	// Token: 0x02000639 RID: 1593
 	public class CharaLevelupResult
 	{
-		// Token: 0x04002E17 RID: 11799
 		public int charaId;
 
-		// Token: 0x04002E18 RID: 11800
 		public int level;
 
-		// Token: 0x04002E19 RID: 11801
 		public long exp;
 
-		// Token: 0x04002E1A RID: 11802
 		public int befLevel;
 
-		// Token: 0x04002E1B RID: 11803
 		public long befExp;
 
-		// Token: 0x04002E1C RID: 11804
 		public bool returnItem;
 
-		// Token: 0x04002E1D RID: 11805
 		public DataManagerChara.CharaLevelupResult.Status successStatus;
 
-		// Token: 0x0200110F RID: 4367
 		public enum Status
 		{
-			// Token: 0x04005DE8 RID: 24040
 			NORMAL,
-			// Token: 0x04005DE9 RID: 24041
 			SPECIAL_S,
-			// Token: 0x04005DEA RID: 24042
 			SPECIAL_L
 		}
 	}
 
-	// Token: 0x0200063A RID: 1594
 	public class SimulateAddExpResult
 	{
-		// Token: 0x04002E1E RID: 11806
 		public int level;
 
-		// Token: 0x04002E1F RID: 11807
 		public long exp;
 
-		// Token: 0x04002E20 RID: 11808
 		public long maxExp;
 
-		// Token: 0x04002E21 RID: 11809
 		public int costGold;
 	}
 
-	// Token: 0x0200063B RID: 1595
 	public class KiznaRewardData
 	{
-		// Token: 0x04002E22 RID: 11810
 		public int level;
 
-		// Token: 0x04002E23 RID: 11811
 		public int artsMax;
 
-		// Token: 0x04002E24 RID: 11812
 		public int charaquest;
 
-		// Token: 0x04002E25 RID: 11813
 		public int itemId;
 
-		// Token: 0x04002E26 RID: 11814
 		public int itemNum;
 	}
 
-	// Token: 0x0200063C RID: 1596
 	public class LevelLimitData
 	{
-		// Token: 0x17000688 RID: 1672
-		// (get) Token: 0x06003080 RID: 12416 RVA: 0x001BAC3B File Offset: 0x001B8E3B
 		public int IncreaseMaxLevel
 		{
 			get
@@ -2187,8 +1986,6 @@ public class DataManagerChara
 			}
 		}
 
-		// Token: 0x17000689 RID: 1673
-		// (get) Token: 0x06003081 RID: 12417 RVA: 0x001BAC54 File Offset: 0x001B8E54
 		public string NeedItemName01
 		{
 			get
@@ -2202,8 +1999,6 @@ public class DataManagerChara
 			}
 		}
 
-		// Token: 0x1700068A RID: 1674
-		// (get) Token: 0x06003082 RID: 12418 RVA: 0x001BAC84 File Offset: 0x001B8E84
 		public string NeedItemName02
 		{
 			get
@@ -2217,57 +2012,40 @@ public class DataManagerChara
 			}
 		}
 
-		// Token: 0x04002E27 RID: 11815
 		public int levelLimitId;
 
-		// Token: 0x04002E28 RID: 11816
 		public int needItemId01;
 
-		// Token: 0x04002E29 RID: 11817
 		public int needItemNum01;
 
-		// Token: 0x04002E2A RID: 11818
 		public int needItemId02;
 
-		// Token: 0x04002E2B RID: 11819
 		public int needItemNum02;
 
-		// Token: 0x04002E2C RID: 11820
 		public int needGoldNum;
 
-		// Token: 0x04002E2D RID: 11821
 		public int maxLevel;
 
-		// Token: 0x04002E2E RID: 11822
 		public bool isStartTime;
 
-		// Token: 0x04002E2F RID: 11823
 		public string openImageName;
 
-		// Token: 0x04002E30 RID: 11824
 		public string compImageName;
 	}
 
-	// Token: 0x0200063D RID: 1597
 	public class LevelLimitRisingStatus
 	{
-		// Token: 0x04002E31 RID: 11825
 		public int patternId;
 
-		// Token: 0x04002E32 RID: 11826
 		public int addHp;
 
-		// Token: 0x04002E33 RID: 11827
 		public int addAtk;
 
-		// Token: 0x04002E34 RID: 11828
 		public int addDef;
 	}
 
-	// Token: 0x0200063E RID: 1598
 	public class BonusCharaData
 	{
-		// Token: 0x06003085 RID: 12421 RVA: 0x001BACC4 File Offset: 0x001B8EC4
 		public BonusCharaData(MstEventBonusCharaData mstCharaBonus)
 		{
 			this.charaId = mstCharaBonus.charaId;
@@ -2285,76 +2063,45 @@ public class DataManagerChara
 			this.endDatetime = new DateTime(PrjUtil.ConvertTimeToTicks(mstCharaBonus.endTime));
 		}
 
-		// Token: 0x04002E35 RID: 11829
 		public int charaId;
 
-		// Token: 0x04002E36 RID: 11830
 		public int hpBonusRatio;
 
-		// Token: 0x04002E37 RID: 11831
 		public int strBonusRatio;
 
-		// Token: 0x04002E38 RID: 11832
 		public int defBonusRatio;
 
-		// Token: 0x04002E39 RID: 11833
 		public int kizunaBonusRatio;
 
-		// Token: 0x04002E3A RID: 11834
 		public bool pickUpFlg;
 
-		// Token: 0x04002E3B RID: 11835
 		public int eventId;
 
-		// Token: 0x04002E3C RID: 11836
 		public int increaseItemId01;
 
-		// Token: 0x04002E3D RID: 11837
 		public int dropBonusRatio01;
 
-		// Token: 0x04002E3E RID: 11838
 		public int increaseItemId02;
 
-		// Token: 0x04002E3F RID: 11839
 		public int dropBonusRatio02;
 
-		// Token: 0x04002E40 RID: 11840
 		public DateTime startDatetime;
 
-		// Token: 0x04002E41 RID: 11841
 		public DateTime endDatetime;
 	}
 
-	// Token: 0x0200063F RID: 1599
 	public class FilterData
 	{
-		// Token: 0x1700068B RID: 1675
-		// (get) Token: 0x06003086 RID: 12422 RVA: 0x001BAD8A File Offset: 0x001B8F8A
-		// (set) Token: 0x06003087 RID: 12423 RVA: 0x001BAD92 File Offset: 0x001B8F92
 		public SortFilterDefine.CharacteristicFilterCategory Category { get; private set; }
 
-		// Token: 0x1700068C RID: 1676
-		// (get) Token: 0x06003088 RID: 12424 RVA: 0x001BAD9B File Offset: 0x001B8F9B
-		// (set) Token: 0x06003089 RID: 12425 RVA: 0x001BADA3 File Offset: 0x001B8FA3
 		public string CategoryName { get; private set; }
 
-		// Token: 0x1700068D RID: 1677
-		// (get) Token: 0x0600308A RID: 12426 RVA: 0x001BADAC File Offset: 0x001B8FAC
-		// (set) Token: 0x0600308B RID: 12427 RVA: 0x001BADB4 File Offset: 0x001B8FB4
 		public string DisplayName1 { get; private set; }
 
-		// Token: 0x1700068E RID: 1678
-		// (get) Token: 0x0600308C RID: 12428 RVA: 0x001BADBD File Offset: 0x001B8FBD
-		// (set) Token: 0x0600308D RID: 12429 RVA: 0x001BADC5 File Offset: 0x001B8FC5
 		public string DisplayName2 { get; private set; }
 
-		// Token: 0x1700068F RID: 1679
-		// (get) Token: 0x0600308E RID: 12430 RVA: 0x001BADCE File Offset: 0x001B8FCE
-		// (set) Token: 0x0600308F RID: 12431 RVA: 0x001BADD6 File Offset: 0x001B8FD6
 		public List<DataManagerChara.FilterData.FilterElementOne> ElementList { get; set; }
 
-		// Token: 0x17000690 RID: 1680
-		// (get) Token: 0x06003090 RID: 12432 RVA: 0x001BADE0 File Offset: 0x001B8FE0
 		public bool IsEnabled
 		{
 			get
@@ -2378,17 +2125,10 @@ public class DataManagerChara
 			}
 		}
 
-		// Token: 0x17000691 RID: 1681
-		// (get) Token: 0x06003091 RID: 12433 RVA: 0x001BAE54 File Offset: 0x001B9054
-		// (set) Token: 0x06003092 RID: 12434 RVA: 0x001BAE5C File Offset: 0x001B905C
 		public int Priority { get; private set; }
 
-		// Token: 0x17000692 RID: 1682
-		// (get) Token: 0x06003093 RID: 12435 RVA: 0x001BAE65 File Offset: 0x001B9065
-		// (set) Token: 0x06003094 RID: 12436 RVA: 0x001BAE6D File Offset: 0x001B906D
 		public DateTime StartDatetime { get; private set; }
 
-		// Token: 0x06003095 RID: 12437 RVA: 0x001BAE78 File Offset: 0x001B9078
 		public FilterData(MstCharaFilterData mst)
 		{
 			this.Category = (SortFilterDefine.CharacteristicFilterCategory)mst.category;
@@ -2401,7 +2141,6 @@ public class DataManagerChara
 			this.AdditionalElement(mst);
 		}
 
-		// Token: 0x06003096 RID: 12438 RVA: 0x001BAEF0 File Offset: 0x001B90F0
 		public void AdditionalElement(MstCharaFilterData mst)
 		{
 			if (this.Category != (SortFilterDefine.CharacteristicFilterCategory)mst.category)
@@ -2414,29 +2153,16 @@ public class DataManagerChara
 			this.ElementList.Add(new DataManagerChara.FilterData.FilterElementOne(mst));
 		}
 
-		// Token: 0x04002E47 RID: 11847
 		private bool _isEnable;
 
-		// Token: 0x02001110 RID: 4368
 		public class FilterElementOne
 		{
-			// Token: 0x17000C15 RID: 3093
-			// (get) Token: 0x0600545C RID: 21596 RVA: 0x0024D9B5 File Offset: 0x0024BBB5
-			// (set) Token: 0x0600545D RID: 21597 RVA: 0x0024D9BD File Offset: 0x0024BBBD
 			public string FilterName { get; private set; }
 
-			// Token: 0x17000C16 RID: 3094
-			// (get) Token: 0x0600545E RID: 21598 RVA: 0x0024D9C6 File Offset: 0x0024BBC6
-			// (set) Token: 0x0600545F RID: 21599 RVA: 0x0024D9CE File Offset: 0x0024BBCE
 			public DateTime FilteringStartDatetime { get; set; }
 
-			// Token: 0x17000C17 RID: 3095
-			// (get) Token: 0x06005460 RID: 21600 RVA: 0x0024D9D7 File Offset: 0x0024BBD7
-			// (set) Token: 0x06005461 RID: 21601 RVA: 0x0024D9DF File Offset: 0x0024BBDF
 			public SortFilterDefine.FilterElementType FilterType { get; private set; }
 
-			// Token: 0x17000C18 RID: 3096
-			// (get) Token: 0x06005462 RID: 21602 RVA: 0x0024D9E8 File Offset: 0x0024BBE8
 			public CharaDef.ConditionType Condition
 			{
 				get
@@ -2445,8 +2171,6 @@ public class DataManagerChara
 				}
 			}
 
-			// Token: 0x17000C19 RID: 3097
-			// (get) Token: 0x06005463 RID: 21603 RVA: 0x0024D9F0 File Offset: 0x0024BBF0
 			public CharaDef.AbilityTraits Traits
 			{
 				get
@@ -2455,8 +2179,6 @@ public class DataManagerChara
 				}
 			}
 
-			// Token: 0x17000C1A RID: 3098
-			// (get) Token: 0x06005464 RID: 21604 RVA: 0x0024D9F8 File Offset: 0x0024BBF8
 			public CharaDef.AbilityTraits2 Traits2
 			{
 				get
@@ -2465,8 +2187,6 @@ public class DataManagerChara
 				}
 			}
 
-			// Token: 0x17000C1B RID: 3099
-			// (get) Token: 0x06005465 RID: 21605 RVA: 0x0024DA00 File Offset: 0x0024BC00
 			public CharaDef.ActionTargetType TargetType
 			{
 				get
@@ -2475,8 +2195,6 @@ public class DataManagerChara
 				}
 			}
 
-			// Token: 0x17000C1C RID: 3100
-			// (get) Token: 0x06005466 RID: 21606 RVA: 0x0024DA08 File Offset: 0x0024BC08
 			public CharaDef.ActionBuffType BuffType
 			{
 				get
@@ -2485,8 +2203,6 @@ public class DataManagerChara
 				}
 			}
 
-			// Token: 0x17000C1D RID: 3101
-			// (get) Token: 0x06005467 RID: 21607 RVA: 0x0024DA10 File Offset: 0x0024BC10
 			public CharaDef.ActionAbnormalMask AbnormalMask
 			{
 				get
@@ -2495,8 +2211,6 @@ public class DataManagerChara
 				}
 			}
 
-			// Token: 0x17000C1E RID: 3102
-			// (get) Token: 0x06005468 RID: 21608 RVA: 0x0024DA18 File Offset: 0x0024BC18
 			public CharaDef.ActionAbnormalMask2 AbnormalMask2
 			{
 				get
@@ -2505,12 +2219,8 @@ public class DataManagerChara
 				}
 			}
 
-			// Token: 0x17000C1F RID: 3103
-			// (get) Token: 0x06005469 RID: 21609 RVA: 0x0024DA20 File Offset: 0x0024BC20
-			// (set) Token: 0x0600546A RID: 21610 RVA: 0x0024DA28 File Offset: 0x0024BC28
 			public bool GutsListEnable { get; private set; }
 
-			// Token: 0x0600546B RID: 21611 RVA: 0x0024DA34 File Offset: 0x0024BC34
 			public FilterElementOne(MstCharaFilterData mst)
 			{
 				this.FilterName = mst.filterName;
@@ -2617,25 +2327,18 @@ public class DataManagerChara
 				this.FilteringStartDatetime = new DateTime(PrjUtil.ConvertTimeToTicks(mst.startTime));
 			}
 
-			// Token: 0x04005DEE RID: 24046
 			private CharaDef.ConditionType _condition;
 
-			// Token: 0x04005DEF RID: 24047
 			private CharaDef.AbilityTraits _traits;
 
-			// Token: 0x04005DF0 RID: 24048
 			private CharaDef.AbilityTraits2 _traits2;
 
-			// Token: 0x04005DF1 RID: 24049
 			private CharaDef.ActionTargetType _targetType;
 
-			// Token: 0x04005DF2 RID: 24050
 			private CharaDef.ActionBuffType _buffType;
 
-			// Token: 0x04005DF3 RID: 24051
 			private CharaDef.ActionAbnormalMask _abnormalMask;
 
-			// Token: 0x04005DF4 RID: 24052
 			private CharaDef.ActionAbnormalMask2 _abnormalMask2;
 		}
 	}

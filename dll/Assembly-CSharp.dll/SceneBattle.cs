@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +15,8 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityStandardAssets.ImageEffects;
 
-// Token: 0x0200011B RID: 283
 public class SceneBattle : BaseScene
 {
-	// Token: 0x06000D76 RID: 3446 RVA: 0x00059F60 File Offset: 0x00058160
 	private int culWildPoint(SceneBattle_Chara chara)
 	{
 		int wildPoint = chara.wildPoint;
@@ -55,44 +53,36 @@ public class SceneBattle : BaseScene
 		return wildPoint + num;
 	}
 
-	// Token: 0x06000D77 RID: 3447 RVA: 0x0005A0C4 File Offset: 0x000582C4
 	private float seqDmg(int c)
 	{
 		return this._battleParam.sequenceDamage[(c < this._battleParam.sequenceDamage.Length) ? c : (this._battleParam.sequenceDamage.Length - 1)];
 	}
 
-	// Token: 0x06000D78 RID: 3448 RVA: 0x0005A0F4 File Offset: 0x000582F4
 	private float seqHel(int c)
 	{
 		return this._battleParam.sequenceHeal[(c < this._battleParam.sequenceHeal.Length) ? c : (this._battleParam.sequenceHeal.Length - 1)];
 	}
 
-	// Token: 0x06000D79 RID: 3449 RVA: 0x0005A124 File Offset: 0x00058324
 	private float chainDmg(int c)
 	{
 		return this._battleParam.chainBeat[((c <= this._battleParam.chainBeat.Length) ? c : this._battleParam.chainBeat.Length) - 1];
 	}
 
-	// Token: 0x06000D7A RID: 3450 RVA: 0x0005A154 File Offset: 0x00058354
 	private int chainKp(int c)
 	{
 		return this._battleParam.chainAction[((c <= this._battleParam.chainAction.Length) ? c : this._battleParam.chainAction.Length) - 1];
 	}
 
-	// Token: 0x06000D7B RID: 3451 RVA: 0x0005A184 File Offset: 0x00058384
 	private int chainWild(int c)
 	{
 		return this._battleParam.chainTry[((c <= this._battleParam.chainTry.Length) ? c : this._battleParam.chainTry.Length) - 1];
 	}
 
-	// Token: 0x06000D7C RID: 3452 RVA: 0x0005A1B4 File Offset: 0x000583B4
 	private int chainAct(int c)
 	{
 		return this._battleParam.chainBowl[((c - 1 <= this._battleParam.chainBowl.Length) ? (c - 1) : this._battleParam.chainBowl.Length) - 1];
 	}
 
-	// Token: 0x1700032D RID: 813
-	// (get) Token: 0x06000D7D RID: 3453 RVA: 0x0005A1E8 File Offset: 0x000583E8
 	private int touchCard
 	{
 		get
@@ -108,8 +98,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x1700032E RID: 814
-	// (get) Token: 0x06000D7E RID: 3454 RVA: 0x0005A248 File Offset: 0x00058448
 	private int touchArts
 	{
 		get
@@ -125,8 +113,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x1700032F RID: 815
-	// (get) Token: 0x06000D7F RID: 3455 RVA: 0x0005A2B1 File Offset: 0x000584B1
 	private bool touchAddAction
 	{
 		get
@@ -135,8 +121,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x17000330 RID: 816
-	// (get) Token: 0x06000D80 RID: 3456 RVA: 0x0005A2E0 File Offset: 0x000584E0
 	private int touchTarget
 	{
 		get
@@ -161,8 +145,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x17000331 RID: 817
-	// (get) Token: 0x06000D81 RID: 3457 RVA: 0x0005A3D8 File Offset: 0x000585D8
 	private bool btnSkill
 	{
 		get
@@ -171,8 +153,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x17000332 RID: 818
-	// (get) Token: 0x06000D82 RID: 3458 RVA: 0x0005A402 File Offset: 0x00058602
 	private bool btnInfo
 	{
 		get
@@ -181,8 +161,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x17000333 RID: 819
-	// (get) Token: 0x06000D83 RID: 3459 RVA: 0x0005A42C File Offset: 0x0005862C
 	private bool btnCancel
 	{
 		get
@@ -191,7 +169,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000D84 RID: 3460 RVA: 0x0005A440 File Offset: 0x00058640
 	public static long GetRestart(out bool pvp, out bool training, out bool practice)
 	{
 		pvp = false;
@@ -216,25 +193,21 @@ public class SceneBattle : BaseScene
 		return num;
 	}
 
-	// Token: 0x06000D85 RID: 3461 RVA: 0x0005A4CF File Offset: 0x000586CF
 	public static bool IsRestart()
 	{
 		return PlayerPrefs.HasKey(SceneBattle.battleRestartKey);
 	}
 
-	// Token: 0x06000D86 RID: 3462 RVA: 0x0005A4DB File Offset: 0x000586DB
 	public static void DeleteRestart()
 	{
 		PlayerPrefs.DeleteKey(SceneBattle.battleRestartKey);
 	}
 
-	// Token: 0x06000D87 RID: 3463 RVA: 0x0005A4E7 File Offset: 0x000586E7
 	public static void SetRestart(SceneBattleArgs args)
 	{
 		new SceneBattle_SceneBattleRestartArgs(args);
 	}
 
-	// Token: 0x06000D88 RID: 3464 RVA: 0x0005A4F0 File Offset: 0x000586F0
 	public override void OnCreateScene()
 	{
 		this._stage = null;
@@ -678,7 +651,6 @@ public class SceneBattle : BaseScene
 		this._debugPanel.SetActive(false);
 	}
 
-	// Token: 0x06000D89 RID: 3465 RVA: 0x0005C200 File Offset: 0x0005A400
 	public override bool OnCreateSceneWait()
 	{
 		bool flag = true;
@@ -696,13 +668,11 @@ public class SceneBattle : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06000D8A RID: 3466 RVA: 0x0005C27C File Offset: 0x0005A47C
 	private string authPath(string auth)
 	{
 		return "Auth/" + auth;
 	}
 
-	// Token: 0x06000D8B RID: 3467 RVA: 0x0005C28C File Offset: 0x0005A48C
 	public override void OnEnableScene(object args)
 	{
 		SceneBattle.<>c__DisplayClass416_0 CS$<>8__locals1 = new SceneBattle.<>c__DisplayClass416_0();
@@ -2910,7 +2880,6 @@ public class SceneBattle : BaseScene
 		this._seLoad = (SceneBattle.trainingBattle ? SoundManager.LoadCueSheetWithDownload(SceneBattle.trainingVoiceSheet) : null);
 	}
 
-	// Token: 0x06000D8C RID: 3468 RVA: 0x000641B0 File Offset: 0x000623B0
 	private List<float> CalcPosition(List<float> widthList)
 	{
 		List<float> list = new List<float>();
@@ -2961,7 +2930,6 @@ public class SceneBattle : BaseScene
 		return list;
 	}
 
-	// Token: 0x06000D8D RID: 3469 RVA: 0x00064310 File Offset: 0x00062510
 	private void SetGuts(List<SceneBattle_Chara> chrList, Dictionary<SceneBattle_Chara, List<CharaGutsParamAbility>> gutsList)
 	{
 		foreach (KeyValuePair<SceneBattle_Chara, List<CharaGutsParamAbility>> keyValuePair in gutsList)
@@ -3027,7 +2995,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000D8E RID: 3470 RVA: 0x00064610 File Offset: 0x00062810
 	private void LoadEffect(CharaStaticAction param, int lvl)
 	{
 		if (param == null)
@@ -3051,7 +3018,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000D8F RID: 3471 RVA: 0x000646E0 File Offset: 0x000628E0
 	private void LoadEffect(ActionEffectParam param, int lvl)
 	{
 		if (param == null)
@@ -3062,7 +3028,6 @@ public class SceneBattle : BaseScene
 		this.LoadEffect(param.hitEffectName, lvl);
 	}
 
-	// Token: 0x06000D90 RID: 3472 RVA: 0x00064700 File Offset: 0x00062900
 	private void LoadEffect(string eff, int lvl)
 	{
 		if (string.IsNullOrEmpty(eff))
@@ -3081,7 +3046,6 @@ public class SceneBattle : BaseScene
 		EffectManager.ReqLoadEffect(eff, AssetManager.OWNER.Battle, 0, null);
 	}
 
-	// Token: 0x06000D91 RID: 3473 RVA: 0x00064768 File Offset: 0x00062968
 	private void InitWave(int wav)
 	{
 		this._skillCharaList = new List<SceneBattle_Chara>();
@@ -3396,7 +3360,6 @@ public class SceneBattle : BaseScene
 		});
 	}
 
-	// Token: 0x06000D92 RID: 3474 RVA: 0x00065780 File Offset: 0x00063980
 	private bool ChkWaveEnemy(CharaDef.EnemyMask msk, bool invertMask, CharaDef.Type typ, int emy, CharaDef.ConditionType emyTyp, int my, CharaDef.ConditionType myTyp, bool now)
 	{
 		if (!this.IsConditionMask(invertMask, (long)this._waveEnemy, (long)msk))
@@ -3473,7 +3436,6 @@ public class SceneBattle : BaseScene
 		return true;
 	}
 
-	// Token: 0x06000D93 RID: 3475 RVA: 0x00065930 File Offset: 0x00063B30
 	private void ReviveTrainingBoss(SceneBattle_Enemy bos)
 	{
 		bos.maxHp = (int)((float)bos.maxHp * ((float)this._resultArgs.battleArgs.trainingHp / 1000f));
@@ -3481,7 +3443,6 @@ public class SceneBattle : BaseScene
 		bos.defPwr = (int)((float)bos.defPwr * ((float)this._resultArgs.battleArgs.trainingDef / 1000f));
 	}
 
-	// Token: 0x06000D94 RID: 3476 RVA: 0x000659B0 File Offset: 0x00063BB0
 	private void ReviveTraining()
 	{
 		this._trainingRevive++;
@@ -3496,7 +3457,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000D95 RID: 3477 RVA: 0x00065A24 File Offset: 0x00063C24
 	private void ResetStatus()
 	{
 		List<SceneBattle_Chara> list = new List<SceneBattle_Chara>(this._playerList);
@@ -3516,7 +3476,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000D96 RID: 3478 RVA: 0x00065B2C File Offset: 0x00063D2C
 	private bool ReflectStatus(string typ)
 	{
 		this.CheckGuts();
@@ -3546,7 +3505,6 @@ public class SceneBattle : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06000D97 RID: 3479 RVA: 0x00065C38 File Offset: 0x00063E38
 	private void EntryFriends(List<SceneBattle_Friends> friendsList)
 	{
 		using (List<SceneBattle_Friends>.Enumerator enumerator = friendsList.GetEnumerator())
@@ -3635,7 +3593,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000D98 RID: 3480 RVA: 0x00066050 File Offset: 0x00064250
 	private void PlayVoice(SceneBattle_Chara chr, CharaVoiceCombi.SitType st, VOICE_TYPE vt)
 	{
 		List<SceneBattle_Friends> friendsList = new List<SceneBattle_Friends>();
@@ -3724,7 +3681,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000D99 RID: 3481 RVA: 0x000662E4 File Offset: 0x000644E4
 	public override bool OnEnableSceneWait()
 	{
 		bool flag = true;
@@ -3913,7 +3869,6 @@ public class SceneBattle : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06000D9A RID: 3482 RVA: 0x00066AD0 File Offset: 0x00064CD0
 	public override void OnStartSceneFade()
 	{
 		bool flag = this._resultArgs.restart && (this._battleRestartArgs.wave > 0 || this._battleRestartArgs.battleEndStatus > DataManagerQuest.BattleEndStatus.INVALID);
@@ -4381,7 +4336,6 @@ public class SceneBattle : BaseScene
 		this.DispCardInfo();
 	}
 
-	// Token: 0x06000D9B RID: 3483 RVA: 0x0006853C File Offset: 0x0006673C
 	private void SetTrainingVoice(int typ, float dly)
 	{
 		for (int i = 0; i < SceneBattle.trainingVoiceList.GetLength(1); i++)
@@ -4397,7 +4351,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000D9C RID: 3484 RVA: 0x000685A4 File Offset: 0x000667A4
 	public override void OnStartSceneFadeWait()
 	{
 		if (!SceneBattle.pvpBattle && !SceneBattle.friendsBattle && !SceneBattle.trainingBattle)
@@ -4413,7 +4366,6 @@ public class SceneBattle : BaseScene
 		this.SetCamera();
 	}
 
-	// Token: 0x06000D9D RID: 3485 RVA: 0x00068600 File Offset: 0x00066800
 	public override void OnStartControl()
 	{
 		Screen.sleepTimeout = ((this._autoOrder > 0 || this._noCaptain || SceneBattle.pvpTraining != 0) ? (-1) : (-2));
@@ -4432,7 +4384,6 @@ public class SceneBattle : BaseScene
 		this._tutorialPanelSkip.SetActive(true);
 	}
 
-	// Token: 0x06000D9E RID: 3486 RVA: 0x000686C8 File Offset: 0x000668C8
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		if (this._continueStep == 0 && this._debugStep == 0 && !this._debugPanel.activeSelf && this._menuStep == 0 && this._trainingMissionStep == 0 && this._tacticsStep == 0 && this._tutorialSkip == 0 && !this._menuPanel.activeSelf && this._step > SceneBattle.STEP.ReStart && this._step < SceneBattle.STEP.GameClear && !this._authPlayer.gameObject.activeSelf)
@@ -4452,20 +4403,17 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000D9F RID: 3487 RVA: 0x000687BB File Offset: 0x000669BB
 	private void OnClickCancelCard(PguiButtonCtrl button)
 	{
 		this.cancelCardBtn = true;
 	}
 
-	// Token: 0x06000DA0 RID: 3488 RVA: 0x000687C4 File Offset: 0x000669C4
 	private void ClearBtn()
 	{
 		this._currentBtn = null;
 		this.cancelCardBtn = false;
 	}
 
-	// Token: 0x06000DA1 RID: 3489 RVA: 0x000687D4 File Offset: 0x000669D4
 	private bool OnClickToggle(PguiToggleButtonCtrl toggle, int index)
 	{
 		bool flag = false;
@@ -4502,19 +4450,16 @@ public class SceneBattle : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06000DA2 RID: 3490 RVA: 0x0006897C File Offset: 0x00066B7C
 	private void OnClickTouch(Transform touch)
 	{
 		this._currentTouch = touch;
 	}
 
-	// Token: 0x06000DA3 RID: 3491 RVA: 0x00068985 File Offset: 0x00066B85
 	private void ClearTouch()
 	{
 		this._currentTouch = null;
 	}
 
-	// Token: 0x06000DA4 RID: 3492 RVA: 0x00068990 File Offset: 0x00066B90
 	private void OnClickMenu(PguiButtonCtrl button)
 	{
 		if (this._menuStep > 0 && this._retireStep == 0 && this._infoStep == 0)
@@ -4533,7 +4478,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DA5 RID: 3493 RVA: 0x000689F3 File Offset: 0x00066BF3
 	private bool RetireWindow(int index)
 	{
 		if (this._menuStep > 0 && this._retireStep < 0 && index == 1)
@@ -4547,7 +4491,6 @@ public class SceneBattle : BaseScene
 		return true;
 	}
 
-	// Token: 0x06000DA6 RID: 3494 RVA: 0x00068A30 File Offset: 0x00066C30
 	private void OnClickInfo(PguiButtonCtrl button)
 	{
 		if (this._menuStep > 0 && this._infoStep > 0)
@@ -4568,7 +4511,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DA7 RID: 3495 RVA: 0x00068AC0 File Offset: 0x00066CC0
 	private bool OnClickInfoTab(int index)
 	{
 		if (this._menuStep > 0 && this._infoStep > 0 && this._infoTyp != index)
@@ -4582,7 +4524,6 @@ public class SceneBattle : BaseScene
 		return false;
 	}
 
-	// Token: 0x06000DA8 RID: 3496 RVA: 0x00068B40 File Offset: 0x00066D40
 	private void OnClickArtsInfo(Transform tmp)
 	{
 		int arts = 0;
@@ -4818,14 +4759,12 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DA9 RID: 3497 RVA: 0x000694CC File Offset: 0x000676CC
 	private void SetupInfoBuff(int index, GameObject go)
 	{
 		SceneBattle_InfoBuff sceneBattle_InfoBuff = ((index >= 0 && index < this._infoBuffList.Count) ? this._infoBuffList[index] : new SceneBattle_InfoBuff(CharaDef.ActionBuffType.INVALID, 0L, (CharaDef.AttributeMask)0, (CharaDef.HealthMask)0, (CharaDef.EnemyMask)0, -1, -1, false, 0, ""));
 		this.SetupInfoBuff(sceneBattle_InfoBuff, go.transform);
 	}
 
-	// Token: 0x06000DAA RID: 3498 RVA: 0x0006951C File Offset: 0x0006771C
 	private void SetupInfoBuff(SceneBattle_InfoBuff inf, Transform tmp)
 	{
 		string text = this.GetBuffName(inf.Type);
@@ -5330,7 +5269,6 @@ public class SceneBattle : BaseScene
 		tmp.Find("Txt_Turn").GetComponent<PguiTextCtrl>().text = text3;
 	}
 
-	// Token: 0x06000DAB RID: 3499 RVA: 0x0006A1F0 File Offset: 0x000683F0
 	private string GetInfoBuffMessage(CharaDef.ActionBuffType type, int isBuff)
 	{
 		string text = this.GetBuffName(type);
@@ -5529,7 +5467,6 @@ public class SceneBattle : BaseScene
 		return text;
 	}
 
-	// Token: 0x06000DAC RID: 3500 RVA: 0x0006A4EC File Offset: 0x000686EC
 	private static int GetBuffIcon(CharaDef.ActionBuffType bt, CharaDef.AttributeMask atr, CharaDef.HealthMask hel)
 	{
 		SceneBattle_Recover sceneBattle_Recover = SceneBattle.recoverList.Find((SceneBattle_Recover itm) => itm.Type.Contains(bt));
@@ -5581,7 +5518,6 @@ public class SceneBattle : BaseScene
 		return num;
 	}
 
-	// Token: 0x06000DAD RID: 3501 RVA: 0x0006A5D8 File Offset: 0x000687D8
 	private void SetStatIcon(Transform obj, int icn, int ud, bool rst, int num, bool giv)
 	{
 		Transform transform = obj.Find("Img_UpDown");
@@ -5602,7 +5538,6 @@ public class SceneBattle : BaseScene
 		transform.GetComponent<PguiTextCtrl>().text = (giv ? "G" : num.ToString());
 	}
 
-	// Token: 0x06000DAE RID: 3502 RVA: 0x0006A6A0 File Offset: 0x000688A0
 	private void OnClickContinue(PguiButtonCtrl button)
 	{
 		if (this._continueStep > 0 && this._continueStep < 10)
@@ -5631,27 +5566,23 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DAF RID: 3503 RVA: 0x0006A7A8 File Offset: 0x000689A8
 	private bool CheckHuge(SceneBattle_Chara chr)
 	{
 		SceneBattle_Enemy sceneBattle_Enemy = chr as SceneBattle_Enemy;
 		return sceneBattle_Enemy != null && sceneBattle_Enemy.huge > 0;
 	}
 
-	// Token: 0x06000DB0 RID: 3504 RVA: 0x0006A7CC File Offset: 0x000689CC
 	private bool CheckHugeFoot(SceneBattle_Chara chr)
 	{
 		SceneBattle_Enemy sceneBattle_Enemy = chr as SceneBattle_Enemy;
 		return sceneBattle_Enemy != null && sceneBattle_Enemy.huge > 1;
 	}
 
-	// Token: 0x06000DB1 RID: 3505 RVA: 0x0006A7EF File Offset: 0x000689EF
 	private bool CheckHugeInvalidBuff(CharaDef.ActionBuffType typ)
 	{
 		return typ == CharaDef.ActionBuffType.STUN || typ == CharaDef.ActionBuffType.SLEEP || typ == CharaDef.ActionBuffType.COVER_LOWER || typ == CharaDef.ActionBuffType.COVER_RANDOM;
 	}
 
-	// Token: 0x06000DB2 RID: 3506 RVA: 0x0006A808 File Offset: 0x00068A08
 	private void PlayPvpAuth(int typ)
 	{
 		GameObject gameObject = this._pvpAuthObjList[typ];
@@ -5690,13 +5621,11 @@ public class SceneBattle : BaseScene
 		this._pvpAuthFlg = 0;
 	}
 
-	// Token: 0x06000DB3 RID: 3507 RVA: 0x0006A942 File Offset: 0x00068B42
 	private bool IsPlayingPvpAuth()
 	{
 		return this._pvpAuthAnim != null && this._pvpAuthAnim.ExIsPlaying();
 	}
 
-	// Token: 0x06000DB4 RID: 3508 RVA: 0x0006A960 File Offset: 0x00068B60
 	private void StopPvpAuth()
 	{
 		if (this._pvpAuthAnim != null)
@@ -5719,7 +5648,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DB5 RID: 3509 RVA: 0x0006AA38 File Offset: 0x00068C38
 	private float GetPvpAuthTime()
 	{
 		if (!(this._pvpAuthAnim == null))
@@ -5729,7 +5657,6 @@ public class SceneBattle : BaseScene
 		return 0f;
 	}
 
-	// Token: 0x06000DB6 RID: 3510 RVA: 0x0006AA70 File Offset: 0x00068C70
 	private void PlayEmyAuth(GameObject obj)
 	{
 		Transform[] componentsInChildren = obj.transform.GetComponentsInChildren<Transform>();
@@ -5760,13 +5687,11 @@ public class SceneBattle : BaseScene
 		this._emyAuthAnim.ExPlayAnimation(this._emyAuthAnim.clip.name, null);
 	}
 
-	// Token: 0x06000DB7 RID: 3511 RVA: 0x0006AB49 File Offset: 0x00068D49
 	private bool IsPlayingEmyAuth()
 	{
 		return this._emyAuthAnim != null && this._emyAuthAnim.ExIsPlaying();
 	}
 
-	// Token: 0x06000DB8 RID: 3512 RVA: 0x0006AB66 File Offset: 0x00068D66
 	private void StopEmyAuth()
 	{
 		if (this._emyAuthAnim != null)
@@ -5780,7 +5705,6 @@ public class SceneBattle : BaseScene
 		this._emyAuthCamRol = null;
 	}
 
-	// Token: 0x06000DB9 RID: 3513 RVA: 0x0006ABA8 File Offset: 0x00068DA8
 	public override void Update()
 	{
 		if (Singleton<SceneManager>.Instance.returnBackground)
@@ -6235,7 +6159,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DBA RID: 3514 RVA: 0x0006BC74 File Offset: 0x00069E74
 	private void AnimeRestart()
 	{
 		foreach (SceneBattle_Friends sceneBattle_Friends in this._playerList)
@@ -6244,7 +6167,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DBB RID: 3515 RVA: 0x0006BCCC File Offset: 0x00069ECC
 	private void CheckBloomLayer()
 	{
 		foreach (SceneBattle_Friends sceneBattle_Friends in this._playerList)
@@ -6271,7 +6193,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DBC RID: 3516 RVA: 0x0006BE10 File Offset: 0x0006A010
 	private void CheckPopupInfo()
 	{
 		if (this._step >= SceneBattle.STEP.WaveStart && this._step <= SceneBattle.STEP.WaveClear)
@@ -6511,7 +6432,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DBD RID: 3517 RVA: 0x0006C530 File Offset: 0x0006A730
 	private int CheckAbilityInfo(CharaDef.ActionBuffType buffType, SceneBattle_Chara chara, int key, SceneBattle_Chara tag)
 	{
 		CharaBuffParamAbility charaBuffParamAbility = this._abilityBuffList[key];
@@ -6649,7 +6569,6 @@ public class SceneBattle : BaseScene
 		return num;
 	}
 
-	// Token: 0x06000DBE RID: 3518 RVA: 0x0006C7FC File Offset: 0x0006A9FC
 	private bool GetBuffParamInfo(CharaDef.ActionBuffType typ, SceneBattle_Chara chr, CharaDef.AttributeMask spAtr, CharaDef.HealthMask spHel, CharaDef.EnemyMask spEmy)
 	{
 		bool flag = false;
@@ -6740,7 +6659,6 @@ public class SceneBattle : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06000DBF RID: 3519 RVA: 0x0006CB2C File Offset: 0x0006AD2C
 	private List<SceneBattle_Chara> GetTagListInfo(SceneBattle_Chara chr, CharaDef.ActionTargetType tagTyp, CharaDef.AttributeMask atrMsk, bool invertAtrMsk, CharaDef.HealthMask helMsk, bool invertHelMask, CharaDef.EnemyMask tagMsk, bool invertTargetMask, CharaDef.HealthMaskType helMskType = CharaDef.HealthMaskType.DEFAULT)
 	{
 		List<SceneBattle_Chara> list = new List<SceneBattle_Chara>();
@@ -6914,7 +6832,6 @@ public class SceneBattle : BaseScene
 		return list;
 	}
 
-	// Token: 0x06000DC0 RID: 3520 RVA: 0x0006D218 File Offset: 0x0006B418
 	public override void LateUpdate()
 	{
 		if (this._cameraType != SceneBattle.CameraType.Command && this._backDeckAll.activeSelf && this._guiData.DeckAllAE.autoPlay)
@@ -6965,7 +6882,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DC1 RID: 3521 RVA: 0x0006D4B4 File Offset: 0x0006B6B4
 	private void HugeModelDisp()
 	{
 		this._dispHuge = null;
@@ -7058,7 +6974,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DC2 RID: 3522 RVA: 0x0006D8DC File Offset: 0x0006BADC
 	private void SetCharaInfo(int idx)
 	{
 		this._infoNo = idx;
@@ -8030,7 +7945,6 @@ public class SceneBattle : BaseScene
 		this._infoGui.scrBuff.Resize(this._infoBuffList.Count, 0);
 	}
 
-	// Token: 0x06000DC3 RID: 3523 RVA: 0x0007004C File Offset: 0x0006E24C
 	private string BonusString(int bns)
 	{
 		string text = "";
@@ -8053,7 +7967,6 @@ public class SceneBattle : BaseScene
 		return text;
 	}
 
-	// Token: 0x06000DC4 RID: 3524 RVA: 0x000700CC File Offset: 0x0006E2CC
 	private void OnClickPhoto(IconPhotoCtrl ipc)
 	{
 		for (int i = 0; i < this._infoGui.icsPhoto.Count; i++)
@@ -8076,7 +7989,6 @@ public class SceneBattle : BaseScene
 		this._infoGui.staPhoto.Find("Param03/Num_Param").GetComponent<PguiTextCtrl>().text = ((paramPreset == null) ? "" : paramPreset.def.ToString());
 	}
 
-	// Token: 0x06000DC5 RID: 3525 RVA: 0x000702D0 File Offset: 0x0006E4D0
 	private void Continue()
 	{
 		if (this._menuStep == 0 && this._trainingMissionStep == 0 && this._tacticsStep == 0 && this._tutorialSkip == 0 && this._debugStep == 0)
@@ -8234,7 +8146,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DC6 RID: 3526 RVA: 0x00070794 File Offset: 0x0006E994
 	private void ContinueCost()
 	{
 		int num = DataManager.DmItem.GetUserItemData(30100).num;
@@ -8254,7 +8165,6 @@ public class SceneBattle : BaseScene
 		this._continueGui.numAfter.text = num.ToString();
 	}
 
-	// Token: 0x06000DC7 RID: 3527 RVA: 0x00070868 File Offset: 0x0006EA68
 	private void Revive()
 	{
 		foreach (SceneBattle_Friends sceneBattle_Friends in this._playerList)
@@ -8303,7 +8213,6 @@ public class SceneBattle : BaseScene
 		this._continueCount++;
 	}
 
-	// Token: 0x06000DC8 RID: 3528 RVA: 0x00070AB4 File Offset: 0x0006ECB4
 	private void UpdateTutorial()
 	{
 		if (this._tutorial != SceneBattle.Tutorial.INIT)
@@ -8723,7 +8632,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DC9 RID: 3529 RVA: 0x00071934 File Offset: 0x0006FB34
 	private void ReStart()
 	{
 		if (this._subStep == SceneBattle.SUBSTEP.Init)
@@ -8753,7 +8661,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DCA RID: 3530 RVA: 0x000719D0 File Offset: 0x0006FBD0
 	private void GameStart()
 	{
 		if (SceneBattle.pvpBattle && this._resultArgs.battleArgs.pvpTraining > 0)
@@ -9103,7 +9010,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DCB RID: 3531 RVA: 0x00072B94 File Offset: 0x00070D94
 	private void WaveStart()
 	{
 		if (this._subStep == SceneBattle.SUBSTEP.Init)
@@ -9269,20 +9175,17 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DCC RID: 3532 RVA: 0x00073218 File Offset: 0x00071418
 	private bool TagDead(SceneBattle_Chara chr, List<SceneBattle_Tag> restag, bool noParts)
 	{
 		return (!noParts || !(chr.chara == null)) && chr.newHp <= chr.escapeHp && (restag == null || restag.Find((SceneBattle_Tag itm) => itm.tag == chr) == null);
 	}
 
-	// Token: 0x06000DCD RID: 3533 RVA: 0x00073280 File Offset: 0x00071480
 	private bool TagHide(SceneBattle_Chara chr, List<SceneBattle_Tag> restag)
 	{
 		SceneBattle_Enemy sceneBattle_Enemy = chr as SceneBattle_Enemy;
 		return sceneBattle_Enemy != null && sceneBattle_Enemy.huge == 1 && this._emyWaveList.Find((SceneBattle_Enemy itm) => itm.huge > 1 && !this.TagDead(itm, restag, false)) != null;
 	}
 
-	// Token: 0x06000DCE RID: 3534 RVA: 0x000732D4 File Offset: 0x000714D4
 	private List<SceneBattle_Tag> GetTagList(SceneBattle_Chara chr, SceneBattle_Chara target, List<SceneBattle_Tag> tag, CharaDef.ActionTargetType tagTyp, CharaDef.AttributeMask atrMsk, bool invertAtrMsk, CharaDef.HealthMask helMsk, bool invertHealthMask, CharaDef.EnemyMask tagMsk, bool invertTargetMask, bool brkElmt, int resurrect, List<SceneBattle_Tag> restag, CharaDef.HealthMaskType helMskType = CharaDef.HealthMaskType.DEFAULT)
 	{
 		List<SceneBattle_Tag> list = new List<SceneBattle_Tag>();
@@ -9644,7 +9547,6 @@ public class SceneBattle : BaseScene
 		return list;
 	}
 
-	// Token: 0x06000DCF RID: 3535 RVA: 0x000744A0 File Offset: 0x000726A0
 	private bool CheckBuff(CharaDef.ActionBuffType bufTyp, int success, SceneBattle_Chara tag)
 	{
 		int num = 0;
@@ -9656,7 +9558,6 @@ public class SceneBattle : BaseScene
 		return Random.Range(0, 100) < success - num;
 	}
 
-	// Token: 0x06000DD0 RID: 3536 RVA: 0x000744FC File Offset: 0x000726FC
 	private bool NoPartsBuff(CharaDef.ActionBuffType bufTyp, SceneBattle_Chara tag)
 	{
 		if (tag.chara == null)
@@ -9745,7 +9646,6 @@ public class SceneBattle : BaseScene
 		return false;
 	}
 
-	// Token: 0x06000DD1 RID: 3537 RVA: 0x000746F0 File Offset: 0x000728F0
 	private bool CheckInvalidBuff(SceneBattle_Buff buf, SceneBattle_Chara tag)
 	{
 		bool flag = false;
@@ -9802,7 +9702,6 @@ public class SceneBattle : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06000DD2 RID: 3538 RVA: 0x00074820 File Offset: 0x00072A20
 	private void SetBuff(SceneBattle_Chara chr, CharaBuffParam cbp, SceneBattle_Tag tag, float rate)
 	{
 		tag.flg = -1;
@@ -9898,7 +9797,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DD3 RID: 3539 RVA: 0x00074AE0 File Offset: 0x00072CE0
 	private void SetBuff(SceneBattle_Tag tag, SceneBattle_Buff giveup)
 	{
 		int num = ((giveup == null) ? (-1) : tag.tag.newBuff.IndexOf(giveup));
@@ -10070,7 +9968,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DD4 RID: 3540 RVA: 0x00075490 File Offset: 0x00073690
 	private void ExecBuff(SceneBattle_Chara chr, SceneBattle_Tag tt, SceneBattle_Buff giveup, bool arts)
 	{
 		int num = ((giveup == null) ? (-1) : tt.tag.buff.IndexOf(giveup));
@@ -10678,7 +10575,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DD5 RID: 3541 RVA: 0x00077CB8 File Offset: 0x00075EB8
 	private void TurnHeal(SceneBattle_Chara chr)
 	{
 		if (chr.newHp <= chr.escapeHp)
@@ -10747,7 +10643,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DD6 RID: 3542 RVA: 0x00077EB4 File Offset: 0x000760B4
 	private bool ValidAbility(SceneBattle_Chara chr, int key)
 	{
 		CharaBuffParamAbility charaBuffParamAbility = this._abilityBuffList[key];
@@ -10817,7 +10712,6 @@ public class SceneBattle : BaseScene
 		return true;
 	}
 
-	// Token: 0x06000DD7 RID: 3543 RVA: 0x00078068 File Offset: 0x00076268
 	private List<SceneBattle_Tag> ExecAbility(bool now = true)
 	{
 		List<SceneBattle_Tag> list = new List<SceneBattle_Tag>();
@@ -10969,7 +10863,6 @@ public class SceneBattle : BaseScene
 		return list;
 	}
 
-	// Token: 0x06000DD8 RID: 3544 RVA: 0x000786B4 File Offset: 0x000768B4
 	private void SetAbility(SceneBattle_Tag t)
 	{
 		SceneBattle_Chara tag = t.tag;
@@ -11133,7 +11026,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DD9 RID: 3545 RVA: 0x00078DA4 File Offset: 0x00076FA4
 	private bool ExecAbility(SceneBattle_Chara chr, SceneBattle_Tag tt)
 	{
 		SceneBattle_Buff buf = tt.buf;
@@ -11767,7 +11659,6 @@ public class SceneBattle : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06000DDA RID: 3546 RVA: 0x0007AB1C File Offset: 0x00078D1C
 	private void ExecAbility(SceneBattle_Chara chr, List<SceneBattle_Tag> ability)
 	{
 		HashSet<int> hashSet = new HashSet<int>();
@@ -11795,7 +11686,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DDB RID: 3547 RVA: 0x0007AC2C File Offset: 0x00078E2C
 	private void SetRecover(SceneBattle_Tag tag, bool ud, bool isNotPossibleRecover, CharaDef.ActionBuffType buffType)
 	{
 		using (List<SceneBattle_Recover>.Enumerator enumerator = SceneBattle.recoverList.GetEnumerator())
@@ -11863,7 +11753,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DDC RID: 3548 RVA: 0x0007AE80 File Offset: 0x00079080
 	private bool ExecRecover(SceneBattle_Chara chr, SceneBattle_Recover rv, int ud, bool isNotPossibleRecover, CharaDef.ActionBuffType buffType, ref int hate)
 	{
 		List<SceneBattle_Buff> buffList = new List<SceneBattle_Buff>();
@@ -11941,7 +11830,6 @@ public class SceneBattle : BaseScene
 		return buffList.Count > 0;
 	}
 
-	// Token: 0x06000DDD RID: 3549 RVA: 0x0007B144 File Offset: 0x00079344
 	private bool CheckRecover(CharaBuffParamAbility cbpa1, SceneBattle_Recover rv, bool ud)
 	{
 		if (rv.Prm == -1)
@@ -12021,7 +11909,6 @@ public class SceneBattle : BaseScene
 		return true;
 	}
 
-	// Token: 0x06000DDE RID: 3550 RVA: 0x0007B21C File Offset: 0x0007941C
 	private List<SceneBattle_Tag> ExecTactics(int side)
 	{
 		List<SceneBattle_Tag> list = new List<SceneBattle_Tag>();
@@ -12118,7 +12005,6 @@ public class SceneBattle : BaseScene
 		return list;
 	}
 
-	// Token: 0x06000DDF RID: 3551 RVA: 0x0007B538 File Offset: 0x00079738
 	private List<SceneBattle_Tag> ExecTactics(TacticsStaticSkill tactics, List<SceneBattle_Friends> myside, List<SceneBattle_Friends> emyside)
 	{
 		List<SceneBattle_Tag> list = new List<SceneBattle_Tag>();
@@ -12441,7 +12327,6 @@ public class SceneBattle : BaseScene
 		return list;
 	}
 
-	// Token: 0x06000DE0 RID: 3552 RVA: 0x0007C0EC File Offset: 0x0007A2EC
 	private void ExecTactics(List<SceneBattle_Tag> tag)
 	{
 		if (tag == null)
@@ -12634,7 +12519,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DE1 RID: 3553 RVA: 0x0007C6B0 File Offset: 0x0007A8B0
 	private List<SceneBattle_Buff> omitRestartParam(List<SceneBattle_Buff> buffs)
 	{
 		List<SceneBattle_Buff> list = new List<SceneBattle_Buff>(buffs);
@@ -12648,7 +12532,6 @@ public class SceneBattle : BaseScene
 		return list;
 	}
 
-	// Token: 0x06000DE2 RID: 3554 RVA: 0x0007C6E0 File Offset: 0x0007A8E0
 	private void SaveRestart()
 	{
 		this._battleRestartArgs.battleEndStatus = this._resultArgs.battleEndStatus;
@@ -12785,7 +12668,6 @@ public class SceneBattle : BaseScene
 		this._battleRestartArgs.battleArgs.hash_id = this._battleRestartArgs.getHash();
 	}
 
-	// Token: 0x06000DE3 RID: 3555 RVA: 0x0007CF3C File Offset: 0x0007B13C
 	private void CommandSelect()
 	{
 		if (this._continueStep == 0)
@@ -14688,13 +14570,11 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DE4 RID: 3556 RVA: 0x000828A8 File Offset: 0x00080AA8
 	private bool CheckAct(SceneBattle_Friends ply)
 	{
 		return ply.newHp > ply.escapeHp && ply.inBack >= 0 && !this.IsStun(ply, false) && !this.IsSleep(ply, false);
 	}
 
-	// Token: 0x06000DE5 RID: 3557 RVA: 0x000828D8 File Offset: 0x00080AD8
 	private bool CheckArts(SceneBattle_Friends ply)
 	{
 		int num = this._plyCmdList.FindAll((SceneBattle_FriendsCommand itm) => itm.chara.number == ply.number && itm.arts > 0).Count;
@@ -14703,7 +14583,6 @@ public class SceneBattle : BaseScene
 		return (num >= ply.maxKp || this._infiniteKp) && ply.arts != null && ply.newHp > ply.escapeHp && !this.IsStun(ply, false) && !this.IsSleep(ply, false) && !this.IsSeal(ply, false) && !this.IsIce(ply, false) && !this.IsBurned(ply, false);
 	}
 
-	// Token: 0x06000DE6 RID: 3558 RVA: 0x00082A08 File Offset: 0x00080C08
 	private bool SkillWindow(int index)
 	{
 		if (this._subStep == SceneBattle.SUBSTEP.Confirm)
@@ -14721,7 +14600,6 @@ public class SceneBattle : BaseScene
 		return true;
 	}
 
-	// Token: 0x06000DE7 RID: 3559 RVA: 0x00082A98 File Offset: 0x00080C98
 	private void ResistSummary(SceneBattle_Chara chr)
 	{
 		List<string> list = new List<string>();
@@ -14752,7 +14630,6 @@ public class SceneBattle : BaseScene
 		this.ResistReName(list2, list3, this._resistDownReNameList);
 	}
 
-	// Token: 0x06000DE8 RID: 3560 RVA: 0x00082B8C File Offset: 0x00080D8C
 	private void ResistReName(List<string> resistName, List<SceneBattle_ResistKind> resistTyp, List<string> resistReName)
 	{
 		if (resistName.Count != resistTyp.Count)
@@ -14774,7 +14651,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DE9 RID: 3561 RVA: 0x00082C1C File Offset: 0x00080E1C
 	private void StatDisp(SceneBattle_Chara chr)
 	{
 		List<long> list = new List<long>();
@@ -15425,7 +15301,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DEA RID: 3562 RVA: 0x00084A54 File Offset: 0x00082C54
 	private void StatDisp4(SceneBattle_Chara chr)
 	{
 		chr.statTim += TimeManager.DeltaTime;
@@ -15498,7 +15373,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DEB RID: 3563 RVA: 0x00084CDC File Offset: 0x00082EDC
 	private void CheckGuts()
 	{
 		List<SceneBattle_Chara> list = new List<SceneBattle_Chara>(this._playerList);
@@ -15517,7 +15391,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DEC RID: 3564 RVA: 0x00084D78 File Offset: 0x00082F78
 	private void CheckIce(SceneBattle_Chara act, bool nb = false)
 	{
 		if (act != null)
@@ -15555,7 +15428,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DED RID: 3565 RVA: 0x00084F14 File Offset: 0x00083114
 	private void CheckSleep()
 	{
 		List<SceneBattle_Chara> list = new List<SceneBattle_Chara>(this._playerList);
@@ -15568,7 +15440,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DEE RID: 3566 RVA: 0x00084FD4 File Offset: 0x000831D4
 	private void decreaseFocus(SceneBattle_Chara target)
 	{
 		if (target == null)
@@ -15595,7 +15466,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DEF RID: 3567 RVA: 0x0008508C File Offset: 0x0008328C
 	private void proceedSchedule(SceneBattle_Chara target, bool isEnd)
 	{
 		if (target == null)
@@ -15627,7 +15497,6 @@ public class SceneBattle : BaseScene
 		});
 	}
 
-	// Token: 0x06000DF0 RID: 3568 RVA: 0x00085140 File Offset: 0x00083340
 	private void execScheduled(SceneBattle_Chara target, SceneBattle_Buff scheduledBuff)
 	{
 		if (scheduledBuff.scheduledTurn <= 0)
@@ -15687,7 +15556,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DF1 RID: 3569 RVA: 0x00085338 File Offset: 0x00083538
 	private List<KeyValuePair<SceneBattle_Tag, SceneBattle_Buff>> ExecActionGiveup(SceneBattle_Action act)
 	{
 		HashSet<SceneBattle_Chara> hashSet = new HashSet<SceneBattle_Chara>();
@@ -15743,7 +15611,6 @@ public class SceneBattle : BaseScene
 		return this.ExecGiveup(hashSet.Count, hashSet2.Count);
 	}
 
-	// Token: 0x06000DF2 RID: 3570 RVA: 0x00085508 File Offset: 0x00083708
 	private List<KeyValuePair<SceneBattle_Tag, SceneBattle_Buff>> ExecGiveup(int ply, int emy)
 	{
 		List<SceneBattle_Chara> list = new List<SceneBattle_Chara>(this._playerList);
@@ -15777,7 +15644,6 @@ public class SceneBattle : BaseScene
 		return list2;
 	}
 
-	// Token: 0x06000DF3 RID: 3571 RVA: 0x00085688 File Offset: 0x00083888
 	private void ExecGiveup(List<KeyValuePair<SceneBattle_Tag, SceneBattle_Buff>> exc)
 	{
 		foreach (KeyValuePair<SceneBattle_Tag, SceneBattle_Buff> keyValuePair in exc)
@@ -15786,7 +15652,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DF4 RID: 3572 RVA: 0x000856E8 File Offset: 0x000838E8
 	private void CheckCommand(List<SceneBattle_Friends> friends, List<SceneBattle_FriendsCommand> command, List<SceneBattle_Action> wait, List<SceneBattle_FriendsCommand> rmv, float skldmg, int sklwat)
 	{
 		bool flag = friends[0].type == CharaDef.Type.FRIENDS;
@@ -16469,7 +16334,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DF5 RID: 3573 RVA: 0x000874FC File Offset: 0x000856FC
 	private void CheckPlayerCommand()
 	{
 		SceneBattle_Chara playerTarget = this._playerTarget;
@@ -16481,7 +16345,6 @@ public class SceneBattle : BaseScene
 		this.DispCardInfo();
 	}
 
-	// Token: 0x06000DF6 RID: 3574 RVA: 0x00087568 File Offset: 0x00085768
 	private void SetAct(SceneBattle_Action cmd, float skldmg, int sc, float cb, int wp, bool end, int tickle, int additionalMp)
 	{
 		cmd.act = new List<SceneBattle_Act>();
@@ -17662,7 +17525,6 @@ public class SceneBattle : BaseScene
 		cmd.pos.y = cmd.pos.y + cmd.actParam.motionParam.heightDifference;
 	}
 
-	// Token: 0x06000DF7 RID: 3575 RVA: 0x0008A7C8 File Offset: 0x000889C8
 	private int ActSort(SceneBattle_Act a, SceneBattle_Act b)
 	{
 		int num = a.tim.CompareTo(b.tim);
@@ -17673,7 +17535,6 @@ public class SceneBattle : BaseScene
 		return num;
 	}
 
-	// Token: 0x06000DF8 RID: 3576 RVA: 0x0008A800 File Offset: 0x00088A00
 	private int CalcPower(SceneBattle_Action cmd, float skldmg, float scd, float cbd, float wpd, SceneBattle_Act a, SceneBattle_Chara tg, float cvr, int capi, out float dup)
 	{
 		dup = 1f;
@@ -17784,7 +17645,6 @@ public class SceneBattle : BaseScene
 		return num5;
 	}
 
-	// Token: 0x06000DF9 RID: 3577 RVA: 0x0008AB48 File Offset: 0x00088D48
 	private void SetActEff(SceneBattle_Action cmd, List<SceneBattle_Tag> tl, ActionEffectParam aep, int n0, int n1, float itvl, List<SceneBattle_Tag> ht = null)
 	{
 		if (!string.IsNullOrEmpty(aep.effectName))
@@ -17824,7 +17684,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000DFA RID: 3578 RVA: 0x0008AC4C File Offset: 0x00088E4C
 	private void SetActEff(SceneBattle_Action act, List<SceneBattle_Tag> tag, ActionEffectParam aep, SceneBattle_Eff e, CharaDef.EffectDispType typ)
 	{
 		Vector3 pos = e.pos;
@@ -17881,7 +17740,6 @@ public class SceneBattle : BaseScene
 		act.eff.Add(e);
 	}
 
-	// Token: 0x06000DFB RID: 3579 RVA: 0x0008AE1C File Offset: 0x0008901C
 	private float GetBuffAttr(CharaDef.AttributeMask attr1, CharaDef.AttributeMask attr2)
 	{
 		float num = 1f;
@@ -17902,7 +17760,6 @@ public class SceneBattle : BaseScene
 		return num;
 	}
 
-	// Token: 0x06000DFC RID: 3580 RVA: 0x0008AE94 File Offset: 0x00089094
 	private int CheckAbility(CharaDef.ActionBuffType typ, SceneBattle_Chara chr, int key, SceneBattle_Chara tag)
 	{
 		CharaBuffParamAbility charaBuffParamAbility = this._abilityBuffList[key];
@@ -18058,7 +17915,6 @@ public class SceneBattle : BaseScene
 		return num;
 	}
 
-	// Token: 0x06000DFD RID: 3581 RVA: 0x0008B1F4 File Offset: 0x000893F4
 	private bool GetBuffParam(CharaDef.ActionBuffType typ, SceneBattle_Chara chr, CharaDef.AttributeMask spAtr, CharaDef.HealthMask spHel, CharaDef.EnemyMask spEmy, out float prmf, out int prmi)
 	{
 		bool flag = false;
@@ -18249,7 +18105,6 @@ public class SceneBattle : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06000DFE RID: 3582 RVA: 0x0008B750 File Offset: 0x00089950
 	private bool GetResistParam(long msk, SceneBattle_Chara chr, out int prmi, bool isSkill = false, CharaDef.ActionBuffType buffType = CharaDef.ActionBuffType.INVALID)
 	{
 		bool flag = false;
@@ -18291,7 +18146,6 @@ public class SceneBattle : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06000DFF RID: 3583 RVA: 0x0008B918 File Offset: 0x00089B18
 	private string GetBuffName(CharaDef.ActionBuffType bt)
 	{
 		SceneBattle_Recover sceneBattle_Recover = SceneBattle.recoverList.Find((SceneBattle_Recover itm) => itm.Type.Contains(bt));
@@ -18302,7 +18156,6 @@ public class SceneBattle : BaseScene
 		return "";
 	}
 
-	// Token: 0x06000E00 RID: 3584 RVA: 0x0008B958 File Offset: 0x00089B58
 	private string GetHealthName(CharaDef.HealthMask msk)
 	{
 		string text = "すべての";
@@ -18378,97 +18231,81 @@ public class SceneBattle : BaseScene
 		return text;
 	}
 
-	// Token: 0x06000E01 RID: 3585 RVA: 0x0008BA51 File Offset: 0x00089C51
 	private bool IsStun(SceneBattle_Chara chr, bool nb = false)
 	{
 		return this.GetAbnormalChara(CharaDef.ActionBuffType.STUN, chr, nb) != null;
 	}
 
-	// Token: 0x06000E02 RID: 3586 RVA: 0x0008BA5F File Offset: 0x00089C5F
 	private bool IsPoison(SceneBattle_Chara chr, bool nb = false)
 	{
 		return this.GetAbnormalChara(CharaDef.ActionBuffType.POISON, chr, nb) != null;
 	}
 
-	// Token: 0x06000E03 RID: 3587 RVA: 0x0008BA6D File Offset: 0x00089C6D
 	private bool IsSleep(SceneBattle_Chara chr, bool nb = false)
 	{
 		return this.GetAbnormalChara(CharaDef.ActionBuffType.SLEEP, chr, nb) != null;
 	}
 
-	// Token: 0x06000E04 RID: 3588 RVA: 0x0008BA7C File Offset: 0x00089C7C
 	private bool IsSeal(SceneBattle_Chara chr, bool nb = false)
 	{
 		return this.GetAbnormalChara(CharaDef.ActionBuffType.SEAL, chr, nb) != null;
 	}
 
-	// Token: 0x06000E05 RID: 3589 RVA: 0x0008BA8B File Offset: 0x00089C8B
 	private bool IsIce(SceneBattle_Chara chr, bool nb = false)
 	{
 		return this.GetAbnormalChara(CharaDef.ActionBuffType.ICE, chr, nb) != null;
 	}
 
-	// Token: 0x06000E06 RID: 3590 RVA: 0x0008BA9A File Offset: 0x00089C9A
 	private bool IsBleed(SceneBattle_Chara chr, bool nb = false)
 	{
 		return this.GetAbnormalChara(CharaDef.ActionBuffType.BLEED, chr, nb) != null;
 	}
 
-	// Token: 0x06000E07 RID: 3591 RVA: 0x0008BAA9 File Offset: 0x00089CA9
 	private bool IsUnheal(SceneBattle_Chara chr, bool nb = false)
 	{
 		return this.GetAbnormalChara(CharaDef.ActionBuffType.UNHEAL, chr, nb) != null;
 	}
 
-	// Token: 0x06000E08 RID: 3592 RVA: 0x0008BAB8 File Offset: 0x00089CB8
 	private bool IsNoMP(SceneBattle_Chara chr, bool nb = false)
 	{
 		return this.GetAbnormalChara(CharaDef.ActionBuffType.MP_NOCOUNT, chr, nb) != null;
 	}
 
-	// Token: 0x06000E09 RID: 3593 RVA: 0x0008BAC7 File Offset: 0x00089CC7
 	private bool IsBufInv(SceneBattle_Chara chr, bool nb = false)
 	{
 		return this.GetAbnormalChara(CharaDef.ActionBuffType.BUFF_INVALID, chr, nb) != null;
 	}
 
-	// Token: 0x06000E0A RID: 3594 RVA: 0x0008BAD6 File Offset: 0x00089CD6
 	private bool IsParalysis(SceneBattle_Chara chr, bool nb = false)
 	{
 		return this.GetAbnormalChara(CharaDef.ActionBuffType.PARALYSIS, chr, nb) != null;
 	}
 
-	// Token: 0x06000E0B RID: 3595 RVA: 0x0008BAE5 File Offset: 0x00089CE5
 	private bool IsSilence(SceneBattle_Chara chr, bool nb = false)
 	{
 		return this.GetAbnormalChara(CharaDef.ActionBuffType.SILENCE, chr, nb) != null;
 	}
 
-	// Token: 0x06000E0C RID: 3596 RVA: 0x0008BAF4 File Offset: 0x00089CF4
 	private bool IsInaudible(SceneBattle_Chara chr, bool nb = false)
 	{
 		return this.GetAbnormalChara(CharaDef.ActionBuffType.INAUDIBLE, chr, nb) != null;
 	}
 
-	// Token: 0x06000E0D RID: 3597 RVA: 0x0008BB03 File Offset: 0x00089D03
 	private bool IsBurned(SceneBattle_Chara chr, bool nb = false)
 	{
 		return this.GetAbnormalChara(CharaDef.ActionBuffType.BURNED, chr, nb) != null;
 	}
 
-	// Token: 0x06000E0E RID: 3598 RVA: 0x0008BB12 File Offset: 0x00089D12
 	private bool IsFocus(SceneBattle_Chara chr, bool nb = false)
 	{
 		return this.GetAbnormalChara(CharaDef.ActionBuffType.FOCUS, chr, nb) != null;
 	}
 
-	// Token: 0x06000E0F RID: 3599 RVA: 0x0008BB21 File Offset: 0x00089D21
 	private bool IsImpatience(SceneBattle_Chara chr, bool nb = false)
 	{
 		return this.GetAbnormalChara(CharaDef.ActionBuffType.IMPATIENCE, chr, nb) != null;
 	}
 
-	// Token: 0x06000E10 RID: 3600 RVA: 0x0008BB30 File Offset: 0x00089D30
 	private int IsBuffUpDown(SceneBattle_Buff bf, bool isSchedule = false)
 	{
 		int num = 0;
@@ -18518,7 +18355,6 @@ public class SceneBattle : BaseScene
 		return num;
 	}
 
-	// Token: 0x06000E11 RID: 3601 RVA: 0x0008BC44 File Offset: 0x00089E44
 	private SceneBattle_Chara GetAbnormalChara(CharaDef.ActionBuffType typ, SceneBattle_Chara chr, bool nb = false)
 	{
 		SceneBattle_Buff sceneBattle_Buff = (nb ? chr.newBuff.Find((SceneBattle_Buff itm) => itm.giveupNum <= 0 && itm.buffType == typ) : chr.buff.Find((SceneBattle_Buff itm) => itm.giveupNum <= 0 && itm.buffType == typ));
@@ -18537,7 +18373,6 @@ public class SceneBattle : BaseScene
 		return this._enemyList[sceneBattle_Buff.chrIdx];
 	}
 
-	// Token: 0x06000E12 RID: 3602 RVA: 0x0008BCE0 File Offset: 0x00089EE0
 	private CharaDef.HealthMask GetHealthMask(SceneBattle_Chara chr, bool nb = false)
 	{
 		CharaDef.HealthMask healthMask = (CharaDef.HealthMask)0;
@@ -18615,13 +18450,11 @@ public class SceneBattle : BaseScene
 		return healthMask;
 	}
 
-	// Token: 0x06000E13 RID: 3603 RVA: 0x0008BE88 File Offset: 0x0008A088
 	private bool IsTargetAttribute(SceneBattle_Chara chara, SceneBattle_Chara target, CharaDef.AttributeMask attributeMask, bool invert)
 	{
 		return (((target.attributeMask & attributeMask) > (CharaDef.AttributeMask)0) ^ invert) || (((chara.type == CharaDef.Type.FRIENDS && target.type == CharaDef.Type.FRIENDS) || (chara.type != CharaDef.Type.FRIENDS && target.type != CharaDef.Type.FRIENDS)) && (((target.subAttributeMask & attributeMask) > (CharaDef.AttributeMask)0) ^ invert));
 	}
 
-	// Token: 0x06000E14 RID: 3604 RVA: 0x0008BEEC File Offset: 0x0008A0EC
 	private void OffBuff()
 	{
 		List<SceneBattle_Chara> list = new List<SceneBattle_Chara>(this._playerList);
@@ -18677,7 +18510,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E15 RID: 3605 RVA: 0x0008C0F8 File Offset: 0x0008A2F8
 	private int MaxMP(SceneBattle_Chara chr, bool nb = false)
 	{
 		int num = chr.maxKp;
@@ -18701,7 +18533,6 @@ public class SceneBattle : BaseScene
 		return num;
 	}
 
-	// Token: 0x06000E16 RID: 3606 RVA: 0x0008C164 File Offset: 0x0008A364
 	private void PlayerTurn()
 	{
 		if (this._continueStep == 0)
@@ -19414,7 +19245,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E17 RID: 3607 RVA: 0x0008DEF0 File Offset: 0x0008C0F0
 	private void SetNumYaseiTotal(int wildPower)
 	{
 		this._guiData.NumYaseiTotal.text = wildPower.ToString();
@@ -19430,7 +19260,6 @@ public class SceneBattle : BaseScene
 		this._guiData.NumYaseiTotal.transform.Find("Img_Condition").GetComponent<PguiReplaceSpriteCtrl>().Replace(num);
 	}
 
-	// Token: 0x06000E18 RID: 3608 RVA: 0x0008DF50 File Offset: 0x0008C150
 	private bool ExecScheduleBuf(SceneBattle_Action act, bool isEnd)
 	{
 		bool flag = false;
@@ -19454,7 +19283,6 @@ public class SceneBattle : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06000E19 RID: 3609 RVA: 0x0008E044 File Offset: 0x0008C244
 	private bool ExecTopBuf(SceneBattle_Action act)
 	{
 		bool flag = false;
@@ -19477,7 +19305,6 @@ public class SceneBattle : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06000E1A RID: 3610 RVA: 0x0008E108 File Offset: 0x0008C308
 	private bool ExecEndBuf(SceneBattle_Action act)
 	{
 		bool flag = false;
@@ -19500,7 +19327,6 @@ public class SceneBattle : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06000E1B RID: 3611 RVA: 0x0008E1CC File Offset: 0x0008C3CC
 	private void UpdateAction(SceneBattle_Action act, bool finKp)
 	{
 		if (act.step == SceneBattle.CMDSTEP.None || act.step == SceneBattle.CMDSTEP.End)
@@ -20027,7 +19853,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E1C RID: 3612 RVA: 0x0008FE4C File Offset: 0x0008E04C
 	private void SetSkillCamera(SceneBattle_Action act)
 	{
 		bool flag = act.chara.type == CharaDef.Type.FRIENDS;
@@ -20245,7 +20070,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E1D RID: 3613 RVA: 0x000907D4 File Offset: 0x0008E9D4
 	private void UpdateAct(SceneBattle_Action act, bool finKp)
 	{
 		if (act.actTim >= act.dedTim)
@@ -20720,7 +20544,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E1E RID: 3614 RVA: 0x00091FB8 File Offset: 0x000901B8
 	private void UpdateEff(SceneBattle_Action act)
 	{
 		foreach (SceneBattle_Eff sceneBattle_Eff in act.eff)
@@ -20810,7 +20633,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E1F RID: 3615 RVA: 0x00092478 File Offset: 0x00090678
 	private void PlayerChain()
 	{
 		SceneBattle_FriendsCommand sceneBattle_FriendsCommand = this._plyCmdList[this._plyCmdCtr];
@@ -20962,7 +20784,6 @@ public class SceneBattle : BaseScene
 		this.DispWaitSkill(this._guiData.StaySkill);
 	}
 
-	// Token: 0x06000E20 RID: 3616 RVA: 0x00092C94 File Offset: 0x00090E94
 	private void PlayerArts()
 	{
 		SceneBattle_FriendsCommand sceneBattle_FriendsCommand = this._plyCmdList[this._plyCmdCtr];
@@ -21146,7 +20967,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E21 RID: 3617 RVA: 0x0009353C File Offset: 0x0009173C
 	private void PlayerAttack()
 	{
 		SceneBattle_FriendsCommand sceneBattle_FriendsCommand = this._plyCmdList[this._plyCmdCtr];
@@ -21434,7 +21254,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E22 RID: 3618 RVA: 0x00094450 File Offset: 0x00092650
 	private void UpdateActionCard(SceneBattle_FriendsCommand playerCommand)
 	{
 		if (playerCommand.card != null)
@@ -21486,7 +21305,6 @@ public class SceneBattle : BaseScene
 		this._actionCardTime = 0f;
 	}
 
-	// Token: 0x06000E23 RID: 3619 RVA: 0x00094634 File Offset: 0x00092834
 	private void DispChainCount()
 	{
 		this._guiData.ChainCountAE.gameObject.SetActive(true);
@@ -21495,7 +21313,6 @@ public class SceneBattle : BaseScene
 		SoundManager.Play("prd_se_chain_" + this._chainCount.ToString(), false, false);
 	}
 
-	// Token: 0x06000E24 RID: 3620 RVA: 0x000946AC File Offset: 0x000928AC
 	private void DispWaitSkill(List<AEImage> lst)
 	{
 		if ((this._waitDisp -= TimeManager.DeltaTime) <= 0f)
@@ -21529,7 +21346,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E25 RID: 3621 RVA: 0x0009487C File Offset: 0x00092A7C
 	private void DispScheduledSkill(List<AEImage> lst)
 	{
 		if ((this._waitDisp -= TimeManager.DeltaTime) <= 0f)
@@ -21551,7 +21367,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E26 RID: 3622 RVA: 0x0009492C File Offset: 0x00092B2C
 	private void CheckEnemyCommand()
 	{
 		this._emyCmdList = new List<SceneBattle_EnemyCommand>();
@@ -21710,7 +21525,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E27 RID: 3623 RVA: 0x00095068 File Offset: 0x00093268
 	private void EnemyTurn()
 	{
 		if (this._continueStep == 0)
@@ -22147,7 +21961,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E28 RID: 3624 RVA: 0x00096038 File Offset: 0x00094238
 	private void CheckVersusCommand()
 	{
 		this._vssWaitList = new List<SceneBattle_Action>();
@@ -22446,7 +22259,6 @@ public class SceneBattle : BaseScene
 		this.DispCardInfo();
 	}
 
-	// Token: 0x06000E29 RID: 3625 RVA: 0x00096CA0 File Offset: 0x00094EA0
 	private SceneBattle_CardInfo GetVssCard(bool dis = true)
 	{
 		if (this._vssCardList.Count <= 0)
@@ -22467,7 +22279,6 @@ public class SceneBattle : BaseScene
 		return sceneBattle_CardInfo;
 	}
 
-	// Token: 0x06000E2A RID: 3626 RVA: 0x00096D2C File Offset: 0x00094F2C
 	private void VersusTurn()
 	{
 		if (this._continueStep == 0)
@@ -23566,7 +23377,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E2B RID: 3627 RVA: 0x0009A3DC File Offset: 0x000985DC
 	private void DispPvpChainCount()
 	{
 		this._guiData.PvpChainCountAE.gameObject.SetActive(true);
@@ -23575,7 +23385,6 @@ public class SceneBattle : BaseScene
 		SoundManager.Play("prd_se_chain_" + this._chainCount.ToString(), false, false);
 	}
 
-	// Token: 0x06000E2C RID: 3628 RVA: 0x0009A454 File Offset: 0x00098654
 	private void WaveClear()
 	{
 		if (this._subStep == SceneBattle.SUBSTEP.Init)
@@ -23599,7 +23408,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E2D RID: 3629 RVA: 0x0009A4DC File Offset: 0x000986DC
 	private void JudgePvpTraining()
 	{
 		if (SceneBattle.pvpTraining == 0)
@@ -23618,7 +23426,6 @@ public class SceneBattle : BaseScene
 		SoundManager.Play("prd_se_training_judge", false, false);
 	}
 
-	// Token: 0x06000E2E RID: 3630 RVA: 0x0009A624 File Offset: 0x00098824
 	private void GameClear(DataManagerQuest.BattleEndStatus endStat)
 	{
 		if (this._subStep == SceneBattle.SUBSTEP.Init)
@@ -24097,7 +23904,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E2F RID: 3631 RVA: 0x0009C100 File Offset: 0x0009A300
 	private void GameLose()
 	{
 		if (SceneBattle.trainingBattle)
@@ -24269,7 +24075,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E30 RID: 3632 RVA: 0x0009C98C File Offset: 0x0009AB8C
 	private void Retire()
 	{
 		if (SceneBattle.trainingBattle)
@@ -24437,7 +24242,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E31 RID: 3633 RVA: 0x0009D258 File Offset: 0x0009B458
 	private void SetPvpCoin()
 	{
 		DataManagerPvp.PvPEndResult lastPvPEndResult = DataManager.DmPvp.GetLastPvPEndResult();
@@ -24461,7 +24265,6 @@ public class SceneBattle : BaseScene
 		this._guiData.PvpCoinGet.ExPlayAnimation(SimpleAnimation.ExPguiStatus.START, null);
 	}
 
-	// Token: 0x06000E32 RID: 3634 RVA: 0x0009D3B4 File Offset: 0x0009B5B4
 	private void SetupPvpResultAuth(bool win)
 	{
 		this.PlayPvpAuth(win ? 1 : 2);
@@ -24584,7 +24387,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E33 RID: 3635 RVA: 0x0009D930 File Offset: 0x0009BB30
 	private void SetupTrainingResultAuth()
 	{
 		this.PlayPvpAuth(1);
@@ -24609,7 +24411,6 @@ public class SceneBattle : BaseScene
 		SoundManager.Play("prd_se_result_victory", false, false);
 	}
 
-	// Token: 0x06000E34 RID: 3636 RVA: 0x0009DB40 File Offset: 0x0009BD40
 	private void UpdateEffect()
 	{
 		foreach (SceneBattle_Friends sceneBattle_Friends in this._playerList)
@@ -24747,7 +24548,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E35 RID: 3637 RVA: 0x0009E154 File Offset: 0x0009C354
 	private void UpdateEffectLayer(SceneBattle_Friends friends)
 	{
 		List<EffectData> list = this._effectDataList.FindAll((EffectData data) => data.Publisher == friends.chara.gameObject.name);
@@ -24779,7 +24579,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E36 RID: 3638 RVA: 0x0009E2BC File Offset: 0x0009C4BC
 	private void UpdateEffectOne(SceneBattle_Chara chr)
 	{
 		SceneBattle_Friends sceneBattle_Friends = chr as SceneBattle_Friends;
@@ -25442,7 +25241,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E37 RID: 3639 RVA: 0x000A0804 File Offset: 0x0009EA04
 	private void UpdateEffectParts(SceneBattle_Enemy emy)
 	{
 		if (emy.nowHp < emy.escapeHp && !emy.death)
@@ -25542,7 +25340,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E38 RID: 3640 RVA: 0x000A0B70 File Offset: 0x0009ED70
 	private EffectData SetAbnormalEffectParam(string en, SceneBattle_Chara chr, Vector3 prm)
 	{
 		EffectData effectData = EffectManager.InstantiateEffect(en, this._effect, chr.chara.GetLayer(), 1f);
@@ -25567,7 +25364,6 @@ public class SceneBattle : BaseScene
 		return effectData;
 	}
 
-	// Token: 0x06000E39 RID: 3641 RVA: 0x000A0CB0 File Offset: 0x0009EEB0
 	private EffectData SetAbnormalEffectParts(string en, SceneBattle_Enemy emy, Vector3 prm)
 	{
 		EffectData effectData = EffectManager.InstantiateEffect(en, this._effect, SceneBattle.enemyLayer, 1f);
@@ -25584,13 +25380,11 @@ public class SceneBattle : BaseScene
 		return effectData;
 	}
 
-	// Token: 0x06000E3A RID: 3642 RVA: 0x000A0D85 File Offset: 0x0009EF85
 	private void SetAbnormalEffectParts(EffectData eff, SceneBattle_Enemy emy, Vector3 prm)
 	{
 		eff.effectObject.transform.position = emy.parts.position + new Vector3(0f, prm.y, prm.z + emy.offZ);
 	}
 
-	// Token: 0x06000E3B RID: 3643 RVA: 0x000A0DC4 File Offset: 0x0009EFC4
 	private void SetCamouflageEffect(EffectData eff)
 	{
 		foreach (Transform transform in eff.effectObject.GetComponentsInChildren<Transform>(true))
@@ -25611,7 +25405,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E3C RID: 3644 RVA: 0x000A0E74 File Offset: 0x0009F074
 	private bool Poison(SceneBattle_Chara chr)
 	{
 		SceneBattle_Chara sceneBattle_Chara = ((chr.chara == null || chr.nowHp > chr.escapeHp) ? this.GetAbnormalChara(CharaDef.ActionBuffType.POISON, chr, false) : null);
@@ -25699,7 +25492,6 @@ public class SceneBattle : BaseScene
 		return chr.chara != null && chr.nowHp <= chr.escapeHp;
 	}
 
-	// Token: 0x06000E3D RID: 3645 RVA: 0x000A1150 File Offset: 0x0009F350
 	private int Bleed()
 	{
 		int num = 0;
@@ -25756,7 +25548,6 @@ public class SceneBattle : BaseScene
 		return num;
 	}
 
-	// Token: 0x06000E3E RID: 3646 RVA: 0x000A1388 File Offset: 0x0009F588
 	private int Burned()
 	{
 		int num = 0;
@@ -25813,7 +25604,6 @@ public class SceneBattle : BaseScene
 		return num;
 	}
 
-	// Token: 0x06000E3F RID: 3647 RVA: 0x000A15C0 File Offset: 0x0009F7C0
 	private void CheckDead(SceneBattle_Chara chr, bool cf = true)
 	{
 		if (chr.chara == null)
@@ -25835,7 +25625,6 @@ public class SceneBattle : BaseScene
 		chr.chara.PlayAnimation((SceneBattle.pvpBattle || SceneBattle.friendsBattle || (SceneBattle.trainingBattle && chr.type == CharaDef.Type.FRIENDS)) ? CharaMotionDefine.ActKey.PVP_DAMAGE : CharaMotionDefine.ActKey.DEATH_ST, false, 1f, num, num * 0.5f, false);
 	}
 
-	// Token: 0x06000E40 RID: 3648 RVA: 0x000A168C File Offset: 0x0009F88C
 	private void SetCamera()
 	{
 		if ((this._reqCamera == SceneBattle.CameraType.Battle || this._reqCamera == SceneBattle.CameraType.Battle2 || this._reqCamera == SceneBattle.CameraType.Battle3) && this._cameraType == this._reqCamera)
@@ -26245,13 +26034,11 @@ public class SceneBattle : BaseScene
 		mapBoxObject.SetActive(false);
 	}
 
-	// Token: 0x06000E41 RID: 3649 RVA: 0x000A279C File Offset: 0x000A099C
 	private bool IsCameraMove()
 	{
 		return this._cameraRatio < 1f;
 	}
 
-	// Token: 0x06000E42 RID: 3650 RVA: 0x000A27AC File Offset: 0x000A09AC
 	private void DispGui()
 	{
 		bool flag = false;
@@ -27527,7 +27314,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E43 RID: 3651 RVA: 0x000A6FB4 File Offset: 0x000A51B4
 	private bool HpGageStat(SceneBattle_Chara chr)
 	{
 		Transform transform = chr.hpGage.transform.Find("Null_StatusInfo_Up");
@@ -27717,7 +27503,6 @@ public class SceneBattle : BaseScene
 		return chr.goodStat.Count > 0 || chr.badStat.Count > 0 || gameObject.activeSelf || this._debugInfo;
 	}
 
-	// Token: 0x06000E44 RID: 3652 RVA: 0x000A7790 File Offset: 0x000A5990
 	private void HpGageStat(SceneBattle_InfoBuff inf, Transform obj, bool isGood)
 	{
 		string text = this.GetBuffName(inf.Type);
@@ -27961,7 +27746,6 @@ public class SceneBattle : BaseScene
 		obj.GetComponent<SimpleAnimation>().ExPlayAnimation(isGood ? SimpleAnimation.ExPguiStatus.LOOP : SimpleAnimation.ExPguiStatus.LOOP_SUB, null);
 	}
 
-	// Token: 0x06000E45 RID: 3653 RVA: 0x000A7EC8 File Offset: 0x000A60C8
 	private void HpGageStatOff(SceneBattle_Chara chr)
 	{
 		if (chr.goodStat.Count > 0 && chr.goodStatTim >= 0f)
@@ -27983,7 +27767,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E46 RID: 3654 RVA: 0x000A7FD4 File Offset: 0x000A61D4
 	private string GetDmgName(GameObject gage)
 	{
 		string text = gage.name + "_";
@@ -28010,7 +27793,6 @@ public class SceneBattle : BaseScene
 		return text + num.ToString();
 	}
 
-	// Token: 0x06000E47 RID: 3655 RVA: 0x000A8090 File Offset: 0x000A6290
 	private void SetDamage(SceneBattle_Chara chr, int dmg, bool arts, CharaDef.AttributeMask atk, CharaDef.AttributeMask tag, int total, bool chain, int per, bool brk, float dup)
 	{
 		if (SceneBattle.trainingBattle && chr is SceneBattle_Enemy)
@@ -28143,7 +27925,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E48 RID: 3656 RVA: 0x000A85B4 File Offset: 0x000A67B4
 	private void SetTrainingScore(bool ini)
 	{
 		int num = 1;
@@ -28178,7 +27959,6 @@ public class SceneBattle : BaseScene
 		this._trainingScoreNR = flag;
 	}
 
-	// Token: 0x06000E49 RID: 3657 RVA: 0x000A8690 File Offset: 0x000A6890
 	private void SetTrainingScore(HorizontalLayoutGroup tmp, int typ, bool nr, bool ini)
 	{
 		int num = 1;
@@ -28212,7 +27992,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E4A RID: 3658 RVA: 0x000A8768 File Offset: 0x000A6968
 	private void SetHeal(SceneBattle_Chara chr, int heal, bool eff = false)
 	{
 		chr.helHp = ((heal > 0) ? heal.ToString() : "MISS");
@@ -28272,7 +28051,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E4B RID: 3659 RVA: 0x000A8978 File Offset: 0x000A6B78
 	private void DispWaitAction(Transform tmp)
 	{
 		if (this._noCaptain || SceneBattle.pvpTraining != 0)
@@ -28311,7 +28089,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E4C RID: 3660 RVA: 0x000A8A9C File Offset: 0x000A6C9C
 	private void DispWaitAction(SceneBattle_Friends ply)
 	{
 		int num = -1;
@@ -28322,7 +28099,6 @@ public class SceneBattle : BaseScene
 		this.DispWaitAction(this._guiData.TouchWait[ply.number - 1], ply.isWaitAct, num, this.IsStun(ply, false) || this.IsSleep(ply, false) || this.IsIce(ply, false) || this.IsImpatience(ply, false));
 	}
 
-	// Token: 0x06000E4D RID: 3661 RVA: 0x000A8B20 File Offset: 0x000A6D20
 	private void DispWaitAction(Transform tmp, bool b, int n, bool dis)
 	{
 		tmp.Find("BaseImage").gameObject.SetActive(n != 0);
@@ -28333,7 +28109,6 @@ public class SceneBattle : BaseScene
 		tmp.Find("Mark_Lock_StaySkill").gameObject.SetActive(dis);
 	}
 
-	// Token: 0x06000E4E RID: 3662 RVA: 0x000A8BF4 File Offset: 0x000A6DF4
 	private SceneBattle_CardInfo GetCard(CharaStaticBase baseData)
 	{
 		SceneBattle_CardInfo sceneBattle_CardInfo;
@@ -28393,7 +28168,6 @@ public class SceneBattle : BaseScene
 		return sceneBattle_CardInfo;
 	}
 
-	// Token: 0x06000E4F RID: 3663 RVA: 0x000A8E30 File Offset: 0x000A7030
 	private void DispCardInfo()
 	{
 		string text = "";
@@ -28402,7 +28176,6 @@ public class SceneBattle : BaseScene
 		this._guiData.CardInfoV.text = text2;
 	}
 
-	// Token: 0x06000E50 RID: 3664 RVA: 0x000A8E6C File Offset: 0x000A706C
 	private void SetPlayerTarget(int idx)
 	{
 		if (SceneBattle.pvpBattle || SceneBattle.friendsBattle)
@@ -28444,7 +28217,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E51 RID: 3665 RVA: 0x000A9028 File Offset: 0x000A7228
 	private void SetEnemyTarget()
 	{
 		Dictionary<int, int> dictionary = new Dictionary<int, int>();
@@ -28485,19 +28257,16 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E52 RID: 3666 RVA: 0x000A9170 File Offset: 0x000A7370
 	private void SetTimer(float tim)
 	{
 		this._timer = tim;
 	}
 
-	// Token: 0x06000E53 RID: 3667 RVA: 0x000A9179 File Offset: 0x000A7379
 	private bool IsTimeOut()
 	{
 		return this._timer <= 0f;
 	}
 
-	// Token: 0x06000E54 RID: 3668 RVA: 0x000A918C File Offset: 0x000A738C
 	public override void OnStopControl()
 	{
 		this._tutorialPanel.SetActive(false);
@@ -28514,14 +28283,12 @@ public class SceneBattle : BaseScene
 		this.SetCamera();
 	}
 
-	// Token: 0x06000E55 RID: 3669 RVA: 0x000A9231 File Offset: 0x000A7431
 	public override void OnStopControlFadeWait()
 	{
 		this.HugeModelDisp();
 		this.SetCamera();
 	}
 
-	// Token: 0x06000E56 RID: 3670 RVA: 0x000A9240 File Offset: 0x000A7440
 	public override void OnDisableScene()
 	{
 		this._authPlayer.DestroyProcessing();
@@ -28834,7 +28601,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E57 RID: 3671 RVA: 0x000AA318 File Offset: 0x000A8518
 	public override bool OnDisableSceneWait()
 	{
 		bool flag = !DataManager.IsServerRequesting();
@@ -28861,7 +28627,6 @@ public class SceneBattle : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06000E58 RID: 3672 RVA: 0x000AA42C File Offset: 0x000A862C
 	public override void OnDestroyScene()
 	{
 		Object.Destroy(this._authPlayer.gameObject);
@@ -28995,13 +28760,11 @@ public class SceneBattle : BaseScene
 		this._debugPanel = null;
 	}
 
-	// Token: 0x06000E59 RID: 3673 RVA: 0x000AA9F4 File Offset: 0x000A8BF4
 	private bool IsConditionMask(bool invert, long targetMask, long conditionMask)
 	{
 		return ((targetMask & conditionMask) != 0L) ^ invert;
 	}
 
-	// Token: 0x06000E5A RID: 3674 RVA: 0x000AAA00 File Offset: 0x000A8C00
 	private void ResetSkillCount()
 	{
 		foreach (SceneBattle_Chara sceneBattle_Chara in new List<SceneBattle_Chara>(this._playerList))
@@ -29013,7 +28776,6 @@ public class SceneBattle : BaseScene
 		}
 	}
 
-	// Token: 0x06000E5C RID: 3676 RVA: 0x000AAAB0 File Offset: 0x000A8CB0
 	// Note: this type is marked as 'beforefieldinit'.
 	static SceneBattle()
 	{
@@ -29209,7 +28971,6 @@ public class SceneBattle : BaseScene
 		SceneBattle.giveupIcon = 39;
 	}
 
-	// Token: 0x06000E68 RID: 3688 RVA: 0x000ABBCC File Offset: 0x000A9DCC
 	[CompilerGenerated]
 	internal static int <GetBuffIcon>g__HealthMask2Icon|449_1(CharaDef.HealthMask msk)
 	{
@@ -29281,421 +29042,282 @@ public class SceneBattle : BaseScene
 		return num;
 	}
 
-	// Token: 0x04000B48 RID: 2888
 	private IEnumerator _seLoad;
 
-	// Token: 0x04000B49 RID: 2889
 	private GameObject _frontPanel;
 
-	// Token: 0x04000B4A RID: 2890
 	private GameObject _backPanel;
 
-	// Token: 0x04000B4B RID: 2891
 	private Transform _original;
 
-	// Token: 0x04000B4C RID: 2892
 	private List<GameObject> _charaCardList;
 
-	// Token: 0x04000B4D RID: 2893
 	private List<GameObject> _selectCardList;
 
-	// Token: 0x04000B4E RID: 2894
 	private List<GameObject> _actionCardList;
 
-	// Token: 0x04000B4F RID: 2895
 	private List<Transform> _selectChainList;
 
-	// Token: 0x04000B50 RID: 2896
 	private List<Transform> _actionChainList;
 
-	// Token: 0x04000B51 RID: 2897
 	private List<GameObject> _infOrderCardList;
 
-	// Token: 0x04000B52 RID: 2898
 	private GameObject _hpGage;
 
-	// Token: 0x04000B53 RID: 2899
 	private GameObject _hpGageBoss;
 
-	// Token: 0x04000B54 RID: 2900
 	private GameObject _hpGagePvp;
 
-	// Token: 0x04000B55 RID: 2901
 	private GameObject _statInfo;
 
-	// Token: 0x04000B56 RID: 2902
 	private GameObject _statIcon;
 
-	// Token: 0x04000B57 RID: 2903
 	private GameObject _numDamageNorm;
 
-	// Token: 0x04000B58 RID: 2904
 	private GameObject _numDamageBrk;
 
-	// Token: 0x04000B59 RID: 2905
 	private GameObject _numDamagePlus;
 
-	// Token: 0x04000B5A RID: 2906
 	private GameObject _numDamageMinus;
 
-	// Token: 0x04000B5B RID: 2907
 	private GameObject _numDamagePer;
 
-	// Token: 0x04000B5C RID: 2908
 	private GameObject _numDamageArts;
 
-	// Token: 0x04000B5D RID: 2909
 	private GameObject _numDamageArtsP;
 
-	// Token: 0x04000B5E RID: 2910
 	private GameObject _numDamageArtsM;
 
-	// Token: 0x04000B5F RID: 2911
 	private GameObject _numDamageArtsB;
 
-	// Token: 0x04000B60 RID: 2912
 	private GameObject _numDamageTotal;
 
-	// Token: 0x04000B61 RID: 2913
 	private GameObject _numDamageTotalP;
 
-	// Token: 0x04000B62 RID: 2914
 	private GameObject _numDamageTotalM;
 
-	// Token: 0x04000B63 RID: 2915
 	private GameObject _numDamageTotalB;
 
-	// Token: 0x04000B64 RID: 2916
 	private GameObject _numHeal;
 
-	// Token: 0x04000B65 RID: 2917
 	private GameObject _PopUpInfo;
 
-	// Token: 0x04000B66 RID: 2918
 	private GameObject _infoPanel;
 
-	// Token: 0x04000B67 RID: 2919
 	private SceneBattle_InfoGUI _infoGui;
 
-	// Token: 0x04000B68 RID: 2920
 	private GameObject _menuPanel;
 
-	// Token: 0x04000B69 RID: 2921
 	private SceneBattle_MenuGUI _menuGui;
 
-	// Token: 0x04000B6A RID: 2922
 	private GameObject _continuePanel;
 
-	// Token: 0x04000B6B RID: 2923
 	private SceneBattle_ContinueGUI _continueGui;
 
-	// Token: 0x04000B6C RID: 2924
 	private SceneBattle_GUI _guiData;
 
-	// Token: 0x04000B6D RID: 2925
 	private GameObject _backDeckAll;
 
-	// Token: 0x04000B6E RID: 2926
 	private List<GameObject> _backCharaList;
 
-	// Token: 0x04000B6F RID: 2927
 	private List<GameObject> _backBlankList;
 
-	// Token: 0x04000B70 RID: 2928
 	public List<AEImage> backEffArtsOk;
 
-	// Token: 0x04000B71 RID: 2929
 	public List<RawImage> backBg;
 
-	// Token: 0x04000B72 RID: 2930
 	public static bool pvpBattle = false;
 
-	// Token: 0x04000B73 RID: 2931
 	public static int pvpTraining = 0;
 
-	// Token: 0x04000B74 RID: 2932
 	public static bool friendsBattle = false;
 
-	// Token: 0x04000B75 RID: 2933
 	public static bool friendWild = false;
 
-	// Token: 0x04000B76 RID: 2934
 	public static bool trainingBattle = false;
 
-	// Token: 0x04000B77 RID: 2935
 	public static bool raidBattle = false;
 
-	// Token: 0x04000B78 RID: 2936
 	public static bool normalBattle = false;
 
-	// Token: 0x04000B79 RID: 2937
 	public static string victoryBgmName = "";
 
-	// Token: 0x04000B7A RID: 2938
 	private bool _vsStupid;
 
-	// Token: 0x04000B7B RID: 2939
 	private SceneManager.SceneName _requestNextScene;
 
-	// Token: 0x04000B7C RID: 2940
 	private bool _noCaptain;
 
-	// Token: 0x04000B7D RID: 2941
 	private bool _noDhole;
 
-	// Token: 0x04000B7E RID: 2942
 	private int _plyPlasm;
 
-	// Token: 0x04000B7F RID: 2943
 	private int _vssPlasm;
 
-	// Token: 0x04000B80 RID: 2944
 	private SceneBattleResultArgs _resultArgs;
 
-	// Token: 0x04000B81 RID: 2945
 	private GameObject _result;
 
-	// Token: 0x04000B82 RID: 2946
 	private CharaModelHandle _resultFriends;
 
-	// Token: 0x04000B83 RID: 2947
 	private FieldCameraScaler _resultCamera;
 
-	// Token: 0x04000B84 RID: 2948
 	public static RenderTexture resultRT = null;
 
-	// Token: 0x04000B85 RID: 2949
 	private int _maxChain;
 
-	// Token: 0x04000B86 RID: 2950
 	private int _maxChainBeat;
 
-	// Token: 0x04000B87 RID: 2951
 	private int _maxChainAction;
 
-	// Token: 0x04000B88 RID: 2952
 	private int _maxChainTry;
 
-	// Token: 0x04000B89 RID: 2953
 	private int _chainExec;
 
-	// Token: 0x04000B8A RID: 2954
 	private List<CharaDef.ActionBuffType> _statusErrorList;
 
-	// Token: 0x04000B8B RID: 2955
 	private int _okawari;
 
-	// Token: 0x04000B8C RID: 2956
 	private int _artsCount;
 
-	// Token: 0x04000B8D RID: 2957
 	private int _continueCount;
 
-	// Token: 0x04000B8E RID: 2958
 	private int _maxDmg;
 
-	// Token: 0x04000B8F RID: 2959
 	private int _kemoStatus;
 
-	// Token: 0x04000B90 RID: 2960
 	private int _trainingRevive;
 
-	// Token: 0x04000B91 RID: 2961
 	private long _trainingScore;
 
-	// Token: 0x04000B92 RID: 2962
 	private bool _trainingScoreNR;
 
-	// Token: 0x04000B93 RID: 2963
 	private int _trainingMission;
 
-	// Token: 0x04000B94 RID: 2964
 	private int _trainingMissionNum;
 
-	// Token: 0x04000B95 RID: 2965
 	private List<int> _trainingKillMobEnemiesList;
 
-	// Token: 0x04000B96 RID: 2966
 	private List<TrainingStaticData.DayOfWeekData.MissionBonus> _trainingMissionList;
 
-	// Token: 0x04000B97 RID: 2967
 	private int _trainingMissionStep;
 
-	// Token: 0x04000B98 RID: 2968
 	private long _pvpTrainingScorePlayer;
 
-	// Token: 0x04000B99 RID: 2969
 	private long _pvpTrainingScoreVersus;
 
-	// Token: 0x04000B9A RID: 2970
 	private bool _tacticsPlayer;
 
-	// Token: 0x04000B9B RID: 2971
 	private bool _tacticsVersus;
 
-	// Token: 0x04000B9C RID: 2972
 	private int _giveupPlayer;
 
-	// Token: 0x04000B9D RID: 2973
 	private int _giveupVersus;
 
-	// Token: 0x04000B9E RID: 2974
 	private int _tacticsStep;
 
-	// Token: 0x04000B9F RID: 2975
 	private List<KeyValuePair<SceneBattle_Chara, string>> _tacticsEffList;
 
-	// Token: 0x04000BA0 RID: 2976
 	private int _ticklingPlayer;
 
-	// Token: 0x04000BA1 RID: 2977
 	private int _ticklingVersus;
 
-	// Token: 0x04000BA2 RID: 2978
 	private int _plyTickleSuccessCount;
 
-	// Token: 0x04000BA3 RID: 2979
 	private GameObject _field;
 
-	// Token: 0x04000BA4 RID: 2980
 	private string _stageName;
 
-	// Token: 0x04000BA5 RID: 2981
 	private StagePresetCtrl _stage;
 
-	// Token: 0x04000BA6 RID: 2982
 	private FieldCameraScaler _camera;
 
-	// Token: 0x04000BA7 RID: 2983
 	private List<FieldCameraScaler> _charaCameraList;
 
-	// Token: 0x04000BA8 RID: 2984
 	private List<Camera> _bgCameraList;
 
-	// Token: 0x04000BA9 RID: 2985
 	private List<RenderTexture> _bgCameraRTList;
 
-	// Token: 0x04000BAA RID: 2986
 	private Transform _effect;
 
-	// Token: 0x04000BAB RID: 2987
 	private AuthPlayer _authPlayer;
 
-	// Token: 0x04000BAC RID: 2988
 	private DateTime _authLoading;
 
-	// Token: 0x04000BAD RID: 2989
 	private List<string> _pvpAuthNameList;
 
-	// Token: 0x04000BAE RID: 2990
 	private List<GameObject> _pvpAuthObjList;
 
-	// Token: 0x04000BAF RID: 2991
 	private SimpleAnimation _pvpAuthAnim;
 
-	// Token: 0x04000BB0 RID: 2992
 	private Transform _pvpAuthCamPos;
 
-	// Token: 0x04000BB1 RID: 2993
 	private Transform _pvpAuthCamItr;
 
-	// Token: 0x04000BB2 RID: 2994
 	private Transform _pvpAuthCamFov;
 
-	// Token: 0x04000BB3 RID: 2995
 	private Transform _pvpAuthCamRol;
 
-	// Token: 0x04000BB4 RID: 2996
 	private Dictionary<int, Transform> _pvpAuthPos;
 
-	// Token: 0x04000BB5 RID: 2997
 	private Dictionary<int, CharaModelHandle> _pvpAuthChr;
 
-	// Token: 0x04000BB6 RID: 2998
 	private Dictionary<int, CharaModelHandle> _pvpAuthLcy;
 
-	// Token: 0x04000BB7 RID: 2999
 	private int _pvpAuthFlg;
 
-	// Token: 0x04000BB8 RID: 3000
 	private SimpleAnimation _emyAuthAnim;
 
-	// Token: 0x04000BB9 RID: 3001
 	private Transform _emyAuthCamPos;
 
-	// Token: 0x04000BBA RID: 3002
 	private Transform _emyAuthCamItr;
 
-	// Token: 0x04000BBB RID: 3003
 	private Transform _emyAuthCamFov;
 
-	// Token: 0x04000BBC RID: 3004
 	private Transform _emyAuthCamRol;
 
-	// Token: 0x04000BBD RID: 3005
 	private DateTime _battleStartTime;
 
-	// Token: 0x04000BBE RID: 3006
 	private List<string> _bgmNameList;
 
-	// Token: 0x04000BBF RID: 3007
 	private List<SceneBattle_CombiVoice> _combiVoiceList;
 
-	// Token: 0x04000BC0 RID: 3008
 	private string _selVoice;
 
-	// Token: 0x04000BC1 RID: 3009
 	private List<int> _bannedCharaList;
 
-	// Token: 0x04000BC2 RID: 3010
 	private List<int> _bannedCharaIdxList;
 
-	// Token: 0x04000BC3 RID: 3011
 	private List<SceneBattle_Friends> _playerList;
 
-	// Token: 0x04000BC4 RID: 3012
 	private List<SceneBattle_Friends> _tfBeforeList;
 
-	// Token: 0x04000BC5 RID: 3013
 	private List<SceneBattle_Enemy> _enemyList;
 
-	// Token: 0x04000BC6 RID: 3014
 	private List<SceneBattle_Enemy> _emyWaveList;
 
-	// Token: 0x04000BC7 RID: 3015
 	private List<SceneBattle_Friends> _versusList;
 
-	// Token: 0x04000BC8 RID: 3016
 	private List<SceneBattle_Chara> _bleedChrList;
 
-	// Token: 0x04000BC9 RID: 3017
 	private List<SceneBattle_Chara> _burnedChrList;
 
-	// Token: 0x04000BCA RID: 3018
 	private CharaStaticBase _beforeStaticBase;
 
-	// Token: 0x04000BCB RID: 3019
 	private SceneBattle_Enemy _dispHuge;
 
-	// Token: 0x04000BCC RID: 3020
 	private EffectData _hugeEffR;
 
-	// Token: 0x04000BCD RID: 3021
 	private EffectData _hugeEffL;
 
-	// Token: 0x04000BCE RID: 3022
 	private EffectData _playingAttackEffect;
 
-	// Token: 0x04000BCF RID: 3023
 	private List<CharaBuffParamAbility> _abilityBuffList;
 
-	// Token: 0x04000BD0 RID: 3024
 	private CharaDef.AbilityTraits _traitsTerrain;
 
-	// Token: 0x04000BD1 RID: 3025
 	private CharaDef.AbilityTraits2 _traitsTimezone;
 
-	// Token: 0x04000BD2 RID: 3026
 	public static readonly CharaDef.AttributeMask[,] attrMatch = new CharaDef.AttributeMask[,]
 	{
 		{
@@ -29730,160 +29352,108 @@ public class SceneBattle : BaseScene
 		}
 	};
 
-	// Token: 0x04000BD3 RID: 3027
 	private BattleParam _battleParam;
 
-	// Token: 0x04000BD4 RID: 3028
 	private static int addActionMax;
 
-	// Token: 0x04000BD5 RID: 3029
 	private static int addActionVersusMax;
 
-	// Token: 0x04000BD6 RID: 3030
 	private static readonly int actionMax = 300;
 
-	// Token: 0x04000BD7 RID: 3031
 	private static readonly int addActionUse = 100;
 
-	// Token: 0x04000BD8 RID: 3032
 	private static readonly int hateBase = 100;
 
-	// Token: 0x04000BD9 RID: 3033
 	private static readonly int hateWait = 30;
 
-	// Token: 0x04000BDA RID: 3034
 	private static readonly int resistSumNumMax = 4;
 
-	// Token: 0x04000BDB RID: 3035
 	private List<string> _resistDownReNameList;
 
-	// Token: 0x04000BDC RID: 3036
 	private List<string> _resistUpReNameList;
 
-	// Token: 0x04000BDD RID: 3037
 	private static int resistDownReNameTotal;
 
-	// Token: 0x04000BDE RID: 3038
 	private static int resistUpReNameTotal;
 
-	// Token: 0x04000BDF RID: 3039
 	private SceneBattle.CameraType _cameraType;
 
-	// Token: 0x04000BE0 RID: 3040
 	private SceneBattle.CameraType _reqCamera;
 
-	// Token: 0x04000BE1 RID: 3041
 	private CharaDef.ActionCameraType _skillCamera;
 
-	// Token: 0x04000BE2 RID: 3042
 	private List<SceneBattle_Chara> _skillCharaList;
 
-	// Token: 0x04000BE3 RID: 3043
 	private Vector3 _cameraPosBase;
 
-	// Token: 0x04000BE4 RID: 3044
 	private Vector3 _cameraPosTarget;
 
-	// Token: 0x04000BE5 RID: 3045
 	private Vector3 _cameraPosNow;
 
-	// Token: 0x04000BE6 RID: 3046
 	private Vector3 _cameraLokBase;
 
-	// Token: 0x04000BE7 RID: 3047
 	private Vector3 _cameraLokTarget;
 
-	// Token: 0x04000BE8 RID: 3048
 	private Vector3 _cameraLokNow;
 
-	// Token: 0x04000BE9 RID: 3049
 	private float _cameraFovBase;
 
-	// Token: 0x04000BEA RID: 3050
 	private float _cameraFovTarget;
 
-	// Token: 0x04000BEB RID: 3051
 	private float _cameraFovNow;
 
-	// Token: 0x04000BEC RID: 3052
 	private float _cameraRatio;
 
-	// Token: 0x04000BED RID: 3053
 	private float _cameraSpeed;
 
-	// Token: 0x04000BEE RID: 3054
 	private float _cameraTwist;
 
-	// Token: 0x04000BEF RID: 3055
 	private int _cameraBattle;
 
-	// Token: 0x04000BF0 RID: 3056
 	private float _cameraBattleAngle;
 
-	// Token: 0x04000BF1 RID: 3057
 	private float _cameraBattleSpeed;
 
-	// Token: 0x04000BF2 RID: 3058
 	private Vector3 _cameraBattlePos;
 
-	// Token: 0x04000BF3 RID: 3059
 	private float _cameraBattleFov;
 
-	// Token: 0x04000BF4 RID: 3060
 	private Vector3 _cameraBattleSkillPos;
 
-	// Token: 0x04000BF5 RID: 3061
 	private Vector3 _cameraBattleSkillLok;
 
-	// Token: 0x04000BF6 RID: 3062
 	private float _cameraBattleSkillFov;
 
-	// Token: 0x04000BF7 RID: 3063
 	private Vector3 _cameraBattleDeadPos;
 
-	// Token: 0x04000BF8 RID: 3064
 	private Vector3 _cameraBattleDeadLok;
 
-	// Token: 0x04000BF9 RID: 3065
 	private float _cameraBattleDeadFov;
 
-	// Token: 0x04000BFA RID: 3066
 	private int _cameraQuakeNum;
 
-	// Token: 0x04000BFB RID: 3067
 	private float _cameraQuakeTim;
 
-	// Token: 0x04000BFC RID: 3068
 	private float _cameraQuakePwr;
 
-	// Token: 0x04000BFD RID: 3069
 	private float _cameraQuakeAcl;
 
-	// Token: 0x04000BFE RID: 3070
 	private float _cameraQuakeY;
 
-	// Token: 0x04000BFF RID: 3071
 	private static readonly int numberFriends = 5;
 
-	// Token: 0x04000C00 RID: 3072
 	private static readonly float distanceFriendsEnemy = 6f;
 
-	// Token: 0x04000C01 RID: 3073
 	private static readonly float widthAlign = 8f;
 
-	// Token: 0x04000C02 RID: 3074
 	private static readonly float playerBasePos = -SceneBattle.distanceFriendsEnemy * 0.5f;
 
-	// Token: 0x04000C03 RID: 3075
 	private static readonly float playerWaitPos = -1.5f;
 
-	// Token: 0x04000C04 RID: 3076
 	private static readonly float pvpDeathPos = -3f;
 
-	// Token: 0x04000C05 RID: 3077
 	private static readonly float enemyBasePos = SceneBattle.distanceFriendsEnemy * 0.5f;
 
-	// Token: 0x04000C06 RID: 3078
 	private static readonly Vector3[] damageDispPos = new Vector3[]
 	{
 		new Vector3(0f, 0f, 0f),
@@ -29893,894 +29463,556 @@ public class SceneBattle : BaseScene
 		new Vector3(-50f, -20f, 0f)
 	};
 
-	// Token: 0x04000C07 RID: 3079
 	private static readonly Vector3[] perDmgDispPos = new Vector3[]
 	{
 		new Vector3(0f, -45f, 0f),
 		new Vector3(0f, -195f, 0f)
 	};
 
-	// Token: 0x04000C08 RID: 3080
 	private static readonly float cameraFieldOfView = 30f;
 
-	// Token: 0x04000C09 RID: 3081
 	private static readonly float commandFieldOfView = 40f;
 
-	// Token: 0x04000C0A RID: 3082
 	private static readonly float battleFieldOfView = 30f;
 
-	// Token: 0x04000C0B RID: 3083
 	private static readonly float skillFieldOfView = 50f;
 
-	// Token: 0x04000C0C RID: 3084
 	private static readonly Vector3 commandBaseCameraPos = new Vector3(0f, 0.6f, -5f);
 
-	// Token: 0x04000C0D RID: 3085
 	private static readonly Vector3 commandBaseCameraLok = new Vector3(0f, 0f, 1.909f);
 
-	// Token: 0x04000C0E RID: 3086
 	private static readonly Vector3 commandFriendsCameraPos = new Vector3(0.1f, 1.6f, 1.34f);
 
-	// Token: 0x04000C0F RID: 3087
 	private static readonly Vector3 commandFriendsCameraRot = new Vector3(10.75f, -176.25f, 7.35f);
 
-	// Token: 0x04000C10 RID: 3088
 	private static readonly Vector3 tutorial4CameraPos = new Vector3(12f, 2f, -5f);
 
-	// Token: 0x04000C11 RID: 3089
 	private static readonly Vector3 tutorial4CameraLok = new Vector3(0f, 1.5f, 0f);
 
-	// Token: 0x04000C12 RID: 3090
 	private static readonly Vector3 battleBaseCameraPos = new Vector3(0f, 6f, -15f);
 
-	// Token: 0x04000C13 RID: 3091
 	private static readonly Vector3 battleBaseCameraLok = new Vector3(0f, 0.5f, 0f);
 
-	// Token: 0x04000C14 RID: 3092
 	private static readonly Vector3 battleBaseCameraLokNear = new Vector3(0f, 0.5f, 2.5f);
 
-	// Token: 0x04000C15 RID: 3093
 	private static readonly float battleBaseCameraPosZ = -11.75f;
 
-	// Token: 0x04000C16 RID: 3094
 	private static readonly float battleBaseCameraAng0Min = 60f;
 
-	// Token: 0x04000C17 RID: 3095
 	private static readonly float battleBaseCameraAng0Max = 120f;
 
-	// Token: 0x04000C18 RID: 3096
 	private static readonly float battleBaseCameraAng1 = 135f;
 
-	// Token: 0x04000C19 RID: 3097
 	private static readonly float battleBaseCameraAng2 = 45f;
 
-	// Token: 0x04000C1A RID: 3098
 	private static readonly float battleBaseCameraAng3Min = 270f;
 
-	// Token: 0x04000C1B RID: 3099
 	private static readonly float battleBaseCameraAng3Max = 90f;
 
-	// Token: 0x04000C1C RID: 3100
 	private static readonly float battleBaseCameraSpd0 = (SceneBattle.battleBaseCameraAng0Max - SceneBattle.battleBaseCameraAng0Min) / 10f;
 
-	// Token: 0x04000C1D RID: 3101
 	private static readonly float battleBaseCameraSpd1 = -6f;
 
-	// Token: 0x04000C1E RID: 3102
 	private static readonly float battleBaseCameraSpd2 = -SceneBattle.battleBaseCameraSpd1;
 
-	// Token: 0x04000C1F RID: 3103
 	private static readonly float battleBaseCameraSpd3 = (SceneBattle.battleBaseCameraAng3Max - SceneBattle.battleBaseCameraAng3Min) / 20f;
 
-	// Token: 0x04000C20 RID: 3104
 	private static readonly Vector3 overlookCameraPos = new Vector3(3.5f, 4.5f, -5.5f);
 
-	// Token: 0x04000C21 RID: 3105
 	private static readonly Vector3 gameStartCameraPos0 = new Vector3(-15f, 2.5f, 5f);
 
-	// Token: 0x04000C22 RID: 3106
 	private static readonly Vector3 gameStartCameraPos1 = new Vector3(-3f, 2.5f, -11f);
 
-	// Token: 0x04000C23 RID: 3107
 	private static readonly Vector3 gameStartCameraLok0 = new Vector3(0f, 0.5f, -12f);
 
-	// Token: 0x04000C24 RID: 3108
 	private static readonly Vector3 gameStartCameraLok1 = new Vector3(2f, 0.5f, 5f);
 
-	// Token: 0x04000C25 RID: 3109
 	private static readonly Vector3 pvpTrainingCameraPos = new Vector3(12f, 2.5f, 0f);
 
-	// Token: 0x04000C26 RID: 3110
 	private static readonly Vector3 pvpTrainingCameraLok = new Vector3(-8f, 0.5f, 0f);
 
-	// Token: 0x04000C27 RID: 3111
 	private static readonly Vector3 deadBaseCameraPos0 = new Vector3(3.5f, 4.5f, -5.5f);
 
-	// Token: 0x04000C28 RID: 3112
 	private static readonly Vector3 deadBaseCameraPos1 = new Vector3(0f, 4.5f, -5.5f);
 
-	// Token: 0x04000C29 RID: 3113
 	private static readonly Vector3 deadBaseCameraLok1 = new Vector3(0f, 0.5f, 5f);
 
-	// Token: 0x04000C2A RID: 3114
 	private static readonly Vector3 winBaseCameraPos = new Vector3(0f, 2.5f, 6.5f);
 
-	// Token: 0x04000C2B RID: 3115
 	private static readonly Vector3 winBaseCameraLok = new Vector3(0f, 0.5f, -5f);
 
-	// Token: 0x04000C2C RID: 3116
 	private static readonly Vector3 loseBaseCameraPos = new Vector3(5f, 4.5f, -15f);
 
-	// Token: 0x04000C2D RID: 3117
 	private static readonly Vector3 loseBaseCameraLok = new Vector3(0f, 0.5f, 0f);
 
-	// Token: 0x04000C2E RID: 3118
 	private static readonly float SPECIALY_ATTACK_DEFAULT_Y = 118f;
 
-	// Token: 0x04000C2F RID: 3119
 	private static readonly float SKILL_UI_TEXT_SIZE = 22f;
 
-	// Token: 0x04000C30 RID: 3120
 	private static readonly int SKILL_UI_DEFAULT_LINE_NUM = 3;
 
-	// Token: 0x04000C31 RID: 3121
 	private static readonly float KEMONO_MIRACLE_DEFAULT_Y = 190f;
 
-	// Token: 0x04000C32 RID: 3122
 	private static readonly float KEMONO_MIRACLE_UI_TEXT_SIZE = 24f;
 
-	// Token: 0x04000C33 RID: 3123
 	private static readonly int KEMONO_MIRACLE_UI_DEFAULT_LINE_NUM = 5;
 
-	// Token: 0x04000C34 RID: 3124
 	private SceneBattle.STEP _step;
 
-	// Token: 0x04000C35 RID: 3125
 	private SceneBattle.SUBSTEP _subStep;
 
-	// Token: 0x04000C36 RID: 3126
 	private int _stepCtr;
 
-	// Token: 0x04000C37 RID: 3127
 	private int _menuStep;
 
-	// Token: 0x04000C38 RID: 3128
 	private int _retireStep;
 
-	// Token: 0x04000C39 RID: 3129
 	private int _infoStep;
 
-	// Token: 0x04000C3A RID: 3130
 	private int _infoNo;
 
-	// Token: 0x04000C3B RID: 3131
 	private int _infoTyp;
 
-	// Token: 0x04000C3C RID: 3132
 	private List<SceneBattle_InfoSkill> _infoSkillList;
 
-	// Token: 0x04000C3D RID: 3133
 	private List<SceneBattle_InfoBuff> _infoBuffList;
 
-	// Token: 0x04000C3E RID: 3134
 	private int _continueStep;
 
-	// Token: 0x04000C3F RID: 3135
 	private float _timer;
 
-	// Token: 0x04000C40 RID: 3136
 	private int _numberWave;
 
-	// Token: 0x04000C41 RID: 3137
 	private int _currentWave;
 
-	// Token: 0x04000C42 RID: 3138
 	private int _turnCount;
 
-	// Token: 0x04000C43 RID: 3139
 	private int _waveTurn;
 
-	// Token: 0x04000C44 RID: 3140
 	private int _addCount;
 
-	// Token: 0x04000C45 RID: 3141
 	private int _dspCount;
 
-	// Token: 0x04000C46 RID: 3142
 	private SceneBattle_Chara _playerTarget;
 
-	// Token: 0x04000C47 RID: 3143
 	private SceneBattle_Chara _lastTarget;
 
-	// Token: 0x04000C48 RID: 3144
 	private SceneBattle_Friends _enemyTarget;
 
-	// Token: 0x04000C49 RID: 3145
 	private int _wildPower;
 
-	// Token: 0x04000C4A RID: 3146
 	private int _wildPowerBF;
 
-	// Token: 0x04000C4B RID: 3147
 	private float _wildDisp;
 
-	// Token: 0x04000C4C RID: 3148
 	private int _addAction;
 
-	// Token: 0x04000C4D RID: 3149
 	private int _oldAddAction;
 
-	// Token: 0x04000C4E RID: 3150
 	private QuestStaticChapter.Category _questCategory;
 
-	// Token: 0x04000C4F RID: 3151
 	private int _autoOrder;
 
-	// Token: 0x04000C50 RID: 3152
 	private float _autoTimer;
 
-	// Token: 0x04000C51 RID: 3153
 	private int _autoInfo;
 
-	// Token: 0x04000C52 RID: 3154
 	private int _timeScale;
 
-	// Token: 0x04000C53 RID: 3155
 	private int _playerSkill;
 
-	// Token: 0x04000C54 RID: 3156
 	private int _playerSkillExec;
 
-	// Token: 0x04000C55 RID: 3157
 	private int _playerSkillMax;
 
-	// Token: 0x04000C56 RID: 3158
 	private int _playerSkillCount;
 
-	// Token: 0x04000C57 RID: 3159
 	private float _playerSkillPrm;
 
-	// Token: 0x04000C58 RID: 3160
 	private int _playerSkillNum;
 
-	// Token: 0x04000C59 RID: 3161
 	private int _playerSkillCard;
 
-	// Token: 0x04000C5A RID: 3162
 	private float _playerSkillAdd;
 
-	// Token: 0x04000C5B RID: 3163
 	private float _playerSkillAtk;
 
-	// Token: 0x04000C5C RID: 3164
 	private float _playerSkillDef;
 
-	// Token: 0x04000C5D RID: 3165
 	private int _playerSkillWait;
 
-	// Token: 0x04000C5E RID: 3166
 	private int _playerSkillTotalCount;
 
-	// Token: 0x04000C5F RID: 3167
 	private List<SceneBattle_PlayerSkillRecover> _playerSkillRecoverList;
 
-	// Token: 0x04000C60 RID: 3168
 	private int _rare;
 
-	// Token: 0x04000C61 RID: 3169
 	private int _boss;
 
-	// Token: 0x04000C62 RID: 3170
 	private int _bossCharaId;
 
-	// Token: 0x04000C63 RID: 3171
 	private CharaDef.EnemyMask _waveEnemy;
 
-	// Token: 0x04000C64 RID: 3172
 	private int _lastDamageFriends;
 
-	// Token: 0x04000C65 RID: 3173
 	private int _wildPowerVersus;
 
-	// Token: 0x04000C66 RID: 3174
 	private int _addActionVersus;
 
-	// Token: 0x04000C67 RID: 3175
 	private Dictionary<string, int> _damageNoDictionary;
 
-	// Token: 0x04000C68 RID: 3176
 	private float _deckPosY;
 
-	// Token: 0x04000C69 RID: 3177
 	private static readonly int numberAction = 3;
 
-	// Token: 0x04000C6A RID: 3178
 	private static readonly int numberAddAction = 2;
 
-	// Token: 0x04000C6B RID: 3179
 	private static readonly int[] wildPowerParam = new int[] { 10, 200, 300, int.MaxValue };
 
-	// Token: 0x04000C6C RID: 3180
 	private List<SceneBattle_CardInfo> _stackCardList;
 
-	// Token: 0x04000C6D RID: 3181
 	private List<SceneBattle_CardInfo> _disCardList;
 
-	// Token: 0x04000C6E RID: 3182
 	private List<SceneBattle_CardInfo> _tacCardList;
 
-	// Token: 0x04000C6F RID: 3183
 	private List<SceneBattle_CardInfo> _vssCardList;
 
-	// Token: 0x04000C70 RID: 3184
 	private List<SceneBattle_CardInfo> _vdsCardList;
 
-	// Token: 0x04000C71 RID: 3185
 	private List<SceneBattle_CardInfo> _vtcCardList;
 
-	// Token: 0x04000C72 RID: 3186
 	private List<SceneBattle_FriendsCommand> _plyCmdList;
 
-	// Token: 0x04000C73 RID: 3187
 	private int _plyCmdCtr;
 
-	// Token: 0x04000C74 RID: 3188
 	private List<SceneBattle_Action> _plyWaitList;
 
-	// Token: 0x04000C75 RID: 3189
 	private List<SceneBattle_FriendsCommand> _plyRmvList;
 
-	// Token: 0x04000C76 RID: 3190
 	private List<KeyValuePair<Texture2D, List<bool>>> _waitIconList;
 
-	// Token: 0x04000C77 RID: 3191
 	private float _waitDisp;
 
-	// Token: 0x04000C78 RID: 3192
 	private List<SceneBattle_Action> _plySchedulesList;
 
-	// Token: 0x04000C79 RID: 3193
 	private List<SceneBattle_Action> _scheduleActionDupList;
 
-	// Token: 0x04000C7A RID: 3194
 	private List<SceneBattle_EnemyCommand> _emyCmdList;
 
-	// Token: 0x04000C7B RID: 3195
 	private int _emyCmdCtr;
 
-	// Token: 0x04000C7C RID: 3196
 	private List<SceneBattle_Action> _enemySchedulesList;
 
-	// Token: 0x04000C7D RID: 3197
 	private List<SceneBattle_FriendsCommand> _vssCmdList;
 
-	// Token: 0x04000C7E RID: 3198
 	private int _vssCmdCtr;
 
-	// Token: 0x04000C7F RID: 3199
 	private List<SceneBattle_Action> _vssWaitList;
 
-	// Token: 0x04000C80 RID: 3200
 	private List<SceneBattle_FriendsCommand> _vssRmvList;
 
-	// Token: 0x04000C81 RID: 3201
 	private List<SceneBattle_Missile> _missileList;
 
-	// Token: 0x04000C82 RID: 3202
 	private float _selectCardTime;
 
-	// Token: 0x04000C83 RID: 3203
 	private float _actionCardTime;
 
-	// Token: 0x04000C84 RID: 3204
 	private Transform _currentTouch;
 
-	// Token: 0x04000C85 RID: 3205
 	private PguiButtonCtrl _currentBtn;
 
-	// Token: 0x04000C86 RID: 3206
 	private bool cancelCardBtn;
 
-	// Token: 0x04000C87 RID: 3207
 	private int _chainCount;
 
-	// Token: 0x04000C88 RID: 3208
 	private int _chainSumCount;
 
-	// Token: 0x04000C89 RID: 3209
 	private MasterSkillPackData _masterSkill;
 
-	// Token: 0x04000C8A RID: 3210
 	private List<DataManagerChara.BonusCharaData> _bonusCharaDataList;
 
-	// Token: 0x04000C8B RID: 3211
 	private Dictionary<int, List<string>> _effectListDictionary;
 
-	// Token: 0x04000C8C RID: 3212
 	private List<EffectData> _effectDataList;
 
-	// Token: 0x04000C8D RID: 3213
 	private List<EffectData> _effectPvpList;
 
-	// Token: 0x04000C8E RID: 3214
 	private List<SceneBattle_PopUpData> _popupDataList = new List<SceneBattle_PopUpData>();
 
-	// Token: 0x04000C8F RID: 3215
 	private DataManagerQuest.WaveTextInfoData.DispType _popupType;
 
-	// Token: 0x04000C90 RID: 3216
 	private float _popupTime;
 
-	// Token: 0x04000C91 RID: 3217
 	private List<DataManagerQuest.WaveTextInfoData> _waveTextInfoList;
 
-	// Token: 0x04000C92 RID: 3218
 	private HashSet<int> _abilityInfoKey;
 
-	// Token: 0x04000C93 RID: 3219
 	private static readonly int stageLayer = LayerMask.NameToLayer("FieldStage");
 
-	// Token: 0x04000C94 RID: 3220
 	private static readonly int playerLayer = LayerMask.NameToLayer("FieldPlayer");
 
-	// Token: 0x04000C95 RID: 3221
 	private static readonly int enemyLayer = LayerMask.NameToLayer("FieldEnemy");
 
-	// Token: 0x04000C96 RID: 3222
 	private static readonly int effectLayer = LayerMask.NameToLayer("FieldEffect");
 
-	// Token: 0x04000C97 RID: 3223
 	private static readonly int playerShadowLayer = LayerMask.NameToLayer("FieldPlayerShadow");
 
-	// Token: 0x04000C98 RID: 3224
 	private static readonly int enemyShadowLayer = LayerMask.NameToLayer("FieldEnemyShadow");
 
-	// Token: 0x04000C99 RID: 3225
 	private static readonly int camouflageLayer = LayerMask.NameToLayer("Camouflage");
 
-	// Token: 0x04000C9A RID: 3226
 	private static readonly int ignoreLayer = LayerMask.NameToLayer("Ignore Raycast");
 
-	// Token: 0x04000C9B RID: 3227
 	private static readonly int playerBloomLayer = LayerMask.NameToLayer("Bloom");
 
-	// Token: 0x04000C9C RID: 3228
 	private static readonly int enemyBloomLayer = LayerMask.NameToLayer("Bloom2");
 
-	// Token: 0x04000C9D RID: 3229
 	private static readonly List<string> pvpEffName = new List<string> { "Ef_info_pvp_launch", "Ef_info_pvp_japariman_blue", "Ef_info_pvp_japariman_green", "Ef_info_pvp_japariman_orange", "Ef_info_pvp_japariman_pink", "Ef_info_pvp_japariman_yellow" };
 
-	// Token: 0x04000C9E RID: 3230
 	private static readonly List<string> yabaEffName = new List<string> { "Ef_info_yaba_explosion", "Ef_info_yaba_explosion_20050", "Ef_info_yaba_explosion_20060" };
 
-	// Token: 0x04000C9F RID: 3231
 	private static readonly string trainingVoiceSheet = "cv_dojo";
 
-	// Token: 0x04000CA0 RID: 3232
 	private static readonly string[,] trainingVoiceList;
 
-	// Token: 0x04000CA1 RID: 3233
 	private SceneBattle_SceneBattleRestartArgs _battleRestartArgs;
 
-	// Token: 0x04000CA2 RID: 3234
 	private static readonly string battleRestartKey;
 
-	// Token: 0x04000CA3 RID: 3235
 	private SceneBattle.Tutorial _tutorial;
 
-	// Token: 0x04000CA4 RID: 3236
 	private SceneBattle.TutorialStep _tutorialStep;
 
-	// Token: 0x04000CA5 RID: 3237
 	private bool _tutorialMask;
 
-	// Token: 0x04000CA6 RID: 3238
 	private int _tutorialCard;
 
-	// Token: 0x04000CA7 RID: 3239
 	private int _tutorialArts;
 
-	// Token: 0x04000CA8 RID: 3240
 	private bool _tutorialSkill;
 
-	// Token: 0x04000CA9 RID: 3241
 	private bool _tutorialAdd;
 
-	// Token: 0x04000CAA RID: 3242
 	private List<CharaDef.OrderCardType> _tutorialOrderList;
 
-	// Token: 0x04000CAB RID: 3243
 	private GameObject _tutorialPanel;
 
-	// Token: 0x04000CAC RID: 3244
 	private GameObject _tutorialPanelImage;
 
-	// Token: 0x04000CAD RID: 3245
 	private GameObject _tutorialPanelTouch;
 
-	// Token: 0x04000CAE RID: 3246
 	private GameObject _tutorialPanelSkip;
 
-	// Token: 0x04000CAF RID: 3247
 	private static readonly Dictionary<SceneBattle.TutorialStep, List<string>> tutorialInfo;
 
-	// Token: 0x04000CB0 RID: 3248
 	private float _tutorialTime;
 
-	// Token: 0x04000CB1 RID: 3249
 	private int _tutorialSkip;
 
-	// Token: 0x04000CB2 RID: 3250
 	private GameObject _debugPanel;
 
-	// Token: 0x04000CB3 RID: 3251
 	private int _debugStep;
 
-	// Token: 0x04000CB4 RID: 3252
 	private IEnumerator _debugDataReload;
 
-	// Token: 0x04000CB5 RID: 3253
 	private bool _invinciblePlayer;
 
-	// Token: 0x04000CB6 RID: 3254
 	private bool _invincibleEnemy;
 
-	// Token: 0x04000CB7 RID: 3255
 	private bool _infinitePlayerSkill;
 
-	// Token: 0x04000CB8 RID: 3256
 	private bool _infiniteKp;
 
-	// Token: 0x04000CB9 RID: 3257
 	private bool _superSpeed;
 
-	// Token: 0x04000CBA RID: 3258
 	private bool _debugInfo;
 
-	// Token: 0x04000CBB RID: 3259
 	private bool _debugPopup;
 
-	// Token: 0x04000CBC RID: 3260
 	private SceneBattle_Chara _debugAbnormal;
 
-	// Token: 0x04000CBD RID: 3261
 	private bool _debugPvpInfo;
 
-	// Token: 0x04000CBE RID: 3262
 	private bool _debugPvpSame;
 
-	// Token: 0x04000CBF RID: 3263
 	private bool _debugAuthSkip;
 
-	// Token: 0x04000CC0 RID: 3264
 	private CharaDef.OrderCardType _debugOrder;
 
-	// Token: 0x04000CC1 RID: 3265
 	private int _errPlayer;
 
-	// Token: 0x04000CC2 RID: 3266
 	private int _errEnemy;
 
-	// Token: 0x04000CC3 RID: 3267
 	private int _errVersus;
 
-	// Token: 0x04000CC4 RID: 3268
 	private CameraClearFlags _canvasClrFlg;
 
-	// Token: 0x04000CC5 RID: 3269
 	private GameObject _mapBoxObject;
 
-	// Token: 0x04000CC6 RID: 3270
 	private static readonly List<SceneBattle_Recover> recoverList;
 
-	// Token: 0x04000CC7 RID: 3271
 	private static readonly int giveupIcon;
 
-	// Token: 0x02000883 RID: 2179
 	private enum CameraType
 	{
-		// Token: 0x04003953 RID: 14675
 		None,
-		// Token: 0x04003954 RID: 14676
 		ReStart,
-		// Token: 0x04003955 RID: 14677
 		GameStart,
-		// Token: 0x04003956 RID: 14678
 		Boss,
-		// Token: 0x04003957 RID: 14679
 		Command,
-		// Token: 0x04003958 RID: 14680
 		Battle,
-		// Token: 0x04003959 RID: 14681
 		Battle2,
-		// Token: 0x0400395A RID: 14682
 		Battle3,
-		// Token: 0x0400395B RID: 14683
 		Skill,
-		// Token: 0x0400395C RID: 14684
 		Wait,
-		// Token: 0x0400395D RID: 14685
 		Dead,
-		// Token: 0x0400395E RID: 14686
 		PlayerPoison,
-		// Token: 0x0400395F RID: 14687
 		EnemyPoison,
-		// Token: 0x04003960 RID: 14688
 		WaveClear,
-		// Token: 0x04003961 RID: 14689
 		GameClear,
-		// Token: 0x04003962 RID: 14690
 		Continue,
-		// Token: 0x04003963 RID: 14691
 		GameLose,
-		// Token: 0x04003964 RID: 14692
 		Tutorial4,
-		// Token: 0x04003965 RID: 14693
 		Training
 	}
 
-	// Token: 0x02000884 RID: 2180
 	private enum STEP
 	{
-		// Token: 0x04003967 RID: 14695
 		ReStart,
-		// Token: 0x04003968 RID: 14696
 		GameStart,
-		// Token: 0x04003969 RID: 14697
 		WaveStart,
-		// Token: 0x0400396A RID: 14698
 		CommandSelect,
-		// Token: 0x0400396B RID: 14699
 		PlayerTurn,
-		// Token: 0x0400396C RID: 14700
 		EnemyTurn,
-		// Token: 0x0400396D RID: 14701
 		VersusTurn,
-		// Token: 0x0400396E RID: 14702
 		WaveClear,
-		// Token: 0x0400396F RID: 14703
 		GameClear,
-		// Token: 0x04003970 RID: 14704
 		GameLose,
-		// Token: 0x04003971 RID: 14705
 		Retire
 	}
 
-	// Token: 0x02000885 RID: 2181
 	private enum SUBSTEP
 	{
-		// Token: 0x04003973 RID: 14707
 		Init,
-		// Token: 0x04003974 RID: 14708
 		TurnStart,
-		// Token: 0x04003975 RID: 14709
 		Distribute,
-		// Token: 0x04003976 RID: 14710
 		Prepare,
-		// Token: 0x04003977 RID: 14711
 		Select,
-		// Token: 0x04003978 RID: 14712
 		Confirm,
-		// Token: 0x04003979 RID: 14713
 		Skill,
-		// Token: 0x0400397A RID: 14714
 		SetUp,
-		// Token: 0x0400397B RID: 14715
 		Scheduled,
-		// Token: 0x0400397C RID: 14716
 		TopBuf,
-		// Token: 0x0400397D RID: 14717
 		Chain,
-		// Token: 0x0400397E RID: 14718
 		Arts,
-		// Token: 0x0400397F RID: 14719
 		Attack,
-		// Token: 0x04003980 RID: 14720
 		EndScheduled,
-		// Token: 0x04003981 RID: 14721
 		EndBuf,
-		// Token: 0x04003982 RID: 14722
 		Poison,
-		// Token: 0x04003983 RID: 14723
 		Bleed,
-		// Token: 0x04003984 RID: 14724
 		Burned,
-		// Token: 0x04003985 RID: 14725
 		TurnEnd,
-		// Token: 0x04003986 RID: 14726
 		Term
 	}
 
-	// Token: 0x02000886 RID: 2182
 	public enum CMDSTEP
 	{
-		// Token: 0x04003988 RID: 14728
 		None,
-		// Token: 0x04003989 RID: 14729
 		Init,
-		// Token: 0x0400398A RID: 14730
 		Advance,
-		// Token: 0x0400398B RID: 14731
 		Attack,
-		// Token: 0x0400398C RID: 14732
 		Reflect,
-		// Token: 0x0400398D RID: 14733
 		Retreat,
-		// Token: 0x0400398E RID: 14734
 		End
 	}
 
-	// Token: 0x02000887 RID: 2183
 	private enum Tutorial
 	{
-		// Token: 0x04003990 RID: 14736
 		NONE,
-		// Token: 0x04003991 RID: 14737
 		INIT,
-		// Token: 0x04003992 RID: 14738
 		INFO_PANEL,
-		// Token: 0x04003993 RID: 14739
 		INFO_MASK,
-		// Token: 0x04003994 RID: 14740
 		NEXT,
-		// Token: 0x04003995 RID: 14741
 		TERM
 	}
 
-	// Token: 0x02000888 RID: 2184
 	private enum TutorialStep
 	{
-		// Token: 0x04003997 RID: 14743
 		NONE,
-		// Token: 0x04003998 RID: 14744
 		START1,
-		// Token: 0x04003999 RID: 14745
 		INIT1,
-		// Token: 0x0400399A RID: 14746
 		INFO1_0_1,
-		// Token: 0x0400399B RID: 14747
 		INFO1_1_1,
-		// Token: 0x0400399C RID: 14748
 		INFO1_1_2,
-		// Token: 0x0400399D RID: 14749
 		INFO1_1_3,
-		// Token: 0x0400399E RID: 14750
 		ACTION1_2_1,
-		// Token: 0x0400399F RID: 14751
 		TRY1_2_2,
-		// Token: 0x040039A0 RID: 14752
 		BEAT1_2_3,
-		// Token: 0x040039A1 RID: 14753
 		BATTLE1_3_1,
-		// Token: 0x040039A2 RID: 14754
 		INFO1_3_1,
-		// Token: 0x040039A3 RID: 14755
 		BATTLE1_3_2,
-		// Token: 0x040039A4 RID: 14756
 		INFO1_3_2,
-		// Token: 0x040039A5 RID: 14757
 		BATTLE1_3_3,
-		// Token: 0x040039A6 RID: 14758
 		INFO1_3_3,
-		// Token: 0x040039A7 RID: 14759
 		BATTLE1_3_4,
-		// Token: 0x040039A8 RID: 14760
 		RESULT1_4_1,
-		// Token: 0x040039A9 RID: 14761
 		INFO1_0_2,
-		// Token: 0x040039AA RID: 14762
 		END1,
-		// Token: 0x040039AB RID: 14763
 		START2,
-		// Token: 0x040039AC RID: 14764
 		INIT2,
-		// Token: 0x040039AD RID: 14765
 		INFO2_1_1,
-		// Token: 0x040039AE RID: 14766
 		BEAT2_2_1,
-		// Token: 0x040039AF RID: 14767
 		BEAT2_2_2,
-		// Token: 0x040039B0 RID: 14768
 		BEAT2_2_3,
-		// Token: 0x040039B1 RID: 14769
 		BATTLE2_3_1,
-		// Token: 0x040039B2 RID: 14770
 		INFO2_4_1,
-		// Token: 0x040039B3 RID: 14771
 		ADD2_5_1,
-		// Token: 0x040039B4 RID: 14772
 		INFO2_6_1,
-		// Token: 0x040039B5 RID: 14773
 		ACTION2_7_1,
-		// Token: 0x040039B6 RID: 14774
 		ACTION2_7_2,
-		// Token: 0x040039B7 RID: 14775
 		ACTION2_7_3,
-		// Token: 0x040039B8 RID: 14776
 		ACTION2_7_4,
-		// Token: 0x040039B9 RID: 14777
 		BATTLE2_8_1,
-		// Token: 0x040039BA RID: 14778
 		RESULT2_9_1,
-		// Token: 0x040039BB RID: 14779
 		INFO2_0_1,
-		// Token: 0x040039BC RID: 14780
 		END2,
-		// Token: 0x040039BD RID: 14781
 		START3,
-		// Token: 0x040039BE RID: 14782
 		INIT3,
-		// Token: 0x040039BF RID: 14783
 		INFO3_1_1,
-		// Token: 0x040039C0 RID: 14784
 		INFO3_1_2,
-		// Token: 0x040039C1 RID: 14785
 		INFO3_1_3,
-		// Token: 0x040039C2 RID: 14786
 		INFO3_1_4,
-		// Token: 0x040039C3 RID: 14787
 		MASTER3_2_1,
-		// Token: 0x040039C4 RID: 14788
 		MASTER3_2_2,
-		// Token: 0x040039C5 RID: 14789
 		MASTER3_2_3,
-		// Token: 0x040039C6 RID: 14790
 		MASTER3_2_4,
-		// Token: 0x040039C7 RID: 14791
 		INFO3_3_1,
-		// Token: 0x040039C8 RID: 14792
 		INFO3_3_2,
-		// Token: 0x040039C9 RID: 14793
 		ACTION3_4_1,
-		// Token: 0x040039CA RID: 14794
 		ACTION3_4_2,
-		// Token: 0x040039CB RID: 14795
 		ACTION3_4_3,
-		// Token: 0x040039CC RID: 14796
 		BATTLE3_5_1,
-		// Token: 0x040039CD RID: 14797
 		INFO3_6_1,
-		// Token: 0x040039CE RID: 14798
 		INFO3_6_2,
-		// Token: 0x040039CF RID: 14799
 		INFO3_6_3,
-		// Token: 0x040039D0 RID: 14800
 		BEATARTS3_7_1,
-		// Token: 0x040039D1 RID: 14801
 		ACTION3_7_2,
-		// Token: 0x040039D2 RID: 14802
 		TRY3_7_3,
-		// Token: 0x040039D3 RID: 14803
 		BATTLE3_8_1,
-		// Token: 0x040039D4 RID: 14804
 		RESULT3_9_1,
-		// Token: 0x040039D5 RID: 14805
 		RESULT3_9_2,
-		// Token: 0x040039D6 RID: 14806
 		INFO3_0_1,
-		// Token: 0x040039D7 RID: 14807
 		INFO3_0_2,
-		// Token: 0x040039D8 RID: 14808
 		END3,
-		// Token: 0x040039D9 RID: 14809
 		START4,
-		// Token: 0x040039DA RID: 14810
 		INIT4,
-		// Token: 0x040039DB RID: 14811
 		INFO4_1_1,
-		// Token: 0x040039DC RID: 14812
 		ORDER4_2_1,
-		// Token: 0x040039DD RID: 14813
 		ORDER4_2_2,
-		// Token: 0x040039DE RID: 14814
 		ORDER4_2_3,
-		// Token: 0x040039DF RID: 14815
 		BATTLE4_3_1,
-		// Token: 0x040039E0 RID: 14816
 		INFO4_4_1,
-		// Token: 0x040039E1 RID: 14817
 		INFO4_0_1,
-		// Token: 0x040039E2 RID: 14818
 		END4
 	}
 }

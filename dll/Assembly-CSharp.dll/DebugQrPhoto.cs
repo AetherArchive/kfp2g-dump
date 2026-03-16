@@ -1,19 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using UnityEngine;
 
-// Token: 0x02000032 RID: 50
 public class DebugQrPhoto : MonoBehaviour
 {
-	// Token: 0x060000B8 RID: 184 RVA: 0x00006319 File Offset: 0x00004519
 	private void Start()
 	{
 	}
 
-	// Token: 0x060000B9 RID: 185 RVA: 0x0000631C File Offset: 0x0000451C
 	public void MakePhotoList()
 	{
 		this.photo = new List<KeyValuePair<int, bool>>();
@@ -30,7 +27,6 @@ public class DebugQrPhoto : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000BA RID: 186 RVA: 0x000063E4 File Offset: 0x000045E4
 	private void Update()
 	{
 		if (this.nam == null)
@@ -165,33 +161,23 @@ public class DebugQrPhoto : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000126 RID: 294
 	private static readonly string QrPath = "Assets/DesignBaseData/";
 
-	// Token: 0x04000127 RID: 295
 	private static readonly DateTime StandardDate = new DateTime(2019, 1, 1);
 
-	// Token: 0x04000128 RID: 296
 	private int step;
 
-	// Token: 0x04000129 RID: 297
 	private PguiTextCtrl nam;
 
-	// Token: 0x0400012A RID: 298
 	private PguiRawImageCtrl img;
 
-	// Token: 0x0400012B RID: 299
 	private Rect rect = Rect.zero;
 
-	// Token: 0x0400012C RID: 300
 	private ImageCapture capture;
 
-	// Token: 0x0400012D RID: 301
 	private QrCodeEncoder encoder;
 
-	// Token: 0x0400012E RID: 302
 	private List<KeyValuePair<int, bool>> photo;
 
-	// Token: 0x0400012F RID: 303
 	private string path;
 }

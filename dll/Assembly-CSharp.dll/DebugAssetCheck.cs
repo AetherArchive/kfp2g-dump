@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -8,10 +8,8 @@ using SGNFW.Mst;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x0200002B RID: 43
 public class DebugAssetCheck
 {
-	// Token: 0x06000080 RID: 128 RVA: 0x00004D88 File Offset: 0x00002F88
 	public void CreateGui(PguiButtonCtrl baseBtn)
 	{
 		GameObject gameObject = new GameObject();
@@ -63,12 +61,10 @@ public class DebugAssetCheck
 		}
 	}
 
-	// Token: 0x06000081 RID: 129 RVA: 0x0000531C File Offset: 0x0000351C
 	private void CloseAssetBundleCheck(PguiButtonCtrl btn)
 	{
 	}
 
-	// Token: 0x06000082 RID: 130 RVA: 0x00005320 File Offset: 0x00003520
 	public PguiButtonCtrl DuplicateButton(PguiButtonCtrl baseBtn, GameObject parentObj, string btnName, string btnText, Vector3 pos)
 	{
 		PguiButtonCtrl component = Object.Instantiate<GameObject>(baseBtn.gameObject, parentObj.transform).GetComponent<PguiButtonCtrl>();
@@ -81,7 +77,6 @@ public class DebugAssetCheck
 		return component;
 	}
 
-	// Token: 0x06000083 RID: 131 RVA: 0x000053A4 File Offset: 0x000035A4
 	public PguiTextCtrl DuplicateText(PguiTextCtrl baseText, GameObject parentObj, string textName, string textmsg, Vector3 pos, Vector3 scale)
 	{
 		PguiTextCtrl component = Object.Instantiate<GameObject>(baseText.gameObject, parentObj.transform).GetComponent<PguiTextCtrl>();
@@ -93,7 +88,6 @@ public class DebugAssetCheck
 		return component;
 	}
 
-	// Token: 0x06000084 RID: 132 RVA: 0x00005404 File Offset: 0x00003604
 	private void SwitchEpisode(PguiButtonCtrl btn, ScenarioDefine.EPISODE_TYPE episodeType)
 	{
 		if (this.NowCheking)
@@ -121,7 +115,6 @@ public class DebugAssetCheck
 		pguiTextCtrl.text += (this.epsodeTypeEnableMap[episodeType] ? "<color=#f00>ON</color>" : "<color=#000>OFF</color>");
 	}
 
-	// Token: 0x06000085 RID: 133 RVA: 0x000054C0 File Offset: 0x000036C0
 	private void ExecuteCheckMasterQuestOne(PguiButtonCtrl btn)
 	{
 		if (this.NowCheking)
@@ -132,7 +125,6 @@ public class DebugAssetCheck
 		Singleton<SceneManager>.Instance.StartCoroutine(this.ScenarioAssetCheck());
 	}
 
-	// Token: 0x06000086 RID: 134 RVA: 0x000054E3 File Offset: 0x000036E3
 	private void ExecuteCheckAssetBundleList(PguiButtonCtrl btn)
 	{
 		if (this.NowCheking)
@@ -143,7 +135,6 @@ public class DebugAssetCheck
 		Singleton<SceneManager>.Instance.StartCoroutine(this.ScenarioAssetCheck());
 	}
 
-	// Token: 0x06000087 RID: 135 RVA: 0x00005506 File Offset: 0x00003706
 	private void ExecuteCheckLocalFile(PguiButtonCtrl btn)
 	{
 		if (this.NowCheking)
@@ -154,7 +145,6 @@ public class DebugAssetCheck
 		Singleton<SceneManager>.Instance.StartCoroutine(this.ScenarioAssetCheck());
 	}
 
-	// Token: 0x06000088 RID: 136 RVA: 0x00005529 File Offset: 0x00003729
 	private void ExecuteCharaModelAssetCheck(PguiButtonCtrl btn)
 	{
 		if (this.NowCheking)
@@ -164,7 +154,6 @@ public class DebugAssetCheck
 		Singleton<SceneManager>.Instance.StartCoroutine(this.ModelCheck(DebugAssetCheck.ModelCheckTarget.AssetListChara));
 	}
 
-	// Token: 0x06000089 RID: 137 RVA: 0x00005546 File Offset: 0x00003746
 	private void ExecuteEnemyAssetCheck(PguiButtonCtrl btn)
 	{
 		if (this.NowCheking)
@@ -174,7 +163,6 @@ public class DebugAssetCheck
 		Singleton<SceneManager>.Instance.StartCoroutine(this.ModelCheck(DebugAssetCheck.ModelCheckTarget.AssetListEnemy));
 	}
 
-	// Token: 0x0600008A RID: 138 RVA: 0x00005563 File Offset: 0x00003763
 	private void ExecuteMasterEnemyAssetCheck(PguiButtonCtrl btn)
 	{
 		if (this.NowCheking)
@@ -184,7 +172,6 @@ public class DebugAssetCheck
 		Singleton<SceneManager>.Instance.StartCoroutine(this.ModelCheck(DebugAssetCheck.ModelCheckTarget.QuestOneEnemy));
 	}
 
-	// Token: 0x0600008B RID: 139 RVA: 0x00005580 File Offset: 0x00003780
 	private void ExecuteMasterCharaClothesAssetCheck(PguiButtonCtrl btn)
 	{
 		if (this.NowCheking)
@@ -194,7 +181,6 @@ public class DebugAssetCheck
 		Singleton<SceneManager>.Instance.StartCoroutine(this.ModelCheck(DebugAssetCheck.ModelCheckTarget.CharaClothes));
 	}
 
-	// Token: 0x0600008C RID: 140 RVA: 0x0000559D File Offset: 0x0000379D
 	private void ExecuteCVCheck(PguiButtonCtrl btn)
 	{
 		if (this.NowCheking)
@@ -204,7 +190,6 @@ public class DebugAssetCheck
 		Singleton<SceneManager>.Instance.StartCoroutine(this.CVCheck());
 	}
 
-	// Token: 0x0600008D RID: 141 RVA: 0x000055B9 File Offset: 0x000037B9
 	public IEnumerator ScenarioAssetCheck()
 	{
 		this.CopyBtn.SetActEnable(false, false, false);
@@ -415,7 +400,6 @@ public class DebugAssetCheck
 		yield break;
 	}
 
-	// Token: 0x0600008E RID: 142 RVA: 0x000055C8 File Offset: 0x000037C8
 	private void ScenarioCheck(string scenarioIdPath)
 	{
 		GameObject gameObject = AssetManager.InstantiateAssetData(scenarioIdPath, null);
@@ -487,7 +471,6 @@ public class DebugAssetCheck
 		Object.Destroy(gameObject);
 	}
 
-	// Token: 0x0600008F RID: 143 RVA: 0x00005918 File Offset: 0x00003B18
 	private IEnumerator ModelCheck(DebugAssetCheck.ModelCheckTarget checkTarget)
 	{
 		this.CopyBtn.SetActEnable(false, false, false);
@@ -688,7 +671,6 @@ public class DebugAssetCheck
 		yield break;
 	}
 
-	// Token: 0x06000090 RID: 144 RVA: 0x0000592E File Offset: 0x00003B2E
 	private IEnumerator CVCheck()
 	{
 		this.CopyBtn.SetActEnable(false, false, false);
@@ -766,7 +748,6 @@ public class DebugAssetCheck
 		yield break;
 	}
 
-	// Token: 0x06000091 RID: 145 RVA: 0x0000593D File Offset: 0x00003B3D
 	private void ResetCheckLog()
 	{
 		this.AssetCheckInfoLog = string.Empty;
@@ -774,7 +755,6 @@ public class DebugAssetCheck
 		this.AssetCheckErrorLog = string.Empty;
 	}
 
-	// Token: 0x06000092 RID: 146 RVA: 0x00005960 File Offset: 0x00003B60
 	private void AddCheckLog(string log, DebugAssetCheck.CheckLogStatus logStatus)
 	{
 		switch (logStatus)
@@ -793,86 +773,58 @@ public class DebugAssetCheck
 		}
 	}
 
-	// Token: 0x06000093 RID: 147 RVA: 0x000059C8 File Offset: 0x00003BC8
 	private void CopyCheckLog(PguiButtonCtrl btn)
 	{
 		GUIUtility.systemCopyBuffer = string.Concat(new string[] { "-------------------- Info    --------------------\n", this.AssetCheckInfoLog, "-------------------- warning --------------------\n", this.AssetCheckWarningLog, "-------------------- error   --------------------\n", this.AssetCheckErrorLog });
 	}
 
-	// Token: 0x0400010A RID: 266
 	private string AssetCheckInfoLog;
 
-	// Token: 0x0400010B RID: 267
 	private string AssetCheckWarningLog;
 
-	// Token: 0x0400010C RID: 268
 	private string AssetCheckErrorLog;
 
-	// Token: 0x0400010D RID: 269
 	private bool NowCheking;
 
-	// Token: 0x0400010E RID: 270
 	private int progressCount;
 
-	// Token: 0x0400010F RID: 271
 	private int errorCount;
 
-	// Token: 0x04000110 RID: 272
 	private Dictionary<string, string> LoadedCharaMap;
 
-	// Token: 0x04000111 RID: 273
 	private DebugAssetCheck.CheckTargetType CheckTarget;
 
-	// Token: 0x04000112 RID: 274
 	private PguiButtonCtrl CopyBtn;
 
-	// Token: 0x04000113 RID: 275
 	private PguiTextCtrl ProgressText;
 
-	// Token: 0x04000114 RID: 276
 	private PguiTextCtrl ErrorCountText;
 
-	// Token: 0x04000115 RID: 277
 	private PguiTextCtrl AssetBundleInfoText;
 
-	// Token: 0x04000116 RID: 278
 	private Dictionary<ScenarioDefine.EPISODE_TYPE, bool> epsodeTypeEnableMap;
 
-	// Token: 0x04000117 RID: 279
 	private Dictionary<int, List<string>> questEnemyPrefabList;
 
-	// Token: 0x02000591 RID: 1425
 	private enum CheckTargetType
 	{
-		// Token: 0x04002949 RID: 10569
 		QuestOne,
-		// Token: 0x0400294A RID: 10570
 		AssetBundle,
-		// Token: 0x0400294B RID: 10571
 		LocalFile
 	}
 
-	// Token: 0x02000592 RID: 1426
 	private enum CheckLogStatus
 	{
-		// Token: 0x0400294D RID: 10573
 		Info,
-		// Token: 0x0400294E RID: 10574
 		Warning,
-		// Token: 0x0400294F RID: 10575
 		Error
 	}
 
-	// Token: 0x02000593 RID: 1427
 	private enum ModelCheckTarget
 	{
-		// Token: 0x04002951 RID: 10577
 		AssetListChara,
-		// Token: 0x04002952 RID: 10578
 		AssetListEnemy,
-		// Token: 0x04002953 RID: 10579
 		QuestOneEnemy,
-		// Token: 0x04002954 RID: 10580
 		CharaClothes
 	}
 }

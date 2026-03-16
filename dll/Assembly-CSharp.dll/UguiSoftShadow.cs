@@ -1,12 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x020001FB RID: 507
 public class UguiSoftShadow : Shadow
 {
-	// Token: 0x06002169 RID: 8553 RVA: 0x0018F3F8 File Offset: 0x0018D5F8
 	public override void ModifyMesh(VertexHelper vh)
 	{
 		if (!this.IsActive())
@@ -20,7 +18,6 @@ public class UguiSoftShadow : Shadow
 		vh.AddUIVertexTriangleStream(list);
 	}
 
-	// Token: 0x0600216A RID: 8554 RVA: 0x0018F430 File Offset: 0x0018D630
 	private void ModifyVertices(List<UIVertex> verts)
 	{
 		int num = verts.Count * 5;
@@ -47,20 +44,16 @@ public class UguiSoftShadow : Shadow
 		}
 	}
 
-	// Token: 0x0400180D RID: 6157
 	public float _OutlineWidth = 8f;
 
-	// Token: 0x0400180E RID: 6158
 	[SerializeField]
 	[Range(0f, 12f)]
 	public int _OutLineResolution = 12;
 
-	// Token: 0x0400180F RID: 6159
 	[SerializeField]
 	[Range(0f, 6f)]
 	public float _BlurResolution = 4f;
 
-	// Token: 0x04001810 RID: 6160
 	[SerializeField]
 	[Range(0f, 1f)]
 	public float BlurContrast = 0.3f;

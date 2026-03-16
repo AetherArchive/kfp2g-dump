@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -6,10 +6,8 @@ using System.Text;
 
 namespace AFMiniJSON
 {
-	// Token: 0x02000589 RID: 1417
 	public static class Json
 	{
-		// Token: 0x06002EDC RID: 11996 RVA: 0x001B2E3D File Offset: 0x001B103D
 		public static object Deserialize(string json)
 		{
 			if (json == null)
@@ -19,28 +17,23 @@ namespace AFMiniJSON
 			return Json.Parser.Parse(json);
 		}
 
-		// Token: 0x06002EDD RID: 11997 RVA: 0x001B2E4A File Offset: 0x001B104A
 		public static string Serialize(object obj)
 		{
 			return Json.Serializer.Serialize(obj);
 		}
 
-		// Token: 0x020010F4 RID: 4340
 		private sealed class Parser : IDisposable
 		{
-			// Token: 0x06005442 RID: 21570 RVA: 0x0024CF30 File Offset: 0x0024B130
 			public static bool IsWordBreak(char c)
 			{
 				return char.IsWhiteSpace(c) || "{}[],:\"".IndexOf(c) != -1;
 			}
 
-			// Token: 0x06005443 RID: 21571 RVA: 0x0024CF4D File Offset: 0x0024B14D
 			private Parser(string jsonString)
 			{
 				this.json = new StringReader(jsonString);
 			}
 
-			// Token: 0x06005444 RID: 21572 RVA: 0x0024CF64 File Offset: 0x0024B164
 			public static object Parse(string jsonString)
 			{
 				object obj;
@@ -51,14 +44,12 @@ namespace AFMiniJSON
 				return obj;
 			}
 
-			// Token: 0x06005445 RID: 21573 RVA: 0x0024CF9C File Offset: 0x0024B19C
 			public void Dispose()
 			{
 				this.json.Dispose();
 				this.json = null;
 			}
 
-			// Token: 0x06005446 RID: 21574 RVA: 0x0024CFB0 File Offset: 0x0024B1B0
 			private Dictionary<string, object> ParseObject()
 			{
 				Dictionary<string, object> dictionary = new Dictionary<string, object>();
@@ -96,7 +87,6 @@ namespace AFMiniJSON
 				return null;
 			}
 
-			// Token: 0x06005447 RID: 21575 RVA: 0x0024D018 File Offset: 0x0024B218
 			private List<object> ParseArray()
 			{
 				List<object> list = new List<object>();
@@ -125,14 +115,12 @@ namespace AFMiniJSON
 				return list;
 			}
 
-			// Token: 0x06005448 RID: 21576 RVA: 0x0024D068 File Offset: 0x0024B268
 			private object ParseValue()
 			{
 				Json.Parser.TOKEN nextToken = this.NextToken;
 				return this.ParseByToken(nextToken);
 			}
 
-			// Token: 0x06005449 RID: 21577 RVA: 0x0024D084 File Offset: 0x0024B284
 			private object ParseByToken(Json.Parser.TOKEN token)
 			{
 				switch (token)
@@ -155,7 +143,6 @@ namespace AFMiniJSON
 				return null;
 			}
 
-			// Token: 0x0600544A RID: 21578 RVA: 0x0024D0F4 File Offset: 0x0024B2F4
 			private string ParseString()
 			{
 				StringBuilder stringBuilder = new StringBuilder();
@@ -238,7 +225,6 @@ namespace AFMiniJSON
 				return stringBuilder.ToString();
 			}
 
-			// Token: 0x0600544B RID: 21579 RVA: 0x0024D244 File Offset: 0x0024B444
 			private object ParseNumber()
 			{
 				string nextWord = this.NextWord;
@@ -253,7 +239,6 @@ namespace AFMiniJSON
 				return num2;
 			}
 
-			// Token: 0x0600544C RID: 21580 RVA: 0x0024D282 File Offset: 0x0024B482
 			private void EatWhitespace()
 			{
 				while (char.IsWhiteSpace(this.PeekChar))
@@ -266,8 +251,6 @@ namespace AFMiniJSON
 				}
 			}
 
-			// Token: 0x17000C11 RID: 3089
-			// (get) Token: 0x0600544D RID: 21581 RVA: 0x0024D2AD File Offset: 0x0024B4AD
 			private char PeekChar
 			{
 				get
@@ -276,8 +259,6 @@ namespace AFMiniJSON
 				}
 			}
 
-			// Token: 0x17000C12 RID: 3090
-			// (get) Token: 0x0600544E RID: 21582 RVA: 0x0024D2BF File Offset: 0x0024B4BF
 			private char NextChar
 			{
 				get
@@ -286,8 +267,6 @@ namespace AFMiniJSON
 				}
 			}
 
-			// Token: 0x17000C13 RID: 3091
-			// (get) Token: 0x0600544F RID: 21583 RVA: 0x0024D2D4 File Offset: 0x0024B4D4
 			private string NextWord
 			{
 				get
@@ -305,8 +284,6 @@ namespace AFMiniJSON
 				}
 			}
 
-			// Token: 0x17000C14 RID: 3092
-			// (get) Token: 0x06005450 RID: 21584 RVA: 0x0024D318 File Offset: 0x0024B518
 			private Json.Parser.TOKEN NextToken
 			{
 				get
@@ -394,52 +371,34 @@ namespace AFMiniJSON
 				}
 			}
 
-			// Token: 0x04005DB2 RID: 23986
 			private const string WORD_BREAK = "{}[],:\"";
 
-			// Token: 0x04005DB3 RID: 23987
 			private StringReader json;
 
-			// Token: 0x0200122D RID: 4653
 			private enum TOKEN
 			{
-				// Token: 0x04006383 RID: 25475
 				NONE,
-				// Token: 0x04006384 RID: 25476
 				CURLY_OPEN,
-				// Token: 0x04006385 RID: 25477
 				CURLY_CLOSE,
-				// Token: 0x04006386 RID: 25478
 				SQUARED_OPEN,
-				// Token: 0x04006387 RID: 25479
 				SQUARED_CLOSE,
-				// Token: 0x04006388 RID: 25480
 				COLON,
-				// Token: 0x04006389 RID: 25481
 				COMMA,
-				// Token: 0x0400638A RID: 25482
 				STRING,
-				// Token: 0x0400638B RID: 25483
 				NUMBER,
-				// Token: 0x0400638C RID: 25484
 				TRUE,
-				// Token: 0x0400638D RID: 25485
 				FALSE,
-				// Token: 0x0400638E RID: 25486
 				NULL
 			}
 		}
 
-		// Token: 0x020010F5 RID: 4341
 		private sealed class Serializer
 		{
-			// Token: 0x06005451 RID: 21585 RVA: 0x0024D43A File Offset: 0x0024B63A
 			private Serializer()
 			{
 				this.builder = new StringBuilder();
 			}
 
-			// Token: 0x06005452 RID: 21586 RVA: 0x0024D44D File Offset: 0x0024B64D
 			public static string Serialize(object obj)
 			{
 				Json.Serializer serializer = new Json.Serializer();
@@ -447,7 +406,6 @@ namespace AFMiniJSON
 				return serializer.builder.ToString();
 			}
 
-			// Token: 0x06005453 RID: 21587 RVA: 0x0024D468 File Offset: 0x0024B668
 			private void SerializeValue(object value)
 			{
 				if (value == null)
@@ -486,7 +444,6 @@ namespace AFMiniJSON
 				this.SerializeOther(value);
 			}
 
-			// Token: 0x06005454 RID: 21588 RVA: 0x0024D50C File Offset: 0x0024B70C
 			private void SerializeObject(IDictionary obj)
 			{
 				bool flag = true;
@@ -505,7 +462,6 @@ namespace AFMiniJSON
 				this.builder.Append('}');
 			}
 
-			// Token: 0x06005455 RID: 21589 RVA: 0x0024D5B4 File Offset: 0x0024B7B4
 			private void SerializeArray(IList anArray)
 			{
 				this.builder.Append('[');
@@ -522,7 +478,6 @@ namespace AFMiniJSON
 				this.builder.Append(']');
 			}
 
-			// Token: 0x06005456 RID: 21590 RVA: 0x0024D634 File Offset: 0x0024B834
 			private void SerializeString(string str)
 			{
 				this.builder.Append('"');
@@ -582,7 +537,6 @@ namespace AFMiniJSON
 				this.builder.Append('"');
 			}
 
-			// Token: 0x06005457 RID: 21591 RVA: 0x0024D788 File Offset: 0x0024B988
 			private void SerializeOther(object value)
 			{
 				if (value is float)
@@ -603,7 +557,6 @@ namespace AFMiniJSON
 				this.SerializeString(value.ToString());
 			}
 
-			// Token: 0x04005DB4 RID: 23988
 			private StringBuilder builder;
 		}
 	}

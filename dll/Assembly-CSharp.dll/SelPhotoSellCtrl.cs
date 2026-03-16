@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using AEAuth3;
@@ -8,10 +8,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x0200013B RID: 315
 public class SelPhotoSellCtrl : MonoBehaviour
 {
-	// Token: 0x06001114 RID: 4372 RVA: 0x000D0BF0 File Offset: 0x000CEDF0
 	public void Init()
 	{
 		GameObject gameObject = Object.Instantiate<GameObject>((GameObject)Resources.Load("SceneCharaEdit/GUI/Prefab/GUI_PhotoSell"), base.transform);
@@ -131,7 +129,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		CanvasManager.HdlOpenWindowSortFilter.Register(registerData, false, null);
 	}
 
-	// Token: 0x06001115 RID: 4373 RVA: 0x000D1110 File Offset: 0x000CF310
 	public void Setup()
 	{
 		this.ReloadDataManager(-1L);
@@ -144,13 +141,11 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		this.guiData.SelCmn_AllInOut.ExPlayAnimation(SimpleAnimation.ExPguiStatus.START, null);
 	}
 
-	// Token: 0x06001116 RID: 4374 RVA: 0x000D11C7 File Offset: 0x000CF3C7
 	public void Dest()
 	{
 		this.Reset();
 	}
 
-	// Token: 0x06001117 RID: 4375 RVA: 0x000D11D0 File Offset: 0x000CF3D0
 	public void ReloadDataManager(long baseDataId = -1L)
 	{
 		this.havePhotoPackList = new List<PhotoPackData>(DataManager.DmPhoto.GetUserPhotoMap().Values);
@@ -210,12 +205,10 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001118 RID: 4376 RVA: 0x000D14D0 File Offset: 0x000CF6D0
 	private void Start()
 	{
 	}
 
-	// Token: 0x06001119 RID: 4377 RVA: 0x000D14D4 File Offset: 0x000CF6D4
 	private void OnDestroy()
 	{
 		if (this.guiData.windowPhotoSell != null)
@@ -235,7 +228,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600111A RID: 4378 RVA: 0x000D155C File Offset: 0x000CF75C
 	private void Update()
 	{
 		if (this.serverRequestSell != null && !this.serverRequestSell.MoveNext())
@@ -248,7 +240,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600111B RID: 4379 RVA: 0x000D1596 File Offset: 0x000CF796
 	private void Reset()
 	{
 		this.sellPhotoPackList.Clear();
@@ -258,7 +249,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600111C RID: 4380 RVA: 0x000D15B4 File Offset: 0x000CF7B4
 	private void UpdateInfo()
 	{
 		this.guiData.photoSellTopGUI.PossessionGold.text = DataManager.DmItem.GetUserItemData(30101).num.ToString();
@@ -273,7 +263,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		this.guiData.photoSellTopGUI.ButtonR.SetActEnable(this.sellPhotoPackList.Count > 0, false, false);
 	}
 
-	// Token: 0x0600111D RID: 4381 RVA: 0x000D16BC File Offset: 0x000CF8BC
 	private IEnumerator ServerRequestSell()
 	{
 		bool isGoldStock = DataManagerItem.IsExpectedItemStock(30101, (long)this.getCoinNum);
@@ -307,7 +296,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600111E RID: 4382 RVA: 0x000D16CB File Offset: 0x000CF8CB
 	private IEnumerator RequestTapButton(PguiButtonCtrl button)
 	{
 		if (button == this.guiData.photoSellTopGUI.ButtonL)
@@ -391,7 +379,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600111F RID: 4383 RVA: 0x000D16E4 File Offset: 0x000CF8E4
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		if (button == this.guiData.photoSellTopGUI.ButtonL)
@@ -468,7 +455,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001120 RID: 4384 RVA: 0x000D1A44 File Offset: 0x000CFC44
 	private bool OnClickToggleButton(PguiToggleButtonCtrl button, int index)
 	{
 		if (this.guiData.windowSelectAll.RarityBtnList.Exists((PguiToggleButtonCtrl item) => item == button))
@@ -508,7 +494,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06001121 RID: 4385 RVA: 0x000D1BD8 File Offset: 0x000CFDD8
 	public void RegistRarityButton(PguiToggleButtonCtrl button)
 	{
 		int num = this.guiData.windowSelectAll.RarityBtnList.FindIndex((PguiToggleButtonCtrl item) => item == button);
@@ -554,7 +539,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001122 RID: 4386 RVA: 0x000D1CE0 File Offset: 0x000CFEE0
 	public void RegistPhotoTypeButton(PguiToggleButtonCtrl button)
 	{
 		int num = this.guiData.windowSelectAll.TypeBtnList.FindIndex((PguiToggleButtonCtrl item) => item == button);
@@ -595,7 +579,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001123 RID: 4387 RVA: 0x000D1DE0 File Offset: 0x000CFFE0
 	public void OnClickMenuReturn(UnityAction callback = null)
 	{
 		this.guiData.SelCmn_AllInOut.ExPlayAnimation(SimpleAnimation.ExPguiStatus.END, delegate
@@ -610,7 +593,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06001124 RID: 4388 RVA: 0x000D1E20 File Offset: 0x000D0020
 	private void OnStartItemPhotoSelect(int index, GameObject go)
 	{
 		for (int i = 0; i < this.guiData.photoSellTopGUI.sizeChangeBtnGUI.IconPhotoParamList[this.guiData.photoSellTopGUI.sizeChangeBtnGUI.SizeIndex].num; i++)
@@ -645,7 +627,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001125 RID: 4389 RVA: 0x000D2040 File Offset: 0x000D0240
 	private void OnUpdateItemPhotoSelect(int index, GameObject go)
 	{
 		for (int i = 0; i < this.guiData.photoSellTopGUI.sizeChangeBtnGUI.IconPhotoParamList[this.guiData.photoSellTopGUI.sizeChangeBtnGUI.SizeIndex].num; i++)
@@ -704,7 +685,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001126 RID: 4390 RVA: 0x000D22F8 File Offset: 0x000D04F8
 	private void OnStartItemWindow(int index, GameObject go)
 	{
 		for (int i = 0; i < SelPhotoSellCtrl.PhotoSellConfirmWindow.SCROLL_ITEM_NUN_H; i++)
@@ -717,7 +697,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001127 RID: 4391 RVA: 0x000D2394 File Offset: 0x000D0594
 	private void OnUpdateItemWindow(int index, GameObject go)
 	{
 		for (int i = 0; i < SelPhotoSellCtrl.PhotoSellConfirmWindow.SCROLL_ITEM_NUN_H; i++)
@@ -736,7 +715,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001128 RID: 4392 RVA: 0x000D2440 File Offset: 0x000D0640
 	private void OnUpdatePhotoLock(IconPhotoCtrl iconPhoto)
 	{
 		if (iconPhoto.photoPackData.dynamicData.lockFlag && this.sellPhotoPackList.Contains(iconPhoto.photoPackData))
@@ -746,7 +724,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		this.guiData.photoSellTopGUI.ScrollView.Refresh();
 	}
 
-	// Token: 0x06001129 RID: 4393 RVA: 0x000D2490 File Offset: 0x000D0690
 	private void OnUpdatePhotoFavorite(IconPhotoCtrl iconPhoto)
 	{
 		if (iconPhoto.photoPackData.dynamicData.favoriteFlag && this.sellPhotoPackList.Contains(iconPhoto.photoPackData))
@@ -756,7 +733,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		this.guiData.photoSellTopGUI.ScrollView.Refresh();
 	}
 
-	// Token: 0x0600112A RID: 4394 RVA: 0x000D24E0 File Offset: 0x000D06E0
 	private void OnTouchPhotoIcon(IconPhotoCtrl iconPhoto)
 	{
 		SoundManager.Play("prd_se_click", false, false);
@@ -817,7 +793,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600112B RID: 4395 RVA: 0x000D2727 File Offset: 0x000D0927
 	private IEnumerator RequestUpdatePhoto(PhotoPackData photoPackData)
 	{
 		DataManager.DmPhoto.RequestActionPhotoRelease(photoPackData.dataId);
@@ -836,7 +811,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600112C RID: 4396 RVA: 0x000D273D File Offset: 0x000D093D
 	private bool OnSelectOpenWindowButtonCallback(int index)
 	{
 		if (index == 1)
@@ -846,13 +820,11 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x0600112D RID: 4397 RVA: 0x000D2750 File Offset: 0x000D0950
 	private bool OnResultWindowButtonCallback(int index)
 	{
 		return true;
 	}
 
-	// Token: 0x0600112E RID: 4398 RVA: 0x000D2754 File Offset: 0x000D0954
 	private bool OnSelectAllOpenWindowButtonCallback(int index)
 	{
 		if (this.lvType == SelPhotoSellCtrl.PhotoSellSelectAllWindow.LvType.Invaid && this.category == (SelPhotoSellCtrl.PhotoSellSelectAllWindow.CategoryMask)0)
@@ -882,52 +854,36 @@ public class SelPhotoSellCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x04000E8C RID: 3724
 	private SelPhotoSellCtrl.GUI guiData;
 
-	// Token: 0x04000E8D RID: 3725
 	public bool isDebug;
 
-	// Token: 0x04000E8E RID: 3726
 	private List<PhotoPackData> havePhotoPackList = new List<PhotoPackData>();
 
-	// Token: 0x04000E8F RID: 3727
 	private List<PhotoPackData> dispPhotoPackList = new List<PhotoPackData>();
 
-	// Token: 0x04000E90 RID: 3728
 	private List<long> deckPhotoDataId = new List<long>();
 
-	// Token: 0x04000E91 RID: 3729
 	private List<PhotoPackData> sellPhotoPackList = new List<PhotoPackData>();
 
-	// Token: 0x04000E92 RID: 3730
 	private SortFilterDefine.SortType sortType = SortFilterDefine.SortType.LEVEL;
 
-	// Token: 0x04000E93 RID: 3731
 	private SelPhotoSellCtrl.PhotoSellSelectAllWindow.CategoryMask category;
 
-	// Token: 0x04000E94 RID: 3732
 	private SelPhotoSellCtrl.PhotoSellSelectAllWindow.LvType lvType = SelPhotoSellCtrl.PhotoSellSelectAllWindow.LvType.Invaid;
 
-	// Token: 0x04000E95 RID: 3733
 	private UserOptionData cloneUserOptionData;
 
-	// Token: 0x04000E96 RID: 3734
 	private int getCoinNum;
 
-	// Token: 0x04000E97 RID: 3735
 	private readonly int MAX_SELL_PHOTO_LIST = 1000;
 
-	// Token: 0x04000E98 RID: 3736
 	private IEnumerator serverRequestSell;
 
-	// Token: 0x04000E99 RID: 3737
 	private IEnumerator requestTapButton;
 
-	// Token: 0x02000A5F RID: 2655
 	public class GUIPhotoSellFilter
 	{
-		// Token: 0x06003F15 RID: 16149 RVA: 0x001ECEB4 File Offset: 0x001EB0B4
 		public GUIPhotoSellFilter(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -974,7 +930,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 			this.Txt03 = baseTr.Find("Base/Window/Txt03").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x06003F16 RID: 16150 RVA: 0x001ED180 File Offset: 0x001EB380
 		public void SetActiveSellButton()
 		{
 			List<string> sellPhotoFilterPhotoNameList = SortFilterDefine.sellPhotoFilterPhotoNameList;
@@ -1026,7 +981,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06003F17 RID: 16151 RVA: 0x001ED3CC File Offset: 0x001EB5CC
 		public void AddOnClickListener(PguiToggleButtonCtrl.OnClick onClick)
 		{
 			foreach (PguiToggleButtonCtrl pguiToggleButtonCtrl in this.RarityBtnList)
@@ -1047,7 +1001,6 @@ public class SelPhotoSellCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06003F18 RID: 16152 RVA: 0x001ED4E0 File Offset: 0x001EB6E0
 		public void SetCategoryText(SortFilterDefine.PhotoFilterType filterType)
 		{
 			switch (filterType)
@@ -1067,40 +1020,28 @@ public class SelPhotoSellCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x04004251 RID: 16977
 		public GameObject baseObj;
 
-		// Token: 0x04004252 RID: 16978
 		public List<SelPhotoSellCtrl.GUIPhotoSellFilter.Parts> PartsList;
 
-		// Token: 0x04004253 RID: 16979
 		public List<PguiToggleButtonCtrl> RarityBtnList;
 
-		// Token: 0x04004254 RID: 16980
 		public List<PguiToggleButtonCtrl> TypeBtnList;
 
-		// Token: 0x04004255 RID: 16981
 		public List<PguiToggleButtonCtrl> TempBtnList;
 
-		// Token: 0x04004256 RID: 16982
 		public List<PguiToggleButtonCtrl> Btn_EventList;
 
-		// Token: 0x04004257 RID: 16983
 		public PguiTextCtrl Txt01;
 
-		// Token: 0x04004258 RID: 16984
 		public PguiTextCtrl Txt02;
 
-		// Token: 0x04004259 RID: 16985
 		public PguiTextCtrl Txt03;
 
-		// Token: 0x0400425A RID: 16986
 		public PguiOpenWindowCtrl baseWindow;
 
-		// Token: 0x0200116F RID: 4463
 		public class Parts
 		{
-			// Token: 0x06005625 RID: 22053 RVA: 0x00250F94 File Offset: 0x0024F194
 			public Parts(Transform baseTr)
 			{
 				Transform transform = baseTr.Find("Num_Txt");
@@ -1109,18 +1050,14 @@ public class SelPhotoSellCtrl : MonoBehaviour
 				this.img = ((transform2 != null) ? transform2.GetComponent<PguiImageCtrl>() : null);
 			}
 
-			// Token: 0x04005FB6 RID: 24502
 			public PguiTextCtrl text;
 
-			// Token: 0x04005FB7 RID: 24503
 			public PguiImageCtrl img;
 		}
 	}
 
-	// Token: 0x02000A60 RID: 2656
 	public class GUI
 	{
-		// Token: 0x06003F19 RID: 16153 RVA: 0x001ED544 File Offset: 0x001EB744
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1134,32 +1071,23 @@ public class SelPhotoSellCtrl : MonoBehaviour
 			this.SelCmn_AllInOut = baseTr.GetComponent<SimpleAnimation>();
 		}
 
-		// Token: 0x0400425B RID: 16987
 		public SelPhotoSellCtrl.PhotoSellTopGUI photoSellTopGUI;
 
-		// Token: 0x0400425C RID: 16988
 		public SelPhotoSellCtrl.PhotoSellConfirmWindow windowPhotoSell;
 
-		// Token: 0x0400425D RID: 16989
 		public SelPhotoSellCtrl.GUIPhotoSellFilter windowSelectAll;
 
-		// Token: 0x0400425E RID: 16990
 		public GameObject baseObj;
 
-		// Token: 0x0400425F RID: 16991
 		public PguiPanel basePanel;
 
-		// Token: 0x04004260 RID: 16992
 		public SimpleAnimation SelCmn_AllInOut;
 
-		// Token: 0x04004261 RID: 16993
 		public List<SelPhotoEditCtrl.GUI.IconPhotoSet> reservePhotoIcon = new List<SelPhotoEditCtrl.GUI.IconPhotoSet>();
 	}
 
-	// Token: 0x02000A61 RID: 2657
 	public class PhotoSellTopGUI
 	{
-		// Token: 0x06003F1A RID: 16154 RVA: 0x001ED5F8 File Offset: 0x001EB7F8
 		public PhotoSellTopGUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1178,60 +1106,43 @@ public class SelPhotoSellCtrl : MonoBehaviour
 			this.Txt_None.SetActive(false);
 		}
 
-		// Token: 0x06003F1B RID: 16155 RVA: 0x001ED72B File Offset: 0x001EB92B
 		public void ResizeScrollView(int count, int resize)
 		{
 			this.Txt_None.SetActive(count <= 0);
 			this.ScrollView.ResizeFocesNoMove(resize);
 		}
 
-		// Token: 0x04004262 RID: 16994
 		public static readonly int SCROLL_ITEM_NUN_H = 8;
 
-		// Token: 0x04004263 RID: 16995
 		public GameObject baseObj;
 
-		// Token: 0x04004264 RID: 16996
 		public PguiButtonCtrl Btn_FilterOnOff;
 
-		// Token: 0x04004265 RID: 16997
 		public PguiButtonCtrl Btn_Sort;
 
-		// Token: 0x04004266 RID: 16998
 		public PguiButtonCtrl Btn_SortUpDown;
 
-		// Token: 0x04004267 RID: 16999
 		public PguiTextCtrl Num_Own;
 
-		// Token: 0x04004268 RID: 17000
 		public PguiButtonCtrl ButtonL;
 
-		// Token: 0x04004269 RID: 17001
 		public PguiButtonCtrl ButtonR;
 
-		// Token: 0x0400426A RID: 17002
 		public PguiButtonCtrl ButtonC;
 
-		// Token: 0x0400426B RID: 17003
 		public ReuseScroll ScrollView;
 
-		// Token: 0x0400426C RID: 17004
 		public PguiTextCtrl PossessionGold;
 
-		// Token: 0x0400426D RID: 17005
 		public PguiTextCtrl GetCoin_Num;
 
-		// Token: 0x0400426E RID: 17006
 		public PhotoUtil.SizeChangeBtnGUI sizeChangeBtnGUI;
 
-		// Token: 0x0400426F RID: 17007
 		public GameObject Txt_None;
 	}
 
-	// Token: 0x02000A62 RID: 2658
 	public class PhotoSellConfirmWindow
 	{
-		// Token: 0x06003F1D RID: 16157 RVA: 0x001ED754 File Offset: 0x001EB954
 		public PhotoSellConfirmWindow(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1243,84 +1154,53 @@ public class SelPhotoSellCtrl : MonoBehaviour
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
 		}
 
-		// Token: 0x04004270 RID: 17008
 		public static readonly int SCROLL_ITEM_NUN_H = 5;
 
-		// Token: 0x04004271 RID: 17009
 		public GameObject baseObj;
 
-		// Token: 0x04004272 RID: 17010
 		public PguiTextCtrl Massage;
 
-		// Token: 0x04004273 RID: 17011
 		public PguiTextCtrl Text;
 
-		// Token: 0x04004274 RID: 17012
 		public PguiTextCtrl Num;
 
-		// Token: 0x04004275 RID: 17013
 		public SimpleAnimation Base;
 
-		// Token: 0x04004276 RID: 17014
 		public ReuseScroll ScrollView_PhotoIconAll;
 
-		// Token: 0x04004277 RID: 17015
 		public PguiOpenWindowCtrl owCtrl;
 	}
 
-	// Token: 0x02000A63 RID: 2659
 	public class PhotoSellSelectAllWindow
 	{
-		// Token: 0x02001170 RID: 4464
 		public enum CategoryType
 		{
-			// Token: 0x04005FB9 RID: 24505
 			S1,
-			// Token: 0x04005FBA RID: 24506
 			S2,
-			// Token: 0x04005FBB RID: 24507
 			S3,
-			// Token: 0x04005FBC RID: 24508
 			S4,
-			// Token: 0x04005FBD RID: 24509
 			Status,
-			// Token: 0x04005FBE RID: 24510
 			Ability,
-			// Token: 0x04005FBF RID: 24511
 			Other
 		}
 
-		// Token: 0x02001171 RID: 4465
 		public enum CategoryMask
 		{
-			// Token: 0x04005FC1 RID: 24513
 			S1 = 1,
-			// Token: 0x04005FC2 RID: 24514
 			S2,
-			// Token: 0x04005FC3 RID: 24515
 			S3 = 4,
-			// Token: 0x04005FC4 RID: 24516
 			S4 = 8,
-			// Token: 0x04005FC5 RID: 24517
 			Status = 16,
-			// Token: 0x04005FC6 RID: 24518
 			Ability = 32,
-			// Token: 0x04005FC7 RID: 24519
 			Other = 64,
-			// Token: 0x04005FC8 RID: 24520
 			Rarity = 15,
-			// Token: 0x04005FC9 RID: 24521
 			Type = 112
 		}
 
-		// Token: 0x02001172 RID: 4466
 		public enum LvType
 		{
-			// Token: 0x04005FCB RID: 24523
 			Invaid = -1,
-			// Token: 0x04005FCC RID: 24524
 			Lv1Only,
-			// Token: 0x04005FCD RID: 24525
 			Unspecified
 		}
 	}

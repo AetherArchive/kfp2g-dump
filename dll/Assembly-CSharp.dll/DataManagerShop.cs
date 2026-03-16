@@ -1,25 +1,19 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using SGNFW.Http;
 using SGNFW.HttpRequest.Protocol;
 using SGNFW.Mst;
 
-// Token: 0x020000A6 RID: 166
 public class DataManagerShop
 {
-	// Token: 0x0600074F RID: 1871 RVA: 0x00032591 File Offset: 0x00030791
 	public DataManagerShop(DataManager p)
 	{
 		this.parentData = p;
 	}
 
-	// Token: 0x17000160 RID: 352
-	// (get) Token: 0x06000750 RID: 1872 RVA: 0x000325AB File Offset: 0x000307AB
-	// (set) Token: 0x06000751 RID: 1873 RVA: 0x000325B3 File Offset: 0x000307B3
 	private List<ShopData> shopDataList { get; set; }
 
-	// Token: 0x06000752 RID: 1874 RVA: 0x000325BC File Offset: 0x000307BC
 	public List<ShopData> GetShopDataList(bool isExclusionPicnic = true, bool isExclusionNoItemNoDisp = true, ShopData.TabCategory tabCategory = ShopData.TabCategory.ALL)
 	{
 		if (this.shopDataList == null)
@@ -43,25 +37,21 @@ public class DataManagerShop
 		return list;
 	}
 
-	// Token: 0x06000753 RID: 1875 RVA: 0x000326A4 File Offset: 0x000308A4
 	public ShopData GetShopData(int shopId)
 	{
 		return this.shopDataList.Find((ShopData x) => shopId == x.shopId);
 	}
 
-	// Token: 0x06000754 RID: 1876 RVA: 0x000326D5 File Offset: 0x000308D5
 	public MstShopCharaStatusData GetCharaStatusData(int statusId)
 	{
 		return this.mstShopCharaStatusDataMap[statusId];
 	}
 
-	// Token: 0x06000755 RID: 1877 RVA: 0x000326E3 File Offset: 0x000308E3
 	public HashSet<int> GetOldGoodsIdList()
 	{
 		return this.oldGoodsIdList;
 	}
 
-	// Token: 0x06000756 RID: 1878 RVA: 0x000326EB File Offset: 0x000308EB
 	public void RequestGetShopList()
 	{
 		if (DataManager.DmChara != null)
@@ -72,19 +62,16 @@ public class DataManagerShop
 		this.parentData.ServerRequest(ShopListCmd.Create(), new Action<Command>(this.CbShopListCmd));
 	}
 
-	// Token: 0x06000757 RID: 1879 RVA: 0x00032726 File Offset: 0x00030926
 	public void RequestActionBuyShopItem(int goodsId, int num)
 	{
 		this.parentData.ServerRequest(ShopBuyCmd.Create(goodsId, num), new Action<Command>(this.CbShopBuyCmd));
 	}
 
-	// Token: 0x06000758 RID: 1880 RVA: 0x00032746 File Offset: 0x00030946
 	public void RequestActionBulkBuyShopItem(List<ShopData.ItemOne> goodsDataList)
 	{
 		this.parentData.ServerRequest(ShopBulkBuyCmd.Create(goodsDataList), new Action<Command>(this.CbShopBulkBuyCmd));
 	}
 
-	// Token: 0x06000759 RID: 1881 RVA: 0x00032768 File Offset: 0x00030968
 	public void RequestActionUpdateNewFlag(HashSet<int> oldGoodsId)
 	{
 		List<NewFlg> list = oldGoodsId.ToList<int>().ConvertAll<NewFlg>((int item) => new NewFlg
@@ -96,7 +83,6 @@ public class DataManagerShop
 		this.parentData.ServerRequest(NewFlgUpdateCmd.Create(list), new Action<Command>(this.CbNewFlgUpdateCmd));
 	}
 
-	// Token: 0x0600075A RID: 1882 RVA: 0x000327C0 File Offset: 0x000309C0
 	private void CbShopBuyCmd(Command cmd)
 	{
 		ShopBuyRequest req = cmd.request as ShopBuyRequest;
@@ -107,7 +93,6 @@ public class DataManagerShop
 		this.RefreshShopOneList();
 	}
 
-	// Token: 0x0600075B RID: 1883 RVA: 0x00032854 File Offset: 0x00030A54
 	private void CbShopBulkBuyCmd(Command cmd)
 	{
 		ShopBulkBuyRequest shopBulkBuyRequest = cmd.request as ShopBulkBuyRequest;
@@ -125,7 +110,6 @@ public class DataManagerShop
 		this.RefreshShopOneList();
 	}
 
-	// Token: 0x0600075C RID: 1884 RVA: 0x00032918 File Offset: 0x00030B18
 	private void CbShopListCmd(Command cmd)
 	{
 		List<ShopItemInfo> infoList = (cmd.response as ShopListResponse).infoList;
@@ -171,7 +155,6 @@ public class DataManagerShop
 		this.RefreshShopOneList();
 	}
 
-	// Token: 0x0600075D RID: 1885 RVA: 0x00032BAC File Offset: 0x00030DAC
 	public void InitializeMstData(MstManager mstManager)
 	{
 		List<MstShopData> mst = mstManager.GetMst<List<MstShopData>>(MstType.SHOP_DATA);
@@ -184,7 +167,6 @@ public class DataManagerShop
 		this.mstShopCharaStatusDataMap = mst4.ToDictionary<MstShopCharaStatusData, int, MstShopCharaStatusData>((MstShopCharaStatusData preset) => preset.statusId, (MstShopCharaStatusData preset) => preset);
 	}
 
-	// Token: 0x0600075E RID: 1886 RVA: 0x00032D08 File Offset: 0x00030F08
 	private void RefreshShopOneList()
 	{
 		List<int> list = DataManager.DmPhoto.GetUserPhotoMap().Values.ToList<PhotoPackData>().ConvertAll<int>((PhotoPackData item) => item.dynamicData.photoId);
@@ -294,7 +276,6 @@ public class DataManagerShop
 		}
 	}
 
-	// Token: 0x0600075F RID: 1887 RVA: 0x00033230 File Offset: 0x00031430
 	public void InsertNewList(List<NewFlg> newFlagList)
 	{
 		this.oldGoodsIdList = new HashSet<int>();
@@ -307,7 +288,6 @@ public class DataManagerShop
 		}
 	}
 
-	// Token: 0x06000760 RID: 1888 RVA: 0x000332A8 File Offset: 0x000314A8
 	public void CbNewFlgUpdateCmd(Command cmd)
 	{
 		foreach (NewFlg newFlg in (cmd.request as NewFlgUpdateRequest).new_flg_list)
@@ -319,21 +299,15 @@ public class DataManagerShop
 		}
 	}
 
-	// Token: 0x0400066B RID: 1643
 	private DataManager parentData;
 
-	// Token: 0x0400066D RID: 1645
 	private Dictionary<int, MstShopData> mstShopDataMap;
 
-	// Token: 0x0400066E RID: 1646
 	private Dictionary<int, MstShopItemData> mstShopItemDataMap;
 
-	// Token: 0x0400066F RID: 1647
 	private Dictionary<int, MstItemPreset> mstItemPresetMap;
 
-	// Token: 0x04000670 RID: 1648
 	private Dictionary<int, MstShopCharaStatusData> mstShopCharaStatusDataMap;
 
-	// Token: 0x04000671 RID: 1649
 	private HashSet<int> oldGoodsIdList = new HashSet<int>();
 }

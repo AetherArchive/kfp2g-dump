@@ -1,12 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using AEAuth3;
 using UnityEngine;
 
-// Token: 0x02000137 RID: 311
 public class SelCharaGrowWild
 {
-	// Token: 0x0600107B RID: 4219 RVA: 0x000C89BC File Offset: 0x000C6BBC
 	public SelCharaGrowWild(Transform baseTr)
 	{
 		this.GrowWildGUI = new SelCharaGrowWild.CharaGrowWildGUI();
@@ -18,7 +16,6 @@ public class SelCharaGrowWild
 		this.GrowWildGUI.wildReleaseTab = new SelCharaGrowWild.WildReleaseTab(baseTr.Find("CharaGrow_Main").Find("Main/Right/Yasei"));
 	}
 
-	// Token: 0x0600107C RID: 4220 RVA: 0x000C8ABC File Offset: 0x000C6CBC
 	public void SetupItemInfoWild(int charaId)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(charaId);
@@ -126,7 +123,6 @@ public class SelCharaGrowWild
 		this.GrowWildGUI.wildReleaseTab.Num_After03.gameObject.SetActive(false);
 	}
 
-	// Token: 0x0600107D RID: 4221 RVA: 0x000C9154 File Offset: 0x000C7354
 	public int GetPromoteNum(int charaId)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(charaId);
@@ -137,7 +133,6 @@ public class SelCharaGrowWild
 		return userCharaData.dynamicData.promoteNum - 1;
 	}
 
-	// Token: 0x0600107E RID: 4222 RVA: 0x000C91A4 File Offset: 0x000C73A4
 	public int GetCostGoldWildRelease(int charaId)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(charaId);
@@ -154,7 +149,6 @@ public class SelCharaGrowWild
 		return num;
 	}
 
-	// Token: 0x0600107F RID: 4223 RVA: 0x000C921C File Offset: 0x000C741C
 	public void UpdateItemWild(int charaId)
 	{
 		SelCharaGrowWild.WildReleaseTab wildReleaseTab = this.GrowWildGUI.wildReleaseTab;
@@ -172,7 +166,6 @@ public class SelCharaGrowWild
 		}
 	}
 
-	// Token: 0x06001080 RID: 4224 RVA: 0x000C9328 File Offset: 0x000C7528
 	public List<SelCharaGrowWild.PromoteItem> WildReleaseDispItemList(int charaId)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(charaId);
@@ -225,7 +218,6 @@ public class SelCharaGrowWild
 		return list2;
 	}
 
-	// Token: 0x06001081 RID: 4225 RVA: 0x000C9580 File Offset: 0x000C7780
 	public List<SelCharaGrowWild.PromoteItem> CreatePromoteItemList(int charaID)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(charaID);
@@ -254,7 +246,6 @@ public class SelCharaGrowWild
 		return list;
 	}
 
-	// Token: 0x06001082 RID: 4226 RVA: 0x000C9688 File Offset: 0x000C7888
 	public int GetCostGoldTogetherEquip(int charaId)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(charaId);
@@ -274,7 +265,6 @@ public class SelCharaGrowWild
 		return num;
 	}
 
-	// Token: 0x06001083 RID: 4227 RVA: 0x000C9764 File Offset: 0x000C7964
 	public void SetWindowWildItem(List<SelCharaGrowWild.PromoteItem> dispItemList)
 	{
 		foreach (IconItemCtrl iconItemCtrl in this.GrowWildGUI.wildGrowWindow.iconItemList)
@@ -293,7 +283,6 @@ public class SelCharaGrowWild
 		}
 	}
 
-	// Token: 0x06001084 RID: 4228 RVA: 0x000C9858 File Offset: 0x000C7A58
 	public void SetWindowParam(List<int> befParamList, List<int> aftParamList, List<PguiTextCtrl> ParamAll)
 	{
 		foreach (PguiTextCtrl pguiTextCtrl in ParamAll)
@@ -334,7 +323,6 @@ public class SelCharaGrowWild
 		}
 	}
 
-	// Token: 0x06001085 RID: 4229 RVA: 0x000C99D0 File Offset: 0x000C7BD0
 	public void SetActWildButton(int charaId)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(charaId);
@@ -381,7 +369,6 @@ public class SelCharaGrowWild
 		this.SetWindowWildItem(list);
 	}
 
-	// Token: 0x06001086 RID: 4230 RVA: 0x000C9BA8 File Offset: 0x000C7DA8
 	private string GetItemNameFix(string itemName)
 	{
 		string text = "】";
@@ -392,45 +379,32 @@ public class SelCharaGrowWild
 		return itemName;
 	}
 
-	// Token: 0x04000E57 RID: 3671
 	public SelCharaGrowWild.CharaGrowWildGUI GrowWildGUI;
 
-	// Token: 0x04000E58 RID: 3672
 	public int currentIndexWild;
 
-	// Token: 0x02000A26 RID: 2598
 	public class PromoteItem
 	{
-		// Token: 0x040040F8 RID: 16632
 		public int id;
 
-		// Token: 0x040040F9 RID: 16633
 		public int num;
 
-		// Token: 0x040040FA RID: 16634
 		public int cost;
 	}
 
-	// Token: 0x02000A27 RID: 2599
 	public class WildItem
 	{
-		// Token: 0x040040FB RID: 16635
 		public IconItemCtrl iconItemCtrl;
 
-		// Token: 0x040040FC RID: 16636
 		public GameObject current;
 
-		// Token: 0x040040FD RID: 16637
 		public PguiImageCtrl markPlus;
 
-		// Token: 0x040040FE RID: 16638
 		public PguiAECtrl AEImage_OpenEff;
 	}
 
-	// Token: 0x02000A28 RID: 2600
 	public class WildReleaseTab
 	{
-		// Token: 0x06003E7D RID: 15997 RVA: 0x001EA094 File Offset: 0x001E8294
 		public WildReleaseTab(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -456,71 +430,49 @@ public class SelCharaGrowWild
 			this.Result_Up.gameObject.SetActive(false);
 		}
 
-		// Token: 0x040040FF RID: 16639
 		public GameObject baseObj;
 
-		// Token: 0x04004100 RID: 16640
 		public GameObject YaseiInfo;
 
-		// Token: 0x04004101 RID: 16641
 		public PguiButtonCtrl Btn_OpenAll;
 
-		// Token: 0x04004102 RID: 16642
 		public PguiButtonCtrl Btn_OpenComp;
 
-		// Token: 0x04004103 RID: 16643
 		public PguiAECtrl AEImage_OpenComp;
 
-		// Token: 0x04004104 RID: 16644
 		public List<SelCharaGrowWild.WildItem> iconItemList;
 
-		// Token: 0x04004105 RID: 16645
 		public List<RectTransform> iconBaseList;
 
-		// Token: 0x04004106 RID: 16646
 		public PguiTextCtrl Txt_ItemName;
 
-		// Token: 0x04004107 RID: 16647
 		public PguiTextCtrl Num_Own;
 
-		// Token: 0x04004108 RID: 16648
 		public GameObject ItemIcon;
 
-		// Token: 0x04004109 RID: 16649
 		public IconItemCtrl ItemIconCtrl;
 
-		// Token: 0x0400410A RID: 16650
 		public PguiImageCtrl Mark_YaseiUse;
 
-		// Token: 0x0400410B RID: 16651
 		public PguiTextCtrl Num_After01;
 
-		// Token: 0x0400410C RID: 16652
 		public PguiTextCtrl Num_After02;
 
-		// Token: 0x0400410D RID: 16653
 		public PguiTextCtrl Num_After03;
 
-		// Token: 0x0400410E RID: 16654
 		public AEImage AEImage_result;
 
-		// Token: 0x0400410F RID: 16655
 		public PguiImageCtrl Img_Line;
 
-		// Token: 0x04004110 RID: 16656
 		public PguiImageCtrl Contents;
 
-		// Token: 0x04004111 RID: 16657
 		public PguiTextCtrl Num_Result;
 
-		// Token: 0x04004112 RID: 16658
 		public SimpleAnimation Result_Up;
 	}
 
-	// Token: 0x02000A29 RID: 2601
 	public class WindowWildGrow
 	{
-		// Token: 0x06003E7E RID: 15998 RVA: 0x001EA24C File Offset: 0x001E844C
 		public WindowWildGrow(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -548,56 +500,39 @@ public class SelCharaGrowWild
 			this.charaNameText = baseTr.Find("Base/Window/CharaInfo/Txt_CharaName").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x04004113 RID: 16659
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x04004114 RID: 16660
 		public PguiTextCtrl needGoldText;
 
-		// Token: 0x04004115 RID: 16661
 		public PguiTextCtrl haveGoldText;
 
-		// Token: 0x04004116 RID: 16662
 		public List<IconItemCtrl> iconItemList;
 
-		// Token: 0x04004117 RID: 16663
 		public GameObject setReleaseIconSet;
 
-		// Token: 0x04004118 RID: 16664
 		public GameObject wildReleaseIconSet;
 
-		// Token: 0x04004119 RID: 16665
 		public IconCharaCtrl iconCharaSetRelease;
 
-		// Token: 0x0400411A RID: 16666
 		public IconCharaCtrl iconCharaWildRelease_Before;
 
-		// Token: 0x0400411B RID: 16667
 		public IconCharaCtrl iconCharaWildRelease_After;
 
-		// Token: 0x0400411C RID: 16668
 		public PguiTextCtrl charaNameText;
 
-		// Token: 0x0400411D RID: 16669
 		public PguiTextCtrl setReleasePhaseNum;
 
-		// Token: 0x0400411E RID: 16670
 		public PguiTextCtrl wildReleasePhaseNumBefore;
 
-		// Token: 0x0400411F RID: 16671
 		public PguiTextCtrl wildReleasePhaseNumAfter;
 
-		// Token: 0x04004120 RID: 16672
 		public PguiTextCtrl DisableMessageText;
 
-		// Token: 0x04004121 RID: 16673
 		public PguiButtonCtrl ButtonRight;
 	}
 
-	// Token: 0x02000A2A RID: 2602
 	public class WindowWildResult
 	{
-		// Token: 0x06003E7F RID: 15999 RVA: 0x001EA448 File Offset: 0x001E8648
 		public WindowWildResult(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -615,7 +550,6 @@ public class SelCharaGrowWild
 			this.ParamAll.Add(baseTr.Find("Base/Window/ParamAll/Info_Flag_Try/Num_After").GetComponent<PguiTextCtrl>());
 		}
 
-		// Token: 0x06003E80 RID: 16000 RVA: 0x001EA55C File Offset: 0x001E875C
 		public static void SetWindowParam(List<int> befParamList, List<int> aftParamList, List<PguiTextCtrl> ParamAll)
 		{
 			foreach (PguiTextCtrl pguiTextCtrl in ParamAll)
@@ -656,26 +590,19 @@ public class SelCharaGrowWild
 			}
 		}
 
-		// Token: 0x04004122 RID: 16674
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x04004123 RID: 16675
 		public IconCharaCtrl iconChara;
 
-		// Token: 0x04004124 RID: 16676
 		public PguiTextCtrl Txt_CharaName;
 
-		// Token: 0x04004125 RID: 16677
 		public PguiTextCtrl Txt_Num;
 
-		// Token: 0x04004126 RID: 16678
 		public List<PguiTextCtrl> ParamAll;
 	}
 
-	// Token: 0x02000A2B RID: 2603
 	public class WindowTokuseiInfo
 	{
-		// Token: 0x06003E81 RID: 16001 RVA: 0x001EA6C8 File Offset: 0x001E88C8
 		public WindowTokuseiInfo(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -701,53 +628,37 @@ public class SelCharaGrowWild
 			this.Num_Mp.gameObject.SetActive(false);
 		}
 
-		// Token: 0x04004127 RID: 16679
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x04004128 RID: 16680
 		public PguiTextCtrl Txt_Kind;
 
-		// Token: 0x04004129 RID: 16681
 		public PguiTextCtrl Txt_Name;
 
-		// Token: 0x0400412A RID: 16682
 		public PguiTextCtrl Txt_Info;
 
-		// Token: 0x0400412B RID: 16683
 		public PguiTextCtrl Num_Lv;
 
-		// Token: 0x0400412C RID: 16684
 		public PguiImageCtrl Icon_OrderCard;
 
-		// Token: 0x0400412D RID: 16685
 		public PguiTextCtrl Txt_KindKiseki;
 
-		// Token: 0x0400412E RID: 16686
 		public PguiTextCtrl Txt_NameKiseki;
 
-		// Token: 0x0400412F RID: 16687
 		public PguiTextCtrl Txt_InfoKiseki;
 
-		// Token: 0x04004130 RID: 16688
 		public PguiTextCtrl Num_LvKiseki;
 
-		// Token: 0x04004131 RID: 16689
 		public GameObject disableKiseki;
 
-		// Token: 0x04004132 RID: 16690
 		public GameObject skill;
 
-		// Token: 0x04004133 RID: 16691
 		public GameObject skillKiseki;
 
-		// Token: 0x04004134 RID: 16692
 		public PguiTextCtrl Num_Mp;
 	}
 
-	// Token: 0x02000A2C RID: 2604
 	public class WindowIconOpen
 	{
-		// Token: 0x06003E82 RID: 16002 RVA: 0x001EA86D File Offset: 0x001E8A6D
 		public WindowIconOpen(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -755,32 +666,23 @@ public class SelCharaGrowWild
 			this.Icon_Chara = baseTr.Find("Base/Window/Icon_Chara").GetComponent<IconCharaCtrl>();
 		}
 
-		// Token: 0x04004135 RID: 16693
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x04004136 RID: 16694
 		public PguiTextCtrl Title;
 
-		// Token: 0x04004137 RID: 16695
 		public IconCharaCtrl Icon_Chara;
 	}
 
-	// Token: 0x02000A2D RID: 2605
 	public class CharaGrowWildGUI
 	{
-		// Token: 0x04004138 RID: 16696
 		public SelCharaGrowWild.WindowWildGrow wildGrowWindow;
 
-		// Token: 0x04004139 RID: 16697
 		public SelCharaGrowWild.WindowWildResult wildResultWindow;
 
-		// Token: 0x0400413A RID: 16698
 		public SelCharaGrowWild.WindowTokuseiInfo tokuseiInfoWindow;
 
-		// Token: 0x0400413B RID: 16699
 		public SelCharaGrowWild.WindowIconOpen iconOpenWindow;
 
-		// Token: 0x0400413C RID: 16700
 		public SelCharaGrowWild.WildReleaseTab wildReleaseTab;
 	}
 }

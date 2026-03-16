@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -8,16 +8,10 @@ using UnityEngine;
 
 namespace SGNFW.Ab
 {
-	// Token: 0x02000286 RID: 646
 	public class LoadRoutine : MonoBehaviour
 	{
-		// Token: 0x170005EE RID: 1518
-		// (get) Token: 0x0600272A RID: 10026 RVA: 0x001A4E74 File Offset: 0x001A3074
-		// (set) Token: 0x06002729 RID: 10025 RVA: 0x001A4E6B File Offset: 0x001A306B
 		public virtual float Progress { get; protected set; }
 
-		// Token: 0x170005EF RID: 1519
-		// (get) Token: 0x0600272B RID: 10027 RVA: 0x001A4E7C File Offset: 0x001A307C
 		public virtual bool IsBusy
 		{
 			get
@@ -26,8 +20,6 @@ namespace SGNFW.Ab
 			}
 		}
 
-		// Token: 0x170005F0 RID: 1520
-		// (get) Token: 0x0600272C RID: 10028 RVA: 0x001A4E84 File Offset: 0x001A3084
 		public virtual int Size
 		{
 			get
@@ -41,8 +33,6 @@ namespace SGNFW.Ab
 			}
 		}
 
-		// Token: 0x170005F1 RID: 1521
-		// (get) Token: 0x0600272D RID: 10029 RVA: 0x001A4EC0 File Offset: 0x001A30C0
 		public virtual int Duty
 		{
 			get
@@ -80,8 +70,6 @@ namespace SGNFW.Ab
 			}
 		}
 
-		// Token: 0x170005F2 RID: 1522
-		// (get) Token: 0x0600272E RID: 10030 RVA: 0x001A4F88 File Offset: 0x001A3188
 		public virtual float TotalProgress
 		{
 			get
@@ -90,8 +78,6 @@ namespace SGNFW.Ab
 			}
 		}
 
-		// Token: 0x170005F3 RID: 1523
-		// (get) Token: 0x0600272F RID: 10031 RVA: 0x001A4F98 File Offset: 0x001A3198
 		public virtual int LoadedCounter
 		{
 			get
@@ -100,8 +86,6 @@ namespace SGNFW.Ab
 			}
 		}
 
-		// Token: 0x170005F4 RID: 1524
-		// (get) Token: 0x06002730 RID: 10032 RVA: 0x001A4FA0 File Offset: 0x001A31A0
 		public virtual int DataNum
 		{
 			get
@@ -110,8 +94,6 @@ namespace SGNFW.Ab
 			}
 		}
 
-		// Token: 0x170005F5 RID: 1525
-		// (get) Token: 0x06002731 RID: 10033 RVA: 0x001A4FAD File Offset: 0x001A31AD
 		public virtual int LoadDataIndex
 		{
 			get
@@ -120,8 +102,6 @@ namespace SGNFW.Ab
 			}
 		}
 
-		// Token: 0x170005F6 RID: 1526
-		// (get) Token: 0x06002732 RID: 10034 RVA: 0x001A4FB5 File Offset: 0x001A31B5
 		public virtual bool IsAbort
 		{
 			get
@@ -130,8 +110,6 @@ namespace SGNFW.Ab
 			}
 		}
 
-		// Token: 0x170005F7 RID: 1527
-		// (get) Token: 0x06002733 RID: 10035 RVA: 0x001A4FBD File Offset: 0x001A31BD
 		public virtual bool IsReady
 		{
 			get
@@ -140,8 +118,6 @@ namespace SGNFW.Ab
 			}
 		}
 
-		// Token: 0x170005F8 RID: 1528
-		// (get) Token: 0x06002734 RID: 10036 RVA: 0x001A4FD7 File Offset: 0x001A31D7
 		public virtual bool IsError
 		{
 			get
@@ -150,9 +126,6 @@ namespace SGNFW.Ab
 			}
 		}
 
-		// Token: 0x170005F9 RID: 1529
-		// (get) Token: 0x06002735 RID: 10037 RVA: 0x001A4FDF File Offset: 0x001A31DF
-		// (set) Token: 0x06002736 RID: 10038 RVA: 0x001A4FE7 File Offset: 0x001A31E7
 		public virtual bool Pause
 		{
 			get
@@ -165,7 +138,6 @@ namespace SGNFW.Ab
 			}
 		}
 
-		// Token: 0x06002737 RID: 10039 RVA: 0x001A4FF0 File Offset: 0x001A31F0
 		public static LoadRoutine Create(GameObject go, float timeout, int retryNum)
 		{
 			LoadRoutine loadRoutine = go.AddComponent<LoadRoutine>();
@@ -173,20 +145,17 @@ namespace SGNFW.Ab
 			return loadRoutine;
 		}
 
-		// Token: 0x06002738 RID: 10040 RVA: 0x001A5000 File Offset: 0x001A3200
 		public virtual void Add(Data data)
 		{
 			Manager.CheckState(data);
 			this.dataList.Add(data);
 		}
 
-		// Token: 0x06002739 RID: 10041 RVA: 0x001A5014 File Offset: 0x001A3214
 		public virtual bool Contains(Data data)
 		{
 			return this.dataList.Contains(data);
 		}
 
-		// Token: 0x0600273A RID: 10042 RVA: 0x001A5022 File Offset: 0x001A3222
 		public virtual IEnumerator Run()
 		{
 			if (this.dataList.Count <= this.loadIndex)
@@ -228,7 +197,6 @@ namespace SGNFW.Ab
 			yield break;
 		}
 
-		// Token: 0x0600273B RID: 10043 RVA: 0x001A5034 File Offset: 0x001A3234
 		public virtual void Clear()
 		{
 			foreach (Data data in this.dataList)
@@ -245,14 +213,12 @@ namespace SGNFW.Ab
 			this.pause = false;
 		}
 
-		// Token: 0x0600273C RID: 10044 RVA: 0x001A50C8 File Offset: 0x001A32C8
 		public virtual void Abort()
 		{
 			this.abort = true;
 			this.pause = false;
 		}
 
-		// Token: 0x0600273D RID: 10045 RVA: 0x001A50D8 File Offset: 0x001A32D8
 		public virtual void Retry()
 		{
 			this.retryCounter = 0;
@@ -260,21 +226,18 @@ namespace SGNFW.Ab
 			this.pause = false;
 		}
 
-		// Token: 0x0600273E RID: 10046 RVA: 0x001A50EF File Offset: 0x001A32EF
 		public virtual void Exit()
 		{
 			this.Abort();
 			this.pause = false;
 		}
 
-		// Token: 0x0600273F RID: 10047 RVA: 0x001A50FE File Offset: 0x001A32FE
 		protected virtual void Setup(float timeout, int retryNum)
 		{
 			this.downloadTimeout = timeout;
 			this.downloadRetryNum = retryNum;
 		}
 
-		// Token: 0x06002740 RID: 10048 RVA: 0x001A510E File Offset: 0x001A330E
 		protected virtual IEnumerator Run(Data data)
 		{
 			if (data.save && (data.IsNeedDownload || data.isDownloadOnly))
@@ -311,7 +274,6 @@ namespace SGNFW.Ab
 			yield break;
 		}
 
-		// Token: 0x06002741 RID: 10049 RVA: 0x001A5124 File Offset: 0x001A3324
 		protected virtual IEnumerator DownloadAndSave(Data data)
 		{
 			string url = null;
@@ -499,7 +461,6 @@ namespace SGNFW.Ab
 			yield break;
 		}
 
-		// Token: 0x06002742 RID: 10050 RVA: 0x001A513A File Offset: 0x001A333A
 		protected virtual IEnumerator DownloadAndLoad(Data data)
 		{
 			string url = null;
@@ -649,7 +610,6 @@ namespace SGNFW.Ab
 			yield break;
 		}
 
-		// Token: 0x06002743 RID: 10051 RVA: 0x001A5150 File Offset: 0x001A3350
 		protected virtual IEnumerator Load(Data data)
 		{
 			string url = null;
@@ -831,63 +791,43 @@ namespace SGNFW.Ab
 			yield break;
 		}
 
-		// Token: 0x04001CAB RID: 7339
 		public Action<string, Data, Exception> onFailedRead;
 
-		// Token: 0x04001CAC RID: 7340
 		public Action<Data> onSuccess;
 
-		// Token: 0x04001CAD RID: 7341
 		public Action<LoadRoutine> onFinished;
 
-		// Token: 0x04001CAE RID: 7342
 		public Action<string, Data, Exception> onFailedWrite;
 
-		// Token: 0x04001CAF RID: 7343
 		protected List<Data> dataList = new List<Data>();
 
-		// Token: 0x04001CB0 RID: 7344
 		protected LoadRoutine.State state;
 
-		// Token: 0x04001CB1 RID: 7345
 		protected int loadedCounter;
 
-		// Token: 0x04001CB2 RID: 7346
 		protected int loadIndex;
 
-		// Token: 0x04001CB3 RID: 7347
 		protected float timer;
 
-		// Token: 0x04001CB4 RID: 7348
 		protected int retryCounter;
 
-		// Token: 0x04001CB5 RID: 7349
 		protected bool busy;
 
-		// Token: 0x04001CB6 RID: 7350
 		protected bool abort;
 
-		// Token: 0x04001CB7 RID: 7351
 		protected bool retry;
 
-		// Token: 0x04001CB8 RID: 7352
 		protected float downloadTimeout;
 
-		// Token: 0x04001CB9 RID: 7353
 		protected int downloadRetryNum;
 
-		// Token: 0x04001CBA RID: 7354
 		protected bool error;
 
-		// Token: 0x04001CBB RID: 7355
 		protected bool pause;
 
-		// Token: 0x020010B3 RID: 4275
 		protected enum State
 		{
-			// Token: 0x04005CA1 RID: 23713
 			None,
-			// Token: 0x04005CA2 RID: 23714
 			Running
 		}
 	}

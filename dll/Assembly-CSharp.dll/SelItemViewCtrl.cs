@@ -1,29 +1,18 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.uGUI;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x02000160 RID: 352
 public class SelItemViewCtrl : MonoBehaviour
 {
-	// Token: 0x17000384 RID: 900
-	// (get) Token: 0x06001447 RID: 5191 RVA: 0x000F8588 File Offset: 0x000F6788
-	// (set) Token: 0x06001448 RID: 5192 RVA: 0x000F8590 File Offset: 0x000F6790
 	public bool BackAnimPlaying { get; private set; }
 
-	// Token: 0x17000385 RID: 901
-	// (get) Token: 0x06001449 RID: 5193 RVA: 0x000F8599 File Offset: 0x000F6799
-	// (set) Token: 0x0600144A RID: 5194 RVA: 0x000F85A1 File Offset: 0x000F67A1
 	private int CurrentItemId { get; set; }
 
-	// Token: 0x17000386 RID: 902
-	// (get) Token: 0x0600144B RID: 5195 RVA: 0x000F85AA File Offset: 0x000F67AA
-	// (set) Token: 0x0600144C RID: 5196 RVA: 0x000F85B2 File Offset: 0x000F67B2
 	private int CurrentTabIndex { get; set; }
 
-	// Token: 0x0600144D RID: 5197 RVA: 0x000F85BC File Offset: 0x000F67BC
 	public void Init()
 	{
 		this.UpdateTabItemData();
@@ -44,7 +33,6 @@ public class SelItemViewCtrl : MonoBehaviour
 		CanvasManager.HdlCmnItemWindowCtrl.selItemViewCtrl = this;
 	}
 
-	// Token: 0x0600144E RID: 5198 RVA: 0x000F8708 File Offset: 0x000F6908
 	public void Setup()
 	{
 		this.BackAnimPlaying = false;
@@ -66,7 +54,6 @@ public class SelItemViewCtrl : MonoBehaviour
 		this.guiData.inOutAnimation.ExPlayAnimation(SimpleAnimation.ExPguiStatus.START, null);
 	}
 
-	// Token: 0x0600144F RID: 5199 RVA: 0x000F8830 File Offset: 0x000F6A30
 	private void Update()
 	{
 		if (this.currentEnumerator != null && !this.currentEnumerator.MoveNext())
@@ -89,7 +76,6 @@ public class SelItemViewCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001450 RID: 5200 RVA: 0x000F88B7 File Offset: 0x000F6AB7
 	private IEnumerator RequestUpdateOption()
 	{
 		if (this.OnClickMoveSequenceName == SceneManager.SceneName.None)
@@ -104,13 +90,11 @@ public class SelItemViewCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001451 RID: 5201 RVA: 0x000F88C8 File Offset: 0x000F6AC8
 	private List<ItemData> GetItemDataList(DataManagerItem.DispType type)
 	{
 		return this.TabItemDataList.Find((SelItemViewCtrl.TabItemList x) => x.dispType == type).ItemDataList;
 	}
 
-	// Token: 0x06001452 RID: 5202 RVA: 0x000F8900 File Offset: 0x000F6B00
 	private void UpdateTabItemData()
 	{
 		this.TabItemDataList = new List<SelItemViewCtrl.TabItemList>();
@@ -120,7 +104,6 @@ public class SelItemViewCtrl : MonoBehaviour
 		this.TabItemDataList.Add(new SelItemViewCtrl.TabItemList(DataManagerItem.DispType.PlayItem));
 	}
 
-	// Token: 0x06001453 RID: 5203 RVA: 0x000F895C File Offset: 0x000F6B5C
 	private void SetItemView(int rowIdx, GameObject go, DataManagerItem.DispType type, GameObject parent = null)
 	{
 		for (int i = 0; i < 3; i++)
@@ -178,7 +161,6 @@ public class SelItemViewCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001454 RID: 5204 RVA: 0x000F8B44 File Offset: 0x000F6D44
 	public void InitializeItemInfo()
 	{
 		if (0 < this.GetItemDataList(DataManagerItem.DispType.Common).Count)
@@ -188,7 +170,6 @@ public class SelItemViewCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001455 RID: 5205 RVA: 0x000F8B7C File Offset: 0x000F6D7C
 	private void UpdateItemInfo(ItemStaticBase itemBase)
 	{
 		this.guiData.infoTitle.text = itemBase.GetName();
@@ -216,7 +197,6 @@ public class SelItemViewCtrl : MonoBehaviour
 		this.guiData.infoTextNote.text = "※このアイテムは " + TimeManager.FormattedTime(value, TimeManager.Format.yyyyMMdd_hhmm) + " に消失します。";
 	}
 
-	// Token: 0x06001456 RID: 5206 RVA: 0x000F8CB4 File Offset: 0x000F6EB4
 	private DataManagerItem.DispType GetIconItemTabType(GameObject go)
 	{
 		string name = go.transform.parent.parent.parent.parent.name;
@@ -244,7 +224,6 @@ public class SelItemViewCtrl : MonoBehaviour
 		return dispType;
 	}
 
-	// Token: 0x06001457 RID: 5207 RVA: 0x000F8D28 File Offset: 0x000F6F28
 	private void OnStartItemView(int rowIdx, GameObject go)
 	{
 		GameObject gameObject = (GameObject)Resources.Load("SceneMenu/GUI/Prefab/ItemList_ItemSet");
@@ -253,21 +232,18 @@ public class SelItemViewCtrl : MonoBehaviour
 		this.InitializeItemInfo();
 	}
 
-	// Token: 0x06001458 RID: 5208 RVA: 0x000F8D60 File Offset: 0x000F6F60
 	private void OnUpdateItemView(int rowIdx, GameObject go)
 	{
 		DataManagerItem.DispType iconItemTabType = this.GetIconItemTabType(go);
 		this.SetItemView(rowIdx, go, iconItemTabType, null);
 	}
 
-	// Token: 0x06001459 RID: 5209 RVA: 0x000F8D80 File Offset: 0x000F6F80
 	private void OnClickButton(DataManagerItem.DispType type, int itemIdx)
 	{
 		ItemStaticBase staticData = this.GetItemDataList(type)[itemIdx].staticData;
 		this.UpdateItemInfo(staticData);
 	}
 
-	// Token: 0x0600145A RID: 5210 RVA: 0x000F8DA8 File Offset: 0x000F6FA8
 	private bool OnSelectTab(int tabIdx)
 	{
 		int num = 0;
@@ -284,7 +260,6 @@ public class SelItemViewCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x0600145B RID: 5211 RVA: 0x000F8E54 File Offset: 0x000F7054
 	public bool OnClickReturnButton()
 	{
 		if (this.BackAnimPlaying)
@@ -299,21 +274,18 @@ public class SelItemViewCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x0600145C RID: 5212 RVA: 0x000F8E88 File Offset: 0x000F7088
 	public void OnClickSellItemButton(PguiButtonCtrl button)
 	{
 		ItemData userItemData = DataManager.DmItem.GetUserItemData(this.CurrentItemId);
 		CanvasManager.HdlCmnItemWindowCtrl.OpenBuyInfoWindow(userItemData);
 	}
 
-	// Token: 0x0600145D RID: 5213 RVA: 0x000F8EB4 File Offset: 0x000F70B4
 	public void OnClickContentButton(PguiButtonCtrl button)
 	{
 		ItemData userItemData = DataManager.DmItem.GetUserItemData(this.CurrentItemId);
 		CanvasManager.HdlCmnItemWindowCtrl.OpenBankContentWindow(userItemData);
 	}
 
-	// Token: 0x0600145E RID: 5214 RVA: 0x000F8EE0 File Offset: 0x000F70E0
 	public void RefreshScrollItem()
 	{
 		this.UpdateTabItemData();
@@ -328,7 +300,6 @@ public class SelItemViewCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600145F RID: 5215 RVA: 0x000F8F60 File Offset: 0x000F7160
 	public bool OnClickMoveSequenceButton(SceneManager.SceneName sceneName, object sceneArgs)
 	{
 		this.currentEnumerator = this.RequestUpdateOption();
@@ -337,45 +308,33 @@ public class SelItemViewCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x040010BC RID: 4284
 	private SelItemViewCtrl.GUI guiData;
 
-	// Token: 0x040010BD RID: 4285
 	private IEnumerator currentEnumerator;
 
-	// Token: 0x040010BE RID: 4286
 	private List<SelItemViewCtrl.TabItemList> TabItemDataList;
 
-	// Token: 0x040010BF RID: 4287
 	private List<ItemData> updateTargetItemDataList;
 
-	// Token: 0x040010C2 RID: 4290
 	private SceneManager.SceneName OnClickMoveSequenceName;
 
-	// Token: 0x040010C3 RID: 4291
 	private object OnClickMoveSequenceArgs;
 
-	// Token: 0x02000B71 RID: 2929
 	private class TabItemList
 	{
-		// Token: 0x060042D4 RID: 17108 RVA: 0x00201377 File Offset: 0x001FF577
 		public TabItemList(DataManagerItem.DispType type)
 		{
 			this.dispType = type;
 			this.ItemDataList = DataManager.DmItem.GetUserTabItemList(DataManager.DmItem.GetUserItemMap(), this.dispType);
 		}
 
-		// Token: 0x04004782 RID: 18306
 		public DataManagerItem.DispType dispType;
 
-		// Token: 0x04004783 RID: 18307
 		public List<ItemData> ItemDataList;
 	}
 
-	// Token: 0x02000B72 RID: 2930
 	public class GUI
 	{
-		// Token: 0x060042D5 RID: 17109 RVA: 0x002013A8 File Offset: 0x001FF5A8
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -401,56 +360,40 @@ public class SelItemViewCtrl : MonoBehaviour
 			this.inOutAnimation = baseTr.GetComponent<SimpleAnimation>();
 		}
 
-		// Token: 0x04004784 RID: 18308
 		public GameObject baseObj;
 
-		// Token: 0x04004785 RID: 18309
 		public PguiTextCtrl infoTitle;
 
-		// Token: 0x04004786 RID: 18310
 		public IconItemCtrl infoIcon;
 
-		// Token: 0x04004787 RID: 18311
 		public Text infoText;
 
-		// Token: 0x04004788 RID: 18312
 		public PguiTextCtrl infoTextNote;
 
-		// Token: 0x04004789 RID: 18313
 		public PguiTextCtrl NoItemText;
 
-		// Token: 0x0400478A RID: 18314
 		public PguiTabGroupCtrl TabGroup;
 
-		// Token: 0x0400478B RID: 18315
 		public PguiButtonCtrl SellButton;
 
-		// Token: 0x0400478C RID: 18316
 		public PguiButtonCtrl ContentButton;
 
-		// Token: 0x0400478D RID: 18317
 		public List<SelItemViewCtrl.GUI.TabScrollView> TabScrollViewList;
 
-		// Token: 0x0400478E RID: 18318
 		public List<GameObject> TabList;
 
-		// Token: 0x0400478F RID: 18319
 		public SimpleAnimation inOutAnimation;
 
-		// Token: 0x02001193 RID: 4499
 		public class TabScrollView
 		{
-			// Token: 0x0600569C RID: 22172 RVA: 0x00252D95 File Offset: 0x00250F95
 			public TabScrollView(DataManagerItem.DispType type, ReuseScroll scrl)
 			{
 				this.dispType = type;
 				this.scroll = scrl;
 			}
 
-			// Token: 0x0400603D RID: 24637
 			public DataManagerItem.DispType dispType;
 
-			// Token: 0x0400603E RID: 24638
 			public ReuseScroll scroll;
 		}
 	}

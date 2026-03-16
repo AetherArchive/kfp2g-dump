@@ -1,11 +1,8 @@
-﻿using System;
+using System;
 using SGNFW.Mst;
 
-// Token: 0x020000FE RID: 254
 public class PurchaseProductStatic : MstPurchaseProduct
 {
-	// Token: 0x1700030E RID: 782
-	// (get) Token: 0x06000C2D RID: 3117 RVA: 0x00048873 File Offset: 0x00046A73
 	public bool IsFreeMonthlyPack
 	{
 		get
@@ -14,7 +11,6 @@ public class PurchaseProductStatic : MstPurchaseProduct
 		}
 	}
 
-	// Token: 0x06000C2E RID: 3118 RVA: 0x0004888C File Offset: 0x00046A8C
 	public PurchaseProductStatic(MstPurchaseProduct mst)
 	{
 		this.productIdCommon = mst.productIdCommon;

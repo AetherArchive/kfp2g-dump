@@ -1,10 +1,8 @@
-﻿using System;
+using System;
 using System.Collections;
 
-// Token: 0x020001C0 RID: 448
 public class SelReviewGuide
 {
-	// Token: 0x06001EE3 RID: 7907 RVA: 0x0017FFA2 File Offset: 0x0017E1A2
 	public static IEnumerator ReviewGuide()
 	{
 		bool review = false;

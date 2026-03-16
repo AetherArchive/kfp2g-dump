@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
@@ -7,17 +7,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x020001BD RID: 445
 public class SelPhotoEditCtrl : MonoBehaviour
 {
-	// Token: 0x17000427 RID: 1063
-	// (get) Token: 0x06001EA0 RID: 7840 RVA: 0x0017BA54 File Offset: 0x00179C54
-	// (set) Token: 0x06001EA1 RID: 7841 RVA: 0x0017BA5C File Offset: 0x00179C5C
 	public bool isChangeClone { get; set; }
 
-	// Token: 0x17000428 RID: 1064
-	// (get) Token: 0x06001EA2 RID: 7842 RVA: 0x0017BA65 File Offset: 0x00179C65
-	// (set) Token: 0x06001EA3 RID: 7843 RVA: 0x0017BA74 File Offset: 0x00179C74
 	public bool TouchRect
 	{
 		get
@@ -32,7 +25,6 @@ public class SelPhotoEditCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001EA4 RID: 7844 RVA: 0x0017BA80 File Offset: 0x00179C80
 	public void ChangePhotoInfo(int selPhoto)
 	{
 		SelPhotoEditCtrl.<>c__DisplayClass23_0 CS$<>8__locals1 = new SelPhotoEditCtrl.<>c__DisplayClass23_0();
@@ -191,7 +183,6 @@ public class SelPhotoEditCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001EA5 RID: 7845 RVA: 0x0017C290 File Offset: 0x0017A490
 	public void Init(SelPhotoEditCtrl.Type type)
 	{
 		if (this.isInit)
@@ -285,7 +276,6 @@ public class SelPhotoEditCtrl : MonoBehaviour
 		this.isInit = true;
 	}
 
-	// Token: 0x06001EA6 RID: 7846 RVA: 0x0017C748 File Offset: 0x0017A948
 	public void Setup(SelPhotoEditCtrl.SetupParam param)
 	{
 		this.isSetup = true;
@@ -399,7 +389,6 @@ public class SelPhotoEditCtrl : MonoBehaviour
 		this.SetActive(true, false);
 	}
 
-	// Token: 0x06001EA7 RID: 7847 RVA: 0x0017C958 File Offset: 0x0017AB58
 	public void SetActive(bool val, bool quick = false)
 	{
 		if (!this.isSetup)
@@ -420,7 +409,6 @@ public class SelPhotoEditCtrl : MonoBehaviour
 		this.NotActive(null);
 	}
 
-	// Token: 0x06001EA8 RID: 7848 RVA: 0x0017C9BC File Offset: 0x0017ABBC
 	public void NotActive(UnityAction cb = null)
 	{
 		this.guiData.anim.ExPlayAnimation(SimpleAnimation.ExPguiStatus.END, delegate
@@ -435,13 +423,11 @@ public class SelPhotoEditCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06001EA9 RID: 7849 RVA: 0x0017C9FA File Offset: 0x0017ABFA
 	public bool IsPlayingdAnim()
 	{
 		return this.guiData.anim.ExIsPlaying();
 	}
 
-	// Token: 0x06001EAA RID: 7850 RVA: 0x0017CA0C File Offset: 0x0017AC0C
 	public void ResetCurrentIcon()
 	{
 		if (this.selectPhotoData != null)
@@ -467,17 +453,14 @@ public class SelPhotoEditCtrl : MonoBehaviour
 		this.guiData.photoDeck.infoPhotoItemEffectCtrl.Setup(new InfoPhotoItemEffectCtrl.SetupParam());
 	}
 
-	// Token: 0x06001EAB RID: 7851 RVA: 0x0017CB1A File Offset: 0x0017AD1A
 	private void Start()
 	{
 	}
 
-	// Token: 0x06001EAC RID: 7852 RVA: 0x0017CB1C File Offset: 0x0017AD1C
 	private void Update()
 	{
 	}
 
-	// Token: 0x06001EAD RID: 7853 RVA: 0x0017CB1E File Offset: 0x0017AD1E
 	private IEnumerator StartAnimation()
 	{
 		this.guiData.anim.ExPauseAnimationLastFrame(SimpleAnimation.ExPguiStatus.END);
@@ -487,14 +470,12 @@ public class SelPhotoEditCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001EAE RID: 7854 RVA: 0x0017CB2D File Offset: 0x0017AD2D
 	public void Reload()
 	{
 		this.isChangeClone = false;
 		this.ReloadDeckData();
 	}
 
-	// Token: 0x06001EAF RID: 7855 RVA: 0x0017CB3C File Offset: 0x0017AD3C
 	private void ReloadDeckData()
 	{
 		this.havePhotoPackList = new List<PhotoPackData>(DataManager.DmPhoto.GetUserPhotoMap().Values);
@@ -529,7 +510,6 @@ public class SelPhotoEditCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001EB0 RID: 7856 RVA: 0x0017CBF8 File Offset: 0x0017ADF8
 	private void GetEquipPhotoCount(ref int equipParamPhoto, ref int equipAbilityPhoto)
 	{
 		foreach (long num in ((this.setupParam.cbGetEquipPhoto != null) ? this.setupParam.cbGetEquipPhoto() : new List<long>()))
@@ -552,7 +532,6 @@ public class SelPhotoEditCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001EB1 RID: 7857 RVA: 0x0017CCA8 File Offset: 0x0017AEA8
 	private void SelectPhotoIcon(SelPhotoEditCtrl.SelectPhotoData newSelectPhoto, SelPhotoEditCtrl.SelectPhotoData oldSelectPhoto)
 	{
 		int num = -1;
@@ -764,7 +743,6 @@ public class SelPhotoEditCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001EB2 RID: 7858 RVA: 0x0017D4F0 File Offset: 0x0017B6F0
 	private void OnTouchPhotoIcon(SelCharaDeckCtrl.FrameType type, SelPhotoEditCtrl.GUI.IconPhotoSet iconPhoto)
 	{
 		SelPhotoEditCtrl.<>c__DisplayClass37_0 CS$<>8__locals1 = new SelPhotoEditCtrl.<>c__DisplayClass37_0();
@@ -906,7 +884,6 @@ public class SelPhotoEditCtrl : MonoBehaviour
 		this.TouchRect = true;
 	}
 
-	// Token: 0x06001EB3 RID: 7859 RVA: 0x0017DC2C File Offset: 0x0017BE2C
 	private void OnStartItemPhoto(int index, GameObject go)
 	{
 		for (int i = 0; i < this.guiData.photoDeck.sizeChangeBtnGUI.IconPhotoParamList[this.guiData.photoDeck.sizeChangeBtnGUI.SizeIndex].num; i++)
@@ -983,7 +960,6 @@ public class SelPhotoEditCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001EB4 RID: 7860 RVA: 0x0017DE44 File Offset: 0x0017C044
 	private void OnUpdateItemPhoto(int index, GameObject go)
 	{
 		List<long> list = ((this.setupParam.cbGetEquipPhoto != null) ? this.setupParam.cbGetEquipPhoto() : new List<long>());
@@ -1108,7 +1084,6 @@ public class SelPhotoEditCtrl : MonoBehaviour
 		go.GetComponent<GridLayoutGroup>().enabled = true;
 	}
 
-	// Token: 0x06001EB5 RID: 7861 RVA: 0x0017E4BC File Offset: 0x0017C6BC
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		if (button == this.guiData.photoDeck.Btn_EditOk)
@@ -1125,55 +1100,38 @@ public class SelPhotoEditCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0400165D RID: 5725
 	private bool isInit;
 
-	// Token: 0x0400165E RID: 5726
 	private bool isSetup;
 
-	// Token: 0x0400165F RID: 5727
 	public SelPhotoEditCtrl.GUI guiData;
 
-	// Token: 0x04001660 RID: 5728
 	private SortFilterDefine.SortType sortType = SortFilterDefine.SortType.LEVEL;
 
-	// Token: 0x04001661 RID: 5729
 	public SelPhotoEditCtrl.SetupParam setupParam = new SelPhotoEditCtrl.SetupParam();
 
-	// Token: 0x04001662 RID: 5730
 	private SelPhotoEditCtrl.SelectPhotoData selectPhotoData;
 
-	// Token: 0x04001663 RID: 5731
 	private List<PhotoPackData> havePhotoPackList;
 
-	// Token: 0x04001664 RID: 5732
 	private PhotoPackData removeButttonPhotoData = PhotoPackData.MakeInvalid();
 
-	// Token: 0x04001665 RID: 5733
 	private List<long> deckPhotoDataId = new List<long>();
 
-	// Token: 0x04001666 RID: 5734
 	private List<PhotoPackData> dispPhotoPackList;
 
-	// Token: 0x04001667 RID: 5735
 	private UserOptionData cloneUserOptionData;
 
-	// Token: 0x04001669 RID: 5737
 	private bool touchRect;
 
-	// Token: 0x02000FBC RID: 4028
 	public enum Type
 	{
-		// Token: 0x040058C0 RID: 22720
 		Party,
-		// Token: 0x040058C1 RID: 22721
 		Asistant
 	}
 
-	// Token: 0x02000FBD RID: 4029
 	public class SelectPhotoData
 	{
-		// Token: 0x060050C6 RID: 20678 RVA: 0x002437A9 File Offset: 0x002419A9
 		public SelectPhotoData(SelCharaDeckCtrl.FrameType t, PhotoPackData c, bool b)
 		{
 			this.type = t;
@@ -1181,100 +1139,47 @@ public class SelPhotoEditCtrl : MonoBehaviour
 			this.textDisable = b;
 		}
 
-		// Token: 0x040058C2 RID: 22722
 		public SelCharaDeckCtrl.FrameType type;
 
-		// Token: 0x040058C3 RID: 22723
 		public PhotoPackData photo;
 
-		// Token: 0x040058C4 RID: 22724
 		public bool textDisable;
 	}
 
-	// Token: 0x02000FBE RID: 4030
 	public class SetupParam
 	{
-		// Token: 0x17000B95 RID: 2965
-		// (get) Token: 0x060050C7 RID: 20679 RVA: 0x002437C6 File Offset: 0x002419C6
-		// (set) Token: 0x060050C8 RID: 20680 RVA: 0x002437CE File Offset: 0x002419CE
 		public SelPhotoEditCtrl.SetupParam.OnClickButton cbButtonEditOk { get; set; }
 
-		// Token: 0x17000B96 RID: 2966
-		// (get) Token: 0x060050C9 RID: 20681 RVA: 0x002437D7 File Offset: 0x002419D7
-		// (set) Token: 0x060050CA RID: 20682 RVA: 0x002437DF File Offset: 0x002419DF
 		public SelPhotoEditCtrl.SetupParam.OnClickButton cbButtonArrow { get; set; }
 
-		// Token: 0x17000B97 RID: 2967
-		// (get) Token: 0x060050CB RID: 20683 RVA: 0x002437E8 File Offset: 0x002419E8
-		// (set) Token: 0x060050CC RID: 20684 RVA: 0x002437F0 File Offset: 0x002419F0
 		public SelPhotoEditCtrl.SetupParam.OnGetEquipPhoto cbGetEquipPhoto { get; set; }
 
-		// Token: 0x17000B98 RID: 2968
-		// (get) Token: 0x060050CD RID: 20685 RVA: 0x002437F9 File Offset: 0x002419F9
-		// (set) Token: 0x060050CE RID: 20686 RVA: 0x00243801 File Offset: 0x00241A01
 		public SelPhotoEditCtrl.SetupParam.OnGetEquipPhoto cbGetAllEquipPhoto { get; set; }
 
-		// Token: 0x17000B99 RID: 2969
-		// (get) Token: 0x060050CF RID: 20687 RVA: 0x0024380A File Offset: 0x00241A0A
-		// (set) Token: 0x060050D0 RID: 20688 RVA: 0x00243812 File Offset: 0x00241A12
 		public int indexByDeckChara { get; set; }
 
-		// Token: 0x17000B9A RID: 2970
-		// (get) Token: 0x060050D1 RID: 20689 RVA: 0x0024381B File Offset: 0x00241A1B
-		// (set) Token: 0x060050D2 RID: 20690 RVA: 0x00243823 File Offset: 0x00241A23
 		public SelPhotoEditCtrl.SetupParam.OnGetCharaPackData cbGetCharaPackData { get; set; }
 
-		// Token: 0x17000B9B RID: 2971
-		// (get) Token: 0x060050D3 RID: 20691 RVA: 0x0024382C File Offset: 0x00241A2C
-		// (set) Token: 0x060050D4 RID: 20692 RVA: 0x00243834 File Offset: 0x00241A34
 		public SelPhotoEditCtrl.SetupParam.OnIsEquipPhoto cbIsEquipPhoto { get; set; }
 
-		// Token: 0x17000B9C RID: 2972
-		// (get) Token: 0x060050D5 RID: 20693 RVA: 0x0024383D File Offset: 0x00241A3D
-		// (set) Token: 0x060050D6 RID: 20694 RVA: 0x00243845 File Offset: 0x00241A45
 		public SelPhotoEditCtrl.SetupParam.OnSetString cbSetPartyName { get; set; }
 
-		// Token: 0x17000B9D RID: 2973
-		// (get) Token: 0x060050D7 RID: 20695 RVA: 0x0024384E File Offset: 0x00241A4E
-		// (set) Token: 0x060050D8 RID: 20696 RVA: 0x00243856 File Offset: 0x00241A56
 		public SelPhotoEditCtrl.SetupParam.OnResignEquipPhotoByDataId cbResignEquipPhotoByDataId { get; set; }
 
-		// Token: 0x17000B9E RID: 2974
-		// (get) Token: 0x060050D9 RID: 20697 RVA: 0x0024385F File Offset: 0x00241A5F
-		// (set) Token: 0x060050DA RID: 20698 RVA: 0x00243867 File Offset: 0x00241A67
 		public SelPhotoEditCtrl.SetupParam.CurrentUerPartyId CurrentUserPartyId { get; set; }
 
-		// Token: 0x17000B9F RID: 2975
-		// (get) Token: 0x060050DC RID: 20700 RVA: 0x00243879 File Offset: 0x00241A79
-		// (set) Token: 0x060050DB RID: 20699 RVA: 0x00243870 File Offset: 0x00241A70
 		public bool isTutorial { get; set; }
 
-		// Token: 0x17000BA0 RID: 2976
-		// (get) Token: 0x060050DD RID: 20701 RVA: 0x00243881 File Offset: 0x00241A81
-		// (set) Token: 0x060050DE RID: 20702 RVA: 0x00243889 File Offset: 0x00241A89
 		public UserDeckData.Category deckCategory { get; set; }
 
-		// Token: 0x17000BA1 RID: 2977
-		// (get) Token: 0x060050DF RID: 20703 RVA: 0x00243892 File Offset: 0x00241A92
-		// (set) Token: 0x060050E0 RID: 20704 RVA: 0x0024389A File Offset: 0x00241A9A
 		public int pvpSeasonId { get; set; }
 
-		// Token: 0x17000BA2 RID: 2978
-		// (get) Token: 0x060050E2 RID: 20706 RVA: 0x002438AC File Offset: 0x00241AAC
-		// (set) Token: 0x060050E1 RID: 20705 RVA: 0x002438A3 File Offset: 0x00241AA3
 		public int EventId { get; set; }
 
-		// Token: 0x17000BA3 RID: 2979
-		// (get) Token: 0x060050E4 RID: 20708 RVA: 0x002438BD File Offset: 0x00241ABD
-		// (set) Token: 0x060050E3 RID: 20707 RVA: 0x002438B4 File Offset: 0x00241AB4
 		public int PlayQuestOneId { get; set; }
 
-		// Token: 0x17000BA4 RID: 2980
-		// (get) Token: 0x060050E6 RID: 20710 RVA: 0x002438CE File Offset: 0x00241ACE
-		// (set) Token: 0x060050E5 RID: 20709 RVA: 0x002438C5 File Offset: 0x00241AC5
 		public bool isHelper { get; set; }
 
-		// Token: 0x060050E7 RID: 20711 RVA: 0x002438D8 File Offset: 0x00241AD8
 		public SetupParam()
 		{
 			this.cbButtonArrow = null;
@@ -1291,46 +1196,29 @@ public class SelPhotoEditCtrl : MonoBehaviour
 			this.isHelper = false;
 		}
 
-		// Token: 0x02001217 RID: 4631
-		// (Invoke) Token: 0x060057BF RID: 22463
 		public delegate bool OnClickButton(PguiButtonCtrl button);
 
-		// Token: 0x02001218 RID: 4632
-		// (Invoke) Token: 0x060057C3 RID: 22467
 		public delegate List<long> OnGetEquipPhoto();
 
-		// Token: 0x02001219 RID: 4633
-		// (Invoke) Token: 0x060057C7 RID: 22471
 		public delegate CharaPackData OnGetCharaPackData();
 
-		// Token: 0x0200121A RID: 4634
-		// (Invoke) Token: 0x060057CB RID: 22475
 		public delegate int OnIsEquipPhoto(long photoDataId);
 
-		// Token: 0x0200121B RID: 4635
-		// (Invoke) Token: 0x060057CF RID: 22479
 		public delegate string OnSetString();
 
-		// Token: 0x0200121C RID: 4636
-		// (Invoke) Token: 0x060057D3 RID: 22483
 		public delegate bool OnResignEquipPhotoByDataId(long dataId);
 
-		// Token: 0x0200121D RID: 4637
-		// (Invoke) Token: 0x060057D7 RID: 22487
 		public delegate List<int> CurrentUerPartyId();
 	}
 
-	// Token: 0x02000FBF RID: 4031
 	public class GUI
 	{
-		// Token: 0x060050E8 RID: 20712 RVA: 0x0024393F File Offset: 0x00241B3F
 		public GUI(Transform baseTr)
 		{
 			this.photoDeck = new SelPhotoEditCtrl.GUI.PhotoDeck(baseTr.Find("PhotoEdit"));
 			this.anim = baseTr.GetComponent<SimpleAnimation>();
 		}
 
-		// Token: 0x060050E9 RID: 20713 RVA: 0x00243974 File Offset: 0x00241B74
 		public SelPhotoEditCtrl.GUI.IconPhotoSet SearchIconPhoto(SelPhotoEditCtrl.SelectPhotoData scd)
 		{
 			if (scd != null)
@@ -1357,7 +1245,6 @@ public class SelPhotoEditCtrl : MonoBehaviour
 			return null;
 		}
 
-		// Token: 0x060050EA RID: 20714 RVA: 0x002439F4 File Offset: 0x00241BF4
 		public SelPhotoEditCtrl.GUI.IconPhotoSet SearchIconPhoto(SelCharaDeckCtrl.FrameType type, long id)
 		{
 			if (id != 0L)
@@ -1383,7 +1270,6 @@ public class SelPhotoEditCtrl : MonoBehaviour
 			return null;
 		}
 
-		// Token: 0x060050EB RID: 20715 RVA: 0x00243A68 File Offset: 0x00241C68
 		public SelPhotoEditCtrl.GUI.IconPhotoSet SearchIconPhoto(SelCharaDeckCtrl.FrameType type, int id)
 		{
 			if (id != 0)
@@ -1409,19 +1295,14 @@ public class SelPhotoEditCtrl : MonoBehaviour
 			return null;
 		}
 
-		// Token: 0x040058D5 RID: 22741
 		public SelPhotoEditCtrl.GUI.PhotoDeck photoDeck;
 
-		// Token: 0x040058D6 RID: 22742
 		public SimpleAnimation anim;
 
-		// Token: 0x040058D7 RID: 22743
 		public List<SelPhotoEditCtrl.GUI.IconPhotoSet> reservePhotoIcon = new List<SelPhotoEditCtrl.GUI.IconPhotoSet>();
 
-		// Token: 0x0200121E RID: 4638
 		public class IconPhotoSet
 		{
-			// Token: 0x060057DA RID: 22490 RVA: 0x0025931C File Offset: 0x0025751C
 			public IconPhotoSet(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -1434,7 +1315,6 @@ public class SelPhotoEditCtrl : MonoBehaviour
 				this.textCount.transform.parent.gameObject.SetActive(false);
 			}
 
-			// Token: 0x060057DB RID: 22491 RVA: 0x002593CB File Offset: 0x002575CB
 			public void DispCount(bool flag, string str = null)
 			{
 				if (this.textCount != null)
@@ -1447,33 +1327,25 @@ public class SelPhotoEditCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x060057DC RID: 22492 RVA: 0x00259405 File Offset: 0x00257605
 			public void SetScale(Vector3 scaleCurrent, Vector3 scaleCount)
 			{
 				this.currentFrame.transform.Find("Current").localScale = scaleCurrent;
 				this.textCount.transform.parent.localScale = scaleCount;
 			}
 
-			// Token: 0x04006339 RID: 25401
 			public GameObject baseObj;
 
-			// Token: 0x0400633A RID: 25402
 			public RectTransform iconBase;
 
-			// Token: 0x0400633B RID: 25403
 			public IconPhotoCtrl iconPhotoCtrl;
 
-			// Token: 0x0400633C RID: 25404
 			public GameObject currentFrame;
 
-			// Token: 0x0400633D RID: 25405
 			public PguiTextCtrl textCount;
 		}
 
-		// Token: 0x0200121F RID: 4639
 		public class PhotoEdit
 		{
-			// Token: 0x060057DD RID: 22493 RVA: 0x00259438 File Offset: 0x00257638
 			public PhotoEdit(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -1486,7 +1358,6 @@ public class SelPhotoEditCtrl : MonoBehaviour
 				this.iconPhotoSet = new SelPhotoEditCtrl.GUI.IconPhotoSet(gameObject.transform);
 			}
 
-			// Token: 0x060057DE RID: 22494 RVA: 0x002594EC File Offset: 0x002576EC
 			public void StartAnim()
 			{
 				this.Active.ExPlayAnimation(SimpleAnimation.ExPguiStatus.START, delegate
@@ -1495,29 +1366,21 @@ public class SelPhotoEditCtrl : MonoBehaviour
 				});
 			}
 
-			// Token: 0x0400633E RID: 25406
 			public GameObject baseObj;
 
-			// Token: 0x0400633F RID: 25407
 			public SelPhotoEditCtrl.GUI.IconPhotoSet iconPhotoSet;
 
-			// Token: 0x04006340 RID: 25408
 			public SimpleAnimation Active;
 
-			// Token: 0x04006341 RID: 25409
 			public GameObject BaseBlank_Plus;
 
-			// Token: 0x04006342 RID: 25410
 			public GameObject BaseBlank_Lock;
 
-			// Token: 0x04006343 RID: 25411
 			public PguiTextCtrl Num_Lv;
 		}
 
-		// Token: 0x02001220 RID: 4640
 		public class PhotoDeck
 		{
-			// Token: 0x060057E0 RID: 22496 RVA: 0x00259518 File Offset: 0x00257718
 			public PhotoDeck(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -1549,14 +1412,12 @@ public class SelPhotoEditCtrl : MonoBehaviour
 				this.Txt_None.SetActive(false);
 			}
 
-			// Token: 0x060057E1 RID: 22497 RVA: 0x0025973A File Offset: 0x0025793A
 			public void ResizeScrollView(int count, int resize)
 			{
 				this.Txt_None.SetActive(count <= 0);
 				this.ScrollView.Resize(resize, 0);
 			}
 
-			// Token: 0x060057E2 RID: 22498 RVA: 0x0025975C File Offset: 0x0025795C
 			public void SetPhotoInfo(SelPhotoEditCtrl.GUI.PhotoDeck.SetupPhotoInfoParam setupPhotoInfoParam)
 			{
 				bool flag = setupPhotoInfoParam.ppd != null && !setupPhotoInfoParam.ppd.IsInvalid();
@@ -1642,109 +1503,74 @@ public class SelPhotoEditCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x04006344 RID: 25412
 			public static readonly int SCROLL_ITEM_NUN_H = 5;
 
-			// Token: 0x04006345 RID: 25413
 			public GameObject baseObj;
 
-			// Token: 0x04006346 RID: 25414
 			public PguiButtonCtrl Btn_EditOk;
 
-			// Token: 0x04006347 RID: 25415
 			public PguiButtonCtrl Btn_Yaji_Left;
 
-			// Token: 0x04006348 RID: 25416
 			public PguiButtonCtrl Btn_Yaji_Right;
 
-			// Token: 0x04006349 RID: 25417
 			public PguiButtonCtrl Btn_FilterOnOff;
 
-			// Token: 0x0400634A RID: 25418
 			public PguiButtonCtrl Btn_Sort;
 
-			// Token: 0x0400634B RID: 25419
 			public PguiButtonCtrl Btn_SortUpDown;
 
-			// Token: 0x0400634C RID: 25420
 			public PguiTextCtrl Txt_Party;
 
-			// Token: 0x0400634D RID: 25421
 			public ReuseScroll ScrollView;
 
-			// Token: 0x0400634E RID: 25422
 			public IconPhotoCtrl infoIconPhotoCtrl;
 
-			// Token: 0x0400634F RID: 25423
 			public PguiTextCtrl Txt_SkillInfo;
 
-			// Token: 0x04006350 RID: 25424
 			public PguiTextCtrl Num_PhotoPocketLv;
 
-			// Token: 0x04006351 RID: 25425
 			public List<SelPhotoEditCtrl.GUI.PhotoDeck.Parameter> parameters;
 
-			// Token: 0x04006352 RID: 25426
 			public IconCharaCtrl mainIconCharaCtrl;
 
-			// Token: 0x04006353 RID: 25427
 			public List<SelPhotoEditCtrl.GUI.PhotoEdit> mainIconPhotoCtrl = new List<SelPhotoEditCtrl.GUI.PhotoEdit>();
 
-			// Token: 0x04006354 RID: 25428
 			public PhotoUtil.SizeChangeBtnGUI sizeChangeBtnGUI;
 
-			// Token: 0x04006355 RID: 25429
 			public InfoPhotoItemEffectCtrl infoPhotoItemEffectCtrl;
 
-			// Token: 0x04006356 RID: 25430
 			public GameObject Txt_None;
 
-			// Token: 0x0200124D RID: 4685
 			public class SetupPhotoInfoParam
 			{
-				// Token: 0x04006440 RID: 25664
 				public PhotoPackData ppd;
 
-				// Token: 0x04006441 RID: 25665
 				public CharaPackData cpd;
 
-				// Token: 0x04006442 RID: 25666
 				public SortFilterDefine.SortType sortType;
 
-				// Token: 0x04006443 RID: 25667
 				public bool isEnableDetail;
 
-				// Token: 0x04006444 RID: 25668
 				public int playQuestOneId;
 
-				// Token: 0x04006445 RID: 25669
 				public int selectIndex;
 
-				// Token: 0x04006446 RID: 25670
 				public bool isHelper;
 
-				// Token: 0x04006447 RID: 25671
 				public UserDeckData.Category deckCategory;
 
-				// Token: 0x04006448 RID: 25672
 				public int pvpSeasonId;
 			}
 
-			// Token: 0x0200124E RID: 4686
 			public enum ParamKind
 			{
-				// Token: 0x0400644A RID: 25674
 				Hp,
-				// Token: 0x0400644B RID: 25675
 				Atk,
-				// Token: 0x0400644C RID: 25676
 				Def
 			}
 
-			// Token: 0x0200124F RID: 4687
 			public class Parameter
 			{
-				// Token: 0x0600586E RID: 22638 RVA: 0x0025CFEC File Offset: 0x0025B1EC
 				public Parameter(Transform baseTr)
 				{
 					this.baseObj = baseTr.gameObject;
@@ -1753,7 +1579,6 @@ public class SelPhotoEditCtrl : MonoBehaviour
 					this.addValue2 = baseTr.Find("Txt_Up").GetComponent<PguiTextCtrl>();
 				}
 
-				// Token: 0x0600586F RID: 22639 RVA: 0x0025D04D File Offset: 0x0025B24D
 				public void SetActive(bool sw)
 				{
 					this.baseValue.gameObject.SetActive(sw);
@@ -1761,16 +1586,12 @@ public class SelPhotoEditCtrl : MonoBehaviour
 					this.addValue2.gameObject.SetActive(sw);
 				}
 
-				// Token: 0x0400644D RID: 25677
 				public GameObject baseObj;
 
-				// Token: 0x0400644E RID: 25678
 				public PguiTextCtrl baseValue;
 
-				// Token: 0x0400644F RID: 25679
 				public PguiTextCtrl addValue;
 
-				// Token: 0x04006450 RID: 25680
 				public PguiTextCtrl addValue2;
 			}
 		}

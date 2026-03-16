@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using CriWare;
@@ -9,10 +9,8 @@ using SGNFW.uGUI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-// Token: 0x02000167 RID: 359
 public class ScenePicnic : BaseScene
 {
-	// Token: 0x060014F1 RID: 5361 RVA: 0x000FE774 File Offset: 0x000FC974
 	public override void OnCreateScene()
 	{
 		this.basePanel = AssetManager.InstantiateAssetData("ScenePicnic/GUI/Prefab/GUI_Picnic", null).GetComponent<SimpleAnimation>();
@@ -207,14 +205,12 @@ public class ScenePicnic : BaseScene
 		this.requestNextArgs = null;
 	}
 
-	// Token: 0x060014F2 RID: 5362 RVA: 0x000FF304 File Offset: 0x000FD504
 	private void loadEffect(string eff)
 	{
 		this.effLoadList.Add(eff);
 		EffectManager.ReqLoadEffect(eff, AssetManager.OWNER.PicnicStage, 0, null);
 	}
 
-	// Token: 0x060014F3 RID: 5363 RVA: 0x000FF31C File Offset: 0x000FD51C
 	public override bool OnCreateSceneWait()
 	{
 		bool flag = true;
@@ -225,7 +221,6 @@ public class ScenePicnic : BaseScene
 		return flag;
 	}
 
-	// Token: 0x060014F4 RID: 5364 RVA: 0x000FF374 File Offset: 0x000FD574
 	private IEnumerator LoadStage(bool fade, bool load)
 	{
 		this.wipe.transform.parent.gameObject.SetActive(fade);
@@ -406,7 +401,6 @@ public class ScenePicnic : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060014F5 RID: 5365 RVA: 0x000FF394 File Offset: 0x000FD594
 	public override void OnEnableScene(object args)
 	{
 		CanvasManager.SetBgTexture(null);
@@ -505,7 +499,6 @@ public class ScenePicnic : BaseScene
 		this.requestNextArgs = null;
 	}
 
-	// Token: 0x060014F6 RID: 5366 RVA: 0x000FF7EC File Offset: 0x000FD9EC
 	private int playSort(ScenePicnic.PlayPackData a, ScenePicnic.PlayPackData b)
 	{
 		int num = a.item.GetCategory() - b.item.GetCategory();
@@ -520,7 +513,6 @@ public class ScenePicnic : BaseScene
 		return num;
 	}
 
-	// Token: 0x060014F7 RID: 5367 RVA: 0x000FF848 File Offset: 0x000FDA48
 	private string chkStage()
 	{
 		double totalHours = (TimeManager.Now - DataManager.DmPicnic.StartDateTime).TotalHours;
@@ -555,7 +547,6 @@ public class ScenePicnic : BaseScene
 		return list[num % list.Count];
 	}
 
-	// Token: 0x060014F8 RID: 5368 RVA: 0x000FF980 File Offset: 0x000FDB80
 	public override bool OnEnableSceneWait()
 	{
 		if (DataManager.IsServerRequesting())
@@ -888,7 +879,6 @@ public class ScenePicnic : BaseScene
 		return true;
 	}
 
-	// Token: 0x060014F9 RID: 5369 RVA: 0x00100BC8 File Offset: 0x000FEDC8
 	private void SetGameType()
 	{
 		List<int> list = new List<int>();
@@ -1027,7 +1017,6 @@ public class ScenePicnic : BaseScene
 		}
 	}
 
-	// Token: 0x060014FA RID: 5370 RVA: 0x001010C4 File Offset: 0x000FF2C4
 	private void SetKiseki(GameObject obj, CharaPackData cpd)
 	{
 		obj.SetActive(cpd != null);
@@ -1057,7 +1046,6 @@ public class ScenePicnic : BaseScene
 		}
 	}
 
-	// Token: 0x060014FB RID: 5371 RVA: 0x001011C0 File Offset: 0x000FF3C0
 	public override void OnStartSceneFade()
 	{
 		foreach (ScenePicnic.CharaCtrl charaCtrl in this.charaList)
@@ -1070,7 +1058,6 @@ public class ScenePicnic : BaseScene
 		this.CtrlGame();
 	}
 
-	// Token: 0x060014FC RID: 5372 RVA: 0x00101228 File Offset: 0x000FF428
 	public override void OnStartSceneFadeWait()
 	{
 		foreach (ScenePicnic.CharaCtrl charaCtrl in this.charaList)
@@ -1083,7 +1070,6 @@ public class ScenePicnic : BaseScene
 		this.CtrlGame();
 	}
 
-	// Token: 0x060014FD RID: 5373 RVA: 0x00101290 File Offset: 0x000FF490
 	public override void OnStartControl()
 	{
 		foreach (ScenePicnic.CharaCtrl charaCtrl in this.charaList)
@@ -1096,7 +1082,6 @@ public class ScenePicnic : BaseScene
 		this.CtrlGame();
 	}
 
-	// Token: 0x060014FE RID: 5374 RVA: 0x001012F8 File Offset: 0x000FF4F8
 	private void OnClickButtonMenuRetrun()
 	{
 		if (this.chgChr != null)
@@ -1113,7 +1098,6 @@ public class ScenePicnic : BaseScene
 		this.requestNextArgs = null;
 	}
 
-	// Token: 0x060014FF RID: 5375 RVA: 0x00101329 File Offset: 0x000FF529
 	private bool OnClickMoveSequenceButton(SceneManager.SceneName sceneName, object sceneArgs)
 	{
 		this.OnClickPicnicCharaOk(null);
@@ -1123,7 +1107,6 @@ public class ScenePicnic : BaseScene
 		return true;
 	}
 
-	// Token: 0x06001500 RID: 5376 RVA: 0x00101348 File Offset: 0x000FF548
 	public override void Update()
 	{
 		if (this.itemGet != 0 && !DataManager.IsServerRequesting() && this.stageLoad == null)
@@ -1546,7 +1529,6 @@ public class ScenePicnic : BaseScene
 		}
 	}
 
-	// Token: 0x06001501 RID: 5377 RVA: 0x00102754 File Offset: 0x00100954
 	private void CtrlGame()
 	{
 		this.BallKick();
@@ -1560,7 +1542,6 @@ public class ScenePicnic : BaseScene
 		this.Snow();
 	}
 
-	// Token: 0x06001502 RID: 5378 RVA: 0x0010278C File Offset: 0x0010098C
 	public override void LateUpdate()
 	{
 		if (this.catchEff != null && this.catchEffBone != null)
@@ -1719,12 +1700,10 @@ public class ScenePicnic : BaseScene
 		}
 	}
 
-	// Token: 0x06001503 RID: 5379 RVA: 0x00102F60 File Offset: 0x00101160
 	public override void OnStopControl()
 	{
 	}
 
-	// Token: 0x06001504 RID: 5380 RVA: 0x00102F64 File Offset: 0x00101164
 	public override void OnDisableScene()
 	{
 		if (this.ballEff != null)
@@ -1832,7 +1811,6 @@ public class ScenePicnic : BaseScene
 		AssetManager.UnloadAssetData(StagePresetCtrl.PackDataPath + this.stageName, AssetManager.OWNER.PicnicStage);
 	}
 
-	// Token: 0x06001505 RID: 5381 RVA: 0x0010336C File Offset: 0x0010156C
 	public override bool OnDisableSceneWait()
 	{
 		bool flag = !DataManager.IsServerRequesting();
@@ -1938,7 +1916,6 @@ public class ScenePicnic : BaseScene
 		return true;
 	}
 
-	// Token: 0x06001506 RID: 5382 RVA: 0x00103750 File Offset: 0x00101950
 	public override void OnDestroyScene()
 	{
 		this.charaScroll = null;
@@ -1980,7 +1957,6 @@ public class ScenePicnic : BaseScene
 		this.effLoadList = new List<string>();
 	}
 
-	// Token: 0x06001507 RID: 5383 RVA: 0x001038A8 File Offset: 0x00101AA8
 	private int CalcEnegy()
 	{
 		int num = (int)(TimeManager.Now - DataManager.DmPicnic.PicnicDynamicData.LastUpdateTime).TotalSeconds;
@@ -2009,7 +1985,6 @@ public class ScenePicnic : BaseScene
 		return num;
 	}
 
-	// Token: 0x06001508 RID: 5384 RVA: 0x0010397C File Offset: 0x00101B7C
 	private void DispFood()
 	{
 		int num = DataManager.DmItem.GetUserItemData(30101).num;
@@ -2043,7 +2018,6 @@ public class ScenePicnic : BaseScene
 		}
 	}
 
-	// Token: 0x06001509 RID: 5385 RVA: 0x00103B3C File Offset: 0x00101D3C
 	private void DispEnergy()
 	{
 		int num = this.CalcEnegy();
@@ -2218,7 +2192,6 @@ public class ScenePicnic : BaseScene
 		this.winPlay.transform.Find("Base/Window/Time_Bse/Num_Time").GetComponent<PguiTextCtrl>().text = text3;
 	}
 
-	// Token: 0x0600150A RID: 5386 RVA: 0x00104570 File Offset: 0x00102770
 	private void OnClickFoodSel(PguiButtonCtrl pbc)
 	{
 		if (this.stageLoad != null || this.itemGet != 0 || this.tutorial >= 0)
@@ -2280,7 +2253,6 @@ public class ScenePicnic : BaseScene
 		this.winBuy.choiceR.transform.Find("DisableText").GetComponent<PguiTextCtrl>().text = this.foodBuyCoin.staticData.GetName() + "が\n足りません";
 	}
 
-	// Token: 0x0600150B RID: 5387 RVA: 0x00104A28 File Offset: 0x00102C28
 	private void DispBuy()
 	{
 		this.winBuyInfo.Find("Parts_Exchange/Exchange/Tex/Num_Txt").GetComponent<PguiTextCtrl>().text = this.foodBuyNum.ToString();
@@ -2300,7 +2272,6 @@ public class ScenePicnic : BaseScene
 		this.winBuyReport.Find("Parts_ItemUseCoin/Num_AfterTxt").GetComponent<PguiTextCtrl>().text = (this.foodBuyCoin.num - this.foodBuyNum * this.foodBuyPrc).ToString();
 	}
 
-	// Token: 0x0600150C RID: 5388 RVA: 0x00104C90 File Offset: 0x00102E90
 	private bool OnClickFoodBuy(int idx)
 	{
 		if (this.foodBuy <= 0)
@@ -2320,7 +2291,6 @@ public class ScenePicnic : BaseScene
 		return true;
 	}
 
-	// Token: 0x0600150D RID: 5389 RVA: 0x00104CE7 File Offset: 0x00102EE7
 	private void OnClickFoodBuyPlus(PguiButtonCtrl pbc)
 	{
 		if (this.foodBuy <= 0)
@@ -2334,7 +2304,6 @@ public class ScenePicnic : BaseScene
 		this.DispBuy();
 	}
 
-	// Token: 0x0600150E RID: 5390 RVA: 0x00104D15 File Offset: 0x00102F15
 	private void OnClickFoodBuyMinus(PguiButtonCtrl pbc)
 	{
 		if (this.foodBuy <= 0)
@@ -2348,7 +2317,6 @@ public class ScenePicnic : BaseScene
 		this.DispBuy();
 	}
 
-	// Token: 0x0600150F RID: 5391 RVA: 0x00104D40 File Offset: 0x00102F40
 	private void OnClickFoodBuyMax(PguiButtonCtrl pbc)
 	{
 		if (this.foodBuy <= 0)
@@ -2362,7 +2330,6 @@ public class ScenePicnic : BaseScene
 		this.DispBuy();
 	}
 
-	// Token: 0x06001510 RID: 5392 RVA: 0x00104D84 File Offset: 0x00102F84
 	private void OnClickFoodBuyMin(PguiButtonCtrl pbc)
 	{
 		if (this.foodBuy <= 0)
@@ -2376,14 +2343,12 @@ public class ScenePicnic : BaseScene
 		this.DispBuy();
 	}
 
-	// Token: 0x06001511 RID: 5393 RVA: 0x00104DC9 File Offset: 0x00102FC9
 	private bool OnClickFoodBuyReport(int idx)
 	{
 		this.winStaminaCharge.ForceOpen();
 		return true;
 	}
 
-	// Token: 0x06001512 RID: 5394 RVA: 0x00104DD8 File Offset: 0x00102FD8
 	private void OnClickStamina(PguiButtonCtrl pbc)
 	{
 		if (this.stageLoad != null || this.itemGet != 0 || this.tutorial >= 0 || this.foodBuy != 0 || this.chargeIdx > 0 || this.staminaBuyCharge < 0)
@@ -2399,13 +2364,11 @@ public class ScenePicnic : BaseScene
 		this.staminaCharge = true;
 	}
 
-	// Token: 0x06001513 RID: 5395 RVA: 0x00104E55 File Offset: 0x00103055
 	private bool OnClickStaminaOk(int idx)
 	{
 		return true;
 	}
 
-	// Token: 0x06001514 RID: 5396 RVA: 0x00104E58 File Offset: 0x00103058
 	private void OnClickStaminaCharge(PguiButtonCtrl pbc)
 	{
 		if (this.stageLoad != null || this.itemGet != 0 || this.tutorial >= 0)
@@ -2449,7 +2412,6 @@ public class ScenePicnic : BaseScene
 		this.OnClickStaminaChargeOk(1);
 	}
 
-	// Token: 0x06001515 RID: 5397 RVA: 0x00105018 File Offset: 0x00103218
 	private bool OnClickStaminaChargeOk(int idx)
 	{
 		if (idx == 1 && this.chargeIdx > 0)
@@ -2479,7 +2441,6 @@ public class ScenePicnic : BaseScene
 		return true;
 	}
 
-	// Token: 0x06001516 RID: 5398 RVA: 0x0010517C File Offset: 0x0010337C
 	private void OnClickStaminaBuyCharge(PguiButtonCtrl pbc)
 	{
 		if (this.stageLoad != null || this.itemGet != 0 || this.tutorial >= 0)
@@ -2508,7 +2469,6 @@ public class ScenePicnic : BaseScene
 		this.OnClickStaminaBuyChargeOk(1);
 	}
 
-	// Token: 0x06001517 RID: 5399 RVA: 0x0010525C File Offset: 0x0010345C
 	private bool OnClickStaminaBuyChargeOk(int idx)
 	{
 		if (this.staminaBuyCharge >= 0)
@@ -2534,7 +2494,6 @@ public class ScenePicnic : BaseScene
 		return true;
 	}
 
-	// Token: 0x06001518 RID: 5400 RVA: 0x001052F4 File Offset: 0x001034F4
 	private void OnClickPicnicChara(Transform tmp)
 	{
 		if (this.stageLoad != null || this.itemGet != 0 || this.tutorial >= 0 || this.chgPly != null)
@@ -2611,7 +2570,6 @@ public class ScenePicnic : BaseScene
 		SoundManager.Play("prd_se_click", false, false);
 	}
 
-	// Token: 0x06001519 RID: 5401 RVA: 0x001055CC File Offset: 0x001037CC
 	private void OnClickPicnicCharaList(Transform tmp)
 	{
 		if (this.chgChr == null)
@@ -2688,7 +2646,6 @@ public class ScenePicnic : BaseScene
 		SoundManager.Play((id > 0) ? "prd_se_click" : "prd_se_cancel", false, false);
 	}
 
-	// Token: 0x0600151A RID: 5402 RVA: 0x00105998 File Offset: 0x00103B98
 	private void OnClickPicnicCharaOk(PguiButtonCtrl pbc)
 	{
 		if (this.chgChr != null && CanvasManager.HdlOpenWindowBasic.FinishedClose())
@@ -2729,7 +2686,6 @@ public class ScenePicnic : BaseScene
 		}
 	}
 
-	// Token: 0x0600151B RID: 5403 RVA: 0x00105B54 File Offset: 0x00103D54
 	private bool OnClickPicnicCharaDecide(int idx)
 	{
 		if (this.chgChr != null)
@@ -2817,7 +2773,6 @@ public class ScenePicnic : BaseScene
 		return true;
 	}
 
-	// Token: 0x0600151C RID: 5404 RVA: 0x00105FC0 File Offset: 0x001041C0
 	private void SetupPicnicChara(int index, GameObject go)
 	{
 		foreach (object obj in go.transform)
@@ -2852,7 +2807,6 @@ public class ScenePicnic : BaseScene
 		}
 	}
 
-	// Token: 0x0600151D RID: 5405 RVA: 0x001061A4 File Offset: 0x001043A4
 	private void OnClickPicnicPlay(Transform tmp)
 	{
 		if (this.stageLoad != null || this.itemGet != 0 || this.tutorial >= 0 || this.chgChr != null)
@@ -2890,7 +2844,6 @@ public class ScenePicnic : BaseScene
 		SoundManager.Play("prd_se_click", false, false);
 	}
 
-	// Token: 0x0600151E RID: 5406 RVA: 0x001062D4 File Offset: 0x001044D4
 	private bool OnClickPicnicPlaySel(PguiToggleButtonCtrl pbc, int toggleIndex)
 	{
 		if (!this.winPlay.FinishedClose())
@@ -2921,7 +2874,6 @@ public class ScenePicnic : BaseScene
 		return false;
 	}
 
-	// Token: 0x0600151F RID: 5407 RVA: 0x001063B8 File Offset: 0x001045B8
 	private void OnClickPicnicPlayList(Transform tmp)
 	{
 		if (!this.winPlay.FinishedClose())
@@ -2975,7 +2927,6 @@ public class ScenePicnic : BaseScene
 		SoundManager.Play((id > 0) ? "prd_se_click" : "prd_se_cancel", false, false);
 	}
 
-	// Token: 0x06001520 RID: 5408 RVA: 0x0010658C File Offset: 0x0010478C
 	private void OnClickPicnicPlayOk(PguiButtonCtrl pbc)
 	{
 		if (!this.winPlay.FinishedClose())
@@ -3004,7 +2955,6 @@ public class ScenePicnic : BaseScene
 		}
 	}
 
-	// Token: 0x06001521 RID: 5409 RVA: 0x00106680 File Offset: 0x00104880
 	private bool OnClickPicnicPlayDecide(int idx)
 	{
 		if (this.chgPly != null)
@@ -3103,7 +3053,6 @@ public class ScenePicnic : BaseScene
 		return true;
 	}
 
-	// Token: 0x06001522 RID: 5410 RVA: 0x00106AB0 File Offset: 0x00104CB0
 	private void OnClickPicnicPlayItem(Transform tmp)
 	{
 		if (!this.winPlay.FinishedClose())
@@ -3134,7 +3083,6 @@ public class ScenePicnic : BaseScene
 		SoundManager.Play("prd_se_click", false, false);
 	}
 
-	// Token: 0x06001523 RID: 5411 RVA: 0x00106B7C File Offset: 0x00104D7C
 	private void OnClickPlayItemYaji(PguiButtonCtrl pbc)
 	{
 		if (!this.winPlay.FinishedOpen())
@@ -3161,7 +3109,6 @@ public class ScenePicnic : BaseScene
 		this.SetupPlayItem();
 	}
 
-	// Token: 0x06001524 RID: 5412 RVA: 0x00106C14 File Offset: 0x00104E14
 	private void SetupPlayItem()
 	{
 		this.winPlay.transform.Find("Base/Window/Icon_Item").GetComponent<PguiRawImageCtrl>().SetRawImage(this.winPlayData.item.GetIconName(), true, false, null);
@@ -3201,7 +3148,6 @@ public class ScenePicnic : BaseScene
 		}
 	}
 
-	// Token: 0x06001525 RID: 5413 RVA: 0x00106E84 File Offset: 0x00105084
 	private void SetupPicnicPlay(int index, GameObject go)
 	{
 		foreach (object obj in go.transform)
@@ -3239,7 +3185,6 @@ public class ScenePicnic : BaseScene
 		}
 	}
 
-	// Token: 0x06001526 RID: 5414 RVA: 0x0010706C File Offset: 0x0010526C
 	private void OnClickPicnicView(PguiButtonCtrl pbc)
 	{
 		if (this.stageLoad != null || this.itemGet != 0 || this.tutorial >= 0 || this.chgChr != null || this.chgPly != null)
@@ -3273,7 +3218,6 @@ public class ScenePicnic : BaseScene
 		this.camera.fieldOfView = this.camPos[this.camNo].fieldOfView;
 	}
 
-	// Token: 0x06001527 RID: 5415 RVA: 0x00107194 File Offset: 0x00105394
 	private void OnClickPicnicHide(PguiButtonCtrl pbc)
 	{
 		if (this.stageLoad != null || this.itemGet != 0 || this.tutorial >= 0 || this.chgChr != null || this.chgPly != null)
@@ -3301,7 +3245,6 @@ public class ScenePicnic : BaseScene
 		CanvasManager.HdlCmnMenu.SetActiveMenu(false);
 	}
 
-	// Token: 0x06001528 RID: 5416 RVA: 0x0010723E File Offset: 0x0010543E
 	private void OnTap(Info info)
 	{
 		if (!this.hideMode)
@@ -3317,7 +3260,6 @@ public class ScenePicnic : BaseScene
 		CanvasManager.HdlCmnMenu.SetActiveMenu(true);
 	}
 
-	// Token: 0x06001529 RID: 5417 RVA: 0x00107278 File Offset: 0x00105478
 	private bool OnUiTap(Vector2 pos)
 	{
 		PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
@@ -3327,13 +3269,11 @@ public class ScenePicnic : BaseScene
 		return list.Count > 0;
 	}
 
-	// Token: 0x0600152A RID: 5418 RVA: 0x001072B4 File Offset: 0x001054B4
 	private bool IsMoveMotion(ScenePicnic.CharaCtrl c)
 	{
 		return c.hdl.IsCurrentAnimation(CharaMotionDefine.ActKey.H_HOM_MOV_ST) || c.hdl.IsCurrentAnimation(CharaMotionDefine.ActKey.H_HOM_MOV_LP) || c.hdl.IsCurrentAnimation(CharaMotionDefine.ActKey.H_HOM_MOV_EN) || (c.hdl.IsCurrentAnimation(CharaMotionDefine.ActKey.H_HOM_FLY_MOV_ST) || c.hdl.IsCurrentAnimation(CharaMotionDefine.ActKey.H_HOM_FLY_MOV_LP) || c.hdl.IsCurrentAnimation(CharaMotionDefine.ActKey.H_HOM_FLY_MOV_EN));
 	}
 
-	// Token: 0x0600152B RID: 5419 RVA: 0x00107320 File Offset: 0x00105520
 	private void BallKick()
 	{
 		Vector3 zero = Vector3.zero;
@@ -3407,7 +3347,6 @@ public class ScenePicnic : BaseScene
 		this.ballEff.effectObject.transform.localEulerAngles += this.ballEffRot * TimeManager.DeltaTime;
 	}
 
-	// Token: 0x0600152C RID: 5420 RVA: 0x001077CC File Offset: 0x001059CC
 	private void CatchBall()
 	{
 		Vector3 zero = Vector3.zero;
@@ -3562,7 +3501,6 @@ public class ScenePicnic : BaseScene
 		this.catchEff.effectObject.transform.localEulerAngles += this.catchEffRot * TimeManager.DeltaTime;
 	}
 
-	// Token: 0x0600152D RID: 5421 RVA: 0x00108010 File Offset: 0x00106210
 	private void Badminton()
 	{
 		Vector3 zero = Vector3.zero;
@@ -3705,7 +3643,6 @@ public class ScenePicnic : BaseScene
 		}
 	}
 
-	// Token: 0x0600152E RID: 5422 RVA: 0x00108864 File Offset: 0x00106A64
 	private void Kenkenpa()
 	{
 		Vector3 zero = Vector3.zero;
@@ -3756,7 +3693,6 @@ public class ScenePicnic : BaseScene
 		this.kenpaEff.effectObject.transform.localEulerAngles = new Vector3(0f, num, 0f);
 	}
 
-	// Token: 0x0600152F RID: 5423 RVA: 0x00108AB0 File Offset: 0x00106CB0
 	private void Balloon()
 	{
 		Vector3 zero = Vector3.zero;
@@ -3843,7 +3779,6 @@ public class ScenePicnic : BaseScene
 		}
 	}
 
-	// Token: 0x06001530 RID: 5424 RVA: 0x00108F64 File Offset: 0x00107164
 	private void Hanetsuki()
 	{
 		Vector3 zero = Vector3.zero;
@@ -4051,7 +3986,6 @@ public class ScenePicnic : BaseScene
 		}
 	}
 
-	// Token: 0x06001531 RID: 5425 RVA: 0x001098D0 File Offset: 0x00107AD0
 	private void Train()
 	{
 		while (this.trainEff.Count < 10)
@@ -4187,7 +4121,6 @@ public class ScenePicnic : BaseScene
 		}
 	}
 
-	// Token: 0x06001532 RID: 5426 RVA: 0x00109EC4 File Offset: 0x001080C4
 	private void FireWork()
 	{
 		if (this.fwPos == null)
@@ -4391,7 +4324,6 @@ public class ScenePicnic : BaseScene
 		this.emoEff.RemoveAll((EffectData itm) => rmv.Contains(itm));
 	}
 
-	// Token: 0x06001533 RID: 5427 RVA: 0x0010AB94 File Offset: 0x00108D94
 	private void Snow()
 	{
 		if (this.snPos == null)
@@ -4441,7 +4373,6 @@ public class ScenePicnic : BaseScene
 		this.snowShadowEff.effectObject.transform.localScale = new Vector3(num, 1f, num);
 	}
 
-	// Token: 0x06001534 RID: 5428 RVA: 0x0010AF44 File Offset: 0x00109144
 	private IEnumerator charaStay(ScenePicnic.CharaCtrl cc)
 	{
 		cc.mov = 0;
@@ -4998,7 +4929,6 @@ public class ScenePicnic : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001535 RID: 5429 RVA: 0x0010AF5A File Offset: 0x0010915A
 	private IEnumerator charaIn(ScenePicnic.CharaCtrl cc)
 	{
 		if (!cc.hdl.IsCurrentAnimation(CharaMotionDefine.ActKey.H_HOM_FLY_MOV_LP) && !cc.hdl.IsCurrentAnimation(CharaMotionDefine.ActKey.H_HOM_MOV_LP) && !cc.hdl.IsCurrentAnimation(CharaMotionDefine.ActKey.PIC_BALLOON_WALK) && !cc.hdl.IsCurrentAnimation(CharaMotionDefine.ActKey.PIC_BALLOON_LOOK))
@@ -5283,7 +5213,6 @@ public class ScenePicnic : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001536 RID: 5430 RVA: 0x0010AF70 File Offset: 0x00109170
 	private IEnumerator charaOut(ScenePicnic.CharaCtrl cc)
 	{
 		if (cc.pos / 10 >= 11)
@@ -5388,7 +5317,6 @@ public class ScenePicnic : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001537 RID: 5431 RVA: 0x0010AF88 File Offset: 0x00109188
 	private void SetCharaStay(ScenePicnic.CharaCtrl cc)
 	{
 		Vector3 vector;
@@ -5414,7 +5342,6 @@ public class ScenePicnic : BaseScene
 		cc.hdl.transform.LookAt(vector2);
 	}
 
-	// Token: 0x06001538 RID: 5432 RVA: 0x0010B060 File Offset: 0x00109260
 	private void SetCharaMove(ScenePicnic.CharaCtrl cc)
 	{
 		bool flag = !cc.hdl.IsPlaying();
@@ -5441,7 +5368,6 @@ public class ScenePicnic : BaseScene
 		}
 	}
 
-	// Token: 0x06001539 RID: 5433 RVA: 0x0010B20C File Offset: 0x0010940C
 	private int ChkPos(int p, int no)
 	{
 		int num = this.gameType * 10;
@@ -5553,7 +5479,6 @@ public class ScenePicnic : BaseScene
 		return num;
 	}
 
-	// Token: 0x0600153A RID: 5434 RVA: 0x0010B5F8 File Offset: 0x001097F8
 	private void TargetPos(int no, Vector3 np, out Vector3 cp, out Vector3 tp)
 	{
 		int num = 0;
@@ -5733,7 +5658,6 @@ public class ScenePicnic : BaseScene
 		}
 	}
 
-	// Token: 0x0600153B RID: 5435 RVA: 0x0010BD14 File Offset: 0x00109F14
 	private Vector3 InOutPos(int p)
 	{
 		float num = 2.5f + (float)(p % 10 / 2) * 0.75f;
@@ -5746,7 +5670,6 @@ public class ScenePicnic : BaseScene
 		return vector;
 	}
 
-	// Token: 0x0600153C RID: 5436 RVA: 0x0010BD7C File Offset: 0x00109F7C
 	private bool ChgChara(ScenePicnic.CharaCtrl cc)
 	{
 		bool flag = false;
@@ -5765,7 +5688,6 @@ public class ScenePicnic : BaseScene
 		return flag;
 	}
 
-	// Token: 0x0600153D RID: 5437 RVA: 0x0010BDF4 File Offset: 0x00109FF4
 	private CharaModelHandle MakeChara(CharaPackData cpd)
 	{
 		CharaModelHandle component = new GameObject("Chara" + cpd.id.ToString(), new Type[] { typeof(CharaModelHandle) }).GetComponent<CharaModelHandle>();
@@ -5780,7 +5702,6 @@ public class ScenePicnic : BaseScene
 		return component;
 	}
 
-	// Token: 0x0600153F RID: 5439 RVA: 0x0010BEAC File Offset: 0x0010A0AC
 	// Note: this type is marked as 'beforefieldinit'.
 	static ScenePicnic()
 	{
@@ -5853,691 +5774,460 @@ public class ScenePicnic : BaseScene
 		ScenePicnic.snowBallSizMin = 1.1f;
 	}
 
-	// Token: 0x04001104 RID: 4356
 	private SimpleAnimation basePanel;
 
-	// Token: 0x04001105 RID: 4357
 	private GameObject windowPanel;
 
-	// Token: 0x04001106 RID: 4358
 	private GameObject buyPanel;
 
-	// Token: 0x04001107 RID: 4359
 	private GameObject playPanel;
 
-	// Token: 0x04001108 RID: 4360
 	private GameObject field;
 
-	// Token: 0x04001109 RID: 4361
 	private Transform hidePanel;
 
-	// Token: 0x0400110A RID: 4362
 	private FieldCameraScaler camera;
 
-	// Token: 0x0400110B RID: 4363
 	private Camera[] camPos;
 
-	// Token: 0x0400110C RID: 4364
 	private int camNo;
 
-	// Token: 0x0400110D RID: 4365
 	private Transform chrPos;
 
-	// Token: 0x0400110E RID: 4366
 	private StagePresetCtrl stageCtrl;
 
-	// Token: 0x0400110F RID: 4367
 	private string stageName;
 
-	// Token: 0x04001110 RID: 4368
 	private IEnumerator stageLoad;
 
-	// Token: 0x04001111 RID: 4369
 	private bool reqStageLoad;
 
-	// Token: 0x04001112 RID: 4370
 	private Transform charaIconAll;
 
-	// Token: 0x04001113 RID: 4371
 	private Transform charaSelect;
 
-	// Token: 0x04001114 RID: 4372
 	private List<CharaPackData> haveCharaPackList;
 
-	// Token: 0x04001115 RID: 4373
 	private List<CharaPackData> dispCharaPackList;
 
-	// Token: 0x04001116 RID: 4374
 	private SortFilterDefine.SortType sortType = SortFilterDefine.SortType.LEVEL;
 
-	// Token: 0x04001117 RID: 4375
 	private ReuseScroll charaScroll;
 
-	// Token: 0x04001118 RID: 4376
 	private List<Transform> picnicChara;
 
-	// Token: 0x04001119 RID: 4377
 	private static readonly int ScrollDeckNum = 2;
 
-	// Token: 0x0400111A RID: 4378
 	private ScenePicnic.CharaCtrl chgChr;
 
-	// Token: 0x0400111B RID: 4379
 	private Transform playIconAll;
 
-	// Token: 0x0400111C RID: 4380
 	private Transform playSelect;
 
-	// Token: 0x0400111D RID: 4381
 	private List<ScenePicnic.PlayPackData> havePlayPackList;
 
-	// Token: 0x0400111E RID: 4382
 	private List<ScenePicnic.PlayPackData> dispPlayPackList;
 
-	// Token: 0x0400111F RID: 4383
 	private int playCategory;
 
-	// Token: 0x04001120 RID: 4384
 	private PguiToggleButtonCtrl[] playBtn;
 
-	// Token: 0x04001121 RID: 4385
 	private ReuseScroll playScroll;
 
-	// Token: 0x04001122 RID: 4386
 	private List<Transform> picnicPlay;
 
-	// Token: 0x04001123 RID: 4387
 	private static readonly int ScrollPlayNum = 2;
 
-	// Token: 0x04001124 RID: 4388
 	private ScenePicnic.PlayCtrl chgPly;
 
-	// Token: 0x04001125 RID: 4389
 	private bool hideMode;
 
-	// Token: 0x04001126 RID: 4390
 	private Transform leftTop;
 
-	// Token: 0x04001127 RID: 4391
 	private Transform rightBtn;
 
-	// Token: 0x04001128 RID: 4392
 	private PguiImageCtrl Campaign_TimeInfo;
 
-	// Token: 0x04001129 RID: 4393
 	private PguiOpenWindowCtrl winItemGet;
 
-	// Token: 0x0400112A RID: 4394
 	private PguiOpenWindowCtrl winStaminaCharge;
 
-	// Token: 0x0400112B RID: 4395
 	private GameObject winStaminaBuyCharge;
 
-	// Token: 0x0400112C RID: 4396
 	private PguiOpenWindowCtrl winBuy;
 
-	// Token: 0x0400112D RID: 4397
 	private Transform winBuyInfo;
 
-	// Token: 0x0400112E RID: 4398
 	private IconItemCtrl winBuyIcon;
 
-	// Token: 0x0400112F RID: 4399
 	private PguiButtonCtrl winBuyBtnMax;
 
-	// Token: 0x04001130 RID: 4400
 	private PguiButtonCtrl winBuyBtnMin;
 
-	// Token: 0x04001131 RID: 4401
 	private PguiButtonCtrl winBuyBtnPlus;
 
-	// Token: 0x04001132 RID: 4402
 	private PguiButtonCtrl winBuyBtnMinus;
 
-	// Token: 0x04001133 RID: 4403
 	private Transform winBuyReport;
 
-	// Token: 0x04001134 RID: 4404
 	private PguiOpenWindowCtrl winPlay;
 
-	// Token: 0x04001135 RID: 4405
 	private PguiButtonCtrl winPlayLeft;
 
-	// Token: 0x04001136 RID: 4406
 	private PguiButtonCtrl winPlayRight;
 
-	// Token: 0x04001137 RID: 4407
 	private List<IconItemCtrl> winPlayItem;
 
-	// Token: 0x04001138 RID: 4408
 	private ScenePicnic.PlayPackData winPlayData;
 
-	// Token: 0x04001139 RID: 4409
 	private List<KeyValuePair<DataManagerPicnic.FoodData, ShopData.ItemOne>> shopData;
 
-	// Token: 0x0400113A RID: 4410
 	private List<int> chargeList;
 
-	// Token: 0x0400113B RID: 4411
 	private float chargeTime;
 
-	// Token: 0x0400113C RID: 4412
 	private int chargeIdx;
 
-	// Token: 0x0400113D RID: 4413
 	private List<ScenePicnic.CharaCtrl> charaList;
 
-	// Token: 0x0400113E RID: 4414
 	private int gameType;
 
-	// Token: 0x0400113F RID: 4415
 	private ScenePicnic.GameType requestGame;
 
-	// Token: 0x04001140 RID: 4416
 	private List<ScenePicnic.PlayCtrl> playList;
 
-	// Token: 0x04001141 RID: 4417
 	private int itemGet;
 
-	// Token: 0x04001142 RID: 4418
 	private List<DataManagerPicnic.DropItemData> itemGetList;
 
-	// Token: 0x04001143 RID: 4419
 	private bool kisekiUpdate;
 
-	// Token: 0x04001144 RID: 4420
 	private bool staminaCharge;
 
-	// Token: 0x04001145 RID: 4421
 	private int staminaBuyCharge;
 
-	// Token: 0x04001146 RID: 4422
 	private int foodBuy;
 
-	// Token: 0x04001147 RID: 4423
 	private ItemData foodBuyItem;
 
-	// Token: 0x04001148 RID: 4424
 	private ItemData foodBuyCoin;
 
-	// Token: 0x04001149 RID: 4425
 	private int foodBuyAdd;
 
-	// Token: 0x0400114A RID: 4426
 	private int foodBuyPrc;
 
-	// Token: 0x0400114B RID: 4427
 	private int foodBuyNum;
 
-	// Token: 0x0400114C RID: 4428
 	private int foodBuyMax;
 
-	// Token: 0x0400114D RID: 4429
 	private int energy;
 
-	// Token: 0x0400114E RID: 4430
 	private int energyBase;
 
-	// Token: 0x0400114F RID: 4431
 	private int monthlyType;
 
-	// Token: 0x04001150 RID: 4432
 	private static readonly string charaLayer = "FieldPlayer";
 
-	// Token: 0x04001151 RID: 4433
 	private static readonly string charaShadowLayer = "FieldPlayerShadow";
 
-	// Token: 0x04001152 RID: 4434
 	private static readonly string[,] stageList;
 
-	// Token: 0x04001153 RID: 4435
 	private static readonly string ballEffName;
 
-	// Token: 0x04001154 RID: 4436
 	private static readonly string balonEffName;
 
-	// Token: 0x04001155 RID: 4437
 	private static readonly string racketEffName;
 
-	// Token: 0x04001156 RID: 4438
 	private static readonly string shutleEffName;
 
-	// Token: 0x04001157 RID: 4439
 	private static readonly string ringEffName;
 
-	// Token: 0x04001158 RID: 4440
 	private static readonly string ruberEffName;
 
-	// Token: 0x04001159 RID: 4441
 	private static readonly string spinEffName;
 
-	// Token: 0x0400115A RID: 4442
 	private static readonly string hagoEffName;
 
-	// Token: 0x0400115B RID: 4443
 	private static readonly string haneEffName;
 
-	// Token: 0x0400115C RID: 4444
 	private static readonly string train1EffName;
 
-	// Token: 0x0400115D RID: 4445
 	private static readonly string train2EffName;
 
-	// Token: 0x0400115E RID: 4446
 	private static readonly string trWhistleEffName;
 
-	// Token: 0x0400115F RID: 4447
 	private static readonly string trNoteEffName;
 
-	// Token: 0x04001160 RID: 4448
 	private static readonly List<string> attEffName;
 
-	// Token: 0x04001161 RID: 4449
 	private static readonly List<string> fwSmlEffName;
 
-	// Token: 0x04001162 RID: 4450
 	private static readonly List<string> emoEffName;
 
-	// Token: 0x04001163 RID: 4451
 	private static readonly List<List<string>> emoFaceName;
 
-	// Token: 0x04001164 RID: 4452
 	private static readonly string sheetEffName;
 
-	// Token: 0x04001165 RID: 4453
 	private List<string> effLoadList;
 
-	// Token: 0x04001166 RID: 4454
 	private EffectData ballEff;
 
-	// Token: 0x04001167 RID: 4455
 	private int ballEffNo;
 
-	// Token: 0x04001168 RID: 4456
 	private Vector3 ballEffSpd;
 
-	// Token: 0x04001169 RID: 4457
 	private Vector3 ballEffRot;
 
-	// Token: 0x0400116A RID: 4458
 	private float ballTime;
 
-	// Token: 0x0400116B RID: 4459
 	private string catchName;
 
-	// Token: 0x0400116C RID: 4460
 	private EffectData catchEff;
 
-	// Token: 0x0400116D RID: 4461
 	private Transform catchEffBone;
 
-	// Token: 0x0400116E RID: 4462
 	private int catchEffNo;
 
-	// Token: 0x0400116F RID: 4463
 	private int catchEffReq;
 
-	// Token: 0x04001170 RID: 4464
 	private Vector3 catchEffSpd;
 
-	// Token: 0x04001171 RID: 4465
 	private Vector3 catchEffRot;
 
-	// Token: 0x04001172 RID: 4466
 	private float catchTime;
 
-	// Token: 0x04001173 RID: 4467
 	private int catchCall;
 
-	// Token: 0x04001174 RID: 4468
 	private string racketName;
 
-	// Token: 0x04001175 RID: 4469
 	private string shutleName;
 
-	// Token: 0x04001176 RID: 4470
 	private Dictionary<int, EffectData> racketEff;
 
-	// Token: 0x04001177 RID: 4471
 	private EffectData shutleEff;
 
-	// Token: 0x04001178 RID: 4472
 	private int badmintEffNo;
 
-	// Token: 0x04001179 RID: 4473
 	private Vector3 badmintEffSpd;
 
-	// Token: 0x0400117A RID: 4474
 	private float badmintTime;
 
-	// Token: 0x0400117B RID: 4475
 	private int badmintCall;
 
-	// Token: 0x0400117C RID: 4476
 	private string kenpaName;
 
-	// Token: 0x0400117D RID: 4477
 	private EffectData kenpaEff;
 
-	// Token: 0x0400117E RID: 4478
 	private List<ScenePicnic.Balon> balon;
 
-	// Token: 0x0400117F RID: 4479
 	private Dictionary<int, EffectData> hagoEff;
 
-	// Token: 0x04001180 RID: 4480
 	private EffectData haneEff;
 
-	// Token: 0x04001181 RID: 4481
 	private int haneEffNo;
 
-	// Token: 0x04001182 RID: 4482
 	private int haneEffTyp;
 
-	// Token: 0x04001183 RID: 4483
 	private Vector3 haneEffSpd;
 
-	// Token: 0x04001184 RID: 4484
 	private float haneTime;
 
-	// Token: 0x04001185 RID: 4485
 	private int haneCall;
 
-	// Token: 0x04001186 RID: 4486
 	private static readonly float trainCircle;
 
-	// Token: 0x04001187 RID: 4487
 	private static readonly float trainSpeed;
 
-	// Token: 0x04001188 RID: 4488
 	private static readonly float trainDistMin;
 
-	// Token: 0x04001189 RID: 4489
 	private static readonly float trainDistMax;
 
-	// Token: 0x0400118A RID: 4490
 	private static readonly int trainLpNum;
 
-	// Token: 0x0400118B RID: 4491
 	private int trainLpCnt;
 
-	// Token: 0x0400118C RID: 4492
 	private List<EffectData> trainEff;
 
-	// Token: 0x0400118D RID: 4493
 	private List<ScenePicnic.CharaCtrl> trainChr;
 
-	// Token: 0x0400118E RID: 4494
 	private EffectData trWhistleEff;
 
-	// Token: 0x0400118F RID: 4495
 	private List<ScenePicnic.TrNote> trNote;
 
-	// Token: 0x04001190 RID: 4496
 	private float trainSpd;
 
-	// Token: 0x04001191 RID: 4497
 	private float trainRot;
 
-	// Token: 0x04001192 RID: 4498
 	private int trainStep;
 
-	// Token: 0x04001193 RID: 4499
 	private float trainDist;
 
-	// Token: 0x04001194 RID: 4500
 	private bool trainSE;
 
-	// Token: 0x04001195 RID: 4501
 	private CriAtomExPlayback trainSEhdl;
 
-	// Token: 0x04001196 RID: 4502
 	private List<ScenePicnic.FirWrk> fwEff;
 
-	// Token: 0x04001197 RID: 4503
 	private List<string> fwEffName;
 
-	// Token: 0x04001198 RID: 4504
 	private Transform fwPos;
 
-	// Token: 0x04001199 RID: 4505
 	private int fwCnt;
 
-	// Token: 0x0400119A RID: 4506
 	private float fwTim;
 
-	// Token: 0x0400119B RID: 4507
 	private List<EffectData> emoEff;
 
-	// Token: 0x0400119C RID: 4508
 	private List<EffectData> sheetEff;
 
-	// Token: 0x0400119D RID: 4509
 	private List<Vector3> sheetPos;
 
-	// Token: 0x0400119E RID: 4510
 	private string snowEffName;
 
-	// Token: 0x0400119F RID: 4511
 	private static readonly string snowShadowPath;
 
-	// Token: 0x040011A0 RID: 4512
 	private Transform snPos;
 
-	// Token: 0x040011A1 RID: 4513
 	private List<Transform> snowPos;
 
-	// Token: 0x040011A2 RID: 4514
 	private EffectData snowEff;
 
-	// Token: 0x040011A3 RID: 4515
 	private EffectData snowShadowEff;
 
-	// Token: 0x040011A4 RID: 4516
 	private static readonly List<CharaMotionDefine.ActKey> snowMan1;
 
-	// Token: 0x040011A5 RID: 4517
 	private static readonly List<CharaMotionDefine.ActKey> snowMan2;
 
-	// Token: 0x040011A6 RID: 4518
 	private static readonly List<CharaMotionDefine.ActKey> snowBall1;
 
-	// Token: 0x040011A7 RID: 4519
 	private static readonly List<CharaMotionDefine.ActKey> snowBall2;
 
-	// Token: 0x040011A8 RID: 4520
 	private static readonly float snowBallCircle;
 
-	// Token: 0x040011A9 RID: 4521
 	private static readonly int snowBallLpNum;
 
-	// Token: 0x040011AA RID: 4522
 	private int snowBallLpCnt;
 
-	// Token: 0x040011AB RID: 4523
 	private float snowBallSpd;
 
-	// Token: 0x040011AC RID: 4524
 	private float snowBallRot;
 
-	// Token: 0x040011AD RID: 4525
 	private float snowBallAng;
 
-	// Token: 0x040011AE RID: 4526
 	private static readonly float snowBallSizMax;
 
-	// Token: 0x040011AF RID: 4527
 	private static readonly float snowBallSizMin;
 
-	// Token: 0x040011B0 RID: 4528
 	private float snowBallSiz;
 
-	// Token: 0x040011B1 RID: 4529
 	private PguiAECtrl wipe;
 
-	// Token: 0x040011B2 RID: 4530
 	private int tutorial;
 
-	// Token: 0x040011B3 RID: 4531
 	private SceneManager.SceneName requestNextScene;
 
-	// Token: 0x040011B4 RID: 4532
 	private object requestNextArgs;
 
-	// Token: 0x02000BB0 RID: 2992
 	private class PlayPackData
 	{
-		// Token: 0x04004876 RID: 18550
 		public DataManagerPicnic.PlayTypeData type;
 
-		// Token: 0x04004877 RID: 18551
 		public DataManagerPicnic.PlayItemData item;
 	}
 
-	// Token: 0x02000BB1 RID: 2993
 	private class CharaCtrl
 	{
-		// Token: 0x04004878 RID: 18552
 		public int no;
 
-		// Token: 0x04004879 RID: 18553
 		public int bf;
 
-		// Token: 0x0400487A RID: 18554
 		public int af;
 
-		// Token: 0x0400487B RID: 18555
 		public Transform icon;
 
-		// Token: 0x0400487C RID: 18556
 		public CharaPackData chara;
 
-		// Token: 0x0400487D RID: 18557
 		public IEnumerator ctrl;
 
-		// Token: 0x0400487E RID: 18558
 		public CharaModelHandle hdl;
 
-		// Token: 0x0400487F RID: 18559
 		public int hid;
 
-		// Token: 0x04004880 RID: 18560
 		public int pos;
 
-		// Token: 0x04004881 RID: 18561
 		public long rest;
 
-		// Token: 0x04004882 RID: 18562
 		public int lck;
 
-		// Token: 0x04004883 RID: 18563
 		public int mov;
 
-		// Token: 0x04004884 RID: 18564
 		public bool fly;
 
-		// Token: 0x04004885 RID: 18565
 		public bool hand;
 
-		// Token: 0x04004886 RID: 18566
 		public float fw;
 	}
 
-	// Token: 0x02000BB2 RID: 2994
 	private enum GameType
 	{
-		// Token: 0x04004888 RID: 18568
 		Invalid,
-		// Token: 0x04004889 RID: 18569
 		Kick,
-		// Token: 0x0400488A RID: 18570
 		Hana,
-		// Token: 0x0400488B RID: 18571
 		Sit,
-		// Token: 0x0400488C RID: 18572
 		Walk,
-		// Token: 0x0400488D RID: 18573
 		Catch,
-		// Token: 0x0400488E RID: 18574
 		Badmint,
-		// Token: 0x0400488F RID: 18575
 		Kenpa,
-		// Token: 0x04004890 RID: 18576
 		Balon,
-		// Token: 0x04004891 RID: 18577
 		Hane,
-		// Token: 0x04004892 RID: 18578
 		Train,
-		// Token: 0x04004893 RID: 18579
 		FireWork,
-		// Token: 0x04004894 RID: 18580
 		Snow
 	}
 
-	// Token: 0x02000BB3 RID: 2995
 	private class PlayCtrl
 	{
-		// Token: 0x04004895 RID: 18581
 		public int no;
 
-		// Token: 0x04004896 RID: 18582
 		public int bf;
 
-		// Token: 0x04004897 RID: 18583
 		public int af;
 
-		// Token: 0x04004898 RID: 18584
 		public Transform icon;
 
-		// Token: 0x04004899 RID: 18585
 		public ScenePicnic.PlayPackData play;
 
-		// Token: 0x0400489A RID: 18586
 		public long rest;
 	}
 
-	// Token: 0x02000BB4 RID: 2996
 	private class Balon
 	{
-		// Token: 0x0400489B RID: 18587
 		public string name;
 
-		// Token: 0x0400489C RID: 18588
 		public EffectData eff;
 
-		// Token: 0x0400489D RID: 18589
 		public float time;
 
-		// Token: 0x0400489E RID: 18590
 		public int no;
 
-		// Token: 0x0400489F RID: 18591
 		public Transform tag;
 	}
 
-	// Token: 0x02000BB5 RID: 2997
 	private class TrNote
 	{
-		// Token: 0x040048A0 RID: 18592
 		public ScenePicnic.CharaCtrl chr;
 
-		// Token: 0x040048A1 RID: 18593
 		public float tim;
 
-		// Token: 0x040048A2 RID: 18594
 		public EffectData eff;
 	}
 
-	// Token: 0x02000BB6 RID: 2998
 	private class FirWrk
 	{
-		// Token: 0x040048A3 RID: 18595
 		public EffectData eff;
 
-		// Token: 0x040048A4 RID: 18596
 		public int no;
 
-		// Token: 0x040048A5 RID: 18597
 		public float time;
 	}
 }

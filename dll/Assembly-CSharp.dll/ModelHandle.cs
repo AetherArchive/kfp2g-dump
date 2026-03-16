@@ -1,12 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-// Token: 0x02000069 RID: 105
 public class ModelHandle : MonoBehaviour
 {
-	// Token: 0x060002AB RID: 683 RVA: 0x00015B54 File Offset: 0x00013D54
 	public void Initialize(int layerParam)
 	{
 		this.layer = layerParam;
@@ -32,18 +30,15 @@ public class ModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002AC RID: 684 RVA: 0x00015C2F File Offset: 0x00013E2F
 	private void OnDestroy()
 	{
 	}
 
-	// Token: 0x060002AD RID: 685 RVA: 0x00015C31 File Offset: 0x00013E31
 	private void Update()
 	{
 		this.UpdateInternal();
 	}
 
-	// Token: 0x060002AE RID: 686 RVA: 0x00015C3C File Offset: 0x00013E3C
 	public void UpdateInternal()
 	{
 		if (this.modelActive && this.fade != 0f)
@@ -67,7 +62,6 @@ public class ModelHandle : MonoBehaviour
 		this.NeighboringAlpha.y = -1f;
 	}
 
-	// Token: 0x060002AF RID: 687 RVA: 0x00015D48 File Offset: 0x00013F48
 	private void SetEnv()
 	{
 		int num = this.layer;
@@ -131,7 +125,6 @@ public class ModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002B0 RID: 688 RVA: 0x00015F24 File Offset: 0x00014124
 	public void SetMatCap(float mc)
 	{
 		if (this.matCap >= 0f)
@@ -140,7 +133,6 @@ public class ModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002B1 RID: 689 RVA: 0x00015F3F File Offset: 0x0001413F
 	public float GetMatCap()
 	{
 		if (this.matCap < 0f)
@@ -150,20 +142,17 @@ public class ModelHandle : MonoBehaviour
 		return this.matCap;
 	}
 
-	// Token: 0x060002B2 RID: 690 RVA: 0x00015F5A File Offset: 0x0001415A
 	public void SetAlpha(float a)
 	{
 		this.alpha = a;
 		this.fade = 0f;
 	}
 
-	// Token: 0x060002B3 RID: 691 RVA: 0x00015F6E File Offset: 0x0001416E
 	public float GetAlpha()
 	{
 		return this.alpha;
 	}
 
-	// Token: 0x060002B4 RID: 692 RVA: 0x00015F78 File Offset: 0x00014178
 	public void FadeIn(float time)
 	{
 		this.fade = time;
@@ -174,7 +163,6 @@ public class ModelHandle : MonoBehaviour
 		this.SetEnv();
 	}
 
-	// Token: 0x060002B5 RID: 693 RVA: 0x00015FA8 File Offset: 0x000141A8
 	public void FadeOut(float time)
 	{
 		this.fade = time;
@@ -189,42 +177,30 @@ public class ModelHandle : MonoBehaviour
 		this.SetEnv();
 	}
 
-	// Token: 0x060002B6 RID: 694 RVA: 0x00015FE6 File Offset: 0x000141E6
 	public bool IsDisp()
 	{
 		return this.fade > 0f || (this.fade == 0f && this.alpha > 0f);
 	}
 
-	// Token: 0x04000448 RID: 1096
 	private int layer;
 
-	// Token: 0x04000449 RID: 1097
 	private float alpha;
 
-	// Token: 0x0400044A RID: 1098
 	private float fade;
 
-	// Token: 0x0400044B RID: 1099
 	private Vector4 NeighboringAlpha = new Vector4(0f, -1f, 0f, 1f);
 
-	// Token: 0x0400044C RID: 1100
 	private float matCap = -1f;
 
-	// Token: 0x0400044D RID: 1101
 	public bool camouflage;
 
-	// Token: 0x0400044E RID: 1102
 	private float camouflageAlpha;
 
-	// Token: 0x0400044F RID: 1103
 	private List<CullingCheck> cullingList;
 
-	// Token: 0x04000450 RID: 1104
 	private List<Material> materials;
 
-	// Token: 0x04000451 RID: 1105
 	private bool modelActive = true;
 
-	// Token: 0x04000452 RID: 1106
 	private AuthPlayer authPlayer;
 }

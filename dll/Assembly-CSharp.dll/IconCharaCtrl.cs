@@ -1,17 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Token: 0x020001A5 RID: 421
 public class IconCharaCtrl : MonoBehaviour
 {
-	// Token: 0x170003E6 RID: 998
-	// (get) Token: 0x06001C22 RID: 7202 RVA: 0x00164364 File Offset: 0x00162564
-	// (set) Token: 0x06001C23 RID: 7203 RVA: 0x0016436C File Offset: 0x0016256C
 	public CharaPackData charaPackData { get; private set; }
 
-	// Token: 0x170003E7 RID: 999
-	// (get) Token: 0x06001C24 RID: 7204 RVA: 0x00164378 File Offset: 0x00162578
 	private Color defaultTextColor
 	{
 		get
@@ -28,13 +22,11 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C25 RID: 7205 RVA: 0x001643D6 File Offset: 0x001625D6
 	private void Awake()
 	{
 		Color defaultTextColor = this.defaultTextColor;
 	}
 
-	// Token: 0x06001C26 RID: 7206 RVA: 0x001643E0 File Offset: 0x001625E0
 	public void IsEnableMask(bool isEnable)
 	{
 		if (this.imgBase != null)
@@ -93,7 +85,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C27 RID: 7207 RVA: 0x0016464C File Offset: 0x0016284C
 	private void SetupTextUserRank(HelperPackData hpd, SortFilterDefine.SortType sortType)
 	{
 		if (hpd != null && this.textLevel != null && this.textLevel != null && sortType == SortFilterDefine.SortType.USER_RANK)
@@ -102,7 +93,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C28 RID: 7208 RVA: 0x001646A0 File Offset: 0x001628A0
 	private void SetupHelperSortTypeNew(HelperPackData hpd, SortFilterDefine.SortType sortType, bool isSendView)
 	{
 		if (hpd != null && this.textLevel != null && this.isHelper && sortType == SortFilterDefine.SortType.NEW)
@@ -111,7 +101,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C29 RID: 7209 RVA: 0x001646FC File Offset: 0x001628FC
 	public void SetupHelper(HelperPackData hpd, SortFilterDefine.SortType sortType = SortFilterDefine.SortType.LEVEL, bool isEnableMask = false, CharaWindowCtrl.DetailParamSetting detailParam = null, bool isSendView = true)
 	{
 		this.isHelper = true;
@@ -128,7 +117,6 @@ public class IconCharaCtrl : MonoBehaviour
 		this.isHelper = false;
 	}
 
-	// Token: 0x06001C2A RID: 7210 RVA: 0x00164750 File Offset: 0x00162950
 	public void SetupHelper(CharaPackData cpd, HelperPackData hpd, SortFilterDefine.SortType sortType = SortFilterDefine.SortType.LEVEL, bool isEnableMask = false, CharaWindowCtrl.DetailParamSetting detaiParam = null, bool isSendView = true)
 	{
 		this.isHelper = true;
@@ -145,13 +133,11 @@ public class IconCharaCtrl : MonoBehaviour
 		this.isHelper = false;
 	}
 
-	// Token: 0x06001C2B RID: 7211 RVA: 0x001647A3 File Offset: 0x001629A3
 	public void SetupPrm(IconCharaCtrl.SetupParam param)
 	{
 		this.Setup(param.cpd, param.sortType, param.isEnableMask, param.detaiParam, param.eventId, param.iconId, 0);
 	}
 
-	// Token: 0x06001C2C RID: 7212 RVA: 0x001647D0 File Offset: 0x001629D0
 	public void Setup(CharaPackData cpd, SortFilterDefine.SortType sortType = SortFilterDefine.SortType.LEVEL, bool isEnableMask = false, CharaWindowCtrl.DetailParamSetting detailParam = null, int eventId = 0, int iconId = -1, int bonusQuest = 0)
 	{
 		IconCharaCtrl.<>c__DisplayClass55_0 CS$<>8__locals1 = new IconCharaCtrl.<>c__DisplayClass55_0();
@@ -459,7 +445,6 @@ public class IconCharaCtrl : MonoBehaviour
 		this.DispFavorite(cpd);
 	}
 
-	// Token: 0x06001C2D RID: 7213 RVA: 0x001653D0 File Offset: 0x001635D0
 	public void DispRanking()
 	{
 		this.DispLevel(false);
@@ -470,7 +455,6 @@ public class IconCharaCtrl : MonoBehaviour
 		this.DispMarkEvent(false, false, false);
 	}
 
-	// Token: 0x06001C2E RID: 7214 RVA: 0x001653FE File Offset: 0x001635FE
 	public void DispCurrentFrame(bool isDisp)
 	{
 		if (this.currentFrame != null)
@@ -479,7 +463,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C2F RID: 7215 RVA: 0x0016541A File Offset: 0x0016361A
 	public void DispEventGrowPickUp(bool flag)
 	{
 		if (this.imgEventGrowPickUp != null)
@@ -488,7 +471,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C30 RID: 7216 RVA: 0x0016543B File Offset: 0x0016363B
 	public void DispMarkExpUp(bool flag)
 	{
 		if (this.imgMarkExpUp != null)
@@ -497,13 +479,11 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C31 RID: 7217 RVA: 0x0016545C File Offset: 0x0016365C
 	public bool IsDispMarkExpUp()
 	{
 		return this.imgMarkExpUp != null && this.imgMarkExpUp.gameObject.activeSelf;
 	}
 
-	// Token: 0x06001C32 RID: 7218 RVA: 0x0016547E File Offset: 0x0016367E
 	public void DispDisable(bool flag)
 	{
 		if (this.imgDisable != null)
@@ -512,7 +492,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C33 RID: 7219 RVA: 0x0016549A File Offset: 0x0016369A
 	public void DispLevel(bool flag)
 	{
 		if (this.textLevel != null)
@@ -521,7 +500,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C34 RID: 7220 RVA: 0x001654BB File Offset: 0x001636BB
 	public void DispAttribute(bool flag)
 	{
 		if (this.imgAttribute != null)
@@ -534,7 +512,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C35 RID: 7221 RVA: 0x001654FC File Offset: 0x001636FC
 	public void DispAttributeMark(CharaDef.AttributeMask attr)
 	{
 		CharaDef.AttributeMask attributeMask = ((this.charaPackData == null || this.charaPackData.IsInvalid() || this.charaPackData.staticData == null) ? ((CharaDef.AttributeMask)0) : this.charaPackData.staticData.baseData.attributeMask);
@@ -564,7 +541,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C36 RID: 7222 RVA: 0x001655D0 File Offset: 0x001637D0
 	public void DispMarkEvent(bool norm, bool pick, bool drop)
 	{
 		if (this.imgMarkEvent != null)
@@ -590,7 +566,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C37 RID: 7223 RVA: 0x0016566B File Offset: 0x0016386B
 	public void DispWakeUp(bool flag)
 	{
 		if (this.imgWakeup != null)
@@ -599,7 +574,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C38 RID: 7224 RVA: 0x0016568C File Offset: 0x0016388C
 	public void DispBookmark(bool flag)
 	{
 		if (this.imgBookmark != null)
@@ -608,7 +582,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C39 RID: 7225 RVA: 0x001656B0 File Offset: 0x001638B0
 	public void SetWakeUp(int promoteNum)
 	{
 		if (this.imgWakeup != null)
@@ -623,7 +596,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C3A RID: 7226 RVA: 0x00165700 File Offset: 0x00163900
 	public void SetupStoryInfo(CharaPackData chara, bool isHave)
 	{
 		if (this.storyInfo == null)
@@ -747,7 +719,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C3B RID: 7227 RVA: 0x00165B70 File Offset: 0x00163D70
 	public void SetupLevel(int lv)
 	{
 		if (this.charaPackData != null && this.textLevel != null)
@@ -756,7 +727,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C3C RID: 7228 RVA: 0x00165BD4 File Offset: 0x00163DD4
 	public static string Attribute2IconName(CharaDef.AttributeType attribute)
 	{
 		switch (attribute)
@@ -778,7 +748,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C3D RID: 7229 RVA: 0x00165C2C File Offset: 0x00163E2C
 	public static string SubAttribute2IconName(CharaDef.AttributeType attribute)
 	{
 		switch (attribute)
@@ -800,7 +769,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C3E RID: 7230 RVA: 0x00165C84 File Offset: 0x00163E84
 	public void DispRarity(bool flag)
 	{
 		if (this.imgStar != null)
@@ -825,7 +793,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C3F RID: 7231 RVA: 0x00165D40 File Offset: 0x00163F40
 	public void DispPhotoPocketLevel(bool flag)
 	{
 		if (this.imgMarkPhotoPocketLevel != null)
@@ -834,7 +801,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C40 RID: 7232 RVA: 0x00165D5C File Offset: 0x00163F5C
 	public void DispMarkAccessory(bool flag)
 	{
 		if (this.imgMarkAccessory != null)
@@ -843,7 +809,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C41 RID: 7233 RVA: 0x00165D80 File Offset: 0x00163F80
 	public void DispFavorite(CharaPackData cpd)
 	{
 		if (this.imgFavoriteFlag == null)
@@ -854,7 +819,6 @@ public class IconCharaCtrl : MonoBehaviour
 		this.imgFavoriteFlag.gameObject.SetActive(favoriteFlag);
 	}
 
-	// Token: 0x06001C42 RID: 7234 RVA: 0x00165DB9 File Offset: 0x00163FB9
 	public void DispMarkBan(bool flag)
 	{
 		if (this.objMarkBan != null)
@@ -863,7 +827,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C43 RID: 7235 RVA: 0x00165DD5 File Offset: 0x00163FD5
 	public void AddOnClickListener(IconCharaCtrl.OnClick callback)
 	{
 		this.callbackCL = callback;
@@ -873,7 +836,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C44 RID: 7236 RVA: 0x00165E0B File Offset: 0x0016400B
 	public void OnPointerClick()
 	{
 		if (this.callbackCL != null)
@@ -882,7 +844,6 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001C45 RID: 7237 RVA: 0x00165E24 File Offset: 0x00164024
 	public void OnLongPress()
 	{
 		if (this.charaPackData != null && !this.charaPackData.IsInvalid() && this.detailParam != null)
@@ -897,188 +858,137 @@ public class IconCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x040014F0 RID: 5360
 	private static readonly Color MaskColor = new Color(0.6f, 0.6f, 0.6f, 1f);
 
-	// Token: 0x040014F1 RID: 5361
 	[SerializeField]
 	private IconCharaCtrl.Type type;
 
-	// Token: 0x040014F2 RID: 5362
 	[SerializeField]
 	private PguiImageCtrl imgBase;
 
-	// Token: 0x040014F3 RID: 5363
 	[SerializeField]
 	private PguiReplaceSpriteCtrl imgBaseV2;
 
-	// Token: 0x040014F4 RID: 5364
 	[SerializeField]
 	private PguiRawImageCtrl texChara;
 
-	// Token: 0x040014F5 RID: 5365
 	[SerializeField]
 	private PguiImageCtrl imgAttribute;
 
-	// Token: 0x040014F6 RID: 5366
 	[SerializeField]
 	private PguiImageCtrl imgSubAttribute;
 
-	// Token: 0x040014F7 RID: 5367
 	[SerializeField]
 	private PguiImageCtrl imgMarkGood;
 
-	// Token: 0x040014F8 RID: 5368
 	[SerializeField]
 	private PguiImageCtrl imgMarkBad;
 
-	// Token: 0x040014F9 RID: 5369
 	[SerializeField]
 	private PguiTextCtrl textLevel;
 
-	// Token: 0x040014FA RID: 5370
 	[SerializeField]
 	private PguiTextCtrl textLevelStory;
 
-	// Token: 0x040014FB RID: 5371
 	[SerializeField]
 	private PguiReplaceSpriteCtrl imgWakeup;
 
-	// Token: 0x040014FC RID: 5372
 	[SerializeField]
 	private List<PguiImageCtrl> imgStar;
 
-	// Token: 0x040014FD RID: 5373
 	[SerializeField]
 	private PguiImageCtrl frame;
 
-	// Token: 0x040014FE RID: 5374
 	[SerializeField]
 	private PguiImageCtrl frameKiseki;
 
-	// Token: 0x040014FF RID: 5375
 	[SerializeField]
 	private PguiTextCtrl textCharaName;
 
-	// Token: 0x04001500 RID: 5376
 	[SerializeField]
 	private PguiTextCtrl textCharaNameStory;
 
-	// Token: 0x04001501 RID: 5377
 	[SerializeField]
 	private PguiTextCtrl textCharaNameStoryWName;
 
-	// Token: 0x04001502 RID: 5378
 	[SerializeField]
 	private PguiTextCtrl textEponymName;
 
-	// Token: 0x04001503 RID: 5379
 	[SerializeField]
 	private GameObject currentFrame;
 
-	// Token: 0x04001504 RID: 5380
 	[SerializeField]
 	private List<IconCharaCtrl.StoryInfo> storyInfo;
 
-	// Token: 0x04001505 RID: 5381
 	[SerializeField]
 	private GameObject aeNew;
 
-	// Token: 0x04001506 RID: 5382
 	[SerializeField]
 	private PguiColorCtrl colorAttrBar;
 
-	// Token: 0x04001507 RID: 5383
 	[SerializeField]
 	private PguiImageCtrl imgAttrBar;
 
-	// Token: 0x04001508 RID: 5384
 	[SerializeField]
 	private PguiImageCtrl imgEventGrowPickUp;
 
-	// Token: 0x04001509 RID: 5385
 	[SerializeField]
 	private PguiImageCtrl imgMarkExpUp;
 
-	// Token: 0x0400150A RID: 5386
 	[SerializeField]
 	private GameObject imgDisable;
 
-	// Token: 0x0400150B RID: 5387
 	[SerializeField]
 	private PguiImageCtrl imgMarkEvent;
 
-	// Token: 0x0400150C RID: 5388
 	[SerializeField]
 	private PhotoPocketLevelCtrl imgMarkPhotoPocketLevel;
 
-	// Token: 0x0400150D RID: 5389
 	[SerializeField]
 	private PguiImageCtrl imgMarkAccessory;
 
-	// Token: 0x0400150E RID: 5390
 	[SerializeField]
 	private PguiImageCtrl imgFavoriteFlag;
 
-	// Token: 0x0400150F RID: 5391
 	[SerializeField]
 	private PguiImageCtrl imgMarkEventDropBonus;
 
-	// Token: 0x04001510 RID: 5392
 	[SerializeField]
 	private GameObject imgBookmark;
 
-	// Token: 0x04001511 RID: 5393
 	[SerializeField]
 	private GameObject objMarkBan;
 
-	// Token: 0x04001513 RID: 5395
 	private CharaWindowCtrl.DetailParamSetting detailParam;
 
-	// Token: 0x04001514 RID: 5396
 	private IconCharaCtrl.OnClick callbackCL;
 
-	// Token: 0x04001515 RID: 5397
 	private Color? _defaultTextColor;
 
-	// Token: 0x04001516 RID: 5398
 	private bool isHelper;
 
-	// Token: 0x02000EFE RID: 3838
 	[Serializable]
 	public class StoryInfo
 	{
-		// Token: 0x04005580 RID: 21888
 		public PguiImageCtrl icon;
 
-		// Token: 0x04005581 RID: 21889
 		public PguiTextCtrl textAct;
 
-		// Token: 0x04005582 RID: 21890
 		public PguiTextCtrl textNor;
 	}
 
-	// Token: 0x02000EFF RID: 3839
 	public enum Type
 	{
-		// Token: 0x04005584 RID: 21892
 		CARD,
-		// Token: 0x04005585 RID: 21893
 		ICON,
-		// Token: 0x04005586 RID: 21894
 		ICON_MIDDLE,
-		// Token: 0x04005587 RID: 21895
 		ICON_TOP
 	}
 
-	// Token: 0x02000F00 RID: 3840
-	// (Invoke) Token: 0x06004E58 RID: 20056
 	public delegate void OnClick(IconCharaCtrl ipc);
 
-	// Token: 0x02000F01 RID: 3841
 	public class SetupParam
 	{
-		// Token: 0x06004E5B RID: 20059 RVA: 0x00236700 File Offset: 0x00234900
 		public SetupParam()
 		{
 			this.cpd = null;
@@ -1089,22 +999,16 @@ public class IconCharaCtrl : MonoBehaviour
 			this.iconId = -1;
 		}
 
-		// Token: 0x04005588 RID: 21896
 		public CharaPackData cpd;
 
-		// Token: 0x04005589 RID: 21897
 		public SortFilterDefine.SortType sortType;
 
-		// Token: 0x0400558A RID: 21898
 		public bool isEnableMask;
 
-		// Token: 0x0400558B RID: 21899
 		public CharaWindowCtrl.DetailParamSetting detaiParam;
 
-		// Token: 0x0400558C RID: 21900
 		public int eventId;
 
-		// Token: 0x0400558D RID: 21901
 		public int iconId;
 	}
 }

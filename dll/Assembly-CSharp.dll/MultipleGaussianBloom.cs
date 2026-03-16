@@ -1,15 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-// Token: 0x0200002A RID: 42
 [RequireComponent(typeof(Camera))]
 [AddComponentMenu("Image Effects/Bloom and Glow/MultipleGaussianBloom")]
 public class MultipleGaussianBloom : MonoBehaviour
 {
-	// Token: 0x17000006 RID: 6
-	// (get) Token: 0x0600006B RID: 107 RVA: 0x00003E70 File Offset: 0x00002070
 	protected Material bloomMaterial
 	{
 		get
@@ -23,12 +20,8 @@ public class MultipleGaussianBloom : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000007 RID: 7
-	// (get) Token: 0x0600006C RID: 108 RVA: 0x00003EA4 File Offset: 0x000020A4
-	// (set) Token: 0x0600006D RID: 109 RVA: 0x00003EAC File Offset: 0x000020AC
 	public bool camouflageEnable { get; set; }
 
-	// Token: 0x0600006E RID: 110 RVA: 0x00003EB8 File Offset: 0x000020B8
 	public void Awake()
 	{
 		this.mainCamera = base.GetComponent<Camera>();
@@ -42,7 +35,6 @@ public class MultipleGaussianBloom : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600006F RID: 111 RVA: 0x00003F0D File Offset: 0x0000210D
 	public void Start()
 	{
 		if (!SystemInfo.supportsImageEffects)
@@ -51,7 +43,6 @@ public class MultipleGaussianBloom : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000070 RID: 112 RVA: 0x00003F20 File Offset: 0x00002120
 	public void OnEnable()
 	{
 		this.subCamera = new GameObject("Glow Effect2", new Type[] { typeof(Camera) }).GetComponent<Camera>();
@@ -65,7 +56,6 @@ public class MultipleGaussianBloom : MonoBehaviour
 		this.camouflageCamera.enabled = false;
 	}
 
-	// Token: 0x06000071 RID: 113 RVA: 0x00004000 File Offset: 0x00002200
 	public void OnDisable()
 	{
 		this.bloomMaterial.mainTexture = null;
@@ -95,7 +85,6 @@ public class MultipleGaussianBloom : MonoBehaviour
 		this.DeleteCamouflageTexture();
 	}
 
-	// Token: 0x06000072 RID: 114 RVA: 0x000040C0 File Offset: 0x000022C0
 	public void OnRenderImage(RenderTexture source, RenderTexture destination)
 	{
 		this.CreateAlphaTexture(source);
@@ -186,7 +175,6 @@ public class MultipleGaussianBloom : MonoBehaviour
 		this.subCamera.enabled = false;
 	}
 
-	// Token: 0x06000073 RID: 115 RVA: 0x000045F0 File Offset: 0x000027F0
 	private void CreateRenderTexture(RenderTexture source)
 	{
 		if (source.width < 1 || source.height < 1)
@@ -213,7 +201,6 @@ public class MultipleGaussianBloom : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000074 RID: 116 RVA: 0x000046EB File Offset: 0x000028EB
 	private void DeleteRenderTexture()
 	{
 		if (null != this.extractRT)
@@ -224,7 +211,6 @@ public class MultipleGaussianBloom : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000075 RID: 117 RVA: 0x00004718 File Offset: 0x00002918
 	private void CreateAlphaTexture(RenderTexture source)
 	{
 		if (source.width < 1 || source.height < 1)
@@ -247,7 +233,6 @@ public class MultipleGaussianBloom : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000076 RID: 118 RVA: 0x000047FA File Offset: 0x000029FA
 	private void DeleteAlphaTexture()
 	{
 		if (null != this.alphaRT)
@@ -258,7 +243,6 @@ public class MultipleGaussianBloom : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000077 RID: 119 RVA: 0x00004828 File Offset: 0x00002A28
 	private void CreateCamouflageTexture(RenderTexture source)
 	{
 		if (source.width < 1 || source.height < 1)
@@ -281,7 +265,6 @@ public class MultipleGaussianBloom : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000078 RID: 120 RVA: 0x0000490A File Offset: 0x00002B0A
 	private void DeleteCamouflageTexture()
 	{
 		if (null != this.camouflageRT)
@@ -292,7 +275,6 @@ public class MultipleGaussianBloom : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000079 RID: 121 RVA: 0x00004937 File Offset: 0x00002B37
 	private bool UpdateInternalFormat(MultipleGaussianBloom.RTFormat in_format)
 	{
 		if (this.renderingFormatPrev == (int)in_format)
@@ -315,7 +297,6 @@ public class MultipleGaussianBloom : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x0600007A RID: 122 RVA: 0x00004978 File Offset: 0x00002B78
 	private void KawsseBloomEffect(RenderTexture source, RenderTexture destination)
 	{
 		int num = this.extractRT.width;
@@ -379,7 +360,6 @@ public class MultipleGaussianBloom : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600007B RID: 123 RVA: 0x00004B80 File Offset: 0x00002D80
 	private void GaussianFilter(RenderTexture blurTarget)
 	{
 		RenderTexture temporary = RenderTexture.GetTemporary(blurTarget.width, blurTarget.height, 0, blurTarget.format, RenderTextureReadWrite.Default, blurTarget.antiAliasing);
@@ -391,7 +371,6 @@ public class MultipleGaussianBloom : MonoBehaviour
 		RenderTexture.ReleaseTemporary(temporary);
 	}
 
-	// Token: 0x0600007C RID: 124 RVA: 0x00004C28 File Offset: 0x00002E28
 	private void EnableKeywords()
 	{
 		if (this.gaussianFilterPrev != (int)this.gaussianFilter)
@@ -418,7 +397,6 @@ public class MultipleGaussianBloom : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600007D RID: 125 RVA: 0x00004CB8 File Offset: 0x00002EB8
 	private void DisableKeywords()
 	{
 		if (this.gaussianFilterPrev != (int)this.gaussianFilter)
@@ -430,89 +408,60 @@ public class MultipleGaussianBloom : MonoBehaviour
 		}
 	}
 
-	// Token: 0x040000F5 RID: 245
 	private const int numDownsampleImages = 4;
 
-	// Token: 0x040000F6 RID: 246
 	public Shader replacementShader;
 
-	// Token: 0x040000F7 RID: 247
 	public string replacementTag = "BloomType";
 
-	// Token: 0x040000F8 RID: 248
 	public float bloomIntensity = 1f;
 
-	// Token: 0x040000F9 RID: 249
 	[Range(-1f, 1f)]
 	public float bloomDistribution;
 
-	// Token: 0x040000FA RID: 250
 	public MultipleGaussianBloom.FilterTaps gaussianFilter = MultipleGaussianBloom.FilterTaps._7Taps;
 
-	// Token: 0x040000FB RID: 251
 	public MultipleGaussianBloom.RTFormat renderingFormat = MultipleGaussianBloom.RTFormat._32bpp;
 
-	// Token: 0x040000FC RID: 252
 	private RenderTextureFormat internalFormat;
 
-	// Token: 0x040000FD RID: 253
 	[HideInInspector]
 	public Shader bloomShader;
 
-	// Token: 0x040000FE RID: 254
 	private Material m_bloomMaterial;
 
-	// Token: 0x040000FF RID: 255
 	private Camera mainCamera;
 
-	// Token: 0x04000100 RID: 256
 	private Camera subCamera;
 
-	// Token: 0x04000101 RID: 257
 	private RenderTexture extractRT;
 
-	// Token: 0x04000102 RID: 258
 	private int gaussianFilterPrev = -1;
 
-	// Token: 0x04000103 RID: 259
 	private int renderingFormatPrev = -1;
 
-	// Token: 0x04000104 RID: 260
 	private Camera alphaCamera;
 
-	// Token: 0x04000105 RID: 261
 	private RenderTexture alphaRT;
 
-	// Token: 0x04000106 RID: 262
 	public static readonly List<string> layerList = new List<string> { "AuthMain", "FieldStage", "FieldPlayer", "FieldEnemy" };
 
-	// Token: 0x04000107 RID: 263
 	private Camera camouflageCamera;
 
-	// Token: 0x04000108 RID: 264
 	private RenderTexture camouflageRT;
 
-	// Token: 0x0200058F RID: 1423
 	public enum FilterTaps
 	{
-		// Token: 0x04002940 RID: 10560
 		_3Taps,
-		// Token: 0x04002941 RID: 10561
 		_5Taps,
-		// Token: 0x04002942 RID: 10562
 		_7Taps,
-		// Token: 0x04002943 RID: 10563
 		_9Taps
 	}
 
-	// Token: 0x02000590 RID: 1424
 	public enum RTFormat
 	{
-		// Token: 0x04002945 RID: 10565
 		_16bpp,
-		// Token: 0x04002946 RID: 10566
 		_32bpp,
-		// Token: 0x04002947 RID: 10567
 		_64bppHDR
 	}
 }

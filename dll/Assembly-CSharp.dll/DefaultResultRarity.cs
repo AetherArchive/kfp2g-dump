@@ -1,11 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-// Token: 0x02000145 RID: 325
 public class DefaultResultRarity : global::ResultRarity
 {
-	// Token: 0x17000367 RID: 871
-	// (get) Token: 0x060011D3 RID: 4563 RVA: 0x000D8D98 File Offset: 0x000D6F98
 	public override int[,] SKY_PER
 	{
 		get
@@ -23,8 +20,6 @@ public class DefaultResultRarity : global::ResultRarity
 		}
 	}
 
-	// Token: 0x17000368 RID: 872
-	// (get) Token: 0x060011D4 RID: 4564 RVA: 0x000D8DAC File Offset: 0x000D6FAC
 	public override int[,] POST_PER
 	{
 		get
@@ -42,8 +37,6 @@ public class DefaultResultRarity : global::ResultRarity
 		}
 	}
 
-	// Token: 0x17000369 RID: 873
-	// (get) Token: 0x060011D5 RID: 4565 RVA: 0x000D8DC0 File Offset: 0x000D6FC0
 	public override int[,] PUT_PER
 	{
 		get
@@ -61,8 +54,6 @@ public class DefaultResultRarity : global::ResultRarity
 		}
 	}
 
-	// Token: 0x1700036A RID: 874
-	// (get) Token: 0x060011D6 RID: 4566 RVA: 0x000D8DD4 File Offset: 0x000D6FD4
 	public override int[,] PUT_PER_V
 	{
 		get
@@ -71,8 +62,6 @@ public class DefaultResultRarity : global::ResultRarity
 		}
 	}
 
-	// Token: 0x1700036B RID: 875
-	// (get) Token: 0x060011D7 RID: 4567 RVA: 0x000D8DE8 File Offset: 0x000D6FE8
 	public override int[,] EFF_PER
 	{
 		get
@@ -90,7 +79,6 @@ public class DefaultResultRarity : global::ResultRarity
 		}
 	}
 
-	// Token: 0x060011D9 RID: 4569 RVA: 0x000D8E04 File Offset: 0x000D7004
 	public override int GetHighRarity(List<GachaAuthCtrl.AuthItem> authItemList)
 	{
 		int num = 0;
@@ -134,7 +122,6 @@ public class DefaultResultRarity : global::ResultRarity
 		return num;
 	}
 
-	// Token: 0x060011DA RID: 4570 RVA: 0x000D8EA4 File Offset: 0x000D70A4
 	public override int GetGachaResultRarity(GachaAuthCtrl.AuthItem authItem)
 	{
 		ItemDef.Kind kind = ItemDef.Id2Kind(authItem.itemId);
@@ -184,7 +171,6 @@ public class DefaultResultRarity : global::ResultRarity
 		return (int)resultRarity;
 	}
 
-	// Token: 0x060011DB RID: 4571 RVA: 0x000D8F30 File Offset: 0x000D7130
 	public override string LotteryPremiumSEName(List<GachaAuthCtrl.AuthItem> authItemList, List<string> seNameList)
 	{
 		string text = string.Empty;
@@ -201,7 +187,6 @@ public class DefaultResultRarity : global::ResultRarity
 		return text;
 	}
 
-	// Token: 0x060011DC RID: 4572 RVA: 0x000D8F7C File Offset: 0x000D717C
 	public override bool LotteryPromotion(GachaAuthCtrl.AuthItem authItem)
 	{
 		bool flag = false;
@@ -217,7 +202,6 @@ public class DefaultResultRarity : global::ResultRarity
 		return flag;
 	}
 
-	// Token: 0x060011DD RID: 4573 RVA: 0x000D8FAC File Offset: 0x000D71AC
 	public override AuthPlayer.GachaParam.EffectType GetEffectTypeForGachaParamAfter(GachaAuthCtrl.AuthItem authItem)
 	{
 		AuthPlayer.GachaParam.EffectType effectType = AuthPlayer.GachaParam.EffectType.BLUE;
@@ -236,22 +220,14 @@ public class DefaultResultRarity : global::ResultRarity
 		return effectType;
 	}
 
-	// Token: 0x02000AC2 RID: 2754
 	private enum ResultRarity
 	{
-		// Token: 0x04004455 RID: 17493
 		LessThanThree,
-		// Token: 0x04004456 RID: 17494
 		Three,
-		// Token: 0x04004457 RID: 17495
 		FourOrMore,
-		// Token: 0x04004458 RID: 17496
 		FourOrMoreAndChara,
-		// Token: 0x04004459 RID: 17497
 		MultipleFourOrMoreAndIncludesChara,
-		// Token: 0x0400445A RID: 17498
 		FourOrMoreAndPuChara,
-		// Token: 0x0400445B RID: 17499
 		MultipleFourOrMoreAndIncludesPuChara
 	}
 }

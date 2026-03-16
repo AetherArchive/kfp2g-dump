@@ -1,15 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SGNFW.HttpRequest.Protocol;
 using UnityEngine;
 
 namespace Battle
 {
-	// Token: 0x02000212 RID: 530
 	public class SceneBattle_DeckInfo
 	{
-		// Token: 0x17000477 RID: 1143
-		// (get) Token: 0x06002239 RID: 8761 RVA: 0x001924E0 File Offset: 0x001906E0
 		public List<CharaPackData> deckData
 		{
 			get
@@ -18,8 +15,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000478 RID: 1144
-		// (get) Token: 0x0600223A RID: 8762 RVA: 0x001924E8 File Offset: 0x001906E8
 		public MasterSkillPackData masterSkill
 		{
 			get
@@ -28,8 +23,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000479 RID: 1145
-		// (get) Token: 0x0600223B RID: 8763 RVA: 0x001924F0 File Offset: 0x001906F0
 		public List<List<PhotoPackData>> equipPhotoList
 		{
 			get
@@ -38,8 +31,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x1700047A RID: 1146
-		// (get) Token: 0x0600223C RID: 8764 RVA: 0x001924F8 File Offset: 0x001906F8
 		public int deckHelperIndex
 		{
 			get
@@ -48,8 +39,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x1700047B RID: 1147
-		// (get) Token: 0x0600223D RID: 8765 RVA: 0x00192500 File Offset: 0x00190700
 		public CharaDef.AiType aiType
 		{
 			get
@@ -58,8 +47,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x1700047C RID: 1148
-		// (get) Token: 0x0600223E RID: 8766 RVA: 0x00192508 File Offset: 0x00190708
 		public TacticsStaticSkill tacticsSkill
 		{
 			get
@@ -68,8 +55,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x1700047D RID: 1149
-		// (get) Token: 0x0600223F RID: 8767 RVA: 0x00192510 File Offset: 0x00190710
 		public TacticsParam.Tactics.Type tacticsType
 		{
 			get
@@ -78,8 +63,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x1700047E RID: 1150
-		// (get) Token: 0x06002240 RID: 8768 RVA: 0x00192518 File Offset: 0x00190718
 		public int tacticsValue
 		{
 			get
@@ -88,7 +71,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x06002241 RID: 8769 RVA: 0x00192520 File Offset: 0x00190720
 		public int CalcTotalPlasmPoint()
 		{
 			int num = 0;
@@ -102,12 +84,10 @@ namespace Battle
 			return num;
 		}
 
-		// Token: 0x06002242 RID: 8770 RVA: 0x00192590 File Offset: 0x00190790
 		public SceneBattle_DeckInfo()
 		{
 		}
 
-		// Token: 0x06002243 RID: 8771 RVA: 0x001925C8 File Offset: 0x001907C8
 		public SceneBattle_DeckInfo(int selectDeckId, HelperPackData helper, int attrIndex = 0)
 		{
 			DataManagerChara dmChara = DataManager.DmChara;
@@ -147,7 +127,6 @@ namespace Battle
 			this.SetTactics(dmChara, userDeckById.pvpTacticsTypeId, userDeckById.pvpTacticsTermsTypeId, userDeckById.pvpTacticsTermsValueId);
 		}
 
-		// Token: 0x06002244 RID: 8772 RVA: 0x001927A8 File Offset: 0x001909A8
 		public SceneBattle_DeckInfo(OppUser oppUser)
 		{
 			this.isNpc = oppUser.npc_flag == 1;
@@ -158,13 +137,11 @@ namespace Battle
 			this.SetTactics(DataManager.DmChara, num, num2, num3);
 		}
 
-		// Token: 0x06002245 RID: 8773 RVA: 0x0019284C File Offset: 0x00190A4C
 		public SceneBattle_DeckInfo(Party party)
 		{
 			this.SetupByCharaList(party.charaList);
 		}
 
-		// Token: 0x06002246 RID: 8774 RVA: 0x0019289C File Offset: 0x00190A9C
 		private void SetupByCharaList(List<Chara> serverCharaList)
 		{
 			for (int i = 0; i < serverCharaList.Count; i++)
@@ -200,7 +177,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x06002247 RID: 8775 RVA: 0x00192990 File Offset: 0x00190B90
 		public SceneBattle_DeckInfo(ScenarioParty party)
 		{
 			if (party == null)
@@ -270,7 +246,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x06002248 RID: 8776 RVA: 0x00192C24 File Offset: 0x00190E24
 		public SceneBattle_DeckInfo(DebugParty party)
 		{
 			this._deckHelperIndex = 4;
@@ -361,7 +336,6 @@ namespace Battle
 			this.SetTactics(DataManager.DmChara, party.trainingHp, party.trainingAtk, party.trainingDef);
 		}
 
-		// Token: 0x06002249 RID: 8777 RVA: 0x00192FC0 File Offset: 0x001911C0
 		private void SetTactics(DataManagerChara dmChara, int typeId, int termsTypeId, int termsValueId)
 		{
 			this._tacticsSkill = dmChara.GetTacticsSkillStaticData(typeId);
@@ -374,34 +348,24 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x04001929 RID: 6441
 		private List<CharaPackData> _deckData = new List<CharaPackData>();
 
-		// Token: 0x0400192A RID: 6442
 		private MasterSkillPackData _masterSkill;
 
-		// Token: 0x0400192B RID: 6443
 		private List<List<PhotoPackData>> _equipPhotoList = new List<List<PhotoPackData>>();
 
-		// Token: 0x0400192C RID: 6444
 		private int _deckHelperIndex = -1;
 
-		// Token: 0x0400192D RID: 6445
 		private CharaDef.AiType _aiType = CharaDef.AiType.CLEVER;
 
-		// Token: 0x0400192E RID: 6446
 		private TacticsStaticSkill _tacticsSkill;
 
-		// Token: 0x0400192F RID: 6447
 		private TacticsParam.Tactics.Type _tacticsType;
 
-		// Token: 0x04001930 RID: 6448
 		private int _tacticsValue;
 
-		// Token: 0x04001931 RID: 6449
 		public List<bool> waitAction = new List<bool>();
 
-		// Token: 0x04001932 RID: 6450
 		public bool isNpc;
 	}
 }

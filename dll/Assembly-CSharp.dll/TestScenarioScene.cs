@@ -1,13 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using SGNFW.Common;
 using UnityEngine;
 
-// Token: 0x02000116 RID: 278
 public class TestScenarioScene : MonoBehaviour
 {
-	// Token: 0x06000D66 RID: 3430 RVA: 0x00058D04 File Offset: 0x00056F04
 	private void MakeFileList()
 	{
 		string[] files = Directory.GetFiles("Assets/Parade/Prefabs/" + ScenarioDefine.LOAD_PATH + ScenarioDefine.DATA_FOLDER[(int)this.episodeType], "*.prefab");
@@ -24,13 +22,11 @@ public class TestScenarioScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D67 RID: 3431 RVA: 0x00058D86 File Offset: 0x00056F86
 	private void Awake()
 	{
 		this.isInit = false;
 	}
 
-	// Token: 0x06000D68 RID: 3432 RVA: 0x00058D90 File Offset: 0x00056F90
 	private void Start()
 	{
 		Singleton<SoundManager>.Instance.Initialize();
@@ -48,7 +44,6 @@ public class TestScenarioScene : MonoBehaviour
 		this.scrollViewVec = Vector2.zero;
 	}
 
-	// Token: 0x06000D69 RID: 3433 RVA: 0x00058E04 File Offset: 0x00057004
 	private void Update()
 	{
 		if (!this.isInit)
@@ -80,12 +75,10 @@ public class TestScenarioScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D6A RID: 3434 RVA: 0x00058F4D File Offset: 0x0005714D
 	private void OnDestroy()
 	{
 	}
 
-	// Token: 0x06000D6B RID: 3435 RVA: 0x00058F50 File Offset: 0x00057150
 	private void OnGUI()
 	{
 		if (!this.isInit)
@@ -164,44 +157,31 @@ public class TestScenarioScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000AFB RID: 2811
 	[Range(0f, 2f)]
 	public int textSpeed;
 
-	// Token: 0x04000AFC RID: 2812
 	[Range(0f, 2f)]
 	public int autoSpeed;
 
-	// Token: 0x04000AFD RID: 2813
 	public ScenarioDefine.EPISODE_TYPE episodeType;
 
-	// Token: 0x04000AFE RID: 2814
 	public string fileNumber;
 
-	// Token: 0x04000AFF RID: 2815
 	private List<string> mFileList = new List<string>();
 
-	// Token: 0x04000B00 RID: 2816
 	private bool mRequest;
 
-	// Token: 0x04000B01 RID: 2817
 	private bool mReset;
 
-	// Token: 0x04000B02 RID: 2818
 	private bool mMovie;
 
-	// Token: 0x04000B03 RID: 2819
 	private bool mAuto;
 
-	// Token: 0x04000B04 RID: 2820
 	private int mSkip;
 
-	// Token: 0x04000B05 RID: 2821
 	private Vector2 scrollViewVec = Vector2.zero;
 
-	// Token: 0x04000B06 RID: 2822
 	private GameObject mPrefabObj;
 
-	// Token: 0x04000B07 RID: 2823
 	private bool isInit;
 }

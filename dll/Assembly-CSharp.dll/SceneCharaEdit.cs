@@ -1,26 +1,22 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
 using UnityEngine;
 using UnityEngine.Events;
 
-// Token: 0x0200012B RID: 299
 public class SceneCharaEdit : BaseScene
 {
-	// Token: 0x06000F1D RID: 3869 RVA: 0x000B5EE2 File Offset: 0x000B40E2
 	public static bool IsStoryPhoto(ItemStaticBase isb)
 	{
 		return isb != null && 7001 <= isb.GetId() && isb.GetId() <= 8000;
 	}
 
-	// Token: 0x06000F1E RID: 3870 RVA: 0x000B5F08 File Offset: 0x000B4108
 	public SceneCharaEdit.Mode getCurrentMode()
 	{
 		return this.currentMode;
 	}
 
-	// Token: 0x06000F1F RID: 3871 RVA: 0x000B5F10 File Offset: 0x000B4110
 	public override void OnCreateScene()
 	{
 		this.basePanel = new GameObject();
@@ -101,7 +97,6 @@ public class SceneCharaEdit : BaseScene
 		this.selAccessorySellCtrl.gameObject.SetActive(false);
 	}
 
-	// Token: 0x06000F20 RID: 3872 RVA: 0x000B6400 File Offset: 0x000B4600
 	public override void OnEnableScene(object args)
 	{
 		this.basePanel.gameObject.SetActive(true);
@@ -186,7 +181,6 @@ public class SceneCharaEdit : BaseScene
 		this.IEnumOnEnableSceneTask = this.OnEnableSceneTask();
 	}
 
-	// Token: 0x06000F21 RID: 3873 RVA: 0x000B6739 File Offset: 0x000B4939
 	private IEnumerator OnEnableSceneTask()
 	{
 		DataManager.DmTraining.RequestGetTrainingInfo();
@@ -213,7 +207,6 @@ public class SceneCharaEdit : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06000F22 RID: 3874 RVA: 0x000B6744 File Offset: 0x000B4944
 	public override bool OnEnableSceneWait()
 	{
 		if (this.IEnumOnEnableSceneTask != null)
@@ -251,7 +244,6 @@ public class SceneCharaEdit : BaseScene
 		return true;
 	}
 
-	// Token: 0x06000F23 RID: 3875 RVA: 0x000B6880 File Offset: 0x000B4A80
 	public override void OnStartSceneFade()
 	{
 		if (this.renderTextureChara != null)
@@ -260,12 +252,10 @@ public class SceneCharaEdit : BaseScene
 		}
 	}
 
-	// Token: 0x06000F24 RID: 3876 RVA: 0x000B68A1 File Offset: 0x000B4AA1
 	public override void OnStartControl()
 	{
 	}
 
-	// Token: 0x06000F25 RID: 3877 RVA: 0x000B68A4 File Offset: 0x000B4AA4
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		if (this.currentMode == SceneCharaEdit.Mode.TOP)
@@ -353,7 +343,6 @@ public class SceneCharaEdit : BaseScene
 		}
 	}
 
-	// Token: 0x06000F26 RID: 3878 RVA: 0x000B6AB2 File Offset: 0x000B4CB2
 	private void MovePhotoAlubum()
 	{
 		this.requestNextScene = SceneManager.SceneName.ScenePhotoAlbum;
@@ -367,13 +356,11 @@ public class SceneCharaEdit : BaseScene
 		};
 	}
 
-	// Token: 0x06000F27 RID: 3879 RVA: 0x000B6AE1 File Offset: 0x000B4CE1
 	private bool OnClickMoveSequenceButton(SceneManager.SceneName sceneName, object sceneArgs)
 	{
 		return this.currentMode == SceneCharaEdit.Mode.DECK && CanvasManager.HdlSelCharaDeck.OnClickMoveSequenceButton(sceneName, sceneArgs);
 	}
 
-	// Token: 0x06000F28 RID: 3880 RVA: 0x000B6AFC File Offset: 0x000B4CFC
 	private void OnClickButtonMenuRetrun()
 	{
 		if (this.currentMode == SceneCharaEdit.Mode.DECK)
@@ -470,7 +457,6 @@ public class SceneCharaEdit : BaseScene
 		this.isTapReturnButton = true;
 	}
 
-	// Token: 0x06000F29 RID: 3881 RVA: 0x000B6D38 File Offset: 0x000B4F38
 	public override void Update()
 	{
 		bool flag = true;
@@ -805,7 +791,6 @@ public class SceneCharaEdit : BaseScene
 		CanvasManager.HdlCmnMenu.UpdateMenu(flag, true);
 	}
 
-	// Token: 0x06000F2A RID: 3882 RVA: 0x000B792C File Offset: 0x000B5B2C
 	public override void OnDisableScene()
 	{
 		CanvasManager.HdlSelCharaDeck.SetActive(false, true);
@@ -831,7 +816,6 @@ public class SceneCharaEdit : BaseScene
 		this.selAccessorySellCtrl.gameObject.SetActive(false);
 	}
 
-	// Token: 0x06000F2B RID: 3883 RVA: 0x000B7A24 File Offset: 0x000B5C24
 	public override void OnDestroyScene()
 	{
 		Object.Destroy(this.selCharaGrowCtrl.gameObject);
@@ -859,7 +843,6 @@ public class SceneCharaEdit : BaseScene
 		this.basePanel = null;
 	}
 
-	// Token: 0x06000F2C RID: 3884 RVA: 0x000B7B0B File Offset: 0x000B5D0B
 	private IEnumerator TutorialPartyEdit()
 	{
 		CanvasManager.HdlSelCharaDeck.isTutorial = true;
@@ -1108,7 +1091,6 @@ public class SceneCharaEdit : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06000F2D RID: 3885 RVA: 0x000B7B1A File Offset: 0x000B5D1A
 	private IEnumerator TutorialCharaGrow()
 	{
 		CanvasManager.HdlTutorialMaskCtrl.SetEnable(true);
@@ -1289,135 +1271,91 @@ public class SceneCharaEdit : BaseScene
 		yield break;
 	}
 
-	// Token: 0x04000DAC RID: 3500
 	private SceneCharaEdit.Mode requestMode;
 
-	// Token: 0x04000DAD RID: 3501
 	private UserDeckData.Category requestDeckCategory;
 
-	// Token: 0x04000DAE RID: 3502
 	private SceneCharaEdit.Mode currentMode;
 
-	// Token: 0x04000DAF RID: 3503
 	private SceneCharaEdit.Mode prevMode;
 
-	// Token: 0x04000DB0 RID: 3504
 	private GameObject basePanel;
 
-	// Token: 0x04000DB1 RID: 3505
 	private SceneCharaEdit.GUI guiData;
 
-	// Token: 0x04000DB2 RID: 3506
 	private SelCharaGrowCtrl selCharaGrowCtrl;
 
-	// Token: 0x04000DB3 RID: 3507
 	private SelPhotoGrowCtrl selPhotoGrowCtrl;
 
-	// Token: 0x04000DB4 RID: 3508
 	private SelCharaPhotoAllCtrl selCharaPhotoAllCtrl;
 
-	// Token: 0x04000DB5 RID: 3509
 	private SelPhotoSellCtrl selPhotoSellCtrl;
 
-	// Token: 0x04000DB6 RID: 3510
 	private SelMasterSkillCtrl selMasterSkillCtrl;
 
-	// Token: 0x04000DB7 RID: 3511
 	private SelAccessoryGrowCtrl selAccessoryGrowCtrl;
 
-	// Token: 0x04000DB8 RID: 3512
 	private SelAccessorySellCtrl selAccessorySellCtrl;
 
-	// Token: 0x04000DB9 RID: 3513
 	private SceneCharaEdit.Args sceneArgs = new SceneCharaEdit.Args();
 
-	// Token: 0x04000DBA RID: 3514
 	private RenderTextureChara renderTextureChara;
 
-	// Token: 0x04000DBB RID: 3515
 	private SceneManager.SceneName requestNextScene;
 
-	// Token: 0x04000DBC RID: 3516
 	private object requestArgs;
 
-	// Token: 0x04000DBD RID: 3517
 	private bool isTapReturnButton;
 
-	// Token: 0x04000DBE RID: 3518
 	private IEnumerator IEnumOnEnableSceneTask;
 
-	// Token: 0x04000DBF RID: 3519
 	private bool gotoNextStepByTutorial;
 
-	// Token: 0x02000972 RID: 2418
-	// (Invoke) Token: 0x06003BEA RID: 15338
 	public delegate SceneManager.SceneName OnReturnSceneName();
 
-	// Token: 0x02000973 RID: 2419
 	public class Args
 	{
-		// Token: 0x04003D02 RID: 15618
 		public TutorialUtil.Sequence tutorialSequence;
 
-		// Token: 0x04003D03 RID: 15619
 		public SceneCharaEdit.Mode requestMode;
 
-		// Token: 0x04003D04 RID: 15620
 		public SelPhotoGrowCtrl.Mode requestSubMode;
 
-		// Token: 0x04003D05 RID: 15621
 		public SelAccessoryGrowCtrl.Mode requestAccessoryGrowSubMode;
 
-		// Token: 0x04003D06 RID: 15622
 		public int growCharaId;
 
-		// Token: 0x04003D07 RID: 15623
 		public int growTab;
 
-		// Token: 0x04003D08 RID: 15624
 		public bool openItemWindow;
 
-		// Token: 0x04003D09 RID: 15625
 		public bool openDressWindow;
 
-		// Token: 0x04003D0A RID: 15626
 		public int detailCharaId;
 
-		// Token: 0x04003D0B RID: 15627
 		public bool openDetailWindow;
 
-		// Token: 0x04003D0C RID: 15628
 		public bool enableLeftRightButton;
 
-		// Token: 0x04003D0D RID: 15629
 		public bool enableMoreButton;
 
-		// Token: 0x04003D0E RID: 15630
 		public long growPhotoId;
 
-		// Token: 0x04003D0F RID: 15631
 		public long detailPhotoId;
 
-		// Token: 0x04003D10 RID: 15632
 		public long growAccessoryId;
 
-		// Token: 0x04003D11 RID: 15633
 		public long detailAccessoryId;
 
-		// Token: 0x04003D12 RID: 15634
 		public SceneManager.SceneName menuBackSceneName;
 
-		// Token: 0x04003D13 RID: 15635
 		public object menuBackSceneArgs;
 
-		// Token: 0x04003D14 RID: 15636
 		public SceneCharaEdit.Mode menuBackRequestMode;
 	}
 
-	// Token: 0x02000974 RID: 2420
 	public class GUI
 	{
-		// Token: 0x06003BEE RID: 15342 RVA: 0x001D7BD4 File Offset: 0x001D5DD4
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1445,80 +1383,52 @@ public class SceneCharaEdit : BaseScene
 			this.Btn_Accessory = baseTr.Find("All/MenuAll/Btn_Accessory").GetComponent<PguiButtonCtrl>();
 		}
 
-		// Token: 0x04003D15 RID: 15637
 		public GameObject baseObj;
 
-		// Token: 0x04003D16 RID: 15638
 		public PguiButtonCtrl Btn_CharaDeck;
 
-		// Token: 0x04003D17 RID: 15639
 		public PguiButtonCtrl Btn_CharaGrow;
 
-		// Token: 0x04003D18 RID: 15640
 		public PguiButtonCtrl Btn_PhotoGrow;
 
-		// Token: 0x04003D19 RID: 15641
 		public PguiButtonCtrl Btn_CharaAll;
 
-		// Token: 0x04003D1A RID: 15642
 		public PguiButtonCtrl Btn_PhotoSell;
 
-		// Token: 0x04003D1B RID: 15643
 		public PguiButtonCtrl Btn_HelperChange;
 
-		// Token: 0x04003D1C RID: 15644
 		public PguiButtonCtrl Btn_KemoBoard;
 
-		// Token: 0x04003D1D RID: 15645
 		public PguiButtonCtrl Btn_Training;
 
-		// Token: 0x04003D1E RID: 15646
 		public PguiButtonCtrl Btn_MasterSkillGrow;
 
-		// Token: 0x04003D1F RID: 15647
 		public PguiButtonCtrl Btn_Accessory;
 
-		// Token: 0x04003D20 RID: 15648
 		public GameObject CampaignIcon_CharaGrow;
 
-		// Token: 0x04003D21 RID: 15649
 		public GameObject CampaignIcon_PhotoGrow;
 
-		// Token: 0x04003D22 RID: 15650
 		public SimpleAnimation CharaEditTop_SE;
 
-		// Token: 0x04003D23 RID: 15651
 		public SimpleAnimation CharaGrowCampaignAnim;
 
-		// Token: 0x04003D24 RID: 15652
 		public SimpleAnimation PhotoGrowCampaignAnim;
 
-		// Token: 0x04003D25 RID: 15653
 		public MarkLockCtrl markLockTraining;
 	}
 
-	// Token: 0x02000975 RID: 2421
 	public enum Mode
 	{
-		// Token: 0x04003D27 RID: 15655
 		INVALID,
-		// Token: 0x04003D28 RID: 15656
 		TOP,
-		// Token: 0x04003D29 RID: 15657
 		DECK,
-		// Token: 0x04003D2A RID: 15658
 		CHARA_GROW,
-		// Token: 0x04003D2B RID: 15659
 		PHOTO_GROW,
-		// Token: 0x04003D2C RID: 15660
 		CHARA_PHOTO_ALL,
-		// Token: 0x04003D2D RID: 15661
 		PHOTO_SELL,
-		// Token: 0x04003D2E RID: 15662
 		MASTER_SKILL_GROW,
-		// Token: 0x04003D2F RID: 15663
 		ACCESSORY_GROW,
-		// Token: 0x04003D30 RID: 15664
 		ACCESSORY_SELL
 	}
 }

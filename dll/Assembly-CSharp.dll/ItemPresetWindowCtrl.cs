@@ -1,14 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using SGNFW.uGUI;
 using UnityEngine;
 using UnityEngine.Events;
 
-// Token: 0x020001AB RID: 427
 public class ItemPresetWindowCtrl : MonoBehaviour
 {
-	// Token: 0x06001CD1 RID: 7377 RVA: 0x00169760 File Offset: 0x00167960
 	public void Init(Transform baseTr)
 	{
 		this.guiData = new ItemPresetWindowCtrl.GUI(baseTr);
@@ -34,7 +32,6 @@ public class ItemPresetWindowCtrl : MonoBehaviour
 		this.guiData.ScrollView.Setup(10, 0);
 	}
 
-	// Token: 0x06001CD2 RID: 7378 RVA: 0x0016981C File Offset: 0x00167A1C
 	private void OnStartItem(int index, GameObject go)
 	{
 		GameObject gameObject = AssetManager.GetAssetData("Cmn/GUI/Prefab/CmnShop_SetItem") as GameObject;
@@ -47,7 +44,6 @@ public class ItemPresetWindowCtrl : MonoBehaviour
 		this.guiData.scrollViewParts.Add(go, list);
 	}
 
-	// Token: 0x06001CD3 RID: 7379 RVA: 0x0016987C File Offset: 0x00167A7C
 	private void OnUpdateItem(int index, GameObject go)
 	{
 		List<ItemPresetWindowCtrl.GUIParts> list = this.guiData.scrollViewParts[go];
@@ -89,7 +85,6 @@ public class ItemPresetWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001CD4 RID: 7380 RVA: 0x00169A40 File Offset: 0x00167C40
 	private void SetupInternal()
 	{
 		this.guiData.fukidashiBase.SetActive(this.isOpenByPurchase);
@@ -97,7 +92,6 @@ public class ItemPresetWindowCtrl : MonoBehaviour
 		this.guiData.purchaseIconBase.SetActive(this.isOpenByPurchase);
 	}
 
-	// Token: 0x06001CD5 RID: 7381 RVA: 0x00169A94 File Offset: 0x00167C94
 	public void OpenByItem(ItemData itemData)
 	{
 		if (itemData.staticData.GetKind() != ItemDef.Kind.PRESET)
@@ -127,7 +121,6 @@ public class ItemPresetWindowCtrl : MonoBehaviour
 		this.guiData.ScrollView.Resize(this.currentPartsDataList.Count / 4 + ((this.currentPartsDataList.Count % 4 != 0) ? 1 : 0), 0);
 	}
 
-	// Token: 0x06001CD6 RID: 7382 RVA: 0x00169C58 File Offset: 0x00167E58
 	public void OpenByPurchase(PurchaseProductOne purchaseProductOne, Action onClickOKButton, Action onClickCancelButton, bool isApppayExists)
 	{
 		this.isOpenByPurchase = true;
@@ -235,25 +228,19 @@ public class ItemPresetWindowCtrl : MonoBehaviour
 		this.guiData.ScrollView.Resize(this.currentPartsDataList.Count / 4 + ((this.currentPartsDataList.Count % 4 != 0) ? 1 : 0), 0);
 	}
 
-	// Token: 0x06001CD7 RID: 7383 RVA: 0x0016A130 File Offset: 0x00168330
 	private bool ChkDispItemSetting(PurchaseProductOne purchaseProductOne)
 	{
 		return purchaseProductOne.chargeNum == 0 && purchaseProductOne.freeNum == 0 && purchaseProductOne.bonusItem == null && purchaseProductOne.MainItem != null && 0 < purchaseProductOne.MainItem.num && "Texture2D/Shop_BuyImg_Pack/" != purchaseProductOne.MainItemIconOptionPath;
 	}
 
-	// Token: 0x0400156C RID: 5484
 	private ItemPresetWindowCtrl.GUI guiData;
 
-	// Token: 0x0400156D RID: 5485
 	private List<ItemPresetWindowCtrl.PartsData> currentPartsDataList;
 
-	// Token: 0x0400156E RID: 5486
 	private bool isOpenByPurchase;
 
-	// Token: 0x02000F20 RID: 3872
 	public class GUI
 	{
-		// Token: 0x06004EB4 RID: 20148 RVA: 0x002370CC File Offset: 0x002352CC
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -281,65 +268,45 @@ public class ItemPresetWindowCtrl : MonoBehaviour
 			this.ScrollView = baseTr.Find("Base/Window/Base_SetInfo/InBase/ScrollView").GetComponent<ReuseScroll>();
 		}
 
-		// Token: 0x040055E3 RID: 21987
 		public GameObject baseObj;
 
-		// Token: 0x040055E4 RID: 21988
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x040055E5 RID: 21989
 		public IconItemCtrl presetIconItem;
 
-		// Token: 0x040055E6 RID: 21990
 		public GameObject presetItemNumObj;
 
-		// Token: 0x040055E7 RID: 21991
 		public PguiTextCtrl presetItemNum;
 
-		// Token: 0x040055E8 RID: 21992
 		public PguiTextCtrl presetItemName;
 
-		// Token: 0x040055E9 RID: 21993
 		public PguiTextCtrl presetItemInfo;
 
-		// Token: 0x040055EA RID: 21994
 		public PguiTextCtrl fukidashiInfo;
 
-		// Token: 0x040055EB RID: 21995
 		public PguiRawImageCtrl purchaseIcon;
 
-		// Token: 0x040055EC RID: 21996
 		public GameObject itemIconBase;
 
-		// Token: 0x040055ED RID: 21997
 		public GameObject purchaseIconBase;
 
-		// Token: 0x040055EE RID: 21998
 		public GameObject apppayIconBase;
 
-		// Token: 0x040055EF RID: 21999
 		public GameObject fukidashiBase;
 
-		// Token: 0x040055F0 RID: 22000
 		public ReuseScroll ScrollView;
 
-		// Token: 0x040055F1 RID: 22001
 		public Dictionary<GameObject, List<ItemPresetWindowCtrl.GUIParts>> scrollViewParts = new Dictionary<GameObject, List<ItemPresetWindowCtrl.GUIParts>>();
 
-		// Token: 0x040055F2 RID: 22002
 		public PguiButtonCtrl buyButton;
 
-		// Token: 0x040055F3 RID: 22003
 		public PguiButtonCtrl purchaseConfirmButton;
 
-		// Token: 0x040055F4 RID: 22004
 		public PurchaseConfirmWindow purchaseConfirmWindow;
 	}
 
-	// Token: 0x02000F21 RID: 3873
 	public class GUIParts
 	{
-		// Token: 0x06004EB5 RID: 20149 RVA: 0x0023729C File Offset: 0x0023549C
 		public GUIParts(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -355,38 +322,27 @@ public class ItemPresetWindowCtrl : MonoBehaviour
 			this.Mark_Omake = baseTr.Find("BaseImage/Mark_Omake").gameObject;
 		}
 
-		// Token: 0x040055F5 RID: 22005
 		public const int NUM = 4;
 
-		// Token: 0x040055F6 RID: 22006
 		public GameObject baseObj;
 
-		// Token: 0x040055F7 RID: 22007
 		public PguiButtonCtrl CmnShop_SetItem;
 
-		// Token: 0x040055F8 RID: 22008
 		public PguiRawImageCtrl Buy_Img_Stone;
 
-		// Token: 0x040055F9 RID: 22009
 		public PguiTextCtrl Num_Txt;
 
-		// Token: 0x040055FA RID: 22010
 		public PguiTextCtrl Info_Txt;
 
-		// Token: 0x040055FB RID: 22011
 		public PguiTextCtrl Info_Txt_2;
 
-		// Token: 0x040055FC RID: 22012
 		public IconItemCtrl iconItem;
 
-		// Token: 0x040055FD RID: 22013
 		public GameObject Mark_Omake;
 	}
 
-	// Token: 0x02000F22 RID: 3874
 	private class PartsData
 	{
-		// Token: 0x06004EB6 RID: 20150 RVA: 0x00237391 File Offset: 0x00235591
 		public PartsData(ItemData data, ItemPresetData.DispType type, bool overMax = false)
 		{
 			this.itemData = data;
@@ -394,13 +350,10 @@ public class ItemPresetWindowCtrl : MonoBehaviour
 			this.isOverMax = overMax;
 		}
 
-		// Token: 0x040055FE RID: 22014
 		public ItemData itemData;
 
-		// Token: 0x040055FF RID: 22015
 		public ItemPresetData.DispType dispType;
 
-		// Token: 0x04005600 RID: 22016
 		public bool isOverMax;
 	}
 }

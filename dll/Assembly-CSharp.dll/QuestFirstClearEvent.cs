@@ -1,18 +1,15 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
-// Token: 0x020000C1 RID: 193
 public class QuestFirstClearEvent
 {
-	// Token: 0x060008C6 RID: 2246 RVA: 0x0003813C File Offset: 0x0003633C
 	public QuestFirstClearEvent(int _firstClearQuestOneId)
 	{
 		this.firstClearQuestOneId = _firstClearQuestOneId;
 		this.resolveEnumerator = this.ResolveInternal();
 	}
 
-	// Token: 0x060008C7 RID: 2247 RVA: 0x00038164 File Offset: 0x00036364
 	public QuestFirstClearEvent.ResolveResult UpdateResolve()
 	{
 		if (this.resolveEnumerator != null)
@@ -30,7 +27,6 @@ public class QuestFirstClearEvent
 		return this.resolveResult;
 	}
 
-	// Token: 0x060008C8 RID: 2248 RVA: 0x000381C9 File Offset: 0x000363C9
 	private IEnumerator ResolveInternal()
 	{
 		foreach (QuestFirstClearEvent.EventData eventData in QuestFirstClearEvent.eventDataList)
@@ -121,16 +117,12 @@ public class QuestFirstClearEvent
 		yield break;
 	}
 
-	// Token: 0x04000744 RID: 1860
 	private int firstClearQuestOneId;
 
-	// Token: 0x04000745 RID: 1861
 	private IEnumerator resolveEnumerator;
 
-	// Token: 0x04000746 RID: 1862
 	private QuestFirstClearEvent.ResolveResult resolveResult = new QuestFirstClearEvent.ResolveResult();
 
-	// Token: 0x04000747 RID: 1863
 	private static readonly List<QuestFirstClearEvent.EventData> eventDataList = new List<QuestFirstClearEvent.EventData>
 	{
 		new QuestFirstClearEvent.EventData
@@ -141,26 +133,19 @@ public class QuestFirstClearEvent
 		}
 	};
 
-	// Token: 0x020007B7 RID: 1975
 	public class ResolveResult
 	{
-		// Token: 0x04003471 RID: 13425
 		public bool isFinish;
 
-		// Token: 0x04003472 RID: 13426
 		public SceneManager.SceneName nextSceneName;
 	}
 
-	// Token: 0x020007B8 RID: 1976
 	private class EventData
 	{
-		// Token: 0x04003473 RID: 13427
 		public int questOneId;
 
-		// Token: 0x04003474 RID: 13428
 		public string title = "";
 
-		// Token: 0x04003475 RID: 13429
 		public List<string> imagePathList = new List<string>();
 	}
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using AEAuth3;
@@ -10,15 +10,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x02000139 RID: 313
 public class SelMasterSkillCtrl : MonoBehaviour
 {
-	// Token: 0x1700034D RID: 845
-	// (get) Token: 0x060010B2 RID: 4274 RVA: 0x000CB126 File Offset: 0x000C9326
-	// (set) Token: 0x060010B3 RID: 4275 RVA: 0x000CB12E File Offset: 0x000C932E
 	private int FocusIndex { get; set; }
 
-	// Token: 0x060010B4 RID: 4276 RVA: 0x000CB138 File Offset: 0x000C9338
 	public void Initialize()
 	{
 		GameObject gameObject = Object.Instantiate<GameObject>((GameObject)Resources.Load("SceneCharaEdit/GUI/Prefab/GUI_UserSkillGrow"), base.transform);
@@ -53,7 +48,6 @@ public class SelMasterSkillCtrl : MonoBehaviour
 		this.masterSkillGrowWindow.owCtrl.transform.SetParent(Singleton<CanvasManager>.Instance.SystemPanel.transform);
 	}
 
-	// Token: 0x060010B5 RID: 4277 RVA: 0x000CB368 File Offset: 0x000C9568
 	public void Setup()
 	{
 		this.UpdateMasterSkill();
@@ -65,7 +59,6 @@ public class SelMasterSkillCtrl : MonoBehaviour
 		this.IERequestMasterSkillGrow = null;
 	}
 
-	// Token: 0x060010B6 RID: 4278 RVA: 0x000CB3CC File Offset: 0x000C95CC
 	private void UpdateMasterSkill()
 	{
 		Dictionary<int, MasterSkillPackData>.ValueCollection values = DataManager.DmChara.GetUserMasterSkillMap().Values;
@@ -78,7 +71,6 @@ public class SelMasterSkillCtrl : MonoBehaviour
 		this.LevelItemDataList = DataManager.DmMasterSkill.GetLevelItemDataList();
 	}
 
-	// Token: 0x060010B7 RID: 4279 RVA: 0x000CB474 File Offset: 0x000C9674
 	private void SetupSelectedInfo()
 	{
 		MasterSkillPackData masterSkillPackData = this.MasterSkillPackDataList[this.FocusIndex];
@@ -141,7 +133,6 @@ public class SelMasterSkillCtrl : MonoBehaviour
 		this.UpdateNextLevelInfo();
 	}
 
-	// Token: 0x060010B8 RID: 4280 RVA: 0x000CB8F8 File Offset: 0x000C9AF8
 	private void UpdateNextLevelInfo()
 	{
 		MasterSkillPackData masterSkillPackData = this.MasterSkillPackDataList[this.FocusIndex];
@@ -206,7 +197,6 @@ public class SelMasterSkillCtrl : MonoBehaviour
 		this.guiData.Right.ExecuteButton.SetActEnable(flag, false, false);
 	}
 
-	// Token: 0x060010B9 RID: 4281 RVA: 0x000CBDD0 File Offset: 0x000C9FD0
 	private void OnClickMinusButton()
 	{
 		this.selectGrowSkillData.useItem.num--;
@@ -217,27 +207,23 @@ public class SelMasterSkillCtrl : MonoBehaviour
 		this.UpdateNextLevelInfo();
 	}
 
-	// Token: 0x060010BA RID: 4282 RVA: 0x000CBE1F File Offset: 0x000CA01F
 	private void OnClickPlusButton()
 	{
 		this.selectGrowSkillData.useItem.num++;
 		this.UpdateNextLevelInfo();
 	}
 
-	// Token: 0x060010BB RID: 4283 RVA: 0x000CBE3F File Offset: 0x000CA03F
 	private void OnSliderValueChanged(float value)
 	{
 		this.selectGrowSkillData.useItem.num = int.Parse(value.ToString());
 		this.UpdateNextLevelInfo();
 	}
 
-	// Token: 0x060010BC RID: 4284 RVA: 0x000CBE63 File Offset: 0x000CA063
 	private void OnStartScroll(int index, GameObject go)
 	{
 		this.ScrollButtonList.Add(go);
 	}
 
-	// Token: 0x060010BD RID: 4285 RVA: 0x000CBE74 File Offset: 0x000CA074
 	private void OnUpdateScroll(int index, GameObject go)
 	{
 		MasterSkillPackData masterSkillPackData = this.MasterSkillPackDataList[index];
@@ -257,7 +243,6 @@ public class SelMasterSkillCtrl : MonoBehaviour
 		skillGrowBarGui.SkillMiniIcon.SetImageByName(DataManager.DmChara.GetMasterSkillStaticData(masterSkillPackData.id).iconMiniName);
 	}
 
-	// Token: 0x060010BE RID: 4286 RVA: 0x000CBF80 File Offset: 0x000CA180
 	private void OnClickSkillSelectButton(int index, GameObject go)
 	{
 		foreach (GameObject gameObject in this.ScrollButtonList)
@@ -269,7 +254,6 @@ public class SelMasterSkillCtrl : MonoBehaviour
 		this.SetupSelectedInfo();
 	}
 
-	// Token: 0x060010BF RID: 4287 RVA: 0x000CBFFC File Offset: 0x000CA1FC
 	private void OnClickExecuteButton()
 	{
 		if (this.isGrowing)
@@ -294,7 +278,6 @@ public class SelMasterSkillCtrl : MonoBehaviour
 		this.masterSkillGrowWindow.owCtrl.Open();
 	}
 
-	// Token: 0x060010C0 RID: 4288 RVA: 0x000CC04F File Offset: 0x000CA24F
 	private IEnumerator RequestMasterSkilGrow()
 	{
 		CanvasManager.SetEnableCmnTouchMask(true);
@@ -380,7 +363,6 @@ public class SelMasterSkillCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060010C1 RID: 4289 RVA: 0x000CC060 File Offset: 0x000CA260
 	public void OnClickMenuReturn(UnityAction callback = null)
 	{
 		this.guiData.SelCmn_AllInOut.ExPlayAnimation(SimpleAnimation.ExPguiStatus.END, delegate
@@ -394,7 +376,6 @@ public class SelMasterSkillCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x060010C2 RID: 4290 RVA: 0x000CC097 File Offset: 0x000CA297
 	private void Update()
 	{
 		if (this.IERequestMasterSkillGrow != null && !this.IERequestMasterSkillGrow.MoveNext())
@@ -403,34 +384,24 @@ public class SelMasterSkillCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000E66 RID: 3686
 	public SelMasterSkillCtrl.MasterSkillGui guiData;
 
-	// Token: 0x04000E67 RID: 3687
 	public SelMasterSkillCtrl.WindowMasterSkill masterSkillGrowWindow;
 
-	// Token: 0x04000E68 RID: 3688
 	private List<MasterSkillPackData> MasterSkillPackDataList;
 
-	// Token: 0x04000E69 RID: 3689
 	private List<DataManagerMasterSkill.LevelItemData> LevelItemDataList;
 
-	// Token: 0x04000E6A RID: 3690
 	private List<GameObject> ScrollButtonList;
 
-	// Token: 0x04000E6B RID: 3691
 	private SelMasterSkillCtrl.GrowSkillData selectGrowSkillData;
 
-	// Token: 0x04000E6D RID: 3693
 	private IEnumerator IERequestMasterSkillGrow;
 
-	// Token: 0x04000E6E RID: 3694
 	private bool isGrowing;
 
-	// Token: 0x02000A3E RID: 2622
 	public class MasterSkillGui
 	{
-		// Token: 0x06003E9F RID: 16031 RVA: 0x001EAD88 File Offset: 0x001E8F88
 		public MasterSkillGui(GameObject mainObj)
 		{
 			this.SelCmn_AllInOut = mainObj.transform.Find("UserSkill_Main").GetComponent<SimpleAnimation>();
@@ -440,34 +411,24 @@ public class SelMasterSkillCtrl : MonoBehaviour
 			this.Right = new SelMasterSkillCtrl.MasterSkillGui.RightObj(transform2);
 		}
 
-		// Token: 0x04004170 RID: 16752
 		public SimpleAnimation SelCmn_AllInOut;
 
-		// Token: 0x04004171 RID: 16753
 		public SelMasterSkillCtrl.MasterSkillGui.LeftObj Left;
 
-		// Token: 0x04004172 RID: 16754
 		public SelMasterSkillCtrl.MasterSkillGui.RightObj Right;
 
-		// Token: 0x0200116C RID: 4460
 		public class LeftObj
 		{
-			// Token: 0x17000CDB RID: 3291
-			// (get) Token: 0x06005620 RID: 22048 RVA: 0x00250C06 File Offset: 0x0024EE06
-			// (set) Token: 0x06005621 RID: 22049 RVA: 0x00250C0E File Offset: 0x0024EE0E
 			public ReuseScroll ScrollView { get; set; }
 
-			// Token: 0x06005622 RID: 22050 RVA: 0x00250C17 File Offset: 0x0024EE17
 			public LeftObj(Transform lTr)
 			{
 				this.ScrollView = lTr.Find("ScrollView").gameObject.GetComponent<ReuseScroll>();
 			}
 		}
 
-		// Token: 0x0200116D RID: 4461
 		public class RightObj
 		{
-			// Token: 0x06005623 RID: 22051 RVA: 0x00250C3C File Offset: 0x0024EE3C
 			public RightObj(Transform rTr)
 			{
 				this.SkillIcon = rTr.Find("SkillInfo/Icon_PlayerSkill").GetComponent<PguiImageCtrl>();
@@ -505,96 +466,66 @@ public class SelMasterSkillCtrl : MonoBehaviour
 				this.ExecuteButton = rTr.Find("ButtonC").GetComponent<PguiButtonCtrl>();
 			}
 
-			// Token: 0x04005F97 RID: 24471
 			public PguiImageCtrl SkillIcon;
 
-			// Token: 0x04005F98 RID: 24472
 			public Text SkillName;
 
-			// Token: 0x04005F99 RID: 24473
 			public Text SkillInfo;
 
-			// Token: 0x04005F9A RID: 24474
 			public PguiTextCtrl LevelTextBefore;
 
-			// Token: 0x04005F9B RID: 24475
 			public PguiTextCtrl LevelNumBefore;
 
-			// Token: 0x04005F9C RID: 24476
 			public PguiImageCtrl LevelArrow;
 
-			// Token: 0x04005F9D RID: 24477
 			public PguiTextCtrl LevelTextAfter;
 
-			// Token: 0x04005F9E RID: 24478
 			public PguiTextCtrl LevelNumAfter;
 
-			// Token: 0x04005F9F RID: 24479
 			public Image ExpGageUp;
 
-			// Token: 0x04005FA0 RID: 24480
 			public Image ExpGageNow;
 
-			// Token: 0x04005FA1 RID: 24481
 			public Text ExpNextNum;
 
-			// Token: 0x04005FA2 RID: 24482
 			public AEImage AEImage_ExpUp;
 
-			// Token: 0x04005FA3 RID: 24483
 			public AEImage AEImage_LvUp;
 
-			// Token: 0x04005FA4 RID: 24484
 			public GameObject InfoMax;
 
-			// Token: 0x04005FA5 RID: 24485
 			public GameObject ExpInfo;
 
-			// Token: 0x04005FA6 RID: 24486
 			public GameObject Exchange;
 
-			// Token: 0x04005FA7 RID: 24487
 			public GameObject ItemIconSet;
 
-			// Token: 0x04005FA8 RID: 24488
 			public IconItemCtrl ItemIconSetIcon;
 
-			// Token: 0x04005FA9 RID: 24489
 			public GameObject ItemIconSetUseCountObj;
 
-			// Token: 0x04005FAA RID: 24490
 			public Text ItemIconSetUseCountText;
 
-			// Token: 0x04005FAB RID: 24491
 			public Text ItemIconSetHaveCountText;
 
-			// Token: 0x04005FAC RID: 24492
 			public Text UseItemNameText;
 
-			// Token: 0x04005FAD RID: 24493
 			public PguiButtonCtrl MinusButton;
 
-			// Token: 0x04005FAE RID: 24494
 			public PguiButtonCtrl PlusButton;
 
-			// Token: 0x04005FAF RID: 24495
 			public Slider SliderBar;
 
-			// Token: 0x04005FB0 RID: 24496
 			public Text UseCoinText;
 
-			// Token: 0x04005FB1 RID: 24497
 			public Text OwnCoinText;
 
-			// Token: 0x04005FB2 RID: 24498
 			public PguiButtonCtrl ExecuteButton;
 		}
 	}
 
-	// Token: 0x02000A3F RID: 2623
 	public class SkillGrowBarGui
 	{
-		// Token: 0x06003EA0 RID: 16032 RVA: 0x001EADF0 File Offset: 0x001E8FF0
 		public SkillGrowBarGui(GameObject barObj)
 		{
 			this.BaseButton = barObj.GetComponent<PguiButtonCtrl>();
@@ -604,26 +535,19 @@ public class SelMasterSkillCtrl : MonoBehaviour
 			this.CurrentFrame = barObj.transform.Find("BaseImage/Current").gameObject;
 		}
 
-		// Token: 0x04004173 RID: 16755
 		public PguiButtonCtrl BaseButton;
 
-		// Token: 0x04004174 RID: 16756
 		public PguiImageCtrl SkillMiniIcon;
 
-		// Token: 0x04004175 RID: 16757
 		public Text SkillName;
 
-		// Token: 0x04004176 RID: 16758
 		public PguiTextCtrl LevelText;
 
-		// Token: 0x04004177 RID: 16759
 		public GameObject CurrentFrame;
 	}
 
-	// Token: 0x02000A40 RID: 2624
 	public class WindowMasterSkill
 	{
-		// Token: 0x06003EA1 RID: 16033 RVA: 0x001EAE7C File Offset: 0x001E907C
 		public WindowMasterSkill(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -647,7 +571,6 @@ public class SelMasterSkillCtrl : MonoBehaviour
 			this.UseGoldAfterNum = baseTr.Find("Base/Window/UseCoin/Num_AfterTxt").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x06003EA2 RID: 16034 RVA: 0x001EB028 File Offset: 0x001E9228
 		public void Setup(SelMasterSkillCtrl.GrowSkillData settingsIn)
 		{
 			this.openSettings = settingsIn;
@@ -701,74 +624,51 @@ public class SelMasterSkillCtrl : MonoBehaviour
 			this.UseGoldAfterNum.text = (userItemData2.num - this.openSettings.useLvItem.CoinNum * this.openSettings.useItem.num).ToString();
 		}
 
-		// Token: 0x04004178 RID: 16760
 		public GameObject baseObj;
 
-		// Token: 0x04004179 RID: 16761
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x0400417A RID: 16762
 		public PguiButtonCtrl closeButton;
 
-		// Token: 0x0400417B RID: 16763
 		private SelMasterSkillCtrl.GrowSkillData openSettings;
 
-		// Token: 0x0400417C RID: 16764
 		public PguiImageCtrl SkillIcon;
 
-		// Token: 0x0400417D RID: 16765
 		public PguiTextCtrl SkillName;
 
-		// Token: 0x0400417E RID: 16766
 		public PguiTextCtrl SkillInfoBefore;
 
-		// Token: 0x0400417F RID: 16767
 		public PguiTextCtrl SkillInfoAfter;
 
-		// Token: 0x04004180 RID: 16768
 		public PguiTextCtrl LevelNumBefore;
 
-		// Token: 0x04004181 RID: 16769
 		public PguiTextCtrl LevelNumAfter;
 
-		// Token: 0x04004182 RID: 16770
 		public Image ExpGageUp;
 
-		// Token: 0x04004183 RID: 16771
 		public Image ExpGageNow;
 
-		// Token: 0x04004184 RID: 16772
 		public PguiTextCtrl ExpNextNum;
 
-		// Token: 0x04004185 RID: 16773
 		public PguiRawImageCtrl UseItemIcon;
 
-		// Token: 0x04004186 RID: 16774
 		public PguiTextCtrl UseItemName;
 
-		// Token: 0x04004187 RID: 16775
 		public PguiTextCtrl UseItemBeforeNum;
 
-		// Token: 0x04004188 RID: 16776
 		public PguiTextCtrl UseItemAfterNum;
 
-		// Token: 0x04004189 RID: 16777
 		public PguiTextCtrl UseGoldBeforeNum;
 
-		// Token: 0x0400418A RID: 16778
 		public PguiTextCtrl UseGoldAfterNum;
 	}
 
-	// Token: 0x02000A41 RID: 2625
 	public class GrowSkillData
 	{
-		// Token: 0x0400418B RID: 16779
 		public MasterSkillPackData skillPackData;
 
-		// Token: 0x0400418C RID: 16780
 		public ItemInput useItem;
 
-		// Token: 0x0400418D RID: 16781
 		public DataManagerMasterSkill.LevelItemData useLvItem;
 	}
 }

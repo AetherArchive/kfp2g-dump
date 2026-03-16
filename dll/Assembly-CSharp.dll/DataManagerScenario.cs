@@ -1,24 +1,18 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SGNFW.HttpRequest.Protocol;
 using SGNFW.Mst;
 using UnityEngine;
 
-// Token: 0x020000A2 RID: 162
 public class DataManagerScenario
 {
-	// Token: 0x17000150 RID: 336
-	// (get) Token: 0x06000716 RID: 1814 RVA: 0x00031324 File Offset: 0x0002F524
-	// (set) Token: 0x06000717 RID: 1815 RVA: 0x0003132C File Offset: 0x0002F52C
 	private List<DataManagerScenario.LoginScenarioPlayedIdData> _scenarioPlayedIdList { get; set; }
 
-	// Token: 0x06000718 RID: 1816 RVA: 0x00031338 File Offset: 0x0002F538
 	public DataManagerScenario(DataManager p)
 	{
 		this.parentData = p;
 	}
 
-	// Token: 0x06000719 RID: 1817 RVA: 0x0003138C File Offset: 0x0002F58C
 	public void InitializeMstData(MstManager mstManager)
 	{
 		this._scenarioPlayedIdList = new List<DataManagerScenario.LoginScenarioPlayedIdData>();
@@ -52,7 +46,6 @@ public class DataManagerScenario
 		}
 	}
 
-	// Token: 0x0600071A RID: 1818 RVA: 0x000314BC File Offset: 0x0002F6BC
 	public void UpdateUserDataByServer(PlayerInfo playerInfo)
 	{
 		this._scenarioPlayedIdList.Clear();
@@ -66,7 +59,6 @@ public class DataManagerScenario
 		this.UpdatePlayLoginScenarioList();
 	}
 
-	// Token: 0x0600071B RID: 1819 RVA: 0x0003153C File Offset: 0x0002F73C
 	private void UpdatePlayLoginScenarioList()
 	{
 		this._playableScenarioLoginList.Clear();
@@ -106,7 +98,6 @@ public class DataManagerScenario
 		this._playableScenarioLoginList.Sort((DataManagerScenario.LoginScenarioData a, DataManagerScenario.LoginScenarioData b) => a.orderId - b.orderId);
 	}
 
-	// Token: 0x0600071C RID: 1820 RVA: 0x000316BC File Offset: 0x0002F8BC
 	private void RegistMemory(DataManagerScenario.LoginScenarioData data)
 	{
 		this._loginScenarioMemoryList.Add(data);
@@ -117,7 +108,6 @@ public class DataManagerScenario
 		this._loginScenarioMemoryGroupMap[data.memoryGroupName].Add(data);
 	}
 
-	// Token: 0x0600071D RID: 1821 RVA: 0x00031718 File Offset: 0x0002F918
 	private void RegistRandomScenario(DataManagerScenario.LoginScenarioData target, DateTime nowTime)
 	{
 		List<DataManagerScenario.RandomLoginScenarioData> list;
@@ -155,19 +145,16 @@ public class DataManagerScenario
 		}
 	}
 
-	// Token: 0x0600071E RID: 1822 RVA: 0x000318F8 File Offset: 0x0002FAF8
 	public bool IsPlayed()
 	{
 		return this._playableScenarioLoginList.Count <= 0;
 	}
 
-	// Token: 0x0600071F RID: 1823 RVA: 0x0003190B File Offset: 0x0002FB0B
 	public bool IsRandomScenario(int randomId)
 	{
 		return this._mstRandomScenarioDataMap.ContainsKey(randomId);
 	}
 
-	// Token: 0x06000720 RID: 1824 RVA: 0x0003191C File Offset: 0x0002FB1C
 	private int GetRandomScenarioId(int randomId)
 	{
 		int num = 0;
@@ -195,49 +182,41 @@ public class DataManagerScenario
 		return num;
 	}
 
-	// Token: 0x06000721 RID: 1825 RVA: 0x000319F4 File Offset: 0x0002FBF4
 	public List<DataManagerScenario.LoginScenarioData> GetLoginScenarioList()
 	{
 		return this._mstLoginScenarioDataList;
 	}
 
-	// Token: 0x06000722 RID: 1826 RVA: 0x000319FC File Offset: 0x0002FBFC
 	public DataManagerScenario.LoginScenarioData GetMstLoginScenarioData(int id)
 	{
 		return this._mstLoginScenarioDataList.Find((DataManagerScenario.LoginScenarioData data) => data.id == id);
 	}
 
-	// Token: 0x06000723 RID: 1827 RVA: 0x00031A2D File Offset: 0x0002FC2D
 	public List<DataManagerScenario.LoginScenarioData> GetPlayableLoginScenarioList()
 	{
 		return this._playableScenarioLoginList;
 	}
 
-	// Token: 0x06000724 RID: 1828 RVA: 0x00031A35 File Offset: 0x0002FC35
 	public List<DataManagerScenario.LoginScenarioData> GetLoginScenarioMemoryList()
 	{
 		return this._loginScenarioMemoryList;
 	}
 
-	// Token: 0x06000725 RID: 1829 RVA: 0x00031A3D File Offset: 0x0002FC3D
 	public Dictionary<string, List<DataManagerScenario.LoginScenarioData>> GetLoginScenarioGroupMap()
 	{
 		return this._loginScenarioMemoryGroupMap;
 	}
 
-	// Token: 0x06000726 RID: 1830 RVA: 0x00031A48 File Offset: 0x0002FC48
 	public DataManagerScenario.LoginScenarioData GetLoginScenarioData(int id)
 	{
 		return this._loginScenarioMemoryList.Find((DataManagerScenario.LoginScenarioData item) => item.id == id);
 	}
 
-	// Token: 0x06000727 RID: 1831 RVA: 0x00031A7C File Offset: 0x0002FC7C
 	public string GetRandomScenarioFileName(int randomId, int scenarioId)
 	{
 		return this._mstRandomScenarioDataMap[randomId].Find((DataManagerScenario.RandomLoginScenarioData data) => data.scenarioId == scenarioId).scenarioFileName;
 	}
 
-	// Token: 0x06000728 RID: 1832 RVA: 0x00031AB8 File Offset: 0x0002FCB8
 	public string GetJsonPlayedScenarioList()
 	{
 		DataManagerScenario.SaveDatas saveDatas = new DataManagerScenario.SaveDatas();
@@ -261,28 +240,20 @@ public class DataManagerScenario
 		return JsonUtility.ToJson(saveDatas);
 	}
 
-	// Token: 0x04000648 RID: 1608
 	private DataManager parentData;
 
-	// Token: 0x04000649 RID: 1609
 	private List<DataManagerScenario.LoginScenarioData> _playableScenarioLoginList = new List<DataManagerScenario.LoginScenarioData>();
 
-	// Token: 0x0400064A RID: 1610
 	private List<DataManagerScenario.LoginScenarioData> _mstLoginScenarioDataList = new List<DataManagerScenario.LoginScenarioData>();
 
-	// Token: 0x0400064B RID: 1611
 	private Dictionary<int, List<DataManagerScenario.RandomLoginScenarioData>> _mstRandomScenarioDataMap = new Dictionary<int, List<DataManagerScenario.RandomLoginScenarioData>>();
 
-	// Token: 0x0400064C RID: 1612
 	private List<DataManagerScenario.LoginScenarioData> _loginScenarioMemoryList = new List<DataManagerScenario.LoginScenarioData>();
 
-	// Token: 0x0400064D RID: 1613
 	private Dictionary<string, List<DataManagerScenario.LoginScenarioData>> _loginScenarioMemoryGroupMap = new Dictionary<string, List<DataManagerScenario.LoginScenarioData>>();
 
-	// Token: 0x0200076F RID: 1903
 	public class LoginScenarioData
 	{
-		// Token: 0x06003637 RID: 13879 RVA: 0x001C5F28 File Offset: 0x001C4128
 		public LoginScenarioData(MstScenarioLogin data)
 		{
 			this.id = data.id;
@@ -300,55 +271,39 @@ public class DataManagerScenario
 			this.scenarioId = 0;
 		}
 
-		// Token: 0x06003638 RID: 13880 RVA: 0x001C5FE6 File Offset: 0x001C41E6
 		public LoginScenarioData()
 		{
 		}
 
-		// Token: 0x04003317 RID: 13079
 		public int id;
 
-		// Token: 0x04003318 RID: 13080
 		public string scenarioFileName;
 
-		// Token: 0x04003319 RID: 13081
 		public int orderId;
 
-		// Token: 0x0400331A RID: 13082
 		public DateTime startDateTime;
 
-		// Token: 0x0400331B RID: 13083
 		public DateTime endDateTime;
 
-		// Token: 0x0400331C RID: 13084
 		public string memoryGroupName;
 
-		// Token: 0x0400331D RID: 13085
 		public string memoryTitleName;
 
-		// Token: 0x0400331E RID: 13086
 		public int memoryCharaId01;
 
-		// Token: 0x0400331F RID: 13087
 		public int memoryCharaId02;
 
-		// Token: 0x04003320 RID: 13088
 		public string memoryText01;
 
-		// Token: 0x04003321 RID: 13089
 		public string memoryText02;
 
-		// Token: 0x04003322 RID: 13090
 		public int randomId;
 
-		// Token: 0x04003323 RID: 13091
 		public int scenarioId;
 	}
 
-	// Token: 0x02000770 RID: 1904
 	public class RandomLoginScenarioData
 	{
-		// Token: 0x06003639 RID: 13881 RVA: 0x001C5FF0 File Offset: 0x001C41F0
 		public RandomLoginScenarioData(MstRandomScenarioLogin data)
 		{
 			this.id = data.id;
@@ -363,56 +318,40 @@ public class DataManagerScenario
 			this.endDateTime = new DateTime(PrjUtil.ConvertTimeToTicks(data.endTime));
 		}
 
-		// Token: 0x04003324 RID: 13092
 		public int id;
 
-		// Token: 0x04003325 RID: 13093
 		public int scenarioId;
 
-		// Token: 0x04003326 RID: 13094
 		public string scenarioFileName;
 
-		// Token: 0x04003327 RID: 13095
 		public int randomWeight;
 
-		// Token: 0x04003328 RID: 13096
 		public string memoryTitleName;
 
-		// Token: 0x04003329 RID: 13097
 		public int memoryCharaId01;
 
-		// Token: 0x0400332A RID: 13098
 		public int memoryCharaId02;
 
-		// Token: 0x0400332B RID: 13099
 		public string memoryText01;
 
-		// Token: 0x0400332C RID: 13100
 		public string memoryText02;
 
-		// Token: 0x0400332D RID: 13101
 		public DateTime endDateTime;
 	}
 
-	// Token: 0x02000771 RID: 1905
 	[Serializable]
 	public class LoginScenarioPlayedIdData
 	{
-		// Token: 0x0400332E RID: 13102
 		public int id;
 
-		// Token: 0x0400332F RID: 13103
 		public int randomId;
 
-		// Token: 0x04003330 RID: 13104
 		public int scenarioId;
 	}
 
-	// Token: 0x02000772 RID: 1906
 	[Serializable]
 	public class SaveDatas
 	{
-		// Token: 0x04003331 RID: 13105
 		public List<DataManagerScenario.LoginScenarioPlayedIdData> datas;
 	}
 }

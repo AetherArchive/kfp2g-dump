@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Battle;
@@ -8,16 +8,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x02000120 RID: 288
 public class QuestSkipWindowsCtrl : MonoBehaviour
 {
-	// Token: 0x06000EAD RID: 3757 RVA: 0x000B2CB9 File Offset: 0x000B0EB9
 	public void Initialize()
 	{
 		this.guiQuestSkipWindow = new QuestSkipWindowsCtrl.QuestSkipWindow(base.transform);
 	}
 
-	// Token: 0x06000EAE RID: 3758 RVA: 0x000B2CCC File Offset: 0x000B0ECC
 	private void Update()
 	{
 		if (this.skipCoroutine != null && !this.skipCoroutine.MoveNext())
@@ -30,13 +27,11 @@ public class QuestSkipWindowsCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000EAF RID: 3759 RVA: 0x000B2D0B File Offset: 0x000B0F0B
 	public bool IsOpenWindow()
 	{
 		return this.isOpenWindow;
 	}
 
-	// Token: 0x06000EB0 RID: 3760 RVA: 0x000B2D14 File Offset: 0x000B0F14
 	public void InitializeWindow(int questOneId, HelperPackData helperPackData, int attrIndex, int deckId, int beforeSelect = 0)
 	{
 		if (this.guiQuestSkipWindow == null)
@@ -180,7 +175,6 @@ public class QuestSkipWindowsCtrl : MonoBehaviour
 		this.isOpenWindow = true;
 	}
 
-	// Token: 0x06000EB1 RID: 3761 RVA: 0x000B33E8 File Offset: 0x000B15E8
 	private IEnumerator DispQuestTabObj()
 	{
 		this.guiQuestSkipWindow.messageText.m_Text.color = Color.clear;
@@ -204,7 +198,6 @@ public class QuestSkipWindowsCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000EB2 RID: 3762 RVA: 0x000B33F7 File Offset: 0x000B15F7
 	public bool okCallBack(int index)
 	{
 		if (index == 2)
@@ -214,13 +207,11 @@ public class QuestSkipWindowsCtrl : MonoBehaviour
 		return this.skipCoroutine == null;
 	}
 
-	// Token: 0x06000EB3 RID: 3763 RVA: 0x000B3414 File Offset: 0x000B1614
 	public void SetReturnSkipCountAction(UnityAction<int> action)
 	{
 		this.returnSkipCountAction = action;
 	}
 
-	// Token: 0x06000EB4 RID: 3764 RVA: 0x000B341D File Offset: 0x000B161D
 	public IEnumerator SkipStart()
 	{
 		QuestOnePackData qopd = DataManager.DmQuest.GetQuestOnePackData(this.selectedQuestOneId);
@@ -282,13 +273,11 @@ public class QuestSkipWindowsCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000EB5 RID: 3765 RVA: 0x000B342C File Offset: 0x000B162C
 	public void RequestExecQuestSkip()
 	{
 		this.ExecQuestSkip();
 	}
 
-	// Token: 0x06000EB6 RID: 3766 RVA: 0x000B3434 File Offset: 0x000B1634
 	private void ExecQuestSkip()
 	{
 		this.resultArgs.resultField = new GameObject("FieldSceneBattleResult");
@@ -313,7 +302,6 @@ public class QuestSkipWindowsCtrl : MonoBehaviour
 		DataManager.DmQuest.RequestActionQuestSkip(this.selectedQuestOneId, this.currentDeckId, (this.isEventQuest && this.helperPackData != null) ? this.helperPackData.friendId : 0, this.helperCharaId, this.selectedItemNum, num, this.helperPhotoIdList);
 	}
 
-	// Token: 0x06000EB7 RID: 3767 RVA: 0x000B35C0 File Offset: 0x000B17C0
 	public void GoNextScene(List<DrewItem> drew_items)
 	{
 		SceneBattle_QuestInfo sceneBattle_QuestInfo = new SceneBattle_QuestInfo();
@@ -344,7 +332,6 @@ public class QuestSkipWindowsCtrl : MonoBehaviour
 		Singleton<SceneManager>.Instance.SetNextScene(SceneManager.SceneName.SceneBattleResult, this.resultArgs);
 	}
 
-	// Token: 0x06000EB8 RID: 3768 RVA: 0x000B37E5 File Offset: 0x000B19E5
 	private IEnumerator InitializeResult(int beforeGold)
 	{
 		this.resultArgs = new SceneBattleResultArgs();
@@ -407,73 +394,50 @@ public class QuestSkipWindowsCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x04000D58 RID: 3416
 	private QuestSkipWindowsCtrl.QuestSkipWindow guiQuestSkipWindow;
 
-	// Token: 0x04000D59 RID: 3417
 	private int selectedItemNum;
 
-	// Token: 0x04000D5A RID: 3418
 	private int selectedQuestOneId;
 
-	// Token: 0x04000D5B RID: 3419
 	private int selectedDeckId = 1;
 
-	// Token: 0x04000D5C RID: 3420
 	private HelperPackData helperPackData;
 
-	// Token: 0x04000D5D RID: 3421
 	private int helperAttrIndex;
 
-	// Token: 0x04000D5E RID: 3422
 	private int helperCharaId;
 
-	// Token: 0x04000D5F RID: 3423
 	private List<long> helperPhotoIdList;
 
-	// Token: 0x04000D60 RID: 3424
 	private bool isEventQuest;
 
-	// Token: 0x04000D61 RID: 3425
 	private int currentDeckId;
 
-	// Token: 0x04000D62 RID: 3426
 	private int maxNum = 1;
 
-	// Token: 0x04000D63 RID: 3427
 	private const int ConstUseItemNumMin = 1;
 
-	// Token: 0x04000D64 RID: 3428
 	private const int ConstUseItemNumMax = 50;
 
-	// Token: 0x04000D65 RID: 3429
 	private const int skipTicketItemID = 39000;
 
-	// Token: 0x04000D66 RID: 3430
 	private SceneBattleResultArgs resultArgs;
 
-	// Token: 0x04000D67 RID: 3431
 	private CharaModelHandle resultFriends;
 
-	// Token: 0x04000D68 RID: 3432
 	private FieldCameraScaler resultCamera;
 
-	// Token: 0x04000D69 RID: 3433
 	private IEnumerator skipCoroutine;
 
-	// Token: 0x04000D6A RID: 3434
 	private UnityAction<int> returnSkipCountAction;
 
-	// Token: 0x04000D6B RID: 3435
 	private static readonly Color DisableColor = new Color(0.7f, 0.7f, 0.7f, 1f);
 
-	// Token: 0x04000D6C RID: 3436
 	private bool isOpenWindow;
 
-	// Token: 0x02000912 RID: 2322
 	public class QuestSkipWindow
 	{
-		// Token: 0x06003AA2 RID: 15010 RVA: 0x001D011C File Offset: 0x001CE31C
 		public QuestSkipWindow(Transform baseTr)
 		{
 			this.window = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -495,7 +459,6 @@ public class QuestSkipWindowsCtrl : MonoBehaviour
 			this.sliderObjImage = this.sliderObj.transform.Find("Handle Slide Area/Handle/Image").gameObject;
 		}
 
-		// Token: 0x06003AA3 RID: 15011 RVA: 0x001D02B4 File Offset: 0x001CE4B4
 		public void SetButton(int num)
 		{
 			this.buttonInc.SetActEnable(this.maxNum > num, false, false);
@@ -503,55 +466,38 @@ public class QuestSkipWindowsCtrl : MonoBehaviour
 			this.buttonOK.SetActEnable(DataManager.DmItem.GetUserItemData(39000).num != 0, false, false);
 		}
 
-		// Token: 0x04003B57 RID: 15191
 		public GameObject baseObj;
 
-		// Token: 0x04003B58 RID: 15192
 		public PguiOpenWindowCtrl window;
 
-		// Token: 0x04003B59 RID: 15193
 		public PguiTextCtrl messageText;
 
-		// Token: 0x04003B5A RID: 15194
 		public GameObject questTab;
 
-		// Token: 0x04003B5B RID: 15195
 		public PguiNestPrefab iconItemNestPrefab;
 
-		// Token: 0x04003B5C RID: 15196
 		public PguiButtonCtrl buttonClose;
 
-		// Token: 0x04003B5D RID: 15197
 		public PguiButtonCtrl buttonInc;
 
-		// Token: 0x04003B5E RID: 15198
 		public PguiButtonCtrl buttonDec;
 
-		// Token: 0x04003B5F RID: 15199
 		public PguiButtonCtrl buttonOK;
 
-		// Token: 0x04003B60 RID: 15200
 		public PguiTextCtrl numBeforeStaminaText;
 
-		// Token: 0x04003B61 RID: 15201
 		public PguiTextCtrl numUseStaminaText;
 
-		// Token: 0x04003B62 RID: 15202
 		public PguiTextCtrl excText;
 
-		// Token: 0x04003B63 RID: 15203
 		public PguiTextCtrl haveNumText;
 
-		// Token: 0x04003B64 RID: 15204
 		public int maxNum;
 
-		// Token: 0x04003B65 RID: 15205
 		public Slider slider;
 
-		// Token: 0x04003B66 RID: 15206
 		public GameObject sliderObj;
 
-		// Token: 0x04003B67 RID: 15207
 		public GameObject sliderObjImage;
 	}
 }

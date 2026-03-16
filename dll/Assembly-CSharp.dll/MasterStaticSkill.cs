@@ -1,11 +1,8 @@
-﻿using System;
+using System;
 using UnityEngine;
 
-// Token: 0x02000068 RID: 104
 public class MasterStaticSkill : ScriptableObject
 {
-	// Token: 0x1700007C RID: 124
-	// (get) Token: 0x060002A6 RID: 678 RVA: 0x00015898 File Offset: 0x00013A98
 	public string iconName
 	{
 		get
@@ -14,8 +11,6 @@ public class MasterStaticSkill : ScriptableObject
 		}
 	}
 
-	// Token: 0x1700007D RID: 125
-	// (get) Token: 0x060002A7 RID: 679 RVA: 0x000158C8 File Offset: 0x00013AC8
 	public string iconMiniName
 	{
 		get
@@ -24,13 +19,11 @@ public class MasterStaticSkill : ScriptableObject
 		}
 	}
 
-	// Token: 0x060002A8 RID: 680 RVA: 0x000158F5 File Offset: 0x00013AF5
 	public float glowParam(float prm, int skillLevel)
 	{
 		return prm * (1f + this.glowRate * (float)(skillLevel - 1));
 	}
 
-	// Token: 0x060002A9 RID: 681 RVA: 0x0001590C File Offset: 0x00013B0C
 	public string MakeSkillText(int skillLevel, bool isGrow)
 	{
 		string text = this.skillInfo;
@@ -104,71 +97,46 @@ public class MasterStaticSkill : ScriptableObject
 		return text;
 	}
 
-	// Token: 0x0400043A RID: 1082
 	public int id;
 
-	// Token: 0x0400043B RID: 1083
 	public string skillName;
 
-	// Token: 0x0400043C RID: 1084
 	[Multiline]
 	public string skillInfo;
 
-	// Token: 0x0400043D RID: 1085
 	public int levelTableId;
 
-	// Token: 0x0400043E RID: 1086
 	public int maxLevel;
 
-	// Token: 0x0400043F RID: 1087
 	public MasterStaticSkill.Type type;
 
-	// Token: 0x04000440 RID: 1088
 	public int paramI0;
 
-	// Token: 0x04000441 RID: 1089
 	public int paramI1;
 
-	// Token: 0x04000442 RID: 1090
 	public int paramI2;
 
-	// Token: 0x04000443 RID: 1091
 	public float paramF0;
 
-	// Token: 0x04000444 RID: 1092
 	public float paramF1;
 
-	// Token: 0x04000445 RID: 1093
 	public float paramF2;
 
-	// Token: 0x04000446 RID: 1094
 	public float glowRate;
 
-	// Token: 0x04000447 RID: 1095
 	public int maxChangeNum;
 
-	// Token: 0x0200061F RID: 1567
 	public enum Type
 	{
-		// Token: 0x04002D80 RID: 11648
 		INVALID,
-		// Token: 0x04002D81 RID: 11649
 		ORDER_CARD_CHANGE,
-		// Token: 0x04002D82 RID: 11650
 		MOVE_POINT_ADD,
-		// Token: 0x04002D83 RID: 11651
 		CHARA_REINFORCE,
-		// Token: 0x04002D84 RID: 11652
 		RESURRECT,
-		// Token: 0x04002D85 RID: 11653
 		PLAZM_REINFORCE,
-		// Token: 0x04002D86 RID: 11654
 		ENEMY_WEAKEN,
-		// Token: 0x04002D87 RID: 11655
 		MYSIDE_HEAL,
-		// Token: 0x04002D88 RID: 11656
 		RECOVERY,
-		// Token: 0x04002D89 RID: 11657
 		ALL_WAIT
 	}
 }

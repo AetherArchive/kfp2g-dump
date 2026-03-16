@@ -1,15 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SGNFW.Common;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x020001D6 RID: 470
 public class PguiOpenWindowCtrl : PguiBehaviour
 {
-	// Token: 0x1700043C RID: 1084
-	// (get) Token: 0x06001FC5 RID: 8133 RVA: 0x00187784 File Offset: 0x00185984
 	public PguiOpenWindowCtrl.WINDOW_TYPE windowType
 	{
 		get
@@ -18,8 +15,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		}
 	}
 
-	// Token: 0x1700043D RID: 1085
-	// (get) Token: 0x06001FC6 RID: 8134 RVA: 0x0018778C File Offset: 0x0018598C
 	public GameObject choiceR
 	{
 		get
@@ -28,8 +23,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		}
 	}
 
-	// Token: 0x1700043E RID: 1086
-	// (get) Token: 0x06001FC7 RID: 8135 RVA: 0x0018779B File Offset: 0x0018599B
 	public RectTransform WindowRectTransform
 	{
 		get
@@ -38,8 +31,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		}
 	}
 
-	// Token: 0x1700043F RID: 1087
-	// (get) Token: 0x06001FC8 RID: 8136 RVA: 0x001877A3 File Offset: 0x001859A3
 	public PguiTextCtrl MassageText
 	{
 		get
@@ -52,7 +43,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		}
 	}
 
-	// Token: 0x06001FC9 RID: 8137 RVA: 0x001877C0 File Offset: 0x001859C0
 	public void Setup(string titleText, string massageText, List<KeyValuePair<PguiOpenWindowCtrl.BTN_TYPE, string>> buttonList, bool isDispClose, PguiOpenWindowCtrl.Callback callback, UnityAction finishedCloseCb = null, bool isThreeButton = false)
 	{
 		if (this.m_TitleText != null && titleText != null)
@@ -122,7 +112,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		this.m_FinishedCloseCallBack = finishedCloseCb;
 	}
 
-	// Token: 0x06001FCA RID: 8138 RVA: 0x00187B9C File Offset: 0x00185D9C
 	public void SetupByNoStone(int needStoneNum, int useItemId, PguiOpenWindowCtrl.Callback callback)
 	{
 		bool flag = useItemId == 30002;
@@ -199,7 +188,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		this.SetupCloseBtnAndroidBackKey();
 	}
 
-	// Token: 0x06001FCB RID: 8139 RVA: 0x00187F8C File Offset: 0x0018618C
 	public void SetupByUseItem(string titleText, string massageText, PguiOpenWindowCtrl.Callback callback, int needNum, int haveNum, bool isPurchaseConfirm = false)
 	{
 		if (this.m_windowType != PguiOpenWindowCtrl.WINDOW_TYPE.USE_ITEM)
@@ -229,7 +217,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		this.SetupCloseBtnAndroidBackKey();
 	}
 
-	// Token: 0x06001FCC RID: 8140 RVA: 0x001880E0 File Offset: 0x001862E0
 	public void SetupItemInfo(int itemId)
 	{
 		this.m_BtnChoiceObj[0].gameObject.SetActive(false);
@@ -280,7 +267,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		component4.text = this.itemInfoDefaultText.Replace("Param01", userItemData.num.ToString());
 	}
 
-	// Token: 0x06001FCD RID: 8141 RVA: 0x001883E0 File Offset: 0x001865E0
 	public void SetupItemInfo(int itemId, bool disableBestFit, string titleText, string massageText, List<KeyValuePair<PguiOpenWindowCtrl.BTN_TYPE, string>> buttonList, bool isDispClose, PguiOpenWindowCtrl.Callback callback, UnityAction finishedCloseCb = null)
 	{
 		this.SetupItemInfoInternal(itemId, disableBestFit, titleText, massageText, buttonList, isDispClose, callback, finishedCloseCb).Setup(DataManager.DmItem.GetItemStaticBase(itemId), new IconItemCtrl.SetupParam
@@ -289,7 +275,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		});
 	}
 
-	// Token: 0x06001FCE RID: 8142 RVA: 0x0018841C File Offset: 0x0018661C
 	public void SetupItemInfoNeedIconPhotoCtrl(IconPhotoCtrl ipc, bool disableBestFit, string titleText, string massageText, List<KeyValuePair<PguiOpenWindowCtrl.BTN_TYPE, string>> buttonList, bool isDispClose, PguiOpenWindowCtrl.Callback callback, UnityAction finishedCloseCb = null)
 	{
 		this.SetupItemInfoInternal(ipc.photoPackData.staticData.GetId(), disableBestFit, titleText, massageText, buttonList, isDispClose, callback, finishedCloseCb).Setup(DataManager.DmItem.GetItemStaticBase(ipc.photoPackData.staticData.GetId()), new IconItemCtrl.SetupParam
@@ -300,7 +285,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		});
 	}
 
-	// Token: 0x06001FCF RID: 8143 RVA: 0x0018848C File Offset: 0x0018668C
 	private IconItemCtrl SetupItemInfoInternal(int itemId, bool disableBestFit, string titleText, string massageText, List<KeyValuePair<PguiOpenWindowCtrl.BTN_TYPE, string>> buttonList, bool isDispClose, PguiOpenWindowCtrl.Callback callback, UnityAction finishedCloseCb)
 	{
 		this.Setup(titleText, massageText, buttonList, isDispClose, callback, finishedCloseCb, false);
@@ -321,7 +305,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		return component;
 	}
 
-	// Token: 0x06001FD0 RID: 8144 RVA: 0x00188594 File Offset: 0x00186794
 	public void SetupByStaminaSelect(PguiOpenWindowCtrl.Callback callback)
 	{
 		if (this.m_windowType != PguiOpenWindowCtrl.WINDOW_TYPE.STAMINA_ITEM_SELECT)
@@ -332,7 +315,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		this.StaminaSetupCommon(callback);
 	}
 
-	// Token: 0x06001FD1 RID: 8145 RVA: 0x001885B4 File Offset: 0x001867B4
 	public void SetupByQuestSkip(PguiOpenWindowCtrl.Callback callback)
 	{
 		for (int i = 0; i < this.m_BtnChoice.Count; i++)
@@ -356,7 +338,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		this.SetupCloseBtnAndroidBackKey();
 	}
 
-	// Token: 0x06001FD2 RID: 8146 RVA: 0x0018865A File Offset: 0x0018685A
 	public void SetupByStaminaSetting(PguiOpenWindowCtrl.Callback callback)
 	{
 		if (this.m_windowType != PguiOpenWindowCtrl.WINDOW_TYPE.STAMINA_ITEM_SETTING)
@@ -367,7 +348,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		this.StaminaSetupCommon(callback);
 	}
 
-	// Token: 0x06001FD3 RID: 8147 RVA: 0x00188679 File Offset: 0x00186879
 	public void SetupByStaminaUse(PguiOpenWindowCtrl.Callback callback)
 	{
 		if (this.m_windowType != PguiOpenWindowCtrl.WINDOW_TYPE.STAMINA_ITEM_USE)
@@ -378,7 +358,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		this.StaminaSetupCommon(callback);
 	}
 
-	// Token: 0x06001FD4 RID: 8148 RVA: 0x00188698 File Offset: 0x00186898
 	public void SetupCheckBox(string titleText, string massageText, List<KeyValuePair<PguiOpenWindowCtrl.BTN_TYPE, string>> buttonList, bool isDispClose, PguiOpenWindowCtrl.Callback callback, Action<bool> action, string checkBoxInfo)
 	{
 		if (this.m_TitleText != null && titleText != null)
@@ -434,7 +413,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		this.m_CallBack = callback;
 	}
 
-	// Token: 0x06001FD5 RID: 8149 RVA: 0x00188884 File Offset: 0x00186A84
 	private void StaminaSetupCommon(PguiOpenWindowCtrl.Callback callback)
 	{
 		this.m_BtnChoice[0].SetActive(true);
@@ -461,7 +439,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		this.SetupCloseBtnAndroidBackKey();
 	}
 
-	// Token: 0x06001FD6 RID: 8150 RVA: 0x00188960 File Offset: 0x00186B60
 	public void SetupByPurchaseStone(PguiOpenWindowCtrl.Callback callback)
 	{
 		if (this.m_windowType != PguiOpenWindowCtrl.WINDOW_TYPE.PURCHASE_STONE)
@@ -473,7 +450,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		this.SetupCloseBtnAndroidBackKey();
 	}
 
-	// Token: 0x06001FD7 RID: 8151 RVA: 0x00188984 File Offset: 0x00186B84
 	public void SetupByMonthlyPack(PguiOpenWindowCtrl.Callback callback)
 	{
 		if (this.m_windowType != PguiOpenWindowCtrl.WINDOW_TYPE.MONTHLYPACK)
@@ -485,7 +461,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		this.SetupCloseBtnAndroidBackKey();
 	}
 
-	// Token: 0x06001FD8 RID: 8152 RVA: 0x001889AC File Offset: 0x00186BAC
 	public void SetupTerms(PguiOpenWindowCtrl.Callback callback)
 	{
 		if (this.m_windowType != PguiOpenWindowCtrl.WINDOW_TYPE.BASIC)
@@ -527,7 +502,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		this.m_FinishedCloseCallBack = null;
 	}
 
-	// Token: 0x06001FD9 RID: 8153 RVA: 0x00188CBC File Offset: 0x00186EBC
 	public void CloseTerms()
 	{
 		if (this.m_windowType != PguiOpenWindowCtrl.WINDOW_TYPE.BASIC)
@@ -548,7 +522,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		}
 	}
 
-	// Token: 0x06001FDA RID: 8154 RVA: 0x00188DD8 File Offset: 0x00186FD8
 	public void SetupTitleGraphic()
 	{
 		this.m_BtnChoice[0].m_Type = PguiOpenWindowCtrl.BTN_TYPE.POSITIVE;
@@ -561,7 +534,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		this.m_FinishedCloseCallBack = null;
 	}
 
-	// Token: 0x06001FDB RID: 8155 RVA: 0x00188E2C File Offset: 0x0018702C
 	public void SetupKemoBoardResetCheck(PguiOpenWindowCtrl.Callback callback)
 	{
 		if (this.m_windowType != PguiOpenWindowCtrl.WINDOW_TYPE.USE_ITEM)
@@ -584,7 +556,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		this.m_FinishedCloseCallBack = null;
 	}
 
-	// Token: 0x06001FDC RID: 8156 RVA: 0x00188F18 File Offset: 0x00187118
 	public void SetupButtonOnly(PguiOpenWindowCtrl.Callback callback)
 	{
 		if (this.m_windowType != PguiOpenWindowCtrl.WINDOW_TYPE.BASIC)
@@ -610,25 +581,21 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		this.m_FinishedCloseCallBack = null;
 	}
 
-	// Token: 0x06001FDD RID: 8157 RVA: 0x0018900F File Offset: 0x0018720F
 	public void Open()
 	{
 		this.m_ReqSequence = PguiOpenWindowCtrl.Sequence.OPEN_START;
 	}
 
-	// Token: 0x06001FDE RID: 8158 RVA: 0x00189018 File Offset: 0x00187218
 	public bool FinishedOpen()
 	{
 		return this.m_Sequence == PguiOpenWindowCtrl.Sequence.ACTIVE;
 	}
 
-	// Token: 0x06001FDF RID: 8159 RVA: 0x00189023 File Offset: 0x00187223
 	public bool FinishedClose()
 	{
 		return this.m_Sequence == PguiOpenWindowCtrl.Sequence.INACTIVE;
 	}
 
-	// Token: 0x06001FE0 RID: 8160 RVA: 0x0018902E File Offset: 0x0018722E
 	public void ForceClose()
 	{
 		if (this.m_Sequence == PguiOpenWindowCtrl.Sequence.ACTIVE)
@@ -637,31 +604,26 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		}
 	}
 
-	// Token: 0x06001FE1 RID: 8161 RVA: 0x00189040 File Offset: 0x00187240
 	public bool StartOpenAnim()
 	{
 		return this.m_Sequence == PguiOpenWindowCtrl.Sequence.OPEN_WAIT;
 	}
 
-	// Token: 0x06001FE2 RID: 8162 RVA: 0x0018904B File Offset: 0x0018724B
 	public void ForceOpen()
 	{
 		this.m_Sequence = PguiOpenWindowCtrl.Sequence.OPEN_START;
 	}
 
-	// Token: 0x06001FE3 RID: 8163 RVA: 0x00189054 File Offset: 0x00187254
 	public RectTransform GetButtonRectTransform(int btnIndex)
 	{
 		return this.m_BtnChoice[btnIndex].m_Button.transform as RectTransform;
 	}
 
-	// Token: 0x06001FE4 RID: 8164 RVA: 0x00189071 File Offset: 0x00187271
 	public RectTransform GetCloseButtonRectTransform()
 	{
 		return this.m_BtnCloseObj.transform as RectTransform;
 	}
 
-	// Token: 0x06001FE5 RID: 8165 RVA: 0x00189083 File Offset: 0x00187283
 	public void AddCloseListener()
 	{
 		this.m_BtnCloseObj.GetComponent<Button>().onClick.AddListener(delegate
@@ -670,7 +632,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		});
 	}
 
-	// Token: 0x06001FE6 RID: 8166 RVA: 0x001890A8 File Offset: 0x001872A8
 	public static List<KeyValuePair<PguiOpenWindowCtrl.BTN_TYPE, string>> GetButtonPreset(PguiOpenWindowCtrl.PresetType type)
 	{
 		if (PguiOpenWindowCtrl.PresetButtonList[(int)type] != null)
@@ -746,7 +707,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		return PguiOpenWindowCtrl.PresetButtonList[(int)type];
 	}
 
-	// Token: 0x06001FE7 RID: 8167 RVA: 0x001893D8 File Offset: 0x001875D8
 	private void SetupCloseBtnAndroidBackKey()
 	{
 		if (this.windowType == PguiOpenWindowCtrl.WINDOW_TYPE.SERVER_ERROR)
@@ -790,7 +750,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		}
 	}
 
-	// Token: 0x06001FE8 RID: 8168 RVA: 0x001894EC File Offset: 0x001876EC
 	private void Awake()
 	{
 		this.m_BtnChoice = new List<PguiOpenWindowCtrl.ChoiceButton>();
@@ -802,19 +761,16 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		this.m_WindowRectTransform.localScale = Vector3.zero;
 	}
 
-	// Token: 0x06001FE9 RID: 8169 RVA: 0x0018954B File Offset: 0x0018774B
 	private void Update()
 	{
 		this.UpdateInternal();
 	}
 
-	// Token: 0x06001FEA RID: 8170 RVA: 0x00189553 File Offset: 0x00187753
 	private void Start()
 	{
 		this.UpdateInternal();
 	}
 
-	// Token: 0x06001FEB RID: 8171 RVA: 0x0018955C File Offset: 0x0018775C
 	private void UpdateInternal()
 	{
 		switch (this.m_Sequence)
@@ -914,7 +870,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		this.m_ReqSequence = PguiOpenWindowCtrl.Sequence.NONE;
 	}
 
-	// Token: 0x06001FEC RID: 8172 RVA: 0x001897C4 File Offset: 0x001879C4
 	private void SettingChoiceButton(PguiOpenWindowCtrl.ChoiceButton button, KeyValuePair<PguiOpenWindowCtrl.BTN_TYPE, string> data, int index)
 	{
 		if (button.m_Button == null)
@@ -961,224 +916,145 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 		}
 	}
 
-	// Token: 0x06001FED RID: 8173 RVA: 0x001898E8 File Offset: 0x00187AE8
 	public void RegistCallback(PguiOpenWindowCtrl.Callback callback)
 	{
 		this.m_CallBack = callback;
 	}
 
-	// Token: 0x06001FEE RID: 8174 RVA: 0x001898F1 File Offset: 0x00187AF1
 	public void OnClickButton(GameObject button)
 	{
 		this.m_ReqSequence = PguiOpenWindowCtrl.Sequence.CALLBACK_ACTION;
 		this.m_LastTouchButton = button;
 	}
 
-	// Token: 0x04001722 RID: 5922
 	[SerializeField]
 	private GameObject m_BaseObject;
 
-	// Token: 0x04001723 RID: 5923
 	[SerializeField]
 	private RectTransform m_WindowRectTransform;
 
-	// Token: 0x04001724 RID: 5924
 	[SerializeField]
 	private SimpleAnimation m_animation;
 
-	// Token: 0x04001725 RID: 5925
 	[SerializeField]
 	private PguiButtonCtrl[] m_BtnChoiceObj = new PguiButtonCtrl[3];
 
-	// Token: 0x04001726 RID: 5926
 	[SerializeField]
 	private GameObject m_BtnCloseObj;
 
-	// Token: 0x04001727 RID: 5927
 	[SerializeField]
 	private GameObject m_BtnCheckBoxObj;
 
-	// Token: 0x04001728 RID: 5928
 	[SerializeField]
 	private GameObject m_ImgCheck;
 
-	// Token: 0x04001729 RID: 5929
 	[SerializeField]
 	private Text m_TitleText;
 
-	// Token: 0x0400172A RID: 5930
 	[SerializeField]
 	private Text m_MassageText;
 
-	// Token: 0x0400172B RID: 5931
 	[SerializeField]
 	private RectTransform m_ScrollViewContent;
 
-	// Token: 0x0400172C RID: 5932
 	[SerializeField]
 	private List<RectTransform> m_ScrollViewContentList;
 
-	// Token: 0x0400172D RID: 5933
 	[SerializeField]
 	public RectTransform m_UserInfoContent;
 
-	// Token: 0x0400172E RID: 5934
 	[SerializeField]
 	private PguiOpenWindowCtrl.WINDOW_TYPE m_windowType;
 
-	// Token: 0x0400172F RID: 5935
 	private PguiOpenWindowCtrl.Callback m_CallBack;
 
-	// Token: 0x04001730 RID: 5936
 	private UnityAction m_FinishedCloseCallBack;
 
-	// Token: 0x04001731 RID: 5937
 	public static readonly int CLOSE_BUTTON_INDEX = -1;
 
-	// Token: 0x04001732 RID: 5938
 	private List<PguiOpenWindowCtrl.ChoiceButton> m_BtnChoice;
 
-	// Token: 0x04001733 RID: 5939
 	private string[] noStoneDefaultMassage;
 
-	// Token: 0x04001734 RID: 5940
 	private string itemInfoStoneAllDefaultText;
 
-	// Token: 0x04001735 RID: 5941
 	private string itemInfoStoneDefaultText;
 
-	// Token: 0x04001736 RID: 5942
 	private string itemInfoDefaultText;
 
-	// Token: 0x04001737 RID: 5943
 	private static List<KeyValuePair<PguiOpenWindowCtrl.BTN_TYPE, string>>[] PresetButtonList = new List<KeyValuePair<PguiOpenWindowCtrl.BTN_TYPE, string>>[14];
 
-	// Token: 0x04001738 RID: 5944
 	private PguiOpenWindowCtrl.Sequence m_ReqSequence;
 
-	// Token: 0x04001739 RID: 5945
 	private PguiOpenWindowCtrl.Sequence m_Sequence = PguiOpenWindowCtrl.Sequence.INACTIVE;
 
-	// Token: 0x0400173A RID: 5946
 	private GameObject m_LastTouchButton;
 
-	// Token: 0x0400173B RID: 5947
 	private int m_SelectButtonIndex;
 
-	// Token: 0x02001017 RID: 4119
 	public enum WINDOW_TYPE
 	{
-		// Token: 0x04005A65 RID: 23141
 		INVALID,
-		// Token: 0x04005A66 RID: 23142
 		BASIC,
-		// Token: 0x04005A67 RID: 23143
 		NO_STONE,
-		// Token: 0x04005A68 RID: 23144
 		USE_ITEM,
-		// Token: 0x04005A69 RID: 23145
 		FOLLOW,
-		// Token: 0x04005A6A RID: 23146
 		PURCHASE_STONE,
-		// Token: 0x04005A6B RID: 23147
 		SERVER_ERROR,
-		// Token: 0x04005A6C RID: 23148
 		GET_ITEM,
-		// Token: 0x04005A6D RID: 23149
 		STAMINA_ITEM_SELECT,
-		// Token: 0x04005A6E RID: 23150
 		STAMINA_ITEM_SETTING,
-		// Token: 0x04005A6F RID: 23151
 		STAMINA_ITEM_USE,
-		// Token: 0x04005A70 RID: 23152
 		MONTHLYPACK,
-		// Token: 0x04005A71 RID: 23153
 		ITEM_INFO,
-		// Token: 0x04005A72 RID: 23154
 		GET_ITEM_MULTIPLE,
-		// Token: 0x04005A73 RID: 23155
 		CHECK_BOX,
-		// Token: 0x04005A74 RID: 23156
 		GET_ACHIEVEMENT
 	}
 
-	// Token: 0x02001018 RID: 4120
 	public enum BTN_TYPE
 	{
-		// Token: 0x04005A76 RID: 23158
 		NONE,
-		// Token: 0x04005A77 RID: 23159
 		POSITIVE,
-		// Token: 0x04005A78 RID: 23160
 		NEGATIVE,
-		// Token: 0x04005A79 RID: 23161
 		SELECT
 	}
 
-	// Token: 0x02001019 RID: 4121
-	// (Invoke) Token: 0x060051EA RID: 20970
 	public delegate bool Callback(int index);
 
-	// Token: 0x0200101A RID: 4122
 	public enum PresetType
 	{
-		// Token: 0x04005A7B RID: 23163
 		CLOSE,
-		// Token: 0x04005A7C RID: 23164
 		NO_YES,
-		// Token: 0x04005A7D RID: 23165
 		CANCEL_OK,
-		// Token: 0x04005A7E RID: 23166
 		LR_CURSOR,
-		// Token: 0x04005A7F RID: 23167
 		OK,
-		// Token: 0x04005A80 RID: 23168
 		STORE,
-		// Token: 0x04005A81 RID: 23169
 		CANCEL_MOVE,
-		// Token: 0x04005A82 RID: 23170
 		CANCEL_SET,
-		// Token: 0x04005A83 RID: 23171
 		CLOSE_SHOP,
-		// Token: 0x04005A84 RID: 23172
 		NO_YES_EMPTY,
-		// Token: 0x04005A85 RID: 23173
 		REVIEW,
-		// Token: 0x04005A86 RID: 23174
 		TITLE_MENT,
-		// Token: 0x04005A87 RID: 23175
 		CLOSE_GREEN,
-		// Token: 0x04005A88 RID: 23176
 		NEXT,
-		// Token: 0x04005A89 RID: 23177
 		MAX
 	}
 
-	// Token: 0x0200101B RID: 4123
 	private enum Sequence
 	{
-		// Token: 0x04005A8B RID: 23179
 		NONE,
-		// Token: 0x04005A8C RID: 23180
 		INACTIVE,
-		// Token: 0x04005A8D RID: 23181
 		OPEN_START,
-		// Token: 0x04005A8E RID: 23182
 		OPEN_WAIT,
-		// Token: 0x04005A8F RID: 23183
 		ACTIVE,
-		// Token: 0x04005A90 RID: 23184
 		CALLBACK_ACTION,
-		// Token: 0x04005A91 RID: 23185
 		CLOSE_START,
-		// Token: 0x04005A92 RID: 23186
 		CLOSE_WAIT
 	}
 
-	// Token: 0x0200101C RID: 4124
 	private class ChoiceButton
 	{
-		// Token: 0x060051ED RID: 20973 RVA: 0x00247F9C File Offset: 0x0024619C
 		public ChoiceButton(PguiButtonCtrl button)
 		{
 			this.m_Button = button;
@@ -1189,7 +1065,6 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 			}
 		}
 
-		// Token: 0x060051EE RID: 20974 RVA: 0x00248012 File Offset: 0x00246212
 		public void SetActive(bool act)
 		{
 			if (this.m_Button != null)
@@ -1198,19 +1073,14 @@ public class PguiOpenWindowCtrl : PguiBehaviour
 			}
 		}
 
-		// Token: 0x04005A93 RID: 23187
 		public PguiButtonCtrl m_Button;
 
-		// Token: 0x04005A94 RID: 23188
 		public Text m_Text;
 
-		// Token: 0x04005A95 RID: 23189
 		public PguiOutline[] m_OutlineList;
 
-		// Token: 0x04005A96 RID: 23190
 		public int m_Index;
 
-		// Token: 0x04005A97 RID: 23191
 		public PguiOpenWindowCtrl.BTN_TYPE m_Type;
 	}
 }

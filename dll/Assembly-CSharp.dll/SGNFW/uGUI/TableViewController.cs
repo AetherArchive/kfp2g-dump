@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -6,12 +6,9 @@ using UnityEngine.UI;
 
 namespace SGNFW.uGUI
 {
-	// Token: 0x02000234 RID: 564
 	[RequireComponent(typeof(ScrollRect))]
 	public class TableViewController<T> : MonoBehaviour
 	{
-		// Token: 0x17000540 RID: 1344
-		// (get) Token: 0x0600238E RID: 9102 RVA: 0x00198C0B File Offset: 0x00196E0B
 		public RectTransform CachedRectTransform
 		{
 			get
@@ -24,8 +21,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x17000541 RID: 1345
-		// (get) Token: 0x0600238F RID: 9103 RVA: 0x00198C2D File Offset: 0x00196E2D
 		public ScrollRect CachedScrollRect
 		{
 			get
@@ -39,8 +34,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x17000542 RID: 1346
-		// (get) Token: 0x06002390 RID: 9104 RVA: 0x00198C65 File Offset: 0x00196E65
 		public TableViewController<T>.Direction ScrollDirection
 		{
 			get
@@ -49,7 +42,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x06002391 RID: 9105 RVA: 0x00198C70 File Offset: 0x00196E70
 		public void Clear()
 		{
 			foreach (object obj in this.CachedScrollRect.content)
@@ -59,13 +51,11 @@ namespace SGNFW.uGUI
 			this.cells.Clear();
 		}
 
-		// Token: 0x06002392 RID: 9106 RVA: 0x00198CDC File Offset: 0x00196EDC
 		protected virtual float CellSizeAtIndex(int index)
 		{
 			return 0f;
 		}
 
-		// Token: 0x06002393 RID: 9107 RVA: 0x00198CE4 File Offset: 0x00196EE4
 		protected void UpdateContentSize()
 		{
 			float num = 0f;
@@ -98,7 +88,6 @@ namespace SGNFW.uGUI
 			this.CachedScrollRect.content.sizeDelta = sizeDelta;
 		}
 
-		// Token: 0x06002394 RID: 9108 RVA: 0x00198E08 File Offset: 0x00197008
 		private TableViewCell<T> CreateCellForIndex(int index)
 		{
 			TableViewCell<T> component = Manager.Create(this.cellBase, this.CachedScrollRect.content, null, null, Layer.UI).GetComponent<TableViewCell<T>>();
@@ -111,7 +100,6 @@ namespace SGNFW.uGUI
 			return component;
 		}
 
-		// Token: 0x06002395 RID: 9109 RVA: 0x00198E60 File Offset: 0x00197060
 		private void UpdateCellForIndex(TableViewCell<T> cell, int index)
 		{
 			cell.DataIndex = index;
@@ -136,7 +124,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x06002396 RID: 9110 RVA: 0x00198EFC File Offset: 0x001970FC
 		private void UpdateVisibleRect()
 		{
 			this.visibleRect.x = -this.CachedScrollRect.content.anchoredPosition.x;
@@ -145,7 +132,6 @@ namespace SGNFW.uGUI
 			this.visibleRect.height = this.CachedRectTransform.rect.height;
 		}
 
-		// Token: 0x06002397 RID: 9111 RVA: 0x00198F88 File Offset: 0x00197188
 		protected void UpdateContents()
 		{
 			this.UpdateContentSize();
@@ -221,7 +207,6 @@ namespace SGNFW.uGUI
 			this.FillVisibleRectWithCells();
 		}
 
-		// Token: 0x06002398 RID: 9112 RVA: 0x00199194 File Offset: 0x00197394
 		private void FillVisibleRectWithCells()
 		{
 			if (this.cells.Count <= 0)
@@ -267,7 +252,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x06002399 RID: 9113 RVA: 0x001992AC File Offset: 0x001974AC
 		private void OnScrollPosChanged(Vector2 scrollPos)
 		{
 			this.UpdateVisibleRect();
@@ -282,7 +266,6 @@ namespace SGNFW.uGUI
 			this.prevScrollPos = scrollPos;
 		}
 
-		// Token: 0x0600239A RID: 9114 RVA: 0x00199314 File Offset: 0x00197514
 		private void ReuseCells(int scrollDirection)
 		{
 			if (this.cells.Count <= 0)
@@ -333,12 +316,10 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x0600239B RID: 9115 RVA: 0x00199507 File Offset: 0x00197707
 		protected virtual void Awake()
 		{
 		}
 
-		// Token: 0x0600239C RID: 9116 RVA: 0x0019950C File Offset: 0x0019770C
 		protected virtual void Start()
 		{
 			this.CachedScrollRect.onValueChanged.AddListener(new UnityAction<Vector2>(this.OnScrollPosChanged));
@@ -354,51 +335,36 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x04001ACF RID: 6863
 		public Action<TableViewCell<T>, int> onCreate;
 
-		// Token: 0x04001AD0 RID: 6864
 		[SerializeField]
 		private RectOffset padding;
 
-		// Token: 0x04001AD1 RID: 6865
 		[SerializeField]
 		private float spacing;
 
-		// Token: 0x04001AD2 RID: 6866
 		[SerializeField]
 		private GameObject cellBase;
 
-		// Token: 0x04001AD3 RID: 6867
 		protected List<T> tableData = new List<T>();
 
-		// Token: 0x04001AD4 RID: 6868
 		private RectTransform cachedRectTransform;
 
-		// Token: 0x04001AD5 RID: 6869
 		private ScrollRect cachedScrollRect;
 
-		// Token: 0x04001AD6 RID: 6870
 		private Rect orgRect;
 
-		// Token: 0x04001AD7 RID: 6871
 		private LinkedList<TableViewCell<T>> cells = new LinkedList<TableViewCell<T>>();
 
-		// Token: 0x04001AD8 RID: 6872
 		private Rect visibleRect;
 
-		// Token: 0x04001AD9 RID: 6873
 		private Vector2 prevScrollPos;
 
-		// Token: 0x04001ADA RID: 6874
 		private TableViewController<T>.Direction direction;
 
-		// Token: 0x0200106A RID: 4202
 		public enum Direction
 		{
-			// Token: 0x04005BBE RID: 23486
 			Vertical,
-			// Token: 0x04005BBF RID: 23487
 			Horizontal
 		}
 	}

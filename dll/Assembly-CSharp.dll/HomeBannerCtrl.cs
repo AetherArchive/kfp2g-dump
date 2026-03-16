@@ -1,12 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SGNFW.uGUI;
 using UnityEngine;
 
-// Token: 0x0200014C RID: 332
 public class HomeBannerCtrl : MonoBehaviour
 {
-	// Token: 0x0600127F RID: 4735 RVA: 0x000DF8B8 File Offset: 0x000DDAB8
 	public void Init()
 	{
 		this.guiData = new HomeBannerCtrl.GUI(base.transform);
@@ -21,7 +19,6 @@ public class HomeBannerCtrl : MonoBehaviour
 		this.guiData.ScrollView.Setup(0, 0);
 	}
 
-	// Token: 0x06001280 RID: 4736 RVA: 0x000DF968 File Offset: 0x000DDB68
 	private void MakeBannerList()
 	{
 		this.bannerList = new List<HomeBannerData>(DataManager.DmHome.GetHomeBannerList());
@@ -45,7 +42,6 @@ public class HomeBannerCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001281 RID: 4737 RVA: 0x000DFA80 File Offset: 0x000DDC80
 	private void onStartItem(int index, GameObject go)
 	{
 		this.onUpdateItem(index, go);
@@ -55,7 +51,6 @@ public class HomeBannerCtrl : MonoBehaviour
 		}, null, null, null, null);
 	}
 
-	// Token: 0x06001282 RID: 4738 RVA: 0x000DFAD0 File Offset: 0x000DDCD0
 	private void OnTouchRect(GameObject go)
 	{
 		HomeBannerData homeBannerData = null;
@@ -170,7 +165,6 @@ public class HomeBannerCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001283 RID: 4739 RVA: 0x000DFD2C File Offset: 0x000DDF2C
 	private void onUpdateItem(int index, GameObject go)
 	{
 		int count = this.bannerList.Count;
@@ -179,7 +173,6 @@ public class HomeBannerCtrl : MonoBehaviour
 		go.transform.Find("Txt").GetComponent<PguiTextCtrl>().text = ((this.banner[go] == null) ? "" : this.banner[go].bannerText);
 	}
 
-	// Token: 0x06001284 RID: 4740 RVA: 0x000DFDE4 File Offset: 0x000DDFE4
 	public void OnPlayAnimation(SimpleAnimation.ExPguiStatus uiType)
 	{
 		if (uiType == SimpleAnimation.ExPguiStatus.START)
@@ -194,7 +187,6 @@ public class HomeBannerCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06001285 RID: 4741 RVA: 0x000DFE30 File Offset: 0x000DE030
 	private void Update()
 	{
 		if (this.guiData.ScrollView.IsScroll || !CanvasManager.HdlOpenWindowBasic.FinishedClose())
@@ -218,13 +210,11 @@ public class HomeBannerCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001286 RID: 4742 RVA: 0x000DFF22 File Offset: 0x000DE122
 	public void MoveSceneByMenu(SceneManager.SceneName nextScene, object args = null)
 	{
 		CanvasManager.HdlCmnMenu.MoveSceneByMenu(nextScene, args);
 	}
 
-	// Token: 0x06001287 RID: 4743 RVA: 0x000DFF30 File Offset: 0x000DE130
 	public void BannerRefresh()
 	{
 		this.banner = new Dictionary<GameObject, HomeBannerData>();
@@ -238,35 +228,25 @@ public class HomeBannerCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000F36 RID: 3894
 	private HomeBannerCtrl.GUI guiData;
 
-	// Token: 0x04000F37 RID: 3895
 	private Dictionary<GameObject, HomeBannerData> banner;
 
-	// Token: 0x04000F38 RID: 3896
 	private float timer;
 
-	// Token: 0x04000F39 RID: 3897
 	private SceneManager.SceneName requestNextScene;
 
-	// Token: 0x04000F3A RID: 3898
 	private object requestNextArgs;
 
-	// Token: 0x04000F3B RID: 3899
 	private List<HomeBannerData> bannerList = new List<HomeBannerData>();
 
-	// Token: 0x02000AE9 RID: 2793
 	public class Args
 	{
-		// Token: 0x0400453B RID: 17723
 		public int actionParamID;
 	}
 
-	// Token: 0x02000AEA RID: 2794
 	public class GUI
 	{
-		// Token: 0x060040F0 RID: 16624 RVA: 0x001F7C34 File Offset: 0x001F5E34
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -286,16 +266,12 @@ public class HomeBannerCtrl : MonoBehaviour
 			this.ScrollView = baseTr.Find("ScrollView").GetComponent<ReuseScroll>();
 		}
 
-		// Token: 0x0400453C RID: 17724
 		public GameObject baseObj;
 
-		// Token: 0x0400453D RID: 17725
 		public List<PguiImageCtrl> Page;
 
-		// Token: 0x0400453E RID: 17726
 		public SimpleAnimation HomeBanner;
 
-		// Token: 0x0400453F RID: 17727
 		public ReuseScroll ScrollView;
 	}
 }

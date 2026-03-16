@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Net;
 using System.Net.Security;
@@ -11,11 +11,8 @@ using UnityEngine.Networking;
 
 namespace SGNFW.Http
 {
-	// Token: 0x0200024E RID: 590
 	public class Connection : IDisposable
 	{
-		// Token: 0x1700057B RID: 1403
-		// (get) Token: 0x06002515 RID: 9493 RVA: 0x0019E547 File Offset: 0x0019C747
 		public static CookieContainer Cookie
 		{
 			get
@@ -28,9 +25,6 @@ namespace SGNFW.Http
 			}
 		}
 
-		// Token: 0x1700057C RID: 1404
-		// (get) Token: 0x06002517 RID: 9495 RVA: 0x0019E576 File Offset: 0x0019C776
-		// (set) Token: 0x06002516 RID: 9494 RVA: 0x0019E55F File Offset: 0x0019C75F
 		public static string Proxy
 		{
 			get
@@ -44,9 +38,6 @@ namespace SGNFW.Http
 			}
 		}
 
-		// Token: 0x1700057D RID: 1405
-		// (get) Token: 0x06002519 RID: 9497 RVA: 0x0019E585 File Offset: 0x0019C785
-		// (set) Token: 0x06002518 RID: 9496 RVA: 0x0019E57D File Offset: 0x0019C77D
 		public static bool IsForceNoSecureRequest
 		{
 			get
@@ -59,44 +50,20 @@ namespace SGNFW.Http
 			}
 		}
 
-		// Token: 0x1700057E RID: 1406
-		// (get) Token: 0x0600251B RID: 9499 RVA: 0x0019E595 File Offset: 0x0019C795
-		// (set) Token: 0x0600251A RID: 9498 RVA: 0x0019E58C File Offset: 0x0019C78C
 		public bool IsPostMethod { get; set; }
 
-		// Token: 0x1700057F RID: 1407
-		// (get) Token: 0x0600251D RID: 9501 RVA: 0x0019E5A6 File Offset: 0x0019C7A6
-		// (set) Token: 0x0600251C RID: 9500 RVA: 0x0019E59D File Offset: 0x0019C79D
 		public string UserAgent { get; set; }
 
-		// Token: 0x17000580 RID: 1408
-		// (get) Token: 0x0600251F RID: 9503 RVA: 0x0019E5B7 File Offset: 0x0019C7B7
-		// (set) Token: 0x0600251E RID: 9502 RVA: 0x0019E5AE File Offset: 0x0019C7AE
 		public string EncryptKey { get; set; }
 
-		// Token: 0x17000581 RID: 1409
-		// (get) Token: 0x06002521 RID: 9505 RVA: 0x0019E5C8 File Offset: 0x0019C7C8
-		// (set) Token: 0x06002520 RID: 9504 RVA: 0x0019E5BF File Offset: 0x0019C7BF
 		public bool IsBusy { get; private set; }
 
-		// Token: 0x17000582 RID: 1410
-		// (get) Token: 0x06002523 RID: 9507 RVA: 0x0019E5D9 File Offset: 0x0019C7D9
-		// (set) Token: 0x06002522 RID: 9506 RVA: 0x0019E5D0 File Offset: 0x0019C7D0
 		public bool IsError { get; private set; }
 
-		// Token: 0x17000583 RID: 1411
-		// (get) Token: 0x06002525 RID: 9509 RVA: 0x0019E5EA File Offset: 0x0019C7EA
-		// (set) Token: 0x06002524 RID: 9508 RVA: 0x0019E5E1 File Offset: 0x0019C7E1
 		public byte[] Posts { get; private set; }
 
-		// Token: 0x17000584 RID: 1412
-		// (get) Token: 0x06002527 RID: 9511 RVA: 0x0019E5FB File Offset: 0x0019C7FB
-		// (set) Token: 0x06002526 RID: 9510 RVA: 0x0019E5F2 File Offset: 0x0019C7F2
 		public byte[] Bytes { get; private set; }
 
-		// Token: 0x17000585 RID: 1413
-		// (get) Token: 0x06002529 RID: 9513 RVA: 0x0019E60C File Offset: 0x0019C80C
-		// (set) Token: 0x06002528 RID: 9512 RVA: 0x0019E603 File Offset: 0x0019C803
 		public int TimeoutTime
 		{
 			get
@@ -109,9 +76,6 @@ namespace SGNFW.Http
 			}
 		}
 
-		// Token: 0x17000586 RID: 1414
-		// (get) Token: 0x0600252B RID: 9515 RVA: 0x0019E61D File Offset: 0x0019C81D
-		// (set) Token: 0x0600252A RID: 9514 RVA: 0x0019E614 File Offset: 0x0019C814
 		public HttpStatusCode StatusCode
 		{
 			get
@@ -124,9 +88,6 @@ namespace SGNFW.Http
 			}
 		}
 
-		// Token: 0x17000587 RID: 1415
-		// (get) Token: 0x0600252D RID: 9517 RVA: 0x0019E62E File Offset: 0x0019C82E
-		// (set) Token: 0x0600252C RID: 9516 RVA: 0x0019E625 File Offset: 0x0019C825
 		public WebExceptionStatus ExceptionStatus
 		{
 			get
@@ -139,8 +100,6 @@ namespace SGNFW.Http
 			}
 		}
 
-		// Token: 0x17000588 RID: 1416
-		// (get) Token: 0x0600252E RID: 9518 RVA: 0x0019E636 File Offset: 0x0019C836
 		public string Url
 		{
 			get
@@ -149,9 +108,6 @@ namespace SGNFW.Http
 			}
 		}
 
-		// Token: 0x17000589 RID: 1417
-		// (get) Token: 0x0600252F RID: 9519 RVA: 0x0019E63E File Offset: 0x0019C83E
-		// (set) Token: 0x06002530 RID: 9520 RVA: 0x0019E646 File Offset: 0x0019C846
 		public string Fields
 		{
 			get
@@ -164,19 +120,16 @@ namespace SGNFW.Http
 			}
 		}
 
-		// Token: 0x06002532 RID: 9522 RVA: 0x0019E67C File Offset: 0x0019C87C
 		~Connection()
 		{
 			this.Dispose(false);
 		}
 
-		// Token: 0x06002533 RID: 9523 RVA: 0x0019E6AC File Offset: 0x0019C8AC
 		public static void ClearCookie()
 		{
 			Connection.cookie = null;
 		}
 
-		// Token: 0x06002534 RID: 9524 RVA: 0x0019E6B4 File Offset: 0x0019C8B4
 		public void Request(string url, Action<bool, byte[]> finished = null)
 		{
 			if (ServicePointManager.ServerCertificateValidationCallback == null)
@@ -266,7 +219,6 @@ namespace SGNFW.Http
 			}
 		}
 
-		// Token: 0x06002535 RID: 9525 RVA: 0x0019E9A4 File Offset: 0x0019CBA4
 		public void AddField(string name, string data)
 		{
 			if (string.IsNullOrEmpty(this.fields))
@@ -277,14 +229,12 @@ namespace SGNFW.Http
 			this.fields = string.Format("{0}&{1}={2}", this.fields, UnityWebRequest.EscapeURL(name), UnityWebRequest.EscapeURL(data));
 		}
 
-		// Token: 0x06002536 RID: 9526 RVA: 0x0019E9FD File Offset: 0x0019CBFD
 		public void Dispose()
 		{
 			this.Dispose(true);
 			GC.SuppressFinalize(this);
 		}
 
-		// Token: 0x06002537 RID: 9527 RVA: 0x0019EA0C File Offset: 0x0019CC0C
 		protected virtual void Dispose(bool dispose)
 		{
 			if (!this.isDisposed)
@@ -297,7 +247,6 @@ namespace SGNFW.Http
 			}
 		}
 
-		// Token: 0x06002538 RID: 9528 RVA: 0x0019EA28 File Offset: 0x0019CC28
 		private void Release()
 		{
 			lock (this)
@@ -326,7 +275,6 @@ namespace SGNFW.Http
 			}
 		}
 
-		// Token: 0x06002539 RID: 9529 RVA: 0x0019EACC File Offset: 0x0019CCCC
 		private string Encrypt(string param)
 		{
 			byte[] md5Value = this.GetMD5Value(param);
@@ -362,19 +310,16 @@ namespace SGNFW.Http
 			return text + text2 + md5String;
 		}
 
-		// Token: 0x0600253A RID: 9530 RVA: 0x0019EBE7 File Offset: 0x0019CDE7
 		private byte[] GetMD5Value(string str)
 		{
 			return this.GetMD5Value(Encoding.UTF8.GetBytes(str));
 		}
 
-		// Token: 0x0600253B RID: 9531 RVA: 0x0019EBFA File Offset: 0x0019CDFA
 		private byte[] GetMD5Value(byte[] byteValue)
 		{
 			return new MD5CryptoServiceProvider().ComputeHash(byteValue);
 		}
 
-		// Token: 0x0600253C RID: 9532 RVA: 0x0019EC08 File Offset: 0x0019CE08
 		private string GetMD5String(string str)
 		{
 			byte[] md5Value = this.GetMD5Value(str);
@@ -390,7 +335,6 @@ namespace SGNFW.Http
 			return stringBuilder.ToString();
 		}
 
-		// Token: 0x0600253D RID: 9533 RVA: 0x0019EC58 File Offset: 0x0019CE58
 		private void OnRequest(IAsyncResult ar)
 		{
 			if (!this.IsBusy)
@@ -431,7 +375,6 @@ namespace SGNFW.Http
 			}
 		}
 
-		// Token: 0x0600253E RID: 9534 RVA: 0x0019ED6C File Offset: 0x0019CF6C
 		private void OnResponse(IAsyncResult ar)
 		{
 			if (!this.IsBusy)
@@ -479,7 +422,6 @@ namespace SGNFW.Http
 			}
 		}
 
-		// Token: 0x0600253F RID: 9535 RVA: 0x0019EEA4 File Offset: 0x0019D0A4
 		private void OnRead(IAsyncResult ar)
 		{
 			if (!this.IsBusy)
@@ -580,67 +522,47 @@ namespace SGNFW.Http
 			}
 		}
 
-		// Token: 0x06002540 RID: 9536 RVA: 0x0019F164 File Offset: 0x0019D364
 		private static bool OnRemoteCertificateValidation(object sender, X509Certificate cert, X509Chain chain, SslPolicyErrors err)
 		{
 			return true;
 		}
 
-		// Token: 0x04001B86 RID: 7046
 		private const int BUFFER_SIZE = 65536;
 
-		// Token: 0x04001B87 RID: 7047
 		private static CookieContainer cookie;
 
-		// Token: 0x04001B88 RID: 7048
 		private static string proxy;
 
-		// Token: 0x04001B89 RID: 7049
 		private static bool isForceNoSecureRequest;
 
-		// Token: 0x04001B8A RID: 7050
 		private string fields;
 
-		// Token: 0x04001B8B RID: 7051
 		private string url;
 
-		// Token: 0x04001B8C RID: 7052
 		private Uri uri;
 
-		// Token: 0x04001B8D RID: 7053
 		private HttpWebRequest request;
 
-		// Token: 0x04001B8E RID: 7054
 		private HttpWebResponse response;
 
-		// Token: 0x04001B8F RID: 7055
 		private Stream stream;
 
-		// Token: 0x04001B90 RID: 7056
 		private MemoryStream memoryStream;
 
-		// Token: 0x04001B91 RID: 7057
 		private byte[] buffer = new byte[65536];
 
-		// Token: 0x04001B92 RID: 7058
 		private WebExceptionStatus exceptionStatus;
 
-		// Token: 0x04001B93 RID: 7059
 		private HttpStatusCode statusCode = HttpStatusCode.OK;
 
-		// Token: 0x04001B94 RID: 7060
 		private bool isCanceled;
 
-		// Token: 0x04001B95 RID: 7061
 		private int timeoutTime = -1;
 
-		// Token: 0x04001B96 RID: 7062
 		private bool isDisposed;
 
-		// Token: 0x04001B97 RID: 7063
 		private Action<bool, byte[]> onFinished;
 
-		// Token: 0x04001B98 RID: 7064
 		private string tm;
 	}
 }

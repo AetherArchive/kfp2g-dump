@@ -1,45 +1,38 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using SegaUnityCEFBrowser;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x020001FA RID: 506
 public class WebViewPC : MonoBehaviour, IWebView
 {
-	// Token: 0x06002156 RID: 8534 RVA: 0x0018EBEA File Offset: 0x0018CDEA
 	public int SetPreLoadCallback(PreLoadCallback func)
 	{
 		return this.preLoadCBs.Entry(func);
 	}
 
-	// Token: 0x06002157 RID: 8535 RVA: 0x0018EBF8 File Offset: 0x0018CDF8
 	public void UnsetPreLoadCallback(int hndl)
 	{
 		this.preLoadCBs.Remove(hndl);
 	}
 
-	// Token: 0x06002158 RID: 8536 RVA: 0x0018EC06 File Offset: 0x0018CE06
 	public int SetPostLoadCallback(PostLoadCallback func)
 	{
 		return this.postLoadCBs.Entry(func);
 	}
 
-	// Token: 0x06002159 RID: 8537 RVA: 0x0018EC14 File Offset: 0x0018CE14
 	public void UnsetPostLoadCallback(int hndl)
 	{
 		this.postLoadCBs.Remove(hndl);
 	}
 
-	// Token: 0x0600215A RID: 8538 RVA: 0x0018EC22 File Offset: 0x0018CE22
 	public void SetReferenceResolution(Vector2Int reso)
 	{
 		this.CONF_RESO_X = reso.x;
 		this.CONF_RESO_Y = reso.y;
 	}
 
-	// Token: 0x0600215B RID: 8539 RVA: 0x0018EC3E File Offset: 0x0018CE3E
 	public void SetMargins(int left, int top, int right, int bottom)
 	{
 		this.CONF_MARGIN_LEFT = left;
@@ -48,14 +41,12 @@ public class WebViewPC : MonoBehaviour, IWebView
 		this.CONF_MARGIN_BOTTOM = bottom;
 	}
 
-	// Token: 0x0600215C RID: 8540 RVA: 0x0018EC5D File Offset: 0x0018CE5D
 	public void SetURL(string url)
 	{
 		this.CONF_URL = url;
 		this.LoadURL();
 	}
 
-	// Token: 0x0600215D RID: 8541 RVA: 0x0018EC6C File Offset: 0x0018CE6C
 	public void LoadURL()
 	{
 		this.Init();
@@ -102,7 +93,6 @@ public class WebViewPC : MonoBehaviour, IWebView
 		this.browserInst.LoadURL(this.CONF_URL);
 	}
 
-	// Token: 0x0600215E RID: 8542 RVA: 0x0018EDDC File Offset: 0x0018CFDC
 	private int OnClickWebView(string msg)
 	{
 		int num = 0;
@@ -117,13 +107,11 @@ public class WebViewPC : MonoBehaviour, IWebView
 		return num;
 	}
 
-	// Token: 0x0600215F RID: 8543 RVA: 0x0018EE50 File Offset: 0x0018D050
 	private void Start()
 	{
 		this.Init();
 	}
 
-	// Token: 0x06002160 RID: 8544 RVA: 0x0018EE58 File Offset: 0x0018D058
 	private void Init()
 	{
 		if (this.browserInst != null)
@@ -164,7 +152,6 @@ public class WebViewPC : MonoBehaviour, IWebView
 		this.isSetupCb = false;
 	}
 
-	// Token: 0x06002161 RID: 8545 RVA: 0x0018EF90 File Offset: 0x0018D190
 	private void Update()
 	{
 		Vector3 mousePosition = Input.mousePosition;
@@ -244,12 +231,10 @@ public class WebViewPC : MonoBehaviour, IWebView
 		}
 	}
 
-	// Token: 0x06002162 RID: 8546 RVA: 0x0018F286 File Offset: 0x0018D486
 	private void OnDestroy()
 	{
 	}
 
-	// Token: 0x06002163 RID: 8547 RVA: 0x0018F288 File Offset: 0x0018D488
 	private void OnEnable()
 	{
 		if (this.browserInst != null)
@@ -258,7 +243,6 @@ public class WebViewPC : MonoBehaviour, IWebView
 		}
 	}
 
-	// Token: 0x06002164 RID: 8548 RVA: 0x0018F2A9 File Offset: 0x0018D4A9
 	private void OnDisable()
 	{
 		if (this.browserInst != null)
@@ -267,64 +251,45 @@ public class WebViewPC : MonoBehaviour, IWebView
 		}
 	}
 
-	// Token: 0x06002165 RID: 8549 RVA: 0x0018F2CA File Offset: 0x0018D4CA
 	public void SetActive(bool active)
 	{
 		base.gameObject.SetActive(active);
 	}
 
-	// Token: 0x040017FD RID: 6141
 	public string CONF_URL = "";
 
-	// Token: 0x040017FE RID: 6142
 	public int CONF_RESO_X = 1280;
 
-	// Token: 0x040017FF RID: 6143
 	public int CONF_RESO_Y = 720;
 
-	// Token: 0x04001800 RID: 6144
 	public int CONF_MARGIN_LEFT;
 
-	// Token: 0x04001801 RID: 6145
 	public int CONF_MARGIN_TOP;
 
-	// Token: 0x04001802 RID: 6146
 	public int CONF_MARGIN_RIGHT;
 
-	// Token: 0x04001803 RID: 6147
 	public int CONF_MARGIN_BOTTOM;
 
-	// Token: 0x04001804 RID: 6148
 	private bool bDependCanvasScaler;
 
-	// Token: 0x04001805 RID: 6149
 	private Browser browserInst;
 
-	// Token: 0x04001806 RID: 6150
 	public Text DEBUG_TEXT;
 
-	// Token: 0x04001807 RID: 6151
 	private int DEBUG_RESO_X;
 
-	// Token: 0x04001808 RID: 6152
 	private int DEBUG_RESO_Y;
 
-	// Token: 0x04001809 RID: 6153
 	private bool isSetupCb;
 
-	// Token: 0x0400180A RID: 6154
 	private string requestOpenExternalBrowserUrl = "";
 
-	// Token: 0x0400180B RID: 6155
 	private WebViewPC.CallbackHolder<PreLoadCallback> preLoadCBs = new WebViewPC.CallbackHolder<PreLoadCallback>();
 
-	// Token: 0x0400180C RID: 6156
 	private WebViewPC.CallbackHolder<PostLoadCallback> postLoadCBs = new WebViewPC.CallbackHolder<PostLoadCallback>();
 
-	// Token: 0x02001044 RID: 4164
 	private class CallbackHolder<T>
 	{
-		// Token: 0x06005293 RID: 21139 RVA: 0x00249118 File Offset: 0x00247318
 		public int Entry(T func)
 		{
 			Dictionary<int, T> dictionary = this.funcs;
@@ -334,16 +299,13 @@ public class WebViewPC : MonoBehaviour, IWebView
 			return this.sequencer;
 		}
 
-		// Token: 0x06005294 RID: 21140 RVA: 0x00249148 File Offset: 0x00247348
 		public void Remove(int hndl)
 		{
 			this.funcs.Remove(hndl);
 		}
 
-		// Token: 0x04005B48 RID: 23368
 		public Dictionary<int, T> funcs = new Dictionary<int, T>();
 
-		// Token: 0x04005B49 RID: 23369
 		private int sequencer;
 	}
 }

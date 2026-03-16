@@ -1,21 +1,17 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using SGNFW.Http;
 using SGNFW.HttpRequest.Protocol;
 using SGNFW.Mst;
 
-// Token: 0x02000092 RID: 146
 public class DataManagerMission
 {
-	// Token: 0x060005B6 RID: 1462 RVA: 0x000264AF File Offset: 0x000246AF
 	public DataManagerMission(DataManager p)
 	{
 		this.parentData = p;
 	}
 
-	// Token: 0x17000113 RID: 275
-	// (get) Token: 0x060005B7 RID: 1463 RVA: 0x000264BE File Offset: 0x000246BE
 	public List<DataManagerMission.StaticMissionData> StaticMissionDataList
 	{
 		get
@@ -24,8 +20,6 @@ public class DataManagerMission
 		}
 	}
 
-	// Token: 0x17000114 RID: 276
-	// (get) Token: 0x060005B8 RID: 1464 RVA: 0x000264C6 File Offset: 0x000246C6
 	public List<UserMissionOne> UserMissionOneList
 	{
 		get
@@ -34,38 +28,21 @@ public class DataManagerMission
 		}
 	}
 
-	// Token: 0x17000115 RID: 277
-	// (get) Token: 0x060005B9 RID: 1465 RVA: 0x000264CE File Offset: 0x000246CE
-	// (set) Token: 0x060005BA RID: 1466 RVA: 0x000264D6 File Offset: 0x000246D6
 	public List<GachaResult> MissionBonusSpecialResult { get; private set; }
 
-	// Token: 0x17000116 RID: 278
-	// (get) Token: 0x060005BB RID: 1467 RVA: 0x000264DF File Offset: 0x000246DF
-	// (set) Token: 0x060005BC RID: 1468 RVA: 0x000264E7 File Offset: 0x000246E7
 	public List<GachaResult> MultipleMissionBonusSpecialResult { get; private set; }
 
-	// Token: 0x17000117 RID: 279
-	// (get) Token: 0x060005BD RID: 1469 RVA: 0x000264F0 File Offset: 0x000246F0
-	// (set) Token: 0x060005BE RID: 1470 RVA: 0x000264F8 File Offset: 0x000246F8
 	public Dictionary<int, int> MissionBonusResultItemMap { get; private set; }
 
-	// Token: 0x17000118 RID: 280
-	// (get) Token: 0x060005BF RID: 1471 RVA: 0x00026501 File Offset: 0x00024701
-	// (set) Token: 0x060005C0 RID: 1472 RVA: 0x00026509 File Offset: 0x00024709
 	private Dictionary<int, int> LastReqestMissionItemMap { get; set; }
 
-	// Token: 0x17000119 RID: 281
-	// (get) Token: 0x060005C1 RID: 1473 RVA: 0x00026512 File Offset: 0x00024712
-	// (set) Token: 0x060005C2 RID: 1474 RVA: 0x0002651A File Offset: 0x0002471A
 	public bool isAchievementInRewardItemMap { get; set; }
 
-	// Token: 0x060005C3 RID: 1475 RVA: 0x00026523 File Offset: 0x00024723
 	public List<UserMissionGroup> GetUserMissionGroupList()
 	{
 		return this.userMissionGroupList;
 	}
 
-	// Token: 0x060005C4 RID: 1476 RVA: 0x0002652C File Offset: 0x0002472C
 	public UserMissionGroup GetEventMissionGroup(int evId)
 	{
 		DataManagerEvent.EventData eventData = DataManager.DmEvent.GetEventData(evId);
@@ -112,7 +89,6 @@ public class DataManagerMission
 		return userMissionGroup3;
 	}
 
-	// Token: 0x060005C5 RID: 1477 RVA: 0x0002673C File Offset: 0x0002493C
 	public List<UserMissionGroup> GetValidEventMissionGroupe()
 	{
 		List<UserMissionGroup> list = new List<UserMissionGroup>();
@@ -123,7 +99,6 @@ public class DataManagerMission
 		return list;
 	}
 
-	// Token: 0x060005C6 RID: 1478 RVA: 0x000267A0 File Offset: 0x000249A0
 	public int GetUserClearMissionNum()
 	{
 		if (this.userMissionOneList == null)
@@ -145,7 +120,6 @@ public class DataManagerMission
 		return count + count2 + count3 + num + count4;
 	}
 
-	// Token: 0x060005C7 RID: 1479 RVA: 0x000269CC File Offset: 0x00024BCC
 	public int GetUserClearMissionNum(MissionType type, bool isSpecial)
 	{
 		if (this.userMissionOneList == null)
@@ -155,7 +129,6 @@ public class DataManagerMission
 		return this.userMissionGroupList.Find((UserMissionGroup x) => type == x.type).viewDataList.FindAll((UserMissionOne x) => x.isClear && !x.Received && x.IsSpecial == isSpecial).Count;
 	}
 
-	// Token: 0x060005C8 RID: 1480 RVA: 0x00026A2C File Offset: 0x00024C2C
 	public int GetUserClearEventMissionNum(int eventId)
 	{
 		if (this.userMissionOneList == null)
@@ -165,7 +138,6 @@ public class DataManagerMission
 		return this.GetEventMissionGroup(eventId).viewDataList.FindAll((UserMissionOne x) => x.isClear && !x.Received).Count;
 	}
 
-	// Token: 0x060005C9 RID: 1481 RVA: 0x00026A78 File Offset: 0x00024C78
 	public int GetUserClearSpecialMissionNum(MissionType type)
 	{
 		if (this.userMissionOneList == null)
@@ -175,7 +147,6 @@ public class DataManagerMission
 		return this.userMissionGroupList.Find((UserMissionGroup x) => type == x.type).viewDataList.FindAll((UserMissionOne x) => x.isClear && !x.Received && x.IsSpecial).Count;
 	}
 
-	// Token: 0x060005CA RID: 1482 RVA: 0x00026AE4 File Offset: 0x00024CE4
 	public int GetUserClearAllSpecialMissionNum()
 	{
 		if (this.userMissionOneList == null)
@@ -185,7 +156,6 @@ public class DataManagerMission
 		return 0 + this.userMissionGroupList.Find((UserMissionGroup x) => MissionType.DAILY == x.type).viewDataList.FindAll((UserMissionOne x) => x.isClear && !x.Received && x.IsSpecial).Count + this.userMissionGroupList.Find((UserMissionGroup x) => MissionType.WEEKLY == x.type).viewDataList.FindAll((UserMissionOne x) => x.isClear && !x.Received && x.IsSpecial).Count + this.userMissionGroupList.Find((UserMissionGroup x) => MissionType.TOTAL == x.type).viewDataList.FindAll((UserMissionOne x) => x.isClear && !x.Received && x.IsSpecial).Count;
 	}
 
-	// Token: 0x060005CB RID: 1483 RVA: 0x00026C08 File Offset: 0x00024E08
 	public int GetLastRequestAchievementId()
 	{
 		if (this.LastReqestMissionItemMap == null)
@@ -202,7 +172,6 @@ public class DataManagerMission
 		return -1;
 	}
 
-	// Token: 0x060005CC RID: 1484 RVA: 0x00026C94 File Offset: 0x00024E94
 	public bool CompareResultItemAllReceived()
 	{
 		if (this.MissionBonusResultItemMap == null || this.LastReqestMissionItemMap == null)
@@ -225,7 +194,6 @@ public class DataManagerMission
 		return flag;
 	}
 
-	// Token: 0x060005CD RID: 1485 RVA: 0x00026D38 File Offset: 0x00024F38
 	private void RequestMissionItemList(List<AcceptMission> reqList)
 	{
 		this.LastReqestMissionItemMap = new Dictionary<int, int>();
@@ -253,21 +221,18 @@ public class DataManagerMission
 		}
 	}
 
-	// Token: 0x060005CE RID: 1486 RVA: 0x00026E40 File Offset: 0x00025040
 	public void RequestGetMissionList()
 	{
 		List<int> list = new List<int> { 1, 2, 3, 4, 5, 6, 7 };
 		this.parentData.ServerRequest(MissionListCmd.Create(list), new Action<Command>(this.CbMissionListCmd));
 	}
 
-	// Token: 0x060005CF RID: 1487 RVA: 0x00026EA1 File Offset: 0x000250A1
 	public void DummyRequestClearMissionResultItem()
 	{
 		this.LastReqestMissionItemMap = new Dictionary<int, int>();
 		this.MissionBonusResultItemMap = new Dictionary<int, int>();
 	}
 
-	// Token: 0x060005D0 RID: 1488 RVA: 0x00026EBC File Offset: 0x000250BC
 	public void RequestActionMissionRewardOne(UserMissionOne targetMission)
 	{
 		this.MissionBonusResultItemMap = new Dictionary<int, int>();
@@ -279,7 +244,6 @@ public class DataManagerMission
 		this.isAchievementInRewardItemMap = false;
 	}
 
-	// Token: 0x060005D1 RID: 1489 RVA: 0x00026F28 File Offset: 0x00025128
 	public void RequestActionSpecialMissionRewardOne(UserMissionOne targetMission)
 	{
 		this.MissionBonusResultItemMap = new Dictionary<int, int>();
@@ -291,7 +255,6 @@ public class DataManagerMission
 		this.isAchievementInRewardItemMap = false;
 	}
 
-	// Token: 0x060005D2 RID: 1490 RVA: 0x00026F94 File Offset: 0x00025194
 	public void RequestActionMissionRewardAll(MissionType type, bool isSpecial, bool isOne)
 	{
 		this.MissionBonusResultItemMap = new Dictionary<int, int>();
@@ -346,7 +309,6 @@ public class DataManagerMission
 		this.parentData.ServerRequest(MissionBonusAcceptCmd.Create(null, null), new Action<Command>(this.CbMissionBonusAcceptCmd));
 	}
 
-	// Token: 0x060005D3 RID: 1491 RVA: 0x00027190 File Offset: 0x00025390
 	public void RequestActionMissionRewardEvent(int eventId)
 	{
 		this.MissionBonusResultItemMap = new Dictionary<int, int>();
@@ -361,7 +323,6 @@ public class DataManagerMission
 		this.parentData.ServerRequest(MissionBonusAcceptCmd.Create(null, list3), new Action<Command>(this.CbMissionBonusAcceptCmd));
 	}
 
-	// Token: 0x060005D4 RID: 1492 RVA: 0x0002728C File Offset: 0x0002548C
 	public void RequestActionMissionRewardAll()
 	{
 		this.isAchievementInRewardItemMap = this.userMissionOneList.Find((UserMissionOne item) => item.GetRewardItemData().staticData.GetKind() == ItemDef.Kind.ACHIEVEMENT && item.isClear) != null;
@@ -372,7 +333,6 @@ public class DataManagerMission
 		this.parentData.ServerRequest(MissionBonusAcceptCmd.Create(null, list), new Action<Command>(this.CbMissionBonusAcceptCmd));
 	}
 
-	// Token: 0x060005D5 RID: 1493 RVA: 0x0002735C File Offset: 0x0002555C
 	private void CbMissionListCmd(Command cmd)
 	{
 		MissionListResponse missionListResponse = cmd.response as MissionListResponse;
@@ -435,7 +395,6 @@ public class DataManagerMission
 		this.parentData.UpdateUserAssetByAssets(missionListResponse.assets);
 	}
 
-	// Token: 0x060005D6 RID: 1494 RVA: 0x000276A0 File Offset: 0x000258A0
 	private void CbMissionBonusAcceptCmd(Command cmd)
 	{
 		MissionBonusAcceptResponse missionBonusAcceptResponse = cmd.response as MissionBonusAcceptResponse;
@@ -548,7 +507,6 @@ public class DataManagerMission
 		}
 	}
 
-	// Token: 0x060005D7 RID: 1495 RVA: 0x00027B5C File Offset: 0x00025D5C
 	private void CbMissionBonusSpecialAcceptCmd(Command cmd)
 	{
 		MissionBonusSpecialAcceptResponse missionBonusSpecialAcceptResponse = cmd.response as MissionBonusSpecialAcceptResponse;
@@ -590,7 +548,6 @@ public class DataManagerMission
 		}
 	}
 
-	// Token: 0x060005D8 RID: 1496 RVA: 0x00027CFC File Offset: 0x00025EFC
 	public void AddWaitDisplayMission(List<Mission> serverMissionList)
 	{
 		if (this.waitDisplayMissionList == null)
@@ -600,7 +557,6 @@ public class DataManagerMission
 		this.waitDisplayMissionList.AddRange(serverMissionList);
 	}
 
-	// Token: 0x060005D9 RID: 1497 RVA: 0x00027D20 File Offset: 0x00025F20
 	public void UpdateUserDataByServer(List<Mission> serverMissionList)
 	{
 		if (this.userMissionGroupList == null)
@@ -666,7 +622,6 @@ public class DataManagerMission
 		}
 	}
 
-	// Token: 0x060005DA RID: 1498 RVA: 0x00027F34 File Offset: 0x00026134
 	public void InitializeMstData(MstManager mstManager)
 	{
 		List<MstMissionData> mst = mstManager.GetMst<List<MstMissionData>>(MstType.MISSION_DATA);
@@ -678,7 +633,6 @@ public class DataManagerMission
 		}
 	}
 
-	// Token: 0x060005DB RID: 1499 RVA: 0x00027FA0 File Offset: 0x000261A0
 	public static int MissionType2TabSortId(MissionType type)
 	{
 		switch (type)
@@ -702,7 +656,6 @@ public class DataManagerMission
 		}
 	}
 
-	// Token: 0x060005DC RID: 1500 RVA: 0x00027FD8 File Offset: 0x000261D8
 	[CompilerGenerated]
 	private void <RequestMissionItemList>g__addItemToList|41_0(int itemId, int itemNum)
 	{
@@ -715,100 +668,48 @@ public class DataManagerMission
 		lastReqestMissionItemMap[itemId] += itemNum;
 	}
 
-	// Token: 0x040005AA RID: 1450
 	private DataManager parentData;
 
-	// Token: 0x040005AB RID: 1451
 	private List<DataManagerMission.StaticMissionData> staticMissionDataList;
 
-	// Token: 0x040005AC RID: 1452
 	private List<UserMissionOne> userMissionOneList;
 
-	// Token: 0x040005AD RID: 1453
 	private List<UserMissionGroup> userMissionGroupList;
 
-	// Token: 0x040005AE RID: 1454
 	private List<Mission> waitDisplayMissionList;
 
-	// Token: 0x020006F0 RID: 1776
 	public class StaticMissionData
 	{
-		// Token: 0x17000764 RID: 1892
-		// (get) Token: 0x060033B0 RID: 13232 RVA: 0x001C209B File Offset: 0x001C029B
-		// (set) Token: 0x060033B1 RID: 13233 RVA: 0x001C20A3 File Offset: 0x001C02A3
 		public int MissionId { get; private set; }
 
-		// Token: 0x17000765 RID: 1893
-		// (get) Token: 0x060033B2 RID: 13234 RVA: 0x001C20AC File Offset: 0x001C02AC
-		// (set) Token: 0x060033B3 RID: 13235 RVA: 0x001C20B4 File Offset: 0x001C02B4
 		public MissionType MissionType { get; private set; }
 
-		// Token: 0x17000766 RID: 1894
-		// (get) Token: 0x060033B4 RID: 13236 RVA: 0x001C20BD File Offset: 0x001C02BD
-		// (set) Token: 0x060033B5 RID: 13237 RVA: 0x001C20C5 File Offset: 0x001C02C5
 		public string MissionContents { get; private set; }
 
-		// Token: 0x17000767 RID: 1895
-		// (get) Token: 0x060033B6 RID: 13238 RVA: 0x001C20CE File Offset: 0x001C02CE
-		// (set) Token: 0x060033B7 RID: 13239 RVA: 0x001C20D6 File Offset: 0x001C02D6
 		public int SortNum { get; private set; }
 
-		// Token: 0x17000768 RID: 1896
-		// (get) Token: 0x060033B8 RID: 13240 RVA: 0x001C20DF File Offset: 0x001C02DF
-		// (set) Token: 0x060033B9 RID: 13241 RVA: 0x001C20E7 File Offset: 0x001C02E7
 		public bool AlwaysDispFlg { get; private set; }
 
-		// Token: 0x17000769 RID: 1897
-		// (get) Token: 0x060033BA RID: 13242 RVA: 0x001C20F0 File Offset: 0x001C02F0
-		// (set) Token: 0x060033BB RID: 13243 RVA: 0x001C20F8 File Offset: 0x001C02F8
 		public int Denominator { get; private set; }
 
-		// Token: 0x1700076A RID: 1898
-		// (get) Token: 0x060033BC RID: 13244 RVA: 0x001C2101 File Offset: 0x001C0301
-		// (set) Token: 0x060033BD RID: 13245 RVA: 0x001C2109 File Offset: 0x001C0309
 		public int RewardItemId { get; private set; }
 
-		// Token: 0x1700076B RID: 1899
-		// (get) Token: 0x060033BE RID: 13246 RVA: 0x001C2112 File Offset: 0x001C0312
-		// (set) Token: 0x060033BF RID: 13247 RVA: 0x001C211A File Offset: 0x001C031A
 		public int RewardItemNum { get; private set; }
 
-		// Token: 0x1700076C RID: 1900
-		// (get) Token: 0x060033C0 RID: 13248 RVA: 0x001C2123 File Offset: 0x001C0323
-		// (set) Token: 0x060033C1 RID: 13249 RVA: 0x001C212B File Offset: 0x001C032B
 		public int NeedMissionId { get; private set; }
 
-		// Token: 0x1700076D RID: 1901
-		// (get) Token: 0x060033C2 RID: 13250 RVA: 0x001C2134 File Offset: 0x001C0334
-		// (set) Token: 0x060033C3 RID: 13251 RVA: 0x001C213C File Offset: 0x001C033C
 		public bool IsSpecial { get; private set; }
 
-		// Token: 0x1700076E RID: 1902
-		// (get) Token: 0x060033C4 RID: 13252 RVA: 0x001C2145 File Offset: 0x001C0345
-		// (set) Token: 0x060033C5 RID: 13253 RVA: 0x001C214D File Offset: 0x001C034D
 		public DateTime StartDateTime { get; private set; }
 
-		// Token: 0x1700076F RID: 1903
-		// (get) Token: 0x060033C6 RID: 13254 RVA: 0x001C2156 File Offset: 0x001C0356
-		// (set) Token: 0x060033C7 RID: 13255 RVA: 0x001C215E File Offset: 0x001C035E
 		public DateTime EndDateTime { get; private set; }
 
-		// Token: 0x17000770 RID: 1904
-		// (get) Token: 0x060033C8 RID: 13256 RVA: 0x001C2167 File Offset: 0x001C0367
-		// (set) Token: 0x060033C9 RID: 13257 RVA: 0x001C216F File Offset: 0x001C036F
 		public SceneManager.SceneName TransitionScene { get; private set; }
 
-		// Token: 0x17000771 RID: 1905
-		// (get) Token: 0x060033CA RID: 13258 RVA: 0x001C2178 File Offset: 0x001C0378
-		// (set) Token: 0x060033CB RID: 13259 RVA: 0x001C2180 File Offset: 0x001C0380
 		public int TransitionId { get; private set; }
 
-		// Token: 0x17000772 RID: 1906
-		// (get) Token: 0x060033CC RID: 13260 RVA: 0x001C2189 File Offset: 0x001C0389
-		// (set) Token: 0x060033CD RID: 13261 RVA: 0x001C2191 File Offset: 0x001C0391
 		public int RelType { get; private set; }
 
-		// Token: 0x060033CE RID: 13262 RVA: 0x001C219C File Offset: 0x001C039C
 		public StaticMissionData(MstMissionData mstMission)
 		{
 			this.MissionId = mstMission.missionId;
@@ -829,7 +730,6 @@ public class DataManagerMission
 			this.RelType = mstMission.relType;
 		}
 
-		// Token: 0x060033CF RID: 13263 RVA: 0x001C2280 File Offset: 0x001C0480
 		private MissionType Int2Missiontype(ref bool isSpecial, int type)
 		{
 			MissionType missionType;

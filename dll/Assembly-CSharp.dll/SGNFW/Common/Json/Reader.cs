@@ -1,17 +1,12 @@
-﻿using System;
+using System;
 using System.Globalization;
 
 namespace SGNFW.Common.Json
 {
-	// Token: 0x02000277 RID: 631
 	public class Reader
 	{
-		// Token: 0x170005BB RID: 1467
-		// (get) Token: 0x060026A5 RID: 9893 RVA: 0x001A2C30 File Offset: 0x001A0E30
-		// (set) Token: 0x060026A4 RID: 9892 RVA: 0x001A2C27 File Offset: 0x001A0E27
 		public bool IsError { get; private set; }
 
-		// Token: 0x060026A6 RID: 9894 RVA: 0x001A2C38 File Offset: 0x001A0E38
 		public Reader(string text)
 		{
 			Verbose<Verbose>.Enabled = true;
@@ -26,7 +21,6 @@ namespace SGNFW.Common.Json
 			}
 		}
 
-		// Token: 0x060026A7 RID: 9895 RVA: 0x001A2CD0 File Offset: 0x001A0ED0
 		public bool TrimWhiteSpace()
 		{
 			while (this.p < this.length)
@@ -76,7 +70,6 @@ namespace SGNFW.Common.Json
 			return this.p < this.length;
 		}
 
-		// Token: 0x060026A8 RID: 9896 RVA: 0x001A2E84 File Offset: 0x001A1084
 		public void ParseChar(ref Token token)
 		{
 			long num = 0L;
@@ -172,7 +165,6 @@ namespace SGNFW.Common.Json
 			this.IsError = true;
 		}
 
-		// Token: 0x060026A9 RID: 9897 RVA: 0x001A2FC4 File Offset: 0x001A11C4
 		public void ParseString(ref Token token)
 		{
 			this.bp_ = 0;
@@ -316,7 +308,6 @@ namespace SGNFW.Common.Json
 			this.IsError = true;
 		}
 
-		// Token: 0x060026AA RID: 9898 RVA: 0x001A3288 File Offset: 0x001A1488
 		private void prepareBuffer_()
 		{
 			if (this.bp_ + 4 >= this.bufferLength_)
@@ -329,7 +320,6 @@ namespace SGNFW.Common.Json
 			}
 		}
 
-		// Token: 0x060026AB RID: 9899 RVA: 0x001A32D8 File Offset: 0x001A14D8
 		public void ParseBooleanOrNull(ref Token token)
 		{
 			if (this.length - this.p >= 5 && string.Compare(this.text, this.p, "false", 0, 5) == 0)
@@ -358,7 +348,6 @@ namespace SGNFW.Common.Json
 			this.IsError = true;
 		}
 
-		// Token: 0x060026AC RID: 9900 RVA: 0x001A33AC File Offset: 0x001A15AC
 		public void ParseNumber(ref Token token)
 		{
 			int num = this.p;
@@ -378,7 +367,6 @@ namespace SGNFW.Common.Json
 			token.longValue = long.Parse(text);
 		}
 
-		// Token: 0x060026AD RID: 9901 RVA: 0x001A3440 File Offset: 0x001A1640
 		public Token GetToken()
 		{
 			Token token = default(Token);
@@ -485,7 +473,6 @@ namespace SGNFW.Common.Json
 			return token;
 		}
 
-		// Token: 0x060026AE RID: 9902 RVA: 0x001A3600 File Offset: 0x001A1800
 		public void SkipValue()
 		{
 			int num = 0;
@@ -511,28 +498,20 @@ namespace SGNFW.Common.Json
 			while (num > 0 || num2 > 0);
 		}
 
-		// Token: 0x04001C62 RID: 7266
 		private int p;
 
-		// Token: 0x04001C63 RID: 7267
 		private int length;
 
-		// Token: 0x04001C64 RID: 7268
 		private string text;
 
-		// Token: 0x04001C65 RID: 7269
 		private int line;
 
-		// Token: 0x04001C66 RID: 7270
 		private char[] buffer_ = new char[128];
 
-		// Token: 0x04001C67 RID: 7271
 		private int bufferLength_ = 128;
 
-		// Token: 0x04001C68 RID: 7272
 		private int bp_;
 
-		// Token: 0x04001C69 RID: 7273
 		private const int DEFAULT_BUFFER_LENGTH = 128;
 	}
 }

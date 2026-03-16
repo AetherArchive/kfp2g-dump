@@ -1,12 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SGNFW.Common.NativePlugin;
 using UnityEngine;
 
-// Token: 0x020000F6 RID: 246
 public class LocalPushUtil
 {
-	// Token: 0x06000BC3 RID: 3011 RVA: 0x000456D0 File Offset: 0x000438D0
 	public static void ResolveUnregistReserve()
 	{
 		LocalPushUtil.resolveTimeElapsed += Time.unscaledDeltaTime;
@@ -25,7 +23,6 @@ public class LocalPushUtil
 		}
 	}
 
-	// Token: 0x06000BC4 RID: 3012 RVA: 0x00045778 File Offset: 0x00043978
 	private static void RegisterLocalPushInternal(int id, string massage, DateTime setTime)
 	{
 		LocalPush.RegisterLocalPush(id, massage, setTime, null);
@@ -37,7 +34,6 @@ public class LocalPushUtil
 		PlayerPrefs.SetString(string.Format("lp_ureg{0}", id), LocalPushUtil.unregistReserveMap[id].unregistTime.ToString());
 	}
 
-	// Token: 0x06000BC5 RID: 3013 RVA: 0x000457E5 File Offset: 0x000439E5
 	private static void UnregisterLocalPushInternal(int id)
 	{
 		LocalPush.UnregisterLocalPush(id);
@@ -45,7 +41,6 @@ public class LocalPushUtil
 		PlayerPrefs.DeleteKey(string.Format("lp_ureg{0}", id));
 	}
 
-	// Token: 0x06000BC6 RID: 3014 RVA: 0x00045810 File Offset: 0x00043A10
 	public static void RestoreUnregistReserveMap()
 	{
 		DateTime now = TimeManager.Now;
@@ -64,7 +59,6 @@ public class LocalPushUtil
 		}
 	}
 
-	// Token: 0x06000BC7 RID: 3015 RVA: 0x00045884 File Offset: 0x00043A84
 	public static void ResolveNotification(LocalPushUtil.NotificationID id)
 	{
 		if (DataManager.DmUserInfo.optionData == null)
@@ -161,7 +155,6 @@ public class LocalPushUtil
 		}
 	}
 
-	// Token: 0x06000BC8 RID: 3016 RVA: 0x00045B10 File Offset: 0x00043D10
 	public static void ClaerNotification()
 	{
 		for (int i = 1; i < 6; i++)
@@ -170,38 +163,25 @@ public class LocalPushUtil
 		}
 	}
 
-	// Token: 0x0400092C RID: 2348
 	private static float resolveTimeElapsed = 0f;
 
-	// Token: 0x0400092D RID: 2349
 	private static Dictionary<int, LocalPushUtil.UnregistReserve> unregistReserveMap = new Dictionary<int, LocalPushUtil.UnregistReserve>();
 
-	// Token: 0x0200080D RID: 2061
 	private class UnregistReserve
 	{
-		// Token: 0x0400360D RID: 13837
 		public int pushId;
 
-		// Token: 0x0400360E RID: 13838
 		public long unregistTime;
 	}
 
-	// Token: 0x0200080E RID: 2062
 	public enum NotificationID
 	{
-		// Token: 0x04003610 RID: 13840
 		INVALID,
-		// Token: 0x04003611 RID: 13841
 		STAMINA_RECOVERY,
-		// Token: 0x04003612 RID: 13842
 		PVP_STAMINA_RECOVERY,
-		// Token: 0x04003613 RID: 13843
 		PICNIC_ENERGY_NOTHING,
-		// Token: 0x04003614 RID: 13844
 		COMEBACK1,
-		// Token: 0x04003615 RID: 13845
 		COMEBACK2,
-		// Token: 0x04003616 RID: 13846
 		MAX
 	}
 }

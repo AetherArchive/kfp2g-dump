@@ -1,19 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using SGNFW.Common;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x0200019F RID: 415
 public class FriendsFilterWindowCtrl
 {
-	// Token: 0x170003E0 RID: 992
-	// (get) Token: 0x06001B90 RID: 7056 RVA: 0x001600E5 File Offset: 0x0015E2E5
-	// (set) Token: 0x06001B91 RID: 7057 RVA: 0x001600ED File Offset: 0x0015E2ED
 	private string SearchText { get; set; }
 
-	// Token: 0x06001B92 RID: 7058 RVA: 0x001600F8 File Offset: 0x0015E2F8
 	public void Initialize(GameObject go)
 	{
 		this.winGUI = new FriendsFilterWindowCtrl.WindowGUI(go);
@@ -31,7 +26,6 @@ public class FriendsFilterWindowCtrl
 		});
 	}
 
-	// Token: 0x06001B93 RID: 7059 RVA: 0x001601D8 File Offset: 0x0015E3D8
 	public FriendsFilterWindowCtrl.FrameGUI CreateButtonFrame(string frameName, List<string> buttonNameList)
 	{
 		List<PguiToggleButtonCtrl> list = new List<PguiToggleButtonCtrl>();
@@ -47,13 +41,11 @@ public class FriendsFilterWindowCtrl
 		return new FriendsFilterWindowCtrl.FrameGUI(gameObject, list);
 	}
 
-	// Token: 0x06001B94 RID: 7060 RVA: 0x001602A8 File Offset: 0x0015E4A8
 	private void ExceptionCategoryNameMach(List<DataManagerChara.FilterData> sourceList)
 	{
 		sourceList.Find((DataManagerChara.FilterData item) => item.CategoryName != sourceList[0].CategoryName);
 	}
 
-	// Token: 0x06001B95 RID: 7061 RVA: 0x001602DC File Offset: 0x0015E4DC
 	public FriendsFilterWindowCtrl.BuffFrameGUI CreateMiracleButtonFrame(string frameName, List<string> enebleButtonNameList)
 	{
 		FriendsFilterWindowCtrl.<>c__DisplayClass16_0 CS$<>8__locals1 = new FriendsFilterWindowCtrl.<>c__DisplayClass16_0();
@@ -75,7 +67,6 @@ public class FriendsFilterWindowCtrl
 		return new FriendsFilterWindowCtrl.BuffFrameGUI(gameObject, null, list3, list4, null);
 	}
 
-	// Token: 0x06001B96 RID: 7062 RVA: 0x001603DC File Offset: 0x0015E5DC
 	public FriendsFilterWindowCtrl.BuffFrameGUI CreateCharacteristicButtonFrame(string frameName, List<string> enebleButtonNameList)
 	{
 		FriendsFilterWindowCtrl.<>c__DisplayClass17_0 CS$<>8__locals1 = new FriendsFilterWindowCtrl.<>c__DisplayClass17_0();
@@ -102,7 +93,6 @@ public class FriendsFilterWindowCtrl
 		return new FriendsFilterWindowCtrl.BuffFrameGUI(gameObject, list5, list6, list7, list8);
 	}
 
-	// Token: 0x06001B97 RID: 7063 RVA: 0x00160548 File Offset: 0x0015E748
 	public GameObject GetAssetObj(string frameName)
 	{
 		GameObject gameObject;
@@ -138,7 +128,6 @@ public class FriendsFilterWindowCtrl
 		return gameObject;
 	}
 
-	// Token: 0x06001B98 RID: 7064 RVA: 0x00160618 File Offset: 0x0015E818
 	public List<PguiToggleButtonCtrl> GetFilterButtonList(GameObject buttonObj, string frameName = "")
 	{
 		List<PguiToggleButtonCtrl> list = new List<PguiToggleButtonCtrl>();
@@ -187,7 +176,6 @@ public class FriendsFilterWindowCtrl
 		return list;
 	}
 
-	// Token: 0x06001B99 RID: 7065 RVA: 0x00160854 File Offset: 0x0015EA54
 	public void SetupWindow(List<string> enebleButtonNameList, SortFilterDefine.AndOrState andOrState, SortFilterDefine.AndOrState andOrStateResist)
 	{
 		if (this.winGUI.frameMiracle == null)
@@ -200,7 +188,6 @@ public class FriendsFilterWindowCtrl
 		}
 	}
 
-	// Token: 0x06001B9A RID: 7066 RVA: 0x001608B4 File Offset: 0x0015EAB4
 	public void SetupAttributeTupe(List<CharaDef.AttributeType> attributeList)
 	{
 		for (int i = 0; i < this.winGUI.frameType.buttonList.Count; i++)
@@ -212,7 +199,6 @@ public class FriendsFilterWindowCtrl
 		}
 	}
 
-	// Token: 0x06001B9B RID: 7067 RVA: 0x00160968 File Offset: 0x0015EB68
 	public void SetupFriend(bool[] registButtonList)
 	{
 		for (int i = 0; i < this.winGUI.frameFriends.buttonList.Count; i++)
@@ -224,7 +210,6 @@ public class FriendsFilterWindowCtrl
 		}
 	}
 
-	// Token: 0x06001B9C RID: 7068 RVA: 0x00160A14 File Offset: 0x0015EC14
 	public void SetupFavorite(bool[] registButtonList)
 	{
 		for (int i = 0; i < this.winGUI.frameFavorite.buttonList.Count; i++)
@@ -236,7 +221,6 @@ public class FriendsFilterWindowCtrl
 		}
 	}
 
-	// Token: 0x06001B9D RID: 7069 RVA: 0x00160AC0 File Offset: 0x0015ECC0
 	public void SetupEvent(List<int> registEventList)
 	{
 		for (int i = 0; i < this.winGUI.frameEvent.buttonList.Count; i++)
@@ -270,14 +254,12 @@ public class FriendsFilterWindowCtrl
 		}
 	}
 
-	// Token: 0x06001B9E RID: 7070 RVA: 0x00160C6A File Offset: 0x0015EE6A
 	public void SetupSearchText(string searchText)
 	{
 		this.SearchText = searchText;
 		this.windowTextSearchChange.InputField.text = searchText;
 	}
 
-	// Token: 0x06001B9F RID: 7071 RVA: 0x00160C84 File Offset: 0x0015EE84
 	public void SetupCharacteristic(List<int> regConditionList, List<int> targetList, List<int> effectList, List<int> resistList)
 	{
 		for (int i = 0; i < this.winGUI.frameCharacteristic.conditionsButtonList.Count; i++)
@@ -326,7 +308,6 @@ public class FriendsFilterWindowCtrl
 		}
 	}
 
-	// Token: 0x06001BA0 RID: 7072 RVA: 0x00160E20 File Offset: 0x0015F020
 	public void SetupMiracle(List<int> target, List<int> effect)
 	{
 		for (int i = 0; i < this.winGUI.frameMiracle.targetButtonList.Count; i++)
@@ -353,14 +334,12 @@ public class FriendsFilterWindowCtrl
 		}
 	}
 
-	// Token: 0x06001BA1 RID: 7073 RVA: 0x00160EF3 File Offset: 0x0015F0F3
 	public bool OnClickAttributeButton(int btnIdx, int toggleIdx)
 	{
 		this.winGUI.frameType.buttonList[btnIdx].SetToggleIndex(toggleIdx);
 		return true;
 	}
 
-	// Token: 0x06001BA2 RID: 7074 RVA: 0x00160F14 File Offset: 0x0015F114
 	public bool OnClickFriendsButton(int btnIdx, int toggleIdx)
 	{
 		foreach (PguiToggleButtonCtrl pguiToggleButtonCtrl in this.winGUI.frameFriends.buttonList)
@@ -371,7 +350,6 @@ public class FriendsFilterWindowCtrl
 		return true;
 	}
 
-	// Token: 0x06001BA3 RID: 7075 RVA: 0x00160F8C File Offset: 0x0015F18C
 	public bool OnClickFavoriteButton(int btnIdx, int toggleIdx)
 	{
 		foreach (PguiToggleButtonCtrl pguiToggleButtonCtrl in this.winGUI.frameFavorite.buttonList)
@@ -382,14 +360,12 @@ public class FriendsFilterWindowCtrl
 		return true;
 	}
 
-	// Token: 0x06001BA4 RID: 7076 RVA: 0x00161004 File Offset: 0x0015F204
 	public bool OnClickFriendsEventButton(int btnIdx, int toggleIdx)
 	{
 		this.winGUI.frameEvent.buttonList[btnIdx].SetToggleIndex(toggleIdx);
 		return true;
 	}
 
-	// Token: 0x06001BA5 RID: 7077 RVA: 0x00161023 File Offset: 0x0015F223
 	private void RegistMiracle(SortFilterDefine.FriendsMiracleFileterCategory category, DataManagerChara.FilterData source, int toggleIdx)
 	{
 		if (toggleIdx == 0)
@@ -400,7 +376,6 @@ public class FriendsFilterWindowCtrl
 		this.friendsMiracleEnableListMap[category].Remove(source);
 	}
 
-	// Token: 0x06001BA6 RID: 7078 RVA: 0x00161051 File Offset: 0x0015F251
 	private void RegistCharacteristic(SortFilterDefine.FriendsCharacteristicFilterCategory category, DataManagerChara.FilterData source, int toggleIdx)
 	{
 		if (toggleIdx == 0)
@@ -411,7 +386,6 @@ public class FriendsFilterWindowCtrl
 		this.friendsCharacteristicEnableListMap[category].Remove(source);
 	}
 
-	// Token: 0x06001BA7 RID: 7079 RVA: 0x0016107F File Offset: 0x0015F27F
 	public bool OnClickMiracleBuffOrAnd(bool isOr, int toggleIdx)
 	{
 		if (1 == toggleIdx)
@@ -429,7 +403,6 @@ public class FriendsFilterWindowCtrl
 		return true;
 	}
 
-	// Token: 0x06001BA8 RID: 7080 RVA: 0x001610AF File Offset: 0x0015F2AF
 	public bool OnClickCharacteristicBuffOrAnd(bool isOr, int toggleIdx)
 	{
 		if (1 == toggleIdx)
@@ -447,7 +420,6 @@ public class FriendsFilterWindowCtrl
 		return true;
 	}
 
-	// Token: 0x06001BA9 RID: 7081 RVA: 0x001610DF File Offset: 0x0015F2DF
 	private bool OnClickCharacteristicResistOrAnd(bool isOr, int toggleIdx)
 	{
 		if (1 == toggleIdx)
@@ -465,49 +437,42 @@ public class FriendsFilterWindowCtrl
 		return true;
 	}
 
-	// Token: 0x06001BAA RID: 7082 RVA: 0x0016110F File Offset: 0x0015F30F
 	public bool OnClickMiracleTarget(DataManagerChara.FilterData source, int btnIdx, int toggleIdx)
 	{
 		this.RegistMiracle(SortFilterDefine.FriendsMiracleFileterCategory.Target, source, toggleIdx);
 		return true;
 	}
 
-	// Token: 0x06001BAB RID: 7083 RVA: 0x0016111B File Offset: 0x0015F31B
 	public bool OnClickMiracleEffect(DataManagerChara.FilterData source, int btnIdx, int toggleIdx)
 	{
 		this.RegistMiracle(SortFilterDefine.FriendsMiracleFileterCategory.Effect, source, toggleIdx);
 		return true;
 	}
 
-	// Token: 0x06001BAC RID: 7084 RVA: 0x00161127 File Offset: 0x0015F327
 	public bool OnClickBuffCharacteristicCondition(DataManagerChara.FilterData source, int btnIdx, int toggleIdx)
 	{
 		this.RegistCharacteristic(SortFilterDefine.FriendsCharacteristicFilterCategory.Conditions, source, toggleIdx);
 		return true;
 	}
 
-	// Token: 0x06001BAD RID: 7085 RVA: 0x00161133 File Offset: 0x0015F333
 	public bool OnClickBuffCharacteristicTarget(DataManagerChara.FilterData source, int btnIdx, int toggleIdx)
 	{
 		this.RegistCharacteristic(SortFilterDefine.FriendsCharacteristicFilterCategory.Target, source, toggleIdx);
 		return true;
 	}
 
-	// Token: 0x06001BAE RID: 7086 RVA: 0x0016113F File Offset: 0x0015F33F
 	public bool OnClickBuffCharacteristicEffect(DataManagerChara.FilterData source, int btnIdx, int toggleIdx)
 	{
 		this.RegistCharacteristic(SortFilterDefine.FriendsCharacteristicFilterCategory.Effect, source, toggleIdx);
 		return true;
 	}
 
-	// Token: 0x06001BAF RID: 7087 RVA: 0x0016114B File Offset: 0x0015F34B
 	public bool OnClickBuffCharacteristicResist(DataManagerChara.FilterData source, int btnIdx, int toggleIdx)
 	{
 		this.RegistCharacteristic(SortFilterDefine.FriendsCharacteristicFilterCategory.Resist, source, toggleIdx);
 		return true;
 	}
 
-	// Token: 0x06001BB0 RID: 7088 RVA: 0x00161158 File Offset: 0x0015F358
 	public List<CharaDef.AttributeType> GetAttributeButtonStatus()
 	{
 		List<PguiToggleButtonCtrl> buttonList = this.winGUI.frameType.buttonList;
@@ -522,7 +487,6 @@ public class FriendsFilterWindowCtrl
 		return list;
 	}
 
-	// Token: 0x06001BB1 RID: 7089 RVA: 0x001611A8 File Offset: 0x0015F3A8
 	public List<int> GetEventButtonStatus()
 	{
 		List<int> validEventIdListWithoutMissionEvent = DataManager.DmEvent.GetValidEventIdListWithoutMissionEvent();
@@ -546,7 +510,6 @@ public class FriendsFilterWindowCtrl
 		return list2;
 	}
 
-	// Token: 0x06001BB2 RID: 7090 RVA: 0x00161268 File Offset: 0x0015F468
 	public bool[] GetFavoriteButtonStatus()
 	{
 		List<PguiToggleButtonCtrl> buttonList = this.winGUI.frameFavorite.buttonList;
@@ -561,7 +524,6 @@ public class FriendsFilterWindowCtrl
 		return array;
 	}
 
-	// Token: 0x06001BB3 RID: 7091 RVA: 0x001612B4 File Offset: 0x0015F4B4
 	public bool[] GetFriendButtonStatus()
 	{
 		List<PguiToggleButtonCtrl> buttonList = this.winGUI.frameFriends.buttonList;
@@ -576,7 +538,6 @@ public class FriendsFilterWindowCtrl
 		return array;
 	}
 
-	// Token: 0x06001BB4 RID: 7092 RVA: 0x00161300 File Offset: 0x0015F500
 	public SortFilterDefine.AndOrState GetMiracleAndORStatus()
 	{
 		if (this.winGUI.frameMiracle == null)
@@ -601,7 +562,6 @@ public class FriendsFilterWindowCtrl
 		return andOrState;
 	}
 
-	// Token: 0x06001BB5 RID: 7093 RVA: 0x0016135C File Offset: 0x0015F55C
 	public SortFilterDefine.AndOrState GetCharacteristicEffectAndOrStatus()
 	{
 		if (this.winGUI.frameMiracle == null)
@@ -626,13 +586,11 @@ public class FriendsFilterWindowCtrl
 		return andOrState;
 	}
 
-	// Token: 0x06001BB6 RID: 7094 RVA: 0x001613B7 File Offset: 0x0015F5B7
 	public string GetSearchText()
 	{
 		return this.windowTextSearchChange.InputField.text;
 	}
 
-	// Token: 0x06001BB7 RID: 7095 RVA: 0x001613CC File Offset: 0x0015F5CC
 	public List<DataManagerChara.FilterData> GetMiracleTargetDataList()
 	{
 		if (this.friendsMiracleEnableListMap == null)
@@ -655,7 +613,6 @@ public class FriendsFilterWindowCtrl
 		return list2;
 	}
 
-	// Token: 0x06001BB8 RID: 7096 RVA: 0x00161480 File Offset: 0x0015F680
 	public List<DataManagerChara.FilterData> GetMiracleEffectDataList()
 	{
 		if (this.friendsMiracleEnableListMap == null)
@@ -678,7 +635,6 @@ public class FriendsFilterWindowCtrl
 		return list2;
 	}
 
-	// Token: 0x06001BB9 RID: 7097 RVA: 0x00161534 File Offset: 0x0015F734
 	public List<DataManagerChara.FilterData> GetCharacteristicConditionsDataList()
 	{
 		if (this.friendsCharacteristicEnableListMap == null)
@@ -701,7 +657,6 @@ public class FriendsFilterWindowCtrl
 		return list2;
 	}
 
-	// Token: 0x06001BBA RID: 7098 RVA: 0x001615E8 File Offset: 0x0015F7E8
 	public List<DataManagerChara.FilterData> GetCharacteristicTargetDataList()
 	{
 		if (this.friendsCharacteristicEnableListMap == null)
@@ -724,7 +679,6 @@ public class FriendsFilterWindowCtrl
 		return list2;
 	}
 
-	// Token: 0x06001BBB RID: 7099 RVA: 0x0016169C File Offset: 0x0015F89C
 	public List<DataManagerChara.FilterData> GetCharacteristicEffectDataList()
 	{
 		if (this.friendsCharacteristicEnableListMap == null)
@@ -747,7 +701,6 @@ public class FriendsFilterWindowCtrl
 		return list2;
 	}
 
-	// Token: 0x06001BBC RID: 7100 RVA: 0x00161750 File Offset: 0x0015F950
 	public List<DataManagerChara.FilterData> GetCharacteristicResistDataList()
 	{
 		if (this.friendsCharacteristicEnableListMap == null)
@@ -770,7 +723,6 @@ public class FriendsFilterWindowCtrl
 		return list2;
 	}
 
-	// Token: 0x06001BBD RID: 7101 RVA: 0x00161804 File Offset: 0x0015FA04
 	public SortFilterDefine.AndOrState GetCharacteristicResistAndOrStatus()
 	{
 		if (this.winGUI.frameMiracle == null)
@@ -795,7 +747,6 @@ public class FriendsFilterWindowCtrl
 		return andOrState;
 	}
 
-	// Token: 0x06001BBE RID: 7102 RVA: 0x00161860 File Offset: 0x0015FA60
 	private void OnClickReset(PguiButtonCtrl clickBtn)
 	{
 		FriendsFilterWindowCtrl.<OnClickReset>g__ResetButton|57_0(this.winGUI.frameType.buttonList);
@@ -822,7 +773,6 @@ public class FriendsFilterWindowCtrl
 		}
 	}
 
-	// Token: 0x06001BBF RID: 7103 RVA: 0x001619D0 File Offset: 0x0015FBD0
 	public List<int> getMiracleTargetButtonIdx()
 	{
 		List<int> list = new List<int>();
@@ -836,7 +786,6 @@ public class FriendsFilterWindowCtrl
 		return list;
 	}
 
-	// Token: 0x06001BC0 RID: 7104 RVA: 0x00161A2C File Offset: 0x0015FC2C
 	public List<int> getMiracleEffectButtonIdx()
 	{
 		List<int> list = new List<int>();
@@ -850,7 +799,6 @@ public class FriendsFilterWindowCtrl
 		return list;
 	}
 
-	// Token: 0x06001BC1 RID: 7105 RVA: 0x00161A88 File Offset: 0x0015FC88
 	public List<int> getCharacterisiticConditionsButtonIdx()
 	{
 		List<int> list = new List<int>();
@@ -864,7 +812,6 @@ public class FriendsFilterWindowCtrl
 		return list;
 	}
 
-	// Token: 0x06001BC2 RID: 7106 RVA: 0x00161AE4 File Offset: 0x0015FCE4
 	public List<int> getCharacterisiticTargetButtonIdx()
 	{
 		List<int> list = new List<int>();
@@ -878,7 +825,6 @@ public class FriendsFilterWindowCtrl
 		return list;
 	}
 
-	// Token: 0x06001BC3 RID: 7107 RVA: 0x00161B40 File Offset: 0x0015FD40
 	public List<int> getCharacterisiticEffectButtonIdx()
 	{
 		List<int> list = new List<int>();
@@ -892,7 +838,6 @@ public class FriendsFilterWindowCtrl
 		return list;
 	}
 
-	// Token: 0x06001BC4 RID: 7108 RVA: 0x00161B9C File Offset: 0x0015FD9C
 	public List<int> getCharacterisiticResistButtonIdx()
 	{
 		List<int> list = new List<int>();
@@ -906,7 +851,6 @@ public class FriendsFilterWindowCtrl
 		return list;
 	}
 
-	// Token: 0x06001BC5 RID: 7109 RVA: 0x00161BF8 File Offset: 0x0015FDF8
 	public void ResetSearchText()
 	{
 		if (this.windowTextSearchChange.InputField.text.Length == 0)
@@ -916,7 +860,6 @@ public class FriendsFilterWindowCtrl
 		this.windowTextSearchChange.InputField.text = this.SearchText;
 	}
 
-	// Token: 0x06001BC6 RID: 7110 RVA: 0x00161C48 File Offset: 0x0015FE48
 	public void SetupSearchTextActive()
 	{
 		if (this.windowTextSearchChange.TextTransform != null)
@@ -925,7 +868,6 @@ public class FriendsFilterWindowCtrl
 		}
 	}
 
-	// Token: 0x06001BC9 RID: 7113 RVA: 0x00161CAC File Offset: 0x0015FEAC
 	[CompilerGenerated]
 	internal static void <OnClickReset>g__ResetButton|57_0(List<PguiToggleButtonCtrl> btnList)
 	{
@@ -939,22 +881,16 @@ public class FriendsFilterWindowCtrl
 		}
 	}
 
-	// Token: 0x040014AD RID: 5293
 	private FriendsFilterWindowCtrl.WindowGUI winGUI;
 
-	// Token: 0x040014AE RID: 5294
 	private Dictionary<SortFilterDefine.FriendsCharacteristicFilterCategory, List<DataManagerChara.FilterData>> friendsCharacteristicEnableListMap;
 
-	// Token: 0x040014AF RID: 5295
 	private Dictionary<SortFilterDefine.FriendsMiracleFileterCategory, List<DataManagerChara.FilterData>> friendsMiracleEnableListMap;
 
-	// Token: 0x040014B0 RID: 5296
 	private FriendsFilterWindowCtrl.WindowTextSearchChange windowTextSearchChange;
 
-	// Token: 0x02000ECB RID: 3787
 	public class WindowGUI
 	{
-		// Token: 0x06004DC4 RID: 19908 RVA: 0x00233F04 File Offset: 0x00232104
 		public WindowGUI(GameObject go)
 		{
 			this.baseObj = go;
@@ -980,94 +916,66 @@ public class FriendsFilterWindowCtrl
 			verticalLayoutGroup.childForceExpandHeight = true;
 		}
 
-		// Token: 0x040054B8 RID: 21688
 		public GameObject baseObj;
 
-		// Token: 0x040054B9 RID: 21689
 		public PguiOpenWindowCtrl baseWindow;
 
-		// Token: 0x040054BA RID: 21690
 		public GameObject radioBtns;
 
-		// Token: 0x040054BB RID: 21691
 		public PguiButtonCtrl resetButton;
 
-		// Token: 0x040054BC RID: 21692
 		public ScrollRect scrollRect;
 
-		// Token: 0x040054BD RID: 21693
 		public GameObject scrollContent;
 
-		// Token: 0x040054BE RID: 21694
 		public ContentSizeFitter scrollContentSizeFilter;
 
-		// Token: 0x040054BF RID: 21695
 		public GameObject scrollContentbasePanel;
 
-		// Token: 0x040054C0 RID: 21696
 		public FriendsFilterWindowCtrl.FrameGUI frameType;
 
-		// Token: 0x040054C1 RID: 21697
 		public FriendsFilterWindowCtrl.FrameGUI frameFriends;
 
-		// Token: 0x040054C2 RID: 21698
 		public FriendsFilterWindowCtrl.FrameGUI frameFavorite;
 
-		// Token: 0x040054C3 RID: 21699
 		public FriendsFilterWindowCtrl.FrameGUI frameEvent;
 
-		// Token: 0x040054C4 RID: 21700
 		public FriendsFilterWindowCtrl.FrameGUI frameLevel;
 
-		// Token: 0x040054C5 RID: 21701
 		public FriendsFilterWindowCtrl.BuffFrameGUI frameMiracle;
 
-		// Token: 0x040054C6 RID: 21702
 		public FriendsFilterWindowCtrl.BuffFrameGUI frameCharacteristic;
 
-		// Token: 0x040054C7 RID: 21703
 		public PguiToggleButtonCtrl frameMiracleEffectOrBtn;
 
-		// Token: 0x040054C8 RID: 21704
 		public PguiToggleButtonCtrl frameMiracleEffectAndBtn;
 
-		// Token: 0x040054C9 RID: 21705
 		public PguiToggleButtonCtrl frameCharacteristicEffectOrBtn;
 
-		// Token: 0x040054CA RID: 21706
 		public PguiToggleButtonCtrl frameCharacteristicEffectAndBtn;
 
-		// Token: 0x040054CB RID: 21707
 		public PguiToggleButtonCtrl frameCharacteristicResistAndBtn;
 
-		// Token: 0x040054CC RID: 21708
 		public PguiToggleButtonCtrl frameCharacteristicResistOrBtn;
 
-		// Token: 0x040054CD RID: 21709
 		public SortFilterDefine.PhotoFilterType filterType;
 	}
 
-	// Token: 0x02000ECC RID: 3788
 	public class FrameGUI
 	{
-		// Token: 0x06004DC5 RID: 19909 RVA: 0x0023408E File Offset: 0x0023228E
 		public FrameGUI(GameObject go, List<PguiToggleButtonCtrl> btnList)
 		{
 			this.baseObj = go;
 			this.buttonList = btnList;
 		}
 
-		// Token: 0x040054CE RID: 21710
 		public GameObject baseObj;
 
-		// Token: 0x040054CF RID: 21711
 		public List<PguiToggleButtonCtrl> buttonList;
 	}
 
-	// Token: 0x02000ECD RID: 3789
 	public class BuffFrameGUI
 	{
-		// Token: 0x06004DC6 RID: 19910 RVA: 0x002340A4 File Offset: 0x002322A4
 		public BuffFrameGUI(GameObject go, List<PguiToggleButtonCtrl> conditionList, List<PguiToggleButtonCtrl> targetList, List<PguiToggleButtonCtrl> effectList, List<PguiToggleButtonCtrl> resistList)
 		{
 			this.baseObj = go;
@@ -1078,8 +986,6 @@ public class FriendsFilterWindowCtrl
 			this.resistButtonList = resistList;
 		}
 
-		// Token: 0x17000B56 RID: 2902
-		// (get) Token: 0x06004DC7 RID: 19911 RVA: 0x002340FC File Offset: 0x002322FC
 		public List<PguiToggleButtonCtrl> buttonList
 		{
 			get
@@ -1105,7 +1011,6 @@ public class FriendsFilterWindowCtrl
 			}
 		}
 
-		// Token: 0x06004DC8 RID: 19912 RVA: 0x00234160 File Offset: 0x00232360
 		public void ObjectDestroy()
 		{
 			Object.Destroy(this.baseObj);
@@ -1114,36 +1019,26 @@ public class FriendsFilterWindowCtrl
 			this.effectButtonList = null;
 		}
 
-		// Token: 0x040054D0 RID: 21712
 		public GameObject baseObj;
 
-		// Token: 0x040054D1 RID: 21713
 		public List<PguiToggleButtonCtrl> conditionsButtonList;
 
-		// Token: 0x040054D2 RID: 21714
 		public List<PguiToggleButtonCtrl> targetButtonList;
 
-		// Token: 0x040054D3 RID: 21715
 		public List<PguiToggleButtonCtrl> effectButtonList;
 
-		// Token: 0x040054D4 RID: 21716
 		public List<PguiToggleButtonCtrl> resistButtonList;
 	}
 
-	// Token: 0x02000ECE RID: 3790
 	public class ButtonObject
 	{
-		// Token: 0x040054D5 RID: 21717
 		private CharaDef.ActionBuffType buffType;
 
-		// Token: 0x040054D6 RID: 21718
 		private string DispName;
 	}
 
-	// Token: 0x02000ECF RID: 3791
 	public class WindowTextSearchChange
 	{
-		// Token: 0x06004DCA RID: 19914 RVA: 0x0023418A File Offset: 0x0023238A
 		public WindowTextSearchChange(Transform baseTr)
 		{
 			this.InputField = baseTr.Find("Base/Window/ScrollView/Viewport/Content/Box00/InputField").GetComponent<InputField>();
@@ -1151,10 +1046,8 @@ public class FriendsFilterWindowCtrl
 			this.InputField.lineType = InputField.LineType.SingleLine;
 		}
 
-		// Token: 0x040054D7 RID: 21719
 		public InputField InputField;
 
-		// Token: 0x040054D8 RID: 21720
 		public Transform TextTransform;
 	}
 }

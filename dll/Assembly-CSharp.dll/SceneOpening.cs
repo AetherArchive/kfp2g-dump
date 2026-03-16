@@ -1,13 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using SGNFW.Common;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x02000154 RID: 340
 public class SceneOpening : BaseScene
 {
-	// Token: 0x06001385 RID: 4997 RVA: 0x000F1770 File Offset: 0x000EF970
 	public override void OnCreateScene()
 	{
 		this.basePanel = new GameObject("GUI_Opening", new Type[] { typeof(RectTransform) });
@@ -27,7 +25,6 @@ public class SceneOpening : BaseScene
 		this.ctrlPanel.gameObject.SetActive(false);
 	}
 
-	// Token: 0x06001386 RID: 4998 RVA: 0x000F18C4 File Offset: 0x000EFAC4
 	public override void OnEnableScene(object args)
 	{
 		this.basePanel.SetActive(true);
@@ -38,12 +35,10 @@ public class SceneOpening : BaseScene
 		this.step = SceneOpening.STEP.INIT;
 	}
 
-	// Token: 0x06001387 RID: 4999 RVA: 0x000F1917 File Offset: 0x000EFB17
 	public override void OnStartControl()
 	{
 	}
 
-	// Token: 0x06001388 RID: 5000 RVA: 0x000F191C File Offset: 0x000EFB1C
 	public override void Update()
 	{
 		switch (this.step)
@@ -136,7 +131,6 @@ public class SceneOpening : BaseScene
 		}
 	}
 
-	// Token: 0x06001389 RID: 5001 RVA: 0x000F1BA3 File Offset: 0x000EFDA3
 	public override void OnDisableScene()
 	{
 		this.moviePanel.SetActive(false);
@@ -144,7 +138,6 @@ public class SceneOpening : BaseScene
 		this.ctrlPanel.gameObject.SetActive(false);
 	}
 
-	// Token: 0x0600138A RID: 5002 RVA: 0x000F1BCE File Offset: 0x000EFDCE
 	public override void OnDestroyScene()
 	{
 		this.moviePanel = null;
@@ -154,7 +147,6 @@ public class SceneOpening : BaseScene
 		this.ctrlPanel = null;
 	}
 
-	// Token: 0x0600138B RID: 5003 RVA: 0x000F1C00 File Offset: 0x000EFE00
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		if (button == this.ctrlData.BtnSkip)
@@ -187,55 +179,37 @@ public class SceneOpening : BaseScene
 		}
 	}
 
-	// Token: 0x0400103B RID: 4155
 	private GameObject basePanel;
 
-	// Token: 0x0400103C RID: 4156
 	private GameObject moviePanel;
 
-	// Token: 0x0400103D RID: 4157
 	private SceneOpening.STEP step;
 
-	// Token: 0x0400103E RID: 4158
 	private IEnumerator load;
 
-	// Token: 0x0400103F RID: 4159
 	private bool cancel;
 
-	// Token: 0x04001040 RID: 4160
 	private SimpleAnimation ctrlPanel;
 
-	// Token: 0x04001041 RID: 4161
 	private SceneOpening.CTRL ctrlData;
 
-	// Token: 0x04001042 RID: 4162
 	private float movieTime;
 
-	// Token: 0x04001043 RID: 4163
 	private float seekTime;
 
-	// Token: 0x04001044 RID: 4164
 	private static readonly float CTRL_TIME = 1.5f;
 
-	// Token: 0x02000B3A RID: 2874
 	private enum STEP
 	{
-		// Token: 0x04004684 RID: 18052
 		INIT,
-		// Token: 0x04004685 RID: 18053
 		DOWNLOAD,
-		// Token: 0x04004686 RID: 18054
 		PLAY,
-		// Token: 0x04004687 RID: 18055
 		STOP,
-		// Token: 0x04004688 RID: 18056
 		END
 	}
 
-	// Token: 0x02000B3B RID: 2875
 	public class CTRL
 	{
-		// Token: 0x0600421E RID: 16926 RVA: 0x001FEB48 File Offset: 0x001FCD48
 		public CTRL(Transform baseTr)
 		{
 			this.BtnSkip = baseTr.Find("All/Btn_Skip").GetComponent<PguiButtonCtrl>();
@@ -244,16 +218,12 @@ public class SceneOpening : BaseScene
 			this.seek = baseTr.Find("All/SeekBar").GetComponent<PguiSlider>();
 		}
 
-		// Token: 0x04004689 RID: 18057
 		public PguiButtonCtrl BtnSkip;
 
-		// Token: 0x0400468A RID: 18058
 		public PguiButtonCtrl BtnPlay;
 
-		// Token: 0x0400468B RID: 18059
 		public PguiButtonCtrl BtnStop;
 
-		// Token: 0x0400468C RID: 18060
 		public PguiSlider seek;
 	}
 }

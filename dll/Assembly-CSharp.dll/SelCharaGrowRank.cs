@@ -1,13 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
 using UnityEngine;
 
-// Token: 0x02000136 RID: 310
 public class SelCharaGrowRank
 {
-	// Token: 0x06001078 RID: 4216 RVA: 0x000C872C File Offset: 0x000C692C
 	public SelCharaGrowRank(Transform baseTr)
 	{
 		this.GrowRankGUI = new SelCharaGrowRank.CharaGrowRankGUI();
@@ -19,7 +17,6 @@ public class SelCharaGrowRank
 		this.GrowRankGUI.rankUpTab = new SelCharaGrowRank.RankUpTab(baseTr.Find("CharaGrow_Main").Find("Main/Right/RankUp"));
 	}
 
-	// Token: 0x06001079 RID: 4217 RVA: 0x000C8818 File Offset: 0x000C6A18
 	public void SetupItemRank(int charaId)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(charaId);
@@ -46,19 +43,15 @@ public class SelCharaGrowRank
 		this.GrowRankGUI.rankUpTab.Txt_ItemName.text = itemStaticBase.GetName();
 	}
 
-	// Token: 0x0600107A RID: 4218 RVA: 0x000C89B1 File Offset: 0x000C6BB1
 	public void UpdateItemRankUp(int charaId)
 	{
 		this.SetupItemRank(charaId);
 	}
 
-	// Token: 0x04000E56 RID: 3670
 	public SelCharaGrowRank.CharaGrowRankGUI GrowRankGUI;
 
-	// Token: 0x02000A20 RID: 2592
 	public class RankUpItem
 	{
-		// Token: 0x06003E6E RID: 15982 RVA: 0x001E9878 File Offset: 0x001E7A78
 		public RankUpItem(GrowItemData data)
 		{
 			this.itemStatic = DataManager.DmItem.GetItemStaticBase(data.item.id);
@@ -66,20 +59,15 @@ public class SelCharaGrowRank
 			this.itemNeedNum = data.item.num;
 		}
 
-		// Token: 0x040040D1 RID: 16593
 		public ItemStaticBase itemStatic;
 
-		// Token: 0x040040D2 RID: 16594
 		public int itemOwnNum;
 
-		// Token: 0x040040D3 RID: 16595
 		public int itemNeedNum;
 	}
 
-	// Token: 0x02000A21 RID: 2593
 	public class RankUpTab
 	{
-		// Token: 0x06003E6F RID: 15983 RVA: 0x001E98D8 File Offset: 0x001E7AD8
 		public RankUpTab(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -94,29 +82,21 @@ public class SelCharaGrowRank
 			}
 		}
 
-		// Token: 0x040040D4 RID: 16596
 		public GameObject baseObj;
 
-		// Token: 0x040040D5 RID: 16597
 		public PguiTextCtrl Txt_ItemName;
 
-		// Token: 0x040040D6 RID: 16598
 		public PguiTextCtrl Num_Item;
 
-		// Token: 0x040040D7 RID: 16599
 		public GameObject Icon_Item;
 
-		// Token: 0x040040D8 RID: 16600
 		public IconItemCtrl ItemIconCtrl;
 
-		// Token: 0x040040D9 RID: 16601
 		public PguiImageCtrl GageAll;
 	}
 
-	// Token: 0x02000A22 RID: 2594
 	public class WindowRankUp
 	{
-		// Token: 0x06003E70 RID: 15984 RVA: 0x001E99B4 File Offset: 0x001E7BB4
 		public WindowRankUp(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -143,44 +123,31 @@ public class SelCharaGrowRank
 			baseTr.Find("Base/Window/ParamAll/Info05").gameObject.SetActive(false);
 		}
 
-		// Token: 0x040040DA RID: 16602
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x040040DB RID: 16603
 		public IconCharaCtrl iconChara;
 
-		// Token: 0x040040DC RID: 16604
 		public GameObject iconCharaObject;
 
-		// Token: 0x040040DD RID: 16605
 		public PguiTextCtrl Txt_CharaName;
 
-		// Token: 0x040040DE RID: 16606
 		public PguiTextCtrl UseItem_Num_Before;
 
-		// Token: 0x040040DF RID: 16607
 		public PguiTextCtrl UseItem_Num_After;
 
-		// Token: 0x040040E0 RID: 16608
 		public PguiTextCtrl UseCoin_Num_Before;
 
-		// Token: 0x040040E1 RID: 16609
 		public PguiTextCtrl UseCoin_Num_After;
 
-		// Token: 0x040040E2 RID: 16610
 		public List<PguiImageCtrl> StarAll;
 
-		// Token: 0x040040E3 RID: 16611
 		public List<PguiImageCtrl> StarAddAll;
 
-		// Token: 0x040040E4 RID: 16612
 		public List<PguiTextCtrl> ParamAll;
 	}
 
-	// Token: 0x02000A23 RID: 2595
 	public class WindowRankUpResult
 	{
-		// Token: 0x06003E71 RID: 15985 RVA: 0x001E9B6C File Offset: 0x001E7D6C
 		public WindowRankUpResult(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -201,29 +168,21 @@ public class SelCharaGrowRank
 			this.Txt_GetInfo = baseTr.Find("Base/Window/Txt_GetInfo").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x040040E5 RID: 16613
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x040040E6 RID: 16614
 		public IconCharaCtrl iconChara;
 
-		// Token: 0x040040E7 RID: 16615
 		public PguiTextCtrl Txt_CharaName;
 
-		// Token: 0x040040E8 RID: 16616
 		public List<PguiImageCtrl> StarAll;
 
-		// Token: 0x040040E9 RID: 16617
 		public List<PguiTextCtrl> ParamAll;
 
-		// Token: 0x040040EA RID: 16618
 		public PguiTextCtrl Txt_GetInfo;
 	}
 
-	// Token: 0x02000A24 RID: 2596
 	public class RankUpAuth
 	{
-		// Token: 0x06003E72 RID: 15986 RVA: 0x001E9C8C File Offset: 0x001E7E8C
 		public RankUpAuth(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -240,7 +199,6 @@ public class SelCharaGrowRank
 			}
 		}
 
-		// Token: 0x06003E73 RID: 15987 RVA: 0x001E9D7C File Offset: 0x001E7F7C
 		public void Setup(int currentCharaId, SelCharaGrowRank.RankUpAuth.SIZE size, int rtcLayer, int beforeRank = 0)
 		{
 			SoundManager.Play("prd_se_friends_rankup", false, false);
@@ -320,7 +278,6 @@ public class SelCharaGrowRank
 			Singleton<SceneManager>.Instance.StartCoroutine(this.SetFacePack());
 		}
 
-		// Token: 0x06003E74 RID: 15988 RVA: 0x001EA006 File Offset: 0x001E8206
 		private IEnumerator SetFacePack()
 		{
 			while (!this.rtc.FinishedSetup)
@@ -331,7 +288,6 @@ public class SelCharaGrowRank
 			yield break;
 		}
 
-		// Token: 0x06003E75 RID: 15989 RVA: 0x001EA015 File Offset: 0x001E8215
 		public void Teardown()
 		{
 			if (this.rtc != null)
@@ -341,58 +297,40 @@ public class SelCharaGrowRank
 			}
 		}
 
-		// Token: 0x040040EB RID: 16619
 		public GameObject baseObj;
 
-		// Token: 0x040040EC RID: 16620
 		public PguiImageCtrl Bg;
 
-		// Token: 0x040040ED RID: 16621
 		public GameObject RenderTexture;
 
-		// Token: 0x040040EE RID: 16622
 		public PguiTextCtrl Txt_Touch;
 
-		// Token: 0x040040EF RID: 16623
 		public PguiAECtrl AEImage_Bg;
 
-		// Token: 0x040040F0 RID: 16624
 		public PguiAECtrl AEImage_Back;
 
-		// Token: 0x040040F1 RID: 16625
 		public PguiAECtrl AEImage_RankUp;
 
-		// Token: 0x040040F2 RID: 16626
 		public List<PguiAECtrl> AEImage_StarAll;
 
-		// Token: 0x040040F3 RID: 16627
 		public RenderTextureChara rtc;
 
-		// Token: 0x02001169 RID: 4457
 		public enum SIZE
 		{
-			// Token: 0x04005F8F RID: 24463
 			SIZE_S,
-			// Token: 0x04005F90 RID: 24464
 			SIZE_M,
-			// Token: 0x04005F91 RID: 24465
 			SIZE_L
 		}
 	}
 
-	// Token: 0x02000A25 RID: 2597
 	public class CharaGrowRankGUI
 	{
-		// Token: 0x040040F4 RID: 16628
 		public SelCharaGrowRank.RankUpAuth rankUpAuth;
 
-		// Token: 0x040040F5 RID: 16629
 		public SelCharaGrowRank.WindowRankUp rankUpWindow;
 
-		// Token: 0x040040F6 RID: 16630
 		public SelCharaGrowRank.WindowRankUpResult rankUpResultWindow;
 
-		// Token: 0x040040F7 RID: 16631
 		public SelCharaGrowRank.RankUpTab rankUpTab;
 	}
 }

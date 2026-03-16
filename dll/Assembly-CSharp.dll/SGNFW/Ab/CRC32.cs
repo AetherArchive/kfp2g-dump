@@ -1,26 +1,22 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Security.Cryptography;
 
 namespace SGNFW.Ab
 {
-	// Token: 0x0200027E RID: 638
 	public class CRC32 : HashAlgorithm
 	{
-		// Token: 0x060026DD RID: 9949 RVA: 0x001A3B1D File Offset: 0x001A1D1D
 		public CRC32()
 		{
 			this.HashSizeValue = 32;
 			this.crcValue = uint.MaxValue;
 		}
 
-		// Token: 0x060026DE RID: 9950 RVA: 0x001A3B34 File Offset: 0x001A1D34
 		public override void Initialize()
 		{
 			this.crcValue = uint.MaxValue;
 		}
 
-		// Token: 0x060026DF RID: 9951 RVA: 0x001A3B40 File Offset: 0x001A1D40
 		public static string GetHashString(string filePath)
 		{
 			string text = "";
@@ -31,7 +27,6 @@ namespace SGNFW.Ab
 			return text;
 		}
 
-		// Token: 0x060026E0 RID: 9952 RVA: 0x001A3B8C File Offset: 0x001A1D8C
 		public static uint GetHashUint(string filePath)
 		{
 			uint num = 0U;
@@ -42,19 +37,16 @@ namespace SGNFW.Ab
 			return num;
 		}
 
-		// Token: 0x060026E1 RID: 9953 RVA: 0x001A3BD4 File Offset: 0x001A1DD4
 		public static string GetHashString(byte[] buffer)
 		{
 			return CRC32.GetByteString(new CRC32().ComputeHash(buffer));
 		}
 
-		// Token: 0x060026E2 RID: 9954 RVA: 0x001A3BE6 File Offset: 0x001A1DE6
 		public static uint GetHashUint(byte[] buffer)
 		{
 			return CRC32.GetByteUint(new CRC32().ComputeHash(buffer));
 		}
 
-		// Token: 0x060026E3 RID: 9955 RVA: 0x001A3BF8 File Offset: 0x001A1DF8
 		public byte[] ComputeFileHash(FileStream fileStream)
 		{
 			byte[][] array = CRC32.fileBuffer_;
@@ -110,7 +102,6 @@ namespace SGNFW.Ab
 			return array3;
 		}
 
-		// Token: 0x060026E4 RID: 9956 RVA: 0x001A3D10 File Offset: 0x001A1F10
 		public static string GetByteString(byte[] digestcode)
 		{
 			int num = digestcode.Length;
@@ -123,7 +114,6 @@ namespace SGNFW.Ab
 			return new string(array);
 		}
 
-		// Token: 0x060026E5 RID: 9957 RVA: 0x001A3D60 File Offset: 0x001A1F60
 		public static uint GetByteUint(byte[] digestcode)
 		{
 			int num = digestcode.Length;
@@ -137,7 +127,6 @@ namespace SGNFW.Ab
 			return (uint)num2;
 		}
 
-		// Token: 0x060026E6 RID: 9958 RVA: 0x001A3DA8 File Offset: 0x001A1FA8
 		public static uint GetHash(byte[] array, int size, uint value)
 		{
 			int num = 0;
@@ -148,19 +137,16 @@ namespace SGNFW.Ab
 			return value;
 		}
 
-		// Token: 0x060026E7 RID: 9959 RVA: 0x001A3DDE File Offset: 0x001A1FDE
 		public static string GetHashString(uint value)
 		{
 			return CRC32.GetByteString(CRC32.GetHashValue(value));
 		}
 
-		// Token: 0x060026E8 RID: 9960 RVA: 0x001A3DEB File Offset: 0x001A1FEB
 		public static uint GetHashUint(uint value)
 		{
 			return CRC32.GetByteUint(CRC32.GetHashValue(value));
 		}
 
-		// Token: 0x060026E9 RID: 9961 RVA: 0x001A3DF8 File Offset: 0x001A1FF8
 		protected override void HashCore(byte[] array, int ibStart, int cbSize)
 		{
 			while (--cbSize >= 0)
@@ -169,7 +155,6 @@ namespace SGNFW.Ab
 			}
 		}
 
-		// Token: 0x060026EA RID: 9962 RVA: 0x001A3E30 File Offset: 0x001A2030
 		protected override byte[] HashFinal()
 		{
 			this.crcValue ^= uint.MaxValue;
@@ -183,7 +168,6 @@ namespace SGNFW.Ab
 			return this.HashValue;
 		}
 
-		// Token: 0x060026EB RID: 9963 RVA: 0x001A3EA8 File Offset: 0x001A20A8
 		protected static byte[] GetHashValue(uint value)
 		{
 			value ^= uint.MaxValue;
@@ -196,10 +180,8 @@ namespace SGNFW.Ab
 			};
 		}
 
-		// Token: 0x04001C77 RID: 7287
 		public const uint MASK = 4294967295U;
 
-		// Token: 0x04001C78 RID: 7288
 		private static readonly uint[] CRC32Table = new uint[]
 		{
 			0U, 1996959894U, 3993919788U, 2567524794U, 124634137U, 1886057615U, 3915621685U, 2657392035U, 249268274U, 2044508324U,
@@ -230,20 +212,16 @@ namespace SGNFW.Ab
 			1567103746U, 711928724U, 3020668471U, 3272380065U, 1510334235U, 755167117U
 		};
 
-		// Token: 0x04001C79 RID: 7289
 		private static readonly char[] BYTE_CHAR = new char[]
 		{
 			'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 			'A', 'B', 'C', 'D', 'E', 'F'
 		};
 
-		// Token: 0x04001C7A RID: 7290
 		private uint crcValue;
 
-		// Token: 0x04001C7B RID: 7291
 		private static byte[][] fileBuffer_ = new byte[2][];
 
-		// Token: 0x04001C7C RID: 7292
 		private const int FILE_BUFFER_LENGTH = 1048576;
 	}
 }

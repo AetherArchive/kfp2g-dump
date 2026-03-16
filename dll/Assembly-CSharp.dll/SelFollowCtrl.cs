@@ -1,29 +1,18 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.uGUI;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x0200013D RID: 317
 public class SelFollowCtrl : MonoBehaviour
 {
-	// Token: 0x17000350 RID: 848
-	// (get) Token: 0x06001141 RID: 4417 RVA: 0x000D2B81 File Offset: 0x000D0D81
-	// (set) Token: 0x06001142 RID: 4418 RVA: 0x000D2B89 File Offset: 0x000D0D89
 	private SelFollowCtrl.TabType SelectTabType { get; set; }
 
-	// Token: 0x17000351 RID: 849
-	// (get) Token: 0x06001143 RID: 4419 RVA: 0x000D2B92 File Offset: 0x000D0D92
-	// (set) Token: 0x06001144 RID: 4420 RVA: 0x000D2B9A File Offset: 0x000D0D9A
 	private int SelectSndFilter { get; set; }
 
-	// Token: 0x17000352 RID: 850
-	// (get) Token: 0x06001145 RID: 4421 RVA: 0x000D2BA3 File Offset: 0x000D0DA3
-	// (set) Token: 0x06001146 RID: 4422 RVA: 0x000D2BAB File Offset: 0x000D0DAB
 	private int SelectRcvFilter { get; set; }
 
-	// Token: 0x06001147 RID: 4423 RVA: 0x000D2BB4 File Offset: 0x000D0DB4
 	public void Init()
 	{
 		GameObject gameObject = Object.Instantiate<GameObject>((GameObject)AssetManager.GetAssetData("SceneFriend/GUI/Prefab/GUI_Friend"), base.transform);
@@ -42,7 +31,6 @@ public class SelFollowCtrl : MonoBehaviour
 		this.guiData.Btn_Copy.AddOnClickListener(new PguiButtonCtrl.OnClick(this.OnClickButton), PguiButtonCtrl.SoundType.DEFAULT);
 	}
 
-	// Token: 0x06001148 RID: 4424 RVA: 0x000D2CFC File Offset: 0x000D0EFC
 	public void Setup()
 	{
 		this.guiData.ScrollViewSend.Resize(0, 0);
@@ -59,14 +47,12 @@ public class SelFollowCtrl : MonoBehaviour
 		this.UpdateTab();
 	}
 
-	// Token: 0x06001149 RID: 4425 RVA: 0x000D2DCB File Offset: 0x000D0FCB
 	private void UpdateFollowFollowerList()
 	{
 		this.receiveFollowHelperList = new List<HelperPackData>(DataManager.DmHelper.GetReceiveFollowHelperList());
 		this.sendFollowHelperList = new List<HelperPackData>(DataManager.DmHelper.GetSendFollowHelperList());
 	}
 
-	// Token: 0x0600114A RID: 4426 RVA: 0x000D2DF8 File Offset: 0x000D0FF8
 	private void SetSelectTab(SelFollowCtrl.TabType tabtype)
 	{
 		this.guiData.AllListObj.SetActive(SelFollowCtrl.TabType.RECEIVE_VIEW == tabtype || SelFollowCtrl.TabType.SEND_VIEW == tabtype);
@@ -98,7 +84,6 @@ public class SelFollowCtrl : MonoBehaviour
 		this.guiData.Txt_None.text = "まだフォロワーがいません";
 	}
 
-	// Token: 0x0600114B RID: 4427 RVA: 0x000D2F98 File Offset: 0x000D1198
 	private void UpdateTab()
 	{
 		switch (this.SelectTabType)
@@ -178,7 +163,6 @@ public class SelFollowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600114C RID: 4428 RVA: 0x000D31B4 File Offset: 0x000D13B4
 	private void UpdateAttributeFilter()
 	{
 		SelFollowCtrl.TabType selectTabType = this.SelectTabType;
@@ -202,7 +186,6 @@ public class SelFollowCtrl : MonoBehaviour
 		CanvasManager.HdlOpenWindowSortFilter.SolutionList(SortFilterDefine.RegisterType.HELP_FOLLOWER, null);
 	}
 
-	// Token: 0x0600114D RID: 4429 RVA: 0x000D329C File Offset: 0x000D149C
 	private void UpdateBarItem(int index, GameObject go, List<HelperPackData> heplerList)
 	{
 		for (int i = 0; i < 2; i++)
@@ -267,7 +250,6 @@ public class SelFollowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600114E RID: 4430 RVA: 0x000D34DD File Offset: 0x000D16DD
 	private void Update()
 	{
 		if (this.currentEnumerator != null && !this.currentEnumerator.MoveNext())
@@ -276,7 +258,6 @@ public class SelFollowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600114F RID: 4431 RVA: 0x000D34FC File Offset: 0x000D16FC
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		if (button == this.guiData.Btn_Search)
@@ -296,31 +277,26 @@ public class SelFollowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001150 RID: 4432 RVA: 0x000D3598 File Offset: 0x000D1798
 	private void OnClickButtonUser(PguiButtonCtrl button)
 	{
 		this.currentEnumerator = this.RequestUser(this.guiData.friendBarList.Find((SelFollowCtrl.GuiFriendBar item) => item.baseButton == button).helperPackData);
 	}
 
-	// Token: 0x06001151 RID: 4433 RVA: 0x000D35DF File Offset: 0x000D17DF
 	private void OnClickRequestFollowRequest(PguiButtonCtrl button, HelperPackData hpd)
 	{
 		this.currentEnumerator = this.RequestFollowRequest(hpd);
 	}
 
-	// Token: 0x06001152 RID: 4434 RVA: 0x000D35EE File Offset: 0x000D17EE
 	private void OnClickRequestFollowRelease(PguiButtonCtrl button, HelperPackData hpd)
 	{
 		this.currentEnumerator = this.RequestFollowRelease(hpd);
 	}
 
-	// Token: 0x06001153 RID: 4435 RVA: 0x000D35FD File Offset: 0x000D17FD
 	private void OnClickRequestHelperRelease(PguiButtonCtrl button, HelperPackData hpd)
 	{
 		this.currentEnumerator = this.RequestHelperRelease(hpd);
 	}
 
-	// Token: 0x06001154 RID: 4436 RVA: 0x000D360C File Offset: 0x000D180C
 	private bool OnSelectTab(int index)
 	{
 		SelFollowCtrl.TabType tabType;
@@ -347,7 +323,6 @@ public class SelFollowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001155 RID: 4437 RVA: 0x000D3660 File Offset: 0x000D1860
 	private bool OnSelectFilter(int filterIndex)
 	{
 		SelFollowCtrl.TabType selectTabType = this.SelectTabType;
@@ -367,19 +342,16 @@ public class SelFollowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001156 RID: 4438 RVA: 0x000D3699 File Offset: 0x000D1899
 	private void OnStartItemSend(int index, GameObject go)
 	{
 		this.SetStartItem(index, go);
 	}
 
-	// Token: 0x06001157 RID: 4439 RVA: 0x000D36A3 File Offset: 0x000D18A3
 	private void OnStartItemRcv(int index, GameObject go)
 	{
 		this.SetStartItem(index, go);
 	}
 
-	// Token: 0x06001158 RID: 4440 RVA: 0x000D36B0 File Offset: 0x000D18B0
 	private void SetStartItem(int index, GameObject go)
 	{
 		for (int i = 0; i < 2; i++)
@@ -392,19 +364,16 @@ public class SelFollowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001159 RID: 4441 RVA: 0x000D3738 File Offset: 0x000D1938
 	private void OnUpdateItemSend(int index, GameObject go)
 	{
 		this.UpdateBarItem(index, go, this.sendFollowHelperList);
 	}
 
-	// Token: 0x0600115A RID: 4442 RVA: 0x000D3748 File Offset: 0x000D1948
 	private void OnUpdateItemRcv(int index, GameObject go)
 	{
 		this.UpdateBarItem(index, go, this.receiveFollowHelperList);
 	}
 
-	// Token: 0x0600115B RID: 4443 RVA: 0x000D3758 File Offset: 0x000D1958
 	private IEnumerator RequestSearchUser(int friendId)
 	{
 		string text;
@@ -450,7 +419,6 @@ public class SelFollowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600115C RID: 4444 RVA: 0x000D376E File Offset: 0x000D196E
 	private IEnumerator RequestUser(HelperPackData helperPackData)
 	{
 		if (helperPackData == null)
@@ -484,7 +452,6 @@ public class SelFollowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600115D RID: 4445 RVA: 0x000D377D File Offset: 0x000D197D
 	private IEnumerator RequestFollowRequest(HelperPackData helperPackData)
 	{
 		if (helperPackData == null)
@@ -569,7 +536,6 @@ public class SelFollowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600115E RID: 4446 RVA: 0x000D3793 File Offset: 0x000D1993
 	private static IEnumerator OpenFollowResult(DataManagerHelper.ExeStatusType type, string targetUserName, bool isCheck)
 	{
 		string text = "";
@@ -624,7 +590,6 @@ public class SelFollowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600115F RID: 4447 RVA: 0x000D37B0 File Offset: 0x000D19B0
 	private IEnumerator RequestFollowRelease(HelperPackData helperPackData)
 	{
 		if (helperPackData == null)
@@ -700,7 +665,6 @@ public class SelFollowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001160 RID: 4448 RVA: 0x000D37C6 File Offset: 0x000D19C6
 	private IEnumerator RequestHelperRelease(HelperPackData helperPackData)
 	{
 		if (helperPackData == null)
@@ -776,41 +740,28 @@ public class SelFollowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x04000E9D RID: 3741
 	private SelFollowCtrl.GUI guiData;
 
-	// Token: 0x04000E9F RID: 3743
 	private IEnumerator currentEnumerator;
 
-	// Token: 0x04000EA0 RID: 3744
 	private List<HelperPackData> sendFollowHelperList;
 
-	// Token: 0x04000EA1 RID: 3745
 	private List<HelperPackData> receiveFollowHelperList;
 
-	// Token: 0x04000EA4 RID: 3748
 	private SortFilterDefine.SortType sndFollowSortType = SortFilterDefine.SortType.LOGIN;
 
-	// Token: 0x04000EA5 RID: 3749
 	private SortFilterDefine.SortType rcvFollowSortType = SortFilterDefine.SortType.LOGIN;
 
-	// Token: 0x02000A6F RID: 2671
 	private enum TabType
 	{
-		// Token: 0x04004291 RID: 17041
 		INVALID,
-		// Token: 0x04004292 RID: 17042
 		SEND_VIEW,
-		// Token: 0x04004293 RID: 17043
 		RECEIVE_VIEW,
-		// Token: 0x04004294 RID: 17044
 		SEARCH
 	}
 
-	// Token: 0x02000A70 RID: 2672
 	public class SortFilter
 	{
-		// Token: 0x06003F48 RID: 16200 RVA: 0x001EE1CC File Offset: 0x001EC3CC
 		public SortFilter(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -821,32 +772,23 @@ public class SelFollowCtrl : MonoBehaviour
 			this.Img_Down = baseTr.Find("Btn_SortUpDown/BaseImage/Img_Down").GetComponent<PguiImageCtrl>();
 		}
 
-		// Token: 0x04004295 RID: 17045
 		public const int SCROLL_ITEM_NUN_H = 3;
 
-		// Token: 0x04004296 RID: 17046
 		public GameObject baseObj;
 
-		// Token: 0x04004297 RID: 17047
 		public PguiButtonCtrl Btn_FilterOnOff;
 
-		// Token: 0x04004298 RID: 17048
 		public PguiButtonCtrl Btn_Sort;
 
-		// Token: 0x04004299 RID: 17049
 		public PguiButtonCtrl Btn_SortUpDown;
 
-		// Token: 0x0400429A RID: 17050
 		public PguiImageCtrl Img_Up;
 
-		// Token: 0x0400429B RID: 17051
 		public PguiImageCtrl Img_Down;
 	}
 
-	// Token: 0x02000A71 RID: 2673
 	public class GuiFriendBar
 	{
-		// Token: 0x06003F49 RID: 16201 RVA: 0x001EE25C File Offset: 0x001EC45C
 		public GuiFriendBar(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -874,7 +816,6 @@ public class SelFollowCtrl : MonoBehaviour
 			this.Achievement = baseTr.Find("BaseImage/Achievement").GetComponent<AchievementCtrl>();
 		}
 
-		// Token: 0x06003F4A RID: 16202 RVA: 0x001EE3E8 File Offset: 0x001EC5E8
 		public void Setup(HelperPackData hpd, int attr, SortFilterDefine.SortType sortType, bool isSendView, bool dispFavorite)
 		{
 			this.helperPackData = hpd;
@@ -944,7 +885,6 @@ public class SelFollowCtrl : MonoBehaviour
 			this.Achievement.Setup(this.helperPackData.achievementId, true, false);
 		}
 
-		// Token: 0x06003F4B RID: 16203 RVA: 0x001EE6B4 File Offset: 0x001EC8B4
 		public void SetAttrIcon(int index, bool isDisp)
 		{
 			if (null == this.Icon_Attribute)
@@ -983,7 +923,6 @@ public class SelFollowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06003F4C RID: 16204 RVA: 0x001EE780 File Offset: 0x001EC980
 		private CharaDef.AttributeType Index2AttrType(int index)
 		{
 			switch (index)
@@ -1004,56 +943,39 @@ public class SelFollowCtrl : MonoBehaviour
 			return CharaDef.AttributeType.ALL;
 		}
 
-		// Token: 0x0400429C RID: 17052
 		public GameObject baseObj;
 
-		// Token: 0x0400429D RID: 17053
 		public PguiButtonCtrl baseButton;
 
-		// Token: 0x0400429E RID: 17054
 		public PguiButtonCtrl Btn_Follow_L;
 
-		// Token: 0x0400429F RID: 17055
 		public PguiTextCtrl Follow_L_text;
 
-		// Token: 0x040042A0 RID: 17056
 		public PguiButtonCtrl Btn_Follow_R;
 
-		// Token: 0x040042A1 RID: 17057
 		public PguiTextCtrl Follow_R_text;
 
-		// Token: 0x040042A2 RID: 17058
 		public PguiImageCtrl Mark_Friend;
 
-		// Token: 0x040042A3 RID: 17059
 		public PguiTextCtrl Txt_FriendName;
 
-		// Token: 0x040042A4 RID: 17060
 		public PguiTextCtrl Num_Rank;
 
-		// Token: 0x040042A5 RID: 17061
 		public PguiTextCtrl Txt_LastLogin;
 
-		// Token: 0x040042A6 RID: 17062
 		public PguiTextCtrl Txt_Comment;
 
-		// Token: 0x040042A7 RID: 17063
 		public IconCharaCtrl iconChara;
 
-		// Token: 0x040042A8 RID: 17064
 		public PguiReplaceSpriteCtrl Icon_Attribute;
 
-		// Token: 0x040042A9 RID: 17065
 		public HelperPackData helperPackData;
 
-		// Token: 0x040042AA RID: 17066
 		public AchievementCtrl Achievement;
 	}
 
-	// Token: 0x02000A72 RID: 2674
 	public class GUI
 	{
-		// Token: 0x06003F4D RID: 16205 RVA: 0x001EE7CC File Offset: 0x001EC9CC
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1081,64 +1003,44 @@ public class SelFollowCtrl : MonoBehaviour
 			this.Btn_FilterOnOff.gameObject.SetActive(false);
 		}
 
-		// Token: 0x040042AB RID: 17067
 		public GameObject baseObj;
 
-		// Token: 0x040042AC RID: 17068
 		public PguiButtonCtrl Btn_FilterOnOff;
 
-		// Token: 0x040042AD RID: 17069
 		public PguiButtonCtrl Btn_Sort;
 
-		// Token: 0x040042AE RID: 17070
 		public PguiButtonCtrl Btn_SortUpDown;
 
-		// Token: 0x040042AF RID: 17071
 		public PguiButtonCtrl Btn_Search;
 
-		// Token: 0x040042B0 RID: 17072
 		public PguiButtonCtrl Btn_Copy;
 
-		// Token: 0x040042B1 RID: 17073
 		public Text Txt_SearchID;
 
-		// Token: 0x040042B2 RID: 17074
 		public PguiTextCtrl Txt_MyID;
 
-		// Token: 0x040042B3 RID: 17075
 		public ReuseScroll ScrollViewSend;
 
-		// Token: 0x040042B4 RID: 17076
 		public ReuseScroll ScrollViewRcv;
 
-		// Token: 0x040042B5 RID: 17077
 		public PguiTabGroupCtrl FollowFollowerSearchTab;
 
-		// Token: 0x040042B6 RID: 17078
 		public PguiTabGroupCtrl AttributeFilterTab;
 
-		// Token: 0x040042B7 RID: 17079
 		public PguiTextCtrl Num_Own;
 
-		// Token: 0x040042B8 RID: 17080
 		public GameObject AllListObj;
 
-		// Token: 0x040042B9 RID: 17081
 		public GameObject SearchObj;
 
-		// Token: 0x040042BA RID: 17082
 		public InputField InputField;
 
-		// Token: 0x040042BB RID: 17083
 		public GameObject ResFriendListBar;
 
-		// Token: 0x040042BC RID: 17084
 		public SelFollowCtrl.SortFilter sortFilter;
 
-		// Token: 0x040042BD RID: 17085
 		public List<SelFollowCtrl.GuiFriendBar> friendBarList;
 
-		// Token: 0x040042BE RID: 17086
 		public PguiTextCtrl Txt_None;
 	}
 }

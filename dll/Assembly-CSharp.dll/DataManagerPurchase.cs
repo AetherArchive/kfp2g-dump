@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +12,8 @@ using SGNFW.Login;
 using SGNFW.Mst;
 using UnityEngine;
 
-// Token: 0x0200009A RID: 154
 public class DataManagerPurchase
 {
-	// Token: 0x17000137 RID: 311
-	// (get) Token: 0x06000667 RID: 1639 RVA: 0x0002AFF8 File Offset: 0x000291F8
 	public List<PurchaseProductStatic> PurchaseProductStaticList
 	{
 		get
@@ -25,39 +22,21 @@ public class DataManagerPurchase
 		}
 	}
 
-	// Token: 0x17000138 RID: 312
-	// (get) Token: 0x06000668 RID: 1640 RVA: 0x0002B00A File Offset: 0x0002920A
-	// (set) Token: 0x06000669 RID: 1641 RVA: 0x0002B012 File Offset: 0x00029212
 	public List<int> SoldOutIdList { get; private set; }
 
-	// Token: 0x17000139 RID: 313
-	// (get) Token: 0x0600066A RID: 1642 RVA: 0x0002B01B File Offset: 0x0002921B
-	// (set) Token: 0x0600066B RID: 1643 RVA: 0x0002B023 File Offset: 0x00029223
 	public List<int> PendingIdList { get; private set; }
 
-	// Token: 0x1700013A RID: 314
-	// (get) Token: 0x0600066C RID: 1644 RVA: 0x0002B02C File Offset: 0x0002922C
-	// (set) Token: 0x0600066D RID: 1645 RVA: 0x0002B034 File Offset: 0x00029234
 	public List<int> InfoHiddenList { get; private set; }
 
-	// Token: 0x0600066E RID: 1646 RVA: 0x0002B03D File Offset: 0x0002923D
 	public DataManagerPurchase(DataManager p)
 	{
 		this.parentData = p;
 	}
 
-	// Token: 0x1700013B RID: 315
-	// (get) Token: 0x0600066F RID: 1647 RVA: 0x0002B04C File Offset: 0x0002924C
-	// (set) Token: 0x06000670 RID: 1648 RVA: 0x0002B054 File Offset: 0x00029254
 	public bool IsFinishSetupProduct { get; private set; }
 
-	// Token: 0x1700013C RID: 316
-	// (get) Token: 0x06000671 RID: 1649 RVA: 0x0002B05D File Offset: 0x0002925D
-	// (set) Token: 0x06000672 RID: 1650 RVA: 0x0002B065 File Offset: 0x00029265
 	public bool IsFinishPurchase { get; private set; }
 
-	// Token: 0x1700013D RID: 317
-	// (get) Token: 0x06000673 RID: 1651 RVA: 0x0002B06E File Offset: 0x0002926E
 	public DateTime? userBirthDay
 	{
 		get
@@ -66,8 +45,6 @@ public class DataManagerPurchase
 		}
 	}
 
-	// Token: 0x1700013E RID: 318
-	// (get) Token: 0x06000674 RID: 1652 RVA: 0x0002B076 File Offset: 0x00029276
 	public bool IsEnableBirthday
 	{
 		get
@@ -76,8 +53,6 @@ public class DataManagerPurchase
 		}
 	}
 
-	// Token: 0x1700013F RID: 319
-	// (get) Token: 0x06000675 RID: 1653 RVA: 0x0002B083 File Offset: 0x00029283
 	public bool IsPendingMonthlyPack
 	{
 		get
@@ -86,25 +61,19 @@ public class DataManagerPurchase
 		}
 	}
 
-	// Token: 0x17000140 RID: 320
-	// (get) Token: 0x06000676 RID: 1654 RVA: 0x0002B08B File Offset: 0x0002928B
-	// (set) Token: 0x06000677 RID: 1655 RVA: 0x0002B093 File Offset: 0x00029293
 	public DateTime? BadgeDispLimitedTime { get; private set; }
 
-	// Token: 0x06000678 RID: 1656 RVA: 0x0002B09C File Offset: 0x0002929C
 	public void SetupProduct()
 	{
 		this.currentEnumerator = this.SetupProductInternal();
 		this.currentEnumerator.MoveNext();
 	}
 
-	// Token: 0x06000679 RID: 1657 RVA: 0x0002B0B6 File Offset: 0x000292B6
 	public List<PurchaseProductOne> GetPurchaseProductList()
 	{
 		return this.purchaseProductList;
 	}
 
-	// Token: 0x0600067A RID: 1658 RVA: 0x0002B0C0 File Offset: 0x000292C0
 	private List<PurchaseProductOne> MakeSoldoutLimitedItem()
 	{
 		List<PurchaseProductOne> list = new List<PurchaseProductOne>();
@@ -127,7 +96,6 @@ public class DataManagerPurchase
 		return list;
 	}
 
-	// Token: 0x0600067B RID: 1659 RVA: 0x0002B1D4 File Offset: 0x000293D4
 	public List<List<PurchaseProductOne>> CreateTabPurchaseProductOneListList()
 	{
 		HomeCheckResult homeCheckResult = DataManager.DmHome.GetHomeCheckResult();
@@ -166,20 +134,17 @@ public class DataManagerPurchase
 		return list;
 	}
 
-	// Token: 0x0600067C RID: 1660 RVA: 0x0002B320 File Offset: 0x00029520
 	public void SolutionPurchase(int productId, string productIdString)
 	{
 		this.currentEnumerator = this.SolutionPurchaseInternal(productId, productIdString);
 		this.currentEnumerator.MoveNext();
 	}
 
-	// Token: 0x0600067D RID: 1661 RVA: 0x0002B33C File Offset: 0x0002953C
 	public DataManagerPurchase.PurchaseResult GetPurchaseResult()
 	{
 		return this.lastPurchaseResult;
 	}
 
-	// Token: 0x0600067E RID: 1662 RVA: 0x0002B344 File Offset: 0x00029544
 	public void UpdateByDataManager()
 	{
 		if (this.currentEnumerator != null && !this.currentEnumerator.MoveNext())
@@ -188,9 +153,6 @@ public class DataManagerPurchase
 		}
 	}
 
-	// Token: 0x17000141 RID: 321
-	// (get) Token: 0x06000680 RID: 1664 RVA: 0x0002B376 File Offset: 0x00029576
-	// (set) Token: 0x0600067F RID: 1663 RVA: 0x0002B362 File Offset: 0x00029562
 	private IEnumerator currentEnumerator
 	{
 		get
@@ -206,7 +168,6 @@ public class DataManagerPurchase
 		}
 	}
 
-	// Token: 0x06000681 RID: 1665 RVA: 0x0002B37E File Offset: 0x0002957E
 	private SGNFW.InAppPurchase.Manager.PurchaseConfig GetPurchaseConfig()
 	{
 		return new SGNFW.InAppPurchase.Manager.PurchaseConfig
@@ -217,7 +178,6 @@ public class DataManagerPurchase
 		};
 	}
 
-	// Token: 0x06000682 RID: 1666 RVA: 0x0002B39C File Offset: 0x0002959C
 	private void PurchaseSuccessCallback(PurchaseResponse response, PurchaseRequest request)
 	{
 		if (this.lastPurchaseResult == null || !this.lastPurchaseResult.isTargetProduct)
@@ -242,7 +202,6 @@ public class DataManagerPurchase
 		}
 	}
 
-	// Token: 0x06000683 RID: 1667 RVA: 0x0002B464 File Offset: 0x00029664
 	private void PurchaseFailedCallback(NativePlugin.TransactionInfo? tinfo, int error_code, string reqProductIdString, Exception exception)
 	{
 		if (this.lastPurchaseResult != null && this.lastPurchaseResult.isTargetProduct)
@@ -295,7 +254,6 @@ public class DataManagerPurchase
 		};
 	}
 
-	// Token: 0x06000684 RID: 1668 RVA: 0x0002B560 File Offset: 0x00029760
 	private void PurchaseAbortedCallback(NativePlugin.TransactionInfo? info, SGNFW.InAppPurchase.Manager.PURCHASE_START_RESULT res)
 	{
 		string text = "";
@@ -324,7 +282,6 @@ public class DataManagerPurchase
 		};
 	}
 
-	// Token: 0x06000685 RID: 1669 RVA: 0x0002B5CE File Offset: 0x000297CE
 	public IEnumerator RequestSolutionAgeAuthentic()
 	{
 		DataManagerPurchase.<>c__DisplayClass60_0 CS$<>8__locals1 = new DataManagerPurchase.<>c__DisplayClass60_0();
@@ -422,7 +379,6 @@ public class DataManagerPurchase
 		yield break;
 	}
 
-	// Token: 0x06000686 RID: 1670 RVA: 0x0002B5E0 File Offset: 0x000297E0
 	public List<PurchaseProductStatic> CreateMstPurchaseProductByQuest(int clearQuestOneId)
 	{
 		List<PurchaseProductStatic> list = new List<PurchaseProductStatic>();
@@ -441,7 +397,6 @@ public class DataManagerPurchase
 		return list;
 	}
 
-	// Token: 0x06000687 RID: 1671 RVA: 0x0002B6A8 File Offset: 0x000298A8
 	public void RequestActionUpdateBirthday(int year, int month)
 	{
 		DateTime dateTime = new DateTime(year, month, 1);
@@ -450,7 +405,6 @@ public class DataManagerPurchase
 		this.parentData.ServerRequest(PlayerInfoChangeCmd.Create(playerInfo), new Action<Command>(this.CbPlayerInfoChangeCmd));
 	}
 
-	// Token: 0x06000688 RID: 1672 RVA: 0x0002B6FC File Offset: 0x000298FC
 	public void RequestUpdateAddHiddenInfo(int productId)
 	{
 		if (this.InfoHiddenList.Contains(productId))
@@ -497,7 +451,6 @@ public class DataManagerPurchase
 		this.parentData.ServerRequest(NewFlgUpdateCmd.Create(list2), new Action<Command>(this.CbNewFlgUpdateCmd));
 	}
 
-	// Token: 0x06000689 RID: 1673 RVA: 0x0002B888 File Offset: 0x00029A88
 	public void UpdateBadgeDispLimitedTime(List<Quest> serverQuestList = null, int nowClearQuestOneId = 0)
 	{
 		this.BadgeDispLimitedTime = null;
@@ -555,7 +508,6 @@ public class DataManagerPurchase
 		}
 	}
 
-	// Token: 0x0600068A RID: 1674 RVA: 0x0002BB44 File Offset: 0x00029D44
 	public void InitializeMstData(MstManager mstManager)
 	{
 		List<MstPurchaseProduct> mst = mstManager.GetMst<List<MstPurchaseProduct>>(MstType.PURCHASE_PRODUCT);
@@ -563,7 +515,6 @@ public class DataManagerPurchase
 		this.PurchaseProductStaticDataMap = mst.ToDictionary<MstPurchaseProduct, int, PurchaseProductStatic>((MstPurchaseProduct item) => item.productIdCommon, (MstPurchaseProduct item) => new PurchaseProductStatic(item));
 	}
 
-	// Token: 0x0600068B RID: 1675 RVA: 0x0002BBAF File Offset: 0x00029DAF
 	private IEnumerator SetupProductInternal()
 	{
 		this.purchaseProductList = null;
@@ -631,7 +582,6 @@ public class DataManagerPurchase
 		yield break;
 	}
 
-	// Token: 0x0600068C RID: 1676 RVA: 0x0002BBBE File Offset: 0x00029DBE
 	private IEnumerator SolutionPurchaseDMMInternal(int productId, string productIdString)
 	{
 		DataManagerPurchase.<>c__DisplayClass67_0 CS$<>8__locals1 = new DataManagerPurchase.<>c__DisplayClass67_0();
@@ -775,7 +725,6 @@ public class DataManagerPurchase
 		yield break;
 	}
 
-	// Token: 0x0600068D RID: 1677 RVA: 0x0002BBDB File Offset: 0x00029DDB
 	private IEnumerator SolutionPurchaseInternal(int productId, string productIdString)
 	{
 		PurchaseProductStatic tgtProductMst = this.PurchaseProductStaticDataMap.TryGetValueEx(productId, null);
@@ -910,7 +859,6 @@ public class DataManagerPurchase
 		yield break;
 	}
 
-	// Token: 0x0600068E RID: 1678 RVA: 0x0002BBF8 File Offset: 0x00029DF8
 	private void CbPurchaseInfoCmdInternal(Command cmd)
 	{
 		PurchaseInfoResponse purchaseInfoResponse = cmd.response as PurchaseInfoResponse;
@@ -924,21 +872,18 @@ public class DataManagerPurchase
 		this.parentData.UpdateUserAssetByAssets(purchaseInfoResponse.assets);
 	}
 
-	// Token: 0x0600068F RID: 1679 RVA: 0x0002BCA0 File Offset: 0x00029EA0
 	private void CbPlayerInfoChangeCmd(Command cmd)
 	{
 		PlayerInfoChangeResponse playerInfoChangeResponse = cmd.response as PlayerInfoChangeResponse;
 		this.parentData.UpdateUserAssetByAssets(playerInfoChangeResponse.assets);
 	}
 
-	// Token: 0x06000690 RID: 1680 RVA: 0x0002BCCC File Offset: 0x00029ECC
 	private void CbNewFlgUpdateCmd(Command cmd)
 	{
 		NewFlgUpdateRequest newFlgUpdateRequest = cmd.request as NewFlgUpdateRequest;
 		this.UpdateUserFlagByServer(newFlgUpdateRequest.new_flg_list);
 	}
 
-	// Token: 0x06000691 RID: 1681 RVA: 0x0002BCF1 File Offset: 0x00029EF1
 	public void UpdateUserDataByServer(PlayerInfo playerInfo)
 	{
 		if (playerInfo.birthday == 0L)
@@ -949,7 +894,6 @@ public class DataManagerPurchase
 		this.birthday = new DateTime?(new DateTime(PrjUtil.ConvertTimeToTicks(playerInfo.birthday)));
 	}
 
-	// Token: 0x06000692 RID: 1682 RVA: 0x0002BD24 File Offset: 0x00029F24
 	public void UpdateUserFlagByServer(List<NewFlg> newFlagList)
 	{
 		this.InfoHiddenList = this.InfoHiddenList ?? new List<int>();
@@ -982,7 +926,6 @@ public class DataManagerPurchase
 		this.InfoHiddenList = list;
 	}
 
-	// Token: 0x06000693 RID: 1683 RVA: 0x0002BE4C File Offset: 0x0002A04C
 	public void ServerRequest(Command cmd, Action<Command, int, string> cb)
 	{
 		Action<Command> action = delegate(Command c)
@@ -1007,13 +950,11 @@ public class DataManagerPurchase
 		Command.SetupRequest(cmd, action, action2, action3);
 	}
 
-	// Token: 0x06000694 RID: 1684 RVA: 0x0002BEA7 File Offset: 0x0002A0A7
 	public void RequestGetPurchaseInternalList()
 	{
 		this.parentData.ServerRequest(PurchaseInfoCmd.Create(null, false), new Action<Command>(this.CbPurchaseInfoCmdInternal));
 	}
 
-	// Token: 0x06000696 RID: 1686 RVA: 0x0002BED4 File Offset: 0x0002A0D4
 	[CompilerGenerated]
 	internal static List<List<PurchaseProductOne>> <CreateTabPurchaseProductOneListList>g__CreatePurchseProductOneList|46_0(List<PurchaseProductOne> baseProductOneList)
 	{
@@ -1026,82 +967,53 @@ public class DataManagerPurchase
 		return list;
 	}
 
-	// Token: 0x040005FE RID: 1534
 	private DataManager parentData;
 
-	// Token: 0x040005FF RID: 1535
 	private Dictionary<int, PurchaseProductStatic> PurchaseProductStaticDataMap;
 
-	// Token: 0x04000600 RID: 1536
 	private List<PurchaseProductOne> purchaseProductList;
 
-	// Token: 0x04000601 RID: 1537
 	private List<int> productIdCommonListInternal;
 
-	// Token: 0x04000602 RID: 1538
 	private List<Quest> lastUseServerQuestList;
 
-	// Token: 0x04000608 RID: 1544
 	private DateTime? birthday;
 
-	// Token: 0x04000609 RID: 1545
 	private int residuePurchaseNum;
 
-	// Token: 0x0400060A RID: 1546
 	private bool isPendingMonthlyPack;
 
-	// Token: 0x0400060B RID: 1547
 	private DataManagerPurchase.PurchaseResult lastPurchaseResult;
 
-	// Token: 0x0400060D RID: 1549
 	public static readonly int LimitItemJudgeDays = 365;
 
-	// Token: 0x0400060E RID: 1550
 	private IEnumerator _currentEnumerator;
 
-	// Token: 0x0400060F RID: 1551
 	private DataManagerPurchase.PurchaseResult purchaseResult;
 
-	// Token: 0x02000725 RID: 1829
 	public class PurchaseResult
 	{
-		// Token: 0x0400323E RID: 12862
 		public DataManagerPurchase.PurchaseResult.Status status;
 
-		// Token: 0x0400323F RID: 12863
 		public string errorMassage;
 
-		// Token: 0x04003240 RID: 12864
 		public string productIdString;
 
-		// Token: 0x04003241 RID: 12865
 		public bool isTargetProduct;
 
-		// Token: 0x04003242 RID: 12866
 		public List<PurchaseProductStatic> releasePurchaseProductList = new List<PurchaseProductStatic>();
 
-		// Token: 0x0200113F RID: 4415
 		public enum Status
 		{
-			// Token: 0x04005EB7 RID: 24247
 			INVALID,
-			// Token: 0x04005EB8 RID: 24248
 			SUCCESS,
-			// Token: 0x04005EB9 RID: 24249
 			FAILURE_COMMON,
-			// Token: 0x04005EBA RID: 24250
 			FAILURE_APP_SERVER,
-			// Token: 0x04005EBB RID: 24251
 			FAILURE_OS_SERVER,
-			// Token: 0x04005EBC RID: 24252
 			FAILURE_LIMIT_AGE,
-			// Token: 0x04005EBD RID: 24253
 			FAILURE_INTERRUPT,
-			// Token: 0x04005EBE RID: 24254
 			FAILURE_DMM_POINT,
-			// Token: 0x04005EBF RID: 24255
 			FAILURE_PENDING_PURCHASE,
-			// Token: 0x04005EC0 RID: 24256
 			FAILURE_PENDING_COUNT_LIMIT
 		}
 	}

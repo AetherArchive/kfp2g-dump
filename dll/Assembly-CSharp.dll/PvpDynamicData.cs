@@ -1,18 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Battle;
 using SGNFW.HttpRequest.Protocol;
 using SGNFW.Mst;
 
-// Token: 0x0200009E RID: 158
 public class PvpDynamicData
 {
-	// Token: 0x060006B4 RID: 1716 RVA: 0x0002D242 File Offset: 0x0002B442
 	public PvpDynamicData()
 	{
 	}
 
-	// Token: 0x060006B5 RID: 1717 RVA: 0x0002D258 File Offset: 0x0002B458
 	public PvpDynamicData(PvPInfo srvPvpInfo, PvpStaticData staticData, DataManagerPvp dataManagerPvp)
 	{
 		this.seasonId = staticData.seasonId;
@@ -86,7 +83,6 @@ public class PvpDynamicData
 		this.isHappenReset = srvPvpInfo.before_season_id != 0 && srvPvpInfo.before_season_id != srvPvpInfo.season_id;
 	}
 
-	// Token: 0x060006B6 RID: 1718 RVA: 0x0002D710 File Offset: 0x0002B910
 	public void SortEnemyInfoList()
 	{
 		this.enemyInfoList.Sort(delegate(PvpDynamicData.EnemyInfo a, PvpDynamicData.EnemyInfo b)
@@ -105,7 +101,6 @@ public class PvpDynamicData
 		});
 	}
 
-	// Token: 0x060006B7 RID: 1719 RVA: 0x0002D73C File Offset: 0x0002B93C
 	public SelPvpCtrl.SelectorEffect GetSelectorEffect()
 	{
 		return new SelPvpCtrl.SelectorEffect
@@ -119,7 +114,6 @@ public class PvpDynamicData
 		};
 	}
 
-	// Token: 0x060006B8 RID: 1720 RVA: 0x0002D798 File Offset: 0x0002B998
 	public static PvpDynamicData MakeDummy(int id)
 	{
 		PvpDynamicData pvpDynamicData = new PvpDynamicData();
@@ -164,71 +158,50 @@ public class PvpDynamicData
 		return pvpDynamicData;
 	}
 
-	// Token: 0x04000623 RID: 1571
 	public int seasonId;
 
-	// Token: 0x04000624 RID: 1572
 	public PvpDynamicData.UserInfo userInfo;
 
-	// Token: 0x04000625 RID: 1573
 	public List<PvpDynamicData.EnemyInfo> enemyInfoList = new List<PvpDynamicData.EnemyInfo>();
 
-	// Token: 0x04000626 RID: 1574
 	private bool isHappenReset;
 
-	// Token: 0x04000627 RID: 1575
 	private bool isHappenDefenseBonus;
 
-	// Token: 0x04000628 RID: 1576
 	private List<PvpDynamicData.DefenseResult> defenseResultList;
 
-	// Token: 0x04000629 RID: 1577
 	private int pvpRankBeforReset;
 
-	// Token: 0x0400062A RID: 1578
 	private int pvpSeasonIdBeforReset;
 
-	// Token: 0x02000746 RID: 1862
 	public class UserInfo
 	{
-		// Token: 0x040032AD RID: 12973
 		public int pvpPoint;
 
-		// Token: 0x040032AE RID: 12974
 		public int currentDeckId;
 
-		// Token: 0x040032AF RID: 12975
 		public StaminaInfo pvpStaminaInfo;
 
-		// Token: 0x040032B0 RID: 12976
 		public int winningNum;
 	}
 
-	// Token: 0x02000747 RID: 1863
 	public class DefenseResult
 	{
-		// Token: 0x040032B1 RID: 12977
 		public DateTime time;
 
-		// Token: 0x040032B2 RID: 12978
 		public int winNum;
 
-		// Token: 0x040032B3 RID: 12979
 		public int loseNum;
 
-		// Token: 0x040032B4 RID: 12980
 		public List<ItemData> bonusItemList;
 	}
 
-	// Token: 0x02000748 RID: 1864
 	public class EnemyInfo
 	{
-		// Token: 0x060035B1 RID: 13745 RVA: 0x001C5341 File Offset: 0x001C3541
 		public EnemyInfo()
 		{
 		}
 
-		// Token: 0x060035B2 RID: 13746 RVA: 0x001C534C File Offset: 0x001C354C
 		public EnemyInfo(OppUser server)
 		{
 			this.oppUser = server;
@@ -268,7 +241,6 @@ public class PvpDynamicData
 			this.kizunaBuffQualified = server.kizuna_buff_qualified;
 		}
 
-		// Token: 0x060035B3 RID: 13747 RVA: 0x001C5414 File Offset: 0x001C3614
 		public static PvpDynamicData.EnemyInfo MakeDummy(int id)
 		{
 			PvpDynamicData.EnemyInfo enemyInfo = new PvpDynamicData.EnemyInfo();
@@ -282,45 +254,30 @@ public class PvpDynamicData
 			return enemyInfo;
 		}
 
-		// Token: 0x040032B5 RID: 12981
 		public OppUser oppUser;
 
-		// Token: 0x040032B6 RID: 12982
 		public PvpDynamicData.EnemyInfo.Difficulty difficulty;
 
-		// Token: 0x040032B7 RID: 12983
 		public int friendId;
 
-		// Token: 0x040032B8 RID: 12984
 		public string userName;
 
-		// Token: 0x040032B9 RID: 12985
 		public int userLevel;
 
-		// Token: 0x040032BA RID: 12986
 		public int achievementId;
 
-		// Token: 0x040032BB RID: 12987
 		public int kizunaBuffQualified;
 
-		// Token: 0x040032BC RID: 12988
 		public SceneBattle_DeckInfo deckInfo;
 
-		// Token: 0x040032BD RID: 12989
 		public Dictionary<CharaDef.AttributeType, DataManagerKemoBoard.KemoBoardBonusParam> kemoBoardParamMap;
 
-		// Token: 0x02001141 RID: 4417
 		public enum Difficulty
 		{
-			// Token: 0x04005EC6 RID: 24262
 			INVALID,
-			// Token: 0x04005EC7 RID: 24263
 			HARD,
-			// Token: 0x04005EC8 RID: 24264
 			NORMAL,
-			// Token: 0x04005EC9 RID: 24265
 			EASY,
-			// Token: 0x04005ECA RID: 24266
 			CHAMPION
 		}
 	}

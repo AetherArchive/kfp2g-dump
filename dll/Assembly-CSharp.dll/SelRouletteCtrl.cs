@@ -1,25 +1,21 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using CriWare;
 using SGNFW.Common;
 using UnityEngine;
 
-// Token: 0x020001C1 RID: 449
 public class SelRouletteCtrl : MonoBehaviour
 {
-	// Token: 0x06001EE5 RID: 7909 RVA: 0x0017FFB2 File Offset: 0x0017E1B2
 	private void Start()
 	{
 		Singleton<DataManager>.Instance.InitializeByEditor(null);
 	}
 
-	// Token: 0x06001EE6 RID: 7910 RVA: 0x0017FFBF File Offset: 0x0017E1BF
 	private void Update()
 	{
 	}
 
-	// Token: 0x06001EE7 RID: 7911 RVA: 0x0017FFC1 File Offset: 0x0017E1C1
 	public static IEnumerator ExeRoulette(Transform parentTr)
 	{
 		SelLoginBonus.rcvDate = TimeManager.Now;
@@ -37,7 +33,6 @@ public class SelRouletteCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001EE8 RID: 7912 RVA: 0x0017FFD0 File Offset: 0x0017E1D0
 	private static IEnumerator ExeRoulettePerformance(Transform parentTr, HomeCheckResult.RouletteData rouletteData)
 	{
 		SelRouletteCtrl.<>c__DisplayClass15_0 CS$<>8__locals1 = new SelRouletteCtrl.<>c__DisplayClass15_0();
@@ -244,7 +239,6 @@ public class SelRouletteCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001EE9 RID: 7913 RVA: 0x0017FFE8 File Offset: 0x0017E1E8
 	private static void Uninit()
 	{
 		if (SelRouletteCtrl.guiData != null)
@@ -258,25 +252,18 @@ public class SelRouletteCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04001685 RID: 5765
 	private static bool allSkip;
 
-	// Token: 0x04001686 RID: 5766
 	private static SelRouletteCtrl.GuiRoulette guiData;
 
-	// Token: 0x04001687 RID: 5767
 	private static PguiAECtrl fadeGui;
 
-	// Token: 0x04001688 RID: 5768
 	public static DateTime rcvDate = DateTime.MinValue;
 
-	// Token: 0x04001689 RID: 5769
 	private static readonly string ROULETTE_MOTION_KEY = "RLT_CH_40401_PTN_";
 
-	// Token: 0x0400168A RID: 5770
 	private static readonly string DEFAULT_CUTIN_TEX_PATH = "Texture2D/Roulette/cutin_bg_default";
 
-	// Token: 0x0400168B RID: 5771
 	private static readonly Dictionary<string, List<string>> ACTION_ID_TO_MOTION_KEY = new Dictionary<string, List<string>>
 	{
 		{
@@ -297,23 +284,18 @@ public class SelRouletteCtrl : MonoBehaviour
 		}
 	};
 
-	// Token: 0x0400168C RID: 5772
 	private static readonly List<List<string>> RESTART_KEYPAIR = new List<List<string>>
 	{
 		new List<string> { "B", "K" },
 		new List<string> { "C", "L" }
 	};
 
-	// Token: 0x0400168D RID: 5773
 	private static readonly string LUCKY_ACTION_ID = "4";
 
-	// Token: 0x0400168E RID: 5774
 	private static readonly int DEFAULT_ROULETTE_MODEL_ID = 40401;
 
-	// Token: 0x02000FEC RID: 4076
 	public class GuiRoulette
 	{
-		// Token: 0x06005173 RID: 20851 RVA: 0x00245BC0 File Offset: 0x00243DC0
 		public GuiRoulette(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -328,41 +310,29 @@ public class SelRouletteCtrl : MonoBehaviour
 			this.cutInBG = baseTr.Find("CutIn/CutInMask/CutInBg").GetComponent<PguiRawImageCtrl>();
 		}
 
-		// Token: 0x0400596B RID: 22891
 		public GameObject baseObj;
 
-		// Token: 0x0400596C RID: 22892
 		public PguiButtonCtrl Btn_Skip;
 
-		// Token: 0x0400596D RID: 22893
 		public PguiRawImageCtrl FrontBG;
 
-		// Token: 0x0400596E RID: 22894
 		public PguiRawImageCtrl cutInBG;
 
-		// Token: 0x0400596F RID: 22895
 		public GameObject Touch;
 
-		// Token: 0x04005970 RID: 22896
 		public GameObject performanceParent;
 
-		// Token: 0x04005971 RID: 22897
 		public PguiImageCtrl CharSerif;
 
-		// Token: 0x04005972 RID: 22898
 		public PguiTextCtrl Txt_Serif;
 
-		// Token: 0x04005973 RID: 22899
 		public PguiTextCtrl Txt_CharaName;
 
-		// Token: 0x04005974 RID: 22900
 		public GameObject cutInParent;
 	}
 
-	// Token: 0x02000FED RID: 4077
 	private enum PERFORMANCE_LIST
 	{
-		// Token: 0x04005976 RID: 22902
 		RESTART
 	}
 }

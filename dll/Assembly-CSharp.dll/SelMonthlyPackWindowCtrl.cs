@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.HttpRequest.Protocol;
@@ -6,10 +6,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x020001BC RID: 444
 public class SelMonthlyPackWindowCtrl : MonoBehaviour
 {
-	// Token: 0x06001E77 RID: 7799 RVA: 0x0017AF34 File Offset: 0x00179134
 	public void Init()
 	{
 		GameObject gameObject = Object.Instantiate<GameObject>((GameObject)Resources.Load("SelCmn/GUI/Prefab/GUI_CmnShop_Pass_Window"), base.transform);
@@ -102,7 +100,6 @@ public class SelMonthlyPackWindowCtrl : MonoBehaviour
 		this.buyPurchase = null;
 	}
 
-	// Token: 0x06001E78 RID: 7800 RVA: 0x0017B224 File Offset: 0x00179424
 	public void Setup()
 	{
 		this.isActiveWindow = true;
@@ -123,13 +120,11 @@ public class SelMonthlyPackWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E79 RID: 7801 RVA: 0x0017B2B6 File Offset: 0x001794B6
 	public bool IsActiveWindow()
 	{
 		return this.isActiveWindow;
 	}
 
-	// Token: 0x06001E7A RID: 7802 RVA: 0x0017B2C0 File Offset: 0x001794C0
 	private int countValidPack()
 	{
 		int num = 0;
@@ -168,7 +163,6 @@ public class SelMonthlyPackWindowCtrl : MonoBehaviour
 		return num;
 	}
 
-	// Token: 0x06001E7B RID: 7803 RVA: 0x0017B330 File Offset: 0x00179530
 	private void Update()
 	{
 		if (this.requestStatus != this.currentStatus)
@@ -210,7 +204,6 @@ public class SelMonthlyPackWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E7C RID: 7804 RVA: 0x0017B444 File Offset: 0x00179644
 	private static int IsAlreadyBuy()
 	{
 		DateTime dateTime = new DateTime(DataManager.DmMonthlyPack.nowPackData.EndDatetime.Year, DataManager.DmMonthlyPack.nowPackData.EndDatetime.Month, DataManager.DmMonthlyPack.nowPackData.EndDatetime.Day);
@@ -225,7 +218,6 @@ public class SelMonthlyPackWindowCtrl : MonoBehaviour
 		return 0;
 	}
 
-	// Token: 0x06001E7D RID: 7805 RVA: 0x0017B588 File Offset: 0x00179788
 	private IEnumerator SetupSequence()
 	{
 		this.nowPack = DataManager.DmMonthlyPack.nowPackData.MonthlypackData;
@@ -343,7 +335,6 @@ public class SelMonthlyPackWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001E7E RID: 7806 RVA: 0x0017B598 File Offset: 0x00179798
 	private void SetupInfo(PguiButtonCtrl btn, DataManagerMonthlyPack.PurchaseMonthlypackData pmpd, PurchaseProductOne ppo)
 	{
 		btn.gameObject.SetActive(ppo != null);
@@ -373,7 +364,6 @@ public class SelMonthlyPackWindowCtrl : MonoBehaviour
 		transform.Find("Txt_Money").GetComponent<PguiTextCtrl>().text = ((ppo == null) ? "" : (ppo.price.ToString() + PrjUtil.MakeMessage("pt")));
 	}
 
-	// Token: 0x06001E7F RID: 7807 RVA: 0x0017B796 File Offset: 0x00179996
 	private IEnumerator AgeAuthenticationSequence()
 	{
 		IEnumerator func = DataManager.DmPurchase.RequestSolutionAgeAuthentic();
@@ -385,7 +375,6 @@ public class SelMonthlyPackWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001E80 RID: 7808 RVA: 0x0017B7A5 File Offset: 0x001799A5
 	private IEnumerator MonthlyPackSequence()
 	{
 		int num = SelMonthlyPackWindowCtrl.IsAlreadyBuy();
@@ -499,7 +488,6 @@ public class SelMonthlyPackWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001E81 RID: 7809 RVA: 0x0017B7B4 File Offset: 0x001799B4
 	private bool OnClickOwButton(int index)
 	{
 		this.requestStatus = SelMonthlyPackWindowCtrl.Status.NONE;
@@ -507,7 +495,6 @@ public class SelMonthlyPackWindowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001E82 RID: 7810 RVA: 0x0017B7C8 File Offset: 0x001799C8
 	private void OnClickBuy(DataManagerMonthlyPack.PurchaseMonthlypackData pack, PurchaseProductOne purchase)
 	{
 		if (this.setupSequence != null || this.ageAuthenticationSequence != null || this.monthlyPackSequence != null)
@@ -529,7 +516,6 @@ public class SelMonthlyPackWindowCtrl : MonoBehaviour
 		this.requestStatus = SelMonthlyPackWindowCtrl.Status.BUY;
 	}
 
-	// Token: 0x06001E83 RID: 7811 RVA: 0x0017B82E File Offset: 0x00179A2E
 	private void OnClickInfo(DataManagerMonthlyPack.PurchaseMonthlypackData pack)
 	{
 		if (this.setupSequence != null || this.ageAuthenticationSequence != null || this.monthlyPackSequence != null)
@@ -542,106 +528,74 @@ public class SelMonthlyPackWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E84 RID: 7812 RVA: 0x0017B864 File Offset: 0x00179A64
 	public void AddOnSuccessPurchaseListener(UnityAction cb)
 	{
 		this.onSuccessPurchaseCbList.Add(cb);
 	}
 
-	// Token: 0x06001E85 RID: 7813 RVA: 0x0017B872 File Offset: 0x00179A72
 	public void RemoveOnSuccessPurchaseListener(UnityAction cb)
 	{
 		this.onSuccessPurchaseCbList.Remove(cb);
 	}
 
-	// Token: 0x04001641 RID: 5697
 	private SelMonthlyPackWindowCtrl.Window window;
 
-	// Token: 0x04001642 RID: 5698
 	private static readonly int COUNT_TO_SCROLL = 4;
 
-	// Token: 0x04001643 RID: 5699
 	private SelMonthlyPackWindowCtrl.Status requestStatus;
 
-	// Token: 0x04001644 RID: 5700
 	private SelMonthlyPackWindowCtrl.Status currentStatus;
 
-	// Token: 0x04001645 RID: 5701
 	private bool isActiveWindow;
 
-	// Token: 0x04001646 RID: 5702
 	private DataManagerMonthlyPack.PurchaseMonthlypackData nowPack;
 
-	// Token: 0x04001647 RID: 5703
 	private DataManagerMonthlyPack.PurchaseMonthlypackData gorgeousPack;
 
-	// Token: 0x04001648 RID: 5704
 	private DataManagerMonthlyPack.PurchaseMonthlypackData greatPack;
 
-	// Token: 0x04001649 RID: 5705
 	private DataManagerMonthlyPack.PurchaseMonthlypackData smallPack;
 
-	// Token: 0x0400164A RID: 5706
 	private DataManagerMonthlyPack.PurchaseMonthlypackData firstPack;
 
-	// Token: 0x0400164B RID: 5707
 	private DataManagerMonthlyPack.PurchaseMonthlypackData buyPack;
 
-	// Token: 0x0400164C RID: 5708
 	private PurchaseProductOne gorgeousPurchase;
 
-	// Token: 0x0400164D RID: 5709
 	private PurchaseProductOne greatPurchase;
 
-	// Token: 0x0400164E RID: 5710
 	private PurchaseProductOne smallPurchase;
 
-	// Token: 0x0400164F RID: 5711
 	private PurchaseProductOne firstPurchase;
 
-	// Token: 0x04001650 RID: 5712
 	private PurchaseProductOne buyPurchase;
 
-	// Token: 0x04001651 RID: 5713
 	private DataManagerMonthlyPack.PurchaseMonthlypackData newGorgeousPack;
 
-	// Token: 0x04001652 RID: 5714
 	private DataManagerMonthlyPack.PurchaseMonthlypackData newGreatPack;
 
-	// Token: 0x04001653 RID: 5715
 	private DataManagerMonthlyPack.PurchaseMonthlypackData newSmallPack;
 
-	// Token: 0x04001654 RID: 5716
 	private DataManagerMonthlyPack.PurchaseMonthlypackData newFirstPack;
 
-	// Token: 0x04001655 RID: 5717
 	private PurchaseProductOne newGorgeousPurchase;
 
-	// Token: 0x04001656 RID: 5718
 	private PurchaseProductOne newGreatPurchase;
 
-	// Token: 0x04001657 RID: 5719
 	private PurchaseProductOne newSmallPurchase;
 
-	// Token: 0x04001658 RID: 5720
 	private PurchaseProductOne newFirstPurchase;
 
-	// Token: 0x04001659 RID: 5721
 	private List<UnityAction> onSuccessPurchaseCbList = new List<UnityAction>();
 
-	// Token: 0x0400165A RID: 5722
 	private IEnumerator setupSequence;
 
-	// Token: 0x0400165B RID: 5723
 	private IEnumerator ageAuthenticationSequence;
 
-	// Token: 0x0400165C RID: 5724
 	private IEnumerator monthlyPackSequence;
 
-	// Token: 0x02000FB1 RID: 4017
 	public class Window
 	{
-		// Token: 0x0600509C RID: 20636 RVA: 0x0024265C File Offset: 0x0024085C
 		public Window(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -668,82 +622,55 @@ public class SelMonthlyPackWindowCtrl : MonoBehaviour
 			this.scroll.scrollSensitivity = ScrollParamDefine.MonthlyPackWindow;
 		}
 
-		// Token: 0x04005883 RID: 22659
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x04005884 RID: 22660
 		public PguiButtonCtrl Btn_Law;
 
-		// Token: 0x04005885 RID: 22661
 		public PguiButtonCtrl Btn_Offer;
 
-		// Token: 0x04005886 RID: 22662
 		public PguiTextCtrl Num_Own;
 
-		// Token: 0x04005887 RID: 22663
 		public PguiButtonCtrl Btn_Gorgeous;
 
-		// Token: 0x04005888 RID: 22664
 		public PguiButtonCtrl Btn_Great;
 
-		// Token: 0x04005889 RID: 22665
 		public PguiButtonCtrl Btn_Small;
 
-		// Token: 0x0400588A RID: 22666
 		public PguiButtonCtrl Btn_First;
 
-		// Token: 0x0400588B RID: 22667
 		public PguiButtonCtrl Btn_GorgeousInfo;
 
-		// Token: 0x0400588C RID: 22668
 		public PguiButtonCtrl Btn_GreatInfo;
 
-		// Token: 0x0400588D RID: 22669
 		public PguiButtonCtrl Btn_SmallInfo;
 
-		// Token: 0x0400588E RID: 22670
 		public PguiButtonCtrl Btn_FirstInfo;
 
-		// Token: 0x0400588F RID: 22671
 		public ScrollRect scroll;
 
-		// Token: 0x04005890 RID: 22672
 		public PguiButtonCtrl Btn_NewGorgeous;
 
-		// Token: 0x04005891 RID: 22673
 		public PguiButtonCtrl Btn_NewGreat;
 
-		// Token: 0x04005892 RID: 22674
 		public PguiButtonCtrl Btn_NewSmall;
 
-		// Token: 0x04005893 RID: 22675
 		public PguiButtonCtrl Btn_NewFirst;
 
-		// Token: 0x04005894 RID: 22676
 		public PguiButtonCtrl Btn_NewGorgeousInfo;
 
-		// Token: 0x04005895 RID: 22677
 		public PguiButtonCtrl Btn_NewGreatInfo;
 
-		// Token: 0x04005896 RID: 22678
 		public PguiButtonCtrl Btn_NewSmallInfo;
 
-		// Token: 0x04005897 RID: 22679
 		public PguiButtonCtrl Btn_NewFirstInfo;
 	}
 
-	// Token: 0x02000FB2 RID: 4018
 	public enum Status
 	{
-		// Token: 0x04005899 RID: 22681
 		NONE,
-		// Token: 0x0400589A RID: 22682
 		CLOSE,
-		// Token: 0x0400589B RID: 22683
 		SETUP,
-		// Token: 0x0400589C RID: 22684
 		AGE_AUTHENTICATION,
-		// Token: 0x0400589D RID: 22685
 		BUY
 	}
 }

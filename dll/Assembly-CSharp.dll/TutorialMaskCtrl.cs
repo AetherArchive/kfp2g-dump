@@ -1,14 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x0200010A RID: 266
 public class TutorialMaskCtrl : MonoBehaviour
 {
-	// Token: 0x06000CDA RID: 3290 RVA: 0x0004E764 File Offset: 0x0004C964
 	private void Awake()
 	{
 		this.maskImage.material = new Material(this.maskShader);
@@ -95,7 +93,6 @@ public class TutorialMaskCtrl : MonoBehaviour
 		this.m_SafeArea = SafeAreaScaler.GetSafeArea();
 	}
 
-	// Token: 0x06000CDB RID: 3291 RVA: 0x0004EB50 File Offset: 0x0004CD50
 	private void Update()
 	{
 		if (this.m_SafeArea != SafeAreaScaler.GetSafeArea())
@@ -106,7 +103,6 @@ public class TutorialMaskCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000CDC RID: 3292 RVA: 0x0004EB89 File Offset: 0x0004CD89
 	private IEnumerator UpdateMask()
 	{
 		int num;
@@ -142,7 +138,6 @@ public class TutorialMaskCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000CDD RID: 3293 RVA: 0x0004EB98 File Offset: 0x0004CD98
 	private IEnumerator UpdateStick()
 	{
 		if (this.stickRT.gameObject.activeSelf)
@@ -174,7 +169,6 @@ public class TutorialMaskCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000CDE RID: 3294 RVA: 0x0004EBA8 File Offset: 0x0004CDA8
 	private void SetFrame(int index)
 	{
 		if (this.maskRT[index] != null)
@@ -236,7 +230,6 @@ public class TutorialMaskCtrl : MonoBehaviour
 		rectTransform.sizeDelta = new Vector2(this.maskRect[index].width, this.maskRect[index].height);
 	}
 
-	// Token: 0x06000CDF RID: 3295 RVA: 0x0004F090 File Offset: 0x0004D290
 	public void OnTouchMask(Transform tr)
 	{
 		if (this.charaInfoParameter != null && this.charaInfoParameter.messageList.Count > 0 && this.touchNextObj.activeSelf && TimeManager.Now.Ticks > this.invalidMessageSkipTick)
@@ -268,14 +261,12 @@ public class TutorialMaskCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000CE0 RID: 3296 RVA: 0x0004F1D4 File Offset: 0x0004D3D4
 	public void SetEnable(bool e)
 	{
 		this.SetMaskEnable(true);
 		base.gameObject.SetActive(e);
 	}
 
-	// Token: 0x06000CE1 RID: 3297 RVA: 0x0004F1EC File Offset: 0x0004D3EC
 	public void SetFrame(int index, bool isDisp, Rect? rect = null, bool isCollThrough = true, FieldCameraScaler cam = null)
 	{
 		if (index < 0 || index >= this.maskRect.Count)
@@ -312,7 +303,6 @@ public class TutorialMaskCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000CE2 RID: 3298 RVA: 0x0004F3D8 File Offset: 0x0004D5D8
 	public void SetFrame(int index, RectTransform rectTransform, bool isCollThrough, float scaleX = 1f, float scaleY = 1f)
 	{
 		if (index < 0 || index >= this.maskRect.Count)
@@ -329,7 +319,6 @@ public class TutorialMaskCtrl : MonoBehaviour
 		this.SetFrame(index);
 	}
 
-	// Token: 0x06000CE3 RID: 3299 RVA: 0x0004F47C File Offset: 0x0004D67C
 	public void SetCharaInfo(TutorialMaskCtrl.CharaInfoParameter param)
 	{
 		if (param.charaImagePath != string.Empty)
@@ -418,7 +407,6 @@ public class TutorialMaskCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000CE4 RID: 3300 RVA: 0x0004F710 File Offset: 0x0004D910
 	private void SetStickCursor()
 	{
 		if (this.stickParentRT == null)
@@ -439,7 +427,6 @@ public class TutorialMaskCtrl : MonoBehaviour
 		(this.stickRT.transform as RectTransform).anchoredPosition = anchoredPosition + new Vector2((this.stickScaleX < 0f) ? (this.stickParentRT.rect.width * this.stickScaleX) : (this.stickParentRT.rect.width / 4f), this.stickParentRT.rect.height / 1.5f);
 	}
 
-	// Token: 0x06000CE5 RID: 3301 RVA: 0x0004F870 File Offset: 0x0004DA70
 	public void SetStickCursor(bool isDisp, Vector2? postion = null, Vector3? angle = null, Vector2? offset = null)
 	{
 		this.stickRT.gameObject.SetActive(isDisp);
@@ -460,13 +447,11 @@ public class TutorialMaskCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000CE6 RID: 3302 RVA: 0x0004F900 File Offset: 0x0004DB00
 	public bool IsEnableStick()
 	{
 		return this.stickRT.gameObject.activeSelf;
 	}
 
-	// Token: 0x06000CE7 RID: 3303 RVA: 0x0004F914 File Offset: 0x0004DB14
 	public void SetStickCursor(RectTransform rectTransform, float scaleX = 1f)
 	{
 		this.stickRT.gameObject.SetActive(true);
@@ -479,7 +464,6 @@ public class TutorialMaskCtrl : MonoBehaviour
 		this.SetStickCursor();
 	}
 
-	// Token: 0x06000CE8 RID: 3304 RVA: 0x0004F98C File Offset: 0x0004DB8C
 	public void SetBlackMask(bool isDisp)
 	{
 		this.SetMaskEnable(true);
@@ -490,7 +474,6 @@ public class TutorialMaskCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000CE9 RID: 3305 RVA: 0x0004FA1C File Offset: 0x0004DC1C
 	public void SetMaskEnable(bool sw)
 	{
 		this.maskImage.gameObject.SetActive(sw);
@@ -500,151 +483,103 @@ public class TutorialMaskCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000A31 RID: 2609
 	[SerializeField]
 	private Shader maskShader;
 
-	// Token: 0x04000A32 RID: 2610
 	[SerializeField]
 	private RawImage maskImage;
 
-	// Token: 0x04000A33 RID: 2611
 	[SerializeField]
 	private List<PguiCollider> frameCollider;
 
-	// Token: 0x04000A34 RID: 2612
 	[SerializeField]
 	private List<Rect> maskRect;
 
-	// Token: 0x04000A35 RID: 2613
 	[SerializeField]
 	private GameObject TutorialSerifPrefab;
 
-	// Token: 0x04000A36 RID: 2614
 	[SerializeField]
 	private GameObject TutorialStickPrefab;
 
-	// Token: 0x04000A37 RID: 2615
 	private List<int> idClicpLT;
 
-	// Token: 0x04000A38 RID: 2616
 	private List<int> idClicpRT;
 
-	// Token: 0x04000A39 RID: 2617
 	private List<int> idClicpLB;
 
-	// Token: 0x04000A3A RID: 2618
 	private List<int> idClicpRB;
 
-	// Token: 0x04000A3B RID: 2619
 	private const float MASK_WIDTH = 1280f;
 
-	// Token: 0x04000A3C RID: 2620
 	private const float MASK_HEIGHT = 720f;
 
-	// Token: 0x04000A3D RID: 2621
 	private List<RectTransform> maskRT;
 
-	// Token: 0x04000A3E RID: 2622
 	private List<Vector2> maskScale;
 
-	// Token: 0x04000A3F RID: 2623
 	private List<FieldCameraScaler> maskCam;
 
-	// Token: 0x04000A40 RID: 2624
 	private List<Rect> maskBaseRect = new List<Rect>();
 
-	// Token: 0x04000A41 RID: 2625
 	private RectTransform serifRT;
 
-	// Token: 0x04000A42 RID: 2626
 	private RectTransform stickRT;
 
-	// Token: 0x04000A43 RID: 2627
 	private RectTransform stickParentRT;
 
-	// Token: 0x04000A44 RID: 2628
 	private float stickScaleX = 1f;
 
-	// Token: 0x04000A45 RID: 2629
 	private Vector2? stickPosition;
 
-	// Token: 0x04000A46 RID: 2630
 	private Vector3? stickAngle;
 
-	// Token: 0x04000A47 RID: 2631
 	private Vector2? stickOffset;
 
-	// Token: 0x04000A48 RID: 2632
 	private SimpleAnimation tutorialSerifAnime;
 
-	// Token: 0x04000A49 RID: 2633
 	private PguiRawImageCtrl infoCharaImage;
 
-	// Token: 0x04000A4A RID: 2634
 	private PguiTextCtrl infoMessageText;
 
-	// Token: 0x04000A4B RID: 2635
 	private GameObject touchNextObj;
 
-	// Token: 0x04000A4C RID: 2636
 	private TutorialMaskCtrl.CharaInfoParameter charaInfoParameter;
 
-	// Token: 0x04000A4D RID: 2637
 	private int messageStep;
 
-	// Token: 0x04000A4E RID: 2638
 	private long invalidMessageSkipTick;
 
-	// Token: 0x04000A4F RID: 2639
 	private const long InvalidMessageSkipTickInterval = 2000000L;
 
-	// Token: 0x04000A50 RID: 2640
 	private List<RawImage> outFrame;
 
-	// Token: 0x04000A51 RID: 2641
 	private bool isInit;
 
-	// Token: 0x04000A52 RID: 2642
 	private Rect m_SafeArea;
 
-	// Token: 0x02000846 RID: 2118
 	public enum CharaDispType
 	{
-		// Token: 0x04003729 RID: 14121
 		INVALID,
-		// Token: 0x0400372A RID: 14122
 		IN,
-		// Token: 0x0400372B RID: 14123
 		IN_QUICK,
-		// Token: 0x0400372C RID: 14124
 		OUT,
-		// Token: 0x0400372D RID: 14125
 		OUT_QUICK
 	}
 
-	// Token: 0x02000847 RID: 2119
 	public class CharaInfoParameter
 	{
-		// Token: 0x0400372E RID: 14126
 		public TutorialMaskCtrl.CharaDispType dispType;
 
-		// Token: 0x0400372F RID: 14127
 		public Vector2? postion;
 
-		// Token: 0x04003730 RID: 14128
 		public bool dispInfoChara = true;
 
-		// Token: 0x04003731 RID: 14129
 		public bool enableTouchNext = true;
 
-		// Token: 0x04003732 RID: 14130
 		public string charaImagePath = string.Empty;
 
-		// Token: 0x04003733 RID: 14131
 		public List<string> messageList = new List<string>();
 
-		// Token: 0x04003734 RID: 14132
 		public UnityAction finishCallBack;
 	}
 }

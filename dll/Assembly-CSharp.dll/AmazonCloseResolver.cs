@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
@@ -7,15 +7,10 @@ using SGNFW.Login;
 using SGNFW.Mst;
 using UnityEngine;
 
-// Token: 0x02000123 RID: 291
 public class AmazonCloseResolver
 {
-	// Token: 0x17000339 RID: 825
-	// (get) Token: 0x06000EEA RID: 3818 RVA: 0x000B5228 File Offset: 0x000B3428
-	// (set) Token: 0x06000EEB RID: 3819 RVA: 0x000B5230 File Offset: 0x000B3430
 	public AmazonCloseResolver.Result result { get; private set; }
 
-	// Token: 0x06000EEC RID: 3820 RVA: 0x000B5239 File Offset: 0x000B3439
 	public bool ResolveAction(LoginManager.ServiceCloseData closeData, bool isFadeAction)
 	{
 		if (this.ienum == null)
@@ -25,7 +20,6 @@ public class AmazonCloseResolver
 		return !this.ienum.MoveNext();
 	}
 
-	// Token: 0x06000EED RID: 3821 RVA: 0x000B525F File Offset: 0x000B345F
 	private IEnumerator ResolveActionInternal(LoginManager.ServiceCloseData closeData, bool isFadeAction)
 	{
 		AmazonCloseResolver.<>c__DisplayClass7_0 CS$<>8__locals1 = new AmazonCloseResolver.<>c__DisplayClass7_0();
@@ -325,35 +319,24 @@ public class AmazonCloseResolver
 		yield break;
 	}
 
-	// Token: 0x04000D8B RID: 3467
 	private IEnumerator ienum;
 
-	// Token: 0x0200093F RID: 2367
 	private enum ActionType
 	{
-		// Token: 0x04003C46 RID: 15430
 		INVALID,
-		// Token: 0x04003C47 RID: 15431
 		BEFORE_CLOSE_NOTICE,
-		// Token: 0x04003C48 RID: 15432
 		TRANSFER_SETTING,
-		// Token: 0x04003C49 RID: 15433
 		AFTER_CLOSE_NOTICE_A,
-		// Token: 0x04003C4A RID: 15434
 		AFTER_CLOSE_NOTICE_B,
-		// Token: 0x04003C4B RID: 15435
 		FREEZE_USER
 	}
 
-	// Token: 0x02000940 RID: 2368
 	public class Result
 	{
 	}
 
-	// Token: 0x02000941 RID: 2369
 	private class GUI
 	{
-		// Token: 0x06003B38 RID: 15160 RVA: 0x001D431C File Offset: 0x001D251C
 		public GUI(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -362,22 +345,16 @@ public class AmazonCloseResolver
 			this.info03 = new AmazonCloseResolver.GUI.Info03(baseTr.Find("Base/Window/Info03"));
 		}
 
-		// Token: 0x04003C4C RID: 15436
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x04003C4D RID: 15437
 		public AmazonCloseResolver.GUI.Info01 info01;
 
-		// Token: 0x04003C4E RID: 15438
 		public AmazonCloseResolver.GUI.Info02 info02;
 
-		// Token: 0x04003C4F RID: 15439
 		public AmazonCloseResolver.GUI.Info03 info03;
 
-		// Token: 0x0200114C RID: 4428
 		public class Info01
 		{
-			// Token: 0x06005591 RID: 21905 RVA: 0x0024F404 File Offset: 0x0024D604
 			public Info01(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -386,20 +363,15 @@ public class AmazonCloseResolver
 				this.Img_Check.gameObject.SetActive(false);
 			}
 
-			// Token: 0x04005F0B RID: 24331
 			public GameObject baseObj;
 
-			// Token: 0x04005F0C RID: 24332
 			public PguiButtonCtrl Btn_CheckBox;
 
-			// Token: 0x04005F0D RID: 24333
 			public PguiImageCtrl Img_Check;
 		}
 
-		// Token: 0x0200114D RID: 4429
 		public class Info02
 		{
-			// Token: 0x06005592 RID: 21906 RVA: 0x0024F460 File Offset: 0x0024D660
 			public Info02(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -407,17 +379,13 @@ public class AmazonCloseResolver
 				this.selTransferCtrl.Init();
 			}
 
-			// Token: 0x04005F0E RID: 24334
 			public GameObject baseObj;
 
-			// Token: 0x04005F0F RID: 24335
 			public SelTransferCtrl selTransferCtrl;
 		}
 
-		// Token: 0x0200114E RID: 4430
 		public class Info03
 		{
-			// Token: 0x06005593 RID: 21907 RVA: 0x0024F490 File Offset: 0x0024D690
 			public Info03(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -430,28 +398,20 @@ public class AmazonCloseResolver
 				this.Massage02 = baseTr.Find("panel04/Massage02").GetComponent<PguiTextCtrl>();
 			}
 
-			// Token: 0x04005F10 RID: 24336
 			public GameObject baseObj;
 
-			// Token: 0x04005F11 RID: 24337
 			public PguiButtonCtrl Btn_Copy;
 
-			// Token: 0x04005F12 RID: 24338
 			public PguiTextCtrl Txt_Label01;
 
-			// Token: 0x04005F13 RID: 24339
 			public PguiTextCtrl Txt_Label02;
 
-			// Token: 0x04005F14 RID: 24340
 			public PguiTextCtrl Txt_UserName;
 
-			// Token: 0x04005F15 RID: 24341
 			public PguiTextCtrl Txt_Ruby;
 
-			// Token: 0x04005F16 RID: 24342
 			public PguiTextCtrl Massage01;
 
-			// Token: 0x04005F17 RID: 24343
 			public PguiTextCtrl Massage02;
 		}
 	}

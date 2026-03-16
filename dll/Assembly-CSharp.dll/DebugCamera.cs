@@ -1,10 +1,8 @@
-﻿using System;
+using System;
 using UnityEngine;
 
-// Token: 0x020001F0 RID: 496
 public class DebugCamera : MonoBehaviour
 {
-	// Token: 0x06002137 RID: 8503 RVA: 0x0018E027 File Offset: 0x0018C227
 	private void setupFocusObject(string name)
 	{
 		this.focusObj = new GameObject(name);
@@ -12,7 +10,6 @@ public class DebugCamera : MonoBehaviour
 		this.focusObj.transform.LookAt(base.transform.position);
 	}
 
-	// Token: 0x06002138 RID: 8504 RVA: 0x0018E068 File Offset: 0x0018C268
 	private void Start()
 	{
 		if (this.focusObj == null)
@@ -28,14 +25,12 @@ public class DebugCamera : MonoBehaviour
 		this.resetFocusRotation = this.focusObj.transform.rotation;
 	}
 
-	// Token: 0x06002139 RID: 8505 RVA: 0x0018E0FA File Offset: 0x0018C2FA
 	private void Update()
 	{
 		this.keyEvent();
 		this.mouseEvent();
 	}
 
-	// Token: 0x0600213A RID: 8506 RVA: 0x0018E108 File Offset: 0x0018C308
 	private void OnGUI()
 	{
 		if (this.showInstWindow)
@@ -57,7 +52,6 @@ public class DebugCamera : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600213B RID: 8507 RVA: 0x0018E2B5 File Offset: 0x0018C4B5
 	private void keyEvent()
 	{
 		if (Input.GetKeyDown(KeyCode.R))
@@ -70,7 +64,6 @@ public class DebugCamera : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600213C RID: 8508 RVA: 0x0018E2E0 File Offset: 0x0018C4E0
 	public void CameraReset()
 	{
 		this.focus = this.resetFocus;
@@ -79,7 +72,6 @@ public class DebugCamera : MonoBehaviour
 		this.focusObj.transform.rotation = this.resetFocusRotation;
 	}
 
-	// Token: 0x0600213D RID: 8509 RVA: 0x0018E338 File Offset: 0x0018C538
 	private void mouseEvent()
 	{
 		float axis = Input.GetAxis("Mouse ScrollWheel");
@@ -94,7 +86,6 @@ public class DebugCamera : MonoBehaviour
 		this.mouseDragEvent(Input.mousePosition);
 	}
 
-	// Token: 0x0600213E RID: 8510 RVA: 0x0018E390 File Offset: 0x0018C590
 	private void mouseDragEvent(Vector3 mousePos)
 	{
 		Vector3 vector = mousePos - this.oldPos;
@@ -137,7 +128,6 @@ public class DebugCamera : MonoBehaviour
 		this.oldPos = mousePos;
 	}
 
-	// Token: 0x0600213F RID: 8511 RVA: 0x0018E504 File Offset: 0x0018C704
 	public void mouseWheelEvent(float delta)
 	{
 		if (!this.enableMouseButtonDownMiddle)
@@ -151,7 +141,6 @@ public class DebugCamera : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06002140 RID: 8512 RVA: 0x0018E568 File Offset: 0x0018C768
 	private void cameraTranslate(Vector3 vec)
 	{
 		Transform transform = this.focusObj.transform;
@@ -161,7 +150,6 @@ public class DebugCamera : MonoBehaviour
 		this.focus = transform.position;
 	}
 
-	// Token: 0x06002141 RID: 8513 RVA: 0x0018E5CC File Offset: 0x0018C7CC
 	public void cameraRotate(Vector3 eulerAngle)
 	{
 		Quaternion identity = Quaternion.identity;
@@ -172,7 +160,6 @@ public class DebugCamera : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06002142 RID: 8514 RVA: 0x0018E61A File Offset: 0x0018C81A
 	public void modelRotate(Vector3 eulerAngle)
 	{
 		if (this.modelObj != null)
@@ -181,36 +168,26 @@ public class DebugCamera : MonoBehaviour
 		}
 	}
 
-	// Token: 0x040017DE RID: 6110
 	[SerializeField]
 	private Vector3 focus = Vector3.zero;
 
-	// Token: 0x040017DF RID: 6111
 	[SerializeField]
 	private GameObject focusObj;
 
-	// Token: 0x040017E0 RID: 6112
 	public bool showInstWindow;
 
-	// Token: 0x040017E1 RID: 6113
 	public GameObject modelObj;
 
-	// Token: 0x040017E2 RID: 6114
 	private Vector3 oldPos;
 
-	// Token: 0x040017E3 RID: 6115
 	[HideInInspector]
 	public bool enableMouseButtonDownMiddle = true;
 
-	// Token: 0x040017E4 RID: 6116
 	private Vector3 resetFocus;
 
-	// Token: 0x040017E5 RID: 6117
 	private Vector3 resetFocusPostion;
 
-	// Token: 0x040017E6 RID: 6118
 	private Vector3 resetPostion;
 
-	// Token: 0x040017E7 RID: 6119
 	private Quaternion resetFocusRotation;
 }

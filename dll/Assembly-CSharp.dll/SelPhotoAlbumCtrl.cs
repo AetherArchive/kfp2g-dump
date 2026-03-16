@@ -1,12 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SGNFW.uGUI;
 using UnityEngine;
 
-// Token: 0x02000166 RID: 358
 public class SelPhotoAlbumCtrl : MonoBehaviour
 {
-	// Token: 0x060014E8 RID: 5352 RVA: 0x000FDD50 File Offset: 0x000FBF50
 	public void Init()
 	{
 		GameObject gameObject = Object.Instantiate<GameObject>((GameObject)AssetManager.GetAssetData("ScenePhotoAlbum/GUI/Prefab/GUI_PhotoAlbum"), base.transform);
@@ -54,7 +52,6 @@ public class SelPhotoAlbumCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x060014E9 RID: 5353 RVA: 0x000FDF5C File Offset: 0x000FC15C
 	public void Setup()
 	{
 		DataManager.DmPhoto.RequestActionPhotoAlbum();
@@ -64,7 +61,6 @@ public class SelPhotoAlbumCtrl : MonoBehaviour
 		this.guiData.SelCmn_AllInOut.ExPlayAnimation(SimpleAnimation.ExPguiStatus.START, null);
 	}
 
-	// Token: 0x060014EA RID: 5354 RVA: 0x000FDFC0 File Offset: 0x000FC1C0
 	public void SetupAlbumData()
 	{
 		List<DataManagerPhoto.AlbumData> list = new List<DataManagerPhoto.AlbumData>(DataManager.DmPhoto.AlbumDataList);
@@ -140,7 +136,6 @@ public class SelPhotoAlbumCtrl : MonoBehaviour
 		CanvasManager.HdlOpenWindowSortFilter.Register(registerData, true, null);
 	}
 
-	// Token: 0x060014EB RID: 5355 RVA: 0x000FE298 File Offset: 0x000FC498
 	private void OnStartItemPhotoSelect(int index, GameObject go)
 	{
 		for (int i = 0; i < this.guiData.sizeChangeBtnGUI.IconPhotoParamList[this.guiData.sizeChangeBtnGUI.SizeIndex].num; i++)
@@ -153,7 +148,6 @@ public class SelPhotoAlbumCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060014EC RID: 5356 RVA: 0x000FE34C File Offset: 0x000FC54C
 	private void OnUpdateItemPhotoSelect(int index, GameObject go)
 	{
 		for (int i = 0; i < this.guiData.sizeChangeBtnGUI.IconPhotoParamList[this.guiData.sizeChangeBtnGUI.SizeIndex].num; i++)
@@ -200,7 +194,6 @@ public class SelPhotoAlbumCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060014ED RID: 5357 RVA: 0x000FE500 File Offset: 0x000FC700
 	private void OnTouchPhotoIcon(IconPhotoCtrl iconPhoto)
 	{
 		SoundManager.Play("prd_se_click", false, false);
@@ -246,41 +239,31 @@ public class SelPhotoAlbumCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x040010FF RID: 4351
 	private SelPhotoAlbumCtrl.GUI guiData;
 
-	// Token: 0x04001100 RID: 4352
 	private List<PhotoPackData> dispPhotoPackList = new List<PhotoPackData>();
 
-	// Token: 0x04001101 RID: 4353
 	private Dictionary<SortFilterDefine.PhotoAlbumRegistrationStatus, HashSet<int>> photoAlbumRegistStatusMap = new Dictionary<SortFilterDefine.PhotoAlbumRegistrationStatus, HashSet<int>>();
 
-	// Token: 0x04001102 RID: 4354
 	private UserOptionData cloneUserOptionData;
 
-	// Token: 0x04001103 RID: 4355
 	private SortFilterDefine.SortType sortType = SortFilterDefine.DefaultSortTypeMap[SortFilterDefine.RegisterType.PHOTO_ALBUM];
 
-	// Token: 0x02000BAD RID: 2989
 	public class PhotoAlbumRagistrationStatusEqualityComparer : IEqualityComparer<SortFilterDefine.PhotoAlbumRegistrationStatus>
 	{
-		// Token: 0x060043A5 RID: 17317 RVA: 0x002039D0 File Offset: 0x00201BD0
 		public bool Equals(SortFilterDefine.PhotoAlbumRegistrationStatus x, SortFilterDefine.PhotoAlbumRegistrationStatus y)
 		{
 			return x == y;
 		}
 
-		// Token: 0x060043A6 RID: 17318 RVA: 0x002039D6 File Offset: 0x00201BD6
 		public int GetHashCode(SortFilterDefine.PhotoAlbumRegistrationStatus obj)
 		{
 			return (int)obj;
 		}
 	}
 
-	// Token: 0x02000BAE RID: 2990
 	public class GUI
 	{
-		// Token: 0x060043A8 RID: 17320 RVA: 0x002039E4 File Offset: 0x00201BE4
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -292,29 +275,22 @@ public class SelPhotoAlbumCtrl : MonoBehaviour
 			this.Txt_None.SetActive(false);
 		}
 
-		// Token: 0x060043A9 RID: 17321 RVA: 0x00203A7D File Offset: 0x00201C7D
 		public void ResizeScrollView(int count, int resize)
 		{
 			this.Txt_None.SetActive(count <= 0);
 			this.ScrollView.Resize(resize, 0);
 		}
 
-		// Token: 0x0400486C RID: 18540
 		public GameObject baseObj;
 
-		// Token: 0x0400486D RID: 18541
 		public ReuseScroll ScrollView;
 
-		// Token: 0x0400486E RID: 18542
 		public SelCharaPhotoAllCtrl.SortFilterBtnGUI sortFilterBtnGUI;
 
-		// Token: 0x0400486F RID: 18543
 		public SimpleAnimation SelCmn_AllInOut;
 
-		// Token: 0x04004870 RID: 18544
 		public PhotoUtil.SizeChangeBtnGUI sizeChangeBtnGUI;
 
-		// Token: 0x04004871 RID: 18545
 		public GameObject Txt_None;
 	}
 }

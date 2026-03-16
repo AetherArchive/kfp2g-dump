@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
@@ -7,11 +7,8 @@ using SGNFW.uGUI;
 using UnityEngine;
 using UnityEngine.Events;
 
-// Token: 0x0200017D RID: 381
 public class SelAssistantCtrl : MonoBehaviour
 {
-	// Token: 0x170003C0 RID: 960
-	// (get) Token: 0x0600184E RID: 6222 RVA: 0x0012A778 File Offset: 0x00128978
 	private CharaPackData DefaultAssistant
 	{
 		get
@@ -25,13 +22,8 @@ public class SelAssistantCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x170003C1 RID: 961
-	// (get) Token: 0x0600184F RID: 6223 RVA: 0x0012A7AD File Offset: 0x001289AD
-	// (set) Token: 0x06001850 RID: 6224 RVA: 0x0012A7B5 File Offset: 0x001289B5
 	public GameObject mainObj { get; private set; }
 
-	// Token: 0x170003C2 RID: 962
-	// (get) Token: 0x06001851 RID: 6225 RVA: 0x0012A7BE File Offset: 0x001289BE
 	public int CurrentCharaId
 	{
 		get
@@ -44,8 +36,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x170003C3 RID: 963
-	// (get) Token: 0x06001852 RID: 6226 RVA: 0x0012A7EC File Offset: 0x001289EC
 	private List<int> PurchaseList
 	{
 		get
@@ -59,9 +49,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x170003C4 RID: 964
-	// (get) Token: 0x06001853 RID: 6227 RVA: 0x0012A819 File Offset: 0x00128A19
-	// (set) Token: 0x06001854 RID: 6228 RVA: 0x0012A821 File Offset: 0x00128A21
 	public SelAssistantCtrl.Mode currentMode
 	{
 		get
@@ -75,8 +62,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x170003C5 RID: 965
-	// (get) Token: 0x06001855 RID: 6229 RVA: 0x0012A836 File Offset: 0x00128A36
 	public SelAssistantCtrl.Mode preMode
 	{
 		get
@@ -85,9 +70,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x170003C6 RID: 966
-	// (get) Token: 0x06001856 RID: 6230 RVA: 0x0012A83E File Offset: 0x00128A3E
-	// (set) Token: 0x06001857 RID: 6231 RVA: 0x0012A849 File Offset: 0x00128A49
 	public bool IsEnableScene
 	{
 		get
@@ -99,7 +81,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001858 RID: 6232 RVA: 0x0012A84C File Offset: 0x00128A4C
 	public void Init(SelAssistantCtrl.Scene scene)
 	{
 		this.scene = scene;
@@ -133,7 +114,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		this.UpdateCharaPackList();
 	}
 
-	// Token: 0x06001859 RID: 6233 RVA: 0x0012AA28 File Offset: 0x00128C28
 	public void Setup()
 	{
 		this._preMode = SelAssistantCtrl.Mode.INVALID;
@@ -164,7 +144,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		CanvasManager.HdlOpenWindowSortFilter.Register(registerData, false, null);
 	}
 
-	// Token: 0x0600185A RID: 6234 RVA: 0x0012AA7B File Offset: 0x00128C7B
 	private void Update()
 	{
 		if (this.currentEnumerator != null && !this.currentEnumerator.MoveNext())
@@ -173,7 +152,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600185B RID: 6235 RVA: 0x0012AA9C File Offset: 0x00128C9C
 	public void CharaSetup()
 	{
 		if (this.renderTextureChara == null)
@@ -211,7 +189,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600185C RID: 6236 RVA: 0x0012ABF0 File Offset: 0x00128DF0
 	public void CharaSetupRandom()
 	{
 		if (this.renderTextureChara == null)
@@ -253,7 +230,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600185D RID: 6237 RVA: 0x0012AD3C File Offset: 0x00128F3C
 	public void SetupAssistant()
 	{
 		this.isChangeClone = false;
@@ -278,7 +254,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		this.guiData.ScrollView.Refresh();
 	}
 
-	// Token: 0x0600185E RID: 6238 RVA: 0x0012ADA8 File Offset: 0x00128FA8
 	public bool OnClickMenuReturn(UnityAction onFinish, UnityAction onCancel = null)
 	{
 		if (this.currentMode != SelAssistantCtrl.Mode.ASSISTANT_EDIT)
@@ -306,7 +281,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x0600185F RID: 6239 RVA: 0x0012AE54 File Offset: 0x00129054
 	public bool OnClickMoveSequenceButton(SceneManager.SceneName sceneName, object sceneArgs)
 	{
 		this.guiData.tapGuard.SetActive(false);
@@ -323,7 +297,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06001860 RID: 6240 RVA: 0x0012AF04 File Offset: 0x00129104
 	public void ChangeMode(SelAssistantCtrl.Mode nextMode)
 	{
 		if (this.currentMode != nextMode && this.currentMode == SelAssistantCtrl.Mode.ASSISTANT_EDIT && nextMode == SelAssistantCtrl.Mode.TOP)
@@ -335,7 +308,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		this.guiData.CharaAll.ExPlayAnimation(SimpleAnimation.ExPguiStatus.END, null);
 	}
 
-	// Token: 0x06001861 RID: 6241 RVA: 0x0012AF58 File Offset: 0x00129158
 	private void ResetCurrentIcon()
 	{
 		if (this.currentChara != null)
@@ -349,7 +321,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001862 RID: 6242 RVA: 0x0012AF9C File Offset: 0x0012919C
 	private void SelectCharaIcon(CharaPackData newSelectChara, CharaPackData oldSelectChara, bool isRandom = false)
 	{
 		SelAssistantCtrl.CharaAllGUI.IconChara iconChara = this.guiData.SearchIconChara(newSelectChara);
@@ -393,7 +364,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001863 RID: 6243 RVA: 0x0012B0AC File Offset: 0x001292AC
 	private void SetupSelectDisable()
 	{
 		foreach (SelAssistantCtrl.CharaAllGUI.IconChara iconChara in this.guiData.reserveCharaIcon)
@@ -402,7 +372,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001864 RID: 6244 RVA: 0x0012B104 File Offset: 0x00129304
 	private void SetupSelectDisable(SelAssistantCtrl.CharaAllGUI.IconChara ic)
 	{
 		CharaPackData iconCpd = ic.iconCharaSet.iconCharaCtrl.charaPackData;
@@ -421,7 +390,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		ic.iconCharaSet.iconCharaCtrl.IsEnableMask(ic.iconCharaSet.selected.gameObject.activeSelf || ic.iconCharaSet.disable.activeSelf || !flag);
 	}
 
-	// Token: 0x06001865 RID: 6245 RVA: 0x0012B240 File Offset: 0x00129440
 	private void OnStartItemChara(int index, GameObject go)
 	{
 		if (this.guiData.reserveCharaIcon == null)
@@ -447,7 +415,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001866 RID: 6246 RVA: 0x0012B34C File Offset: 0x0012954C
 	private void OnUpdateItemChara(int index, GameObject go)
 	{
 		if (this.dispCharaPackList == null || this.currentChara == null)
@@ -490,7 +457,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001867 RID: 6247 RVA: 0x0012B560 File Offset: 0x00129760
 	public void OnClickAssistantButton()
 	{
 		if (this.currentMode == SelAssistantCtrl.Mode.TOP)
@@ -521,7 +487,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001868 RID: 6248 RVA: 0x0012B618 File Offset: 0x00129818
 	private void OnTouchCharaIcon(SelAssistantCtrl.CharaAllGUI.IconChara iconChara)
 	{
 		this.resistCharaId = 0;
@@ -553,7 +518,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		this.windowBuyConfirm.owCtrl.Open();
 	}
 
-	// Token: 0x06001869 RID: 6249 RVA: 0x0012B77E File Offset: 0x0012997E
 	private void OnTouchRandomButton()
 	{
 		SoundManager.Play("prd_se_click", false, false);
@@ -562,7 +526,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		this.CharaSetupRandom();
 	}
 
-	// Token: 0x0600186A RID: 6250 RVA: 0x0012B7B0 File Offset: 0x001299B0
 	private int PickRandomChara()
 	{
 		int num = ((this.currentChara == null) ? this.CurrentCharaId : this.currentChara.id);
@@ -576,7 +539,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		return num3;
 	}
 
-	// Token: 0x0600186B RID: 6251 RVA: 0x0012B810 File Offset: 0x00129A10
 	public void OnClickEditOk(PguiButtonCtrl button)
 	{
 		SelAssistantCtrl.Mode currentMode = this.currentMode;
@@ -591,7 +553,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600186C RID: 6252 RVA: 0x0012B864 File Offset: 0x00129A64
 	private bool OnSelectOpenWindowButtonCallback(int index)
 	{
 		if (index == PguiOpenWindowCtrl.CLOSE_BUTTON_INDEX)
@@ -663,7 +624,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x0600186D RID: 6253 RVA: 0x0012BA0F File Offset: 0x00129C0F
 	private IEnumerator RequestUpdateID()
 	{
 		if (this.scene == SelAssistantCtrl.Scene.SHOP)
@@ -681,7 +641,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600186E RID: 6254 RVA: 0x0012BA20 File Offset: 0x00129C20
 	private void SetupWindowConfirm(CharaPackData cpd)
 	{
 		MstAssistantData mstAssistantData = DataManager.DmAssistant.GetShowDataList().Find((MstAssistantData item) => item.charaId == cpd.id);
@@ -720,7 +679,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		this.windowBuyConfirm.owCtrl.Setup("解放確認", "", PguiOpenWindowCtrl.GetButtonPreset(PguiOpenWindowCtrl.PresetType.CANCEL_OK), true, new PguiOpenWindowCtrl.Callback(this.OnClickConfirmButton), null, false);
 	}
 
-	// Token: 0x0600186F RID: 6255 RVA: 0x0012BD07 File Offset: 0x00129F07
 	private bool OnClickConfirmButton(int index)
 	{
 		if (index == 1)
@@ -738,7 +696,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001870 RID: 6256 RVA: 0x0012BD44 File Offset: 0x00129F44
 	private IEnumerator RequestResistShop()
 	{
 		while (DataManager.IsServerRequesting())
@@ -766,7 +723,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001871 RID: 6257 RVA: 0x0012BD53 File Offset: 0x00129F53
 	private void UpdateDispCharaPackList(bool isRefresh = false)
 	{
 		this.dispCharaPackList = new List<CharaPackData>(this.charaPackList);
@@ -777,7 +733,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001872 RID: 6258 RVA: 0x0012BD8C File Offset: 0x00129F8C
 	private void UpdateCharaPackList()
 	{
 		List<MstAssistantData> showDataList = DataManager.DmAssistant.GetShowDataList();
@@ -801,7 +756,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		this.guiData.ResizeScrollView(this.charaPackList.Count, (this.charaPackList.Count + 1) / 2 + 1);
 	}
 
-	// Token: 0x06001873 RID: 6259 RVA: 0x0012BE6C File Offset: 0x0012A06C
 	private void UpdateTextureSetting()
 	{
 		this.renderTextureChara.postion = new Vector2(-440f, -124f);
@@ -810,7 +764,6 @@ public class SelAssistantCtrl : MonoBehaviour
 		this.renderTextureChara.transform.SetSiblingIndex(0);
 	}
 
-	// Token: 0x06001874 RID: 6260 RVA: 0x0012BED4 File Offset: 0x0012A0D4
 	public void Destroy()
 	{
 		if (this.guiData != null)
@@ -830,104 +783,72 @@ public class SelAssistantCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x040012BA RID: 4794
 	private const int DEFAULT_SHOP_ASSISTANT_CHARA_ID = 21;
 
-	// Token: 0x040012BB RID: 4795
 	private const int DEFAULT_QUEST_ASSISTANT_CHARA_ID = 1;
 
-	// Token: 0x040012BC RID: 4796
 	private const int DEFAULT_CHARA_EQUIP_CLOTH_IMAGID = 0;
 
-	// Token: 0x040012BD RID: 4797
 	private CharaPackData defaultAssistant;
 
-	// Token: 0x040012BF RID: 4799
 	public GameObject grandObj;
 
-	// Token: 0x040012C0 RID: 4800
 	public PguiButtonCtrl btnAssistantEdit;
 
-	// Token: 0x040012C1 RID: 4801
 	public SelAssistantCtrl.CharaAllGUI guiData;
 
-	// Token: 0x040012C2 RID: 4802
 	public RenderTextureChara renderTextureChara;
 
-	// Token: 0x040012C3 RID: 4803
 	private List<CharaPackData> charaPackList = new List<CharaPackData>();
 
-	// Token: 0x040012C4 RID: 4804
 	private List<CharaPackData> dispCharaPackList;
 
-	// Token: 0x040012C5 RID: 4805
 	private CharaPackData randomButtonCharaData = CharaPackData.MakeInvalid();
 
-	// Token: 0x040012C6 RID: 4806
 	private SortFilterDefine.SortType sortType;
 
-	// Token: 0x040012C7 RID: 4807
 	private bool isChangeClone;
 
-	// Token: 0x040012C8 RID: 4808
 	private bool isRandom;
 
-	// Token: 0x040012C9 RID: 4809
 	private bool isHave;
 
-	// Token: 0x040012CA RID: 4810
 	private int currentCharaCloth;
 
-	// Token: 0x040012CB RID: 4811
 	private bool currentCharaSkirt;
 
-	// Token: 0x040012CC RID: 4812
 	private CharaPackData currentChara;
 
-	// Token: 0x040012CD RID: 4813
 	private int resistCharaId;
 
-	// Token: 0x040012CE RID: 4814
 	private SelAssistantCtrl.Scene scene;
 
-	// Token: 0x040012CF RID: 4815
 	private SelAssistantCtrl.Mode _currentMode;
 
-	// Token: 0x040012D0 RID: 4816
 	private SelAssistantCtrl.Mode _preMode;
 
-	// Token: 0x040012D1 RID: 4817
 	private IEnumerator currentEnumerator;
 
-	// Token: 0x040012D2 RID: 4818
 	private SelAssistantCtrl.WindowBuyConfirm windowBuyConfirm;
 
-	// Token: 0x040012D3 RID: 4819
 	private SelShopCtrl.WindowBuyEnd windowBuyEnd;
 
-	// Token: 0x040012D4 RID: 4820
 	public static readonly List<KeyValuePair<PguiOpenWindowCtrl.BTN_TYPE, string>> questionButtonSet = new List<KeyValuePair<PguiOpenWindowCtrl.BTN_TYPE, string>>
 	{
 		new KeyValuePair<PguiOpenWindowCtrl.BTN_TYPE, string>(PguiOpenWindowCtrl.BTN_TYPE.NEGATIVE, PrjUtil.MakeMessage("破棄して移動")),
 		new KeyValuePair<PguiOpenWindowCtrl.BTN_TYPE, string>(PguiOpenWindowCtrl.BTN_TYPE.POSITIVE, PrjUtil.MakeMessage("保存して移動"))
 	};
 
-	// Token: 0x040012D5 RID: 4821
 	private UnityAction _onFinish;
 
-	// Token: 0x040012D6 RID: 4822
 	private UnityAction _onCancel;
 
-	// Token: 0x040012D7 RID: 4823
 	private SceneManager.SceneName OnClickMoveSequenceName;
 
-	// Token: 0x040012D8 RID: 4824
 	private object OnClickMoveSequenceArgs;
 
-	// Token: 0x02000D3D RID: 3389
 	public class WindowBuyConfirm
 	{
-		// Token: 0x06004893 RID: 18579 RVA: 0x0021C614 File Offset: 0x0021A814
 		public WindowBuyConfirm(Transform baseTr, Transform windowBase)
 		{
 			this.buyCount = 1;
@@ -954,105 +875,70 @@ public class SelAssistantCtrl : MonoBehaviour
 			this.IconItem = windowBase.Find("Base_BuyInfo/Buy_Img/Icon_Item").GetComponent<IconItemCtrl>();
 		}
 
-		// Token: 0x04004DCF RID: 19919
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x04004DD0 RID: 19920
 		public PguiTextCtrl Txt_owErrorText;
 
-		// Token: 0x04004DD1 RID: 19921
 		public PguiTextCtrl Txt_BuyItemName;
 
-		// Token: 0x04004DD2 RID: 19922
 		public PguiTextCtrl Txt_BuyItemInfo;
 
-		// Token: 0x04004DD3 RID: 19923
 		public PguiTextCtrl Txt_BuyItemCount;
 
-		// Token: 0x04004DD4 RID: 19924
 		public PguiTextCtrl Txt_BuyItemType;
 
-		// Token: 0x04004DD5 RID: 19925
 		public PguiTextCtrl Txt_BuyBeforeMoney;
 
-		// Token: 0x04004DD6 RID: 19926
 		public PguiTextCtrl Txt_BuyAfterMoney;
 
-		// Token: 0x04004DD7 RID: 19927
 		public PguiTextCtrl Txt_BuyBeforeCount;
 
-		// Token: 0x04004DD8 RID: 19928
 		public PguiTextCtrl Txt_BuyAfterCount;
 
-		// Token: 0x04004DD9 RID: 19929
 		public PguiTextCtrl Txt_Price;
 
-		// Token: 0x04004DDA RID: 19930
 		public IconItemCtrl IconItem;
 
-		// Token: 0x04004DDB RID: 19931
 		public GameObject BuyObject;
 
-		// Token: 0x04004DDC RID: 19932
 		public PguiRawImageCtrl NeedInfoImage;
 
-		// Token: 0x04004DDD RID: 19933
 		public PguiRawImageCtrl UseInfoImage;
 
-		// Token: 0x04004DDE RID: 19934
 		public PguiRawImageCtrl UseMoneyImage;
 
-		// Token: 0x04004DDF RID: 19935
 		public GameObject Base_BuyInfo;
 
-		// Token: 0x04004DE0 RID: 19936
 		public GameObject Parts_ItemUseInfo;
 
-		// Token: 0x04004DE1 RID: 19937
 		public GameObject Parts_Exchange;
 
-		// Token: 0x04004DE2 RID: 19938
 		public ShopData.ItemOne itemData;
 
-		// Token: 0x04004DE3 RID: 19939
 		public int buyCount;
 
-		// Token: 0x04004DE4 RID: 19940
 		public int buyMax;
 	}
 
-	// Token: 0x02000D3E RID: 3390
 	public enum Mode
 	{
-		// Token: 0x04004DE6 RID: 19942
 		INVALID,
-		// Token: 0x04004DE7 RID: 19943
 		TOP,
-		// Token: 0x04004DE8 RID: 19944
 		ASSISTANT_EDIT,
-		// Token: 0x04004DE9 RID: 19945
 		DISP_DHOLE,
-		// Token: 0x04004DEA RID: 19946
 		OW_DISCARD_CHARA_RETRUEN,
-		// Token: 0x04004DEB RID: 19947
 		OW_DISCARD_CHARA_TAB,
-		// Token: 0x04004DEC RID: 19948
 		OW_DISCARD_CHARA_MOVE_SCENE
 	}
 
-	// Token: 0x02000D3F RID: 3391
 	public enum Scene
 	{
-		// Token: 0x04004DEE RID: 19950
 		SHOP,
-		// Token: 0x04004DEF RID: 19951
 		QUEST
 	}
 
-	// Token: 0x02000D40 RID: 3392
 	public class CharaAllGUI
 	{
-		// Token: 0x06004894 RID: 18580 RVA: 0x0021C7E0 File Offset: 0x0021A9E0
 		public CharaAllGUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1080,7 +966,6 @@ public class SelAssistantCtrl : MonoBehaviour
 			this.CharaAll = baseTr.GetComponent<SimpleAnimation>();
 		}
 
-		// Token: 0x06004895 RID: 18581 RVA: 0x0021C8DB File Offset: 0x0021AADB
 		public void ResizeScrollView(int count, int resize)
 		{
 			if (this.Txt_None == null)
@@ -1091,7 +976,6 @@ public class SelAssistantCtrl : MonoBehaviour
 			this.ScrollView.ResizeFocesNoMove(resize);
 		}
 
-		// Token: 0x06004896 RID: 18582 RVA: 0x0021C90C File Offset: 0x0021AB0C
 		public SelAssistantCtrl.CharaAllGUI.IconChara SearchIconChara(CharaPackData scd)
 		{
 			if (scd != null)
@@ -1101,34 +985,24 @@ public class SelAssistantCtrl : MonoBehaviour
 			return null;
 		}
 
-		// Token: 0x04004DF0 RID: 19952
 		public GameObject baseObj;
 
-		// Token: 0x04004DF1 RID: 19953
 		public GameObject tapGuard;
 
-		// Token: 0x04004DF2 RID: 19954
 		public PguiButtonCtrl Btn_EditOk;
 
-		// Token: 0x04004DF3 RID: 19955
 		public ReuseScroll ScrollView;
 
-		// Token: 0x04004DF4 RID: 19956
 		public GameObject Txt_None;
 
-		// Token: 0x04004DF5 RID: 19957
 		public List<SelAssistantCtrl.CharaAllGUI.IconChara> reserveCharaIcon;
 
-		// Token: 0x04004DF6 RID: 19958
 		public PguiTabGroupCtrl DeckTab;
 
-		// Token: 0x04004DF7 RID: 19959
 		public SimpleAnimation CharaAll;
 
-		// Token: 0x020011CB RID: 4555
 		public class IconCharaSet
 		{
-			// Token: 0x06005720 RID: 22304 RVA: 0x00256150 File Offset: 0x00254350
 			public IconCharaSet(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -1157,35 +1031,25 @@ public class SelAssistantCtrl : MonoBehaviour
 				this.disable.SetActive(false);
 			}
 
-			// Token: 0x040061AC RID: 25004
 			public GameObject baseObj;
 
-			// Token: 0x040061AD RID: 25005
 			public RectTransform iconBase;
 
-			// Token: 0x040061AE RID: 25006
 			public IconCharaCtrl iconCharaCtrl;
 
-			// Token: 0x040061AF RID: 25007
 			public GameObject currentFrame;
 
-			// Token: 0x040061B0 RID: 25008
 			public GameObject removeFrame;
 
-			// Token: 0x040061B1 RID: 25009
 			public GameObject randomFrame;
 
-			// Token: 0x040061B2 RID: 25010
 			public PguiImageCtrl selected;
 
-			// Token: 0x040061B3 RID: 25011
 			public GameObject disable;
 		}
 
-		// Token: 0x020011CC RID: 4556
 		public class IconChara
 		{
-			// Token: 0x06005721 RID: 22305 RVA: 0x0025629C File Offset: 0x0025449C
 			public IconChara(Transform baseTr, Transform banTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -1210,34 +1074,24 @@ public class SelAssistantCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x040061B4 RID: 25012
 			public const int SCROLL_ITEM_NUN_H = 2;
 
-			// Token: 0x040061B5 RID: 25013
 			public GameObject baseObj;
 
-			// Token: 0x040061B6 RID: 25014
 			public SimpleAnimation anime;
 
-			// Token: 0x040061B7 RID: 25015
 			public SelAssistantCtrl.CharaAllGUI.IconCharaSet iconCharaSet;
 
-			// Token: 0x040061B8 RID: 25016
 			public List<PguiReplaceSpriteCtrl> iconBlankFrame;
 
-			// Token: 0x040061B9 RID: 25017
 			public List<PguiReplaceSpriteCtrl> iconStatusKind;
 
-			// Token: 0x040061BA RID: 25018
 			public GameObject Mark_Friend;
 
-			// Token: 0x040061BB RID: 25019
 			public PguiReplaceSpriteCtrl Base_CharaBlank;
 
-			// Token: 0x040061BC RID: 25020
 			public GameObject Base_CharaBlank_Friend;
 
-			// Token: 0x040061BD RID: 25021
 			public GameObject banObj;
 		}
 	}

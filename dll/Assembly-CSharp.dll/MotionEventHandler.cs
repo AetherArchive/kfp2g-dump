@@ -1,12 +1,10 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Token: 0x02000044 RID: 68
 public class MotionEventHandler : MonoBehaviour
 {
-	// Token: 0x0600015E RID: 350 RVA: 0x0000AF80 File Offset: 0x00009180
 	public static string AnimeEventParse(AnimationEvent animEvent, out int idx, out float start, out float end, out float speed, out bool loop)
 	{
 		string[] array = animEvent.stringParameter.Split(MotionEventHandler.SPLIT_STR, StringSplitOptions.None);
@@ -49,7 +47,6 @@ public class MotionEventHandler : MonoBehaviour
 		return text;
 	}
 
-	// Token: 0x0600015F RID: 351 RVA: 0x0000B09C File Offset: 0x0000929C
 	public void AuthMotPlay(AnimationEvent animEvent)
 	{
 		int num;
@@ -115,7 +112,6 @@ public class MotionEventHandler : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000160 RID: 352 RVA: 0x0000B2E8 File Offset: 0x000094E8
 	private IEnumerator GachaMotionChange(CharaModelHandle cmh, float reqStartTime, float reqMotSpeed)
 	{
 		while (cmh.IsPlaying())
@@ -126,7 +122,6 @@ public class MotionEventHandler : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000161 RID: 353 RVA: 0x0000B2F8 File Offset: 0x000094F8
 	private void Update()
 	{
 		foreach (MotionEventHandler.SimpleAnimationStopper simpleAnimationStopper in this.simpleAnimationList)
@@ -166,61 +161,41 @@ public class MotionEventHandler : MonoBehaviour
 		}
 	}
 
-	// Token: 0x040001BC RID: 444
 	private static readonly string[] SPLIT_STR = new string[] { "__" };
 
-	// Token: 0x040001BD RID: 445
 	public List<AuthCharaData> charaModelList = new List<AuthCharaData>();
 
-	// Token: 0x040001BE RID: 446
 	public Dictionary<string, string> modelChange = new Dictionary<string, string>();
 
-	// Token: 0x040001BF RID: 447
 	public SimpleAnimation.State animeState;
 
-	// Token: 0x040001C0 RID: 448
 	private List<MotionEventHandler.SimpleAnimationStopper> simpleAnimationList = new List<MotionEventHandler.SimpleAnimationStopper>();
 
-	// Token: 0x020005D7 RID: 1495
 	private enum MOT_EVENT_PARAM_KIND
 	{
-		// Token: 0x04002A30 RID: 10800
 		CHARA,
-		// Token: 0x04002A31 RID: 10801
 		MOTION,
-		// Token: 0x04002A32 RID: 10802
 		START,
-		// Token: 0x04002A33 RID: 10803
 		END,
-		// Token: 0x04002A34 RID: 10804
 		SPEED
 	}
 
-	// Token: 0x020005D8 RID: 1496
 	private class SimpleAnimationStopper
 	{
-		// Token: 0x04002A35 RID: 10805
 		public SimpleAnimation anime;
 
-		// Token: 0x04002A36 RID: 10806
 		public SimpleAnimation.State animeState;
 
-		// Token: 0x04002A37 RID: 10807
 		public float stopTime;
 
-		// Token: 0x04002A38 RID: 10808
 		public bool finish;
 
-		// Token: 0x04002A39 RID: 10809
 		public string motName = "";
 
-		// Token: 0x04002A3A RID: 10810
 		public float reqStartTime;
 
-		// Token: 0x04002A3B RID: 10811
 		public float reqMotSpeed;
 
-		// Token: 0x04002A3C RID: 10812
 		public CharaModelHandle cmh;
 	}
 }

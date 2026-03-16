@@ -1,14 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SGNFW.HttpRequest.Protocol;
 
 namespace Battle
 {
-	// Token: 0x02000220 RID: 544
 	public class SceneBattle_QuestInfo
 	{
-		// Token: 0x1700051F RID: 1311
-		// (get) Token: 0x060022F9 RID: 8953 RVA: 0x00194F7D File Offset: 0x0019317D
 		public List<SceneBattle_WavePackData> wavePackDataList
 		{
 			get
@@ -17,8 +14,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000520 RID: 1312
-		// (get) Token: 0x060022FA RID: 8954 RVA: 0x00194F85 File Offset: 0x00193185
 		public QuestOnePackData staticOneData
 		{
 			get
@@ -27,8 +22,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000521 RID: 1313
-		// (get) Token: 0x060022FB RID: 8955 RVA: 0x00194F8D File Offset: 0x0019318D
 		public BattleMissionPack battleMissionPack
 		{
 			get
@@ -37,12 +30,10 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x060022FC RID: 8956 RVA: 0x00194F95 File Offset: 0x00193195
 		public SceneBattle_QuestInfo()
 		{
 		}
 
-		// Token: 0x060022FD RID: 8957 RVA: 0x00194FC0 File Offset: 0x001931C0
 		public SceneBattle_QuestInfo(int questOneId, List<int> waveEnemiesIdList, List<DrewItem> dropItemList)
 		{
 			List<DrewItem> list = null;
@@ -139,7 +130,6 @@ namespace Battle
 			this._battleMissionPack = DataManager.DmQuest.GetBattleMissionPack(questOneId);
 		}
 
-		// Token: 0x060022FE RID: 8958 RVA: 0x00195330 File Offset: 0x00193530
 		public void MakeQuestSkipInfo(int questOneId, List<DrewItem> dropItemList)
 		{
 			if (dropItemList != null)
@@ -172,7 +162,6 @@ namespace Battle
 			this._battleMissionPack = DataManager.DmQuest.GetBattleMissionPack(questOneId);
 		}
 
-		// Token: 0x060022FF RID: 8959 RVA: 0x00195430 File Offset: 0x00193630
 		public SceneBattle_QuestInfo MakeDebugQuestInfo(int questOneId, int debugWaveId)
 		{
 			SceneBattle_QuestInfo sceneBattle_QuestInfo = new SceneBattle_QuestInfo();
@@ -205,25 +194,20 @@ namespace Battle
 			return sceneBattle_QuestInfo;
 		}
 
-		// Token: 0x06002300 RID: 8960 RVA: 0x001955B0 File Offset: 0x001937B0
 		private void SetStaticOneData(int questOneId)
 		{
 			this._staticOneData = DataManager.DmQuest.GetQuestOnePackData(questOneId);
 		}
 
-		// Token: 0x06002301 RID: 8961 RVA: 0x001955C3 File Offset: 0x001937C3
 		private void SetBattleMissionPack(int questOneId)
 		{
 			this._battleMissionPack = DataManager.DmQuest.GetBattleMissionPack(questOneId);
 		}
 
-		// Token: 0x04001A2D RID: 6701
 		private List<SceneBattle_WavePackData> _wavePackDataList = new List<SceneBattle_WavePackData>();
 
-		// Token: 0x04001A2E RID: 6702
 		private QuestOnePackData _staticOneData = new QuestOnePackData();
 
-		// Token: 0x04001A2F RID: 6703
 		private BattleMissionPack _battleMissionPack = new BattleMissionPack();
 	}
 }

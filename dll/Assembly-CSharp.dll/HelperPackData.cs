@@ -1,22 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SGNFW.HttpRequest.Protocol;
 
-// Token: 0x0200007E RID: 126
 public class HelperPackData
 {
-	// Token: 0x170000E9 RID: 233
-	// (get) Token: 0x060004B7 RID: 1207 RVA: 0x0002214B File Offset: 0x0002034B
-	// (set) Token: 0x060004B8 RID: 1208 RVA: 0x00022153 File Offset: 0x00020353
 	public List<HelperPackData.HelperCharaSet> HelperCharaSetList { get; set; }
 
-	// Token: 0x170000EA RID: 234
-	// (get) Token: 0x060004B9 RID: 1209 RVA: 0x0002215C File Offset: 0x0002035C
-	// (set) Token: 0x060004BA RID: 1210 RVA: 0x00022164 File Offset: 0x00020364
 	public CharaPackData FavoriteChara { get; private set; }
 
-	// Token: 0x170000EB RID: 235
-	// (get) Token: 0x060004BB RID: 1211 RVA: 0x0002216D File Offset: 0x0002036D
 	public bool isDummy
 	{
 		get
@@ -25,12 +16,10 @@ public class HelperPackData
 		}
 	}
 
-	// Token: 0x060004BC RID: 1212 RVA: 0x0002217B File Offset: 0x0002037B
 	public HelperPackData()
 	{
 	}
 
-	// Token: 0x060004BD RID: 1213 RVA: 0x00022184 File Offset: 0x00020384
 	public HelperPackData(Helper srvHelper)
 	{
 		this.helper = srvHelper;
@@ -100,7 +89,6 @@ public class HelperPackData
 		this.achievementId = srvHelper.achievement_id;
 	}
 
-	// Token: 0x060004BE RID: 1214 RVA: 0x0002244C File Offset: 0x0002064C
 	public HelperPackData(FollowsUser serverData)
 	{
 		this.friendId = serverData.friend_id;
@@ -134,7 +122,6 @@ public class HelperPackData
 		this.achievementId = serverData.achievement_id;
 	}
 
-	// Token: 0x060004BF RID: 1215 RVA: 0x000225A8 File Offset: 0x000207A8
 	public static HelperPackData MakeTutorialDummy(int id, string nm = "")
 	{
 		HelperPackData helperPackData = new HelperPackData();
@@ -158,58 +145,40 @@ public class HelperPackData
 		return helperPackData;
 	}
 
-	// Token: 0x04000525 RID: 1317
 	public Helper helper;
 
-	// Token: 0x04000526 RID: 1318
 	public int friendId;
 
-	// Token: 0x04000527 RID: 1319
 	public string userName;
 
-	// Token: 0x04000528 RID: 1320
 	public int level;
 
-	// Token: 0x04000529 RID: 1321
 	public int addPoint;
 
-	// Token: 0x0400052A RID: 1322
 	public DateTime lastLoginTime;
 
-	// Token: 0x0400052B RID: 1323
 	public static readonly int HELP_ARRAY_SIZE = 7;
 
-	// Token: 0x0400052D RID: 1325
 	public bool isReceiveFollow;
 
-	// Token: 0x0400052E RID: 1326
 	public bool isSendFollow;
 
-	// Token: 0x0400052F RID: 1327
 	public DateTime receiveFollowTime;
 
-	// Token: 0x04000530 RID: 1328
 	public DateTime sendFollowTime;
 
-	// Token: 0x04000531 RID: 1329
 	public string comment;
 
-	// Token: 0x04000532 RID: 1330
 	public int achievementId;
 
-	// Token: 0x020006BD RID: 1725
 	public class HelperCharaSet
 	{
-		// Token: 0x0400304A RID: 12362
 		public CharaPackData helpChara;
 
-		// Token: 0x0400304B RID: 12363
 		public List<PhotoPackData> helpPhotoList;
 
-		// Token: 0x0400304C RID: 12364
 		public bool equipAccessory;
 
-		// Token: 0x0400304D RID: 12365
 		public DataManagerCharaAccessory.Accessory helpAccessory;
 	}
 }

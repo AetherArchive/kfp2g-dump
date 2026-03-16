@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using DMMHelper;
 using SegaUnityCEFBrowser;
 using SGNFW.Common;
@@ -7,10 +7,8 @@ using SGNFW.Mst;
 using SGNFW.Thread;
 using UnityEngine;
 
-// Token: 0x020000F2 RID: 242
 public class GameInitializer : MonoBehaviour
 {
-	// Token: 0x06000BAC RID: 2988 RVA: 0x00044FE0 File Offset: 0x000431E0
 	private void Start()
 	{
 		Verbose<PrjLog>.Enabled = true;
@@ -39,7 +37,6 @@ public class GameInitializer : MonoBehaviour
 		BrowserControl.Create(1, true);
 	}
 
-	// Token: 0x06000BAD RID: 2989 RVA: 0x00045100 File Offset: 0x00043300
 	private GameObject CanvasInstantiate(string canvasName, Vector2 ancPos)
 	{
 		GameObject gameObject = Object.Instantiate<GameObject>((GameObject)Resources.Load("prefab/PguiCanvas"));

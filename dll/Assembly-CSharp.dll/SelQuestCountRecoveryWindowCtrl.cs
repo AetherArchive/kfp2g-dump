@@ -1,23 +1,15 @@
-﻿using System;
+using System;
 using System.Collections;
 using SGNFW.Common;
 using UnityEngine;
 using UnityEngine.Events;
 
-// Token: 0x020001BF RID: 447
 public class SelQuestCountRecoveryWindowCtrl : MonoBehaviour
 {
-	// Token: 0x17000429 RID: 1065
-	// (get) Token: 0x06001ED9 RID: 7897 RVA: 0x0017FCFA File Offset: 0x0017DEFA
-	// (set) Token: 0x06001ED8 RID: 7896 RVA: 0x0017FCF1 File Offset: 0x0017DEF1
 	private int QuestOneId { get; set; }
 
-	// Token: 0x1700042A RID: 1066
-	// (get) Token: 0x06001EDA RID: 7898 RVA: 0x0017FD02 File Offset: 0x0017DF02
-	// (set) Token: 0x06001EDB RID: 7899 RVA: 0x0017FD0A File Offset: 0x0017DF0A
 	private DateTime OpenWindowTime { get; set; }
 
-	// Token: 0x06001EDC RID: 7900 RVA: 0x0017FD14 File Offset: 0x0017DF14
 	public void Init()
 	{
 		GameObject gameObject = Object.Instantiate<GameObject>((GameObject)Resources.Load("SelCmn/GUI/Prefab/GUI_QuestRevival_Window"), base.transform);
@@ -32,7 +24,6 @@ public class SelQuestCountRecoveryWindowCtrl : MonoBehaviour
 		}, null, false);
 	}
 
-	// Token: 0x06001EDD RID: 7901 RVA: 0x0017FD74 File Offset: 0x0017DF74
 	public void Setup(int questOneId, UnityAction refreshCb)
 	{
 		this.OpenWindowTime = TimeManager.Now;
@@ -81,12 +72,10 @@ public class SelQuestCountRecoveryWindowCtrl : MonoBehaviour
 		this.window.owCtrl.Open();
 	}
 
-	// Token: 0x06001EDE RID: 7902 RVA: 0x0017FF4B File Offset: 0x0017E14B
 	private void Update()
 	{
 	}
 
-	// Token: 0x06001EDF RID: 7903 RVA: 0x0017FF4D File Offset: 0x0017E14D
 	private IEnumerator RequestSequence()
 	{
 		if (this.QuestOneId == 0)
@@ -107,7 +96,6 @@ public class SelQuestCountRecoveryWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001EE0 RID: 7904 RVA: 0x0017FF5C File Offset: 0x0017E15C
 	private void OnDestroy()
 	{
 		if (this.requestSequence != null)
@@ -117,38 +105,27 @@ public class SelQuestCountRecoveryWindowCtrl : MonoBehaviour
 		this.requestSequence = null;
 	}
 
-	// Token: 0x04001680 RID: 5760
 	private SelQuestCountRecoveryWindowCtrl.Window window;
 
-	// Token: 0x04001682 RID: 5762
 	private Coroutine requestSequence;
 
-	// Token: 0x04001684 RID: 5764
 	private UnityAction refreshCallback;
 
-	// Token: 0x02000FE6 RID: 4070
 	public class SetupGuiParts
 	{
-		// Token: 0x04005953 RID: 22867
 		public int itemId;
 
-		// Token: 0x04005954 RID: 22868
 		public int needItemNum;
 
-		// Token: 0x04005955 RID: 22869
 		public int todayRecoveryNum;
 
-		// Token: 0x04005956 RID: 22870
 		public int recoveryMaxNum;
 
-		// Token: 0x04005957 RID: 22871
 		public int limitClearNum;
 	}
 
-	// Token: 0x02000FE7 RID: 4071
 	public class Window
 	{
-		// Token: 0x0600515F RID: 20831 RVA: 0x002456B0 File Offset: 0x002438B0
 		public Window(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -166,7 +143,6 @@ public class SelQuestCountRecoveryWindowCtrl : MonoBehaviour
 			this.Text_None = baseTr.Find("Window_QuestRevival/Base/Window/RevivalOK/ButtonR/Text_None").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x06005160 RID: 20832 RVA: 0x002457C4 File Offset: 0x002439C4
 		public void SetupWindowGui(SelQuestCountRecoveryWindowCtrl.SetupGuiParts setupGuiParts)
 		{
 			ItemStaticBase itemStaticBase = DataManager.DmItem.GetItemStaticBase(setupGuiParts.itemId);
@@ -190,49 +166,36 @@ public class SelQuestCountRecoveryWindowCtrl : MonoBehaviour
 			this.Times_Num_AfterTxt.text = ((num >= 0) ? string.Format("{0}", setupGuiParts.limitClearNum) : "0");
 		}
 
-		// Token: 0x06005161 RID: 20833 RVA: 0x002459BF File Offset: 0x00243BBF
 		public void SetupTxtCaution(string str)
 		{
 			this.Txt_Caution.text = str;
 		}
 
-		// Token: 0x06005162 RID: 20834 RVA: 0x002459CD File Offset: 0x00243BCD
 		public void ReplaceTxtCaution(string str)
 		{
 			this.Txt_Caution.ReplaceTextByDefault("Param01", str);
 		}
 
-		// Token: 0x04005958 RID: 22872
 		public GameObject baseObj;
 
-		// Token: 0x04005959 RID: 22873
 		public PguiRawImageCtrl Icon_Tex;
 
-		// Token: 0x0400595A RID: 22874
 		public PguiTextCtrl Txt_Caution;
 
-		// Token: 0x0400595B RID: 22875
 		public PguiTextCtrl Txt_UseCount;
 
-		// Token: 0x0400595C RID: 22876
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x0400595D RID: 22877
 		public PguiTextCtrl ItemName;
 
-		// Token: 0x0400595E RID: 22878
 		public PguiTextCtrl Item_Num_BeforeTxt;
 
-		// Token: 0x0400595F RID: 22879
 		public PguiTextCtrl Item_Num_AfterTxt;
 
-		// Token: 0x04005960 RID: 22880
 		public PguiTextCtrl Times_Num_BeforeTxt;
 
-		// Token: 0x04005961 RID: 22881
 		public PguiTextCtrl Times_Num_AfterTxt;
 
-		// Token: 0x04005962 RID: 22882
 		public PguiTextCtrl Text_None;
 	}
 }

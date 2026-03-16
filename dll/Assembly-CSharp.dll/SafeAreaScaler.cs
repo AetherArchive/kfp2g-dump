@@ -1,13 +1,10 @@
-﻿using System;
+using System;
 using SGNFW.Common;
 using UnityEngine;
 
-// Token: 0x02000100 RID: 256
 [RequireComponent(typeof(RectTransform))]
 public class SafeAreaScaler : MonoBehaviour
 {
-	// Token: 0x17000313 RID: 787
-	// (get) Token: 0x06000C5B RID: 3163 RVA: 0x0004BA50 File Offset: 0x00049C50
 	public static int ScreenWidth
 	{
 		get
@@ -16,8 +13,6 @@ public class SafeAreaScaler : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000314 RID: 788
-	// (get) Token: 0x06000C5C RID: 3164 RVA: 0x0004BA5C File Offset: 0x00049C5C
 	public static int ScreenHeight
 	{
 		get
@@ -26,7 +21,6 @@ public class SafeAreaScaler : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C5D RID: 3165 RVA: 0x0004BA68 File Offset: 0x00049C68
 	public static Rect GetSafeArea()
 	{
 		float num = 0f;
@@ -40,7 +34,6 @@ public class SafeAreaScaler : MonoBehaviour
 		return SafeAreaScaler.SafeArea;
 	}
 
-	// Token: 0x06000C5E RID: 3166 RVA: 0x0004BAC0 File Offset: 0x00049CC0
 	public static bool IsLongDevice()
 	{
 		if (!SceneHome.nowVertView)
@@ -50,7 +43,6 @@ public class SafeAreaScaler : MonoBehaviour
 		return SafeAreaScaler.CompareToFloat((float)SafeAreaScaler.ScreenHeight / (float)SafeAreaScaler.ScreenWidth, 2.1666667f) >= 0;
 	}
 
-	// Token: 0x06000C5F RID: 3167 RVA: 0x0004BB10 File Offset: 0x00049D10
 	public static bool IsMapFixDevice()
 	{
 		if (!SceneHome.nowVertView)
@@ -63,7 +55,6 @@ public class SafeAreaScaler : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000C60 RID: 3168 RVA: 0x0004BB70 File Offset: 0x00049D70
 	public void ApplySafeArea()
 	{
 		if (SafeAreaScaler.ScreenWidth == 0 || SafeAreaScaler.ScreenHeight == 0)
@@ -147,7 +138,6 @@ public class SafeAreaScaler : MonoBehaviour
 		this.applySafeArea = safeArea;
 	}
 
-	// Token: 0x06000C61 RID: 3169 RVA: 0x0004C260 File Offset: 0x0004A460
 	private void Awake()
 	{
 		this.rectTransform = base.GetComponent<RectTransform>();
@@ -156,7 +146,6 @@ public class SafeAreaScaler : MonoBehaviour
 		this.ApplySafeArea();
 	}
 
-	// Token: 0x06000C62 RID: 3170 RVA: 0x0004C298 File Offset: 0x0004A498
 	private void Update()
 	{
 		if (this.width != SafeAreaScaler.ScreenWidth || this.scrW != Screen.width || this.height != SafeAreaScaler.ScreenHeight || this.scrH != Screen.height || this.applySafeArea != SafeAreaScaler.GetSafeArea())
@@ -165,7 +154,6 @@ public class SafeAreaScaler : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C63 RID: 3171 RVA: 0x0004C2F4 File Offset: 0x0004A4F4
 	private void OnApplicationPause(bool pauseStatus)
 	{
 		if (pauseStatus)
@@ -176,13 +164,11 @@ public class SafeAreaScaler : MonoBehaviour
 		this.scrW = (this.scrH = 0);
 	}
 
-	// Token: 0x06000C64 RID: 3172 RVA: 0x0004C325 File Offset: 0x0004A525
 	private void OnEnable()
 	{
 		this.ApplySafeArea();
 	}
 
-	// Token: 0x06000C65 RID: 3173 RVA: 0x0004C330 File Offset: 0x0004A530
 	public static int CompareToFloat(float a, float b)
 	{
 		float num = 0.01f;
@@ -197,33 +183,23 @@ public class SafeAreaScaler : MonoBehaviour
 		return -1;
 	}
 
-	// Token: 0x0400099A RID: 2458
 	public static readonly float FIX_SAFEAREA_PERCENT = 0.03f;
 
-	// Token: 0x0400099B RID: 2459
 	private static Rect SafeArea = new Rect(0f, 0f, 0f, 0f);
 
-	// Token: 0x0400099C RID: 2460
 	private RectTransform rectTransform;
 
-	// Token: 0x0400099D RID: 2461
 	private int width;
 
-	// Token: 0x0400099E RID: 2462
 	private int height;
 
-	// Token: 0x0400099F RID: 2463
 	private Vector2 offmin = Vector2.zero;
 
-	// Token: 0x040009A0 RID: 2464
 	private Vector2 offmax = Vector2.zero;
 
-	// Token: 0x040009A1 RID: 2465
 	private int scrW;
 
-	// Token: 0x040009A2 RID: 2466
 	private int scrH;
 
-	// Token: 0x040009A3 RID: 2467
 	public Rect applySafeArea;
 }

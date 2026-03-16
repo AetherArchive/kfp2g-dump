@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using AEAuth3;
 using UnityEngine;
@@ -6,11 +6,8 @@ using UnityEngine.UI;
 
 namespace Battle
 {
-	// Token: 0x02000218 RID: 536
 	public class SceneBattle_GUI
 	{
-		// Token: 0x1700047F RID: 1151
-		// (get) Token: 0x0600224F RID: 8783 RVA: 0x001930E1 File Offset: 0x001912E1
 		public GameObject PlayerSkill
 		{
 			get
@@ -19,8 +16,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000480 RID: 1152
-		// (get) Token: 0x06002250 RID: 8784 RVA: 0x001930E9 File Offset: 0x001912E9
 		public AEImage PlayerSkillAE
 		{
 			get
@@ -29,8 +24,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000481 RID: 1153
-		// (get) Token: 0x06002251 RID: 8785 RVA: 0x001930F1 File Offset: 0x001912F1
 		public PguiButtonCtrl BtnPlayerSkill
 		{
 			get
@@ -39,8 +32,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000482 RID: 1154
-		// (get) Token: 0x06002252 RID: 8786 RVA: 0x001930F9 File Offset: 0x001912F9
 		public PguiReplaceSpriteCtrl IconPlayerSkill
 		{
 			get
@@ -49,8 +40,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000483 RID: 1155
-		// (get) Token: 0x06002253 RID: 8787 RVA: 0x00193101 File Offset: 0x00191301
 		public PguiTextCtrl RemPlayerSkill
 		{
 			get
@@ -59,8 +48,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000484 RID: 1156
-		// (get) Token: 0x06002254 RID: 8788 RVA: 0x00193109 File Offset: 0x00191309
 		public GameObject PlayerSkillBan
 		{
 			get
@@ -69,8 +56,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000485 RID: 1157
-		// (get) Token: 0x06002255 RID: 8789 RVA: 0x00193111 File Offset: 0x00191311
 		public GameObject TacticsSkill
 		{
 			get
@@ -79,8 +64,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000486 RID: 1158
-		// (get) Token: 0x06002256 RID: 8790 RVA: 0x00193119 File Offset: 0x00191319
 		public PguiAECtrl TacticsSkillAE
 		{
 			get
@@ -89,8 +72,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000487 RID: 1159
-		// (get) Token: 0x06002257 RID: 8791 RVA: 0x00193121 File Offset: 0x00191321
 		public PguiReplaceSpriteCtrl IconTacticsSkill
 		{
 			get
@@ -99,8 +80,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000488 RID: 1160
-		// (get) Token: 0x06002258 RID: 8792 RVA: 0x00193129 File Offset: 0x00191329
 		public GameObject DeckAll
 		{
 			get
@@ -109,8 +88,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000489 RID: 1161
-		// (get) Token: 0x06002259 RID: 8793 RVA: 0x00193131 File Offset: 0x00191331
 		public List<GameObject> Chara
 		{
 			get
@@ -119,8 +96,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x1700048A RID: 1162
-		// (get) Token: 0x0600225A RID: 8794 RVA: 0x00193139 File Offset: 0x00191339
 		public List<Transform> TouchChara
 		{
 			get
@@ -129,8 +104,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x1700048B RID: 1163
-		// (get) Token: 0x0600225B RID: 8795 RVA: 0x00193141 File Offset: 0x00191341
 		public List<Transform> TouchWait
 		{
 			get
@@ -139,8 +112,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x1700048C RID: 1164
-		// (get) Token: 0x0600225C RID: 8796 RVA: 0x00193149 File Offset: 0x00191349
 		public List<PguiAECtrl> CharaSel
 		{
 			get
@@ -149,8 +120,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x1700048D RID: 1165
-		// (get) Token: 0x0600225D RID: 8797 RVA: 0x00193151 File Offset: 0x00191351
 		public List<AEImage> EffArtsOk
 		{
 			get
@@ -159,8 +128,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x1700048E RID: 1166
-		// (get) Token: 0x0600225E RID: 8798 RVA: 0x00193159 File Offset: 0x00191359
 		public List<AEImage> EffArtsOkDbl
 		{
 			get
@@ -169,8 +136,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x1700048F RID: 1167
-		// (get) Token: 0x0600225F RID: 8799 RVA: 0x00193161 File Offset: 0x00191361
 		public List<Transform> TouchArts
 		{
 			get
@@ -179,8 +144,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000490 RID: 1168
-		// (get) Token: 0x06002260 RID: 8800 RVA: 0x00193169 File Offset: 0x00191369
 		public AEImage DeckAllAE
 		{
 			get
@@ -189,8 +152,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000491 RID: 1169
-		// (get) Token: 0x06002261 RID: 8801 RVA: 0x00193171 File Offset: 0x00191371
 		public GameObject ActInfoAll
 		{
 			get
@@ -199,8 +160,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000492 RID: 1170
-		// (get) Token: 0x06002262 RID: 8802 RVA: 0x00193179 File Offset: 0x00191379
 		public GameObject ActGageBase
 		{
 			get
@@ -209,8 +168,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000493 RID: 1171
-		// (get) Token: 0x06002263 RID: 8803 RVA: 0x00193181 File Offset: 0x00191381
 		public PguiImageCtrl ActGageGage
 		{
 			get
@@ -219,8 +176,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000494 RID: 1172
-		// (get) Token: 0x06002264 RID: 8804 RVA: 0x00193189 File Offset: 0x00191389
 		public PguiImageCtrl ActGageGageAdd
 		{
 			get
@@ -229,8 +184,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000495 RID: 1173
-		// (get) Token: 0x06002265 RID: 8805 RVA: 0x00193191 File Offset: 0x00191391
 		public PguiImageCtrl ActGageGageAdd2
 		{
 			get
@@ -239,8 +192,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000496 RID: 1174
-		// (get) Token: 0x06002266 RID: 8806 RVA: 0x00193199 File Offset: 0x00191399
 		public GameObject ActGageGageFlash
 		{
 			get
@@ -249,8 +200,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000497 RID: 1175
-		// (get) Token: 0x06002267 RID: 8807 RVA: 0x001931A1 File Offset: 0x001913A1
 		public PguiTextCtrl NumActBefore
 		{
 			get
@@ -259,8 +208,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000498 RID: 1176
-		// (get) Token: 0x06002268 RID: 8808 RVA: 0x001931A9 File Offset: 0x001913A9
 		public PguiTextCtrl NumActAfter
 		{
 			get
@@ -269,8 +216,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x17000499 RID: 1177
-		// (get) Token: 0x06002269 RID: 8809 RVA: 0x001931B1 File Offset: 0x001913B1
 		public Transform TouchActGage
 		{
 			get
@@ -279,8 +224,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x1700049A RID: 1178
-		// (get) Token: 0x0600226A RID: 8810 RVA: 0x001931B9 File Offset: 0x001913B9
 		public CanvasGroup ActInfo
 		{
 			get
@@ -289,8 +232,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x1700049B RID: 1179
-		// (get) Token: 0x0600226B RID: 8811 RVA: 0x001931C1 File Offset: 0x001913C1
 		public PguiTextCtrl NumUseBefore
 		{
 			get
@@ -299,8 +240,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x1700049C RID: 1180
-		// (get) Token: 0x0600226C RID: 8812 RVA: 0x001931C9 File Offset: 0x001913C9
 		public PguiTextCtrl NumUseAfter
 		{
 			get
@@ -309,8 +248,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x1700049D RID: 1181
-		// (get) Token: 0x0600226D RID: 8813 RVA: 0x001931D1 File Offset: 0x001913D1
 		public AEImage ActGageAE
 		{
 			get
@@ -319,8 +256,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x1700049E RID: 1182
-		// (get) Token: 0x0600226E RID: 8814 RVA: 0x001931D9 File Offset: 0x001913D9
 		public PguiTextCtrl ActGageExtra
 		{
 			get
@@ -329,8 +264,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x1700049F RID: 1183
-		// (get) Token: 0x0600226F RID: 8815 RVA: 0x001931E1 File Offset: 0x001913E1
 		public AEImage ActInfoBackAE
 		{
 			get
@@ -339,8 +272,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004A0 RID: 1184
-		// (get) Token: 0x06002270 RID: 8816 RVA: 0x001931E9 File Offset: 0x001913E9
 		public AEImage ActInfoFrontAE
 		{
 			get
@@ -349,8 +280,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004A1 RID: 1185
-		// (get) Token: 0x06002271 RID: 8817 RVA: 0x001931F1 File Offset: 0x001913F1
 		public GameObject ActGageBan
 		{
 			get
@@ -359,8 +288,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004A2 RID: 1186
-		// (get) Token: 0x06002272 RID: 8818 RVA: 0x001931F9 File Offset: 0x001913F9
 		public GameObject TimeAll
 		{
 			get
@@ -369,8 +296,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004A3 RID: 1187
-		// (get) Token: 0x06002273 RID: 8819 RVA: 0x00193201 File Offset: 0x00191401
 		public GameObject MenuAll
 		{
 			get
@@ -379,8 +304,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004A4 RID: 1188
-		// (get) Token: 0x06002274 RID: 8820 RVA: 0x00193209 File Offset: 0x00191409
 		public PguiToggleButtonCtrl BtnAuto
 		{
 			get
@@ -389,8 +312,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004A5 RID: 1189
-		// (get) Token: 0x06002275 RID: 8821 RVA: 0x00193211 File Offset: 0x00191411
 		public GameObject BtnAutoLock
 		{
 			get
@@ -399,8 +320,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004A6 RID: 1190
-		// (get) Token: 0x06002276 RID: 8822 RVA: 0x00193219 File Offset: 0x00191419
 		public PguiTextCtrl BtnAutoTxt
 		{
 			get
@@ -409,8 +328,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004A7 RID: 1191
-		// (get) Token: 0x06002277 RID: 8823 RVA: 0x00193221 File Offset: 0x00191421
 		public SimpleAnimation AnimAutoInfo
 		{
 			get
@@ -419,8 +336,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004A8 RID: 1192
-		// (get) Token: 0x06002278 RID: 8824 RVA: 0x00193229 File Offset: 0x00191429
 		public GameObject BtnAutoBan
 		{
 			get
@@ -429,8 +344,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004A9 RID: 1193
-		// (get) Token: 0x06002279 RID: 8825 RVA: 0x00193231 File Offset: 0x00191431
 		public GameObject BtnAutoLamp
 		{
 			get
@@ -439,8 +352,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004AA RID: 1194
-		// (get) Token: 0x0600227A RID: 8826 RVA: 0x00193239 File Offset: 0x00191439
 		public PguiToggleButtonCtrl BtnFast
 		{
 			get
@@ -449,8 +360,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004AB RID: 1195
-		// (get) Token: 0x0600227B RID: 8827 RVA: 0x00193241 File Offset: 0x00191441
 		public PguiButtonCtrl BtnMenu
 		{
 			get
@@ -459,8 +368,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004AC RID: 1196
-		// (get) Token: 0x0600227C RID: 8828 RVA: 0x00193249 File Offset: 0x00191449
 		public PguiTextCtrl NumYaseiTotal
 		{
 			get
@@ -469,8 +376,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004AD RID: 1197
-		// (get) Token: 0x0600227D RID: 8829 RVA: 0x00193251 File Offset: 0x00191451
 		public GameObject PlasmShare
 		{
 			get
@@ -479,8 +384,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004AE RID: 1198
-		// (get) Token: 0x0600227E RID: 8830 RVA: 0x00193259 File Offset: 0x00191459
 		public PguiAECtrl PlasmShareCmnAE
 		{
 			get
@@ -489,8 +392,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004AF RID: 1199
-		// (get) Token: 0x0600227F RID: 8831 RVA: 0x00193261 File Offset: 0x00191461
 		public List<AEImage> PlasmShareAE
 		{
 			get
@@ -499,8 +400,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004B0 RID: 1200
-		// (get) Token: 0x06002280 RID: 8832 RVA: 0x00193269 File Offset: 0x00191469
 		public PguiTextCtrl numWave
 		{
 			get
@@ -509,8 +408,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004B1 RID: 1201
-		// (get) Token: 0x06002281 RID: 8833 RVA: 0x00193271 File Offset: 0x00191471
 		public PguiTextCtrl numTurn
 		{
 			get
@@ -519,8 +416,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004B2 RID: 1202
-		// (get) Token: 0x06002282 RID: 8834 RVA: 0x00193279 File Offset: 0x00191479
 		public GameObject SelectCard
 		{
 			get
@@ -529,8 +424,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004B3 RID: 1203
-		// (get) Token: 0x06002283 RID: 8835 RVA: 0x00193281 File Offset: 0x00191481
 		public SimpleAnimation AnimSelectCard
 		{
 			get
@@ -539,8 +432,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004B4 RID: 1204
-		// (get) Token: 0x06002284 RID: 8836 RVA: 0x00193289 File Offset: 0x00191489
 		public GameObject ActionCard
 		{
 			get
@@ -549,8 +440,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004B5 RID: 1205
-		// (get) Token: 0x06002285 RID: 8837 RVA: 0x00193291 File Offset: 0x00191491
 		public SimpleAnimation AnimActionCard
 		{
 			get
@@ -559,8 +448,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004B6 RID: 1206
-		// (get) Token: 0x06002286 RID: 8838 RVA: 0x00193299 File Offset: 0x00191499
 		public GameObject AnimTurn
 		{
 			get
@@ -569,8 +456,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004B7 RID: 1207
-		// (get) Token: 0x06002287 RID: 8839 RVA: 0x001932A1 File Offset: 0x001914A1
 		public AEImage AnimTurnAE
 		{
 			get
@@ -579,8 +464,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004B8 RID: 1208
-		// (get) Token: 0x06002288 RID: 8840 RVA: 0x001932A9 File Offset: 0x001914A9
 		public PguiReplaceSpriteCtrl AnimNumTurn1
 		{
 			get
@@ -589,8 +472,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004B9 RID: 1209
-		// (get) Token: 0x06002289 RID: 8841 RVA: 0x001932B1 File Offset: 0x001914B1
 		public PguiReplaceSpriteCtrl AnimNumTurn2
 		{
 			get
@@ -599,8 +480,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004BA RID: 1210
-		// (get) Token: 0x0600228A RID: 8842 RVA: 0x001932B9 File Offset: 0x001914B9
 		public GameObject AnimTurnAct
 		{
 			get
@@ -609,8 +488,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004BB RID: 1211
-		// (get) Token: 0x0600228B RID: 8843 RVA: 0x001932C1 File Offset: 0x001914C1
 		public AEImage AnimTurnActAE
 		{
 			get
@@ -619,8 +496,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004BC RID: 1212
-		// (get) Token: 0x0600228C RID: 8844 RVA: 0x001932C9 File Offset: 0x001914C9
 		public PguiTextCtrl AnimNumTurnAct
 		{
 			get
@@ -629,8 +504,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004BD RID: 1213
-		// (get) Token: 0x0600228D RID: 8845 RVA: 0x001932D1 File Offset: 0x001914D1
 		public GameObject AnimWave
 		{
 			get
@@ -639,8 +512,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004BE RID: 1214
-		// (get) Token: 0x0600228E RID: 8846 RVA: 0x001932D9 File Offset: 0x001914D9
 		public AEImage AnimWaveAE
 		{
 			get
@@ -649,8 +520,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004BF RID: 1215
-		// (get) Token: 0x0600228F RID: 8847 RVA: 0x001932E1 File Offset: 0x001914E1
 		public PguiReplaceSpriteCtrl AnimNumWaveC1
 		{
 			get
@@ -659,8 +528,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004C0 RID: 1216
-		// (get) Token: 0x06002290 RID: 8848 RVA: 0x001932E9 File Offset: 0x001914E9
 		public PguiReplaceSpriteCtrl AnimNumWaveC2
 		{
 			get
@@ -669,8 +536,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004C1 RID: 1217
-		// (get) Token: 0x06002291 RID: 8849 RVA: 0x001932F1 File Offset: 0x001914F1
 		public PguiReplaceSpriteCtrl AnimNumWaveM1
 		{
 			get
@@ -679,8 +544,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004C2 RID: 1218
-		// (get) Token: 0x06002292 RID: 8850 RVA: 0x001932F9 File Offset: 0x001914F9
 		public PguiReplaceSpriteCtrl AnimNumWaveM2
 		{
 			get
@@ -689,8 +552,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004C3 RID: 1219
-		// (get) Token: 0x06002293 RID: 8851 RVA: 0x00193301 File Offset: 0x00191501
 		public SimpleAnimation InfoPlayerSkill
 		{
 			get
@@ -699,8 +560,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004C4 RID: 1220
-		// (get) Token: 0x06002294 RID: 8852 RVA: 0x00193309 File Offset: 0x00191509
 		public PguiTextCtrl NumPlayerSkill
 		{
 			get
@@ -709,8 +568,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004C5 RID: 1221
-		// (get) Token: 0x06002295 RID: 8853 RVA: 0x00193311 File Offset: 0x00191511
 		public PguiButtonCtrl BtnInfoSkill
 		{
 			get
@@ -719,8 +576,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004C6 RID: 1222
-		// (get) Token: 0x06002296 RID: 8854 RVA: 0x00193319 File Offset: 0x00191519
 		public GameObject AnimPlayerSkill
 		{
 			get
@@ -729,8 +584,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004C7 RID: 1223
-		// (get) Token: 0x06002297 RID: 8855 RVA: 0x00193321 File Offset: 0x00191521
 		public AEImage AnimPlayerSkillAE
 		{
 			get
@@ -739,8 +592,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004C8 RID: 1224
-		// (get) Token: 0x06002298 RID: 8856 RVA: 0x00193329 File Offset: 0x00191529
 		public AEImage RareInAE
 		{
 			get
@@ -749,8 +600,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004C9 RID: 1225
-		// (get) Token: 0x06002299 RID: 8857 RVA: 0x00193331 File Offset: 0x00191531
 		public AEImage BossInAE
 		{
 			get
@@ -759,8 +608,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004CA RID: 1226
-		// (get) Token: 0x0600229A RID: 8858 RVA: 0x00193339 File Offset: 0x00191539
 		public AEImage BattleStartAE
 		{
 			get
@@ -769,8 +616,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004CB RID: 1227
-		// (get) Token: 0x0600229B RID: 8859 RVA: 0x00193341 File Offset: 0x00191541
 		public AEImage ResultAE
 		{
 			get
@@ -779,8 +624,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004CC RID: 1228
-		// (get) Token: 0x0600229C RID: 8860 RVA: 0x00193349 File Offset: 0x00191549
 		public PguiAECtrl KemonoArtsAE
 		{
 			get
@@ -789,8 +632,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004CD RID: 1229
-		// (get) Token: 0x0600229D RID: 8861 RVA: 0x00193351 File Offset: 0x00191551
 		public PguiAECtrl KemonoFadeAE
 		{
 			get
@@ -799,8 +640,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004CE RID: 1230
-		// (get) Token: 0x0600229E RID: 8862 RVA: 0x00193359 File Offset: 0x00191559
 		public PguiAECtrl ChainFrontAE
 		{
 			get
@@ -809,8 +648,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004CF RID: 1231
-		// (get) Token: 0x0600229F RID: 8863 RVA: 0x00193361 File Offset: 0x00191561
 		public PguiAECtrl ChainBackAE
 		{
 			get
@@ -819,8 +656,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004D0 RID: 1232
-		// (get) Token: 0x060022A0 RID: 8864 RVA: 0x00193369 File Offset: 0x00191569
 		public PguiAECtrl ChainCountAE
 		{
 			get
@@ -829,8 +664,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004D1 RID: 1233
-		// (get) Token: 0x060022A1 RID: 8865 RVA: 0x00193371 File Offset: 0x00191571
 		public PguiAECtrl BeatActAE
 		{
 			get
@@ -839,8 +672,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004D2 RID: 1234
-		// (get) Token: 0x060022A2 RID: 8866 RVA: 0x00193379 File Offset: 0x00191579
 		public PguiAECtrl ActionActAE
 		{
 			get
@@ -849,8 +680,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004D3 RID: 1235
-		// (get) Token: 0x060022A3 RID: 8867 RVA: 0x00193381 File Offset: 0x00191581
 		public PguiAECtrl SpecialActAE
 		{
 			get
@@ -859,8 +688,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004D4 RID: 1236
-		// (get) Token: 0x060022A4 RID: 8868 RVA: 0x00193389 File Offset: 0x00191589
 		public PguiAECtrl TryActAE
 		{
 			get
@@ -869,8 +696,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004D5 RID: 1237
-		// (get) Token: 0x060022A5 RID: 8869 RVA: 0x00193391 File Offset: 0x00191591
 		public float TryActMove
 		{
 			get
@@ -879,8 +704,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004D6 RID: 1238
-		// (get) Token: 0x060022A6 RID: 8870 RVA: 0x00193399 File Offset: 0x00191599
 		public PguiAECtrl TryActPlasmAE
 		{
 			get
@@ -889,8 +712,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004D7 RID: 1239
-		// (get) Token: 0x060022A7 RID: 8871 RVA: 0x001933A1 File Offset: 0x001915A1
 		public List<AEImage> StaySkill
 		{
 			get
@@ -899,8 +720,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004D8 RID: 1240
-		// (get) Token: 0x060022A8 RID: 8872 RVA: 0x001933A9 File Offset: 0x001915A9
 		public List<AEImage> ScheduledSkillListAE
 		{
 			get
@@ -909,8 +728,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004D9 RID: 1241
-		// (get) Token: 0x060022A9 RID: 8873 RVA: 0x001933B1 File Offset: 0x001915B1
 		public List<AEImage> EnemyScheduledSkillListAE
 		{
 			get
@@ -919,8 +736,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004DA RID: 1242
-		// (get) Token: 0x060022AA RID: 8874 RVA: 0x001933B9 File Offset: 0x001915B9
 		public Transform HpGage
 		{
 			get
@@ -929,8 +744,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004DB RID: 1243
-		// (get) Token: 0x060022AB RID: 8875 RVA: 0x001933C1 File Offset: 0x001915C1
 		public Transform NumDamage
 		{
 			get
@@ -939,8 +752,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004DC RID: 1244
-		// (get) Token: 0x060022AC RID: 8876 RVA: 0x001933C9 File Offset: 0x001915C9
 		public Transform OrderCard
 		{
 			get
@@ -949,8 +760,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004DD RID: 1245
-		// (get) Token: 0x060022AD RID: 8877 RVA: 0x001933D1 File Offset: 0x001915D1
 		public PguiAECtrl PvpChainCountAE
 		{
 			get
@@ -959,8 +768,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004DE RID: 1246
-		// (get) Token: 0x060022AE RID: 8878 RVA: 0x001933D9 File Offset: 0x001915D9
 		public PguiAECtrl PvpBeatActAE
 		{
 			get
@@ -969,8 +776,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004DF RID: 1247
-		// (get) Token: 0x060022AF RID: 8879 RVA: 0x001933E1 File Offset: 0x001915E1
 		public PguiAECtrl PvpActionActAE
 		{
 			get
@@ -979,8 +784,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004E0 RID: 1248
-		// (get) Token: 0x060022B0 RID: 8880 RVA: 0x001933E9 File Offset: 0x001915E9
 		public PguiAECtrl PvpTryActAE
 		{
 			get
@@ -989,8 +792,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004E1 RID: 1249
-		// (get) Token: 0x060022B1 RID: 8881 RVA: 0x001933F1 File Offset: 0x001915F1
 		public PguiAECtrl PvpSpecialActAE
 		{
 			get
@@ -999,8 +800,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004E2 RID: 1250
-		// (get) Token: 0x060022B2 RID: 8882 RVA: 0x001933F9 File Offset: 0x001915F9
 		public List<AEImage> PvpStaySkill
 		{
 			get
@@ -1009,8 +808,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004E3 RID: 1251
-		// (get) Token: 0x060022B3 RID: 8883 RVA: 0x00193401 File Offset: 0x00191601
 		public SimpleAnimation PvpCoinGet
 		{
 			get
@@ -1019,8 +816,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004E4 RID: 1252
-		// (get) Token: 0x060022B4 RID: 8884 RVA: 0x00193409 File Offset: 0x00191609
 		public SimpleAnimation ArtsInfo
 		{
 			get
@@ -1029,8 +824,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004E5 RID: 1253
-		// (get) Token: 0x060022B5 RID: 8885 RVA: 0x00193411 File Offset: 0x00191611
 		public SimpleAnimation StatInfo
 		{
 			get
@@ -1039,8 +832,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004E6 RID: 1254
-		// (get) Token: 0x060022B6 RID: 8886 RVA: 0x00193419 File Offset: 0x00191619
 		public HorizontalLayoutGroup TrainingScoreL
 		{
 			get
@@ -1049,8 +840,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004E7 RID: 1255
-		// (get) Token: 0x060022B7 RID: 8887 RVA: 0x00193421 File Offset: 0x00191621
 		public HorizontalLayoutGroup TrainingScoreR
 		{
 			get
@@ -1059,8 +848,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004E8 RID: 1256
-		// (get) Token: 0x060022B8 RID: 8888 RVA: 0x00193429 File Offset: 0x00191629
 		public AEImage TrainingMissionAE1
 		{
 			get
@@ -1069,8 +856,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004E9 RID: 1257
-		// (get) Token: 0x060022B9 RID: 8889 RVA: 0x00193431 File Offset: 0x00191631
 		public AEImage TrainingMissionAE2
 		{
 			get
@@ -1079,8 +864,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004EA RID: 1258
-		// (get) Token: 0x060022BA RID: 8890 RVA: 0x00193439 File Offset: 0x00191639
 		public Transform PopUpInfoCard
 		{
 			get
@@ -1089,8 +872,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004EB RID: 1259
-		// (get) Token: 0x060022BB RID: 8891 RVA: 0x00193441 File Offset: 0x00191641
 		public Transform PopUpInfoAction
 		{
 			get
@@ -1099,8 +880,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004EC RID: 1260
-		// (get) Token: 0x060022BC RID: 8892 RVA: 0x00193449 File Offset: 0x00191649
 		public PguiTextCtrl CardInfo
 		{
 			get
@@ -1109,8 +888,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004ED RID: 1261
-		// (get) Token: 0x060022BD RID: 8893 RVA: 0x00193451 File Offset: 0x00191651
 		public PguiTextCtrl CardInfoV
 		{
 			get
@@ -1119,8 +896,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004EE RID: 1262
-		// (get) Token: 0x060022BE RID: 8894 RVA: 0x00193459 File Offset: 0x00191659
 		public PguiTextCtrl PvpTrainingScore
 		{
 			get
@@ -1129,8 +904,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004EF RID: 1263
-		// (get) Token: 0x060022BF RID: 8895 RVA: 0x00193461 File Offset: 0x00191661
 		public PguiTextCtrl PvpTrainingScoreV
 		{
 			get
@@ -1139,8 +912,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004F0 RID: 1264
-		// (get) Token: 0x060022C0 RID: 8896 RVA: 0x00193469 File Offset: 0x00191669
 		public PguiAECtrl HugeFadeAE
 		{
 			get
@@ -1149,8 +920,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004F1 RID: 1265
-		// (get) Token: 0x060022C1 RID: 8897 RVA: 0x00193471 File Offset: 0x00191671
 		public PguiAECtrl CaptainCautionAE
 		{
 			get
@@ -1159,8 +928,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004F2 RID: 1266
-		// (get) Token: 0x060022C2 RID: 8898 RVA: 0x00193479 File Offset: 0x00191679
 		public AEImage TacticsPlasmScoreAE
 		{
 			get
@@ -1169,8 +936,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004F3 RID: 1267
-		// (get) Token: 0x060022C3 RID: 8899 RVA: 0x00193481 File Offset: 0x00191681
 		public AEImage TacticsAttackAE
 		{
 			get
@@ -1179,8 +944,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004F4 RID: 1268
-		// (get) Token: 0x060022C4 RID: 8900 RVA: 0x00193489 File Offset: 0x00191689
 		public AEImage TacticsAE
 		{
 			get
@@ -1189,8 +952,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004F5 RID: 1269
-		// (get) Token: 0x060022C5 RID: 8901 RVA: 0x00193491 File Offset: 0x00191691
 		public AEImage TacticsPlayerAE
 		{
 			get
@@ -1199,8 +960,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004F6 RID: 1270
-		// (get) Token: 0x060022C6 RID: 8902 RVA: 0x00193499 File Offset: 0x00191699
 		public AEImage TacticsVersusAE
 		{
 			get
@@ -1209,8 +968,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004F7 RID: 1271
-		// (get) Token: 0x060022C7 RID: 8903 RVA: 0x001934A1 File Offset: 0x001916A1
 		public AEImage TacticsEndScoreAE
 		{
 			get
@@ -1219,8 +976,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004F8 RID: 1272
-		// (get) Token: 0x060022C8 RID: 8904 RVA: 0x001934A9 File Offset: 0x001916A9
 		public PguiAECtrl TickleStartAE
 		{
 			get
@@ -1229,8 +984,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004F9 RID: 1273
-		// (get) Token: 0x060022C9 RID: 8905 RVA: 0x001934B1 File Offset: 0x001916B1
 		public PguiAECtrl TickleResultAE
 		{
 			get
@@ -1239,8 +992,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x170004FA RID: 1274
-		// (get) Token: 0x060022CA RID: 8906 RVA: 0x001934B9 File Offset: 0x001916B9
 		public GameObject PracticeSign
 		{
 			get
@@ -1249,7 +1000,6 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x060022CB RID: 8907 RVA: 0x001934C4 File Offset: 0x001916C4
 		public SceneBattle_GUI(Transform baseTr)
 		{
 			this._playerSkill = baseTr.Find("PlayerSkill").gameObject;
@@ -1557,379 +1307,254 @@ namespace Battle
 			this._practiceSign = baseTr.Find("Practice").gameObject;
 		}
 
-		// Token: 0x04001973 RID: 6515
 		private readonly int numberFriends = 5;
 
-		// Token: 0x04001974 RID: 6516
 		private GameObject _playerSkill;
 
-		// Token: 0x04001975 RID: 6517
 		private AEImage _playerSkillAE;
 
-		// Token: 0x04001976 RID: 6518
 		private PguiButtonCtrl _btnPlayerSkill;
 
-		// Token: 0x04001977 RID: 6519
 		private PguiReplaceSpriteCtrl _iconPlayerSkill;
 
-		// Token: 0x04001978 RID: 6520
 		private PguiTextCtrl _remPlayerSkill;
 
-		// Token: 0x04001979 RID: 6521
 		private GameObject _playerSkillBan;
 
-		// Token: 0x0400197A RID: 6522
 		private GameObject _tacticsSkill;
 
-		// Token: 0x0400197B RID: 6523
 		private PguiAECtrl _tacticsSkillAE;
 
-		// Token: 0x0400197C RID: 6524
 		private PguiReplaceSpriteCtrl _iconTacticsSkill;
 
-		// Token: 0x0400197D RID: 6525
 		private GameObject _deckAll;
 
-		// Token: 0x0400197E RID: 6526
 		private List<GameObject> _chara;
 
-		// Token: 0x0400197F RID: 6527
 		private List<Transform> _touchChara;
 
-		// Token: 0x04001980 RID: 6528
 		private List<Transform> _touchWait;
 
-		// Token: 0x04001981 RID: 6529
 		private List<PguiAECtrl> _charaSel;
 
-		// Token: 0x04001982 RID: 6530
 		private List<AEImage> _effArtsOk;
 
-		// Token: 0x04001983 RID: 6531
 		private List<AEImage> _effArtsOkDbl;
 
-		// Token: 0x04001984 RID: 6532
 		private List<Transform> _touchArts;
 
-		// Token: 0x04001985 RID: 6533
 		private AEImage _deckAllAE;
 
-		// Token: 0x04001986 RID: 6534
 		private GameObject _actInfoAll;
 
-		// Token: 0x04001987 RID: 6535
 		private GameObject _actGageBase;
 
-		// Token: 0x04001988 RID: 6536
 		private PguiImageCtrl _actGageGage;
 
-		// Token: 0x04001989 RID: 6537
 		private PguiImageCtrl _actGageGageAdd;
 
-		// Token: 0x0400198A RID: 6538
 		private PguiImageCtrl _actGageGageAdd2;
 
-		// Token: 0x0400198B RID: 6539
 		private GameObject _actGageGageFlash;
 
-		// Token: 0x0400198C RID: 6540
 		private PguiTextCtrl _numActBefore;
 
-		// Token: 0x0400198D RID: 6541
 		private PguiTextCtrl _numActAfter;
 
-		// Token: 0x0400198E RID: 6542
 		private Transform _touchActGage;
 
-		// Token: 0x0400198F RID: 6543
 		private CanvasGroup _actInfo;
 
-		// Token: 0x04001990 RID: 6544
 		private PguiTextCtrl _numUseBefore;
 
-		// Token: 0x04001991 RID: 6545
 		private PguiTextCtrl _numUseAfter;
 
-		// Token: 0x04001992 RID: 6546
 		private AEImage _actGageAE;
 
-		// Token: 0x04001993 RID: 6547
 		private PguiTextCtrl _actGageExtra;
 
-		// Token: 0x04001994 RID: 6548
 		private AEImage _actInfoBackAE;
 
-		// Token: 0x04001995 RID: 6549
 		private AEImage _actInfoFrontAE;
 
-		// Token: 0x04001996 RID: 6550
 		private GameObject _actGageBan;
 
-		// Token: 0x04001997 RID: 6551
 		private GameObject _timeAll;
 
-		// Token: 0x04001998 RID: 6552
 		private GameObject _menuAll;
 
-		// Token: 0x04001999 RID: 6553
 		private PguiToggleButtonCtrl _btnAuto;
 
-		// Token: 0x0400199A RID: 6554
 		private GameObject _btnAutoLock;
 
-		// Token: 0x0400199B RID: 6555
 		private PguiTextCtrl _btnAutoTxt;
 
-		// Token: 0x0400199C RID: 6556
 		private SimpleAnimation _animAutoInfo;
 
-		// Token: 0x0400199D RID: 6557
 		private GameObject _btnAutoBan;
 
-		// Token: 0x0400199E RID: 6558
 		private GameObject _btnAutoLamp;
 
-		// Token: 0x0400199F RID: 6559
 		private PguiToggleButtonCtrl _btnFast;
 
-		// Token: 0x040019A0 RID: 6560
 		private PguiButtonCtrl _btnMenu;
 
-		// Token: 0x040019A1 RID: 6561
 		private PguiTextCtrl _numYaseiTotal;
 
-		// Token: 0x040019A2 RID: 6562
 		private GameObject _plasmShare;
 
-		// Token: 0x040019A3 RID: 6563
 		private PguiAECtrl _plasmShareCmnAE;
 
-		// Token: 0x040019A4 RID: 6564
 		private List<AEImage> _plasmShareAE;
 
-		// Token: 0x040019A5 RID: 6565
 		private PguiTextCtrl _numWave;
 
-		// Token: 0x040019A6 RID: 6566
 		private PguiTextCtrl _numTurn;
 
-		// Token: 0x040019A7 RID: 6567
 		private GameObject _selectCard;
 
-		// Token: 0x040019A8 RID: 6568
 		private SimpleAnimation _animSelectCard;
 
-		// Token: 0x040019A9 RID: 6569
 		private GameObject _actionCard;
 
-		// Token: 0x040019AA RID: 6570
 		private SimpleAnimation _animActionCard;
 
-		// Token: 0x040019AB RID: 6571
 		private GameObject _animTurn;
 
-		// Token: 0x040019AC RID: 6572
 		private AEImage _animTurnAE;
 
-		// Token: 0x040019AD RID: 6573
 		private PguiReplaceSpriteCtrl _animNumTurn1;
 
-		// Token: 0x040019AE RID: 6574
 		private PguiReplaceSpriteCtrl _animNumTurn2;
 
-		// Token: 0x040019AF RID: 6575
 		private GameObject _animTurnAct;
 
-		// Token: 0x040019B0 RID: 6576
 		private AEImage _animTurnActAE;
 
-		// Token: 0x040019B1 RID: 6577
 		private PguiTextCtrl _animNumTurnAct;
 
-		// Token: 0x040019B2 RID: 6578
 		private GameObject _animWave;
 
-		// Token: 0x040019B3 RID: 6579
 		private AEImage _animWaveAE;
 
-		// Token: 0x040019B4 RID: 6580
 		private PguiReplaceSpriteCtrl _animNumWaveC1;
 
-		// Token: 0x040019B5 RID: 6581
 		private PguiReplaceSpriteCtrl _animNumWaveC2;
 
-		// Token: 0x040019B6 RID: 6582
 		private PguiReplaceSpriteCtrl _animNumWaveM1;
 
-		// Token: 0x040019B7 RID: 6583
 		private PguiReplaceSpriteCtrl _animNumWaveM2;
 
-		// Token: 0x040019B8 RID: 6584
 		private SimpleAnimation _infoPlayerSkill;
 
-		// Token: 0x040019B9 RID: 6585
 		private PguiTextCtrl _numPlayerSkill;
 
-		// Token: 0x040019BA RID: 6586
 		private PguiButtonCtrl _btnInfoSkill;
 
-		// Token: 0x040019BB RID: 6587
 		private GameObject _animPlayerSkill;
 
-		// Token: 0x040019BC RID: 6588
 		private AEImage _animPlayerSkillAE;
 
-		// Token: 0x040019BD RID: 6589
 		private AEImage _rareInAE;
 
-		// Token: 0x040019BE RID: 6590
 		private AEImage _bossInAE;
 
-		// Token: 0x040019BF RID: 6591
 		private AEImage _battleStartAE;
 
-		// Token: 0x040019C0 RID: 6592
 		private AEImage _resultAE;
 
-		// Token: 0x040019C1 RID: 6593
 		private PguiAECtrl _kemonoArtsAE;
 
-		// Token: 0x040019C2 RID: 6594
 		private PguiAECtrl _kemonoFadeAE;
 
-		// Token: 0x040019C3 RID: 6595
 		private PguiAECtrl _chainFrontAE;
 
-		// Token: 0x040019C4 RID: 6596
 		private PguiAECtrl _chainBackAE;
 
-		// Token: 0x040019C5 RID: 6597
 		private PguiAECtrl _chainCountAE;
 
-		// Token: 0x040019C6 RID: 6598
 		private PguiAECtrl _beatActAE;
 
-		// Token: 0x040019C7 RID: 6599
 		private PguiAECtrl _actionActAE;
 
-		// Token: 0x040019C8 RID: 6600
 		private PguiAECtrl _specialActAE;
 
-		// Token: 0x040019C9 RID: 6601
 		private PguiAECtrl _tryActAE;
 
-		// Token: 0x040019CA RID: 6602
 		private float _tryActMove;
 
-		// Token: 0x040019CB RID: 6603
 		private PguiAECtrl _tryActPlasmAE;
 
-		// Token: 0x040019CC RID: 6604
 		private List<AEImage> _staySkill;
 
-		// Token: 0x040019CD RID: 6605
 		private List<AEImage> _scheduledSkillListAE;
 
-		// Token: 0x040019CE RID: 6606
 		private List<AEImage> _enemyScheduledSkillListAE;
 
-		// Token: 0x040019CF RID: 6607
 		private Transform _hpGage;
 
-		// Token: 0x040019D0 RID: 6608
 		private Transform _numDamage;
 
-		// Token: 0x040019D1 RID: 6609
 		private Transform _orderCard;
 
-		// Token: 0x040019D2 RID: 6610
 		private PguiAECtrl _pvpChainCountAE;
 
-		// Token: 0x040019D3 RID: 6611
 		private PguiAECtrl _pvpBeatActAE;
 
-		// Token: 0x040019D4 RID: 6612
 		private PguiAECtrl _pvpActionActAE;
 
-		// Token: 0x040019D5 RID: 6613
 		private PguiAECtrl _pvpTryActAE;
 
-		// Token: 0x040019D6 RID: 6614
 		private PguiAECtrl _pvpSpecialActAE;
 
-		// Token: 0x040019D7 RID: 6615
 		private List<AEImage> _pvpStaySkill;
 
-		// Token: 0x040019D8 RID: 6616
 		private SimpleAnimation _pvpCoinGet;
 
-		// Token: 0x040019D9 RID: 6617
 		private SimpleAnimation _artsInfo;
 
-		// Token: 0x040019DA RID: 6618
 		private SimpleAnimation _statInfo;
 
-		// Token: 0x040019DB RID: 6619
 		private HorizontalLayoutGroup _trainingScoreL;
 
-		// Token: 0x040019DC RID: 6620
 		private HorizontalLayoutGroup _trainingScoreR;
 
-		// Token: 0x040019DD RID: 6621
 		private AEImage _trainingMissionAE1;
 
-		// Token: 0x040019DE RID: 6622
 		private AEImage _trainingMissionAE2;
 
-		// Token: 0x040019DF RID: 6623
 		private Transform _popUpInfoCard;
 
-		// Token: 0x040019E0 RID: 6624
 		private Transform _popUpInfoAction;
 
-		// Token: 0x040019E1 RID: 6625
 		private PguiTextCtrl _cardInfo;
 
-		// Token: 0x040019E2 RID: 6626
 		private PguiTextCtrl _cardInfoV;
 
-		// Token: 0x040019E3 RID: 6627
 		private PguiTextCtrl _pvpTrainingScore;
 
-		// Token: 0x040019E4 RID: 6628
 		private PguiTextCtrl _pvpTrainingScoreV;
 
-		// Token: 0x040019E5 RID: 6629
 		private PguiAECtrl _hugeFadeAE;
 
-		// Token: 0x040019E6 RID: 6630
 		private PguiAECtrl _captainCautionAE;
 
-		// Token: 0x040019E7 RID: 6631
 		private AEImage _tacticsPlasmScoreAE;
 
-		// Token: 0x040019E8 RID: 6632
 		private AEImage _tacticsAttackAE;
 
-		// Token: 0x040019E9 RID: 6633
 		private AEImage _tacticsAE;
 
-		// Token: 0x040019EA RID: 6634
 		private AEImage _tacticsPlayerAE;
 
-		// Token: 0x040019EB RID: 6635
 		private AEImage _tacticsVersusAE;
 
-		// Token: 0x040019EC RID: 6636
 		private AEImage _tacticsEndScoreAE;
 
-		// Token: 0x040019ED RID: 6637
 		private PguiAECtrl _tickleStartAE;
 
-		// Token: 0x040019EE RID: 6638
 		private PguiAECtrl _tickleResultAE;
 
-		// Token: 0x040019EF RID: 6639
 		private GameObject _practiceSign;
 	}
 }

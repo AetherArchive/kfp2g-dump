@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
@@ -7,10 +7,8 @@ using SGNFW.HttpRequest.Protocol;
 using UnityEngine;
 using UnityEngine.Events;
 
-// Token: 0x020000E9 RID: 233
 public class SceneManager : Singleton<SceneManager>
 {
-	// Token: 0x06000A83 RID: 2691 RVA: 0x0003C999 File Offset: 0x0003AB99
 	public static void CanvasSetActive(SceneManager.CanvasType type, bool isActive)
 	{
 		if (Singleton<SceneManager>.Instance.baseCanvasMap.ContainsKey(type))
@@ -19,8 +17,6 @@ public class SceneManager : Singleton<SceneManager>
 		}
 	}
 
-	// Token: 0x17000294 RID: 660
-	// (get) Token: 0x06000A84 RID: 2692 RVA: 0x0003C9C8 File Offset: 0x0003ABC8
 	public SceneManager.SceneName CurrentSceneName
 	{
 		get
@@ -33,8 +29,6 @@ public class SceneManager : Singleton<SceneManager>
 		}
 	}
 
-	// Token: 0x17000295 RID: 661
-	// (get) Token: 0x06000A85 RID: 2693 RVA: 0x0003C9DF File Offset: 0x0003ABDF
 	public SceneManager.SceneName RequestNextScene
 	{
 		get
@@ -43,8 +37,6 @@ public class SceneManager : Singleton<SceneManager>
 		}
 	}
 
-	// Token: 0x17000296 RID: 662
-	// (get) Token: 0x06000A86 RID: 2694 RVA: 0x0003C9E7 File Offset: 0x0003ABE7
 	public BaseScene CurrentScene
 	{
 		get
@@ -57,8 +49,6 @@ public class SceneManager : Singleton<SceneManager>
 		}
 	}
 
-	// Token: 0x17000297 RID: 663
-	// (get) Token: 0x06000A87 RID: 2695 RVA: 0x0003C9FE File Offset: 0x0003ABFE
 	public bool IsSceneChange
 	{
 		get
@@ -67,12 +57,8 @@ public class SceneManager : Singleton<SceneManager>
 		}
 	}
 
-	// Token: 0x17000298 RID: 664
-	// (get) Token: 0x06000A88 RID: 2696 RVA: 0x0003CA09 File Offset: 0x0003AC09
-	// (set) Token: 0x06000A89 RID: 2697 RVA: 0x0003CA11 File Offset: 0x0003AC11
 	public bool LockByEnableSceneWaitFromEnableScene { get; set; }
 
-	// Token: 0x06000A8A RID: 2698 RVA: 0x0003CA1C File Offset: 0x0003AC1C
 	public static int[] GetOption()
 	{
 		string[] array = PlayerPrefs.GetString(SceneManager.optionKey).Split(',', StringSplitOptions.None);
@@ -90,7 +76,6 @@ public class SceneManager : Singleton<SceneManager>
 		return array2;
 	}
 
-	// Token: 0x06000A8B RID: 2699 RVA: 0x0003CA78 File Offset: 0x0003AC78
 	public static void SetOption(int[] opt)
 	{
 		string text = "";
@@ -105,7 +90,6 @@ public class SceneManager : Singleton<SceneManager>
 		PlayerPrefs.SetString(SceneManager.optionKey, text);
 	}
 
-	// Token: 0x06000A8C RID: 2700 RVA: 0x0003CAC8 File Offset: 0x0003ACC8
 	public static void InitializeOption()
 	{
 		int[] option = SceneManager.GetOption();
@@ -120,7 +104,6 @@ public class SceneManager : Singleton<SceneManager>
 		SoundManager.SetCategoryVolume(UserOptionData.GetVolumeList(option[2], option[3], option[4]));
 	}
 
-	// Token: 0x06000A8D RID: 2701 RVA: 0x0003CB4D File Offset: 0x0003AD4D
 	private void OnApplicationPause(bool pauseStatus)
 	{
 		if (pauseStatus)
@@ -134,7 +117,6 @@ public class SceneManager : Singleton<SceneManager>
 		this.returnBackground = true;
 	}
 
-	// Token: 0x06000A8E RID: 2702 RVA: 0x0003CB67 File Offset: 0x0003AD67
 	public void Initialize()
 	{
 		this.sceneRenderSetting = base.gameObject.AddComponent<RenderSettingParam>();
@@ -144,7 +126,6 @@ public class SceneManager : Singleton<SceneManager>
 		this.LockByEnableSceneWaitFromEnableScene = false;
 	}
 
-	// Token: 0x06000A8F RID: 2703 RVA: 0x0003CB9B File Offset: 0x0003AD9B
 	public void SetNextScene(SceneManager.SceneName nextscene, object args)
 	{
 		if (this.sceneStatus == SceneManager.SceneStatus.POLLING_REQUEST)
@@ -155,7 +136,6 @@ public class SceneManager : Singleton<SceneManager>
 		}
 	}
 
-	// Token: 0x06000A90 RID: 2704 RVA: 0x0003CBBA File Offset: 0x0003ADBA
 	public void SetSceneReboot()
 	{
 		Manager.PauseCmdExit();
@@ -168,7 +148,6 @@ public class SceneManager : Singleton<SceneManager>
 		this.sceneStatus = SceneManager.SceneStatus.REQUEST_NEXT_SCENE;
 	}
 
-	// Token: 0x06000A91 RID: 2705 RVA: 0x0003CBE8 File Offset: 0x0003ADE8
 	public void DestroyAliveScene()
 	{
 		foreach (SceneManager.SceneData sceneData in this.aliveSceneMap.Values)
@@ -185,7 +164,6 @@ public class SceneManager : Singleton<SceneManager>
 		}
 	}
 
-	// Token: 0x06000A92 RID: 2706 RVA: 0x0003CC7C File Offset: 0x0003AE7C
 	public void Update()
 	{
 		if (this.changeSceneEnumerator != null && !this.changeSceneEnumerator.MoveNext())
@@ -222,7 +200,6 @@ public class SceneManager : Singleton<SceneManager>
 		}
 	}
 
-	// Token: 0x06000A93 RID: 2707 RVA: 0x0003CD6D File Offset: 0x0003AF6D
 	public void LateUpdate()
 	{
 		if (this.sceneStatus == SceneManager.SceneStatus.POLLING_REQUEST && this.currentScene != null)
@@ -231,7 +208,6 @@ public class SceneManager : Singleton<SceneManager>
 		}
 	}
 
-	// Token: 0x06000A94 RID: 2708 RVA: 0x0003CD8F File Offset: 0x0003AF8F
 	private IEnumerator ChangeScene(SceneManager.SceneName nextScene, object args)
 	{
 		bool isFadeEnable = this.currentScene != null;
@@ -520,7 +496,6 @@ public class SceneManager : Singleton<SceneManager>
 		yield break;
 	}
 
-	// Token: 0x06000A95 RID: 2709 RVA: 0x0003CDAC File Offset: 0x0003AFAC
 	private void CheckLoadingDisp(DateTime dt)
 	{
 		if (Singleton<CanvasManager>.Instance != null && Singleton<CanvasManager>.Instance.IsInitialized && !CanvasManager.HdlLoadAndTipsCtrl.isActive() && (TimeManager.SystemNow - dt).TotalSeconds > 1.0)
@@ -530,7 +505,6 @@ public class SceneManager : Singleton<SceneManager>
 		}
 	}
 
-	// Token: 0x06000A96 RID: 2710 RVA: 0x0003CE14 File Offset: 0x0003B014
 	private static bool CheckSeal(SceneManager.SceneName nextScene, object requestNextSceneArgs)
 	{
 		bool flag = false;
@@ -601,7 +575,6 @@ public class SceneManager : Singleton<SceneManager>
 		return flag;
 	}
 
-	// Token: 0x06000A97 RID: 2711 RVA: 0x0003CF64 File Offset: 0x0003B164
 	private static bool CheckSealByQuestCategory(QuestStaticChapter.Category category, Sealed sd)
 	{
 		switch (category)
@@ -622,26 +595,22 @@ public class SceneManager : Singleton<SceneManager>
 		return false;
 	}
 
-	// Token: 0x06000A98 RID: 2712 RVA: 0x0003CFE4 File Offset: 0x0003B1E4
 	public void SetBaseCanvas(SceneManager.CanvasType type, Transform canvas, Camera cam)
 	{
 		this.baseCanvasMap[type] = canvas;
 		this.canvasCameraMap[type] = cam;
 	}
 
-	// Token: 0x06000A99 RID: 2713 RVA: 0x0003D000 File Offset: 0x0003B200
 	public Transform GetBaseCanvas(SceneManager.CanvasType type)
 	{
 		return this.baseCanvasMap[type];
 	}
 
-	// Token: 0x06000A9A RID: 2714 RVA: 0x0003D00E File Offset: 0x0003B20E
 	public Camera GetCanvasCamera(SceneManager.CanvasType type)
 	{
 		return this.canvasCameraMap[type];
 	}
 
-	// Token: 0x06000A9B RID: 2715 RVA: 0x0003D01C File Offset: 0x0003B21C
 	public static void AddPanelByBaseCanvas(SceneManager.CanvasType targetCanvasType, Transform targetTransform, bool safeAreaScalerEnabled = true)
 	{
 		if (safeAreaScalerEnabled && targetTransform.gameObject.GetComponent<SafeAreaScaler>() == null)
@@ -651,7 +620,6 @@ public class SceneManager : Singleton<SceneManager>
 		targetTransform.SetParent(Singleton<SceneManager>.Instance.baseCanvasMap[targetCanvasType], false);
 	}
 
-	// Token: 0x06000A9C RID: 2716 RVA: 0x0003D058 File Offset: 0x0003B258
 	public static GameObject CreateEmptyPanelByBaseCanvas(SceneManager.CanvasType type, string objName, bool enableSafeAreaScaler = true)
 	{
 		GameObject gameObject = new GameObject();
@@ -666,7 +634,6 @@ public class SceneManager : Singleton<SceneManager>
 		return gameObject;
 	}
 
-	// Token: 0x06000A9D RID: 2717 RVA: 0x0003D0BC File Offset: 0x0003B2BC
 	public static void WorldToCanvas(SceneManager.CanvasType type, Transform obj, Vector3 worldPos, Camera worldCam)
 	{
 		Vector2 vector = RectTransformUtility.WorldToScreenPoint(worldCam, worldPos);
@@ -674,18 +641,13 @@ public class SceneManager : Singleton<SceneManager>
 		obj.GetComponent<RectTransform>().localPosition = vector;
 	}
 
-	// Token: 0x17000299 RID: 665
-	// (get) Token: 0x06000A9E RID: 2718 RVA: 0x0003D110 File Offset: 0x0003B310
-	// (set) Token: 0x06000A9F RID: 2719 RVA: 0x0003D118 File Offset: 0x0003B318
 	public Transform BaseField { get; set; }
 
-	// Token: 0x06000AA0 RID: 2720 RVA: 0x0003D121 File Offset: 0x0003B321
 	public static void Add3DObjectByBaseField(Transform addObject)
 	{
 		addObject.SetParent(Singleton<SceneManager>.Instance.BaseField, false);
 	}
 
-	// Token: 0x06000AA1 RID: 2721 RVA: 0x0003D134 File Offset: 0x0003B334
 	public static void Initialize3DField()
 	{
 		GameObject gameObject = new GameObject
@@ -695,7 +657,6 @@ public class SceneManager : Singleton<SceneManager>
 		Singleton<SceneManager>.Instance.BaseField = gameObject.transform;
 	}
 
-	// Token: 0x06000AA2 RID: 2722 RVA: 0x0003D162 File Offset: 0x0003B362
 	public static void Crean3DField()
 	{
 		if (null != Singleton<SceneManager>.Instance.BaseField)
@@ -705,7 +666,6 @@ public class SceneManager : Singleton<SceneManager>
 		}
 	}
 
-	// Token: 0x06000AA3 RID: 2723 RVA: 0x0003D1A0 File Offset: 0x0003B3A0
 	private static void RecursiveDestroy(GameObject go)
 	{
 		foreach (object obj in go.transform)
@@ -716,7 +676,6 @@ public class SceneManager : Singleton<SceneManager>
 		}
 	}
 
-	// Token: 0x06000AA4 RID: 2724 RVA: 0x0003D208 File Offset: 0x0003B408
 	private string GetSealedUrl(SceneManager.SceneName nextScene)
 	{
 		HomeCheckResult homeCheckResult = DataManager.DmHome.GetHomeCheckResult();
@@ -746,7 +705,6 @@ public class SceneManager : Singleton<SceneManager>
 		return null;
 	}
 
-	// Token: 0x06000AA5 RID: 2725 RVA: 0x0003D270 File Offset: 0x0003B470
 	private string GetSealedText(SceneManager.SceneName nextScene)
 	{
 		HomeCheckResult homeCheckResult = DataManager.DmHome.GetHomeCheckResult();
@@ -776,14 +734,12 @@ public class SceneManager : Singleton<SceneManager>
 		return null;
 	}
 
-	// Token: 0x06000AA6 RID: 2726 RVA: 0x0003D2EE File Offset: 0x0003B4EE
 	private string ConvertEnterText(string text)
 	{
 		text = text.Replace("¥n", "\n");
 		return text;
 	}
 
-	// Token: 0x06000AA7 RID: 2727 RVA: 0x0003D304 File Offset: 0x0003B504
 	public object GetNextSceneArgs(SceneManager.SceneName sceneName, int id)
 	{
 		object obj = null;
@@ -831,7 +787,6 @@ public class SceneManager : Singleton<SceneManager>
 		return obj;
 	}
 
-	// Token: 0x06000AA8 RID: 2728 RVA: 0x0003D41C File Offset: 0x0003B61C
 	public void CheckReleaseDataByCategory(QuestStaticChapter.Category category, UnityAction<bool, QuestOnePackData> action)
 	{
 		List<DataManagerServerMst.ModeReleaseData> modeReleaseDataList = DataManager.DmServerMst.ModeReleaseDataList;
@@ -897,7 +852,6 @@ public class SceneManager : Singleton<SceneManager>
 		action(flag, questOnePackData);
 	}
 
-	// Token: 0x06000AA9 RID: 2729 RVA: 0x0003D68C File Offset: 0x0003B88C
 	public void CheckReleaseDataBySceneName(SceneManager.SceneName sceneName, UnityAction<bool, QuestOnePackData> action)
 	{
 		List<DataManagerServerMst.ModeReleaseData> modeReleaseDataList = DataManager.DmServerMst.ModeReleaseDataList;
@@ -931,19 +885,14 @@ public class SceneManager : Singleton<SceneManager>
 		action(flag, questOnePackData);
 	}
 
-	// Token: 0x0400083B RID: 2107
 	private SceneManager.SceneName requestNextScene;
 
-	// Token: 0x0400083C RID: 2108
 	private object requestNextSceneArgs;
 
-	// Token: 0x0400083D RID: 2109
 	private SceneManager.SceneStatus sceneStatus;
 
-	// Token: 0x0400083E RID: 2110
 	private IEnumerator changeSceneEnumerator;
 
-	// Token: 0x0400083F RID: 2111
 	public static readonly Dictionary<SceneManager.CanvasType, int> CameraDepth = new Dictionary<SceneManager.CanvasType, int>
 	{
 		{
@@ -968,41 +917,30 @@ public class SceneManager : Singleton<SceneManager>
 		}
 	};
 
-	// Token: 0x04000840 RID: 2112
 	public static readonly int CAMERA_DEPTH_LOWER_LIMIT = -100;
 
-	// Token: 0x04000841 RID: 2113
 	private Dictionary<SceneManager.CanvasType, Transform> baseCanvasMap = new Dictionary<SceneManager.CanvasType, Transform>();
 
-	// Token: 0x04000842 RID: 2114
 	private Dictionary<SceneManager.CanvasType, Camera> canvasCameraMap = new Dictionary<SceneManager.CanvasType, Camera>();
 
-	// Token: 0x04000843 RID: 2115
 	private Dictionary<SceneManager.SceneName, SceneManager.SceneData> aliveSceneMap = new Dictionary<SceneManager.SceneName, SceneManager.SceneData>();
 
-	// Token: 0x04000844 RID: 2116
 	private SceneManager.SceneData currentScene;
 
-	// Token: 0x04000845 RID: 2117
 	private RenderSettingParam sceneRenderSetting;
 
-	// Token: 0x04000847 RID: 2119
 	private static readonly string optionKey = "option";
 
-	// Token: 0x04000848 RID: 2120
 	public static Resolution screenSize = new Resolution
 	{
 		width = 0,
 		height = 0
 	};
 
-	// Token: 0x04000849 RID: 2121
 	public static Rect safeArea = Rect.zero;
 
-	// Token: 0x0400084A RID: 2122
 	public bool returnBackground;
 
-	// Token: 0x0400084B RID: 2123
 	private static readonly List<SceneManager.FadeDispPattern> fadeDispPatternList = new List<SceneManager.FadeDispPattern>
 	{
 		new SceneManager.FadeDispPattern
@@ -1174,7 +1112,6 @@ public class SceneManager : Singleton<SceneManager>
 		}
 	};
 
-	// Token: 0x0400084C RID: 2124
 	private static readonly HashSet<SceneManager.SceneName> DisableDestorySceneList = new HashSet<SceneManager.SceneName>
 	{
 		SceneManager.SceneName.SceneAdvertise,
@@ -1185,10 +1122,8 @@ public class SceneManager : Singleton<SceneManager>
 		SceneManager.SceneName.SceneOpening
 	};
 
-	// Token: 0x0400084D RID: 2125
 	private static readonly Dictionary<SceneManager.SceneName, HashSet<SceneManager.SceneName>> DestorySceneList = new Dictionary<SceneManager.SceneName, HashSet<SceneManager.SceneName>>();
 
-	// Token: 0x0400084E RID: 2126
 	private static readonly HashSet<SceneManager.SceneName> EnableMultiTouchSceneList = new HashSet<SceneManager.SceneName>
 	{
 		SceneManager.SceneName.SceneHome,
@@ -1196,7 +1131,6 @@ public class SceneManager : Singleton<SceneManager>
 		SceneManager.SceneName.SceneTreeHouse
 	};
 
-	// Token: 0x0400084F RID: 2127
 	private static readonly HashSet<SceneManager.SceneName> EnableUploadKemoStatusSceneList = new HashSet<SceneManager.SceneName>
 	{
 		SceneManager.SceneName.SceneMission,
@@ -1204,139 +1138,83 @@ public class SceneManager : Singleton<SceneManager>
 		SceneManager.SceneName.SceneRanking
 	};
 
-	// Token: 0x020007E7 RID: 2023
 	public enum SceneName
 	{
-		// Token: 0x04003531 RID: 13617
 		None,
-		// Token: 0x04003532 RID: 13618
 		SceneBoot,
-		// Token: 0x04003533 RID: 13619
 		SceneAdvertise,
-		// Token: 0x04003534 RID: 13620
 		SceneDataInitialize,
-		// Token: 0x04003535 RID: 13621
 		SceneTitle,
-		// Token: 0x04003536 RID: 13622
 		SceneBattle,
-		// Token: 0x04003537 RID: 13623
 		SceneBattleResult,
-		// Token: 0x04003538 RID: 13624
 		SceneBattleSelector,
-		// Token: 0x04003539 RID: 13625
 		SceneGacha,
-		// Token: 0x0400353A RID: 13626
 		SceneHome,
-		// Token: 0x0400353B RID: 13627
 		SceneQuest,
-		// Token: 0x0400353C RID: 13628
 		SceneScenario,
-		// Token: 0x0400353D RID: 13629
 		SceneFriend,
-		// Token: 0x0400353E RID: 13630
 		SceneCharaEdit,
-		// Token: 0x0400353F RID: 13631
 		SceneMission,
-		// Token: 0x04003540 RID: 13632
 		SceneOption,
-		// Token: 0x04003541 RID: 13633
 		ScenePresent,
-		// Token: 0x04003542 RID: 13634
 		ScenePvp,
-		// Token: 0x04003543 RID: 13635
 		SceneShop,
-		// Token: 0x04003544 RID: 13636
 		SceneTutorialFirst,
-		// Token: 0x04003545 RID: 13637
 		SceneProfile,
-		// Token: 0x04003546 RID: 13638
 		SceneOtherMenuTop,
-		// Token: 0x04003547 RID: 13639
 		SceneTutorialEnd,
-		// Token: 0x04003548 RID: 13640
 		SceneItemView,
-		// Token: 0x04003549 RID: 13641
 		ScenePvpDeck,
-		// Token: 0x0400354A RID: 13642
 		SceneOpening,
-		// Token: 0x0400354B RID: 13643
 		SceneStoryView,
-		// Token: 0x0400354C RID: 13644
 		ScenePicnic,
-		// Token: 0x0400354D RID: 13645
 		SceneAccountTransfer,
-		// Token: 0x0400354E RID: 13646
 		SceneTraining,
-		// Token: 0x0400354F RID: 13647
 		SceneKemoBoard,
-		// Token: 0x04003550 RID: 13648
 		ScenePhotoAlbum,
-		// Token: 0x04003551 RID: 13649
 		SceneTreeHouse,
-		// Token: 0x04003552 RID: 13650
 		SceneRanking,
-		// Token: 0x04003553 RID: 13651
 		SceneAchievement
 	}
 
-	// Token: 0x020007E8 RID: 2024
 	private enum SceneStatus
 	{
-		// Token: 0x04003555 RID: 13653
 		POLLING_REQUEST,
-		// Token: 0x04003556 RID: 13654
 		REQUEST_NEXT_SCENE,
-		// Token: 0x04003557 RID: 13655
 		CHANGING_SCENE
 	}
 
-	// Token: 0x020007E9 RID: 2025
 	public enum CanvasType
 	{
-		// Token: 0x04003559 RID: 13657
 		INVALID,
-		// Token: 0x0400355A RID: 13658
 		PRESET,
-		// Token: 0x0400355B RID: 13659
 		FRONT,
-		// Token: 0x0400355C RID: 13660
 		BACK,
-		// Token: 0x0400355D RID: 13661
 		SYSTEM,
-		// Token: 0x0400355E RID: 13662
 		OVERLAY
 	}
 
-	// Token: 0x020007EA RID: 2026
 	private class SceneData
 	{
-		// Token: 0x06003770 RID: 14192 RVA: 0x001C82A4 File Offset: 0x001C64A4
 		public SceneData(SceneManager.SceneName sceneName, BaseScene baseScene)
 		{
 			this.sceneName = sceneName;
 			this.baseScene = baseScene;
 		}
 
-		// Token: 0x0400355F RID: 13663
 		public BaseScene baseScene;
 
-		// Token: 0x04003560 RID: 13664
 		public SceneManager.SceneName sceneName;
 	}
 
-	// Token: 0x020007EB RID: 2027
 	private class FadeDispPattern
 	{
-		// Token: 0x04003561 RID: 13665
 		public Type preScene;
 
-		// Token: 0x04003562 RID: 13666
 		public Type nextScene;
 
-		// Token: 0x04003563 RID: 13667
 		public bool isFade = true;
 
-		// Token: 0x04003564 RID: 13668
 		public CanvasManager.FadeType fadeType = CanvasManager.FadeType.NORMAL;
 	}
 }

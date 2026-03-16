@@ -1,12 +1,10 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-// Token: 0x020000FC RID: 252
 public class PurchaseConfirmWindow : MonoBehaviour
 {
-	// Token: 0x06000C19 RID: 3097 RVA: 0x00047F6D File Offset: 0x0004616D
 	private void Update()
 	{
 		if (this.IEWindowMove != null && !this.IEWindowMove.MoveNext())
@@ -15,7 +13,6 @@ public class PurchaseConfirmWindow : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C1A RID: 3098 RVA: 0x00047F8C File Offset: 0x0004618C
 	public void Initialize(ShopData.ItemOne itemOne)
 	{
 		string text = "";
@@ -32,7 +29,6 @@ public class PurchaseConfirmWindow : MonoBehaviour
 		this.Initialize(text2.Replace("\r", "").Replace("\n", "") + " " + itemOne.itemNum.ToString() + "個", text3, itemOne.priceItemNum, text, PurchaseConfirmWindow.TEMP_IMMEDIATE_DELIVERY, false);
 	}
 
-	// Token: 0x06000C1B RID: 3099 RVA: 0x00048098 File Offset: 0x00046298
 	public void Initialize(PurchaseProductOne productOne)
 	{
 		string text = "";
@@ -43,7 +39,6 @@ public class PurchaseConfirmWindow : MonoBehaviour
 		this.Initialize(productOne.bonusItemTitle.Replace("\r", "").Replace("\n", ""), "", productOne.price, text, PurchaseConfirmWindow.TEMP_IMMEDIATE_DELIVERY, false);
 	}
 
-	// Token: 0x06000C1C RID: 3100 RVA: 0x00048154 File Offset: 0x00046354
 	public void Initialize(string serviceName, string costName, int costAmount, string providePeriod, string effectiveDate, bool isCancelable = false)
 	{
 		SceneManager.AddPanelByBaseCanvas(SceneManager.CanvasType.SYSTEM, base.transform, true);
@@ -64,13 +59,11 @@ public class PurchaseConfirmWindow : MonoBehaviour
 		this.Open();
 	}
 
-	// Token: 0x06000C1D RID: 3101 RVA: 0x0004824B File Offset: 0x0004644B
 	public void Open()
 	{
 		this.OpenWindow(null);
 	}
 
-	// Token: 0x06000C1E RID: 3102 RVA: 0x00048254 File Offset: 0x00046454
 	private void OpenWindow(UnityAction openEndCb)
 	{
 		this.RefreshInfo();
@@ -82,12 +75,10 @@ public class PurchaseConfirmWindow : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000C1F RID: 3103 RVA: 0x000482A6 File Offset: 0x000464A6
 	private void RefreshInfo()
 	{
 	}
 
-	// Token: 0x06000C20 RID: 3104 RVA: 0x000482A8 File Offset: 0x000464A8
 	private bool OnClickOwButton(int index)
 	{
 		if (-1 == index)
@@ -103,34 +94,24 @@ public class PurchaseConfirmWindow : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x0400094A RID: 2378
 	public static readonly string TEMP_IMMEDIATE_DELIVERY = "お支払い後直ちに提供 (通信状況により数分程度の遅延が生じることがあります)";
 
-	// Token: 0x0400094B RID: 2379
 	public static readonly string TEMP_MONTHLY_PROVIDE = "お支払い後直ちに提供、ただし現在有効な月間パスポートがある場合は期間終了直後に提供\n(通信状況により数分程度の遅延が生じることがあります)";
 
-	// Token: 0x0400094C RID: 2380
 	public static readonly string TEMP_NO_CANCEL = "商品の性質上、申込みの撤回、キャンセル、解除等はできません。";
 
-	// Token: 0x0400094D RID: 2381
 	public static readonly string TEMP_WINDOW_TITLE = "特定商取引法第12条の6に関する事項";
 
-	// Token: 0x0400094E RID: 2382
 	public static readonly string TEMP_NA = "該当ありません。";
 
-	// Token: 0x0400094F RID: 2383
 	public PurchaseConfirmWindow.GUI guiData;
 
-	// Token: 0x04000950 RID: 2384
 	private IEnumerator IEWindowMove;
 
-	// Token: 0x04000951 RID: 2385
 	private UnityAction windowCloseEndCb;
 
-	// Token: 0x02000819 RID: 2073
 	public class GUI
 	{
-		// Token: 0x060037FA RID: 14330 RVA: 0x001CA024 File Offset: 0x001C8224
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.Find("Base").gameObject;
@@ -143,42 +124,31 @@ public class PurchaseConfirmWindow : MonoBehaviour
 			this.Text_PaymentTiming = baseTr.Find("Base/Window/LayoutGroup/PaymentTiming/Text").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x0400363D RID: 13885
 		public GameObject baseObj;
 
-		// Token: 0x0400363E RID: 13886
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x0400363F RID: 13887
 		public PguiTextCtrl Text_Service;
 
-		// Token: 0x04003640 RID: 13888
 		public PguiTextCtrl Text_Cost;
 
-		// Token: 0x04003641 RID: 13889
 		public PguiTextCtrl Text_EffectiveDate;
 
-		// Token: 0x04003642 RID: 13890
 		public PguiTextCtrl Text_ProvidePeriod;
 
-		// Token: 0x04003643 RID: 13891
 		public PguiTextCtrl Text_IsCancelable;
 
-		// Token: 0x04003644 RID: 13892
 		public PguiTextCtrl Text_PaymentTiming;
 	}
 
-	// Token: 0x0200081A RID: 2074
 	public class SetupParam
 	{
-		// Token: 0x060037FB RID: 14331 RVA: 0x001CA0DD File Offset: 0x001C82DD
 		public SetupParam()
 		{
 			this.openEndCb = null;
 			this.closeEndCb = null;
 		}
 
-		// Token: 0x060037FC RID: 14332 RVA: 0x001CA0F3 File Offset: 0x001C82F3
 		public void Initialize(string serviceName, string serviceAmount, string costName, string costAmount, string effectiveDate, string providePeriod, bool isCancelable)
 		{
 			this.serviceName = serviceName;
@@ -190,31 +160,22 @@ public class PurchaseConfirmWindow : MonoBehaviour
 			this.isCancelable = isCancelable;
 		}
 
-		// Token: 0x04003645 RID: 13893
 		public UnityAction openEndCb;
 
-		// Token: 0x04003646 RID: 13894
 		public UnityAction closeEndCb;
 
-		// Token: 0x04003647 RID: 13895
 		public string serviceName;
 
-		// Token: 0x04003648 RID: 13896
 		public string serviceAmount;
 
-		// Token: 0x04003649 RID: 13897
 		public string costName;
 
-		// Token: 0x0400364A RID: 13898
 		public string costAmount;
 
-		// Token: 0x0400364B RID: 13899
 		public string effectiveDate;
 
-		// Token: 0x0400364C RID: 13900
 		public string providePeriod;
 
-		// Token: 0x0400364D RID: 13901
 		public bool isCancelable;
 	}
 }

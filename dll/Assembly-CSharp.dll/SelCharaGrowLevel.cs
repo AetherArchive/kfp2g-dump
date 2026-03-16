@@ -1,14 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using AEAuth3;
 using SGNFW.uGUI;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x02000131 RID: 305
 public class SelCharaGrowLevel
 {
-	// Token: 0x06001064 RID: 4196 RVA: 0x000C7100 File Offset: 0x000C5300
 	public SelCharaGrowLevel(Transform baseTr)
 	{
 		this.LevelUpGUI = new SelCharaGrowLevel.CharaLevelUpGUI();
@@ -21,7 +19,6 @@ public class SelCharaGrowLevel
 		this.LevelUpGUI.levelLimitOverWindow = new SelCharaGrowLevel.WindowLevelLimitOver(Object.Instantiate<Transform>(gameObject.transform.Find("Window_LvLimitOpen"), baseTr).transform);
 	}
 
-	// Token: 0x06001065 RID: 4197 RVA: 0x000C7218 File Offset: 0x000C5418
 	public void CreateLvUpItem(GameObject go, int i, int itemId, int attr)
 	{
 		SelCharaGrowLevel.LvUpItem lvUpItem = new SelCharaGrowLevel.LvUpItem();
@@ -45,7 +42,6 @@ public class SelCharaGrowLevel
 		this.LevelUpGUI.lvUpTab.itemListBar[attr].IconItemList.Add(lvUpItem);
 	}
 
-	// Token: 0x06001066 RID: 4198 RVA: 0x000C73C0 File Offset: 0x000C55C0
 	public string TabInfoText(int charaId)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(charaId);
@@ -63,7 +59,6 @@ public class SelCharaGrowLevel
 		return text + text2 + "を使ってレベル上限を解放します";
 	}
 
-	// Token: 0x06001067 RID: 4199 RVA: 0x000C7440 File Offset: 0x000C5640
 	public bool CanLevelLimitOver(int charaId)
 	{
 		CharaDynamicData dynamicData = DataManager.DmChara.GetUserCharaData(charaId).dynamicData;
@@ -77,7 +72,6 @@ public class SelCharaGrowLevel
 		return flag && flag2 && flag3 && flag4;
 	}
 
-	// Token: 0x06001068 RID: 4200 RVA: 0x000C74C8 File Offset: 0x000C56C8
 	public List<ItemStaticBase> GetExpAddItemList(int attr)
 	{
 		List<ItemStaticBase> list = new List<ItemStaticBase>();
@@ -92,7 +86,6 @@ public class SelCharaGrowLevel
 		return list;
 	}
 
-	// Token: 0x06001069 RID: 4201 RVA: 0x000C7570 File Offset: 0x000C5770
 	public void UpdateItemLvUp()
 	{
 		foreach (SelCharaGrowLevel.LvUpItem lvUpItem in this.LevelUpGUI.lvUpTab.iconItemList)
@@ -112,7 +105,6 @@ public class SelCharaGrowLevel
 		}
 	}
 
-	// Token: 0x0600106A RID: 4202 RVA: 0x000C764C File Offset: 0x000C584C
 	public string GetItemId2AttributeId(int itemId)
 	{
 		string text = "BROWN";
@@ -154,13 +146,10 @@ public class SelCharaGrowLevel
 		return text;
 	}
 
-	// Token: 0x04000E4D RID: 3661
 	public SelCharaGrowLevel.CharaLevelUpGUI LevelUpGUI;
 
-	// Token: 0x020009FF RID: 2559
 	public class LvUpItem
 	{
-		// Token: 0x06003E1E RID: 15902 RVA: 0x001E498C File Offset: 0x001E2B8C
 		public void SetUp(bool isMax, int itemDataNum, int count)
 		{
 			this.iconItemCtrl.SetActEnable(!isMax);
@@ -171,32 +160,23 @@ public class SelCharaGrowLevel
 			this.itemCount.text = count.ToString();
 		}
 
-		// Token: 0x04003FCB RID: 16331
 		public int itemId;
 
-		// Token: 0x04003FCC RID: 16332
 		public IconItemCtrl iconItemCtrl;
 
-		// Token: 0x04003FCD RID: 16333
 		public PguiTextCtrl expBonus;
 
-		// Token: 0x04003FCE RID: 16334
 		public PguiTextCtrl itemNum;
 
-		// Token: 0x04003FCF RID: 16335
 		public PguiImageCtrl imgCount;
 
-		// Token: 0x04003FD0 RID: 16336
 		public PguiTextCtrl itemCount;
 
-		// Token: 0x04003FD1 RID: 16337
 		public PguiImageCtrl ColorBase;
 	}
 
-	// Token: 0x02000A00 RID: 2560
 	public class LvUpTab
 	{
-		// Token: 0x06003E20 RID: 15904 RVA: 0x001E4A10 File Offset: 0x001E2C10
 		public LvUpTab(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -221,7 +201,6 @@ public class SelCharaGrowLevel
 			this.AEImage_LevelUP.gameObject.SetActive(false);
 		}
 
-		// Token: 0x06003E21 RID: 15905 RVA: 0x001E4B91 File Offset: 0x001E2D91
 		public void SetAEImageLevelUP()
 		{
 			this.AEImage_LevelUP.gameObject.SetActive(true);
@@ -230,65 +209,46 @@ public class SelCharaGrowLevel
 			this.AEImage_LevelUP.playLoop = false;
 		}
 
-		// Token: 0x06003E22 RID: 15906 RVA: 0x001E4BCC File Offset: 0x001E2DCC
 		public void SetActiveGage(bool isActive)
 		{
 			this.Gage.gameObject.SetActive(isActive);
 		}
 
-		// Token: 0x04003FD2 RID: 16338
 		public GameObject baseObj;
 
-		// Token: 0x04003FD3 RID: 16339
 		public PguiTextCtrl Num_Lv_L;
 
-		// Token: 0x04003FD4 RID: 16340
 		public PguiTextCtrl Num_Lv_R;
 
-		// Token: 0x04003FD5 RID: 16341
 		public PguiTextCtrl Num_Result;
 
-		// Token: 0x04003FD6 RID: 16342
 		public SimpleAnimation Result_Lvup;
 
-		// Token: 0x04003FD7 RID: 16343
 		public ReuseScroll ScrollView;
 
-		// Token: 0x04003FD8 RID: 16344
 		public List<SelCharaGrowCtrl.CommonGUI.ItemListBar> itemListBar;
 
-		// Token: 0x04003FD9 RID: 16345
 		public List<SelCharaGrowLevel.LvUpItem> iconItemList;
 
-		// Token: 0x04003FDA RID: 16346
 		public Dictionary<int, SelCharaGrowLevel.LvUpItem> iconItemMap;
 
-		// Token: 0x04003FDB RID: 16347
 		public List<RectTransform> iconBaseList;
 
-		// Token: 0x04003FDC RID: 16348
 		public PguiTextCtrl Num_Exp_Next;
 
-		// Token: 0x04003FDD RID: 16349
 		public PguiImageCtrl Gage_Up;
 
-		// Token: 0x04003FDE RID: 16350
 		public PguiImageCtrl Gage;
 
-		// Token: 0x04003FDF RID: 16351
 		public PguiImageCtrl Img_Yaji;
 
-		// Token: 0x04003FE0 RID: 16352
 		public AEImage AEImage_result;
 
-		// Token: 0x04003FE1 RID: 16353
 		public AEImage AEImage_LevelUP;
 	}
 
-	// Token: 0x02000A01 RID: 2561
 	public class LvLimitOpen
 	{
-		// Token: 0x06003E23 RID: 15907 RVA: 0x001E4BE0 File Offset: 0x001E2DE0
 		public LvLimitOpen(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -305,7 +265,6 @@ public class SelCharaGrowLevel
 			this.AEImage_result.gameObject.SetActive(false);
 		}
 
-		// Token: 0x06003E24 RID: 15908 RVA: 0x001E4CF8 File Offset: 0x001E2EF8
 		public void Setup(SelCharaGrowLevel.LvLimitOpen.SetupParam param)
 		{
 			ItemStaticBase itemStaticBase = DataManager.DmItem.GetItemStaticBase(param.levelLimitData.needItemId01);
@@ -344,51 +303,36 @@ public class SelCharaGrowLevel
 			this.ButtonC.SetActEnable(userItemData.num >= needItemNum && (param.levelLimitData.needItemId02 == 0 || (param.levelLimitData.needItemId02 != 0 && num3 >= num2)) && num >= param.levelLimitData.needGoldNum, false, false);
 		}
 
-		// Token: 0x04003FE2 RID: 16354
 		public GameObject baseObj;
 
-		// Token: 0x04003FE3 RID: 16355
 		public PguiButtonCtrl ButtonC;
 
-		// Token: 0x04003FE4 RID: 16356
 		public PguiTextCtrl Txt_ItemName01;
 
-		// Token: 0x04003FE5 RID: 16357
 		public PguiTextCtrl Txt_ItemName02;
 
-		// Token: 0x04003FE6 RID: 16358
 		public PguiTextCtrl Num_Own01;
 
-		// Token: 0x04003FE7 RID: 16359
 		public PguiTextCtrl Num_Own02;
 
-		// Token: 0x04003FE8 RID: 16360
 		public PguiTextCtrl Num_After01;
 
-		// Token: 0x04003FE9 RID: 16361
 		public IconItemCtrl iconItemCtrl01;
 
-		// Token: 0x04003FEA RID: 16362
 		public IconItemCtrl iconItemCtrl02;
 
-		// Token: 0x04003FEB RID: 16363
 		public AEImage AEImage_result;
 
-		// Token: 0x0200115F RID: 4447
 		public class SetupParam
 		{
-			// Token: 0x04005F75 RID: 24437
 			public DataManagerChara.LevelLimitData levelLimitData;
 
-			// Token: 0x04005F76 RID: 24438
 			public int diffLevel;
 		}
 	}
 
-	// Token: 0x02000A02 RID: 2562
 	public class WindowLvUp
 	{
-		// Token: 0x06003E25 RID: 15909 RVA: 0x001E4F68 File Offset: 0x001E3168
 		public WindowLvUp(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -407,62 +351,44 @@ public class SelCharaGrowLevel
 			this.Num_Exp_Next = baseTr.Find("Base/Window/ExpInfo/Num_Exp_Next").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x06003E26 RID: 15910 RVA: 0x001E509A File Offset: 0x001E329A
 		public void SetActiveGage(bool isActive)
 		{
 			this.Gage.gameObject.SetActive(isActive);
 		}
 
-		// Token: 0x04003FEC RID: 16364
 		public const int SCROLL_ITEM_NUN_H = 5;
 
-		// Token: 0x04003FED RID: 16365
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x04003FEE RID: 16366
 		public PguiTextCtrl Num_CoinUse;
 
-		// Token: 0x04003FEF RID: 16367
 		public PguiTextCtrl Num_CoinOwn;
 
-		// Token: 0x04003FF0 RID: 16368
 		public List<SelCharaGrowLevel.LvUpItem> iconItemList;
 
-		// Token: 0x04003FF1 RID: 16369
 		public List<ItemInput> itemList;
 
-		// Token: 0x04003FF2 RID: 16370
 		public IconCharaCtrl iconChara;
 
-		// Token: 0x04003FF3 RID: 16371
 		public GameObject iconCharaObject;
 
-		// Token: 0x04003FF4 RID: 16372
 		public PguiTextCtrl Txt_CharaName;
 
-		// Token: 0x04003FF5 RID: 16373
 		public PguiTextCtrl Num_Lv_Before;
 
-		// Token: 0x04003FF6 RID: 16374
 		public PguiTextCtrl Num_Lv_After;
 
-		// Token: 0x04003FF7 RID: 16375
 		public PguiImageCtrl Gage_Up;
 
-		// Token: 0x04003FF8 RID: 16376
 		public PguiImageCtrl Gage;
 
-		// Token: 0x04003FF9 RID: 16377
 		public ReuseScroll ScrollView;
 
-		// Token: 0x04003FFA RID: 16378
 		public PguiTextCtrl Num_Exp_Next;
 	}
 
-	// Token: 0x02000A03 RID: 2563
 	public class LvupAuth
 	{
-		// Token: 0x06003E27 RID: 15911 RVA: 0x001E50B0 File Offset: 0x001E32B0
 		public LvupAuth(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -497,26 +423,19 @@ public class SelCharaGrowLevel
 			}
 		}
 
-		// Token: 0x04003FFB RID: 16379
 		public GameObject baseObj;
 
-		// Token: 0x04003FFC RID: 16380
 		public PguiAECtrl AEImage_JapamanFeed;
 
-		// Token: 0x04003FFD RID: 16381
 		public List<PguiReplaceAECtrl> AEImage_AList;
 
-		// Token: 0x04003FFE RID: 16382
 		public List<PguiReplaceAECtrl> AEImage_BList;
 
-		// Token: 0x04003FFF RID: 16383
 		public List<PguiReplaceAECtrl> AEImage_CList;
 	}
 
-	// Token: 0x02000A04 RID: 2564
 	public class WindowLevelLimitOver
 	{
-		// Token: 0x06003E28 RID: 15912 RVA: 0x001E5328 File Offset: 0x001E3528
 		public WindowLevelLimitOver(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -539,7 +458,6 @@ public class SelCharaGrowLevel
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
 		}
 
-		// Token: 0x06003E29 RID: 15913 RVA: 0x001E548C File Offset: 0x001E368C
 		public void Setup(SelCharaGrowLevel.WindowLevelLimitOver.SetupParam param)
 		{
 			CharaPackData charaData = param.charaData;
@@ -569,60 +487,42 @@ public class SelCharaGrowLevel
 			}
 		}
 
-		// Token: 0x04004000 RID: 16384
 		public GameObject baseObj;
 
-		// Token: 0x04004001 RID: 16385
 		public PguiTextCtrl Num_Lv_Before;
 
-		// Token: 0x04004002 RID: 16386
 		public PguiTextCtrl Num_Lv_After;
 
-		// Token: 0x04004003 RID: 16387
 		public PguiTextCtrl Txt01;
 
-		// Token: 0x04004004 RID: 16388
 		public PguiTextCtrl Num_BeforeTxt01;
 
-		// Token: 0x04004005 RID: 16389
 		public PguiTextCtrl Num_AfterTxt01;
 
-		// Token: 0x04004006 RID: 16390
 		public PguiRawImageCtrl Icon_Tex01;
 
-		// Token: 0x04004007 RID: 16391
 		public PguiTextCtrl Txt02;
 
-		// Token: 0x04004008 RID: 16392
 		public PguiTextCtrl Num_BeforeTxt02;
 
-		// Token: 0x04004009 RID: 16393
 		public PguiTextCtrl Num_AfterTxt02;
 
-		// Token: 0x0400400A RID: 16394
 		public PguiRawImageCtrl Icon_Tex02;
 
-		// Token: 0x0400400B RID: 16395
 		public PguiTextCtrl Num_Coin_BeforeTxt;
 
-		// Token: 0x0400400C RID: 16396
 		public PguiTextCtrl Num_Coin_AfterTxt;
 
-		// Token: 0x0400400D RID: 16397
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x02001160 RID: 4448
 		public class SetupParam
 		{
-			// Token: 0x04005F77 RID: 24439
 			public CharaPackData charaData;
 		}
 	}
 
-	// Token: 0x02000A05 RID: 2565
 	public class WindowItemUse
 	{
-		// Token: 0x06003E2A RID: 15914 RVA: 0x001E56A0 File Offset: 0x001E38A0
 		public WindowItemUse(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -662,74 +562,51 @@ public class SelCharaGrowLevel
 			this.lvUpItem.itemCount.gameObject.SetActive(false);
 		}
 
-		// Token: 0x0400400E RID: 16398
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x0400400F RID: 16399
 		public PguiButtonCtrl Btn_Plus;
 
-		// Token: 0x04004010 RID: 16400
 		public PguiButtonCtrl Btn_Minus;
 
-		// Token: 0x04004011 RID: 16401
 		public PguiButtonCtrl BtnClose;
 
-		// Token: 0x04004012 RID: 16402
 		public PguiButtonCtrl ButtonC;
 
-		// Token: 0x04004013 RID: 16403
 		public PguiTextCtrl Num_Exp_Next;
 
-		// Token: 0x04004014 RID: 16404
 		public PguiImageCtrl Gage_Up;
 
-		// Token: 0x04004015 RID: 16405
 		public PguiImageCtrl Gage;
 
-		// Token: 0x04004016 RID: 16406
 		public PguiImageCtrl Img_Yaji;
 
-		// Token: 0x04004017 RID: 16407
 		public PguiTextCtrl Num_Lv_Before;
 
-		// Token: 0x04004018 RID: 16408
 		public PguiTextCtrl Num_Lv_After;
 
-		// Token: 0x04004019 RID: 16409
 		public PguiTextCtrl Text;
 
-		// Token: 0x0400401A RID: 16410
 		public PguiTextCtrl Num_BeforeCoin;
 
-		// Token: 0x0400401B RID: 16411
 		public PguiTextCtrl Num_AfterCoin;
 
-		// Token: 0x0400401C RID: 16412
 		public SimpleAnimation Base;
 
-		// Token: 0x0400401D RID: 16413
 		public SelCharaGrowLevel.LvUpItem lvUpItem;
 
-		// Token: 0x0400401E RID: 16414
 		public Slider SliderBar;
 	}
 
-	// Token: 0x02000A06 RID: 2566
 	public class CharaLevelUpGUI
 	{
-		// Token: 0x0400401F RID: 16415
 		public SelCharaGrowLevel.LvupAuth lvupAuth;
 
-		// Token: 0x04004020 RID: 16416
 		public SelCharaGrowLevel.WindowLvUp lvUpWindow;
 
-		// Token: 0x04004021 RID: 16417
 		public SelCharaGrowLevel.WindowItemUse itemUseWindow;
 
-		// Token: 0x04004022 RID: 16418
 		public SelCharaGrowLevel.WindowLevelLimitOver levelLimitOverWindow;
 
-		// Token: 0x04004023 RID: 16419
 		public SelCharaGrowLevel.LvUpTab lvUpTab;
 	}
 }

@@ -1,14 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x0200016D RID: 365
 public class QuestButtonGroupCtrl : MonoBehaviour
 {
-	// Token: 0x060015D4 RID: 5588 RVA: 0x00110180 File Offset: 0x0010E380
 	public void Init(QuestButtonGroupCtrl.QuestButtonCallback callback)
 	{
 		this.questButtonCallback = callback;
@@ -34,7 +32,6 @@ public class QuestButtonGroupCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060015D5 RID: 5589 RVA: 0x001102EC File Offset: 0x0010E4EC
 	private void OnClickQuestButton(PguiButtonCtrl ptbc)
 	{
 		int num = int.Parse(ptbc.name);
@@ -73,7 +70,6 @@ public class QuestButtonGroupCtrl : MonoBehaviour
 		questButtonCallback(int.Parse(ptbc.name));
 	}
 
-	// Token: 0x060015D6 RID: 5590 RVA: 0x001103DC File Offset: 0x0010E5DC
 	private int GetAttrSpriteId(CharaDef.AttributeMask attr)
 	{
 		int num = 0;
@@ -104,7 +100,6 @@ public class QuestButtonGroupCtrl : MonoBehaviour
 		return num;
 	}
 
-	// Token: 0x060015D7 RID: 5591 RVA: 0x0011041C File Offset: 0x0010E61C
 	private IEnumerator UpdateGrid()
 	{
 		yield return new WaitForEndOfFrame();
@@ -120,12 +115,8 @@ public class QuestButtonGroupCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x17000391 RID: 913
-	// (get) Token: 0x060015D8 RID: 5592 RVA: 0x0011042B File Offset: 0x0010E62B
-	// (set) Token: 0x060015D9 RID: 5593 RVA: 0x00110433 File Offset: 0x0010E633
 	private bool TwoOrMoreQuestGroup { get; set; }
 
-	// Token: 0x060015DA RID: 5594 RVA: 0x0011043C File Offset: 0x0010E63C
 	public void Setup(QuestButtonGroupCtrl.SetupParam param)
 	{
 		this.setupParam = param;
@@ -607,7 +598,6 @@ public class QuestButtonGroupCtrl : MonoBehaviour
 		updateChapterChara2(0);
 	}
 
-	// Token: 0x060015DB RID: 5595 RVA: 0x00111BFC File Offset: 0x0010FDFC
 	public void SwitchInfo()
 	{
 		this.infoModeMain = !this.infoModeMain;
@@ -629,7 +619,6 @@ public class QuestButtonGroupCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060015DC RID: 5596 RVA: 0x00111D20 File Offset: 0x0010FF20
 	private void InternalQuestGroupButton(PguiButtonCtrl ptbc, bool isClickButton)
 	{
 		QuestButtonGroupCtrl.GuiQuestGroup guiQuestGroup = this.questGroupList.Find((QuestButtonGroupCtrl.GuiQuestGroup item) => item.button == ptbc);
@@ -791,7 +780,6 @@ public class QuestButtonGroupCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060015DD RID: 5597 RVA: 0x001123BC File Offset: 0x001105BC
 	private void CheckFinishedAnim(SimpleAnimation sa)
 	{
 		PguiDataHolder pdh = sa.GetComponent<PguiDataHolder>();
@@ -805,19 +793,16 @@ public class QuestButtonGroupCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060015DE RID: 5598 RVA: 0x00112428 File Offset: 0x00110628
 	private void OnClickQuestGroupButton(PguiButtonCtrl ptbc)
 	{
 		this.InternalQuestGroupButton(ptbc, true);
 	}
 
-	// Token: 0x060015DF RID: 5599 RVA: 0x00112432 File Offset: 0x00110632
 	private void OnClickQuestSealedInfoButton(PguiButtonCtrl ptbc)
 	{
 		QuestUtil.OpenQuestSealedInfo(this.currentGroupId).MoveNext();
 	}
 
-	// Token: 0x060015E0 RID: 5600 RVA: 0x00112448 File Offset: 0x00110648
 	private void ResetQuestGroupButton()
 	{
 		foreach (QuestButtonGroupCtrl.GuiQuestGroup guiQuestGroup in this.questGroupList)
@@ -827,7 +812,6 @@ public class QuestButtonGroupCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060015E1 RID: 5601 RVA: 0x001124B0 File Offset: 0x001106B0
 	private bool IsEventCoopDifficult(QuestStaticQuestGroup groupData)
 	{
 		bool flag = false;
@@ -847,7 +831,6 @@ public class QuestButtonGroupCtrl : MonoBehaviour
 		return flag;
 	}
 
-	// Token: 0x060015E2 RID: 5602 RVA: 0x00112528 File Offset: 0x00110728
 	private void Update()
 	{
 		float num = 0f;
@@ -870,63 +853,43 @@ public class QuestButtonGroupCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060015E3 RID: 5603 RVA: 0x00112678 File Offset: 0x00110878
 	public RectTransform GetButtonRectTransform()
 	{
 		return this.questGroupList[0].questGui[0].buttonMain.transform as RectTransform;
 	}
 
-	// Token: 0x040011D9 RID: 4569
 	private QuestButtonGroupCtrl.QuestButtonCallback questButtonCallback;
 
-	// Token: 0x040011DA RID: 4570
 	private QuestButtonGroupCtrl.UpdateChapterChara updateChapterChara;
 
-	// Token: 0x040011DB RID: 4571
 	private QuestButtonGroupCtrl.UpdateChapterChara updateChapterCharaText;
 
-	// Token: 0x040011DC RID: 4572
 	private static readonly int BATTLE_NUM_MAX = 20;
 
-	// Token: 0x040011DD RID: 4573
 	private static readonly int GROUP_NUM_MAX = 10;
 
-	// Token: 0x040011DE RID: 4574
 	public bool isDebug;
 
-	// Token: 0x040011DF RID: 4575
 	private List<QuestButtonGroupCtrl.GuiQuestGroup> questGroupList = new List<QuestButtonGroupCtrl.GuiQuestGroup>();
 
-	// Token: 0x040011E0 RID: 4576
 	private RectTransform parentRect;
 
-	// Token: 0x040011E1 RID: 4577
 	private QuestUtil.SelectData selectData;
 
-	// Token: 0x040011E2 RID: 4578
 	private int currentGroupId;
 
-	// Token: 0x040011E4 RID: 4580
 	private QuestButtonGroupCtrl.SetupParam setupParam = new QuestButtonGroupCtrl.SetupParam();
 
-	// Token: 0x040011E5 RID: 4581
 	private bool infoModeMain = true;
 
-	// Token: 0x040011E6 RID: 4582
 	private QuestButtonGroupCtrl.GuiQuestGroup currentButton;
 
-	// Token: 0x02000C3B RID: 3131
-	// (Invoke) Token: 0x0600452F RID: 17711
 	public delegate void QuestButtonCallback(int questId);
 
-	// Token: 0x02000C3C RID: 3132
-	// (Invoke) Token: 0x06004533 RID: 17715
 	public delegate void UpdateChapterChara(int groupQuestId);
 
-	// Token: 0x02000C3D RID: 3133
 	private class GuiQuestGroup
 	{
-		// Token: 0x06004536 RID: 17718 RVA: 0x0020DFFC File Offset: 0x0020C1FC
 		public GuiQuestGroup(Transform baseTr)
 		{
 			this.button = baseTr.GetComponent<PguiButtonCtrl>();
@@ -958,68 +921,47 @@ public class QuestButtonGroupCtrl : MonoBehaviour
 			this.quesSealedInfo = baseTr.Find("All/Btn_SealedInfo").GetComponent<PguiButtonCtrl>();
 		}
 
-		// Token: 0x04004A8F RID: 19087
 		public PguiButtonCtrl button;
 
-		// Token: 0x04004A90 RID: 19088
 		public SimpleAnimation childAnim;
 
-		// Token: 0x04004A91 RID: 19089
 		public RectTransform groupRt;
 
-		// Token: 0x04004A92 RID: 19090
 		public PguiTextCtrl textChapterName;
 
-		// Token: 0x04004A93 RID: 19091
 		public PguiTextCtrl textChapterNum;
 
-		// Token: 0x04004A94 RID: 19092
 		public PguiImageCtrl imageYajiOpen;
 
-		// Token: 0x04004A95 RID: 19093
 		public PguiTextCtrl Num_Time;
 
-		// Token: 0x04004A96 RID: 19094
 		public PguiTextCtrl Num_Count;
 
-		// Token: 0x04004A97 RID: 19095
 		public GameObject Mark_New;
 
-		// Token: 0x04004A98 RID: 19096
 		public List<PguiImageCtrl> IconAll = new List<PguiImageCtrl>();
 
-		// Token: 0x04004A99 RID: 19097
 		public List<QuestButtonGroupCtrl.GuiQuest> questGui = new List<QuestButtonGroupCtrl.GuiQuest>();
 
-		// Token: 0x04004A9A RID: 19098
 		public PguiReplaceSpriteCtrl BaseImage;
 
-		// Token: 0x04004A9B RID: 19099
 		public MarkLockCtrl markLockCtrl;
 
-		// Token: 0x04004A9C RID: 19100
 		public PguiImageCtrl Campaign;
 
-		// Token: 0x04004A9D RID: 19101
 		public PguiImageCtrl Mark_EventGrow;
 
-		// Token: 0x04004A9E RID: 19102
 		public PguiImageCtrl Mark_Complete_Fnt;
 
-		// Token: 0x04004A9F RID: 19103
 		public PguiTextCtrl Num_MissionComp;
 
-		// Token: 0x04004AA0 RID: 19104
 		public PguiButtonCtrl quesSealedInfo;
 
-		// Token: 0x04004AA1 RID: 19105
 		public int dispPriority;
 	}
 
-	// Token: 0x02000C3E RID: 3134
 	public class GuiQuest
 	{
-		// Token: 0x06004537 RID: 17719 RVA: 0x0020E1F8 File Offset: 0x0020C3F8
 		public GuiQuest(Transform baseTr)
 		{
 			this.goBaseObj = baseTr.parent.gameObject;
@@ -1051,59 +993,41 @@ public class QuestButtonGroupCtrl : MonoBehaviour
 			this.questRuleInfo = new QuestUtil.QuestRuleInfo(baseTr.Find("Btn/BaseImage/Btn_Question").GetComponent<PguiButtonCtrl>());
 		}
 
-		// Token: 0x04004AA2 RID: 19106
 		public GameObject goBaseObj;
 
-		// Token: 0x04004AA3 RID: 19107
 		public PguiButtonCtrl buttonMain;
 
-		// Token: 0x04004AA4 RID: 19108
 		public PguiTextCtrl[] textmissionName;
 
-		// Token: 0x04004AA5 RID: 19109
 		public PguiImageCtrl[] goMissionFlag;
 
-		// Token: 0x04004AA6 RID: 19110
 		public GameObject goMissionInfo;
 
-		// Token: 0x04004AA7 RID: 19111
 		public PguiNestPrefab imageOption;
 
-		// Token: 0x04004AA8 RID: 19112
 		public List<PguiImageCtrl> IconAll = new List<PguiImageCtrl>();
 
-		// Token: 0x04004AA9 RID: 19113
 		public SimpleAnimation BaseImageSA;
 
-		// Token: 0x04004AAA RID: 19114
 		public PguiReplaceSpriteCtrl BaseImage;
 
-		// Token: 0x04004AAB RID: 19115
 		public SimpleAnimation BaseSA;
 
-		// Token: 0x04004AAC RID: 19116
 		public PguiImageCtrl Mark_EventGrow;
 
-		// Token: 0x04004AAD RID: 19117
 		public QuestUtil.QuestListBarCmnInfo questListBarCmnInfo;
 
-		// Token: 0x04004AAE RID: 19118
 		public QuestUtil.QuestRuleInfo questRuleInfo;
 	}
 
-	// Token: 0x02000C3F RID: 3135
 	public class SetupParam
 	{
-		// Token: 0x04004AAF RID: 19119
 		public QuestUtil.SelectData selectData;
 
-		// Token: 0x04004AB0 RID: 19120
 		public QuestButtonGroupCtrl.UpdateChapterChara callback;
 
-		// Token: 0x04004AB1 RID: 19121
 		public QuestButtonGroupCtrl.UpdateChapterChara callbackText;
 
-		// Token: 0x04004AB2 RID: 19122
 		public float offsetPosY;
 	}
 }

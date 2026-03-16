@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
@@ -10,30 +10,16 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityStandardAssets.ImageEffects;
 
-// Token: 0x0200016F RID: 367
 public class SceneQuest : BaseScene
 {
-	// Token: 0x17000392 RID: 914
-	// (get) Token: 0x06001610 RID: 5648 RVA: 0x00115895 File Offset: 0x00113A95
-	// (set) Token: 0x06001611 RID: 5649 RVA: 0x0011589C File Offset: 0x00113A9C
 	public static DateTime TimeStampInScene { get; private set; }
 
-	// Token: 0x17000393 RID: 915
-	// (get) Token: 0x06001612 RID: 5650 RVA: 0x001158A4 File Offset: 0x00113AA4
-	// (set) Token: 0x06001613 RID: 5651 RVA: 0x001158AC File Offset: 0x00113AAC
 	private bool IsPlayingAnim { get; set; }
 
-	// Token: 0x17000394 RID: 916
-	// (get) Token: 0x06001614 RID: 5652 RVA: 0x001158B5 File Offset: 0x00113AB5
-	// (set) Token: 0x06001615 RID: 5653 RVA: 0x001158BD File Offset: 0x00113ABD
 	private string LoadAssetPath { get; set; }
 
-	// Token: 0x17000395 RID: 917
-	// (get) Token: 0x06001616 RID: 5654 RVA: 0x001158C6 File Offset: 0x00113AC6
-	// (set) Token: 0x06001617 RID: 5655 RVA: 0x001158CE File Offset: 0x00113ACE
 	private bool TouchMoving { get; set; }
 
-	// Token: 0x06001618 RID: 5656 RVA: 0x001158D8 File Offset: 0x00113AD8
 	private void InitEtcetraStory()
 	{
 		GameObject gameObject = new GameObject();
@@ -71,7 +57,6 @@ public class SceneQuest : BaseScene
 		this.guiData.basePanel.transform.Find("EtceteraQuest_ChapterChange").SetParent(this.selEtcetraStoryCtrl.transform, false);
 	}
 
-	// Token: 0x06001619 RID: 5657 RVA: 0x00115A2C File Offset: 0x00113C2C
 	private void InitCharaQuest()
 	{
 		GameObject gameObject = new GameObject();
@@ -105,7 +90,6 @@ public class SceneQuest : BaseScene
 		}, new SelCharaStoryCtrl.SetupParam());
 	}
 
-	// Token: 0x0600161A RID: 5658 RVA: 0x00115B5C File Offset: 0x00113D5C
 	private static string GetMainStoryMapPath(QuestStaticChapter.Category category)
 	{
 		string text = SceneQuest.MainStoryMapPath;
@@ -128,7 +112,6 @@ public class SceneQuest : BaseScene
 		return text;
 	}
 
-	// Token: 0x0600161B RID: 5659 RVA: 0x00115BB0 File Offset: 0x00113DB0
 	public static List<QuestStaticChapter.Category> GetBtnLeftCategoryList(int currentIndex, List<QuestStaticChapter.Category> categoryList)
 	{
 		List<QuestStaticChapter.Category> list = new List<QuestStaticChapter.Category>();
@@ -140,7 +123,6 @@ public class SceneQuest : BaseScene
 		return list;
 	}
 
-	// Token: 0x0600161C RID: 5660 RVA: 0x00115BF4 File Offset: 0x00113DF4
 	public static List<QuestStaticChapter.Category> GetBtnRightCategoryList(int currentIndex, List<QuestStaticChapter.Category> categoryList)
 	{
 		List<QuestStaticChapter.Category> list = new List<QuestStaticChapter.Category>();
@@ -151,7 +133,6 @@ public class SceneQuest : BaseScene
 		return list;
 	}
 
-	// Token: 0x0600161D RID: 5661 RVA: 0x00115C3C File Offset: 0x00113E3C
 	public static List<GameObject> CreateCarObjList(GameObject go)
 	{
 		return new List<GameObject>
@@ -164,7 +145,6 @@ public class SceneQuest : BaseScene
 		};
 	}
 
-	// Token: 0x0600161E RID: 5662 RVA: 0x00115CF0 File Offset: 0x00113EF0
 	private bool IsNotNullEventCtrl(DataManagerEvent.Category category)
 	{
 		switch (category)
@@ -183,157 +163,131 @@ public class SceneQuest : BaseScene
 		return false;
 	}
 
-	// Token: 0x0600161F RID: 5663 RVA: 0x00115D43 File Offset: 0x00113F43
 	private bool IsNotNullEventScenarioObj()
 	{
 		return this.selEventScenarioCtrl != null && this.selEventScenarioCtrl.GuiData != null;
 	}
 
-	// Token: 0x06001620 RID: 5664 RVA: 0x00115D63 File Offset: 0x00113F63
 	private bool IsNotNullEventLargeScaleObj()
 	{
 		return this.selEventLargeScaleCtrl != null && this.selEventLargeScaleCtrl.GuiData != null;
 	}
 
-	// Token: 0x06001621 RID: 5665 RVA: 0x00115D83 File Offset: 0x00113F83
 	private bool IsNotNullEventCharaGrowObj()
 	{
 		return this.selEventCharaGrowCtrl != null && this.selEventCharaGrowCtrl.GuiData != null;
 	}
 
-	// Token: 0x06001622 RID: 5666 RVA: 0x00115DA3 File Offset: 0x00113FA3
 	private bool IsNotNullEventTowerObj()
 	{
 		return this.selEventTowerCtrl != null && this.selEventTowerCtrl.GuiData != null;
 	}
 
-	// Token: 0x06001623 RID: 5667 RVA: 0x00115DC3 File Offset: 0x00113FC3
 	private bool IsNotNullSideStoryObj()
 	{
 		return this.selSideStoryCtrl != null && this.selSideStoryCtrl.GuiData != null;
 	}
 
-	// Token: 0x06001624 RID: 5668 RVA: 0x00115DE3 File Offset: 0x00113FE3
 	private bool IsNotNullEtcetraStoryObj()
 	{
 		return this.selEtcetraStoryCtrl != null && this.selEtcetraStoryCtrl.GuiData != null;
 	}
 
-	// Token: 0x06001625 RID: 5669 RVA: 0x00115E03 File Offset: 0x00114003
 	private bool IsNotNullMainStoryObj()
 	{
 		return this.selMainStoryCtrl != null && this.selMainStoryCtrl.GuiData != null;
 	}
 
-	// Token: 0x06001626 RID: 5670 RVA: 0x00115E23 File Offset: 0x00114023
 	private bool IsNotNullCharaStoryObj()
 	{
 		return this.selCharaStoryCtrl != null && this.selCharaStoryCtrl.GuiData != null;
 	}
 
-	// Token: 0x06001627 RID: 5671 RVA: 0x00115E43 File Offset: 0x00114043
 	private bool IsNotNullMapObj()
 	{
 		return this.IsNotNullMainStoryObj() && this.selMainStoryCtrl.IsNotNullMapObj();
 	}
 
-	// Token: 0x06001628 RID: 5672 RVA: 0x00115E5A File Offset: 0x0011405A
 	private bool IsNotNullMapBaseObj()
 	{
 		return this.IsNotNullMainStoryObj() && this.selMainStoryCtrl.IsNotNullMapBaseObj();
 	}
 
-	// Token: 0x06001629 RID: 5673 RVA: 0x00115E71 File Offset: 0x00114071
 	private bool IsNotNullEventLargeScaleMapObj()
 	{
 		return this.IsNotNullEventLargeScaleObj() && this.selEventLargeScaleCtrl.IsNotNullMapObj();
 	}
 
-	// Token: 0x0600162A RID: 5674 RVA: 0x00115E88 File Offset: 0x00114088
 	private bool IsNotNullEventLargeScaleMapBaseObj()
 	{
 		return this.IsNotNullEventLargeScaleObj() && this.selEventLargeScaleCtrl.IsNotNullMapBaseObj();
 	}
 
-	// Token: 0x0600162B RID: 5675 RVA: 0x00115E9F File Offset: 0x0011409F
 	private bool IsNotNullEventCoopObj()
 	{
 		return this.selEventCoopCtrl != null && this.selEventCoopCtrl.GuiData != null;
 	}
 
-	// Token: 0x0600162C RID: 5676 RVA: 0x00115EBF File Offset: 0x001140BF
 	private bool IsNotNullEventWildReleaseObj()
 	{
 		return this.selEventWildReleaseCtrl != null && this.selEventWildReleaseCtrl.GuiData != null;
 	}
 
-	// Token: 0x0600162D RID: 5677 RVA: 0x00115EDF File Offset: 0x001140DF
 	private bool Is16_9over()
 	{
 		return SceneQuest.Is16_9over(SceneQuest.mapBoxObject);
 	}
 
-	// Token: 0x0600162E RID: 5678 RVA: 0x00115EEB File Offset: 0x001140EB
 	public static bool Is16_9over(GameObject go)
 	{
 		return (go.transform as RectTransform).offsetMin.x < 0f;
 	}
 
-	// Token: 0x0600162F RID: 5679 RVA: 0x00115F09 File Offset: 0x00114109
 	public static bool IsMainStory(QuestStaticChapter.Category category)
 	{
 		return SceneQuest.IsMainStoryPart1(category) || SceneQuest.IsMainStoryPart1_5(category) || SceneQuest.IsMainStoryPart2(category) || SceneQuest.IsMainStoryPart3(category);
 	}
 
-	// Token: 0x06001630 RID: 5680 RVA: 0x00115F2B File Offset: 0x0011412B
 	public static bool IsMainStoryPart1(QuestStaticChapter.Category category)
 	{
 		return category == QuestStaticChapter.Category.STORY;
 	}
 
-	// Token: 0x06001631 RID: 5681 RVA: 0x00115F31 File Offset: 0x00114131
 	private static bool IsMainStoryPart1(int count)
 	{
 		return count == 0;
 	}
 
-	// Token: 0x06001632 RID: 5682 RVA: 0x00115F37 File Offset: 0x00114137
 	public static bool IsMainStoryPart1_5(QuestStaticChapter.Category category)
 	{
 		return category == QuestStaticChapter.Category.CELLVAL;
 	}
 
-	// Token: 0x06001633 RID: 5683 RVA: 0x00115F3E File Offset: 0x0011413E
 	public static bool IsMainStoryPart1_5(int count)
 	{
 		return count == 1;
 	}
 
-	// Token: 0x06001634 RID: 5684 RVA: 0x00115F44 File Offset: 0x00114144
 	public static bool IsMainStoryPart2(QuestStaticChapter.Category category)
 	{
 		return category == QuestStaticChapter.Category.STORY2;
 	}
 
-	// Token: 0x06001635 RID: 5685 RVA: 0x00115F4B File Offset: 0x0011414B
 	private static bool IsMainStoryPart2(int count)
 	{
 		return count == 2;
 	}
 
-	// Token: 0x06001636 RID: 5686 RVA: 0x00115F51 File Offset: 0x00114151
 	public static bool IsMainStoryPart3(QuestStaticChapter.Category category)
 	{
 		return category == QuestStaticChapter.Category.STORY3;
 	}
 
-	// Token: 0x06001637 RID: 5687 RVA: 0x00115F58 File Offset: 0x00114158
 	private static bool IsMainStoryPart3(int count)
 	{
 		return count == 3;
 	}
 
-	// Token: 0x06001638 RID: 5688 RVA: 0x00115F60 File Offset: 0x00114160
 	public static string GetMainStoryName(QuestStaticChapter.Category category, bool reqShortName)
 	{
 		if (SceneQuest.IsMainStoryPart1(category))
@@ -362,19 +316,16 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x06001639 RID: 5689 RVA: 0x00115FAE File Offset: 0x001141AE
 	private bool IsNormalMode()
 	{
 		return SceneQuest.IsNormalMode(this.selectDifficultCount);
 	}
 
-	// Token: 0x0600163A RID: 5690 RVA: 0x00115FBB File Offset: 0x001141BB
 	public static bool IsNormalMode(int count)
 	{
 		return count % Enum.GetValues(typeof(SceneQuest.MainStoryDifficulty)).Length == 0;
 	}
 
-	// Token: 0x0600163B RID: 5691 RVA: 0x00115FD8 File Offset: 0x001141D8
 	private void SwitchDifficultButton()
 	{
 		this.guiData.chapterSelect.Btn_SortFilterOnOff.gameObject.SetActive(true);
@@ -425,7 +376,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x0600163C RID: 5692 RVA: 0x001161CC File Offset: 0x001143CC
 	private bool IsEnableHardMode(bool isRewrite = false)
 	{
 		bool flag = false;
@@ -447,7 +397,6 @@ public class SceneQuest : BaseScene
 		return flag;
 	}
 
-	// Token: 0x0600163D RID: 5693 RVA: 0x001162BC File Offset: 0x001144BC
 	private void SetupNextSceneChangeShop(int eventId)
 	{
 		SceneShopArgs sceneShopArgs = new SceneShopArgs();
@@ -463,7 +412,6 @@ public class SceneQuest : BaseScene
 		this.requestNextSceneArgs = sceneShopArgs;
 	}
 
-	// Token: 0x0600163E RID: 5694 RVA: 0x00116312 File Offset: 0x00114512
 	private IEnumerator GetItemWindowCtrl(SceneQuest.Args.JustBeforeBattle args)
 	{
 		this.touchScreenAuth = false;
@@ -488,7 +436,6 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x0600163F RID: 5695 RVA: 0x00116328 File Offset: 0x00114528
 	private IEnumerator MainChapterChangeEffect()
 	{
 		CanvasManager.SetEnableCmnTouchMask(true);
@@ -910,7 +857,6 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001640 RID: 5696 RVA: 0x00116337 File Offset: 0x00114537
 	private IEnumerator SideStoryChapterChangeEffect()
 	{
 		CanvasManager.SetEnableCmnTouchMask(true);
@@ -1050,7 +996,6 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001641 RID: 5697 RVA: 0x00116348 File Offset: 0x00114548
 	private void ChangeSceneModeEnd()
 	{
 		QuestStaticChapter questStaticChapter = null;
@@ -1064,7 +1009,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x06001642 RID: 5698 RVA: 0x001163AB File Offset: 0x001145AB
 	private IEnumerator CharaStoryEffect()
 	{
 		CanvasManager.SetEnableCmnTouchMask(true);
@@ -1125,7 +1069,6 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001643 RID: 5699 RVA: 0x001163BA File Offset: 0x001145BA
 	private IEnumerator ChapterChangeEffect(QuestStaticChapter chapterData)
 	{
 		List<KeyValuePair<int, QuestStaticChapter>> chapterDataByCategory = SceneQuest.GetChapterDataByCategory(chapterData.category, this.IsNormalMode() ? 0 : 1);
@@ -1211,7 +1154,6 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001644 RID: 5700 RVA: 0x001163D0 File Offset: 0x001145D0
 	private IEnumerator EventLargeScaleEffect()
 	{
 		if (this.questArgs != null)
@@ -1240,13 +1182,11 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001645 RID: 5701 RVA: 0x001163DF File Offset: 0x001145DF
 	private void OnTouchMask()
 	{
 		this.touchScreenAuth = true;
 	}
 
-	// Token: 0x06001646 RID: 5702 RVA: 0x001163E8 File Offset: 0x001145E8
 	public static QuestOnePackData GetQuestOnePackDataForReleaseIdStoryHardMode(QuestStaticChapter.Category category)
 	{
 		List<int> playableMapIdList = DataManager.DmQuest.GetPlayableMapIdList(category);
@@ -1263,7 +1203,6 @@ public class SceneQuest : BaseScene
 		return null;
 	}
 
-	// Token: 0x06001647 RID: 5703 RVA: 0x00116517 File Offset: 0x00114717
 	private IEnumerator RequestQuestCmd()
 	{
 		while (this.eventStartTimeMap.Count > 0)
@@ -1292,7 +1231,6 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001648 RID: 5704 RVA: 0x00116528 File Offset: 0x00114728
 	private static int SortFunc(DataManagerEvent.EventData a, DataManagerEvent.EventData b)
 	{
 		int num2;
@@ -1318,12 +1256,8 @@ public class SceneQuest : BaseScene
 		return num - num2;
 	}
 
-	// Token: 0x17000396 RID: 918
-	// (get) Token: 0x06001649 RID: 5705 RVA: 0x0011657D File Offset: 0x0011477D
-	// (set) Token: 0x0600164A RID: 5706 RVA: 0x00116585 File Offset: 0x00114785
 	private int StoryQuestSwitchCount { get; set; }
 
-	// Token: 0x0600164B RID: 5707 RVA: 0x00116590 File Offset: 0x00114790
 	private void UpdateBtnStorySelect(DataManagerGameStatus.UserFlagData userFlagData)
 	{
 		this.guiData.questTop.storyQuestParts.Btn_StorySelectL_New.SetActive(false);
@@ -1369,7 +1303,6 @@ public class SceneQuest : BaseScene
 		this.guiData.questTop.storyQuestParts.SetActiveMarkNew(this.StoryQuestSwitchCount);
 	}
 
-	// Token: 0x0600164C RID: 5708 RVA: 0x001167B4 File Offset: 0x001149B4
 	private void SetupQuestTopDecorationCellval(DataManagerGameStatus.UserFlagData userFlagData)
 	{
 		if (SceneQuest.IsMainStoryPart1(this.StoryQuestSwitchCount))
@@ -1463,7 +1396,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x0600164D RID: 5709 RVA: 0x00116BE8 File Offset: 0x00114DE8
 	private void UpdateQuestTopDecoration()
 	{
 		QuestStaticChapter.Category category = QuestStaticChapter.Category.STORY;
@@ -1805,7 +1737,6 @@ public class SceneQuest : BaseScene
 		this.guiData.questTop.selAssistantCtrl.transform.SetAsLastSibling();
 	}
 
-	// Token: 0x0600164E RID: 5710 RVA: 0x00117DBA File Offset: 0x00115FBA
 	private IEnumerator SetQuestTopWindow(DataManagerGameStatus.UserFlagData userFlagData)
 	{
 		List<DataManagerServerMst.ModeReleaseData> list = DataManager.DmServerMst.ModeReleaseDataList.FindAll((DataManagerServerMst.ModeReleaseData item) => DataManager.DmQuest.GetQuestOnePackData(item.QuestId).questChapter.category == QuestStaticChapter.Category.TUTORIAL);
@@ -1925,7 +1856,6 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x0600164F RID: 5711 RVA: 0x00117DD0 File Offset: 0x00115FD0
 	private static bool SetDispNew(List<int> playableList)
 	{
 		Dictionary<int, QuestStaticMap> mapDataMap = DataManager.DmQuest.QuestStaticData.mapDataMap;
@@ -1949,7 +1879,6 @@ public class SceneQuest : BaseScene
 		return false;
 	}
 
-	// Token: 0x06001650 RID: 5712 RVA: 0x00117EF4 File Offset: 0x001160F4
 	private static bool SetDispNew(List<QuestStaticMap> playableList)
 	{
 		Dictionary<int, QuestDynamicQuestOne> oneDataMap = DataManager.DmQuest.QuestDynamicData.oneDataMap;
@@ -1969,7 +1898,6 @@ public class SceneQuest : BaseScene
 		return false;
 	}
 
-	// Token: 0x06001651 RID: 5713 RVA: 0x00117FF4 File Offset: 0x001161F4
 	private void UpdateMapdata()
 	{
 		if (!this.IsNotNullMainStoryObj())
@@ -1979,7 +1907,6 @@ public class SceneQuest : BaseScene
 		this.selMainStoryCtrl.UpdateMapdata(this.selectData.chapterId, this.selectData.questCategory, new UnityAction<Transform>(this.OnClickButtonPointSelect));
 	}
 
-	// Token: 0x06001652 RID: 5714 RVA: 0x0011802C File Offset: 0x0011622C
 	private void UpdateSwitchSelector()
 	{
 		this.SwitchDifficultButton();
@@ -2052,109 +1979,92 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x06001653 RID: 5715 RVA: 0x0011834C File Offset: 0x0011654C
 	private static bool IsEventCategoryLarge(DataManagerEvent.EventData eventData)
 	{
 		return eventData != null && eventData.eventCategory == DataManagerEvent.Category.Large;
 	}
 
-	// Token: 0x06001654 RID: 5716 RVA: 0x0011835C File Offset: 0x0011655C
 	private static bool IsEventCategoryScenario(DataManagerEvent.EventData eventData)
 	{
 		return eventData != null && eventData.eventCategory == DataManagerEvent.Category.Scenario;
 	}
 
-	// Token: 0x06001655 RID: 5717 RVA: 0x0011836C File Offset: 0x0011656C
 	private static bool IsEventCategoryGrowth(DataManagerEvent.EventData eventData)
 	{
 		return eventData != null && eventData.eventCategory == DataManagerEvent.Category.Growth;
 	}
 
-	// Token: 0x06001656 RID: 5718 RVA: 0x0011837C File Offset: 0x0011657C
 	private static bool IsEventCategoryTower(DataManagerEvent.EventData eventData)
 	{
 		return eventData != null && eventData.eventCategory == DataManagerEvent.Category.Tower;
 	}
 
-	// Token: 0x06001657 RID: 5719 RVA: 0x0011838C File Offset: 0x0011658C
 	private static bool IsEventCategoryCoop(DataManagerEvent.EventData eventData)
 	{
 		return eventData != null && eventData.eventCategory == DataManagerEvent.Category.Coop;
 	}
 
-	// Token: 0x06001658 RID: 5720 RVA: 0x0011839C File Offset: 0x0011659C
 	private static bool IsEventCategoryWildRelease(DataManagerEvent.EventData eventData)
 	{
 		return eventData != null && eventData.eventCategory == DataManagerEvent.Category.WildRelease;
 	}
 
-	// Token: 0x06001659 RID: 5721 RVA: 0x001183AC File Offset: 0x001165AC
 	private bool IsLargeEvent()
 	{
 		DataManagerEvent.EventData eventData = DataManager.DmEvent.GetEventData(this.selectData.eventId);
 		return this.selectData.questCategory == QuestStaticChapter.Category.EVENT && this.IsNotNullEventLargeScaleObj() && SceneQuest.IsEventCategoryLarge(eventData);
 	}
 
-	// Token: 0x0600165A RID: 5722 RVA: 0x001183F0 File Offset: 0x001165F0
 	private bool IsScenarioEvent()
 	{
 		DataManagerEvent.EventData eventData = DataManager.DmEvent.GetEventData(this.selectData.eventId);
 		return this.selectData.questCategory == QuestStaticChapter.Category.EVENT && this.IsNotNullEventScenarioObj() && SceneQuest.IsEventCategoryScenario(eventData);
 	}
 
-	// Token: 0x0600165B RID: 5723 RVA: 0x00118434 File Offset: 0x00116634
 	private bool IsCharaGrowEvent()
 	{
 		DataManagerEvent.EventData eventData = DataManager.DmEvent.GetEventData(this.selectData.eventId);
 		return this.selectData.questCategory == QuestStaticChapter.Category.EVENT && this.IsNotNullEventCharaGrowObj() && SceneQuest.IsEventCategoryGrowth(eventData);
 	}
 
-	// Token: 0x0600165C RID: 5724 RVA: 0x00118478 File Offset: 0x00116678
 	private bool IsTowerEvent()
 	{
 		DataManagerEvent.EventData eventData = DataManager.DmEvent.GetEventData(this.selectData.eventId);
 		return this.selectData.questCategory == QuestStaticChapter.Category.EVENT && this.IsNotNullEventTowerObj() && SceneQuest.IsEventCategoryTower(eventData);
 	}
 
-	// Token: 0x0600165D RID: 5725 RVA: 0x001184BC File Offset: 0x001166BC
 	private bool IsCoopEvent()
 	{
 		DataManagerEvent.EventData eventData = DataManager.DmEvent.GetEventData(this.selectData.eventId);
 		return this.selectData.questCategory == QuestStaticChapter.Category.EVENT && this.IsNotNullEventCoopObj() && SceneQuest.IsEventCategoryCoop(eventData);
 	}
 
-	// Token: 0x0600165E RID: 5726 RVA: 0x00118500 File Offset: 0x00116700
 	private bool IsWildReleaseEvent()
 	{
 		DataManagerEvent.EventData eventData = DataManager.DmEvent.GetEventData(this.selectData.eventId);
 		return this.selectData.questCategory == QuestStaticChapter.Category.EVENT && this.IsNotNullEventWildReleaseObj() && SceneQuest.IsEventCategoryWildRelease(eventData);
 	}
 
-	// Token: 0x0600165F RID: 5727 RVA: 0x00118541 File Offset: 0x00116741
 	private bool IsCoopEventBonusStage()
 	{
 		return this.IsCoopEvent() && this.selEventCoopCtrl.IsBonus(this.selectData.mapId);
 	}
 
-	// Token: 0x06001660 RID: 5728 RVA: 0x00118563 File Offset: 0x00116763
 	private bool IsCoopEventNormalStage()
 	{
 		return this.IsCoopEvent() && !this.selEventCoopCtrl.IsBonus(this.selectData.mapId);
 	}
 
-	// Token: 0x06001661 RID: 5729 RVA: 0x00118588 File Offset: 0x00116788
 	private bool EnableOffsetQuestButtonGroup()
 	{
 		return !this.IsCoopEventBonusStage() && this.IsCoopEvent();
 	}
 
-	// Token: 0x06001662 RID: 5730 RVA: 0x0011859F File Offset: 0x0011679F
 	private bool CheckButtonEventAllImage()
 	{
 		return this.buttonEventAllCount % 2 == 0;
 	}
 
-	// Token: 0x06001663 RID: 5731 RVA: 0x001185AC File Offset: 0x001167AC
 	private void UpdateButtonEventAllImage()
 	{
 		bool sw = this.CheckButtonEventAllImage();
@@ -2174,7 +2084,6 @@ public class SceneQuest : BaseScene
 		});
 	}
 
-	// Token: 0x06001664 RID: 5732 RVA: 0x00118698 File Offset: 0x00116898
 	private IEnumerator RequestEventCharaGrow(DataManagerEvent.EventData eventData)
 	{
 		DataManager.DmEvent.RequestGetGrowthEventCharaId(eventData.eventId);
@@ -2185,7 +2094,6 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001665 RID: 5733 RVA: 0x001186A7 File Offset: 0x001168A7
 	private IEnumerator WaitNextSequenceEventCharaGrow()
 	{
 		this.reqNextSequence = null;
@@ -2194,7 +2102,6 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001666 RID: 5734 RVA: 0x001186B8 File Offset: 0x001168B8
 	private void SetupNextSequenceEventCharaGrow(bool callWaitNextSequenceEventCharaGrow)
 	{
 		if (callWaitNextSequenceEventCharaGrow)
@@ -2212,7 +2119,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x06001667 RID: 5735 RVA: 0x0011876A File Offset: 0x0011696A
 	private IEnumerator InstantiateAssetData(IEnumerator cb, string path)
 	{
 		this.LoadAssetPath = path;
@@ -2257,7 +2163,6 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001668 RID: 5736 RVA: 0x00118788 File Offset: 0x00116988
 	private bool CheckSeal(PguiButtonCtrl button)
 	{
 		bool flag = false;
@@ -2294,7 +2199,6 @@ public class SceneQuest : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06001669 RID: 5737 RVA: 0x001188DC File Offset: 0x00116ADC
 	private string GetUrlSeal(PguiButtonCtrl button)
 	{
 		string text = "";
@@ -2331,7 +2235,6 @@ public class SceneQuest : BaseScene
 		return text;
 	}
 
-	// Token: 0x0600166A RID: 5738 RVA: 0x00118A1C File Offset: 0x00116C1C
 	private string GetTextSeal(PguiButtonCtrl button)
 	{
 		string text = "";
@@ -2368,7 +2271,6 @@ public class SceneQuest : BaseScene
 		return text.Replace("¥n", "\n");
 	}
 
-	// Token: 0x0600166B RID: 5739 RVA: 0x00118B6C File Offset: 0x00116D6C
 	private IEnumerator NextScene(int questId)
 	{
 		yield return this.CurrentAnimOut();
@@ -2453,7 +2355,6 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x0600166C RID: 5740 RVA: 0x00118B84 File Offset: 0x00116D84
 	private void UpdateButtonLR()
 	{
 		bool flag = this.questArgs == null || !this.questArgs.jumpQuest;
@@ -2513,13 +2414,11 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x0600166D RID: 5741 RVA: 0x00118EAC File Offset: 0x001170AC
 	private bool IsUseSubAnim()
 	{
 		return this.selectData.questCategory == QuestStaticChapter.Category.GROW || SceneQuest.IsEventCategoryScenario(this.currentEnableEventData) || SceneQuest.IsEventCategoryGrowth(this.currentEnableEventData) || SceneQuest.IsEventCategoryTower(this.currentEnableEventData) || SceneQuest.IsEventCategoryCoop(this.currentEnableEventData) || SceneQuest.IsEventCategoryWildRelease(this.currentEnableEventData);
 	}
 
-	// Token: 0x0600166E RID: 5742 RVA: 0x00118F0A File Offset: 0x0011710A
 	private IEnumerator CurrentAnimOut()
 	{
 		if (this.guiData.locationInfo.baseObj.activeSelf)
@@ -2558,7 +2457,6 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x0600166F RID: 5743 RVA: 0x00118F19 File Offset: 0x00117119
 	private IEnumerator ChangeScene(GameObject nextSequence)
 	{
 		if (SceneQuest.IsMainStory(this.selectData.questCategory))
@@ -2777,7 +2675,6 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001670 RID: 5744 RVA: 0x00118F30 File Offset: 0x00117130
 	private void UpdateMenuTitle(GameObject scene)
 	{
 		if (scene == this.guiData.chapterSelect.baseObj)
@@ -2826,7 +2723,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x06001671 RID: 5745 RVA: 0x00119294 File Offset: 0x00117494
 	private void UpdateChapterChara(int groupQuestId)
 	{
 		if (DataManager.DmQuest.QuestStaticData.groupDataMap.ContainsKey(groupQuestId))
@@ -2982,7 +2878,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x06001672 RID: 5746 RVA: 0x00119CB0 File Offset: 0x00117EB0
 	private void UpdateChapterCharaText(int groupQuestId)
 	{
 		if (DataManager.DmQuest.QuestStaticData.groupDataMap.ContainsKey(groupQuestId))
@@ -2996,7 +2891,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x06001673 RID: 5747 RVA: 0x00119D78 File Offset: 0x00117F78
 	private void UpdateLocation()
 	{
 		if (this.selectData.questCategory == QuestStaticChapter.Category.CHARA)
@@ -3112,7 +3006,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x06001674 RID: 5748 RVA: 0x0011A40C File Offset: 0x0011860C
 	public static List<KeyValuePair<int, QuestStaticChapter>> GetChapterDataByCategory(QuestStaticChapter.Category category, int mode = -1)
 	{
 		List<int> playableMapIdList = DataManager.DmQuest.GetPlayableMapIdList(category);
@@ -3175,7 +3068,6 @@ public class SceneQuest : BaseScene
 		return new List<KeyValuePair<int, QuestStaticChapter>>(dictionary);
 	}
 
-	// Token: 0x06001675 RID: 5749 RVA: 0x0011A67C File Offset: 0x0011887C
 	private void DestroyMap()
 	{
 		if (this.instMapObj != null)
@@ -3194,19 +3086,16 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x06001676 RID: 5750 RVA: 0x0011A70C File Offset: 0x0011890C
 	public static void MainStoryPlayBGM()
 	{
 		SoundManager.PlayBGM("prd_bgm0009");
 	}
 
-	// Token: 0x06001677 RID: 5751 RVA: 0x0011A718 File Offset: 0x00118918
 	public static void DefaultPlayBGM()
 	{
 		SoundManager.PlayBGM("prd_bgm0007");
 	}
 
-	// Token: 0x06001678 RID: 5752 RVA: 0x0011A724 File Offset: 0x00118924
 	public override void OnCreateScene()
 	{
 		SceneQuest.mapBoxObject = Object.Instantiate<GameObject>((GameObject)Resources.Load("prefab/PguiBaseTemplate"));
@@ -3279,13 +3168,11 @@ public class SceneQuest : BaseScene
 		this.UpdateButtonEventAllImage();
 	}
 
-	// Token: 0x06001679 RID: 5753 RVA: 0x0011AE98 File Offset: 0x00119098
 	public override bool OnCreateSceneWait()
 	{
 		return true;
 	}
 
-	// Token: 0x0600167A RID: 5754 RVA: 0x0011AE9C File Offset: 0x0011909C
 	public override void OnEnableScene(object args)
 	{
 		this.requestMode = SceneQuest.Mode.TOP;
@@ -3325,7 +3212,6 @@ public class SceneQuest : BaseScene
 		this.requestSequenceInstantiateAssetData = null;
 	}
 
-	// Token: 0x0600167B RID: 5755 RVA: 0x0011B0C1 File Offset: 0x001192C1
 	private IEnumerator OnEnableSceneTask()
 	{
 		if (this.questArgs == null)
@@ -3401,7 +3287,6 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x0600167C RID: 5756 RVA: 0x0011B0D0 File Offset: 0x001192D0
 	public override bool OnEnableSceneWait()
 	{
 		if (this.coroutineOnEnableSceneTask != null)
@@ -3802,7 +3687,6 @@ public class SceneQuest : BaseScene
 		return true;
 	}
 
-	// Token: 0x0600167D RID: 5757 RVA: 0x0011C0AC File Offset: 0x0011A2AC
 	public override void OnStartControl()
 	{
 		SimpleAnimation component = this.reqNextSequence.GetComponent<SimpleAnimation>();
@@ -3812,7 +3696,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x0600167E RID: 5758 RVA: 0x0011C0D5 File Offset: 0x0011A2D5
 	public IEnumerator LoadMapObject(string path)
 	{
 		AssetManager.LoadAssetData(path, AssetManager.OWNER.QuestSelector, 0, null);
@@ -3823,7 +3706,6 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x0600167F RID: 5759 RVA: 0x0011C0E4 File Offset: 0x0011A2E4
 	private IEnumerator UpdateMainStoryScreen()
 	{
 		if (this.safeArea != SafeAreaScaler.GetSafeArea())
@@ -3859,7 +3741,6 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001680 RID: 5760 RVA: 0x0011C0F3 File Offset: 0x0011A2F3
 	private IEnumerator UpdateLargeEventScreen()
 	{
 		if (this.safeArea != SafeAreaScaler.GetSafeArea())
@@ -3882,7 +3763,6 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001681 RID: 5761 RVA: 0x0011C104 File Offset: 0x0011A304
 	public override void Update()
 	{
 		bool flag = true;
@@ -3992,7 +3872,6 @@ public class SceneQuest : BaseScene
 		this.safeArea = SafeAreaScaler.GetSafeArea();
 	}
 
-	// Token: 0x06001682 RID: 5762 RVA: 0x0011C53C File Offset: 0x0011A73C
 	public override void OnDisableScene()
 	{
 		if (this.selectData.questOneId != 0 && (SceneQuest.IsMainStory(this.selectData.questCategory) || this.IsLargeEvent()))
@@ -4093,7 +3972,6 @@ public class SceneQuest : BaseScene
 		AssetManager.UnLoadByList(AssetManager.OWNER.QuestSelector, "", true);
 	}
 
-	// Token: 0x06001683 RID: 5763 RVA: 0x0011C7F4 File Offset: 0x0011A9F4
 	public override void OnDestroyScene()
 	{
 		if (this.IsNotNullEventLargeScaleObj())
@@ -4179,7 +4057,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x06001684 RID: 5764 RVA: 0x0011CA24 File Offset: 0x0011AC24
 	private void OnTouchMove(Info info)
 	{
 		if (this.questArgs != null && this.questArgs.tutorialSequence == TutorialUtil.Sequence.QUEST_GUIDE)
@@ -4209,7 +4086,6 @@ public class SceneQuest : BaseScene
 		this.SetMapPosition(info);
 	}
 
-	// Token: 0x06001685 RID: 5765 RVA: 0x0011CACC File Offset: 0x0011ACCC
 	public static void SetMapPosition(Info info, QuestStaticChapter.Category category, SelMainStoryCtrl.GuiMapData guiMapData, GameObject mapBoxObject)
 	{
 		Vector2 vector = guiMapData.mapObj.transform.localPosition;
@@ -4250,24 +4126,20 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x06001686 RID: 5766 RVA: 0x0011CC32 File Offset: 0x0011AE32
 	private void SetMapPosition(Info info)
 	{
 		SceneQuest.SetMapPosition(info, this.selectData.questCategory, this.selMainStoryCtrl.GuiData.mapData, SceneQuest.mapBoxObject);
 	}
 
-	// Token: 0x06001687 RID: 5767 RVA: 0x0011CC5A File Offset: 0x0011AE5A
 	private void OnTouchRelease(Info info)
 	{
 	}
 
-	// Token: 0x06001688 RID: 5768 RVA: 0x0011CC5C File Offset: 0x0011AE5C
 	private void OnTouchStart(Info info)
 	{
 		this.TouchMoving = false;
 	}
 
-	// Token: 0x06001689 RID: 5769 RVA: 0x0011CC68 File Offset: 0x0011AE68
 	private void OnStartItemEventAll(int index, GameObject go)
 	{
 		PguiButtonCtrl component = go.GetComponent<PguiButtonCtrl>();
@@ -4279,7 +4151,6 @@ public class SceneQuest : BaseScene
 		this.OnUpdateItemEventAll(index, go);
 	}
 
-	// Token: 0x0600168A RID: 5770 RVA: 0x0011CCB8 File Offset: 0x0011AEB8
 	private void OnUpdateItemEventAll(int index, GameObject go)
 	{
 		if (this.enableEventDataList.Count <= 0)
@@ -4341,7 +4212,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x0600168B RID: 5771 RVA: 0x0011CF0C File Offset: 0x0011B10C
 	private void OnRegistTouchMove()
 	{
 		this.OnReleaseTouchMove();
@@ -4353,7 +4223,6 @@ public class SceneQuest : BaseScene
 		SGNFW.Touch.Manager.RegisterMove(new SGNFW.Touch.Manager.SingleAction(this.OnTouchMove));
 	}
 
-	// Token: 0x0600168C RID: 5772 RVA: 0x0011CF44 File Offset: 0x0011B144
 	private void OnReleaseTouchMove()
 	{
 		if (this.IsLargeEvent())
@@ -4364,7 +4233,6 @@ public class SceneQuest : BaseScene
 		SGNFW.Touch.Manager.UnRegisterMove(new SGNFW.Touch.Manager.SingleAction(this.OnTouchMove));
 	}
 
-	// Token: 0x0600168D RID: 5773 RVA: 0x0011CF76 File Offset: 0x0011B176
 	private void OnRegistTouchRelease()
 	{
 		this.OnReleaseTouchRelease();
@@ -4376,7 +4244,6 @@ public class SceneQuest : BaseScene
 		SGNFW.Touch.Manager.RegisterRelease(new SGNFW.Touch.Manager.SingleAction(this.OnTouchRelease));
 	}
 
-	// Token: 0x0600168E RID: 5774 RVA: 0x0011CFAE File Offset: 0x0011B1AE
 	private void OnReleaseTouchRelease()
 	{
 		if (this.IsLargeEvent())
@@ -4387,7 +4254,6 @@ public class SceneQuest : BaseScene
 		SGNFW.Touch.Manager.UnRegisterRelease(new SGNFW.Touch.Manager.SingleAction(this.OnTouchRelease));
 	}
 
-	// Token: 0x0600168F RID: 5775 RVA: 0x0011CFE0 File Offset: 0x0011B1E0
 	private void OnRegistTouchStart()
 	{
 		this.OnReleaseTouchStart();
@@ -4399,7 +4265,6 @@ public class SceneQuest : BaseScene
 		SGNFW.Touch.Manager.RegisterStart(new SGNFW.Touch.Manager.SingleAction(this.OnTouchStart));
 	}
 
-	// Token: 0x06001690 RID: 5776 RVA: 0x0011D018 File Offset: 0x0011B218
 	private void OnReleaseTouchStart()
 	{
 		if (this.IsLargeEvent())
@@ -4410,7 +4275,6 @@ public class SceneQuest : BaseScene
 		SGNFW.Touch.Manager.UnRegisterStart(new SGNFW.Touch.Manager.SingleAction(this.OnTouchStart));
 	}
 
-	// Token: 0x06001691 RID: 5777 RVA: 0x0011D04C File Offset: 0x0011B24C
 	private void OnClickButtonMenuReturn()
 	{
 		if (this.IsPlayingAnim)
@@ -4604,7 +4468,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x06001692 RID: 5778 RVA: 0x0011D6CC File Offset: 0x0011B8CC
 	private void OnClickButtonOther(PguiButtonCtrl button)
 	{
 		if (this.IsPlayingAnim)
@@ -4693,7 +4556,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x06001693 RID: 5779 RVA: 0x0011DA60 File Offset: 0x0011BC60
 	private void OnClickButtonLocation(PguiButtonCtrl buttuon)
 	{
 		if (this.IsNotNullCharaStoryObj() && buttuon == this.guiData.locationInfo.Btn_MoreInfo)
@@ -4710,7 +4572,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x06001694 RID: 5780 RVA: 0x0011DAE0 File Offset: 0x0011BCE0
 	private void OnClickButtonCharaGrow(PguiButtonCtrl buttuon)
 	{
 		if (buttuon == this.guiData.charaGrow.Btn_Schedule)
@@ -4719,7 +4580,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x06001695 RID: 5781 RVA: 0x0011DB30 File Offset: 0x0011BD30
 	private bool OnSelectOpenWindowButtonCallback(int index)
 	{
 		if (index == 1)
@@ -4734,7 +4594,6 @@ public class SceneQuest : BaseScene
 		return true;
 	}
 
-	// Token: 0x06001696 RID: 5782 RVA: 0x0011DBD4 File Offset: 0x0011BDD4
 	private void OnClickButtonQuestTop(PguiButtonCtrl button)
 	{
 		if (this.CheckSeal(button))
@@ -5310,7 +5169,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x06001697 RID: 5783 RVA: 0x0011F034 File Offset: 0x0011D234
 	private void OnClickButtonPointSelectLargeEvent(Transform point)
 	{
 		if (this.selEventLargeScaleCtrl.TouchMoving)
@@ -5428,7 +5286,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x06001698 RID: 5784 RVA: 0x0011F300 File Offset: 0x0011D500
 	private void OnClickButtonQuestEvent(PguiButtonCtrl button)
 	{
 		DataManagerEvent.EventData eventData = DataManager.DmEvent.GetEventData(this.selectData.eventId);
@@ -5459,13 +5316,11 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x06001699 RID: 5785 RVA: 0x0011F3B0 File Offset: 0x0011D5B0
 	private void OnClickEventInfoBanner(Transform tf)
 	{
 		QuestUtil.OpenBannerWebViewWindow(this.selectData.eventId);
 	}
 
-	// Token: 0x0600169A RID: 5786 RVA: 0x0011F3C4 File Offset: 0x0011D5C4
 	private void OnClickButtonPointSelect(PguiButtonCtrl button)
 	{
 		if (this.IsPlayingAnim)
@@ -5556,7 +5411,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x0600169B RID: 5787 RVA: 0x0011F6A8 File Offset: 0x0011D8A8
 	private void OnClickMapButtonLR(PguiButtonCtrl button)
 	{
 		if (this.IsPlayingAnim)
@@ -5609,7 +5463,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x0600169C RID: 5788 RVA: 0x0011F8BC File Offset: 0x0011DABC
 	private void OnClickButtonPointSelect(Transform point)
 	{
 		if (this.TouchMoving)
@@ -5687,7 +5540,6 @@ public class SceneQuest : BaseScene
 		CanvasManager.HdlCmnReleaseConditionWindowCtrl.Open("解放条件", list);
 	}
 
-	// Token: 0x0600169D RID: 5789 RVA: 0x0011FB5C File Offset: 0x0011DD5C
 	private void OnClickButtonLR(PguiButtonCtrl button)
 	{
 		if (this.IsPlayingAnim)
@@ -5737,7 +5589,6 @@ public class SceneQuest : BaseScene
 		this.UpdateButtonLR();
 	}
 
-	// Token: 0x0600169E RID: 5790 RVA: 0x0011FDBE File Offset: 0x0011DFBE
 	private void QuestButtonCallback(int questId)
 	{
 		if (this.actionCoroutine != null)
@@ -5751,7 +5602,6 @@ public class SceneQuest : BaseScene
 		this.actionCoroutine = Singleton<SceneManager>.Instance.StartCoroutine(this.NextScene(questId));
 	}
 
-	// Token: 0x0600169F RID: 5791 RVA: 0x0011FDEA File Offset: 0x0011DFEA
 	private bool OnQuestChapterChangeWindow(int index)
 	{
 		if (index == 1)
@@ -5762,7 +5612,6 @@ public class SceneQuest : BaseScene
 		return true;
 	}
 
-	// Token: 0x060016A0 RID: 5792 RVA: 0x0011FE19 File Offset: 0x0011E019
 	private IEnumerator TutorialQuest1()
 	{
 		CanvasManager.HdlTutorialMaskCtrl.SetEnable(true);
@@ -5797,7 +5646,6 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060016A1 RID: 5793 RVA: 0x0011FE28 File Offset: 0x0011E028
 	private IEnumerator TutorialQuest2()
 	{
 		CanvasManager.HdlTutorialMaskCtrl.SetEnable(true);
@@ -5878,7 +5726,6 @@ public class SceneQuest : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060016A2 RID: 5794 RVA: 0x0011FE38 File Offset: 0x0011E038
 	private void InitSelMainStoryCtrl()
 	{
 		GameObject gameObject = new GameObject();
@@ -5998,7 +5845,6 @@ public class SceneQuest : BaseScene
 		this.selMainStoryCtrl.SetMapBoxObject(SceneQuest.mapBoxObject);
 	}
 
-	// Token: 0x060016A3 RID: 5795 RVA: 0x00120070 File Offset: 0x0011E270
 	private void InitEventCtrl(DataManagerEvent.Category category)
 	{
 		switch (category)
@@ -6354,7 +6200,6 @@ public class SceneQuest : BaseScene
 		}
 	}
 
-	// Token: 0x060016A4 RID: 5796 RVA: 0x00120AE3 File Offset: 0x0011ECE3
 	private bool OnClickMoveSequenceButton(SceneManager.SceneName sceneName, object sceneArgs)
 	{
 		if (this.currentMode == SceneQuest.Mode.CHARA_EDIT)
@@ -6365,7 +6210,6 @@ public class SceneQuest : BaseScene
 		return false;
 	}
 
-	// Token: 0x04001204 RID: 4612
 	private static readonly SceneQuest.RenderTextureTransform DEFAULT_RENDER_TEXTURE_TRANSFORM = new SceneQuest.RenderTextureTransform
 	{
 		fov = 18f,
@@ -6373,7 +6217,6 @@ public class SceneQuest : BaseScene
 		rotation = new Vector3(0f, 0f, 0f)
 	};
 
-	// Token: 0x04001205 RID: 4613
 	private static readonly SceneQuest.RenderTextureTransform ARAI_STORY_RENDER_TEXTURE_TRANSFORM01 = new SceneQuest.RenderTextureTransform
 	{
 		fov = 20f,
@@ -6381,7 +6224,6 @@ public class SceneQuest : BaseScene
 		rotation = new Vector3(0f, 0f, 0f)
 	};
 
-	// Token: 0x04001206 RID: 4614
 	private static readonly SceneQuest.RenderTextureTransform ARAI_STORY_RENDER_TEXTURE_TRANSFORM02 = new SceneQuest.RenderTextureTransform
 	{
 		fov = 26f,
@@ -6389,333 +6231,217 @@ public class SceneQuest : BaseScene
 		rotation = new Vector3(0f, 0f, 0f)
 	};
 
-	// Token: 0x04001207 RID: 4615
 	private static readonly string MainStoryMapPath = "Gui/QuestMap/GUI_Map_StoryQuest";
 
-	// Token: 0x04001208 RID: 4616
 	private static readonly string CellvalMapPath = "Gui/QuestMap/GUI_Map_CellvalQuest";
 
-	// Token: 0x04001209 RID: 4617
 	private static readonly string MainStory2MapPath = "Gui/QuestMap/GUI_Map_StoryQuest2";
 
-	// Token: 0x0400120A RID: 4618
 	private static readonly string MainStory3MapPath = "Gui/QuestMap/GUI_Map_StoryQuest3";
 
-	// Token: 0x0400120B RID: 4619
 	private SceneQuest.UpdateCallback updateCallback;
 
-	// Token: 0x0400120C RID: 4620
 	private SceneQuest.TouchCallback touchCallback;
 
-	// Token: 0x0400120D RID: 4621
 	private SceneQuest.Mode requestMode;
 
-	// Token: 0x0400120E RID: 4622
 	private SceneQuest.Mode currentMode;
 
-	// Token: 0x0400120F RID: 4623
 	private SceneQuest.GUI guiData;
 
-	// Token: 0x04001210 RID: 4624
 	private SceneQuest.GuiChapterChange guiChapterChange;
 
-	// Token: 0x04001211 RID: 4625
 	private SceneQuest.QuestChapterChangeWindowCtrl questChapterChangeWindow;
 
-	// Token: 0x04001212 RID: 4626
 	private SceneQuest.QuestScheduleWindowCtrl questScheduleWindow;
 
-	// Token: 0x04001213 RID: 4627
 	private SceneQuest.ItemInfoWindowCtrl itemInfoWindow;
 
-	// Token: 0x04001214 RID: 4628
 	private SceneQuest.ItemInfoWindowAfterCtrl itemInfoWindowAfter;
 
-	// Token: 0x04001215 RID: 4629
 	private SelEventCharaGrowCtrl selEventCharaGrowCtrl;
 
-	// Token: 0x04001216 RID: 4630
 	private SelEventLargeScaleCtrl selEventLargeScaleCtrl;
 
-	// Token: 0x04001217 RID: 4631
 	private SelEventScenarioCtrl selEventScenarioCtrl;
 
-	// Token: 0x04001218 RID: 4632
 	private SelEventTowerCtrl selEventTowerCtrl;
 
-	// Token: 0x04001219 RID: 4633
 	private SelSideStoryCtrl selSideStoryCtrl;
 
-	// Token: 0x0400121A RID: 4634
 	private SelEventCoopCtrl selEventCoopCtrl;
 
-	// Token: 0x0400121B RID: 4635
 	private SelEventWildReleaseCtrl selEventWildReleaseCtrl;
 
-	// Token: 0x0400121C RID: 4636
 	private SelEtcetraStoryCtrl selEtcetraStoryCtrl;
 
-	// Token: 0x0400121D RID: 4637
 	private SelMainStoryCtrl selMainStoryCtrl;
 
-	// Token: 0x0400121E RID: 4638
 	private SelCharaStoryCtrl selCharaStoryCtrl;
 
-	// Token: 0x0400121F RID: 4639
 	private GameObject reqNextSequence;
 
-	// Token: 0x04001220 RID: 4640
 	private GameObject currentSequence;
 
-	// Token: 0x04001221 RID: 4641
 	private SceneQuest.Args questArgs;
 
-	// Token: 0x04001222 RID: 4642
 	private int nextChapterId;
 
-	// Token: 0x04001223 RID: 4643
 	private float BgDefaultPosX;
 
-	// Token: 0x04001224 RID: 4644
 	public static float BgDefaultPosY = 0f;
 
-	// Token: 0x04001225 RID: 4645
 	private GameObject instMapObj;
 
-	// Token: 0x04001226 RID: 4646
 	private List<GameObject> instCarObjList;
 
-	// Token: 0x04001227 RID: 4647
 	private List<DataManagerEvent.EventData> enableEventDataList;
 
-	// Token: 0x04001228 RID: 4648
 	private DataManagerEvent.EventData currentEnableEventData;
 
-	// Token: 0x04001229 RID: 4649
 	private int buttonEventAllCount;
 
-	// Token: 0x0400122A RID: 4650
 	private SceneManager.SceneName requestNextScene;
 
-	// Token: 0x0400122B RID: 4651
 	private object requestNextSceneArgs;
 
-	// Token: 0x0400122C RID: 4652
 	private Coroutine actionCoroutine;
 
-	// Token: 0x0400122E RID: 4654
 	private SceneQuest.Status status;
 
-	// Token: 0x04001230 RID: 4656
 	private QuestUtil.SelectData selectData;
 
-	// Token: 0x04001231 RID: 4657
 	private int selectDifficultCount;
 
-	// Token: 0x04001232 RID: 4658
 	private int prevNormalModeMapId;
 
-	// Token: 0x04001233 RID: 4659
 	private int prevHardModeMapId;
 
-	// Token: 0x04001234 RID: 4660
 	private IEnumerator mainChapterChangeEffect;
 
-	// Token: 0x04001235 RID: 4661
 	private IEnumerator modeEndSequenceCtrl;
 
-	// Token: 0x04001236 RID: 4662
 	private IEnumerator getItemWindowCtrl;
 
-	// Token: 0x04001237 RID: 4663
 	private QuestFirstClearEvent questFirstClearEvent;
 
-	// Token: 0x04001238 RID: 4664
 	private IEnumerator sideStoryChapterChangeEffect;
 
-	// Token: 0x04001239 RID: 4665
 	private IEnumerator charaStoryEffect;
 
-	// Token: 0x0400123A RID: 4666
 	private IEnumerator chapterChangeEffect;
 
-	// Token: 0x0400123B RID: 4667
 	private IEnumerator eventLargeScaleEffect;
 
-	// Token: 0x0400123C RID: 4668
 	private Coroutine coroutineOnEnableSceneTask;
 
-	// Token: 0x0400123D RID: 4669
 	private bool touchScreenAuth;
 
-	// Token: 0x0400123E RID: 4670
 	private Dictionary<int, DateTime> eventStartTimeMap;
 
-	// Token: 0x0400123F RID: 4671
 	private Coroutine requestQuestCmd;
 
-	// Token: 0x04001240 RID: 4672
 	public static GameObject mapBoxObject;
 
-	// Token: 0x04001241 RID: 4673
 	private Coroutine requestSequenceInstantiateAssetData;
 
-	// Token: 0x04001242 RID: 4674
 	private List<QuestStaticQuestOne> rewards = new List<QuestStaticQuestOne>();
 
-	// Token: 0x04001245 RID: 4677
 	private Rect safeArea;
 
-	// Token: 0x04001246 RID: 4678
 	private bool isBackToMap;
 
-	// Token: 0x04001248 RID: 4680
 	private bool gotoNextStepByTutorial;
 
-	// Token: 0x02000C83 RID: 3203
 	public enum MainStoryDifficulty
 	{
-		// Token: 0x04004B89 RID: 19337
 		Normal,
-		// Token: 0x04004B8A RID: 19338
 		Hard
 	}
 
-	// Token: 0x02000C84 RID: 3204
 	private enum Status
 	{
-		// Token: 0x04004B8C RID: 19340
 		POLLING_REQUEST,
-		// Token: 0x04004B8D RID: 19341
 		CHANGING_SCENE
 	}
 
-	// Token: 0x02000C85 RID: 3205
 	public enum MainStoryType
 	{
-		// Token: 0x04004B8F RID: 19343
 		Part1,
-		// Token: 0x04004B90 RID: 19344
 		Part1_5,
-		// Token: 0x04004B91 RID: 19345
 		Part2,
-		// Token: 0x04004B92 RID: 19346
 		Part3
 	}
 
-	// Token: 0x02000C86 RID: 3206
 	private class RenderTextureTransform
 	{
-		// Token: 0x04004B93 RID: 19347
 		public Vector2 position;
 
-		// Token: 0x04004B94 RID: 19348
 		public Vector3 rotation;
 
-		// Token: 0x04004B95 RID: 19349
 		public float fov;
 	}
 
-	// Token: 0x02000C87 RID: 3207
 	public class Args
 	{
-		// Token: 0x04004B96 RID: 19350
 		public TutorialUtil.Sequence tutorialSequence;
 
-		// Token: 0x04004B97 RID: 19351
 		public int selectQuestOneId;
 
-		// Token: 0x04004B98 RID: 19352
 		public bool initialMap;
 
-		// Token: 0x04004B99 RID: 19353
 		public QuestStaticChapter.Category category;
 
-		// Token: 0x04004B9A RID: 19354
 		public bool jumpQuest;
 
-		// Token: 0x04004B9B RID: 19355
 		public SceneManager.SceneName menuBackSceneName;
 
-		// Token: 0x04004B9C RID: 19356
 		public object menuBackSceneArgs;
 
-		// Token: 0x04004B9D RID: 19357
 		public GameObject backSequenceGameObject;
 
-		// Token: 0x04004B9E RID: 19358
 		public SceneManager.SceneName recordCameSceneName;
 
-		// Token: 0x04004B9F RID: 19359
 		public SceneQuest.Args.JustBeforeBattle justBeforeBattle;
 
-		// Token: 0x04004BA0 RID: 19360
 		public int selectEventId;
 
-		// Token: 0x04004BA1 RID: 19361
 		public int selectCharaId;
 
-		// Token: 0x04004BA2 RID: 19362
 		public bool isFromBanner;
 
-		// Token: 0x0200119C RID: 4508
 		public class JustBeforeBattle
 		{
-			// Token: 0x0400605B RID: 24667
 			public int playQuestId;
 
-			// Token: 0x0400605C RID: 24668
 			public DataManagerQuest.BattleEndStatus endStatus;
 
-			// Token: 0x0400605D RID: 24669
 			public bool isFirstClear;
 
-			// Token: 0x0400605E RID: 24670
 			public bool isMapAllClearEvent;
 
-			// Token: 0x0400605F RID: 24671
 			public bool isReleaseMaxArts;
 
-			// Token: 0x04006060 RID: 24672
 			public List<ItemData> specialInfoItemList = new List<ItemData>();
 
-			// Token: 0x04006061 RID: 24673
 			public bool specialInfoItemMovePresentBox;
 		}
 	}
 
-	// Token: 0x02000C88 RID: 3208
-	// (Invoke) Token: 0x0600461A RID: 17946
 	public delegate void UpdateCallback();
 
-	// Token: 0x02000C89 RID: 3209
-	// (Invoke) Token: 0x0600461E RID: 17950
 	public delegate void TouchCallback();
 
-	// Token: 0x02000C8A RID: 3210
 	public class QuestChapterChangeWindowCtrl
 	{
-		// Token: 0x17000A3B RID: 2619
-		// (get) Token: 0x06004621 RID: 17953 RVA: 0x00210DB0 File Offset: 0x0020EFB0
-		// (set) Token: 0x06004622 RID: 17954 RVA: 0x00210DB8 File Offset: 0x0020EFB8
 		public QuestStaticChapter.Category CategoryByOpenWindow { get; set; }
 
-		// Token: 0x17000A3C RID: 2620
-		// (get) Token: 0x06004623 RID: 17955 RVA: 0x00210DC1 File Offset: 0x0020EFC1
-		// (set) Token: 0x06004624 RID: 17956 RVA: 0x00210DC9 File Offset: 0x0020EFC9
 		private List<QuestStaticChapter.Category> SwitchCategoryCtrlList { get; set; }
 
-		// Token: 0x17000A3D RID: 2621
-		// (get) Token: 0x06004625 RID: 17957 RVA: 0x00210DD2 File Offset: 0x0020EFD2
-		// (set) Token: 0x06004626 RID: 17958 RVA: 0x00210DDA File Offset: 0x0020EFDA
 		private int SwitchCategoryCtrlIndex { get; set; }
 
-		// Token: 0x17000A3E RID: 2622
-		// (get) Token: 0x06004628 RID: 17960 RVA: 0x00210DEC File Offset: 0x0020EFEC
-		// (set) Token: 0x06004627 RID: 17959 RVA: 0x00210DE3 File Offset: 0x0020EFE3
 		public int selectDifficultCount { get; private set; }
 
-		// Token: 0x06004629 RID: 17961 RVA: 0x00210DF4 File Offset: 0x0020EFF4
 		public void Init(GameObject mainObj, PguiOpenWindowCtrl.Callback cb)
 		{
 			this.currentChapterMap = new Dictionary<SceneQuest.MainStoryDifficulty, QuestStaticChapter>();
@@ -6782,7 +6508,6 @@ public class SceneQuest : BaseScene
 			};
 		}
 
-		// Token: 0x0600462A RID: 17962 RVA: 0x00210F54 File Offset: 0x0020F154
 		public void Setup(QuestStaticChapter.Category _category, int count, int chapterId)
 		{
 			this.category = _category;
@@ -6888,7 +6613,6 @@ public class SceneQuest : BaseScene
 			markLock.Setup(setupParam, true);
 		}
 
-		// Token: 0x0600462B RID: 17963 RVA: 0x00211378 File Offset: 0x0020F578
 		private void OnClickButtonLR(PguiButtonCtrl button)
 		{
 			if (button == this.guiData.Btn_Yaji_Left || button == this.guiData.Btn_Yaji_Right)
@@ -6900,7 +6624,6 @@ public class SceneQuest : BaseScene
 			}
 		}
 
-		// Token: 0x0600462C RID: 17964 RVA: 0x00211410 File Offset: 0x0020F610
 		private void ClearSimpleAnimationPlayRequestFlag()
 		{
 			foreach (SceneQuest.QuestChapterChangeWindowCtrl.ChapterChange chapterChange in this.guiData.chapterChangeList)
@@ -6909,7 +6632,6 @@ public class SceneQuest : BaseScene
 			}
 		}
 
-		// Token: 0x0600462D RID: 17965 RVA: 0x00211468 File Offset: 0x0020F668
 		private IEnumerator Anim()
 		{
 			if (this.guiData.Mark_Hard.gameObject.activeSelf)
@@ -6961,19 +6683,16 @@ public class SceneQuest : BaseScene
 			yield break;
 		}
 
-		// Token: 0x0600462E RID: 17966 RVA: 0x00211477 File Offset: 0x0020F677
 		private bool IsNormalMode()
 		{
 			return this.selectDifficultCount % Enum.GetValues(typeof(SceneQuest.MainStoryDifficulty)).Length == 0;
 		}
 
-		// Token: 0x0600462F RID: 17967 RVA: 0x00211497 File Offset: 0x0020F697
 		private SceneQuest.MainStoryDifficulty GetMainStoryDifficulty()
 		{
 			return (SceneQuest.MainStoryDifficulty)(this.selectDifficultCount % Enum.GetValues(typeof(SceneQuest.MainStoryDifficulty)).Length);
 		}
 
-		// Token: 0x06004630 RID: 17968 RVA: 0x002114B4 File Offset: 0x0020F6B4
 		private void SwitchDifficultButton()
 		{
 			GameObject gameObject = this.guiData.Btn_Sel_Difficult.transform.Find("BaseImage/Mode_Normal").gameObject;
@@ -7008,7 +6727,6 @@ public class SceneQuest : BaseScene
 			}
 		}
 
-		// Token: 0x06004631 RID: 17969 RVA: 0x0021160C File Offset: 0x0020F80C
 		private List<PguiAECtrl> GetAECheckMark()
 		{
 			List<PguiAECtrl> list = this.guiData.AEImage_CheckMark;
@@ -7027,7 +6745,6 @@ public class SceneQuest : BaseScene
 			return list;
 		}
 
-		// Token: 0x06004632 RID: 17970 RVA: 0x00211678 File Offset: 0x0020F878
 		private void SetInactive()
 		{
 			foreach (SceneQuest.QuestChapterChangeWindowCtrl.ChapterChange chapterChange in this.guiData.chapterChangeList)
@@ -7052,13 +6769,11 @@ public class SceneQuest : BaseScene
 			}
 		}
 
-		// Token: 0x06004633 RID: 17971 RVA: 0x002117FC File Offset: 0x0020F9FC
 		private void OnStartWindowItem(int index, GameObject go)
 		{
 			this.guiData.chapterChangeList.Add(this.CreateChapterChange(go));
 		}
 
-		// Token: 0x06004634 RID: 17972 RVA: 0x00211818 File Offset: 0x0020FA18
 		private void OnUpdateWindowItem(int index, GameObject go)
 		{
 			List<KeyValuePair<int, QuestStaticChapter>> chapterDataByCategory = SceneQuest.GetChapterDataByCategory(this.category, this.IsNormalMode() ? 0 : 1);
@@ -7120,7 +6835,6 @@ public class SceneQuest : BaseScene
 			}
 		}
 
-		// Token: 0x06004635 RID: 17973 RVA: 0x00211AD8 File Offset: 0x0020FCD8
 		private void OnClickChapterChangeButton(PguiButtonCtrl button)
 		{
 			int num = -1;
@@ -7160,13 +6874,11 @@ public class SceneQuest : BaseScene
 			}
 		}
 
-		// Token: 0x06004636 RID: 17974 RVA: 0x00211BE7 File Offset: 0x0020FDE7
 		private void UpdateCurrentChapterData(QuestStaticChapter chapterData)
 		{
 			this.currentChapterMap[this.GetMainStoryDifficulty()] = chapterData;
 		}
 
-		// Token: 0x06004637 RID: 17975 RVA: 0x00211BFC File Offset: 0x0020FDFC
 		public QuestStaticChapter GetCurrentChapterData()
 		{
 			if (this.currentChapterMap.ContainsKey(this.GetMainStoryDifficulty()))
@@ -7178,7 +6890,6 @@ public class SceneQuest : BaseScene
 			return chapterDataByCategory[0].Value;
 		}
 
-		// Token: 0x06004638 RID: 17976 RVA: 0x00211C78 File Offset: 0x0020FE78
 		public SceneQuest.QuestChapterChangeWindowCtrl.ChapterChange CreateChapterChange(GameObject go)
 		{
 			SceneQuest.QuestChapterChangeWindowCtrl.ChapterChange chapterChange = new SceneQuest.QuestChapterChangeWindowCtrl.ChapterChange(go.transform);
@@ -7186,7 +6897,6 @@ public class SceneQuest : BaseScene
 			return chapterChange;
 		}
 
-		// Token: 0x06004639 RID: 17977 RVA: 0x00211CA0 File Offset: 0x0020FEA0
 		private int GetChapterId()
 		{
 			List<int> playableMapIdList = DataManager.DmQuest.GetPlayableMapIdList(this.SwitchCategoryCtrlList[this.SwitchCategoryCtrlIndex]);
@@ -7198,22 +6908,16 @@ public class SceneQuest : BaseScene
 			return questStaticChapter.chapterId;
 		}
 
-		// Token: 0x04004BA3 RID: 19363
 		public SceneQuest.QuestChapterChangeWindowCtrl.GUI guiData;
 
-		// Token: 0x04004BA4 RID: 19364
 		private QuestStaticChapter.Category category;
 
-		// Token: 0x04004BA6 RID: 19366
 		private Dictionary<SceneQuest.MainStoryDifficulty, QuestStaticChapter> currentChapterMap;
 
-		// Token: 0x04004BAA RID: 19370
 		private PguiOpenWindowCtrl.Callback pushedCB;
 
-		// Token: 0x0200119D RID: 4509
 		public class GUI
 		{
-			// Token: 0x060056AB RID: 22187 RVA: 0x00253134 File Offset: 0x00251334
 			public GUI(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -7256,64 +6960,43 @@ public class SceneQuest : BaseScene
 				this.Btn_Yaji_Right = baseTr.Find("Base/Window/RightBtn/Btn_Yaji_Right").GetComponent<PguiButtonCtrl>();
 			}
 
-			// Token: 0x04006062 RID: 24674
 			public static readonly int SCROLL_ITEM_NUN_H = 1;
 
-			// Token: 0x04006063 RID: 24675
 			public PguiOpenWindowCtrl owCtrl;
 
-			// Token: 0x04006064 RID: 24676
 			public GameObject baseObj;
 
-			// Token: 0x04006065 RID: 24677
 			public ReuseScroll ScrollView;
 
-			// Token: 0x04006066 RID: 24678
 			public List<PguiAECtrl> AEImage_CheckMark = new List<PguiAECtrl>();
 
-			// Token: 0x04006067 RID: 24679
 			public List<PguiAECtrl> AEImage_CheckMarkCellval = new List<PguiAECtrl>();
 
-			// Token: 0x04006068 RID: 24680
 			public List<PguiAECtrl> AEImage_CheckMark2 = new List<PguiAECtrl>();
 
-			// Token: 0x04006069 RID: 24681
 			public List<PguiAECtrl> AEImage_CheckMark3 = new List<PguiAECtrl>();
 
-			// Token: 0x0400606A RID: 24682
 			public List<SceneQuest.QuestChapterChangeWindowCtrl.ChapterChange> chapterChangeList = new List<SceneQuest.QuestChapterChangeWindowCtrl.ChapterChange>();
 
-			// Token: 0x0400606B RID: 24683
 			public PguiButtonCtrl Btn_Sel_Difficult;
 
-			// Token: 0x0400606C RID: 24684
 			public MarkLockCtrl markLock;
 
-			// Token: 0x0400606D RID: 24685
 			public SimpleAnimation Mark_Hard;
 
-			// Token: 0x0400606E RID: 24686
 			public PguiImageCtrl Mark_StorySelect;
 
-			// Token: 0x0400606F RID: 24687
 			public PguiImageCtrl Fint_StorySelect;
 
-			// Token: 0x04006070 RID: 24688
 			public PguiButtonCtrl Btn_Yaji_Left;
 
-			// Token: 0x04006071 RID: 24689
 			public PguiButtonCtrl Btn_Yaji_Right;
 		}
 
-		// Token: 0x0200119E RID: 4510
 		public class ChapterChange
 		{
-			// Token: 0x17000CFB RID: 3323
-			// (get) Token: 0x060056AD RID: 22189 RVA: 0x002533A6 File Offset: 0x002515A6
-			// (set) Token: 0x060056AE RID: 22190 RVA: 0x002533AE File Offset: 0x002515AE
 			public bool SimpleAnimationPlayRequestFlag { get; set; }
 
-			// Token: 0x060056AF RID: 22191 RVA: 0x002533B8 File Offset: 0x002515B8
 			public ChapterChange(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -7330,82 +7013,62 @@ public class SceneQuest : BaseScene
 				this.SimpleAnimationPlayRequestFlag = false;
 			}
 
-			// Token: 0x04006072 RID: 24690
 			public GameObject baseObj;
 
-			// Token: 0x04006073 RID: 24691
 			public PguiButtonCtrl Quest_ListBar_ChapterChange;
 
-			// Token: 0x04006074 RID: 24692
 			public GameObject Current;
 
-			// Token: 0x04006075 RID: 24693
 			public PguiTextCtrl Num_Chapter;
 
-			// Token: 0x04006076 RID: 24694
 			public PguiTextCtrl Txt_Chapter;
 
-			// Token: 0x04006077 RID: 24695
 			public PguiTextCtrl Num_Complete;
 
-			// Token: 0x04006078 RID: 24696
 			public PguiImageCtrl Mark_Complete_Fnt;
 
-			// Token: 0x04006079 RID: 24697
 			public SimpleAnimation anim;
 
-			// Token: 0x0400607A RID: 24698
 			public GameObject Base_Hard;
 		}
 	}
 
-	// Token: 0x02000C8B RID: 3211
 	public class QuestScheduleWindowCtrl
 	{
-		// Token: 0x0600463F RID: 17983 RVA: 0x00211E72 File Offset: 0x00210072
 		public void Init(GameObject mainObj)
 		{
 			this.guiData = new SceneQuest.QuestScheduleWindowCtrl.GUI(mainObj.transform);
 		}
 
-		// Token: 0x06004640 RID: 17984 RVA: 0x00211E85 File Offset: 0x00210085
 		public void Setup(PguiOpenWindowCtrl.Callback cb)
 		{
 			this.guiData.owCtrl.Setup(null, null, PguiOpenWindowCtrl.GetButtonPreset(PguiOpenWindowCtrl.PresetType.CLOSE), true, cb, null, false);
 			this.guiData.owCtrl.Open();
 		}
 
-		// Token: 0x04004BAB RID: 19371
 		public SceneQuest.QuestScheduleWindowCtrl.GUI guiData;
 
-		// Token: 0x020011A3 RID: 4515
 		public class GUI
 		{
-			// Token: 0x060056C4 RID: 22212 RVA: 0x002539CF File Offset: 0x00251BCF
 			public GUI(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
 				this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
 			}
 
-			// Token: 0x0400608A RID: 24714
 			public PguiOpenWindowCtrl owCtrl;
 
-			// Token: 0x0400608B RID: 24715
 			public GameObject baseObj;
 		}
 	}
 
-	// Token: 0x02000C8C RID: 3212
 	public class ItemInfoWindowCtrl
 	{
-		// Token: 0x06004642 RID: 17986 RVA: 0x00211EBB File Offset: 0x002100BB
 		public void Init(GameObject mainObj)
 		{
 			this.guiData = new SceneQuest.ItemInfoWindowCtrl.GUI(mainObj.transform);
 		}
 
-		// Token: 0x06004643 RID: 17987 RVA: 0x00211ED0 File Offset: 0x002100D0
 		public void Setup(QuestStaticQuestOne questOne)
 		{
 			foreach (SceneQuest.ItemInfoWindowCtrl.ItemIcon itemIcon in this.guiData.itemIcons)
@@ -7456,13 +7119,10 @@ public class SceneQuest : BaseScene
 			}
 		}
 
-		// Token: 0x04004BAC RID: 19372
 		public SceneQuest.ItemInfoWindowCtrl.GUI guiData;
 
-		// Token: 0x020011A4 RID: 4516
 		public class ItemIcon
 		{
-			// Token: 0x060056C5 RID: 22213 RVA: 0x002539F0 File Offset: 0x00251BF0
 			public ItemIcon(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -7471,23 +7131,17 @@ public class SceneQuest : BaseScene
 				this.Txt_Kind = baseTr.Find("Txt_Kind").GetComponent<PguiTextCtrl>();
 			}
 
-			// Token: 0x0400608C RID: 24716
 			public GameObject baseObj;
 
-			// Token: 0x0400608D RID: 24717
 			public PguiReplaceSpriteCtrl spriteCtrl;
 
-			// Token: 0x0400608E RID: 24718
 			public PguiTextCtrl Num_Txt;
 
-			// Token: 0x0400608F RID: 24719
 			public PguiTextCtrl Txt_Kind;
 		}
 
-		// Token: 0x020011A5 RID: 4517
 		public class GUI
 		{
-			// Token: 0x060056C6 RID: 22214 RVA: 0x00253A48 File Offset: 0x00251C48
 			public GUI(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -7496,24 +7150,18 @@ public class SceneQuest : BaseScene
 				this.itemIcons = new List<SceneQuest.ItemInfoWindowCtrl.ItemIcon>();
 			}
 
-			// Token: 0x04006090 RID: 24720
 			public PguiOpenWindowCtrl owCtrl;
 
-			// Token: 0x04006091 RID: 24721
 			public GameObject baseObj;
 
-			// Token: 0x04006092 RID: 24722
 			public GameObject Grid;
 
-			// Token: 0x04006093 RID: 24723
 			public List<SceneQuest.ItemInfoWindowCtrl.ItemIcon> itemIcons;
 		}
 	}
 
-	// Token: 0x02000C8D RID: 3213
 	public class ItemInfoWindowAfterCtrl
 	{
-		// Token: 0x06004645 RID: 17989 RVA: 0x002120E4 File Offset: 0x002102E4
 		public void Init(GameObject mainObj)
 		{
 			this.guiData = new SceneQuest.ItemInfoWindowAfterCtrl.GUI(mainObj.transform);
@@ -7531,7 +7179,6 @@ public class SceneQuest : BaseScene
 			this.guiData.ScrollView.Setup(10, 0);
 		}
 
-		// Token: 0x06004646 RID: 17990 RVA: 0x002121A4 File Offset: 0x002103A4
 		public void Setup(QuestStaticQuestOne questOne)
 		{
 			QuestOnePackData questOnePackData = DataManager.DmQuest.GetQuestOnePackData(questOne.questId);
@@ -7541,7 +7188,6 @@ public class SceneQuest : BaseScene
 			this.guiData.ScrollView.Resize(this.rewardItems.Count / SceneQuest.ItemInfoWindowAfterCtrl.GUI.SCROLL_ITEM_NUN_H + 1, 0);
 		}
 
-		// Token: 0x06004647 RID: 17991 RVA: 0x00212260 File Offset: 0x00210460
 		private void OnStartWindowItem(int index, GameObject go)
 		{
 			for (int i = 0; i < SceneQuest.ItemInfoWindowAfterCtrl.GUI.SCROLL_ITEM_NUN_H; i++)
@@ -7550,7 +7196,6 @@ public class SceneQuest : BaseScene
 			}
 		}
 
-		// Token: 0x06004648 RID: 17992 RVA: 0x002122A4 File Offset: 0x002104A4
 		private void OnUpdateWindowItem(int index, GameObject go)
 		{
 			for (int i = 0; i < SceneQuest.ItemInfoWindowAfterCtrl.GUI.SCROLL_ITEM_NUN_H; i++)
@@ -7575,16 +7220,12 @@ public class SceneQuest : BaseScene
 			}
 		}
 
-		// Token: 0x04004BAD RID: 19373
 		public SceneQuest.ItemInfoWindowAfterCtrl.GUI guiData;
 
-		// Token: 0x04004BAE RID: 19374
 		private List<QuestStaticQuestOne.RewardItem> rewardItems = new List<QuestStaticQuestOne.RewardItem>();
 
-		// Token: 0x020011A7 RID: 4519
 		public class GUI
 		{
-			// Token: 0x060056CA RID: 22218 RVA: 0x00253AAB File Offset: 0x00251CAB
 			public GUI(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -7592,35 +7233,25 @@ public class SceneQuest : BaseScene
 				this.ScrollView = baseTr.Find("Base/Window/List/ScrollView").GetComponent<ReuseScroll>();
 			}
 
-			// Token: 0x04006096 RID: 24726
 			public static readonly int SCROLL_ITEM_NUN_H = 2;
 
-			// Token: 0x04006097 RID: 24727
 			public PguiOpenWindowCtrl owCtrl;
 
-			// Token: 0x04006098 RID: 24728
 			public GameObject baseObj;
 
-			// Token: 0x04006099 RID: 24729
 			public ReuseScroll ScrollView;
 		}
 	}
 
-	// Token: 0x02000C8E RID: 3214
 	public enum Mode
 	{
-		// Token: 0x04004BB0 RID: 19376
 		INVALID,
-		// Token: 0x04004BB1 RID: 19377
 		TOP,
-		// Token: 0x04004BB2 RID: 19378
 		CHARA_EDIT
 	}
 
-	// Token: 0x02000C8F RID: 3215
 	public class IMapData
 	{
-		// Token: 0x0600464A RID: 17994 RVA: 0x002123B0 File Offset: 0x002105B0
 		public IMapData(Transform baseTr, List<GameObject> carList)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -7645,17 +7276,14 @@ public class SceneQuest : BaseScene
 			this.SetWeatherType(QuestWeather.Sunny);
 		}
 
-		// Token: 0x0600464B RID: 17995 RVA: 0x002124C8 File Offset: 0x002106C8
 		public virtual void OutAnim()
 		{
 		}
 
-		// Token: 0x0600464C RID: 17996 RVA: 0x002124CA File Offset: 0x002106CA
 		public virtual void InAnim()
 		{
 		}
 
-		// Token: 0x0600464D RID: 17997 RVA: 0x002124CC File Offset: 0x002106CC
 		public void SetWeatherType(QuestWeather weatherType)
 		{
 			PguiAECtrl rain = this.Rain;
@@ -7730,7 +7358,6 @@ public class SceneQuest : BaseScene
 			}
 		}
 
-		// Token: 0x0600464E RID: 17998 RVA: 0x002125E4 File Offset: 0x002107E4
 		public void SetCarObjType(QuestCarType carType)
 		{
 			foreach (GameObject gameObject in this.carObjList)
@@ -7747,7 +7374,6 @@ public class SceneQuest : BaseScene
 			}
 		}
 
-		// Token: 0x0600464F RID: 17999 RVA: 0x0021267C File Offset: 0x0021087C
 		public void PlayCarAnim()
 		{
 			if (this.mapCar != null && (!this.mapCar.IsPlaying() || !this.mapCar.m_AEImage.autoPlay))
@@ -7759,35 +7385,25 @@ public class SceneQuest : BaseScene
 			}
 		}
 
-		// Token: 0x04004BB3 RID: 19379
 		public GameObject baseObj;
 
-		// Token: 0x04004BB4 RID: 19380
 		public GameObject mapObj;
 
-		// Token: 0x04004BB5 RID: 19381
 		public GameObject bgObj;
 
-		// Token: 0x04004BB6 RID: 19382
 		public List<GameObject> carObjList = new List<GameObject>();
 
-		// Token: 0x04004BB7 RID: 19383
 		public PguiAECtrl mapCar;
 
-		// Token: 0x04004BB8 RID: 19384
 		public PguiAECtrl Rain;
 
-		// Token: 0x04004BB9 RID: 19385
 		public PguiAECtrl Rain_Sunny;
 
-		// Token: 0x04004BBA RID: 19386
 		public GameObject Cloudy;
 	}
 
-	// Token: 0x02000C90 RID: 3216
 	public class GuiChapterChange
 	{
-		// Token: 0x06004651 RID: 18001 RVA: 0x002126E0 File Offset: 0x002108E0
 		public GuiChapterChange(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -7800,35 +7416,26 @@ public class SceneQuest : BaseScene
 			this.modeEnd = new SceneQuest.GuiChapterChange.ModeEnd(baseTr.Find("Auth_ModeEnd"));
 		}
 
-		// Token: 0x06004652 RID: 18002 RVA: 0x0021278F File Offset: 0x0021098F
 		public void Destroy()
 		{
 			Object.Destroy(this.baseObj);
 			this.baseObj = null;
 		}
 
-		// Token: 0x04004BBB RID: 19387
 		public GameObject baseObj;
 
-		// Token: 0x04004BBC RID: 19388
 		public SceneQuest.GuiChapterChange.EndMain endMain;
 
-		// Token: 0x04004BBD RID: 19389
 		public SceneQuest.GuiChapterChange.EndSub endSub;
 
-		// Token: 0x04004BBE RID: 19390
 		public SceneQuest.GuiChapterChange.Start start;
 
-		// Token: 0x04004BBF RID: 19391
 		public SceneQuest.GuiChapterChange.Change change;
 
-		// Token: 0x04004BC0 RID: 19392
 		public SceneQuest.GuiChapterChange.ModeEnd modeEnd;
 
-		// Token: 0x020011A9 RID: 4521
 		public class EndMain
 		{
-			// Token: 0x060056CF RID: 22223 RVA: 0x00253B00 File Offset: 0x00251D00
 			public EndMain(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -7841,32 +7448,23 @@ public class SceneQuest : BaseScene
 				this.baseObj.SetActive(false);
 			}
 
-			// Token: 0x0400609C RID: 24732
 			public GameObject baseObj;
 
-			// Token: 0x0400609D RID: 24733
 			public PguiImageCtrl Bg_Pattern;
 
-			// Token: 0x0400609E RID: 24734
 			public PguiTextCtrl Num_Chapter;
 
-			// Token: 0x0400609F RID: 24735
 			public PguiTextCtrl Txt;
 
-			// Token: 0x040060A0 RID: 24736
 			public PguiTextCtrl Txt_ChapterName;
 
-			// Token: 0x040060A1 RID: 24737
 			public PguiTextCtrl Txt_Touch;
 
-			// Token: 0x040060A2 RID: 24738
 			public PguiAECtrl AEImage_ChapterEnd;
 		}
 
-		// Token: 0x020011AA RID: 4522
 		public class EndSub
 		{
-			// Token: 0x060056D0 RID: 22224 RVA: 0x00253BB0 File Offset: 0x00251DB0
 			public EndSub(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -7877,26 +7475,19 @@ public class SceneQuest : BaseScene
 				this.baseObj.SetActive(false);
 			}
 
-			// Token: 0x040060A3 RID: 24739
 			public GameObject baseObj;
 
-			// Token: 0x040060A4 RID: 24740
 			public PguiTextCtrl Txt_Touch;
 
-			// Token: 0x040060A5 RID: 24741
 			public PguiAECtrl AEImage_ChapterEnd;
 
-			// Token: 0x040060A6 RID: 24742
 			public PguiTextCtrl Num_Chapter;
 
-			// Token: 0x040060A7 RID: 24743
 			public PguiTextCtrl Txt_ChapterName;
 		}
 
-		// Token: 0x020011AB RID: 4523
 		public class Start
 		{
-			// Token: 0x060056D1 RID: 22225 RVA: 0x00253C34 File Offset: 0x00251E34
 			public Start(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -7913,44 +7504,31 @@ public class SceneQuest : BaseScene
 				this.baseObj.SetActive(false);
 			}
 
-			// Token: 0x040060A8 RID: 24744
 			public GameObject baseObj;
 
-			// Token: 0x040060A9 RID: 24745
 			public PguiImageCtrl Bg_Pattern;
 
-			// Token: 0x040060AA RID: 24746
 			public PguiTextCtrl Txt;
 
-			// Token: 0x040060AB RID: 24747
 			public PguiTextCtrl Num_Chapter;
 
-			// Token: 0x040060AC RID: 24748
 			public PguiTextCtrl Txt_ChapterName;
 
-			// Token: 0x040060AD RID: 24749
 			public PguiTextCtrl Txt_Touch;
 
-			// Token: 0x040060AE RID: 24750
 			public PguiAECtrl Bg;
 
-			// Token: 0x040060AF RID: 24751
 			public PguiAECtrl AEImage_ChapterStart;
 
-			// Token: 0x040060B0 RID: 24752
 			public GameObject Null_AEImage_ChapterAdd;
 
-			// Token: 0x040060B1 RID: 24753
 			public PguiTextCtrl Window_Num_Chapter;
 
-			// Token: 0x040060B2 RID: 24754
 			public PguiTextCtrl Window_Txt_ChapterName;
 		}
 
-		// Token: 0x020011AC RID: 4524
 		public class Change
 		{
-			// Token: 0x060056D2 RID: 22226 RVA: 0x00253D3C File Offset: 0x00251F3C
 			public Change(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -7965,38 +7543,27 @@ public class SceneQuest : BaseScene
 				this.baseObj.SetActive(false);
 			}
 
-			// Token: 0x040060B3 RID: 24755
 			public GameObject baseObj;
 
-			// Token: 0x040060B4 RID: 24756
 			public PguiImageCtrl Bg_Pattern;
 
-			// Token: 0x040060B5 RID: 24757
 			public PguiTextCtrl Txt_Chapter;
 
-			// Token: 0x040060B6 RID: 24758
 			public PguiTextCtrl Txt;
 
-			// Token: 0x040060B7 RID: 24759
 			public PguiTextCtrl Num_Chapter;
 
-			// Token: 0x040060B8 RID: 24760
 			public PguiTextCtrl Txt_Touch;
 
-			// Token: 0x040060B9 RID: 24761
 			public PguiAECtrl Bg;
 
-			// Token: 0x040060BA RID: 24762
 			public PguiAECtrl AEImage_ChapterStart;
 
-			// Token: 0x040060BB RID: 24763
 			public GameObject Null_AEImage_ChapterAdd;
 		}
 
-		// Token: 0x020011AD RID: 4525
 		public class ModeEnd
 		{
-			// Token: 0x060056D3 RID: 22227 RVA: 0x00253E18 File Offset: 0x00252018
 			public ModeEnd(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -8010,7 +7577,6 @@ public class SceneQuest : BaseScene
 				this.baseObj.SetActive(false);
 			}
 
-			// Token: 0x060056D4 RID: 22228 RVA: 0x00253EE0 File Offset: 0x002520E0
 			private void SetTextModeMain(string str)
 			{
 				this.Txt_Mode_Arai.transform.parent.gameObject.SetActive(false);
@@ -8018,7 +7584,6 @@ public class SceneQuest : BaseScene
 				this.Txt_Mode_Main.text = str;
 			}
 
-			// Token: 0x060056D5 RID: 22229 RVA: 0x00253F30 File Offset: 0x00252130
 			private void SetTextModeArai(string str)
 			{
 				this.Txt_Mode_Main.transform.parent.gameObject.SetActive(false);
@@ -8026,14 +7591,12 @@ public class SceneQuest : BaseScene
 				this.Txt_Mode_Arai.text = str;
 			}
 
-			// Token: 0x060056D6 RID: 22230 RVA: 0x00253F7F File Offset: 0x0025217F
 			private void SetActiveEnd(bool sw)
 			{
 				this.Txt_Info.gameObject.SetActive(sw);
 				this.Fnt_Tsuzuku.gameObject.SetActive(sw);
 			}
 
-			// Token: 0x060056D7 RID: 22231 RVA: 0x00253FA3 File Offset: 0x002521A3
 			public IEnumerator SequenceCtrl(QuestUtil.SelectData selectData)
 			{
 				this.touch = false;
@@ -8097,39 +7660,28 @@ public class SceneQuest : BaseScene
 				yield break;
 			}
 
-			// Token: 0x040060BC RID: 24764
 			public GameObject baseObj;
 
-			// Token: 0x040060BD RID: 24765
 			public PguiTextCtrl Txt_Mode_Main;
 
-			// Token: 0x040060BE RID: 24766
 			public PguiTextCtrl Txt_Mode_Arai;
 
-			// Token: 0x040060BF RID: 24767
 			public PguiTextCtrl Txt_Info;
 
-			// Token: 0x040060C0 RID: 24768
 			public PguiAECtrl AEImage_ModeEnd;
 
-			// Token: 0x040060C1 RID: 24769
 			public PguiRawImageCtrl Image_Mode_Arai;
 
-			// Token: 0x040060C2 RID: 24770
 			public PguiRawImageCtrl Image_Mode_Main;
 
-			// Token: 0x040060C3 RID: 24771
 			public PguiImageCtrl Fnt_Tsuzuku;
 
-			// Token: 0x040060C4 RID: 24772
 			private bool touch;
 		}
 	}
 
-	// Token: 0x02000C91 RID: 3217
 	public class GUI
 	{
-		// Token: 0x06004653 RID: 18003 RVA: 0x002127A4 File Offset: 0x002109A4
 		public GUI(GameObject basePanel, GameObject eventCmn)
 		{
 			this.basePanel = basePanel;
@@ -8144,14 +7696,12 @@ public class SceneQuest : BaseScene
 			this.selectObjs.Add(this.chapterSelect.baseObj);
 		}
 
-		// Token: 0x06004654 RID: 18004 RVA: 0x002128B4 File Offset: 0x00210AB4
 		public void DeactivateGameObject()
 		{
 			this.basePanel.transform.Find("AraiQuest_ChapterChange").gameObject.SetActive(false);
 			this.basePanel.transform.Find("EtceteraQuest_ChapterChange").gameObject.SetActive(false);
 		}
 
-		// Token: 0x06004655 RID: 18005 RVA: 0x00212904 File Offset: 0x00210B04
 		public void SwitchSelector(SceneQuest.GUI.SetupSwitchSelectorParam param)
 		{
 			foreach (GameObject gameObject in this.selectObjs)
@@ -8296,7 +7846,6 @@ public class SceneQuest : BaseScene
 			updateCb();
 		}
 
-		// Token: 0x06004656 RID: 18006 RVA: 0x00212DDC File Offset: 0x00210FDC
 		public void SetActive(bool b, SceneQuest.IMapData mapDataGameObj)
 		{
 			this.basePanel.SetActive(b);
@@ -8318,41 +7867,30 @@ public class SceneQuest : BaseScene
 			}
 		}
 
-		// Token: 0x06004657 RID: 18007 RVA: 0x00212E45 File Offset: 0x00211045
 		public void Destroy()
 		{
 			Object.Destroy(this.basePanel);
 			this.basePanel = null;
 		}
 
-		// Token: 0x04004BC1 RID: 19393
 		public GameObject basePanel;
 
-		// Token: 0x04004BC2 RID: 19394
 		public SceneQuest.GUI.QuestTop questTop;
 
-		// Token: 0x04004BC3 RID: 19395
 		public SceneQuest.GUI.ChapterSelect chapterSelect;
 
-		// Token: 0x04004BC4 RID: 19396
 		public SceneQuest.GUI.LocationInfo locationInfo;
 
-		// Token: 0x04004BC5 RID: 19397
 		public SceneQuest.GUI.CharaGrow charaGrow;
 
-		// Token: 0x04004BC6 RID: 19398
 		public SceneQuest.GUI.LocationEvent locationEvent;
 
-		// Token: 0x04004BC7 RID: 19399
 		public SceneQuest.GUI.SideStory sideStory;
 
-		// Token: 0x04004BC8 RID: 19400
 		public List<GameObject> selectObjs = new List<GameObject>();
 
-		// Token: 0x020011AE RID: 4526
 		public class QuestTop
 		{
-			// Token: 0x060056DA RID: 22234 RVA: 0x00253FE8 File Offset: 0x002521E8
 			public QuestTop(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -8421,7 +7959,6 @@ public class SceneQuest : BaseScene
 				this.selAssistantCtrl.Init(SelAssistantCtrl.Scene.QUEST);
 			}
 
-			// Token: 0x060056DB RID: 22235 RVA: 0x0025446C File Offset: 0x0025266C
 			public void UpdateCampaignInfoCategory(QuestStaticChapter.Category category, int chapterId)
 			{
 				List<string> list = new List<string>(QuestUtil.GetCampaignMessageList(category, chapterId));
@@ -8458,7 +7995,6 @@ public class SceneQuest : BaseScene
 				}
 			}
 
-			// Token: 0x060056DC RID: 22236 RVA: 0x00254518 File Offset: 0x00252718
 			public void ResetCampaignInfoCategory(QuestStaticChapter.Category category, int chapterId)
 			{
 				switch (category)
@@ -8494,127 +8030,86 @@ public class SceneQuest : BaseScene
 				}
 			}
 
-			// Token: 0x040060C5 RID: 24773
 			public GameObject baseObj;
 
-			// Token: 0x040060C6 RID: 24774
 			public SceneQuest.GUI.QuestTop.StoryQuestParts storyQuestParts;
 
-			// Token: 0x040060C7 RID: 24775
 			public PguiButtonCtrl Btn_GrowQuest;
 
-			// Token: 0x040060C8 RID: 24776
 			public PguiNestPrefab GrowQuest_Mark_New;
 
-			// Token: 0x040060C9 RID: 24777
 			public SceneQuest.GUI.QuestTop.Campaign CampaignGrowQuest;
 
-			// Token: 0x040060CA RID: 24778
 			public SimpleAnimation Btn_GrowQuestAnim;
 
-			// Token: 0x040060CB RID: 24779
 			public MarkLockCtrl markLockGrowQuest;
 
-			// Token: 0x040060CC RID: 24780
 			public PguiButtonCtrl Btn_CharQuest;
 
-			// Token: 0x040060CD RID: 24781
 			public PguiNestPrefab CharQuest_Mark_New;
 
-			// Token: 0x040060CE RID: 24782
 			public SceneQuest.GUI.QuestTop.Campaign CampaignCharQuest;
 
-			// Token: 0x040060CF RID: 24783
 			public MarkLockCtrl markLockCharaQuest;
 
-			// Token: 0x040060D0 RID: 24784
 			public PguiButtonCtrl Btn_AnotherStory;
 
-			// Token: 0x040060D1 RID: 24785
 			public PguiNestPrefab AnotherStory_Mark_New;
 
-			// Token: 0x040060D2 RID: 24786
 			public SceneQuest.GUI.QuestTop.Campaign CampaignAnotherStory;
 
-			// Token: 0x040060D3 RID: 24787
 			public MarkLockCtrl markLockAnotherStoryQuest;
 
-			// Token: 0x040060D4 RID: 24788
 			public PguiButtonCtrl Btn_Training;
 
-			// Token: 0x040060D5 RID: 24789
 			public PguiNestPrefab Training_Mark_New;
 
-			// Token: 0x040060D6 RID: 24790
 			public SceneQuest.GUI.QuestTop.Campaign CampaignTraining;
 
-			// Token: 0x040060D7 RID: 24791
 			public MarkLockCtrl markLockTrainingQuest;
 
-			// Token: 0x040060D8 RID: 24792
 			public PguiButtonCtrl Btn_EventAll;
 
-			// Token: 0x040060D9 RID: 24793
 			public PguiImageCtrl Img_Yaji_Down;
 
-			// Token: 0x040060DA RID: 24794
 			public PguiImageCtrl Img_Yaji_Up;
 
-			// Token: 0x040060DB RID: 24795
 			public ReuseScroll ScrollView;
 
-			// Token: 0x040060DC RID: 24796
 			public GameObject EventGroup;
 
-			// Token: 0x040060DD RID: 24797
 			public RenderTextureChara renderTextureChara;
 
-			// Token: 0x040060DE RID: 24798
 			public SimpleAnimation Window_EventAll;
 
-			// Token: 0x040060DF RID: 24799
 			public List<SceneQuest.GUI.QuestTop.EventParts> eventPartsList;
 
-			// Token: 0x040060E0 RID: 24800
 			public List<PguiButtonCtrl> eventButton;
 
-			// Token: 0x040060E1 RID: 24801
 			public List<PguiButtonCtrl> eventBannerButton = new List<PguiButtonCtrl>();
 
-			// Token: 0x040060E2 RID: 24802
 			public SimpleAnimation ladyBugAnim;
 
-			// Token: 0x040060E3 RID: 24803
 			public SimpleAnimation pallAnim;
 
-			// Token: 0x040060E4 RID: 24804
 			public PguiButtonCtrl Btn_EtceteraQuest;
 
-			// Token: 0x040060E5 RID: 24805
 			public PguiNestPrefab EtceteraQuest_Mark_New;
 
-			// Token: 0x040060E6 RID: 24806
 			public SceneQuest.GUI.QuestTop.Campaign CampaignEtceteraQuest;
 
-			// Token: 0x040060E7 RID: 24807
 			public SimpleAnimation Btn_EtceteraQuestAnim;
 
-			// Token: 0x040060E8 RID: 24808
 			public MarkLockCtrl markLockEtceteraQuest;
 
-			// Token: 0x040060E9 RID: 24809
 			public PguiButtonCtrl Btn_AssistantEdit;
 
-			// Token: 0x040060EA RID: 24810
 			public MarkLockCtrl markLockAssistantEdit;
 
-			// Token: 0x040060EB RID: 24811
 			public SelAssistantCtrl selAssistantCtrl;
 
-			// Token: 0x0200123B RID: 4667
 			public class Campaign
 			{
-				// Token: 0x06005834 RID: 22580 RVA: 0x0025AA78 File Offset: 0x00258C78
 				public Campaign(Transform baseTr)
 				{
 					this.go = baseTr.Find("Campaign").gameObject;
@@ -8627,7 +8122,6 @@ public class SceneQuest : BaseScene
 					this.count = 0;
 				}
 
-				// Token: 0x06005835 RID: 22581 RVA: 0x0025AAF4 File Offset: 0x00258CF4
 				public void ResetCampaign()
 				{
 					SimpleAnimation componentInChildren = this.go.GetComponentInChildren<SimpleAnimation>();
@@ -8637,7 +8131,6 @@ public class SceneQuest : BaseScene
 					}
 				}
 
-				// Token: 0x06005836 RID: 22582 RVA: 0x0025AB20 File Offset: 0x00258D20
 				public void DispCampaign(List<string> msgList)
 				{
 					string text = msgList.Find((string item) => item.Equals(QuestUtil.CampaignInfo.DojoText));
@@ -8703,39 +8196,28 @@ public class SceneQuest : BaseScene
 					}
 				}
 
-				// Token: 0x040063CB RID: 25547
 				public GameObject go;
 
-				// Token: 0x040063CC RID: 25548
 				public PguiTextCtrl text;
 
-				// Token: 0x040063CD RID: 25549
 				public PguiTextCtrl dojoText;
 
-				// Token: 0x040063CE RID: 25550
 				public int count;
 			}
 
-			// Token: 0x0200123C RID: 4668
 			public class EventParts
 			{
-				// Token: 0x040063CF RID: 25551
 				public PguiRawImageCtrl bannerImage;
 
-				// Token: 0x040063D0 RID: 25552
 				public PguiTextCtrl bannerText;
 
-				// Token: 0x040063D1 RID: 25553
 				public PguiImageCtrl Mark_EventOpen;
 
-				// Token: 0x040063D2 RID: 25554
 				public PguiImageCtrl Mark_EventBefore;
 			}
 
-			// Token: 0x0200123D RID: 4669
 			public class StoryQuestParts
 			{
-				// Token: 0x06005838 RID: 22584 RVA: 0x0025AD00 File Offset: 0x00258F00
 				public StoryQuestParts(Transform baseTr)
 				{
 					this.Btn_StoryQuest = baseTr.Find("Btn_StoryQuest/Base").GetComponent<PguiButtonCtrl>();
@@ -8781,7 +8263,6 @@ public class SceneQuest : BaseScene
 					this.markLock = this.Btn_StoryQuest.transform.Find("Mark_Lock").GetComponent<MarkLockCtrl>();
 				}
 
-				// Token: 0x06005839 RID: 22585 RVA: 0x0025AF28 File Offset: 0x00259128
 				public void Setup(int currentIndex)
 				{
 					this.Btn_StorySelectL.SetSoundType(this.Btn_StorySelectL.ActEnable ? PguiButtonCtrl.SoundType.DEFAULT : PguiButtonCtrl.SoundType.INVALID);
@@ -8834,7 +8315,6 @@ public class SceneQuest : BaseScene
 					component2.gameObject.SetActive(false);
 				}
 
-				// Token: 0x0600583A RID: 22586 RVA: 0x0025B108 File Offset: 0x00259308
 				public int GetMainStorySize()
 				{
 					foreach (SceneQuest.GUI.QuestTop.StoryQuestParts.PageDot pageDot in this.PageDots)
@@ -8848,7 +8328,6 @@ public class SceneQuest : BaseScene
 					return this.PageDots.FindAll((SceneQuest.GUI.QuestTop.StoryQuestParts.PageDot item) => item.pageDot.gameObject.activeSelf).Count;
 				}
 
-				// Token: 0x0600583B RID: 22587 RVA: 0x0025B220 File Offset: 0x00259420
 				public List<QuestStaticChapter.Category> GetBtnStorySelectLNewList(int currentIndex)
 				{
 					List<QuestStaticChapter.Category> list = new List<QuestStaticChapter.Category>();
@@ -8859,7 +8338,6 @@ public class SceneQuest : BaseScene
 					return SceneQuest.GetBtnLeftCategoryList(currentIndex, list);
 				}
 
-				// Token: 0x0600583C RID: 22588 RVA: 0x0025B288 File Offset: 0x00259488
 				public List<QuestStaticChapter.Category> GetBtnStorySelectRNewList(int currentIndex)
 				{
 					List<QuestStaticChapter.Category> list = new List<QuestStaticChapter.Category>();
@@ -8870,7 +8348,6 @@ public class SceneQuest : BaseScene
 					return SceneQuest.GetBtnRightCategoryList(currentIndex, list);
 				}
 
-				// Token: 0x0600583D RID: 22589 RVA: 0x0025B2F0 File Offset: 0x002594F0
 				public void SetActiveMarkNew(int count)
 				{
 					bool flag = SceneQuest.SetDispNew(DataManager.DmQuest.GetPlayableMapIdList(QuestStaticChapter.Category.STORY));
@@ -8899,66 +8376,45 @@ public class SceneQuest : BaseScene
 					}
 				}
 
-				// Token: 0x040063D3 RID: 25555
 				public PguiButtonCtrl Btn_StoryQuest;
 
-				// Token: 0x040063D4 RID: 25556
 				public PguiNestPrefab StoryQuest_Mark_New;
 
-				// Token: 0x040063D5 RID: 25557
 				public SceneQuest.GUI.QuestTop.Campaign CampaignStoryQuest;
 
-				// Token: 0x040063D6 RID: 25558
 				public SimpleAnimation Btn_StoryQuestAnim;
 
-				// Token: 0x040063D7 RID: 25559
 				public SimpleAnimation StoryPhoto_Anim;
 
-				// Token: 0x040063D8 RID: 25560
 				public PguiImageCtrl Fint_Story;
 
-				// Token: 0x040063D9 RID: 25561
 				public PguiButtonCtrl Btn_StorySelectR;
 
-				// Token: 0x040063DA RID: 25562
 				public PguiButtonCtrl Btn_StorySelectL;
 
-				// Token: 0x040063DB RID: 25563
 				public GameObject Btn_StorySelectR_New;
 
-				// Token: 0x040063DC RID: 25564
 				public GameObject Btn_StorySelectL_New;
 
-				// Token: 0x040063DD RID: 25565
 				private List<SceneQuest.GUI.QuestTop.StoryQuestParts.PageDot> PageDots;
 
-				// Token: 0x040063DE RID: 25566
 				public PguiRawImageCtrl Texture_StoryPhoto;
 
-				// Token: 0x040063DF RID: 25567
 				public MarkLockCtrl markLock;
 
-				// Token: 0x02001253 RID: 4691
 				private class PageDot
 				{
-					// Token: 0x0400645A RID: 25690
 					public PguiImageCtrl pageDot;
 
-					// Token: 0x0400645B RID: 25691
 					public QuestStaticChapter.Category category;
 				}
 			}
 		}
 
-		// Token: 0x020011AF RID: 4527
 		public class ChapterSelect
 		{
-			// Token: 0x17000CFE RID: 3326
-			// (get) Token: 0x060056DE RID: 22238 RVA: 0x002545B7 File Offset: 0x002527B7
-			// (set) Token: 0x060056DD RID: 22237 RVA: 0x002545AE File Offset: 0x002527AE
 			public float DefaultScrollbarHeight { get; private set; }
 
-			// Token: 0x060056DF RID: 22239 RVA: 0x002545C0 File Offset: 0x002527C0
 			public ChapterSelect(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -8987,7 +8443,6 @@ public class SceneQuest : BaseScene
 				};
 			}
 
-			// Token: 0x060056E0 RID: 22240 RVA: 0x002547EC File Offset: 0x002529EC
 			public void InactiveParts()
 			{
 				foreach (SceneQuest.GUI.ChapterSelect.Parts parts in this.parts)
@@ -8996,7 +8451,6 @@ public class SceneQuest : BaseScene
 				}
 			}
 
-			// Token: 0x060056E1 RID: 22241 RVA: 0x00254844 File Offset: 0x00252A44
 			public void UpdateCampaignInfoCategory(QuestStaticChapter.Category category, int chapterId)
 			{
 				List<string> list = new List<string>(QuestUtil.GetCampaignMessageList(category, chapterId));
@@ -9004,71 +8458,51 @@ public class SceneQuest : BaseScene
 				this.campaignInfo.DispCampaign(list, list2);
 			}
 
-			// Token: 0x060056E2 RID: 22242 RVA: 0x00254878 File Offset: 0x00252A78
 			public void ResetCampaignInfoCategory()
 			{
 				this.campaignInfo.ResetCampaign();
 			}
 
-			// Token: 0x060056E3 RID: 22243 RVA: 0x00254885 File Offset: 0x00252A85
 			public void SetupOffset(Vector3 pos)
 			{
 				this.OffsetGameObject.transform.localPosition = pos;
 				this.scrollbarTr.sizeDelta = new Vector2(this.scrollbarTr.sizeDelta.x, this.DefaultScrollbarHeight + pos.y);
 			}
 
-			// Token: 0x040060EC RID: 24812
 			public GameObject baseObj;
 
-			// Token: 0x040060ED RID: 24813
 			public PguiButtonCtrl Btn_SortFilterOnOff;
 
-			// Token: 0x040060EE RID: 24814
 			public PguiButtonCtrl Btn_Info;
 
-			// Token: 0x040060EF RID: 24815
 			public QuestButtonGroupCtrl questButtonGroup;
 
-			// Token: 0x040060F0 RID: 24816
 			public RenderTextureChara renderTextureChara;
 
-			// Token: 0x040060F1 RID: 24817
 			public RenderTextureChara renderTextureChara2;
 
-			// Token: 0x040060F2 RID: 24818
 			public PguiButtonCtrl Btn_Yaji_Left;
 
-			// Token: 0x040060F3 RID: 24819
 			public PguiButtonCtrl Btn_Yaji_Right;
 
-			// Token: 0x040060F4 RID: 24820
 			public PguiButtonCtrl Btn_Sel_Difficult;
 
-			// Token: 0x040060F5 RID: 24821
 			public QuestUtil.CampaignInfo campaignInfo;
 
-			// Token: 0x040060F6 RID: 24822
 			public MarkLockCtrl markLock;
 
-			// Token: 0x040060F7 RID: 24823
 			public PguiButtonCtrl Btn_Mission;
 
-			// Token: 0x040060F8 RID: 24824
 			public PguiTextCtrl Txt_Mission_Num;
 
-			// Token: 0x040060F9 RID: 24825
 			public GameObject OffsetGameObject;
 
-			// Token: 0x040060FA RID: 24826
 			public RectTransform scrollbarTr;
 
-			// Token: 0x040060FB RID: 24827
 			public List<SceneQuest.GUI.ChapterSelect.Parts> parts;
 
-			// Token: 0x0200123E RID: 4670
 			public class Parts
 			{
-				// Token: 0x0600583E RID: 22590 RVA: 0x0025B3B8 File Offset: 0x002595B8
 				public Parts(Transform baseTr)
 				{
 					this.baseObj = baseTr.gameObject;
@@ -9078,21 +8512,16 @@ public class SceneQuest : BaseScene
 					this.Txt_CharaName.text = "";
 				}
 
-				// Token: 0x040063E0 RID: 25568
 				public GameObject baseObj;
 
-				// Token: 0x040063E1 RID: 25569
 				public PguiTextCtrl Txt_Serif;
 
-				// Token: 0x040063E2 RID: 25570
 				public PguiTextCtrl Txt_CharaName;
 			}
 		}
 
-		// Token: 0x020011B0 RID: 4528
 		public class LocationInfo
 		{
-			// Token: 0x060056E4 RID: 22244 RVA: 0x002548C8 File Offset: 0x00252AC8
 			public LocationInfo(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -9116,46 +8545,32 @@ public class SceneQuest : BaseScene
 				};
 			}
 
-			// Token: 0x040060FD RID: 24829
 			public GameObject baseObj;
 
-			// Token: 0x040060FE RID: 24830
 			public Transform CharaNameTr;
 
-			// Token: 0x040060FF RID: 24831
 			public PguiTextCtrl Txt_CharaName;
 
-			// Token: 0x04006100 RID: 24832
 			public RectTransform Txt_CharaName_ReTr;
 
-			// Token: 0x04006101 RID: 24833
 			public Vector2 Txt_CharaName_Initial_Pos;
 
-			// Token: 0x04006102 RID: 24834
 			public Vector2 Txt_CharaName_Initial_Size;
 
-			// Token: 0x04006103 RID: 24835
 			public PguiImageCtrl Icon_Atr;
 
-			// Token: 0x04006104 RID: 24836
 			public PguiImageCtrl Icon_SubAtr;
 
-			// Token: 0x04006105 RID: 24837
 			public PguiButtonCtrl Btn_MoreInfo;
 
-			// Token: 0x04006106 RID: 24838
 			public PguiImageCtrl Mark_Hard;
 
-			// Token: 0x04006107 RID: 24839
 			public List<SceneQuest.GUI.LocationInfo.Location> location;
 
-			// Token: 0x04006108 RID: 24840
 			public GameObject All;
 
-			// Token: 0x0200123F RID: 4671
 			public class Location
 			{
-				// Token: 0x0600583F RID: 22591 RVA: 0x0025B423 File Offset: 0x00259623
 				public Location(Transform baseTr)
 				{
 					this.baseObj = baseTr.gameObject;
@@ -9163,18 +8578,14 @@ public class SceneQuest : BaseScene
 					this.Txt_Location.text = "";
 				}
 
-				// Token: 0x040063E3 RID: 25571
 				public GameObject baseObj;
 
-				// Token: 0x040063E4 RID: 25572
 				public PguiTextCtrl Txt_Location;
 			}
 		}
 
-		// Token: 0x020011B1 RID: 4529
 		public class LocationEvent
 		{
-			// Token: 0x060056E5 RID: 22245 RVA: 0x00254A34 File Offset: 0x00252C34
 			public LocationEvent(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -9191,28 +8602,20 @@ public class SceneQuest : BaseScene
 				this.Txt_CharaName.text = "";
 			}
 
-			// Token: 0x04006109 RID: 24841
 			public GameObject baseObj;
 
-			// Token: 0x0400610A RID: 24842
 			public PguiButtonCtrl Btn_ShopEvent;
 
-			// Token: 0x0400610B RID: 24843
 			public PguiRawImageCtrl Banner;
 
-			// Token: 0x0400610C RID: 24844
 			public PguiTextCtrl Txt_CharaName;
 
-			// Token: 0x0400610D RID: 24845
 			public PguiTextCtrl Txt_Serif;
 
-			// Token: 0x0400610E RID: 24846
 			public List<SceneQuest.GUI.LocationEvent.ItemOwnBase> itemOwnBases;
 
-			// Token: 0x02001240 RID: 4672
 			public class ItemOwnBase
 			{
-				// Token: 0x06005840 RID: 22592 RVA: 0x0025B453 File Offset: 0x00259653
 				public ItemOwnBase(Transform baseTr)
 				{
 					this.baseObj = baseTr.gameObject;
@@ -9220,21 +8623,16 @@ public class SceneQuest : BaseScene
 					this.Num_Own = baseTr.Find("Num_Own").GetComponent<PguiTextCtrl>();
 				}
 
-				// Token: 0x040063E5 RID: 25573
 				public GameObject baseObj;
 
-				// Token: 0x040063E6 RID: 25574
 				public PguiRawImageCtrl Icon_Img;
 
-				// Token: 0x040063E7 RID: 25575
 				public PguiTextCtrl Num_Own;
 			}
 		}
 
-		// Token: 0x020011B2 RID: 4530
 		public class CharaGrow
 		{
-			// Token: 0x060056E6 RID: 22246 RVA: 0x00254B04 File Offset: 0x00252D04
 			public CharaGrow(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -9248,23 +8646,17 @@ public class SceneQuest : BaseScene
 				this.ItemLoop = baseTr.Find("ItemLoop").GetComponent<PguiAECtrl>();
 			}
 
-			// Token: 0x0400610F RID: 24847
 			public GameObject baseObj;
 
-			// Token: 0x04006110 RID: 24848
 			public PguiButtonCtrl Btn_Schedule;
 
-			// Token: 0x04006111 RID: 24849
 			public List<IconItemCtrl> Icon_Item;
 
-			// Token: 0x04006112 RID: 24850
 			public PguiAECtrl ItemLoop;
 		}
 
-		// Token: 0x020011B3 RID: 4531
 		public class SideStory
 		{
-			// Token: 0x060056E7 RID: 22247 RVA: 0x00254BA8 File Offset: 0x00252DA8
 			public SideStory(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -9274,68 +8666,47 @@ public class SceneQuest : BaseScene
 				this.Txt_Info.text = "";
 			}
 
-			// Token: 0x04006113 RID: 24851
 			public GameObject baseObj;
 
-			// Token: 0x04006114 RID: 24852
 			public PguiTextCtrl Txt_Title;
 
-			// Token: 0x04006115 RID: 24853
 			public PguiTextCtrl Txt_Info;
 		}
 
-		// Token: 0x020011B4 RID: 4532
 		public class SetupSwitchSelectorParam
 		{
-			// Token: 0x04006116 RID: 24854
 			public GameObject nextObj;
 
-			// Token: 0x04006117 RID: 24855
 			public GameObject currentObj;
 
-			// Token: 0x04006118 RID: 24856
 			public bool enableBlur;
 
-			// Token: 0x04006119 RID: 24857
 			public bool isMapNeedQuest;
 
-			// Token: 0x0400611A RID: 24858
 			public SceneQuest.UpdateCallback updateCb;
 
-			// Token: 0x0400611B RID: 24859
 			public SceneQuest.TouchCallback touchRegistCb;
 
-			// Token: 0x0400611C RID: 24860
 			public SceneQuest.TouchCallback touchReleaseCb;
 
-			// Token: 0x0400611D RID: 24861
 			public SceneQuest.TouchCallback releaseRegistCb;
 
-			// Token: 0x0400611E RID: 24862
 			public SceneQuest.TouchCallback releaseReleaseCb;
 
-			// Token: 0x0400611F RID: 24863
 			public SceneQuest.TouchCallback startRegistCb;
 
-			// Token: 0x04006120 RID: 24864
 			public SceneQuest.TouchCallback startReleaseCb;
 
-			// Token: 0x04006121 RID: 24865
 			public SceneQuest.IMapData mapDataGameObj;
 
-			// Token: 0x04006122 RID: 24866
 			public GameObject pointSelectObj;
 
-			// Token: 0x04006123 RID: 24867
 			public GameObject charaSelectObj;
 
-			// Token: 0x04006124 RID: 24868
 			public QuestUtil.SelectData selectData;
 
-			// Token: 0x04006125 RID: 24869
 			public UnityAction pointSelectActionCB;
 
-			// Token: 0x04006126 RID: 24870
 			public UnityAction charaSelectActionCB;
 		}
 	}

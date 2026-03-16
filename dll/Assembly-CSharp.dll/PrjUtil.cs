@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -12,10 +12,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x020000F9 RID: 249
 public class PrjUtil
 {
-	// Token: 0x06000BE2 RID: 3042 RVA: 0x0004621A File Offset: 0x0004441A
 	public static IEnumerator Wait(float second)
 	{
 		float timeSinceStartup = Time.realtimeSinceStartup;
@@ -26,7 +24,6 @@ public class PrjUtil
 		yield break;
 	}
 
-	// Token: 0x06000BE3 RID: 3043 RVA: 0x0004622C File Offset: 0x0004442C
 	public static Color GetColorByCode(string code)
 	{
 		Color color = Color.white;
@@ -37,13 +34,11 @@ public class PrjUtil
 		return color;
 	}
 
-	// Token: 0x06000BE4 RID: 3044 RVA: 0x00046250 File Offset: 0x00044450
 	public static string MakeMessage(string message)
 	{
 		return message;
 	}
 
-	// Token: 0x06000BE5 RID: 3045 RVA: 0x00046254 File Offset: 0x00044454
 	public static string ModifiedName(string name)
 	{
 		int num = 10;
@@ -52,13 +47,11 @@ public class PrjUtil
 		return text.Substring(0, Mathf.Min(text.Length, num));
 	}
 
-	// Token: 0x06000BE6 RID: 3046 RVA: 0x0004629D File Offset: 0x0004449D
 	public static string ModifiedComment(string comment)
 	{
 		return comment.Replace(" ", "\u3000");
 	}
 
-	// Token: 0x06000BE7 RID: 3047 RVA: 0x000462B0 File Offset: 0x000444B0
 	public static string ModifiedPartyName(string name)
 	{
 		int num = 15;
@@ -67,7 +60,6 @@ public class PrjUtil
 		return text.Substring(0, Mathf.Min(text.Length, num));
 	}
 
-	// Token: 0x06000BE8 RID: 3048 RVA: 0x000462FC File Offset: 0x000444FC
 	public static string ModifiedRoomName(string name)
 	{
 		int num = 20;
@@ -76,7 +68,6 @@ public class PrjUtil
 		return text.Substring(0, Mathf.Min(text.Length, num));
 	}
 
-	// Token: 0x06000BE9 RID: 3049 RVA: 0x00046348 File Offset: 0x00044548
 	public static string FbxPropertiesFilePath(string fbxPath)
 	{
 		string directoryName = Path.GetDirectoryName(fbxPath);
@@ -84,7 +75,6 @@ public class PrjUtil
 		return directoryName + "/" + fileNameWithoutExtension + ".txt";
 	}
 
-	// Token: 0x06000BEA RID: 3050 RVA: 0x00046374 File Offset: 0x00044574
 	public static Dictionary<string, List<MayaClip>> ReadFbxProperties(string fbxPath)
 	{
 		Dictionary<string, List<MayaClip>> dictionary = new Dictionary<string, List<MayaClip>>();
@@ -113,7 +103,6 @@ public class PrjUtil
 		return dictionary;
 	}
 
-	// Token: 0x06000BEB RID: 3051 RVA: 0x00046414 File Offset: 0x00044614
 	public static void AddTouchEventTrigger(RectTransform target, UnityAction<Transform> callback)
 	{
 		ClickEventTrigger clickEventTrigger = target.GetComponent<ClickEventTrigger>();
@@ -130,7 +119,6 @@ public class PrjUtil
 		graphic.raycastTarget = true;
 	}
 
-	// Token: 0x06000BEC RID: 3052 RVA: 0x00046468 File Offset: 0x00044668
 	public static void AddTouchEventTrigger(GameObject target, UnityAction<Transform> callback)
 	{
 		RectTransform rectTransform = target.transform as RectTransform;
@@ -140,7 +128,6 @@ public class PrjUtil
 		}
 	}
 
-	// Token: 0x06000BED RID: 3053 RVA: 0x00046494 File Offset: 0x00044694
 	public static void RemoveTouchEventTrigger(RectTransform target)
 	{
 		ClickEventTrigger clickEventTrigger = target.GetComponent<ClickEventTrigger>();
@@ -151,7 +138,6 @@ public class PrjUtil
 		clickEventTrigger.callback = null;
 	}
 
-	// Token: 0x06000BEE RID: 3054 RVA: 0x000464C4 File Offset: 0x000446C4
 	public static void RemoveTouchEventTrigger(GameObject target)
 	{
 		RectTransform rectTransform = target.transform as RectTransform;
@@ -161,7 +147,6 @@ public class PrjUtil
 		}
 	}
 
-	// Token: 0x06000BEF RID: 3055 RVA: 0x000464EC File Offset: 0x000446EC
 	private static int CalcParamInternal(int lvNow, int lvMax, int prmMin, int prmMax, int prmMid, int lvMid)
 	{
 		int num2;
@@ -178,31 +163,26 @@ public class PrjUtil
 		return num2;
 	}
 
-	// Token: 0x06000BF0 RID: 3056 RVA: 0x00046558 File Offset: 0x00044758
 	public static PrjUtil.ParamPreset CalcParamByChara(CharaDynamicData cdd, int level, int rank)
 	{
 		return PrjUtil.CalcParamByChara(cdd.id, level, rank, cdd.promoteNum, cdd.promoteFlag, cdd.haveClothesIdList, null, cdd.PhotoPocket, null, null, null);
 	}
 
-	// Token: 0x06000BF1 RID: 3057 RVA: 0x00046590 File Offset: 0x00044790
 	public static PrjUtil.ParamPreset CalcParamByChara(CharaDynamicData cdd, int level, int rank, int promoteNum, List<bool> promoteFlagList)
 	{
 		return PrjUtil.CalcParamByChara(cdd.id, level, rank, promoteNum, promoteFlagList, cdd.haveClothesIdList, null, cdd.PhotoPocket, null, null, null);
 	}
 
-	// Token: 0x06000BF2 RID: 3058 RVA: 0x000465C0 File Offset: 0x000447C0
 	public static PrjUtil.ParamPreset CalcParamByChara(CharaDynamicData cdd, List<PhotoPackData> equipPhotoList = null, List<DataManagerChara.BonusCharaData> bonusCharaList = null, PrjUtil.ParamPreset activeKizunaBuff = null)
 	{
 		return PrjUtil.CalcParamByChara(cdd.id, cdd.level, cdd.rank, cdd.promoteNum, cdd.promoteFlag, cdd.haveClothesIdList, null, cdd.PhotoPocket, equipPhotoList, bonusCharaList, activeKizunaBuff);
 	}
 
-	// Token: 0x06000BF3 RID: 3059 RVA: 0x00046600 File Offset: 0x00044800
 	public static PrjUtil.ParamPreset CalcBattleParamByChara(CharaDynamicData cdd, List<PhotoPackData> equipPhotoList = null, List<DataManagerChara.BonusCharaData> bonusCharaList = null, PrjUtil.ParamPreset activeKizunaBuff = null)
 	{
 		return PrjUtil.CalcParamByChara(cdd.id, cdd.level, cdd.rank, cdd.promoteNum, cdd.promoteFlag, cdd.haveClothesIdList, cdd.accessory, cdd.PhotoPocket, equipPhotoList, bonusCharaList, activeKizunaBuff);
 	}
 
-	// Token: 0x06000BF4 RID: 3060 RVA: 0x00046648 File Offset: 0x00044848
 	public static PrjUtil.ParamPreset CalcParamByCharaWithKemoBoard(CharaPackData cpd)
 	{
 		CharaDynamicData dynamicData = cpd.dynamicData;
@@ -218,7 +198,6 @@ public class PrjUtil
 		return paramPreset;
 	}
 
-	// Token: 0x06000BF5 RID: 3061 RVA: 0x00046734 File Offset: 0x00044934
 	private static PrjUtil.ParamPreset CalcParamByChara(int charaId, int level, int rank, int promoteNum, List<bool> promoteFlag, List<int> haveClothesIdList, DataManagerCharaAccessory.Accessory accessory, List<CharaDynamicData.PPParam> photoPocketList, List<PhotoPackData> equipPhotoList, List<DataManagerChara.BonusCharaData> bonusCharaList, PrjUtil.ParamPreset activeKizunaBuff)
 	{
 		List<bool> list = new List<bool>();
@@ -362,7 +341,6 @@ public class PrjUtil
 		return paramPreset;
 	}
 
-	// Token: 0x06000BF6 RID: 3062 RVA: 0x00047130 File Offset: 0x00045330
 	public static PrjUtil.ParamPreset CalcParamByEnemy(EnemyStaticBase esb, int charaLevel)
 	{
 		return new PrjUtil.ParamPreset
@@ -374,13 +352,11 @@ public class PrjUtil
 		};
 	}
 
-	// Token: 0x06000BF7 RID: 3063 RVA: 0x000471C3 File Offset: 0x000453C3
 	public static PrjUtil.ParamPreset CalcParamByPhoto(PhotoPackData ppd)
 	{
 		return PrjUtil.CalcParamByPhoto(ppd.staticData, ppd.dynamicData.level);
 	}
 
-	// Token: 0x06000BF8 RID: 3064 RVA: 0x000471DC File Offset: 0x000453DC
 	public static PrjUtil.ParamPreset CalcParamByPhoto(PhotoStaticData psd, int photoLevel)
 	{
 		PhotoStaticBase baseData = psd.baseData;
@@ -393,7 +369,6 @@ public class PrjUtil
 		};
 	}
 
-	// Token: 0x06000BF9 RID: 3065 RVA: 0x0004726C File Offset: 0x0004546C
 	public static PrjUtil.ParamPreset CalcShowWindowParamByChara(CharaStaticData csd, List<DataManagerChara.BonusCharaData> bonusCharaList)
 	{
 		CharaPackData charaPackData = CharaPackData.MakeInitial(csd.GetId());
@@ -404,19 +379,16 @@ public class PrjUtil
 		return PrjUtil.CalcParamByChara(charaPackData.dynamicData, null, bonusCharaList, null);
 	}
 
-	// Token: 0x06000BFA RID: 3066 RVA: 0x00047312 File Offset: 0x00045512
 	public static long ConvertTimeToTicks(long time)
 	{
 		return time * 10000L + PrjUtil.CONVERT_BASE_TIME.Ticks;
 	}
 
-	// Token: 0x06000BFB RID: 3067 RVA: 0x00047327 File Offset: 0x00045527
 	public static long ConvertTicksToTime(long ticks)
 	{
 		return (ticks - PrjUtil.CONVERT_BASE_TIME.Ticks) / 10000L;
 	}
 
-	// Token: 0x06000BFC RID: 3068 RVA: 0x0004733C File Offset: 0x0004553C
 	public static bool EnumTryParse<T>(string value, bool ignoreCase, out T result)
 	{
 		bool flag;
@@ -433,7 +405,6 @@ public class PrjUtil
 		return flag;
 	}
 
-	// Token: 0x06000BFD RID: 3069 RVA: 0x00047388 File Offset: 0x00045588
 	public static GameObject CreateEmptyStretchPanel(Transform transform, string objName)
 	{
 		GameObject gameObject = new GameObject();
@@ -448,7 +419,6 @@ public class PrjUtil
 		return gameObject;
 	}
 
-	// Token: 0x06000BFE RID: 3070 RVA: 0x000473EC File Offset: 0x000455EC
 	public static void InsertionSort<T>(ref List<T> list, Comparison<T> comparison)
 	{
 		if (list.Count <= 1)
@@ -475,7 +445,6 @@ public class PrjUtil
 		}
 	}
 
-	// Token: 0x06000BFF RID: 3071 RVA: 0x00047490 File Offset: 0x00045690
 	public static void InsertionSortLight<T>(ref List<T> list, Comparison<T> comparison)
 	{
 		if (list.Count <= 1)
@@ -487,7 +456,6 @@ public class PrjUtil
 		list.Sort(comparer);
 	}
 
-	// Token: 0x06000C00 RID: 3072 RVA: 0x000474C8 File Offset: 0x000456C8
 	public static int CompareByName(int a, int b)
 	{
 		string name = DataManager.DmItem.GetItemStaticBase(a).GetName();
@@ -495,7 +463,6 @@ public class PrjUtil
 		return PrjUtil.CompareByName(name, name2);
 	}
 
-	// Token: 0x06000C01 RID: 3073 RVA: 0x000474FC File Offset: 0x000456FC
 	public static int CompareByName(string itemNameA, string itemNameB)
 	{
 		PrjUtil.<>c__DisplayClass46_0 CS$<>8__locals1;
@@ -631,7 +598,6 @@ public class PrjUtil
 		return num;
 	}
 
-	// Token: 0x06000C02 RID: 3074 RVA: 0x000479A0 File Offset: 0x00045BA0
 	public static void IsPriorityZeroSort(ShopData shopData)
 	{
 		int count = shopData.oneDataList.Count;
@@ -645,7 +611,6 @@ public class PrjUtil
 		}
 	}
 
-	// Token: 0x06000C03 RID: 3075 RVA: 0x00047A00 File Offset: 0x00045C00
 	public static void ReleaseMemory(int weight)
 	{
 		if (weight < 1)
@@ -666,17 +631,14 @@ public class PrjUtil
 		}
 	}
 
-	// Token: 0x06000C04 RID: 3076 RVA: 0x00047A61 File Offset: 0x00045C61
 	public static void AppsFlyerActivate(int friendId)
 	{
 	}
 
-	// Token: 0x06000C05 RID: 3077 RVA: 0x00047A63 File Offset: 0x00045C63
 	public static void AppsFlyerOnDeviceTokenRegistered(string deviceToken)
 	{
 	}
 
-	// Token: 0x06000C06 RID: 3078 RVA: 0x00047A68 File Offset: 0x00045C68
 	private static byte[] HexToStringBytes(string hexString)
 	{
 		int num = hexString.Length;
@@ -693,12 +655,10 @@ public class PrjUtil
 		return array;
 	}
 
-	// Token: 0x06000C07 RID: 3079 RVA: 0x00047AC0 File Offset: 0x00045CC0
 	public static void SendAppsFlyerLtvId(string ltvId, Dictionary<string, string> option = null)
 	{
 	}
 
-	// Token: 0x06000C08 RID: 3080 RVA: 0x00047AD0 File Offset: 0x00045CD0
 	public static void SendAppsFlyerPurcaseLtvId(double price, string currency, string orderId, int quantity)
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
@@ -709,7 +669,6 @@ public class PrjUtil
 		PrjUtil.SendAppsFlyerLtvId("af_purchase", dictionary);
 	}
 
-	// Token: 0x06000C09 RID: 3081 RVA: 0x00047B2A File Offset: 0x00045D2A
 	public static void SendAppsFlyerLtvIdByRankup(int befRank, int aftRank)
 	{
 		if (befRank != aftRank)
@@ -732,7 +691,6 @@ public class PrjUtil
 		}
 	}
 
-	// Token: 0x06000C0A RID: 3082 RVA: 0x00047B63 File Offset: 0x00045D63
 	public static void SendAppsFlyerLtvIdByTutorial(TutorialUtil.Sequence nowSequence)
 	{
 		if (nowSequence == TutorialUtil.Sequence.FIRST)
@@ -752,7 +710,6 @@ public class PrjUtil
 		PrjUtil.SendAppsFlyerLtvId("af_tutorial_completion", null);
 	}
 
-	// Token: 0x06000C0B RID: 3083 RVA: 0x00047B98 File Offset: 0x00045D98
 	public static void SendAppsFlyerLtvIdByQuestClear(DataManagerServerMst.ModeReleaseData.ModeCategory modeCategory)
 	{
 		switch (modeCategory)
@@ -782,7 +739,6 @@ public class PrjUtil
 		}
 	}
 
-	// Token: 0x06000C0C RID: 3084 RVA: 0x00047C10 File Offset: 0x00045E10
 	public static string Rarity2String(int rarity)
 	{
 		string text = string.Empty;
@@ -810,7 +766,6 @@ public class PrjUtil
 		return text;
 	}
 
-	// Token: 0x06000C0D RID: 3085 RVA: 0x00047C70 File Offset: 0x00045E70
 	public static string SetRate(double rate)
 	{
 		if (0.0 < rate)
@@ -820,7 +775,6 @@ public class PrjUtil
 		return "-";
 	}
 
-	// Token: 0x06000C0E RID: 3086 RVA: 0x00047C98 File Offset: 0x00045E98
 	public static void OpenNoahWebOffer()
 	{
 		if (!DataManager.DmServerMst.IsEnableNoahWeb())
@@ -838,7 +792,6 @@ public class PrjUtil
 		CanvasManager.HdlWebViewWindowCtrl.Open(text);
 	}
 
-	// Token: 0x06000C0F RID: 3087 RVA: 0x00047D2C File Offset: 0x00045F2C
 	public static void OpenOfferWallWebview()
 	{
 		if (!DataManager.DmServerMst.IsEnableNoahWeb())
@@ -850,103 +803,76 @@ public class PrjUtil
 		CanvasManager.HdlWebViewWindowCtrl.Open(text);
 	}
 
-	// Token: 0x06000C10 RID: 3088 RVA: 0x00047D9B File Offset: 0x00045F9B
 	public static void ForceShutdown()
 	{
 		CanvasManager.winClose = -1;
 		Application.Quit();
 	}
 
-	// Token: 0x06000C13 RID: 3091 RVA: 0x00047E92 File Offset: 0x00046092
 	[CompilerGenerated]
 	internal static bool <CompareByName>g__IsFullWidthAlphabet|46_0(char c)
 	{
 		return ('Ａ' <= c && c <= 'Ｚ') || ('ａ' <= c && c <= 'ｚ');
 	}
 
-	// Token: 0x06000C14 RID: 3092 RVA: 0x00047EBB File Offset: 0x000460BB
 	[CompilerGenerated]
 	internal static char <CompareByName>g__GetHalfWidthAlphabet|46_1(char fullWidthAlphabet, ref PrjUtil.<>c__DisplayClass46_0 A_1)
 	{
 		return A_1.alphabetConvertMap[fullWidthAlphabet];
 	}
 
-	// Token: 0x06000C15 RID: 3093 RVA: 0x00047EC9 File Offset: 0x000460C9
 	[CompilerGenerated]
 	internal static bool <CompareByName>g__IsFullWidthNumber|46_2(char c)
 	{
 		return '０' <= c && c <= '９';
 	}
 
-	// Token: 0x06000C16 RID: 3094 RVA: 0x00047EE0 File Offset: 0x000460E0
 	[CompilerGenerated]
 	internal static char <CompareByName>g__GetHalfWidthNumber|46_3(char fullWidthNumber, ref PrjUtil.<>c__DisplayClass46_0 A_1)
 	{
 		return A_1.numberConvertMap[fullWidthNumber];
 	}
 
-	// Token: 0x04000937 RID: 2359
 	public const int SCROLL_ITEM_COLUMN_MAX = 3;
 
-	// Token: 0x04000938 RID: 2360
 	public static readonly string WARNING_COLOR_CODE = "#FF0000FF";
 
-	// Token: 0x04000939 RID: 2361
 	public static readonly string DISABLE_COLOR_CODE = "#AAAAAAFF";
 
-	// Token: 0x0400093A RID: 2362
 	public static readonly string BLACK_ALPHA_COLOR_CODE = "#00000077";
 
-	// Token: 0x0400093B RID: 2363
 	public static readonly string ColorRedStartTag = "<color=" + PrjUtil.WARNING_COLOR_CODE + ">";
 
-	// Token: 0x0400093C RID: 2364
 	public static readonly string ColorEndTag = "</color>";
 
-	// Token: 0x0400093D RID: 2365
 	public static readonly string PARTY_FORMATION = "パーティ編成";
 
-	// Token: 0x0400093E RID: 2366
 	public static readonly string PvP_FORMATION = "ちからくらべ編成";
 
-	// Token: 0x0400093F RID: 2367
 	public static readonly string SPECIAL_PvP_FORMATION = "とくべつくんれん編成";
 
-	// Token: 0x04000940 RID: 2368
 	public static readonly string TRAINING_FORMATION = "道場パーティ編成";
 
-	// Token: 0x04000941 RID: 2369
 	public static readonly string HELPER_FRIENDS = "助っ人フレンズ";
 
-	// Token: 0x04000942 RID: 2370
 	public static readonly string HELPER_FRIENDS_EDIT = PrjUtil.HELPER_FRIENDS + "変更";
 
-	// Token: 0x04000943 RID: 2371
 	private static readonly DateTime CONVERT_BASE_TIME = new DateTime(1970, 1, 1, 9, 0, 0, DateTimeKind.Utc);
 
-	// Token: 0x04000944 RID: 2372
 	private static int ReleaseCount = 0;
 
-	// Token: 0x04000945 RID: 2373
 	public static readonly int UnloadUnused = 1000;
 
-	// Token: 0x04000946 RID: 2374
 	public static readonly int Garbagecollection = 10000;
 
-	// Token: 0x04000947 RID: 2375
 	public static readonly string APPSFLAYER_DEV_KEY = "4S9ocRDCURq8MUxzmBcsfW";
 
-	// Token: 0x04000948 RID: 2376
 	public static readonly string ANDROID_BUNDLE_IDENTIFIER = "com.sega.KemonoFriends3";
 
-	// Token: 0x04000949 RID: 2377
 	public static readonly string ITUNES_CONNECT_APPLE_ID = "id1454346070";
 
-	// Token: 0x02000811 RID: 2065
 	public class ParamPreset
 	{
-		// Token: 0x17000833 RID: 2099
-		// (get) Token: 0x060037E2 RID: 14306 RVA: 0x001C9E82 File Offset: 0x001C8082
 		public int totalParam
 		{
 			get
@@ -955,66 +881,48 @@ public class PrjUtil
 			}
 		}
 
-		// Token: 0x0400361E RID: 13854
 		public int hp;
 
-		// Token: 0x0400361F RID: 13855
 		public int atk;
 
-		// Token: 0x04003620 RID: 13856
 		public int def;
 
-		// Token: 0x04003621 RID: 13857
 		public int avoid;
 
-		// Token: 0x04003622 RID: 13858
 		public int actionDamageRatio;
 
-		// Token: 0x04003623 RID: 13859
 		public int tryDamageRatio;
 
-		// Token: 0x04003624 RID: 13860
 		public int beatDamageRatio;
 	}
 
-	// Token: 0x02000812 RID: 2066
 	public class NameDef
 	{
-		// Token: 0x04003625 RID: 13861
 		public const string NAME_BY_ARTS = "けものミラクル";
 
-		// Token: 0x04003626 RID: 13862
 		public const string NAME_BY_SPECIAL_ATTACK = "とくいわざ";
 
-		// Token: 0x04003627 RID: 13863
 		public const string NAME_BY_WAIT_ACTION = "たいきスキル";
 
-		// Token: 0x04003628 RID: 13864
 		public const string NAME_BY_ABILITY = "とくせい";
 
-		// Token: 0x04003629 RID: 13865
 		public const string NAME_BY_SP_ABILITY = "キセキとくせい";
 
-		// Token: 0x0400362A RID: 13866
 		public const string NAME_BY_NANAIRO_ABILITY = "なないろとくせい";
 	}
 
-	// Token: 0x02000813 RID: 2067
 	public class FunctorComparer<T> : IComparer<T>
 	{
-		// Token: 0x060037E5 RID: 14309 RVA: 0x001C9EC6 File Offset: 0x001C80C6
 		public FunctorComparer(Comparison<T> comparison)
 		{
 			this.comparison = comparison;
 		}
 
-		// Token: 0x060037E6 RID: 14310 RVA: 0x001C9ED5 File Offset: 0x001C80D5
 		public int Compare(T x, T y)
 		{
 			return this.comparison(x, y);
 		}
 
-		// Token: 0x0400362B RID: 13867
 		private Comparison<T> comparison;
 	}
 }

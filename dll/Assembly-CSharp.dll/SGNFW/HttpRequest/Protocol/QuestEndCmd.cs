@@ -1,19 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SGNFW.Common.Json;
 using SGNFW.Http;
 
 namespace SGNFW.HttpRequest.Protocol
 {
-	// Token: 0x020004E5 RID: 1253
 	public class QuestEndCmd : Command
 	{
-		// Token: 0x06002CBD RID: 11453 RVA: 0x001AEEC3 File Offset: 0x001AD0C3
 		private QuestEndCmd()
 		{
 		}
 
-		// Token: 0x06002CBE RID: 11454 RVA: 0x001AEECC File Offset: 0x001AD0CC
 		private QuestEndCmd(int quest_id, int end_type, int eval, int turn_num, long hash_id, int arrival_wave, int continue_cnt, int okawari_cnt, int maxChain_num, int chain_cnt, int chain_sum_cnt, int max_damage, int arts_cnt, int player_skill_cnt, int tickle_success_cnt, List<int> banned_chara_list)
 		{
 			this.request = new QuestEndRequest();
@@ -37,7 +34,6 @@ namespace SGNFW.HttpRequest.Protocol
 			this.Setting();
 		}
 
-		// Token: 0x06002CBF RID: 11455 RVA: 0x001AEF78 File Offset: 0x001AD178
 		private void Setting()
 		{
 			base.Url = "QuestEnd.do";
@@ -50,19 +46,16 @@ namespace SGNFW.HttpRequest.Protocol
 			Manager.Add(this);
 		}
 
-		// Token: 0x06002CC0 RID: 11456 RVA: 0x001AEFE4 File Offset: 0x001AD1E4
 		public static QuestEndCmd Create(int quest_id, int end_type, int eval, int turn_num, long hash_id, int arrival_wave, int continue_cnt, int okawari_cnt, int maxChain_num, int chain_cnt, int chain_sum_cnt, int max_damage, int arts_cnt, int player_skill_cnt, int tickle_success_cnt, List<int> banned_chara_list = null)
 		{
 			return new QuestEndCmd(quest_id, end_type, eval, turn_num, hash_id, arrival_wave, continue_cnt, okawari_cnt, maxChain_num, chain_cnt, chain_sum_cnt, max_damage, arts_cnt, player_skill_cnt, tickle_success_cnt, banned_chara_list);
 		}
 
-		// Token: 0x06002CC1 RID: 11457 RVA: 0x001AF012 File Offset: 0x001AD212
 		protected override Response Parse(string __text)
 		{
 			return PrjJson.FromJson<QuestEndResponse>(__text);
 		}
 
-		// Token: 0x06002CC2 RID: 11458 RVA: 0x001AF01A File Offset: 0x001AD21A
 		protected override string DummyTextPath()
 		{
 			return "Debug/Texts/Json/Protocol/QuestEnd";

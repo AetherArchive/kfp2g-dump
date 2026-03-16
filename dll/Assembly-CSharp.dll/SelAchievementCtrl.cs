@@ -1,13 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.uGUI;
 using UnityEngine;
 
-// Token: 0x0200015F RID: 351
 public class SelAchievementCtrl : MonoBehaviour
 {
-	// Token: 0x06001431 RID: 5169 RVA: 0x000F7B08 File Offset: 0x000F5D08
 	public void Init()
 	{
 		AssetManager.GetAssetData("SceneMenu/GUI/Prefab/GUI_Menu_Achievement_Window");
@@ -54,7 +52,6 @@ public class SelAchievementCtrl : MonoBehaviour
 		this.gui.achievementChange.afterObj.Btn_Info.SetActEnable(false, false, false);
 	}
 
-	// Token: 0x06001432 RID: 5170 RVA: 0x000F7DA8 File Offset: 0x000F5FA8
 	public void Setup()
 	{
 		this.BackAnimPlaying = false;
@@ -74,7 +71,6 @@ public class SelAchievementCtrl : MonoBehaviour
 		this.gui.achievementAll.scrollView.Refresh();
 	}
 
-	// Token: 0x06001433 RID: 5171 RVA: 0x000F7EE0 File Offset: 0x000F60E0
 	private void Update()
 	{
 		if (this.currentEnumerator != null && !this.currentEnumerator.MoveNext())
@@ -83,7 +79,6 @@ public class SelAchievementCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001434 RID: 5172 RVA: 0x000F7EFE File Offset: 0x000F60FE
 	private IEnumerator RequestUpdateOption()
 	{
 		if (this.OnClickMoveSequenceName == SceneManager.SceneName.None)
@@ -98,7 +93,6 @@ public class SelAchievementCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001435 RID: 5173 RVA: 0x000F7F0D File Offset: 0x000F610D
 	private IEnumerator ChangeNewFlag(PguiButtonCtrl btnCtrl)
 	{
 		int achievementId = btnCtrl.GetComponent<AchievementCtrl>().GetAchievementId();
@@ -121,7 +115,6 @@ public class SelAchievementCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001436 RID: 5174 RVA: 0x000F7F23 File Offset: 0x000F6123
 	private IEnumerator ChangeSelectAchievement()
 	{
 		DataManager.DmAchievement.RequestActionSelectFlag(this.currentAchievementId);
@@ -137,7 +130,6 @@ public class SelAchievementCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001437 RID: 5175 RVA: 0x000F7F34 File Offset: 0x000F6134
 	private void UpdateEnableChangeButton(bool isForceInvalid = false)
 	{
 		if (isForceInvalid)
@@ -157,7 +149,6 @@ public class SelAchievementCtrl : MonoBehaviour
 		this.gui.achievementChange.Btn_Change.SetActEnable(num != 0 && num != num2, false, false);
 	}
 
-	// Token: 0x06001438 RID: 5176 RVA: 0x000F7FF0 File Offset: 0x000F61F0
 	private void UpdateCurrentFrame(int id)
 	{
 		this.currentAchievementId = id;
@@ -183,7 +174,6 @@ public class SelAchievementCtrl : MonoBehaviour
 		this.gui.achievementChange.afterObj.Txt_Achievement.text = "称号を所持していません";
 	}
 
-	// Token: 0x06001439 RID: 5177 RVA: 0x000F8110 File Offset: 0x000F6310
 	private void OnStartAchievementView(int rowIdx, GameObject go)
 	{
 		for (int i = 0; i < this.COLUMN_MAX; i++)
@@ -221,7 +211,6 @@ public class SelAchievementCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600143A RID: 5178 RVA: 0x000F821C File Offset: 0x000F641C
 	private void OnUpdateAchievementView(int rowIdx, GameObject rowGo)
 	{
 		for (int i = 0; i < 3; i++)
@@ -264,7 +253,6 @@ public class SelAchievementCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600143B RID: 5179 RVA: 0x000F833C File Offset: 0x000F653C
 	private void OnClickButton(PguiButtonCtrl btnCtrl, bool isRemove = false)
 	{
 		SoundManager.Play((isRemove && this.currentAchievementId != 0 && this.currentAchievementId != -1) ? "prd_se_cancel" : "prd_se_click", false, false);
@@ -278,19 +266,16 @@ public class SelAchievementCtrl : MonoBehaviour
 		base.StartCoroutine(this.ChangeNewFlag(btnCtrl));
 	}
 
-	// Token: 0x0600143C RID: 5180 RVA: 0x000F83A8 File Offset: 0x000F65A8
 	private bool OnClickButtonWindow(int index)
 	{
 		return true;
 	}
 
-	// Token: 0x0600143D RID: 5181 RVA: 0x000F83AB File Offset: 0x000F65AB
 	private void OnClickButtonChange()
 	{
 		base.StartCoroutine(this.ChangeSelectAchievement());
 	}
 
-	// Token: 0x0600143E RID: 5182 RVA: 0x000F83BC File Offset: 0x000F65BC
 	private void OnClickButtonInfo()
 	{
 		DataManagerAchievement.AchievementStaticData achievementData = DataManager.DmAchievement.GetAchievementData(this.currentAchievementId);
@@ -298,7 +283,6 @@ public class SelAchievementCtrl : MonoBehaviour
 		CanvasManager.HdlOpenWindowBasic.Open();
 	}
 
-	// Token: 0x0600143F RID: 5183 RVA: 0x000F8418 File Offset: 0x000F6618
 	private void UpdateScrollViewItemNum()
 	{
 		int num = 0;
@@ -310,7 +294,6 @@ public class SelAchievementCtrl : MonoBehaviour
 		this.gui.achievementAll.scrollView.Resize(num, 0);
 	}
 
-	// Token: 0x06001440 RID: 5184 RVA: 0x000F847E File Offset: 0x000F667E
 	public bool OnClickReturnButton()
 	{
 		if (this.BackAnimPlaying)
@@ -321,7 +304,6 @@ public class SelAchievementCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001441 RID: 5185 RVA: 0x000F8492 File Offset: 0x000F6692
 	public bool OnClickMoveSequenceButton(SceneManager.SceneName sceneName, object sceneArgs)
 	{
 		this.currentEnumerator = this.RequestUpdateOption();
@@ -330,7 +312,6 @@ public class SelAchievementCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001442 RID: 5186 RVA: 0x000F84B0 File Offset: 0x000F66B0
 	public bool OnClickFilterButton(int filterIdx)
 	{
 		DataManager.DmAchievement.currentFilter = (DataManagerAchievement.FILTER)filterIdx;
@@ -339,7 +320,6 @@ public class SelAchievementCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001443 RID: 5187 RVA: 0x000F84FC File Offset: 0x000F66FC
 	private void UpdateShowAchievementList()
 	{
 		switch (DataManager.DmAchievement.currentFilter)
@@ -357,34 +337,24 @@ public class SelAchievementCtrl : MonoBehaviour
 		this.UpdateScrollViewItemNum();
 	}
 
-	// Token: 0x040010B3 RID: 4275
 	private IEnumerator currentEnumerator;
 
-	// Token: 0x040010B4 RID: 4276
 	private SceneManager.SceneName OnClickMoveSequenceName;
 
-	// Token: 0x040010B5 RID: 4277
 	private SelAchievementCtrl.GUI gui;
 
-	// Token: 0x040010B6 RID: 4278
 	private List<DataManagerAchievement.AchievementStaticData> currentShowAchievementList;
 
-	// Token: 0x040010B7 RID: 4279
 	private object OnClickMoveSequenceArgs;
 
-	// Token: 0x040010B8 RID: 4280
 	private int currentAchievementId = -1;
 
-	// Token: 0x040010B9 RID: 4281
 	public bool BackAnimPlaying;
 
-	// Token: 0x040010BA RID: 4282
 	private int COLUMN_MAX = 2;
 
-	// Token: 0x02000B69 RID: 2921
 	public class AchievementChange
 	{
-		// Token: 0x060042B9 RID: 17081 RVA: 0x00200F6C File Offset: 0x001FF16C
 		public AchievementChange(Transform baseTr)
 		{
 			this.beforeObj = new SelAchievementCtrl.AchievementChange.Before(baseTr.Find("All/Left/All/Before"));
@@ -392,36 +362,27 @@ public class SelAchievementCtrl : MonoBehaviour
 			this.Btn_Change = baseTr.Find("All/Left/All/Btn_Change").GetComponent<PguiButtonCtrl>();
 		}
 
-		// Token: 0x04004767 RID: 18279
 		public SelAchievementCtrl.AchievementChange.Before beforeObj;
 
-		// Token: 0x04004768 RID: 18280
 		public SelAchievementCtrl.AchievementChange.After afterObj;
 
-		// Token: 0x04004769 RID: 18281
 		public PguiButtonCtrl Btn_Change;
 
-		// Token: 0x02001191 RID: 4497
 		public class Before
 		{
-			// Token: 0x0600569A RID: 22170 RVA: 0x00252D0C File Offset: 0x00250F0C
 			public Before(Transform baseTr)
 			{
 				this.Achievement = baseTr.Find("Achievement").GetComponent<AchievementCtrl>();
 				this.Txt_Achievement = baseTr.Find("Txt_Achievement").GetComponent<PguiTextCtrl>();
 			}
 
-			// Token: 0x04006038 RID: 24632
 			public AchievementCtrl Achievement;
 
-			// Token: 0x04006039 RID: 24633
 			public PguiTextCtrl Txt_Achievement;
 		}
 
-		// Token: 0x02001192 RID: 4498
 		public class After
 		{
-			// Token: 0x0600569B RID: 22171 RVA: 0x00252D40 File Offset: 0x00250F40
 			public After(Transform baseTr)
 			{
 				this.Achievement = baseTr.Find("Achievement").GetComponent<AchievementCtrl>();
@@ -429,21 +390,16 @@ public class SelAchievementCtrl : MonoBehaviour
 				this.Btn_Info = baseTr.Find("Btn_Info").GetComponent<PguiButtonCtrl>();
 			}
 
-			// Token: 0x0400603A RID: 24634
 			public AchievementCtrl Achievement;
 
-			// Token: 0x0400603B RID: 24635
 			public PguiTextCtrl Txt_Achievement;
 
-			// Token: 0x0400603C RID: 24636
 			public PguiButtonCtrl Btn_Info;
 		}
 	}
 
-	// Token: 0x02000B6A RID: 2922
 	public class AchievementAll
 	{
-		// Token: 0x060042BA RID: 17082 RVA: 0x00200FC4 File Offset: 0x001FF1C4
 		public AchievementAll(Transform baseObj)
 		{
 			this.scrollView = baseObj.Find("All/Right/AchievementAll/ScrollView").GetComponent<ReuseScroll>();
@@ -452,29 +408,21 @@ public class SelAchievementCtrl : MonoBehaviour
 			this.filterTab = baseObj.Find("All/Right/AchievementAll/Filter/TabGroup").GetComponent<PguiTabGroupCtrl>();
 		}
 
-		// Token: 0x0400476A RID: 18282
 		public ReuseScroll scrollView;
 
-		// Token: 0x0400476B RID: 18283
 		public PguiTextCtrl noneText;
 
-		// Token: 0x0400476C RID: 18284
 		public PguiTextCtrl acquistitionText;
 
-		// Token: 0x0400476D RID: 18285
 		public PguiTabGroupCtrl filterTab;
 
-		// Token: 0x0400476E RID: 18286
 		public Action<int, GameObject> onStartItem;
 
-		// Token: 0x0400476F RID: 18287
 		public Action<int, GameObject> onUpdateItem;
 	}
 
-	// Token: 0x02000B6B RID: 2923
 	public class GUI
 	{
-		// Token: 0x060042BB RID: 17083 RVA: 0x0020102F File Offset: 0x001FF22F
 		public GUI(Transform baseObj)
 		{
 			this.baseObj = baseObj.gameObject;
@@ -482,13 +430,10 @@ public class SelAchievementCtrl : MonoBehaviour
 			this.achievementAll = new SelAchievementCtrl.AchievementAll(baseObj);
 		}
 
-		// Token: 0x04004770 RID: 18288
 		public GameObject baseObj;
 
-		// Token: 0x04004771 RID: 18289
 		public SelAchievementCtrl.AchievementAll achievementAll;
 
-		// Token: 0x04004772 RID: 18290
 		public SelAchievementCtrl.AchievementChange achievementChange;
 	}
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,20 +8,12 @@ using SGNFW.uGUI;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x02000112 RID: 274
 public class ScenarioScene : MonoBehaviour
 {
-	// Token: 0x1700032A RID: 810
-	// (get) Token: 0x06000D19 RID: 3353 RVA: 0x0005243A File Offset: 0x0005063A
-	// (set) Token: 0x06000D1A RID: 3354 RVA: 0x00052442 File Offset: 0x00050642
 	public int movieMode { get; set; }
 
-	// Token: 0x1700032B RID: 811
-	// (get) Token: 0x06000D1B RID: 3355 RVA: 0x0005244B File Offset: 0x0005064B
-	// (set) Token: 0x06000D1C RID: 3356 RVA: 0x00052453 File Offset: 0x00050653
 	public int skipScript { get; set; }
 
-	// Token: 0x06000D1D RID: 3357 RVA: 0x0005245C File Offset: 0x0005065C
 	private void Start()
 	{
 		this.root = base.transform.Find("root");
@@ -149,7 +141,6 @@ public class ScenarioScene : MonoBehaviour
 		this.loopSE = false;
 	}
 
-	// Token: 0x06000D1E RID: 3358 RVA: 0x00052CB0 File Offset: 0x00050EB0
 	private void SetupLog(int index, GameObject go)
 	{
 		KeyValuePair<string, string> keyValuePair = new KeyValuePair<string, string>("", "");
@@ -227,7 +218,6 @@ public class ScenarioScene : MonoBehaviour
 		text2.text = text3;
 	}
 
-	// Token: 0x06000D1F RID: 3359 RVA: 0x00052FB8 File Offset: 0x000511B8
 	private string SizeCut(string str)
 	{
 		for (;;)
@@ -254,7 +244,6 @@ public class ScenarioScene : MonoBehaviour
 		return str;
 	}
 
-	// Token: 0x06000D20 RID: 3360 RVA: 0x00053074 File Offset: 0x00051274
 	private void CheckText(string str, out List<string> txt, out List<string> rub)
 	{
 		txt = new List<string>();
@@ -441,7 +430,6 @@ public class ScenarioScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D21 RID: 3361 RVA: 0x00053548 File Offset: 0x00051748
 	private void Update()
 	{
 		switch (this.status)
@@ -912,7 +900,6 @@ public class ScenarioScene : MonoBehaviour
 		this.SetBloomEffect();
 	}
 
-	// Token: 0x06000D22 RID: 3362 RVA: 0x00054998 File Offset: 0x00052B98
 	private bool UpdateProcess()
 	{
 		if (this.GUIs.sSkipWindow.mIsSkip)
@@ -1155,7 +1142,6 @@ public class ScenarioScene : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000D23 RID: 3363 RVA: 0x00055298 File Offset: 0x00053498
 	private void ClickLog()
 	{
 		if (!this.GUIs.sSkipWindow.mIsStory)
@@ -1164,7 +1150,6 @@ public class ScenarioScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D24 RID: 3364 RVA: 0x000552BD File Offset: 0x000534BD
 	private void ClickLogEnd(PguiButtonCtrl button)
 	{
 		if (this.GUIs.sSkipWindow.mIsStory)
@@ -1173,7 +1158,6 @@ public class ScenarioScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D25 RID: 3365 RVA: 0x000552E4 File Offset: 0x000534E4
 	private void ResetGUIShows()
 	{
 		this.GUIs.mSerifImage_normal.gameObject.SetActive(false);
@@ -1186,7 +1170,6 @@ public class ScenarioScene : MonoBehaviour
 		this.GUIs.mTitleObj.SetActive(false);
 	}
 
-	// Token: 0x06000D26 RID: 3366 RVA: 0x00055394 File Offset: 0x00053594
 	private void DoOrderParts(ScenarioScriptData.ScenarioRowData data)
 	{
 		switch (data.mType)
@@ -1262,7 +1245,6 @@ public class ScenarioScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D27 RID: 3367 RVA: 0x000554B6 File Offset: 0x000536B6
 	private void DoOrderInitialise(ScenarioScriptData.ScenarioRowData data)
 	{
 		this.OrderCharacter(data);
@@ -1270,7 +1252,6 @@ public class ScenarioScene : MonoBehaviour
 		this.mScriptCnt++;
 	}
 
-	// Token: 0x06000D28 RID: 3368 RVA: 0x000554D4 File Offset: 0x000536D4
 	private void DoOrderTitle(ScenarioScriptData.ScenarioRowData data)
 	{
 		this.ResetGUIShows();
@@ -1280,7 +1261,6 @@ public class ScenarioScene : MonoBehaviour
 		base.StartCoroutine(this.Title(this.mScriptCnt));
 	}
 
-	// Token: 0x06000D29 RID: 3369 RVA: 0x0005554E File Offset: 0x0005374E
 	private IEnumerator Title(int cnt)
 	{
 		while (this.GUIs.mTitleObj.activeSelf && this.GUIs.mTitleObj.GetComponent<SimpleAnimation>().ExIsPlaying())
@@ -1296,7 +1276,6 @@ public class ScenarioScene : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000D2A RID: 3370 RVA: 0x00055564 File Offset: 0x00053764
 	private void DoOrderSerif(ScenarioScriptData.ScenarioRowData data)
 	{
 		this.SetSerifCommon(data);
@@ -1311,7 +1290,6 @@ public class ScenarioScene : MonoBehaviour
 		this.mSerifCtrl = this.mScriptCnt;
 	}
 
-	// Token: 0x06000D2B RID: 3371 RVA: 0x000555FC File Offset: 0x000537FC
 	private void DoOrderSerifMirai(ScenarioScriptData.ScenarioRowData data)
 	{
 		this.SetSerifCommon(data);
@@ -1331,7 +1309,6 @@ public class ScenarioScene : MonoBehaviour
 		this.mSerifCtrl = this.mScriptCnt;
 	}
 
-	// Token: 0x06000D2C RID: 3372 RVA: 0x000556F8 File Offset: 0x000538F8
 	private void SetSerifCommon(ScenarioScriptData.ScenarioRowData data)
 	{
 		this.ResetGUIShows();
@@ -1369,14 +1346,12 @@ public class ScenarioScene : MonoBehaviour
 		SoundManager.Play(data.mStrParams[1], false, false);
 	}
 
-	// Token: 0x06000D2D RID: 3373 RVA: 0x000558B4 File Offset: 0x00053AB4
 	private string CheckSerif(string serif)
 	{
 		string text = ((DataManager.DmUserInfo == null) ? "カバン" : DataManager.DmUserInfo.userName);
 		return serif.Replace("※※※※※※※※※※", text);
 	}
 
-	// Token: 0x06000D2E RID: 3374 RVA: 0x000558E8 File Offset: 0x00053AE8
 	private string SerifChara(ScenarioScriptData.ScenarioRowData data, bool mirai)
 	{
 		string text = data.mSerifCharaName;
@@ -1394,7 +1369,6 @@ public class ScenarioScene : MonoBehaviour
 		return text;
 	}
 
-	// Token: 0x06000D2F RID: 3375 RVA: 0x000559B4 File Offset: 0x00053BB4
 	private void SetSerifFrame(ScenarioScriptData.ScenarioRowData data, bool isMirai = false)
 	{
 		int num = 5;
@@ -1466,7 +1440,6 @@ public class ScenarioScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D30 RID: 3376 RVA: 0x00055C08 File Offset: 0x00053E08
 	private void DoOrderSpecialAuth(ScenarioScriptData.ScenarioRowData data)
 	{
 		this.authPhase = ScenarioScene.AUTH_PHASE.INITIALISE;
@@ -1474,7 +1447,6 @@ public class ScenarioScene : MonoBehaviour
 		this.bAuth = true;
 	}
 
-	// Token: 0x06000D31 RID: 3377 RVA: 0x00055C26 File Offset: 0x00053E26
 	private void DoOrderSpecialMovie(ScenarioScriptData.ScenarioRowData data)
 	{
 		this.moviePhase = ScenarioScene.MOVIE_PHASE.INITIALISE;
@@ -1482,7 +1454,6 @@ public class ScenarioScene : MonoBehaviour
 		this.bMovie = true;
 	}
 
-	// Token: 0x06000D32 RID: 3378 RVA: 0x00055C44 File Offset: 0x00053E44
 	private void DoOrderBackground(ScenarioScriptData.ScenarioRowData data)
 	{
 		if (this.bgImage != data.mStrParams[0])
@@ -1534,7 +1505,6 @@ public class ScenarioScene : MonoBehaviour
 		this.DoOrderBgEffect(data);
 	}
 
-	// Token: 0x06000D33 RID: 3379 RVA: 0x00055D7C File Offset: 0x00053F7C
 	private void DoOrderBgEffect(ScenarioScriptData.ScenarioRowData data)
 	{
 		ScenarioDefine.BG_EFFECT_TYPE bg_EFFECT_TYPE = (ScenarioDefine.BG_EFFECT_TYPE)data.mIntParams[0];
@@ -1551,7 +1521,6 @@ public class ScenarioScene : MonoBehaviour
 		base.StartCoroutine(this.BgDisp(this.mScriptCnt));
 	}
 
-	// Token: 0x06000D34 RID: 3380 RVA: 0x00055DE0 File Offset: 0x00053FE0
 	private IEnumerator Zoom(int cnt, ScenarioDefine.BG_EFFECT_TYPE et)
 	{
 		do
@@ -1575,7 +1544,6 @@ public class ScenarioScene : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000D35 RID: 3381 RVA: 0x00055DFD File Offset: 0x00053FFD
 	private IEnumerator Shake(int cnt, ScenarioDefine.BG_EFFECT_TYPE et)
 	{
 		while (!this.bgImageDisp || !this.bgMaskDisp)
@@ -1596,7 +1564,6 @@ public class ScenarioScene : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000D36 RID: 3382 RVA: 0x00055E1A File Offset: 0x0005401A
 	private IEnumerator BgDisp(int cnt)
 	{
 		while (!this.bgImageDisp || !this.bgMaskDisp)
@@ -1611,7 +1578,6 @@ public class ScenarioScene : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000D37 RID: 3383 RVA: 0x00055E30 File Offset: 0x00054030
 	private void DoOrderSelect(ScenarioScriptData.ScenarioRowData data)
 	{
 		string text = this.CheckSerif(data.mStrParams[0]);
@@ -1628,28 +1594,24 @@ public class ScenarioScene : MonoBehaviour
 		this.waitParam.jumpText[1] = text2;
 	}
 
-	// Token: 0x06000D38 RID: 3384 RVA: 0x00055F13 File Offset: 0x00054113
 	private void DoOrderJump(ScenarioScriptData.ScenarioRowData data)
 	{
 		this.mScriptCnt = data.mIntParams[1];
 		this.bNext = true;
 	}
 
-	// Token: 0x06000D39 RID: 3385 RVA: 0x00055F2A File Offset: 0x0005412A
 	private void DoOrderLebel(ScenarioScriptData.ScenarioRowData data)
 	{
 		this.bNext = true;
 		this.mScriptCnt++;
 	}
 
-	// Token: 0x06000D3A RID: 3386 RVA: 0x00055F41 File Offset: 0x00054141
 	private void DoOrderCharCtrl(ScenarioScriptData.ScenarioRowData data)
 	{
 		this.OrderCharacter(data);
 		this.mCharaCtrl = this.mScriptCnt;
 	}
 
-	// Token: 0x06000D3B RID: 3387 RVA: 0x00055F58 File Offset: 0x00054158
 	private void DoOrderEffect(ScenarioScriptData.ScenarioRowData data)
 	{
 		this.bNext = true;
@@ -1789,7 +1751,6 @@ public class ScenarioScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D3C RID: 3388 RVA: 0x0005659E File Offset: 0x0005479E
 	private IEnumerator Flash(int cnt)
 	{
 		CC_BrightnessContrastGamma bcg = this.mScenarioCamera.GetComponent<CC_BrightnessContrastGamma>();
@@ -1821,7 +1782,6 @@ public class ScenarioScene : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000D3D RID: 3389 RVA: 0x000565B4 File Offset: 0x000547B4
 	private void FlashParam(CC_BrightnessContrastGamma bcg, float rate)
 	{
 		bcg.brightness = Mathf.Lerp(0f, this.bcg_brightness, rate);
@@ -1829,7 +1789,6 @@ public class ScenarioScene : MonoBehaviour
 		bcg.gamma = Mathf.Lerp(1f, this.bcg_gamma, rate);
 	}
 
-	// Token: 0x06000D3E RID: 3390 RVA: 0x00056608 File Offset: 0x00054808
 	private void DoOrderAllFade(ScenarioScriptData.ScenarioRowData data)
 	{
 		ScenarioDefine.FADE_TYPE fade_TYPE = (ScenarioDefine.FADE_TYPE)data.mIntParams[1];
@@ -1860,7 +1819,6 @@ public class ScenarioScene : MonoBehaviour
 		base.StartCoroutine(this.Fade(this.mScriptCnt));
 	}
 
-	// Token: 0x06000D3F RID: 3391 RVA: 0x00056727 File Offset: 0x00054927
 	private IEnumerator Fade(int cnt)
 	{
 		while (!this.GUIs.mGuiPlyBtns.IsFadeEnd())
@@ -1875,7 +1833,6 @@ public class ScenarioScene : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000D40 RID: 3392 RVA: 0x00056740 File Offset: 0x00054940
 	private void DoOrderIntroduce(ScenarioScriptData.ScenarioRowData data)
 	{
 		this.bIntroduce = true;
@@ -1916,7 +1873,6 @@ public class ScenarioScene : MonoBehaviour
 		this.nameTelop.transform.Find("Img_No").GetComponent<Image>().color = ScenarioDefine.GetIntroColor(data.mIntParams[2], data.mStrParams[2]);
 	}
 
-	// Token: 0x06000D41 RID: 3393 RVA: 0x0005699C File Offset: 0x00054B9C
 	private void DoOrderSerifOff(ScenarioScriptData.ScenarioRowData data)
 	{
 		this.ResetGUIShows();
@@ -1924,13 +1880,11 @@ public class ScenarioScene : MonoBehaviour
 		this.mScriptCnt++;
 	}
 
-	// Token: 0x06000D42 RID: 3394 RVA: 0x000569B9 File Offset: 0x00054BB9
 	private void DoOrderWait(ScenarioScriptData.ScenarioRowData data)
 	{
 		base.StartCoroutine(this.Wait(this.mScriptCnt, (float)data.mIntParams[0]));
 	}
 
-	// Token: 0x06000D43 RID: 3395 RVA: 0x000569D7 File Offset: 0x00054BD7
 	private IEnumerator Wait(int cnt, float wait)
 	{
 		while ((wait -= TimeManager.DeltaTime) > 0f)
@@ -1945,13 +1899,11 @@ public class ScenarioScene : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000D44 RID: 3396 RVA: 0x000569F4 File Offset: 0x00054BF4
 	private void DoOrderWindow(ScenarioScriptData.ScenarioRowData data)
 	{
 		base.StartCoroutine(this.Window(this.mScriptCnt, data.mStrParams[0]));
 	}
 
-	// Token: 0x06000D45 RID: 3397 RVA: 0x00056A11 File Offset: 0x00054C11
 	private IEnumerator Window(int cnt, string img)
 	{
 		this.GUIs.mKomado.SetActive(true);
@@ -1989,7 +1941,6 @@ public class ScenarioScene : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000D46 RID: 3398 RVA: 0x00056A30 File Offset: 0x00054C30
 	private void DoOrderNarration(ScenarioScriptData.ScenarioRowData data)
 	{
 		if (!this.GUIs.mNarration.activeSelf)
@@ -2002,13 +1953,11 @@ public class ScenarioScene : MonoBehaviour
 		this.mNarrationCtrl = this.mScriptCnt;
 	}
 
-	// Token: 0x06000D47 RID: 3399 RVA: 0x00056ACB File Offset: 0x00054CCB
 	private void DoOrderPhoto(ScenarioScriptData.ScenarioRowData data)
 	{
 		base.StartCoroutine(this.Photo(this.mScriptCnt, data.mStrParams[0]));
 	}
 
-	// Token: 0x06000D48 RID: 3400 RVA: 0x00056AE8 File Offset: 0x00054CE8
 	private IEnumerator Photo(int cnt, string img)
 	{
 		this.GUIs.mPhoto.SetActive(true);
@@ -2046,7 +1995,6 @@ public class ScenarioScene : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000D49 RID: 3401 RVA: 0x00056B08 File Offset: 0x00054D08
 	private void DoOrderBGM(ScenarioScriptData.ScenarioRowData data)
 	{
 		string text = "";
@@ -2078,7 +2026,6 @@ public class ScenarioScene : MonoBehaviour
 		this.mScriptCnt++;
 	}
 
-	// Token: 0x06000D4A RID: 3402 RVA: 0x00056BD4 File Offset: 0x00054DD4
 	private void DoOrderSE(ScenarioScriptData.ScenarioRowData data)
 	{
 		string text = "";
@@ -2115,7 +2062,6 @@ public class ScenarioScene : MonoBehaviour
 		this.mScriptCnt++;
 	}
 
-	// Token: 0x06000D4B RID: 3403 RVA: 0x00056CFC File Offset: 0x00054EFC
 	private void OrderCharacter(ScenarioScriptData.ScenarioRowData data)
 	{
 		foreach (ScenarioScene.friend friend in this.mFriendList)
@@ -2346,7 +2292,6 @@ public class ScenarioScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D4C RID: 3404 RVA: 0x000575BC File Offset: 0x000557BC
 	private CharaMotionDefine.ActKey get_standby(CharaMotionDefine.ActKey mot)
 	{
 		if (mot == CharaMotionDefine.ActKey.WEAPON_TAKE || mot == CharaMotionDefine.ActKey.WEAPON_STAND_BY || mot == CharaMotionDefine.ActKey.WEAPON_ATTACK)
@@ -2364,7 +2309,6 @@ public class ScenarioScene : MonoBehaviour
 		return mot;
 	}
 
-	// Token: 0x06000D4D RID: 3405 RVA: 0x000575EC File Offset: 0x000557EC
 	private void CharacterUpdate()
 	{
 		bool flag = true;
@@ -2574,7 +2518,6 @@ public class ScenarioScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D4E RID: 3406 RVA: 0x00057C38 File Offset: 0x00055E38
 	private void UpdateIntroduce(ScenarioScriptData.ScenarioRowData data)
 	{
 		switch (this.introPhase)
@@ -2703,7 +2646,6 @@ public class ScenarioScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D4F RID: 3407 RVA: 0x00058248 File Offset: 0x00056448
 	private void UpdateAuth()
 	{
 		switch (this.authPhase)
@@ -2759,7 +2701,6 @@ public class ScenarioScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D50 RID: 3408 RVA: 0x000583E0 File Offset: 0x000565E0
 	private void UpdateMovie()
 	{
 		switch (this.moviePhase)
@@ -2808,7 +2749,6 @@ public class ScenarioScene : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D51 RID: 3409 RVA: 0x00058540 File Offset: 0x00056740
 	private void Disable()
 	{
 		if (this.authPlayer != null)
@@ -2863,38 +2803,32 @@ public class ScenarioScene : MonoBehaviour
 		Screen.sleepTimeout = -2;
 	}
 
-	// Token: 0x06000D52 RID: 3410 RVA: 0x00058704 File Offset: 0x00056904
 	public bool IsFinishLoad()
 	{
 		return this.status > ScenarioScene.Status.IN;
 	}
 
-	// Token: 0x06000D53 RID: 3411 RVA: 0x0005870F File Offset: 0x0005690F
 	public bool IsFinishPlay()
 	{
 		return this.status >= ScenarioScene.Status.OUT;
 	}
 
-	// Token: 0x06000D54 RID: 3412 RVA: 0x0005871D File Offset: 0x0005691D
 	public bool IsFinishScenario()
 	{
 		return this.status >= ScenarioScene.Status.TERM;
 	}
 
-	// Token: 0x06000D55 RID: 3413 RVA: 0x0005872B File Offset: 0x0005692B
 	private void OnDestroy()
 	{
 		this.Disable();
 	}
 
-	// Token: 0x06000D56 RID: 3414 RVA: 0x00058733 File Offset: 0x00056933
 	private string FixSpecialText(string text)
 	{
 		text.IndexOf("&#10014;");
 		return HttpUtility.HtmlDecode(text);
 	}
 
-	// Token: 0x06000D57 RID: 3415 RVA: 0x0005874C File Offset: 0x0005694C
 	private void SetBloomEffect()
 	{
 		bool flag = false;
@@ -2925,291 +2859,197 @@ public class ScenarioScene : MonoBehaviour
 		this.mScenarioCamera.GetComponent<FieldAlpha>().enabled = !flag;
 	}
 
-	// Token: 0x04000A8A RID: 2698
 	public string scenarioName;
 
-	// Token: 0x04000A8B RID: 2699
 	public int questId;
 
-	// Token: 0x04000A8C RID: 2700
 	public int storyType;
 
-	// Token: 0x04000A8D RID: 2701
 	[SerializeField]
 	private PguiRawImageCtrl backgroundMat;
 
-	// Token: 0x04000A8E RID: 2702
 	[SerializeField]
 	private Vector3 BgShakePower;
 
-	// Token: 0x04000A8F RID: 2703
 	[SerializeField]
 	private Vector3 BgShakeSpeed;
 
-	// Token: 0x04000A90 RID: 2704
 	[SerializeField]
 	private float BgZoomScale;
 
-	// Token: 0x04000A91 RID: 2705
 	[SerializeField]
 	private float BgZoomTime;
 
-	// Token: 0x04000A92 RID: 2706
 	private ScenarioScene.Status status;
 
-	// Token: 0x04000A93 RID: 2707
 	private Transform root;
 
-	// Token: 0x04000A94 RID: 2708
 	private Light[] light;
 
-	// Token: 0x04000A95 RID: 2709
 	private string scenarioPath;
 
-	// Token: 0x04000A96 RID: 2710
 	private ScenarioScriptData scenarioScriptData;
 
-	// Token: 0x04000A97 RID: 2711
 	public int mScriptCnt;
 
-	// Token: 0x04000A98 RID: 2712
 	private int mCharaCtrl = -1;
 
-	// Token: 0x04000A99 RID: 2713
 	private int mSerifCtrl = -1;
 
-	// Token: 0x04000A9A RID: 2714
 	private int mSerifCharaID = -1;
 
-	// Token: 0x04000A9B RID: 2715
 	private int mNarrationCtrl = -1;
 
-	// Token: 0x04000A9C RID: 2716
 	private bool bClickScreen;
 
-	// Token: 0x04000A9D RID: 2717
 	private bool bClickWindow;
 
-	// Token: 0x04000A9E RID: 2718
 	private bool bClickPhoto;
 
-	// Token: 0x04000A9F RID: 2719
 	private bool bNext = true;
 
-	// Token: 0x04000AA0 RID: 2720
 	private bool bAuth;
 
-	// Token: 0x04000AA1 RID: 2721
 	private bool bMovie;
 
-	// Token: 0x04000AA2 RID: 2722
 	private bool bIntroduce;
 
-	// Token: 0x04000AA3 RID: 2723
 	private int introCharaId;
 
-	// Token: 0x04000AA4 RID: 2724
 	private ScenarioScene.INTRODECE_PHASE introPhase;
 
-	// Token: 0x04000AA5 RID: 2725
 	private float introTime;
 
-	// Token: 0x04000AA6 RID: 2726
 	private List<CharaModelHandle> introFriends;
 
-	// Token: 0x04000AA7 RID: 2727
 	private Vector3 introCharaPos;
 
-	// Token: 0x04000AA8 RID: 2728
 	private Vector3 introCharaRot;
 
-	// Token: 0x04000AA9 RID: 2729
 	private Vector3 introCharaScl;
 
-	// Token: 0x04000AAA RID: 2730
 	private string introFaceId;
 
-	// Token: 0x04000AAB RID: 2731
 	private string introIdleFaceId;
 
-	// Token: 0x04000AAC RID: 2732
 	private GameObject mScenarioCamera;
 
-	// Token: 0x04000AAD RID: 2733
 	private List<Transform> mFollow;
 
-	// Token: 0x04000AAE RID: 2734
 	private string authName;
 
-	// Token: 0x04000AAF RID: 2735
 	private ScenarioScene.AUTH_PHASE authPhase;
 
-	// Token: 0x04000AB0 RID: 2736
 	private string movieName;
 
-	// Token: 0x04000AB1 RID: 2737
 	private ScenarioScene.MOVIE_PHASE moviePhase;
 
-	// Token: 0x04000AB2 RID: 2738
 	private List<ScenarioScene.friend> mFriendList = new List<ScenarioScene.friend>();
 
-	// Token: 0x04000AB3 RID: 2739
 	private ScenarioSetValues mSetValues;
 
-	// Token: 0x04000AB4 RID: 2740
 	private List<ScenarioSetValues.CharaOffset> mCharaOffset;
 
-	// Token: 0x04000AB5 RID: 2741
 	private List<ScenarioCharaOffset.CharaPosition> mCharaPosition;
 
-	// Token: 0x04000AB6 RID: 2742
 	private List<IEnumerator> mLoadSe = new List<IEnumerator>();
 
-	// Token: 0x04000AB7 RID: 2743
 	private List<string> mLoadEffect = new List<string>();
 
-	// Token: 0x04000AB8 RID: 2744
 	private List<string> mUseEffect = new List<string>();
 
-	// Token: 0x04000AB9 RID: 2745
 	private int modelCnt;
 
-	// Token: 0x04000ABA RID: 2746
 	private ScenarioScene.GUI GUIs;
 
-	// Token: 0x04000ABB RID: 2747
 	private string bgImage;
 
-	// Token: 0x04000ABC RID: 2748
 	private bool bgImageDisp;
 
-	// Token: 0x04000ABD RID: 2749
 	private string bgMask;
 
-	// Token: 0x04000ABE RID: 2750
 	private bool bgMaskDisp;
 
-	// Token: 0x04000ABF RID: 2751
 	private ScenarioDefine.BG_EFFECT_TYPE bgZoomType;
 
-	// Token: 0x04000AC0 RID: 2752
 	private Vector3 bgZoomPos;
 
-	// Token: 0x04000AC1 RID: 2753
 	private float bgZoomScl;
 
-	// Token: 0x04000AC2 RID: 2754
 	private float bgZoomRate;
 
-	// Token: 0x04000AC3 RID: 2755
 	private ScenarioDefine.BG_EFFECT_TYPE bgShakeType;
 
-	// Token: 0x04000AC4 RID: 2756
 	private Vector3 bgShakePos;
 
-	// Token: 0x04000AC5 RID: 2757
 	private Vector3 bgShakePwr;
 
-	// Token: 0x04000AC6 RID: 2758
 	private float bcg_brightness;
 
-	// Token: 0x04000AC7 RID: 2759
 	private float bcg_contrast;
 
-	// Token: 0x04000AC8 RID: 2760
 	private float bcg_gamma;
 
-	// Token: 0x04000AC9 RID: 2761
 	private AuthPlayer authPlayer;
 
-	// Token: 0x04000ACA RID: 2762
 	private DateTime authLoading;
 
-	// Token: 0x04000ACB RID: 2763
 	private GameObject moviePlayer;
 
-	// Token: 0x04000ACC RID: 2764
 	private DateTime movieLoading;
 
-	// Token: 0x04000ACD RID: 2765
 	private GameObject nameTelop;
 
-	// Token: 0x04000ACE RID: 2766
 	private GameObject bgTelop;
 
-	// Token: 0x04000ACF RID: 2767
 	private ScenarioScene.WaitParam waitParam;
 
-	// Token: 0x04000AD0 RID: 2768
 	private float fAutoWaitTime;
 
-	// Token: 0x04000AD1 RID: 2769
 	private float fAutoWaitSpeed = 5f;
 
-	// Token: 0x04000AD2 RID: 2770
 	private float fAutoSerifTime;
 
-	// Token: 0x04000AD3 RID: 2771
 	private int writerSpeed;
 
-	// Token: 0x04000AD4 RID: 2772
 	private List<KeyValuePair<string, string>> logList;
 
-	// Token: 0x04000AD5 RID: 2773
 	private static readonly string effectSandstarName = "Ef_scenario_sandstar";
 
-	// Token: 0x04000AD6 RID: 2774
 	private static readonly string effectShineName = "Ef_scenario_shine";
 
-	// Token: 0x04000AD7 RID: 2775
 	private static readonly string effectRainName = "Ef_scenario_rain";
 
-	// Token: 0x04000AD8 RID: 2776
 	private static readonly string effectSteamName = "Ef_scenario_steam";
 
-	// Token: 0x04000AD9 RID: 2777
 	private static readonly string effectSnowName = "Ef_scenario_snow";
 
-	// Token: 0x04000ADA RID: 2778
 	private static readonly string effectDarknessName = "Ef_scenario_darkness";
 
-	// Token: 0x04000ADB RID: 2779
 	private static readonly string effectSpeedLineUpName = "Ef_scenario_speedline_up";
 
-	// Token: 0x04000ADC RID: 2780
 	private static readonly string effectSpeedLineDownName = "Ef_scenario_speedline_down";
 
-	// Token: 0x04000ADD RID: 2781
 	private static readonly string effectSpeedLineLeftName = "Ef_scenario_speedline_left";
 
-	// Token: 0x04000ADE RID: 2782
 	private static readonly string effectSpeedLineRightName = "Ef_scenario_speedline_right";
 
-	// Token: 0x04000ADF RID: 2783
 	private EffectData effectStage;
 
-	// Token: 0x04000AE0 RID: 2784
 	private static readonly string effectSmokeName = "Ef_scenario_smoke";
 
-	// Token: 0x04000AE1 RID: 2785
 	private static readonly string effectSoilSmokeName = "Ef_scenario_soilsmoke";
 
-	// Token: 0x04000AE2 RID: 2786
 	private EffectData effectSmoke;
 
-	// Token: 0x04000AE3 RID: 2787
 	private bool loopSE;
 
-	// Token: 0x04000AE4 RID: 2788
 	private CriAtomExPlayback loopSEhdl;
 
-	// Token: 0x04000AE5 RID: 2789
 	private List<CriAtomExPlayback> playloopSEList = new List<CriAtomExPlayback>();
 
-	// Token: 0x04000AE6 RID: 2790
 	public static readonly string CHARA_OFFSET_PATH = "Scenario/ScenarioCharaOffset.asset";
 
-	// Token: 0x04000AE7 RID: 2791
 	public static readonly Dictionary<string, string> ENABLE_ALPHA_DIC = new Dictionary<string, string>
 	{
 		{ "car", "Texture2D/Bg_Scenario/Car/bg_car" },
@@ -3230,200 +3070,131 @@ public class ScenarioScene : MonoBehaviour
 		{ "pier_cloud", "Texture2D/Bg_Scenario/Pier/bg_pier_cloud" }
 	};
 
-	// Token: 0x02000864 RID: 2148
 	private enum Status
 	{
-		// Token: 0x04003892 RID: 14482
 		LOAD,
-		// Token: 0x04003893 RID: 14483
 		LOAD_WAIT,
-		// Token: 0x04003894 RID: 14484
 		IN,
-		// Token: 0x04003895 RID: 14485
 		PROCESS,
-		// Token: 0x04003896 RID: 14486
 		OUT,
-		// Token: 0x04003897 RID: 14487
 		TERM
 	}
 
-	// Token: 0x02000865 RID: 2149
 	private enum INTRODECE_PHASE
 	{
-		// Token: 0x04003899 RID: 14489
 		CHARA_ALL_HIDE,
-		// Token: 0x0400389A RID: 14490
 		SHOW_INTRODUCE_CHARA,
-		// Token: 0x0400389B RID: 14491
 		SHOW_TELOP,
-		// Token: 0x0400389C RID: 14492
 		WAIT_USER_CLICK,
-		// Token: 0x0400389D RID: 14493
 		HIDE_INTRODUCE_CHARA,
-		// Token: 0x0400389E RID: 14494
 		BACK_ORIGINAL_STATE,
-		// Token: 0x0400389F RID: 14495
 		NONE
 	}
 
-	// Token: 0x02000866 RID: 2150
 	private enum AUTH_PHASE
 	{
-		// Token: 0x040038A1 RID: 14497
 		INITIALISE,
-		// Token: 0x040038A2 RID: 14498
 		WAIT,
-		// Token: 0x040038A3 RID: 14499
 		PLAY,
-		// Token: 0x040038A4 RID: 14500
 		MAX
 	}
 
-	// Token: 0x02000867 RID: 2151
 	private enum MOVIE_PHASE
 	{
-		// Token: 0x040038A6 RID: 14502
 		INITIALISE,
-		// Token: 0x040038A7 RID: 14503
 		WAIT,
-		// Token: 0x040038A8 RID: 14504
 		PLAY,
-		// Token: 0x040038A9 RID: 14505
 		MAX
 	}
 
-	// Token: 0x02000868 RID: 2152
 	public class friend
 	{
-		// Token: 0x040038AA RID: 14506
 		public int ID;
 
-		// Token: 0x040038AB RID: 14507
 		public int posID;
 
-		// Token: 0x040038AC RID: 14508
 		public GameObject obj;
 
-		// Token: 0x040038AD RID: 14509
 		public CharaModelHandle charaModelHandle;
 
-		// Token: 0x040038AE RID: 14510
 		public ScenarioSetValues.CharaOffset charaModelOffset;
 
-		// Token: 0x040038AF RID: 14511
 		public string mName;
 
-		// Token: 0x040038B0 RID: 14512
 		public GameObject mEff;
 
-		// Token: 0x040038B1 RID: 14513
 		public EffectData mEffData;
 
-		// Token: 0x040038B2 RID: 14514
 		public int bMove;
 
-		// Token: 0x040038B3 RID: 14515
 		public float fTagPos;
 
-		// Token: 0x040038B4 RID: 14516
 		public float fTagRot;
 
-		// Token: 0x040038B5 RID: 14517
 		public bool bDisappear;
 
-		// Token: 0x040038B6 RID: 14518
 		public bool bMotion;
 
-		// Token: 0x040038B7 RID: 14519
 		public int bFade;
 
-		// Token: 0x040038B8 RID: 14520
 		public string faceId;
 
-		// Token: 0x040038B9 RID: 14521
 		public string idleFaceId;
 
-		// Token: 0x040038BA RID: 14522
 		public Transform follow;
 
-		// Token: 0x040038BB RID: 14523
 		public CharaMotionDefine.ActKey standby;
 
-		// Token: 0x040038BC RID: 14524
 		public float standbyCF;
 
-		// Token: 0x040038BD RID: 14525
 		public bool puyo;
 	}
 
-	// Token: 0x02000869 RID: 2153
 	private class GUI
 	{
-		// Token: 0x040038BE RID: 14526
 		public GameObject mGUI_Scenario;
 
-		// Token: 0x040038BF RID: 14527
 		public SimpleAnimation mSerifAnim;
 
-		// Token: 0x040038C0 RID: 14528
 		public Transform mSerifImage_normal;
 
-		// Token: 0x040038C1 RID: 14529
 		public Transform mSerifImage_needle;
 
-		// Token: 0x040038C2 RID: 14530
 		public Transform mSerifImage_cloud;
 
-		// Token: 0x040038C3 RID: 14531
 		public TypewriterEffect mSerifText;
 
-		// Token: 0x040038C4 RID: 14532
 		public PguiTextCtrl mSerifTextJpn;
 
-		// Token: 0x040038C5 RID: 14533
 		public GameObject mSerifChara;
 
-		// Token: 0x040038C6 RID: 14534
 		public GameObject mImgMiraiObj;
 
-		// Token: 0x040038C7 RID: 14535
 		public GameObject mTitleObj;
 
-		// Token: 0x040038C8 RID: 14536
 		public ScenarioGUISelect mGuiSelect;
 
-		// Token: 0x040038C9 RID: 14537
 		public ScenarioGUIPlyBtns mGuiPlyBtns;
 
-		// Token: 0x040038CA RID: 14538
 		public GameObject mLogWindow;
 
-		// Token: 0x040038CB RID: 14539
 		public GameObject mLogEnd;
 
-		// Token: 0x040038CC RID: 14540
 		public GameObject mKomado;
 
-		// Token: 0x040038CD RID: 14541
 		public GameObject mNarration;
 
-		// Token: 0x040038CE RID: 14542
 		public TypewriterEffect mNarrationText;
 
-		// Token: 0x040038CF RID: 14543
 		public GameObject mPhoto;
 
-		// Token: 0x040038D0 RID: 14544
 		public GameObject mSkipWindow;
 
-		// Token: 0x040038D1 RID: 14545
 		public ScenarioSkipWindow sSkipWindow;
 	}
 
-	// Token: 0x0200086A RID: 2154
 	public struct WaitParam
 	{
-		// Token: 0x0600386F RID: 14447 RVA: 0x001CB0B0 File Offset: 0x001C92B0
 		public void ResetParam()
 		{
 			this.type = ScenarioDefine.TYPE.LABEL;
@@ -3441,22 +3212,17 @@ public class ScenarioScene : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06003870 RID: 14448 RVA: 0x001CB116 File Offset: 0x001C9316
 		public bool isAnyWait()
 		{
 			return false | this.isWaitInput;
 		}
 
-		// Token: 0x040038D2 RID: 14546
 		public ScenarioDefine.TYPE type;
 
-		// Token: 0x040038D3 RID: 14547
 		public bool isWaitInput;
 
-		// Token: 0x040038D4 RID: 14548
 		public int[] jumpRows;
 
-		// Token: 0x040038D5 RID: 14549
 		public string[] jumpText;
 	}
 }

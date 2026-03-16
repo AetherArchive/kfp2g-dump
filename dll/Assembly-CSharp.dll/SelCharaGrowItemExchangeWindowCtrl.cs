@@ -1,20 +1,17 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SGNFW.HttpRequest.Protocol;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x0200012F RID: 303
 public class SelCharaGrowItemExchangeWindowCtrl : MonoBehaviour
 {
-	// Token: 0x06001050 RID: 4176 RVA: 0x000C61B8 File Offset: 0x000C43B8
 	public void Initialize(Transform transform)
 	{
 		this.guiItemUseWindow = new SelCharaGrowItemExchangeWindowCtrl.ExchangeItemUseNumWindow(transform);
 	}
 
-	// Token: 0x06001051 RID: 4177 RVA: 0x000C61C8 File Offset: 0x000C43C8
 	public void Setup(DataManagerItem.ExchangeRatesData exchange, Action<int> action)
 	{
 		List<ExchangeExecuteCountInfo> executeCountInfos = DataManager.DmItem.GetExecuteCountInfos();
@@ -72,7 +69,6 @@ public class SelCharaGrowItemExchangeWindowCtrl : MonoBehaviour
 		this.guiItemUseWindow.buttonDec.SetActEnable(false, false, false);
 	}
 
-	// Token: 0x06001052 RID: 4178 RVA: 0x000C6638 File Offset: 0x000C4838
 	private void OnSliderValueChanged(float value)
 	{
 		int num = int.Parse(value.ToString());
@@ -87,7 +83,6 @@ public class SelCharaGrowItemExchangeWindowCtrl : MonoBehaviour
 		this.guiItemUseWindow.numAfterTargetItemText.text = (userItemData2.num + this.currentExchangeData.gainNum * num).ToString();
 	}
 
-	// Token: 0x06001053 RID: 4179 RVA: 0x000C675C File Offset: 0x000C495C
 	private void OnClickPlusButton(PguiButtonCtrl button)
 	{
 		int num = int.Parse(this.guiItemUseWindow.slider.value.ToString());
@@ -99,7 +94,6 @@ public class SelCharaGrowItemExchangeWindowCtrl : MonoBehaviour
 		this.guiItemUseWindow.slider.value = (float)num;
 	}
 
-	// Token: 0x06001054 RID: 4180 RVA: 0x000C67C0 File Offset: 0x000C49C0
 	private void OnClickMinusButton(PguiButtonCtrl button)
 	{
 		int num = int.Parse(this.guiItemUseWindow.slider.value.ToString());
@@ -111,22 +105,16 @@ public class SelCharaGrowItemExchangeWindowCtrl : MonoBehaviour
 		this.guiItemUseWindow.slider.value = (float)num;
 	}
 
-	// Token: 0x04000E46 RID: 3654
 	public SelCharaGrowItemExchangeWindowCtrl.ExchangeItemUseNumWindow guiItemUseWindow;
 
-	// Token: 0x04000E47 RID: 3655
 	private DataManagerItem.ExchangeRatesData currentExchangeData;
 
-	// Token: 0x04000E48 RID: 3656
 	private Action<int> actionExecuteCount;
 
-	// Token: 0x04000E49 RID: 3657
 	private int currentMaxExecuteCount;
 
-	// Token: 0x020009EE RID: 2542
 	public class ExchangeItemUseNumWindow
 	{
-		// Token: 0x06003DA2 RID: 15778 RVA: 0x001E2424 File Offset: 0x001E0624
 		public ExchangeItemUseNumWindow(Transform baseTr)
 		{
 			this.window = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -161,79 +149,54 @@ public class SelCharaGrowItemExchangeWindowCtrl : MonoBehaviour
 			this.executeCountText = baseTr.Find(text + "Exchange/Num_Txt").gameObject.GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x04003F34 RID: 16180
 		public GameObject baseObj;
 
-		// Token: 0x04003F35 RID: 16181
 		public PguiOpenWindowCtrl window;
 
-		// Token: 0x04003F36 RID: 16182
 		public PguiButtonCtrl buttonClose;
 
-		// Token: 0x04003F37 RID: 16183
 		public PguiButtonCtrl buttonOk;
 
-		// Token: 0x04003F38 RID: 16184
 		public PguiButtonCtrl buttonInc;
 
-		// Token: 0x04003F39 RID: 16185
 		public PguiButtonCtrl buttonDec;
 
-		// Token: 0x04003F3A RID: 16186
 		public PguiTextCtrl numBeforeSourceItemText;
 
-		// Token: 0x04003F3B RID: 16187
 		public PguiTextCtrl numAfterSourceItemText;
 
-		// Token: 0x04003F3C RID: 16188
 		public PguiTextCtrl numBeforeTargetItemText;
 
-		// Token: 0x04003F3D RID: 16189
 		public PguiTextCtrl numAfterTargetItemText;
 
-		// Token: 0x04003F3E RID: 16190
 		public PguiTextCtrl sourceItemNameText;
 
-		// Token: 0x04003F3F RID: 16191
 		public PguiTextCtrl targetItemNameText;
 
-		// Token: 0x04003F40 RID: 16192
 		public PguiTextCtrl useItemNumText;
 
-		// Token: 0x04003F41 RID: 16193
 		public PguiTextCtrl gainItemNumText;
 
-		// Token: 0x04003F42 RID: 16194
 		public PguiTextCtrl executeCountText;
 
-		// Token: 0x04003F43 RID: 16195
 		public PguiTextCtrl excText;
 
-		// Token: 0x04003F44 RID: 16196
 		public Slider slider;
 
-		// Token: 0x04003F45 RID: 16197
 		public GameObject sliderObj;
 
-		// Token: 0x04003F46 RID: 16198
 		public SelCharaGrowItemExchangeWindowCtrl.ExchangeItemUseNumWindow.IconItemPack sourceIconItemPack = new SelCharaGrowItemExchangeWindowCtrl.ExchangeItemUseNumWindow.IconItemPack();
 
-		// Token: 0x04003F47 RID: 16199
 		public SelCharaGrowItemExchangeWindowCtrl.ExchangeItemUseNumWindow.IconItemPack targetIconItemPack = new SelCharaGrowItemExchangeWindowCtrl.ExchangeItemUseNumWindow.IconItemPack();
 
-		// Token: 0x04003F48 RID: 16200
 		public PguiTextCtrl exchangeRatioText;
 
-		// Token: 0x04003F49 RID: 16201
 		public PguiRawImageCtrl sourceItemTex;
 
-		// Token: 0x04003F4A RID: 16202
 		public PguiRawImageCtrl targetItemTex;
 
-		// Token: 0x0200115E RID: 4446
 		public class IconItemPack
 		{
-			// Token: 0x060055FB RID: 22011 RVA: 0x0025076D File Offset: 0x0024E96D
 			public void Clear()
 			{
 				if (this.iconItemCtrl != null)
@@ -246,10 +209,8 @@ public class SelCharaGrowItemExchangeWindowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x04005F73 RID: 24435
 			public IconItemCtrl iconItemCtrl;
 
-			// Token: 0x04005F74 RID: 24436
 			public PguiTextCtrl textCtrl;
 		}
 	}

@@ -1,13 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Battle
 {
-	// Token: 0x02000211 RID: 529
 	public class SceneBattle_ContinueGUI
 	{
-		// Token: 0x06002238 RID: 8760 RVA: 0x00192280 File Offset: 0x00190480
 		public SceneBattle_ContinueGUI(Transform baseTr)
 		{
 			this.btnYes = baseTr.Find("Base/Window/ButtonR").GetComponent<PguiButtonCtrl>();
@@ -39,43 +37,30 @@ namespace Battle
 			component.text = component.text.Replace("Param01", DataManager.DmQuest.GetContinueStoneNum().ToString());
 		}
 
-		// Token: 0x0400191C RID: 6428
 		public SimpleAnimation anim;
 
-		// Token: 0x0400191D RID: 6429
 		public PguiButtonCtrl btnYes;
 
-		// Token: 0x0400191E RID: 6430
 		public PguiButtonCtrl btnNo;
 
-		// Token: 0x0400191F RID: 6431
 		public PguiButtonCtrl btnClose;
 
-		// Token: 0x04001920 RID: 6432
 		public PguiButtonCtrl btnPurchaseConfirm;
 
-		// Token: 0x04001921 RID: 6433
 		public PguiTextCtrl numWave;
 
-		// Token: 0x04001922 RID: 6434
 		public PguiTextCtrl numTurn;
 
-		// Token: 0x04001923 RID: 6435
 		public PguiTextCtrl numCoin;
 
-		// Token: 0x04001924 RID: 6436
 		public PguiTextCtrl numBefore;
 
-		// Token: 0x04001925 RID: 6437
 		public PguiTextCtrl numAfter;
 
-		// Token: 0x04001926 RID: 6438
 		public GameObject notStone;
 
-		// Token: 0x04001927 RID: 6439
 		public GameObject buyStone;
 
-		// Token: 0x04001928 RID: 6440
 		public List<PguiReplaceSpriteCtrl> dropItem;
 	}
 }

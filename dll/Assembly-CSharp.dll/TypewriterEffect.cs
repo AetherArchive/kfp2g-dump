@@ -1,12 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x02000117 RID: 279
 public class TypewriterEffect : MonoBehaviour
 {
-	// Token: 0x06000D6D RID: 3437 RVA: 0x000593CC File Offset: 0x000575CC
 	private void Start()
 	{
 		this.mTestText.text = "";
@@ -15,7 +13,6 @@ public class TypewriterEffect : MonoBehaviour
 		this.posY = base.transform.localPosition.y;
 	}
 
-	// Token: 0x06000D6E RID: 3438 RVA: 0x0005941C File Offset: 0x0005761C
 	private void Update()
 	{
 		if (this.dispText.Count <= 0)
@@ -299,8 +296,6 @@ public class TypewriterEffect : MonoBehaviour
 		this.mTestText.text = text3;
 	}
 
-	// Token: 0x1700032C RID: 812
-	// (get) Token: 0x06000D6F RID: 3439 RVA: 0x00059E18 File Offset: 0x00058018
 	public bool IsCompleteDisplayText
 	{
 		get
@@ -309,7 +304,6 @@ public class TypewriterEffect : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D70 RID: 3440 RVA: 0x00059E2C File Offset: 0x0005802C
 	public void SetCurrentText(string text, int size, int spd)
 	{
 		this.currentText = text;
@@ -331,7 +325,6 @@ public class TypewriterEffect : MonoBehaviour
 		this.mTestText.text = "";
 	}
 
-	// Token: 0x06000D71 RID: 3441 RVA: 0x00059EBD File Offset: 0x000580BD
 	public bool ClickScreen()
 	{
 		bool isCompleteDisplayText = this.IsCompleteDisplayText;
@@ -343,42 +336,30 @@ public class TypewriterEffect : MonoBehaviour
 		return isCompleteDisplayText;
 	}
 
-	// Token: 0x04000B08 RID: 2824
 	[SerializeField]
 	private Text mTestText;
 
-	// Token: 0x04000B09 RID: 2825
 	[SerializeField]
 	[Range(0.001f, 0.3f)]
 	private float intervalForCharacterDisplay = 0.05f;
 
-	// Token: 0x04000B0A RID: 2826
 	private float posY;
 
-	// Token: 0x04000B0B RID: 2827
 	private int fntSiz;
 
-	// Token: 0x04000B0C RID: 2828
 	private string currentText = "";
 
-	// Token: 0x04000B0D RID: 2829
 	private List<string> dispText = new List<string>();
 
-	// Token: 0x04000B0E RID: 2830
 	private List<string> rubyText = new List<string>();
 
-	// Token: 0x04000B0F RID: 2831
 	private float timer;
 
-	// Token: 0x04000B10 RID: 2832
 	private Dictionary<string, KeyValuePair<int, string>> rich = new Dictionary<string, KeyValuePair<int, string>>();
 
-	// Token: 0x04000B11 RID: 2833
 	private int ruby;
 
-	// Token: 0x04000B12 RID: 2834
 	private int fsiz;
 
-	// Token: 0x04000B13 RID: 2835
 	private float speed;
 }

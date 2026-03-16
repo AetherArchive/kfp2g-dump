@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
@@ -7,12 +7,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x02000162 RID: 354
 public class SelProfileCtrl : MonoBehaviour
 {
-	// Token: 0x17000387 RID: 903
-	// (get) Token: 0x06001470 RID: 5232 RVA: 0x000F9C2E File Offset: 0x000F7E2E
-	// (set) Token: 0x06001471 RID: 5233 RVA: 0x000F9C36 File Offset: 0x000F7E36
 	private SelProfileCtrl.Mode currentMode
 	{
 		get
@@ -26,8 +22,6 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000388 RID: 904
-	// (get) Token: 0x06001472 RID: 5234 RVA: 0x000F9C4B File Offset: 0x000F7E4B
 	private SelProfileCtrl.Mode preMode
 	{
 		get
@@ -36,8 +30,6 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000389 RID: 905
-	// (get) Token: 0x06001473 RID: 5235 RVA: 0x000F9C53 File Offset: 0x000F7E53
 	public bool GetStart
 	{
 		get
@@ -46,7 +38,6 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001474 RID: 5236 RVA: 0x000F9C5C File Offset: 0x000F7E5C
 	public void Init()
 	{
 		GameObject gameObject = Object.Instantiate<GameObject>((GameObject)AssetManager.GetAssetData("SceneMenu/GUI/Prefab/GUI_Menu_Profile"), base.transform);
@@ -106,7 +97,6 @@ public class SelProfileCtrl : MonoBehaviour
 		this.currentMode = SelProfileCtrl.Mode.INVALID;
 	}
 
-	// Token: 0x06001475 RID: 5237 RVA: 0x000F9FD8 File Offset: 0x000F81D8
 	public void Setup(bool helperStart, bool selectPhoto, bool selectAccessory, bool fromBattleSelector, UnityAction<bool> cb = null)
 	{
 		this.isHelperSettingStartFromCharaEdit = helperStart;
@@ -166,18 +156,15 @@ public class SelProfileCtrl : MonoBehaviour
 		}, PguiButtonCtrl.SoundType.DEFAULT);
 	}
 
-	// Token: 0x06001476 RID: 5238 RVA: 0x000FA2B8 File Offset: 0x000F84B8
 	public bool IsProcessing()
 	{
 		return this.currentEnumerator != null;
 	}
 
-	// Token: 0x06001477 RID: 5239 RVA: 0x000FA2C3 File Offset: 0x000F84C3
 	private void Start()
 	{
 	}
 
-	// Token: 0x06001478 RID: 5240 RVA: 0x000FA2C8 File Offset: 0x000F84C8
 	private void OnDestroy()
 	{
 		if (this.guiData != null)
@@ -197,7 +184,6 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001479 RID: 5241 RVA: 0x000FA364 File Offset: 0x000F8564
 	private void Update()
 	{
 		if (this.currentEnumerator != null && !this.currentEnumerator.MoveNext())
@@ -282,14 +268,12 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600147A RID: 5242 RVA: 0x000FA6CF File Offset: 0x000F88CF
 	public void RequestUpdateAvater()
 	{
 		DataManager.DmUserInfo.RequestActionUpdateUserAvatar(this.avaterType + DataManagerUserInfo.AvatarType.TYPE_A);
 		this.renderTextureChara.Destroy();
 	}
 
-	// Token: 0x0600147B RID: 5243 RVA: 0x000FA6EE File Offset: 0x000F88EE
 	public void SetActive(bool sw)
 	{
 		if (this.selPhotoEditCtrl != null)
@@ -303,7 +287,6 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600147C RID: 5244 RVA: 0x000FA71B File Offset: 0x000F891B
 	private IEnumerator RequestUpdateName(string name)
 	{
 		DataManager.DmUserInfo.RequestActionUpdateUserName(name);
@@ -325,7 +308,6 @@ public class SelProfileCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600147D RID: 5245 RVA: 0x000FA731 File Offset: 0x000F8931
 	private IEnumerator RequestUpdateFavoriteChara(int charaId)
 	{
 		bool isWindowFinish = false;
@@ -380,7 +362,6 @@ public class SelProfileCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600147E RID: 5246 RVA: 0x000FA747 File Offset: 0x000F8947
 	private IEnumerator RequestUpdateComment(string comment)
 	{
 		DataManager.DmUserInfo.RequestActionUpdateUserComment(comment);
@@ -401,7 +382,6 @@ public class SelProfileCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600147F RID: 5247 RVA: 0x000FA75D File Offset: 0x000F895D
 	private IEnumerator RequestActionUpdateLoanPackList()
 	{
 		DataManager.DmUserInfo.RequestActionUpdateLoanPackList(this.disideLoanPackList);
@@ -412,7 +392,6 @@ public class SelProfileCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001480 RID: 5248 RVA: 0x000FA76C File Offset: 0x000F896C
 	private IEnumerator RequestUpdateLoanPack()
 	{
 		bool requestServer = false;
@@ -517,7 +496,6 @@ public class SelProfileCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001481 RID: 5249 RVA: 0x000FA77B File Offset: 0x000F897B
 	private IEnumerator CharaMotionChange()
 	{
 		while (!this.renderTextureChara.renderTextureChara.FinishedSetup)
@@ -532,7 +510,6 @@ public class SelProfileCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001482 RID: 5250 RVA: 0x000FA78C File Offset: 0x000F898C
 	private void RefreshProfile()
 	{
 		this.guiData.guiProfile.Txt_UserName.text = DataManager.DmUserInfo.userName;
@@ -556,7 +533,6 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001483 RID: 5251 RVA: 0x000FA979 File Offset: 0x000F8B79
 	private IEnumerator ChangeLoginBonus()
 	{
 		UserOptionData userOptionData = DataManager.DmUserInfo.optionData.Clone();
@@ -570,14 +546,12 @@ public class SelProfileCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001484 RID: 5252 RVA: 0x000FA988 File Offset: 0x000F8B88
 	private void DispLoginBonus()
 	{
 		this.guiData.guiBtnLoginBonus.favorite.SetActive(!DataManager.DmUserInfo.optionData.LoginBonusFriends);
 		this.guiData.guiBtnLoginBonus.random.SetActive(DataManager.DmUserInfo.optionData.LoginBonusFriends);
 	}
 
-	// Token: 0x06001485 RID: 5253 RVA: 0x000FA9E0 File Offset: 0x000F8BE0
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		if (button == this.guiData.guiBtnFavorite.Btn_Favorite && this.currentMode == SelProfileCtrl.Mode.TOP)
@@ -633,7 +607,6 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001486 RID: 5254 RVA: 0x000FAB9B File Offset: 0x000F8D9B
 	private void OnClickCharaButton(IconCharaCtrl icc)
 	{
 		if (icc.charaPackData != null && this.currentFavoriteCharaId != icc.charaPackData.id)
@@ -642,7 +615,6 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001487 RID: 5255 RVA: 0x000FABD0 File Offset: 0x000F8DD0
 	private bool OnClickOwButton(int index)
 	{
 		if (this.currentMode == SelProfileCtrl.Mode.NAME_CHANGE)
@@ -682,14 +654,12 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001488 RID: 5256 RVA: 0x000FACBD File Offset: 0x000F8EBD
 	private bool OnClickButtionChangeAchievement()
 	{
 		Singleton<SceneManager>.Instance.SetNextScene(SceneManager.SceneName.SceneAchievement, null);
 		return true;
 	}
 
-	// Token: 0x06001489 RID: 5257 RVA: 0x000FACD0 File Offset: 0x000F8ED0
 	private void OnStartCharaTop(int index, GameObject go)
 	{
 		GameObject gameObject = (GameObject)Resources.Load("SceneCharaEdit/GUI/Prefab/CharaGrow_Btn_CharaSelect");
@@ -705,7 +675,6 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600148A RID: 5258 RVA: 0x000FAD44 File Offset: 0x000F8F44
 	private void OnUpdateCharaTop(int index, GameObject go)
 	{
 		for (int i = 0; i < 3; i++)
@@ -725,7 +694,6 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600148B RID: 5259 RVA: 0x000FADF4 File Offset: 0x000F8FF4
 	public bool OnClickReturnButton()
 	{
 		if (this.currentMode == SelProfileCtrl.Mode.FAVORITE_CHANGE)
@@ -745,7 +713,6 @@ public class SelProfileCtrl : MonoBehaviour
 		return this.currentMode != SelProfileCtrl.Mode.TOP;
 	}
 
-	// Token: 0x0600148C RID: 5260 RVA: 0x000FAE4C File Offset: 0x000F904C
 	private IEnumerator RequestEndAnimation()
 	{
 		this.guiData.profileAnimation.ExPlayAnimation(SimpleAnimation.ExPguiStatus.END, delegate
@@ -756,7 +723,6 @@ public class SelProfileCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600148D RID: 5261 RVA: 0x000FAE5B File Offset: 0x000F905B
 	public bool OnClickMoveSequenceButton(SceneManager.SceneName sceneName, object sceneArgs)
 	{
 		if (this.currentMode == SelProfileCtrl.Mode.HELPER_CHANGE)
@@ -769,7 +735,6 @@ public class SelProfileCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x0600148E RID: 5262 RVA: 0x000FAE83 File Offset: 0x000F9083
 	private IEnumerator OpenBuffInfoWindow()
 	{
 		CanvasManager.HdlKizunaKizunaBuffWindowCtrl.SetupBuffInfo();
@@ -783,8 +748,6 @@ public class SelProfileCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x1700038A RID: 906
-	// (get) Token: 0x0600148F RID: 5263 RVA: 0x000FAE8C File Offset: 0x000F908C
 	private List<CharaPackData> DispLoanCharaList
 	{
 		get
@@ -798,27 +761,23 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001490 RID: 5264 RVA: 0x000FAECA File Offset: 0x000F90CA
 	private bool IsChangeHelpers()
 	{
 		return this.isChangeHelpers || (this.selPhotoEditCtrl != null && this.selPhotoEditCtrl.isChangeClone);
 	}
 
-	// Token: 0x06001491 RID: 5265 RVA: 0x000FAEF1 File Offset: 0x000F90F1
 	private void SelectPhoto()
 	{
 		this.OnClickPhotoButton(this.guiData.guiHelperChange.charaDeck.Btn_Photo, 0);
 		this.guiData.guiHelperChange.charaDeck.Btn_Photo.SetToggleIndex(1);
 	}
 
-	// Token: 0x06001492 RID: 5266 RVA: 0x000FAF2B File Offset: 0x000F912B
 	private void SelectAccessory()
 	{
 		this.OnClickAccessoryButton(this.guiData.guiHelperChange.charaDeck.Btn_Accessory, 0);
 		this.guiData.guiHelperChange.charaDeck.Btn_Accessory.SetToggleIndex(1);
 	}
 
-	// Token: 0x06001493 RID: 5267 RVA: 0x000FAF68 File Offset: 0x000F9168
 	private void InitByHelperDeck()
 	{
 		this.guiData.guiHelperChange.charaDeck.Btn_Chara.AddOnClickListener(new PguiToggleButtonCtrl.OnClick(this.OnClickCharaButton));
@@ -887,7 +846,6 @@ public class SelProfileCtrl : MonoBehaviour
 		CanvasManager.HdlOpenWindowSortFilter.Register(registerData, false, null);
 	}
 
-	// Token: 0x06001494 RID: 5268 RVA: 0x000FB1FC File Offset: 0x000F93FC
 	public static void DeepCopyLoanPackList(List<LoanPackData> from, List<LoanPackData> to)
 	{
 		to.Clear();
@@ -901,7 +859,6 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001495 RID: 5269 RVA: 0x000FB254 File Offset: 0x000F9454
 	private void SetupDeckTop(bool selectPhoto, bool selectAccessory)
 	{
 		SelProfileCtrl.DeepCopyLoanPackList(DataManager.DmUserInfo.loanPackList, this.cloneLoanPackList);
@@ -937,7 +894,6 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001496 RID: 5270 RVA: 0x000FB434 File Offset: 0x000F9634
 	private void RefreshDeckFrame()
 	{
 		for (int i = 0; i < this.guiData.guiHelperChange.charaDeck.iconCharaPacks.Count; i++)
@@ -1019,7 +975,6 @@ public class SelProfileCtrl : MonoBehaviour
 		this.guiData.guiHelperChange.charaDeck.Btn_PhotoRemove.SetActEnable(flag5, false, false);
 	}
 
-	// Token: 0x06001497 RID: 5271 RVA: 0x000FB835 File Offset: 0x000F9A35
 	private void RefreshReserveFrame(SelCharaDeckCtrl.GUI.IconChara iconChara)
 	{
 		this.currentLoanAttribute = (CharaDef.AttributeType)this.GetIconCharaIndex(iconChara);
@@ -1027,13 +982,11 @@ public class SelProfileCtrl : MonoBehaviour
 		CanvasManager.HdlOpenWindowSortFilter.SolutionList(SortFilterDefine.RegisterType.CHARA_HELPER_LOAN, null);
 	}
 
-	// Token: 0x06001498 RID: 5272 RVA: 0x000FB860 File Offset: 0x000F9A60
 	private int GetIconCharaIndex(SelCharaDeckCtrl.GUI.IconChara iconChara)
 	{
 		return this.guiData.guiHelperChange.charaDeck.iconCharaPacks.FindIndex((SelCharaDeckCtrl.GUI.IconCharaPack item) => item.iconChara == iconChara);
 	}
 
-	// Token: 0x06001499 RID: 5273 RVA: 0x000FB8A0 File Offset: 0x000F9AA0
 	private void SelectCharaIcon(SelProfileCtrl.SelectCharaData newSelectChara, SelProfileCtrl.SelectCharaData oldSelectChara)
 	{
 		List<PguiAECtrl> list = new List<PguiAECtrl>();
@@ -1102,7 +1055,6 @@ public class SelProfileCtrl : MonoBehaviour
 		SoundManager.Play("prd_se_click", false, false);
 	}
 
-	// Token: 0x0600149A RID: 5274 RVA: 0x000FBC10 File Offset: 0x000F9E10
 	private void ResetCurrentIcon()
 	{
 		if (this.selectCharaData != null)
@@ -1112,7 +1064,6 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600149B RID: 5275 RVA: 0x000FBC3C File Offset: 0x000F9E3C
 	private IEnumerator RequestCharaDeck()
 	{
 		this.currentHelperMode = SelProfileCtrl.HelperMode.DECK_TOP;
@@ -1131,7 +1082,6 @@ public class SelProfileCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600149C RID: 5276 RVA: 0x000FBC4B File Offset: 0x000F9E4B
 	private IEnumerator RequestPhotoDeck()
 	{
 		this.currentHelperMode = SelProfileCtrl.HelperMode.PHOTO_TOP;
@@ -1154,14 +1104,12 @@ public class SelProfileCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600149D RID: 5277 RVA: 0x000FBC5A File Offset: 0x000F9E5A
 	private void RequestAccessoryDeck()
 	{
 		this.ResetCurrentIcon();
 		this.RefreshDeckFrame();
 	}
 
-	// Token: 0x0600149E RID: 5278 RVA: 0x000FBC68 File Offset: 0x000F9E68
 	private void OnClickButtonHelper(PguiButtonCtrl button)
 	{
 		if (this.currentHelperMode == SelProfileCtrl.HelperMode.DECK_EDIT && button == this.guiData.guiHelperChange.charaDeck.Btn_EditOk)
@@ -1208,7 +1156,6 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600149F RID: 5279 RVA: 0x000FBDB4 File Offset: 0x000F9FB4
 	private void RemovePhoto()
 	{
 		for (int i = 0; i < this.cloneLoanPackList.Count; i++)
@@ -1225,7 +1172,6 @@ public class SelProfileCtrl : MonoBehaviour
 		this.RefreshDeckFrame();
 	}
 
-	// Token: 0x060014A0 RID: 5280 RVA: 0x000FBE3C File Offset: 0x000FA03C
 	private bool OnClickCharaButton(PguiToggleButtonCtrl pbc, int toggleIndex)
 	{
 		if (this.currentHelperMode != SelProfileCtrl.HelperMode.DECK_TOP)
@@ -1248,7 +1194,6 @@ public class SelProfileCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x060014A1 RID: 5281 RVA: 0x000FBF24 File Offset: 0x000FA124
 	private bool OnClickPhotoButton(PguiToggleButtonCtrl pbc, int toggleIndex)
 	{
 		if (this.currentHelperMode != SelProfileCtrl.HelperMode.PHOTO_TOP)
@@ -1266,7 +1211,6 @@ public class SelProfileCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x060014A2 RID: 5282 RVA: 0x000FBFE4 File Offset: 0x000FA1E4
 	private bool OnClickAccessoryButton(PguiToggleButtonCtrl pbc, int toggleIndex)
 	{
 		if (this.currentHelperMode != SelProfileCtrl.HelperMode.ACCESSORY_TOP)
@@ -1288,7 +1232,6 @@ public class SelProfileCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x060014A3 RID: 5283 RVA: 0x000FC0C4 File Offset: 0x000FA2C4
 	private void OnStartItemChara(int index, GameObject go)
 	{
 		for (int i = 0; i < 2; i++)
@@ -1310,7 +1253,6 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060014A4 RID: 5284 RVA: 0x000FC1B4 File Offset: 0x000FA3B4
 	private void OnUpdateItemChara(int index, GameObject go)
 	{
 		for (int i = 0; i < 2; i++)
@@ -1339,7 +1281,6 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060014A5 RID: 5285 RVA: 0x000FC3DC File Offset: 0x000FA5DC
 	private void OnTouchCharaIcon(SelCharaDeckCtrl.FrameType type, SelCharaDeckCtrl.GUI.IconChara iconChara, int selPhoto)
 	{
 		if (this.currentHelperMode == SelProfileCtrl.HelperMode.DECK_TOP)
@@ -1464,149 +1405,101 @@ public class SelProfileCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x040010CA RID: 4298
 	public bool isDebug;
 
-	// Token: 0x040010CB RID: 4299
 	private SelProfileCtrl.GUI guiData;
 
-	// Token: 0x040010CC RID: 4300
 	private SelPhotoEditCtrl selPhotoEditCtrl;
 
-	// Token: 0x040010CD RID: 4301
 	private SortFilterDefine.SortType sortType = SortFilterDefine.SortType.LEVEL;
 
-	// Token: 0x040010CE RID: 4302
 	private SelProfileCtrl.WindowCommentChange windowCommentChange;
 
-	// Token: 0x040010CF RID: 4303
 	private SelProfileCtrl.WindowNameChange windowNameChange;
 
-	// Token: 0x040010D0 RID: 4304
 	private SelProfileCtrl.Mode requestMode;
 
-	// Token: 0x040010D1 RID: 4305
 	private SelProfileCtrl.Mode _currentMode;
 
-	// Token: 0x040010D2 RID: 4306
 	private SelProfileCtrl.Mode _preMode;
 
-	// Token: 0x040010D3 RID: 4307
 	private bool getStart;
 
-	// Token: 0x040010D4 RID: 4308
 	private SelProfileCtrl.HelperMode currentHelperMode;
 
-	// Token: 0x040010D5 RID: 4309
 	private IEnumerator currentEnumerator;
 
-	// Token: 0x040010D6 RID: 4310
 	private IEnumerator requestActionUpdateLoanPackList;
 
-	// Token: 0x040010D7 RID: 4311
 	private PguiRenderTextureCharaCtrl renderTextureChara;
 
-	// Token: 0x040010D8 RID: 4312
 	private List<CharaPackData> dispFavoriteCharaList;
 
-	// Token: 0x040010D9 RID: 4313
 	private int currentFavoriteCharaId;
 
-	// Token: 0x040010DA RID: 4314
 	private int requestFavoriteCharaId;
 
-	// Token: 0x040010DB RID: 4315
 	private int avaterType;
 
-	// Token: 0x040010DC RID: 4316
 	private bool isHelperSettingStartFromCharaEdit;
 
-	// Token: 0x040010DD RID: 4317
 	private bool isFromBattleSelecter;
 
-	// Token: 0x040010DE RID: 4318
 	public UnityAction<bool> setActiveQuestMapDataCB;
 
-	// Token: 0x040010DF RID: 4319
 	private bool isSetup;
 
-	// Token: 0x040010E0 RID: 4320
 	private SceneManager.SceneName OnClickMoveSequenceName;
 
-	// Token: 0x040010E1 RID: 4321
 	private object OnClickMoveSequenceArgs;
 
-	// Token: 0x040010E2 RID: 4322
 	private bool isChangeHelpers;
 
-	// Token: 0x040010E3 RID: 4323
 	private List<LoanPackData> cloneLoanPackList = new List<LoanPackData>();
 
-	// Token: 0x040010E4 RID: 4324
 	private List<LoanPackData> disideLoanPackList = new List<LoanPackData>();
 
-	// Token: 0x040010E5 RID: 4325
 	private List<CharaPackData> dispLoanCharaList = new List<CharaPackData>();
 
-	// Token: 0x040010E6 RID: 4326
 	private List<PhotoPackData> dispLoanPhotoList = new List<PhotoPackData>();
 
-	// Token: 0x040010E7 RID: 4327
 	private CharaDef.AttributeType currentLoanAttribute;
 
-	// Token: 0x040010E8 RID: 4328
 	private SelProfileCtrl.SelectCharaData selectCharaData;
 
-	// Token: 0x040010E9 RID: 4329
 	private CharaPackData removeButtonCharaData = CharaPackData.MakeInvalid();
 
-	// Token: 0x040010EA RID: 4330
 	private PhotoPackData removeButtonPhotoData = PhotoPackData.MakeInvalid();
 
-	// Token: 0x040010EB RID: 4331
 	private int currentHelperDeckIndexByPhotoEdit;
 
-	// Token: 0x040010EC RID: 4332
 	private SortFilterDefine.SortType sortTypeLoan = SortFilterDefine.SortType.LEVEL;
 
-	// Token: 0x02000B7B RID: 2939
 	public enum Mode
 	{
-		// Token: 0x040047BA RID: 18362
 		INVALID,
-		// Token: 0x040047BB RID: 18363
 		TOP,
-		// Token: 0x040047BC RID: 18364
 		FAVORITE_CHANGE,
-		// Token: 0x040047BD RID: 18365
 		NAME_CHANGE,
-		// Token: 0x040047BE RID: 18366
 		COMMENT_CHANGE,
-		// Token: 0x040047BF RID: 18367
 		HELPER_CHANGE
 	}
 
-	// Token: 0x02000B7C RID: 2940
 	public class GuiBtnFavorite
 	{
-		// Token: 0x06004311 RID: 17169 RVA: 0x00201DD7 File Offset: 0x001FFFD7
 		public GuiBtnFavorite(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
 			this.Btn_Favorite = baseTr.GetComponent<PguiButtonCtrl>();
 		}
 
-		// Token: 0x040047C0 RID: 18368
 		public GameObject baseObj;
 
-		// Token: 0x040047C1 RID: 18369
 		public PguiButtonCtrl Btn_Favorite;
 	}
 
-	// Token: 0x02000B7D RID: 2941
 	public class GuiBtnLoginBonus
 	{
-		// Token: 0x06004312 RID: 17170 RVA: 0x00201DF8 File Offset: 0x001FFFF8
 		public GuiBtnLoginBonus(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1615,23 +1508,17 @@ public class SelProfileCtrl : MonoBehaviour
 			this.random = baseTr.Find("BaseImage/Chara_Random").gameObject;
 		}
 
-		// Token: 0x040047C2 RID: 18370
 		public GameObject baseObj;
 
-		// Token: 0x040047C3 RID: 18371
 		public PguiButtonCtrl Btn_LoginBonus;
 
-		// Token: 0x040047C4 RID: 18372
 		public GameObject favorite;
 
-		// Token: 0x040047C5 RID: 18373
 		public GameObject random;
 	}
 
-	// Token: 0x02000B7E RID: 2942
 	public class GuiProfile
 	{
-		// Token: 0x06004313 RID: 17171 RVA: 0x00201E50 File Offset: 0x00200050
 		public GuiProfile(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1651,56 +1538,39 @@ public class SelProfileCtrl : MonoBehaviour
 			this.Btn_KizunaBuff = baseTr.Find("Btn_Kizuna").GetComponent<PguiButtonCtrl>();
 		}
 
-		// Token: 0x040047C6 RID: 18374
 		public GameObject baseObj;
 
-		// Token: 0x040047C7 RID: 18375
 		public PguiButtonCtrl Btn_Name;
 
-		// Token: 0x040047C8 RID: 18376
 		public PguiButtonCtrl Btn_Comment;
 
-		// Token: 0x040047C9 RID: 18377
 		public PguiButtonCtrl Btn_Id;
 
-		// Token: 0x040047CA RID: 18378
 		public PguiImageCtrl Img_Photo;
 
-		// Token: 0x040047CB RID: 18379
 		public PguiReplaceSpriteCtrl Relpace_Photo;
 
-		// Token: 0x040047CC RID: 18380
 		public PguiAECtrl Paper01;
 
-		// Token: 0x040047CD RID: 18381
 		public PguiTextCtrl Txt_UserName;
 
-		// Token: 0x040047CE RID: 18382
 		public PguiTextCtrl Txt_Comment;
 
-		// Token: 0x040047CF RID: 18383
 		public PguiTextCtrl Txt_Id;
 
-		// Token: 0x040047D0 RID: 18384
 		public PguiButtonCtrl Btn_Gender;
 
-		// Token: 0x040047D1 RID: 18385
 		public PguiTextCtrl TotalKemoStatusText;
 
-		// Token: 0x040047D2 RID: 18386
 		public AchievementCtrl Achievement;
 
-		// Token: 0x040047D3 RID: 18387
 		public PguiButtonCtrl Btn_Achievement;
 
-		// Token: 0x040047D4 RID: 18388
 		public PguiButtonCtrl Btn_KizunaBuff;
 	}
 
-	// Token: 0x02000B7F RID: 2943
 	public class GuiHelper
 	{
-		// Token: 0x06004314 RID: 17172 RVA: 0x00201FA4 File Offset: 0x002001A4
 		public GuiHelper(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1711,20 +1581,15 @@ public class SelProfileCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x040047D5 RID: 18389
 		public GameObject baseObj;
 
-		// Token: 0x040047D6 RID: 18390
 		public PguiButtonCtrl Btn_Helper;
 
-		// Token: 0x040047D7 RID: 18391
 		public List<IconCharaCtrl> iconChara = new List<IconCharaCtrl>();
 	}
 
-	// Token: 0x02000B80 RID: 2944
 	public class GuiFavorite
 	{
-		// Token: 0x06004315 RID: 17173 RVA: 0x00202030 File Offset: 0x00200230
 		public GuiFavorite(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1736,36 +1601,27 @@ public class SelProfileCtrl : MonoBehaviour
 			this.Txt_None.SetActive(false);
 		}
 
-		// Token: 0x06004316 RID: 17174 RVA: 0x002020C9 File Offset: 0x002002C9
 		public void ResizeScrollView(int count, int resize)
 		{
 			this.Txt_None.SetActive(count <= 0);
 			this.ScrollView.Resize(resize, 0);
 		}
 
-		// Token: 0x040047D8 RID: 18392
 		public GameObject baseObj;
 
-		// Token: 0x040047D9 RID: 18393
 		public PguiButtonCtrl Btn_FilterOnOff;
 
-		// Token: 0x040047DA RID: 18394
 		public PguiButtonCtrl Btn_Sort;
 
-		// Token: 0x040047DB RID: 18395
 		public PguiButtonCtrl Btn_SortUpDown;
 
-		// Token: 0x040047DC RID: 18396
 		public ReuseScroll ScrollView;
 
-		// Token: 0x040047DD RID: 18397
 		public GameObject Txt_None;
 	}
 
-	// Token: 0x02000B81 RID: 2945
 	public class GUI
 	{
-		// Token: 0x06004317 RID: 17175 RVA: 0x002020EC File Offset: 0x002002EC
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1780,41 +1636,29 @@ public class SelProfileCtrl : MonoBehaviour
 			this.helperAnimation = baseTr.Find("HelperChange").GetComponent<SimpleAnimation>();
 		}
 
-		// Token: 0x040047DE RID: 18398
 		public GameObject baseObj;
 
-		// Token: 0x040047DF RID: 18399
 		public SelProfileCtrl.GuiBtnFavorite guiBtnFavorite;
 
-		// Token: 0x040047E0 RID: 18400
 		public SelProfileCtrl.GuiBtnLoginBonus guiBtnLoginBonus;
 
-		// Token: 0x040047E1 RID: 18401
 		public SelProfileCtrl.GuiProfile guiProfile;
 
-		// Token: 0x040047E2 RID: 18402
 		public SelProfileCtrl.GuiHelper guiHelper;
 
-		// Token: 0x040047E3 RID: 18403
 		public SelProfileCtrl.GuiFavorite guiFavorite;
 
-		// Token: 0x040047E4 RID: 18404
 		public SelProfileCtrl.GuiHelperChange guiHelperChange;
 
-		// Token: 0x040047E5 RID: 18405
 		public SimpleAnimation profileAnimation;
 
-		// Token: 0x040047E6 RID: 18406
 		public SimpleAnimation favoriteAnimation;
 
-		// Token: 0x040047E7 RID: 18407
 		public SimpleAnimation helperAnimation;
 	}
 
-	// Token: 0x02000B82 RID: 2946
 	public class WindowCommentChange
 	{
-		// Token: 0x06004318 RID: 17176 RVA: 0x002021F0 File Offset: 0x002003F0
 		public WindowCommentChange(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -1823,20 +1667,15 @@ public class SelProfileCtrl : MonoBehaviour
 			this.Txt_ErrorMassage.gameObject.SetActive(false);
 		}
 
-		// Token: 0x040047E8 RID: 18408
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x040047E9 RID: 18409
 		public PguiTextCtrl Txt_ErrorMassage;
 
-		// Token: 0x040047EA RID: 18410
 		public InputField InputField;
 	}
 
-	// Token: 0x02000B83 RID: 2947
 	public class WindowNameChange
 	{
-		// Token: 0x06004319 RID: 17177 RVA: 0x0020224C File Offset: 0x0020044C
 		public WindowNameChange(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -1845,70 +1684,50 @@ public class SelProfileCtrl : MonoBehaviour
 			this.Txt_ErrorMassage.gameObject.SetActive(false);
 		}
 
-		// Token: 0x040047EB RID: 18411
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x040047EC RID: 18412
 		public PguiTextCtrl Txt_ErrorMassage;
 
-		// Token: 0x040047ED RID: 18413
 		public InputField InputField;
 	}
 
-	// Token: 0x02000B84 RID: 2948
 	public enum HelperMode
 	{
-		// Token: 0x040047EF RID: 18415
 		INVALID,
-		// Token: 0x040047F0 RID: 18416
 		DECK_TOP,
-		// Token: 0x040047F1 RID: 18417
 		DECK_EDIT,
-		// Token: 0x040047F2 RID: 18418
 		PHOTO_TOP,
-		// Token: 0x040047F3 RID: 18419
 		PHOTO_EDIT,
-		// Token: 0x040047F4 RID: 18420
 		ACCESSORY_TOP
 	}
 
-	// Token: 0x02000B85 RID: 2949
 	public class SelectCharaData
 	{
-		// Token: 0x0600431A RID: 17178 RVA: 0x002022A8 File Offset: 0x002004A8
 		public SelectCharaData(SelCharaDeckCtrl.FrameType t, SelCharaDeckCtrl.GUI.IconChara c)
 		{
 			this.type = t;
 			this.chara = c;
 		}
 
-		// Token: 0x040047F5 RID: 18421
 		public SelCharaDeckCtrl.FrameType type;
 
-		// Token: 0x040047F6 RID: 18422
 		public SelCharaDeckCtrl.GUI.IconChara chara;
 	}
 
-	// Token: 0x02000B86 RID: 2950
 	public class GuiHelperChange
 	{
-		// Token: 0x0600431B RID: 17179 RVA: 0x002022C0 File Offset: 0x002004C0
 		public GuiHelperChange(Transform baseTr, int num)
 		{
 			this.baseObj = baseTr.gameObject;
 			this.charaDeck = new SelCharaDeckCtrl.GUI.CharaDeck(baseTr.Find("DeckSelect"), num);
 		}
 
-		// Token: 0x040047F7 RID: 18423
 		public GameObject baseObj;
 
-		// Token: 0x040047F8 RID: 18424
 		public SelCharaDeckCtrl.GUI.CharaDeck charaDeck;
 
-		// Token: 0x040047F9 RID: 18425
 		public List<SelCharaDeckCtrl.GUI.IconChara> reserveCharaIcon = new List<SelCharaDeckCtrl.GUI.IconChara>();
 
-		// Token: 0x040047FA RID: 18426
 		public List<SelPhotoEditCtrl.GUI.IconPhotoSet> reservePhotoIcon = new List<SelPhotoEditCtrl.GUI.IconPhotoSet>();
 	}
 }

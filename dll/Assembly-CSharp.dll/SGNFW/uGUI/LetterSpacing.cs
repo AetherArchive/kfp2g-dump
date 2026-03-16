@@ -1,21 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace SGNFW.uGUI
 {
-	// Token: 0x0200022E RID: 558
 	public class LetterSpacing : BaseMeshEffect
 	{
-		// Token: 0x06002334 RID: 9012 RVA: 0x00196731 File Offset: 0x00194931
 		protected LetterSpacing()
 		{
 		}
 
-		// Token: 0x1700052C RID: 1324
-		// (get) Token: 0x06002335 RID: 9013 RVA: 0x00196739 File Offset: 0x00194939
-		// (set) Token: 0x06002336 RID: 9014 RVA: 0x00196741 File Offset: 0x00194941
 		public float spacing
 		{
 			get
@@ -36,7 +31,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x06002337 RID: 9015 RVA: 0x00196770 File Offset: 0x00194970
 		public void ModifyVertices(List<UIVertex> verts)
 		{
 			if (!this.IsActive())
@@ -110,7 +104,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x06002338 RID: 9016 RVA: 0x001969C0 File Offset: 0x00194BC0
 		public override void ModifyMesh(VertexHelper vh)
 		{
 			if (!this.IsActive())
@@ -124,7 +117,6 @@ namespace SGNFW.uGUI
 			vh.AddUIVertexTriangleStream(list);
 		}
 
-		// Token: 0x04001A9A RID: 6810
 		[SerializeField]
 		private float m_spacing;
 	}

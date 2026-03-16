@@ -1,12 +1,10 @@
-﻿using System;
+using System;
 using System.Collections;
 using SGNFW.Common;
 using UnityEngine;
 
-// Token: 0x0200017A RID: 378
 public class SceneScenario : BaseScene
 {
-	// Token: 0x06001836 RID: 6198 RVA: 0x0012A0EA File Offset: 0x001282EA
 	public int GetStoryType()
 	{
 		if (this.receiveArgs != null)
@@ -16,7 +14,6 @@ public class SceneScenario : BaseScene
 		return 0;
 	}
 
-	// Token: 0x06001837 RID: 6199 RVA: 0x0012A101 File Offset: 0x00128301
 	public int GetQuestId()
 	{
 		if (this.receiveArgs != null)
@@ -26,12 +23,10 @@ public class SceneScenario : BaseScene
 		return 0;
 	}
 
-	// Token: 0x06001838 RID: 6200 RVA: 0x0012A118 File Offset: 0x00128318
 	public override void OnCreateScene()
 	{
 	}
 
-	// Token: 0x06001839 RID: 6201 RVA: 0x0012A11C File Offset: 0x0012831C
 	public override void OnEnableScene(object inArgs)
 	{
 		this.receiveArgs = inArgs as SceneScenario.Args;
@@ -43,13 +38,11 @@ public class SceneScenario : BaseScene
 		this.storyOnly = null;
 	}
 
-	// Token: 0x0600183A RID: 6202 RVA: 0x0012A1AC File Offset: 0x001283AC
 	public override bool OnEnableSceneWait()
 	{
 		return this.scenarioCtrl.IsFinishLoad();
 	}
 
-	// Token: 0x0600183B RID: 6203 RVA: 0x0012A1BC File Offset: 0x001283BC
 	public override void Update()
 	{
 		if (this.scenarioCtrl.IsFinishPlay())
@@ -79,7 +72,6 @@ public class SceneScenario : BaseScene
 		}
 	}
 
-	// Token: 0x0600183C RID: 6204 RVA: 0x0012A2A4 File Offset: 0x001284A4
 	private IEnumerator StoryOnry()
 	{
 		DataManager.DmQuest.RequestActionStoryOnlyQuestStart(this.receiveArgs.questId);
@@ -119,7 +111,6 @@ public class SceneScenario : BaseScene
 		yield break;
 	}
 
-	// Token: 0x0600183D RID: 6205 RVA: 0x0012A2B3 File Offset: 0x001284B3
 	public override void OnDisableScene()
 	{
 		if (this.scenarioCtrl != null)
@@ -130,39 +121,28 @@ public class SceneScenario : BaseScene
 		CanvasManager.HdlCmnMenu.SetupMenu(true, "", null, "", null, null);
 	}
 
-	// Token: 0x0600183E RID: 6206 RVA: 0x0012A2F2 File Offset: 0x001284F2
 	public override void OnDestroyScene()
 	{
 	}
 
-	// Token: 0x040012A9 RID: 4777
 	private SceneScenario.Args receiveArgs;
 
-	// Token: 0x040012AA RID: 4778
 	private ScenarioScene scenarioCtrl;
 
-	// Token: 0x040012AB RID: 4779
 	private IEnumerator storyOnly;
 
-	// Token: 0x02000D39 RID: 3385
 	public class Args
 	{
-		// Token: 0x04004DC0 RID: 19904
 		public TutorialUtil.Sequence tutorialSequence;
 
-		// Token: 0x04004DC1 RID: 19905
 		public int questId;
 
-		// Token: 0x04004DC2 RID: 19906
 		public int storyType;
 
-		// Token: 0x04004DC3 RID: 19907
 		public string scenarioName;
 
-		// Token: 0x04004DC4 RID: 19908
 		public SceneManager.SceneName nextSceneName;
 
-		// Token: 0x04004DC5 RID: 19909
 		public object nextSceneArgs;
 	}
 }

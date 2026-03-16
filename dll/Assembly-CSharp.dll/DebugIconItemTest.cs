@@ -1,17 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-// Token: 0x0200002E RID: 46
 public class DebugIconItemTest : MonoBehaviour
 {
-	// Token: 0x060000A2 RID: 162 RVA: 0x00005FBA File Offset: 0x000041BA
 	private void Start()
 	{
 	}
 
-	// Token: 0x060000A3 RID: 163 RVA: 0x00005FBC File Offset: 0x000041BC
 	public void UpdateIcon()
 	{
 		if (!this.isSetup)
@@ -29,7 +26,6 @@ public class DebugIconItemTest : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060000A4 RID: 164 RVA: 0x000060B4 File Offset: 0x000042B4
 	private void Update()
 	{
 		if (!this.isSetup)
@@ -97,27 +93,19 @@ public class DebugIconItemTest : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0400011D RID: 285
 	public List<IconItemCtrl> iconList;
 
-	// Token: 0x0400011E RID: 286
 	private bool isSetup;
 
-	// Token: 0x0400011F RID: 287
 	private int step;
 
-	// Token: 0x04000120 RID: 288
 	private IconItemCtrl icon;
 
-	// Token: 0x04000121 RID: 289
 	private int item;
 
-	// Token: 0x04000122 RID: 290
 	private Rect rect = Rect.zero;
 
-	// Token: 0x04000123 RID: 291
 	private List<ItemStaticBase> list;
 
-	// Token: 0x04000124 RID: 292
 	private ImageCapture capture;
 }

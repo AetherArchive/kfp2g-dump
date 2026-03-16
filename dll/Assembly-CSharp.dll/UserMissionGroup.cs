@@ -1,10 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-// Token: 0x02000093 RID: 147
 public class UserMissionGroup
 {
-	// Token: 0x060005DD RID: 1501 RVA: 0x0002801C File Offset: 0x0002621C
 	public UserMissionGroup(MissionType inType)
 	{
 		this.type = inType;
@@ -31,7 +29,6 @@ public class UserMissionGroup
 		this.viewDataList = new List<UserMissionOne>();
 	}
 
-	// Token: 0x060005DE RID: 1502 RVA: 0x000280F4 File Offset: 0x000262F4
 	public UserMissionGroup(MissionType t, int evId, string name, string info, DateTime limit)
 	{
 		this.eventId = evId;
@@ -41,7 +38,6 @@ public class UserMissionGroup
 		this.limitTime = new DateTime?(limit);
 	}
 
-	// Token: 0x060005DF RID: 1503 RVA: 0x00028148 File Offset: 0x00026348
 	public UserMissionGroup()
 	{
 		this.eventId = 0;
@@ -51,7 +47,6 @@ public class UserMissionGroup
 		this.limitTime = new DateTime?(new DateTime(TimeManager.Now.Ticks));
 	}
 
-	// Token: 0x060005E0 RID: 1504 RVA: 0x000281B4 File Offset: 0x000263B4
 	public void SortOneDataList()
 	{
 		List<UserMissionOne> list = this.viewDataList.FindAll((UserMissionOne x) => x.IsSpecial);
@@ -114,24 +109,17 @@ public class UserMissionGroup
 		this.receivedDataList.AddRange(list10);
 	}
 
-	// Token: 0x040005B4 RID: 1460
 	public MissionType type;
 
-	// Token: 0x040005B5 RID: 1461
 	public int eventId;
 
-	// Token: 0x040005B6 RID: 1462
 	public DateTime? limitTime;
 
-	// Token: 0x040005B7 RID: 1463
 	public string tabName;
 
-	// Token: 0x040005B8 RID: 1464
 	public string infoName;
 
-	// Token: 0x040005B9 RID: 1465
 	public List<UserMissionOne> viewDataList = new List<UserMissionOne>();
 
-	// Token: 0x040005BA RID: 1466
 	public List<UserMissionOne> receivedDataList = new List<UserMissionOne>();
 }

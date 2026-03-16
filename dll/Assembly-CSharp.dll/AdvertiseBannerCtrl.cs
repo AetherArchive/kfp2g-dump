@@ -1,13 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Login;
 using UnityEngine;
 
-// Token: 0x02000190 RID: 400
 public class AdvertiseBannerCtrl : MonoBehaviour
 {
-	// Token: 0x06001AAA RID: 6826 RVA: 0x001579A4 File Offset: 0x00155BA4
 	public void Init()
 	{
 		List<AdvertiseBannerData> advertiseBannerDataList = DataManager.DmServerMst.advertiseBannerDataList;
@@ -37,13 +35,11 @@ public class AdvertiseBannerCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001AAB RID: 6827 RVA: 0x00157B18 File Offset: 0x00155D18
 	public void StartProgress()
 	{
 		this.animStart = true;
 	}
 
-	// Token: 0x06001AAC RID: 6828 RVA: 0x00157B21 File Offset: 0x00155D21
 	public void ClaerProgress()
 	{
 		if (this.guiDataList != null && this.guiDataList.Count > 0)
@@ -53,7 +49,6 @@ public class AdvertiseBannerCtrl : MonoBehaviour
 		this.forceAnimEnd = true;
 	}
 
-	// Token: 0x06001AAD RID: 6829 RVA: 0x00157B4C File Offset: 0x00155D4C
 	private void Update()
 	{
 		if (!this.animStart)
@@ -76,7 +71,6 @@ public class AdvertiseBannerCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001AAE RID: 6830 RVA: 0x00157BBB File Offset: 0x00155DBB
 	private IEnumerator PopupAdvertise(AdvertiseBannerCtrl.GUI guiData)
 	{
 		guiData.baseObj.SetActive(true);
@@ -103,35 +97,27 @@ public class AdvertiseBannerCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001AAF RID: 6831 RVA: 0x00157BD1 File Offset: 0x00155DD1
 	private void OnTouchCloseButton()
 	{
 		this.forceAnimEnd = true;
 	}
 
-	// Token: 0x06001AB0 RID: 6832 RVA: 0x00157BDA File Offset: 0x00155DDA
 	private void OnTouchBanner(string link)
 	{
 		Application.OpenURL(link);
 		this.forceAnimEnd = true;
 	}
 
-	// Token: 0x0400144A RID: 5194
 	private List<AdvertiseBannerCtrl.GUI> guiDataList;
 
-	// Token: 0x0400144B RID: 5195
 	private bool animStart;
 
-	// Token: 0x0400144C RID: 5196
 	private bool forceAnimEnd;
 
-	// Token: 0x0400144D RID: 5197
 	private IEnumerator currentPopupMission;
 
-	// Token: 0x02000E82 RID: 3714
 	public class GUI
 	{
-		// Token: 0x06004CE6 RID: 19686 RVA: 0x0022FA79 File Offset: 0x0022DC79
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -139,13 +125,10 @@ public class AdvertiseBannerCtrl : MonoBehaviour
 			this.Cmn_Btn_Close = baseTr.Find("Banner/Cmn_Btn_Close").GetComponent<PguiButtonCtrl>();
 		}
 
-		// Token: 0x0400535F RID: 21343
 		public GameObject baseObj;
 
-		// Token: 0x04005360 RID: 21344
 		public SimpleAnimation BannerAnim;
 
-		// Token: 0x04005361 RID: 21345
 		public PguiButtonCtrl Cmn_Btn_Close;
 	}
 }

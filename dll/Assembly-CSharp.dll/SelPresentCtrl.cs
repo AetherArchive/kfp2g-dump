@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +9,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x02000169 RID: 361
 public class SelPresentCtrl : MonoBehaviour
 {
-	// Token: 0x1700038D RID: 909
-	// (get) Token: 0x06001557 RID: 5463 RVA: 0x0010C4E3 File Offset: 0x0010A6E3
-	// (set) Token: 0x06001558 RID: 5464 RVA: 0x0010C4EB File Offset: 0x0010A6EB
 	private SelPresentCtrl.Mode CurrentMode { get; set; }
 
-	// Token: 0x06001559 RID: 5465 RVA: 0x0010C4F4 File Offset: 0x0010A6F4
 	public void Init()
 	{
 		GameObject gameObject = Object.Instantiate<GameObject>((GameObject)AssetManager.GetAssetData("ScenePresent/GUI/Prefab/GUI_Present"), base.transform);
@@ -35,7 +30,6 @@ public class SelPresentCtrl : MonoBehaviour
 		this.guiData.Btn_Get.AddOnClickListener(new PguiButtonCtrl.OnClick(this.OnClickAllGetButton), PguiButtonCtrl.SoundType.DEFAULT);
 	}
 
-	// Token: 0x0600155A RID: 5466 RVA: 0x0010C620 File Offset: 0x0010A820
 	public void Setup()
 	{
 		this.guiData.PresentList.SetActive(false);
@@ -49,13 +43,11 @@ public class SelPresentCtrl : MonoBehaviour
 		CanvasManager.HdlSelPurchaseStoneWindowCtrl.AddOnSuccessPurchaseListener(new UnityAction(this.RequestPresentSceneUpdate));
 	}
 
-	// Token: 0x0600155B RID: 5467 RVA: 0x0010C6B9 File Offset: 0x0010A8B9
 	public void Disable()
 	{
 		CanvasManager.HdlSelPurchaseStoneWindowCtrl.RemoveOnSuccessPurchaseListener(new UnityAction(this.RequestPresentSceneUpdate));
 	}
 
-	// Token: 0x0600155C RID: 5468 RVA: 0x0010C6D1 File Offset: 0x0010A8D1
 	public void Destroy()
 	{
 		if (this.playGachaAuth != null)
@@ -64,7 +56,6 @@ public class SelPresentCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600155D RID: 5469 RVA: 0x0010C6E8 File Offset: 0x0010A8E8
 	private bool IsAllGetButton()
 	{
 		bool flag = false;
@@ -95,7 +86,6 @@ public class SelPresentCtrl : MonoBehaviour
 		return flag;
 	}
 
-	// Token: 0x0600155E RID: 5470 RVA: 0x0010C77C File Offset: 0x0010A97C
 	private long IndexToID(int index)
 	{
 		if (DataManager.IsServerRequesting())
@@ -109,12 +99,10 @@ public class SelPresentCtrl : MonoBehaviour
 		return this.userPresentDataList[index].id;
 	}
 
-	// Token: 0x0600155F RID: 5471 RVA: 0x0010C7AE File Offset: 0x0010A9AE
 	private void Start()
 	{
 	}
 
-	// Token: 0x06001560 RID: 5472 RVA: 0x0010C7B0 File Offset: 0x0010A9B0
 	private void Update()
 	{
 		if (this.RequestPresentGet != null)
@@ -127,7 +115,6 @@ public class SelPresentCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001561 RID: 5473 RVA: 0x0010C7DA File Offset: 0x0010A9DA
 	public IEnumerator PlayPresentAuth(DataManagerPresent.UserPresentData presentData, List<int> haveCharaList, List<GachaResult> replaceItemList)
 	{
 		if (ItemDef.Id2Kind(presentData.itemId) == ItemDef.Kind.CHARA)
@@ -157,7 +144,6 @@ public class SelPresentCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001562 RID: 5474 RVA: 0x0010C7FE File Offset: 0x0010A9FE
 	private IEnumerator PresentDataUpdate(bool isAllGetRequest, DataManagerPresent.UserPresentData presentData = null)
 	{
 		List<int> haveCharaList = new List<CharaPackData>(DataManager.DmChara.GetUserCharaMap().Values).ConvertAll<int>((CharaPackData item) => item.staticData.GetId());
@@ -215,13 +201,11 @@ public class SelPresentCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001563 RID: 5475 RVA: 0x0010C81B File Offset: 0x0010AA1B
 	public void RequestPresentSceneUpdate()
 	{
 		this.RequestSelUpdate = this.PresentSceneUpdate();
 	}
 
-	// Token: 0x06001564 RID: 5476 RVA: 0x0010C829 File Offset: 0x0010AA29
 	private IEnumerator PresentSceneUpdate()
 	{
 		DataManager.DmPresent.RequestGetPresentList();
@@ -238,7 +222,6 @@ public class SelPresentCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001565 RID: 5477 RVA: 0x0010C838 File Offset: 0x0010AA38
 	private void OnClickGetButton(PguiButtonCtrl button)
 	{
 		if (this.RequestPresentGet != null)
@@ -262,7 +245,6 @@ public class SelPresentCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001566 RID: 5478 RVA: 0x0010C8F2 File Offset: 0x0010AAF2
 	private void OnClickAllGetButton(PguiButtonCtrl button)
 	{
 		if (this.RequestPresentGet != null)
@@ -278,7 +260,6 @@ public class SelPresentCtrl : MonoBehaviour
 		this.RequestPresentGet = this.PresentDataUpdate(true, null);
 	}
 
-	// Token: 0x06001567 RID: 5479 RVA: 0x0010C930 File Offset: 0x0010AB30
 	private static string MakeResultMassage(bool isAllGetRequest)
 	{
 		List<DataManagerPresent.UserPresentData> userReceivePresentList = DataManager.DmPresent.GetUserReceivePresentList();
@@ -406,7 +387,6 @@ public class SelPresentCtrl : MonoBehaviour
 		return text;
 	}
 
-	// Token: 0x06001568 RID: 5480 RVA: 0x0010CDA0 File Offset: 0x0010AFA0
 	private bool OnSelectTab(int index)
 	{
 		if (index != 0)
@@ -423,7 +403,6 @@ public class SelPresentCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001569 RID: 5481 RVA: 0x0010CDC0 File Offset: 0x0010AFC0
 	private void UpdateScrollInfo()
 	{
 		this.userPresentDataList = new List<DataManagerPresent.UserPresentData>(DataManager.DmPresent.GetUserPresentList());
@@ -433,7 +412,6 @@ public class SelPresentCtrl : MonoBehaviour
 		this.ChangeSelectTab(this.CurrentMode, true);
 	}
 
-	// Token: 0x0600156A RID: 5482 RVA: 0x0010CE3C File Offset: 0x0010B03C
 	private void ChangeSelectTab(SelPresentCtrl.Mode requestMode, bool isForce)
 	{
 		if (!isForce && this.CurrentMode == requestMode)
@@ -468,7 +446,6 @@ public class SelPresentCtrl : MonoBehaviour
 		this.guiData.Btn_Get.gameObject.SetActive(false);
 	}
 
-	// Token: 0x0600156B RID: 5483 RVA: 0x0010CFEC File Offset: 0x0010B1EC
 	private void OnStartPresent(int index, GameObject go)
 	{
 		IconItemCtrl component = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Item, go.transform.Find("BaseImage/Icon_Item")).GetComponent<IconItemCtrl>();
@@ -489,7 +466,6 @@ public class SelPresentCtrl : MonoBehaviour
 		this.guiData.presentBarList.Add(new SelPresentCtrl.GuiPresentBar(go.transform, index));
 	}
 
-	// Token: 0x0600156C RID: 5484 RVA: 0x0010D0AC File Offset: 0x0010B2AC
 	private void OnUpdatePresent(int index, GameObject go)
 	{
 		SelPresentCtrl.GuiPresentBar guiPresentBar = new SelPresentCtrl.GuiPresentBar(go.transform, 0);
@@ -525,7 +501,6 @@ public class SelPresentCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600156D RID: 5485 RVA: 0x0010D248 File Offset: 0x0010B448
 	private void OnStartHistory(int index, GameObject go)
 	{
 		IconItemCtrl component = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Item, go.transform.Find("BaseImage/Icon_Item")).GetComponent<IconItemCtrl>();
@@ -544,7 +519,6 @@ public class SelPresentCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600156E RID: 5486 RVA: 0x0010D2DC File Offset: 0x0010B4DC
 	private void OnUpdateHistory(int index, GameObject go)
 	{
 		SelPresentCtrl.GuiPresentBar guiPresentBar = new SelPresentCtrl.GuiPresentBar(go.transform, 0);
@@ -562,7 +536,6 @@ public class SelPresentCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600156F RID: 5487 RVA: 0x0010D3AC File Offset: 0x0010B5AC
 	private void SetPresentCheck(PguiButtonCtrl button, DataManagerPresent.UserPresentData presentData)
 	{
 		if (button == null || presentData == null || presentData.GetItemData().staticData == null)
@@ -603,19 +576,16 @@ public class SelPresentCtrl : MonoBehaviour
 		button.SetActEnable(flag, false, false);
 	}
 
-	// Token: 0x06001570 RID: 5488 RVA: 0x0010D47F File Offset: 0x0010B67F
 	private static int PhotoGetLimit()
 	{
 		return DataManager.DmPhoto.PhotoStockLimit - DataManager.DmPhoto.GetUserPhotoMap().Count;
 	}
 
-	// Token: 0x06001571 RID: 5489 RVA: 0x0010D49B File Offset: 0x0010B69B
 	private static int AccGetLimit()
 	{
 		return DataManager.DmChAccessory.AccessoryStockLimit - DataManager.DmChAccessory.GetUserAccessoryList().Count;
 	}
 
-	// Token: 0x06001572 RID: 5490 RVA: 0x0010D4B8 File Offset: 0x0010B6B8
 	private static long ItemGetLimit(ItemData itemData)
 	{
 		if (itemData.id == 30101)
@@ -625,7 +595,6 @@ public class SelPresentCtrl : MonoBehaviour
 		return (long)(itemData.staticData.GetStackMax() - DataManager.DmItem.GetUserItemData(itemData.id).num);
 	}
 
-	// Token: 0x06001574 RID: 5492 RVA: 0x0010D520 File Offset: 0x0010B720
 	[CompilerGenerated]
 	internal static List<ItemData> <PresentDataUpdate>g__ItemDataList|23_2(List<ItemData> inputList)
 	{
@@ -651,42 +620,29 @@ public class SelPresentCtrl : MonoBehaviour
 		return list;
 	}
 
-	// Token: 0x040011B8 RID: 4536
 	public bool isDebug;
 
-	// Token: 0x040011B9 RID: 4537
 	private SelPresentCtrl.GUI guiData;
 
-	// Token: 0x040011BB RID: 4539
 	private List<DataManagerPresent.UserPresentData> userPresentDataList;
 
-	// Token: 0x040011BC RID: 4540
 	private List<DataManagerPresent.UserReceiveHistoryData> userReceiveHistoryData;
 
-	// Token: 0x040011BD RID: 4541
 	private GachaAuthCtrl playGachaAuth;
 
-	// Token: 0x040011BE RID: 4542
 	private IEnumerator RequestPresentGet;
 
-	// Token: 0x040011BF RID: 4543
 	private IEnumerator RequestSelUpdate;
 
-	// Token: 0x02000BFA RID: 3066
 	public enum Mode
 	{
-		// Token: 0x04004928 RID: 18728
 		INVALID,
-		// Token: 0x04004929 RID: 18729
 		PRESENT,
-		// Token: 0x0400492A RID: 18730
 		HISTORY
 	}
 
-	// Token: 0x02000BFB RID: 3067
 	public class GuiPresentBar
 	{
-		// Token: 0x0600446B RID: 17515 RVA: 0x0020820C File Offset: 0x0020640C
 		public GuiPresentBar(Transform baseTr, int index)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -699,35 +655,25 @@ public class SelPresentCtrl : MonoBehaviour
 			this.itemIndex = index;
 		}
 
-		// Token: 0x0400492B RID: 18731
 		public GameObject baseObj;
 
-		// Token: 0x0400492C RID: 18732
 		public PguiButtonCtrl Btn_Get;
 
-		// Token: 0x0400492D RID: 18733
 		public PguiTextCtrl ItemNameText;
 
-		// Token: 0x0400492E RID: 18734
 		public PguiTextCtrl InfoText;
 
-		// Token: 0x0400492F RID: 18735
 		public PguiTextCtrl DateText;
 
-		// Token: 0x04004930 RID: 18736
 		public PguiColorCtrl DateColor;
 
-		// Token: 0x04004931 RID: 18737
 		public IconItemCtrl IconItem;
 
-		// Token: 0x04004932 RID: 18738
 		public int itemIndex;
 	}
 
-	// Token: 0x02000BFC RID: 3068
 	public class GUI
 	{
-		// Token: 0x0600446C RID: 17516 RVA: 0x002082B8 File Offset: 0x002064B8
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -744,40 +690,28 @@ public class SelPresentCtrl : MonoBehaviour
 			this.presentBarList = new List<SelPresentCtrl.GuiPresentBar>();
 		}
 
-		// Token: 0x04004933 RID: 18739
 		public GameObject baseObj;
 
-		// Token: 0x04004934 RID: 18740
 		public PguiButtonCtrl Btn_Get;
 
-		// Token: 0x04004935 RID: 18741
 		public PguiTextCtrl Txt_Caution;
 
-		// Token: 0x04004936 RID: 18742
 		public PguiTextCtrl Num_Present;
 
-		// Token: 0x04004937 RID: 18743
 		public PguiTextCtrl Txt_Info;
 
-		// Token: 0x04004938 RID: 18744
 		public ReuseScroll ScrollViewPresent;
 
-		// Token: 0x04004939 RID: 18745
 		public ReuseScroll ScrollViewHistory;
 
-		// Token: 0x0400493A RID: 18746
 		public PguiTabGroupCtrl TabGroup;
 
-		// Token: 0x0400493B RID: 18747
 		public GameObject ResPresentListBar;
 
-		// Token: 0x0400493C RID: 18748
 		public GameObject PresentList;
 
-		// Token: 0x0400493D RID: 18749
 		public GameObject HistoryList;
 
-		// Token: 0x0400493E RID: 18750
 		public List<SelPresentCtrl.GuiPresentBar> presentBarList;
 	}
 }

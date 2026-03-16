@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SGNFW.Text;
 using UnityEngine;
@@ -6,17 +6,14 @@ using UnityEngine.UI;
 
 namespace SGNFW.uGUI
 {
-	// Token: 0x02000238 RID: 568
 	public class TextManager
 	{
-		// Token: 0x060023C7 RID: 9159 RVA: 0x00199DDA File Offset: 0x00197FDA
 		private TextManager(Icon[] iconArray, TextManager.Color[] colorArray)
 		{
 			TextManager.iconArray = iconArray;
 			TextManager.colorArray = colorArray;
 		}
 
-		// Token: 0x060023C8 RID: 9160 RVA: 0x00199DEE File Offset: 0x00197FEE
 		public static void Initialize(Icon[] sprArray, TextManager.Color[] clrArray)
 		{
 			if (TextManager.instance != null)
@@ -26,13 +23,11 @@ namespace SGNFW.uGUI
 			TextManager.instance = new TextManager(sprArray, clrArray);
 		}
 
-		// Token: 0x060023C9 RID: 9161 RVA: 0x00199E04 File Offset: 0x00198004
 		public static void Terminate()
 		{
 			TextManager.instance = null;
 		}
 
-		// Token: 0x060023CA RID: 9162 RVA: 0x00199E0C File Offset: 0x0019800C
 		public static void SetText(TextWithIcon text, string key, params string[] args)
 		{
 			Manager.OnCustomKeyword = new Manager.OnCustomKeywordDelegate(TextManager.instance.OnCustomKeyword);
@@ -64,7 +59,6 @@ namespace SGNFW.uGUI
 			Manager.OnCustomKeyword = null;
 		}
 
-		// Token: 0x060023CB RID: 9163 RVA: 0x00199EA0 File Offset: 0x001980A0
 		public static void SetTextRaw(TextWithIcon text, string txt)
 		{
 			Manager.OnCustomKeyword = new Manager.OnCustomKeywordDelegate(TextManager.instance.OnCustomKeyword);
@@ -96,7 +90,6 @@ namespace SGNFW.uGUI
 			Manager.OnCustomKeyword = null;
 		}
 
-		// Token: 0x060023CC RID: 9164 RVA: 0x00199F2C File Offset: 0x0019812C
 		public static void AddTextRaw(TextWithIcon text, string txt)
 		{
 			Manager.OnCustomKeyword = new Manager.OnCustomKeywordDelegate(TextManager.instance.OnCustomKeyword);
@@ -129,7 +122,6 @@ namespace SGNFW.uGUI
 			Manager.OnCustomKeyword = null;
 		}
 
-		// Token: 0x060023CD RID: 9165 RVA: 0x00199FC4 File Offset: 0x001981C4
 		public static void SetText(TextWithRawImage text, string key, params string[] args)
 		{
 			Manager.OnCustomKeyword = new Manager.OnCustomKeywordDelegate(TextManager.instance.OnCustomKeyword);
@@ -153,7 +145,6 @@ namespace SGNFW.uGUI
 			Manager.OnCustomKeyword = null;
 		}
 
-		// Token: 0x060023CE RID: 9166 RVA: 0x0019A058 File Offset: 0x00198258
 		public static void SetTextRaw(TextWithRawImage text, string txt)
 		{
 			Manager.OnCustomKeyword = new Manager.OnCustomKeywordDelegate(TextManager.instance.OnCustomKeyword);
@@ -177,7 +168,6 @@ namespace SGNFW.uGUI
 			Manager.OnCustomKeyword = null;
 		}
 
-		// Token: 0x060023CF RID: 9167 RVA: 0x0019A0E4 File Offset: 0x001982E4
 		public static void AddTextRaw(TextWithRawImage text, string txt)
 		{
 			Manager.OnCustomKeyword = new Manager.OnCustomKeywordDelegate(TextManager.instance.OnCustomKeyword);
@@ -202,19 +192,16 @@ namespace SGNFW.uGUI
 			Manager.OnCustomKeyword = null;
 		}
 
-		// Token: 0x060023D0 RID: 9168 RVA: 0x0019A17C File Offset: 0x0019837C
 		public static bool ContainsIcon(string iconName)
 		{
 			return Array.Exists<Icon>(TextManager.iconArray, (Icon t) => t.sprite.name == iconName);
 		}
 
-		// Token: 0x060023D1 RID: 9169 RVA: 0x0019A1AC File Offset: 0x001983AC
 		public static bool ContainsIcon(Sprite icon)
 		{
 			return Array.Exists<Icon>(TextManager.iconArray, (Icon t) => t.sprite == icon);
 		}
 
-		// Token: 0x060023D2 RID: 9170 RVA: 0x0019A1DC File Offset: 0x001983DC
 		private string OnCustomKeyword(string body, int index, int length, string tag, string key)
 		{
 			if (key.StartsWith("icon="))
@@ -254,7 +241,6 @@ namespace SGNFW.uGUI
 			return body;
 		}
 
-		// Token: 0x060023D3 RID: 9171 RVA: 0x0019A304 File Offset: 0x00198504
 		private static Image CreateImage(Icon icon, TextWithIcon txt)
 		{
 			if (icon == null)
@@ -287,7 +273,6 @@ namespace SGNFW.uGUI
 			return image;
 		}
 
-		// Token: 0x060023D4 RID: 9172 RVA: 0x0019A3E8 File Offset: 0x001985E8
 		private static RawImage CreateRawImage(string name, TextWithRawImage txt)
 		{
 			if (string.IsNullOrEmpty(name))
@@ -320,38 +305,27 @@ namespace SGNFW.uGUI
 			return rawImage;
 		}
 
-		// Token: 0x04001AED RID: 6893
 		public static Action<TextWithRawImage, RawImage, string> onCreateRawImage;
 
-		// Token: 0x04001AEE RID: 6894
 		public static Action<TextWithIcon, Image, Icon> onCreateImage;
 
-		// Token: 0x04001AEF RID: 6895
 		public static Action<TextWithRawImage, RawImage> onUpdateRawImage;
 
-		// Token: 0x04001AF0 RID: 6896
 		public static Action<TextWithIcon, Image> onUpdateImage;
 
-		// Token: 0x04001AF1 RID: 6897
 		private static TextManager instance;
 
-		// Token: 0x04001AF2 RID: 6898
 		private static List<string> iconList = new List<string>();
 
-		// Token: 0x04001AF3 RID: 6899
 		private static Icon[] iconArray = null;
 
-		// Token: 0x04001AF4 RID: 6900
 		private static TextManager.Color[] colorArray = null;
 
-		// Token: 0x0200106F RID: 4207
 		[Serializable]
 		public class Color
 		{
-			// Token: 0x04005BC5 RID: 23493
 			public string key;
 
-			// Token: 0x04005BC6 RID: 23494
 			public global::UnityEngine.Color value = global::UnityEngine.Color.white;
 		}
 	}

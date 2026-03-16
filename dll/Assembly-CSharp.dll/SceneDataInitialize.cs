@@ -1,14 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
 using SGNFW.Mst;
 using UnityEngine;
 
-// Token: 0x02000129 RID: 297
 public class SceneDataInitialize : BaseScene
 {
-	// Token: 0x06000F14 RID: 3860 RVA: 0x000B5BAC File Offset: 0x000B3DAC
 	public override void OnCreateScene()
 	{
 		Singleton<CanvasManager>.Instance.CloseFade();
@@ -25,21 +23,18 @@ public class SceneDataInitialize : BaseScene
 		component.transform.Find("Num_Percent_Txt").GetComponent<PguiTextCtrl>().text = "0%";
 	}
 
-	// Token: 0x06000F15 RID: 3861 RVA: 0x000B5CF4 File Offset: 0x000B3EF4
 	public override void OnEnableScene(object args)
 	{
 		this.SceneDataInitObj.SetActive(true);
 		SceneManager.CanvasSetActive(SceneManager.CanvasType.PRESET, true);
 	}
 
-	// Token: 0x06000F16 RID: 3862 RVA: 0x000B5D09 File Offset: 0x000B3F09
 	public override void OnStartControl()
 	{
 		this.mstChk = false;
 		this.sceneAction = DataInitializeResolver.InitializeActionBeforeTitle();
 	}
 
-	// Token: 0x06000F17 RID: 3863 RVA: 0x000B5D20 File Offset: 0x000B3F20
 	public override void Update()
 	{
 		int num = 0;
@@ -75,7 +70,6 @@ public class SceneDataInitialize : BaseScene
 		this.ServerLoadingObj.transform.Find("Mask/GageAll/Num_Percent_Txt").GetComponent<PguiTextCtrl>().text = ((int)(num3 * 100f)).ToString() + "%";
 	}
 
-	// Token: 0x06000F18 RID: 3864 RVA: 0x000B5E6A File Offset: 0x000B406A
 	public override void OnDisableScene()
 	{
 		if (null != this.ServerLoadingObj)
@@ -88,38 +82,29 @@ public class SceneDataInitialize : BaseScene
 		}
 	}
 
-	// Token: 0x06000F19 RID: 3865 RVA: 0x000B5EA0 File Offset: 0x000B40A0
 	public override void OnDestroyScene()
 	{
 		Object.Destroy(this.ServerLoadingObj);
 		Object.Destroy(this.SceneDataInitObj);
 	}
 
-	// Token: 0x04000DA6 RID: 3494
 	private GameObject SceneDataInitObj;
 
-	// Token: 0x04000DA7 RID: 3495
 	private GameObject ServerLoadingObj;
 
-	// Token: 0x04000DA8 RID: 3496
 	private SceneDataInitialize.GUI guiData;
 
-	// Token: 0x04000DA9 RID: 3497
 	private IEnumerator sceneAction;
 
-	// Token: 0x04000DAA RID: 3498
 	private bool mstChk;
 
-	// Token: 0x02000970 RID: 2416
 	public class GUI
 	{
-		// Token: 0x06003BDB RID: 15323 RVA: 0x001D76AA File Offset: 0x001D58AA
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
 		}
 
-		// Token: 0x04003CFC RID: 15612
 		public GameObject baseObj;
 	}
 }

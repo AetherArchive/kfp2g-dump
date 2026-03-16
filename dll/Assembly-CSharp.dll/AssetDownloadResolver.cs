@@ -1,14 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Ab;
 using SGNFW.Common;
 using UnityEngine;
 
-// Token: 0x02000124 RID: 292
 public class AssetDownloadResolver : BaseScene
 {
-	// Token: 0x06000EEF RID: 3823 RVA: 0x000B527D File Offset: 0x000B347D
 	public static IEnumerator ResolveActionNeedOndly()
 	{
 		Utility.DownloadInfo downloadInfo = AssetManager.CreateDownloadInfo(AssetManager.DownloadType.NEED_ONLY);
@@ -25,7 +23,6 @@ public class AssetDownloadResolver : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06000EF0 RID: 3824 RVA: 0x000B5285 File Offset: 0x000B3485
 	private static IEnumerator ResolveActionLoad(Utility.DownloadInfo info, AssetDownloadResolver.CancelCallBack cb = null, bool isDispStop = true)
 	{
 		LoadAndTipsCtrl.SetupParam setupParam = new LoadAndTipsCtrl.SetupParam
@@ -79,7 +76,6 @@ public class AssetDownloadResolver : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06000EF1 RID: 3825 RVA: 0x000B52A2 File Offset: 0x000B34A2
 	public static IEnumerator ResolveActionFull(bool isNothingInfo)
 	{
 		if (!Singleton<AssetManager>.Instance.IsEndAbChek())
@@ -160,7 +156,6 @@ public class AssetDownloadResolver : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06000EF2 RID: 3826 RVA: 0x000B52B1 File Offset: 0x000B34B1
 	public static IEnumerator ResolveActionOpMovie(AssetDownloadResolver.CancelCallBack cb = null)
 	{
 		Utility.DownloadInfo info = AssetManager.CreateDownloadInfo(AssetManager.DownloadType.OP_MOVIE);
@@ -224,7 +219,6 @@ public class AssetDownloadResolver : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06000EF3 RID: 3827 RVA: 0x000B52C0 File Offset: 0x000B34C0
 	public static IEnumerator ResolveActionIntroductionMovie()
 	{
 		Utility.DownloadInfo downloadInfo = AssetManager.CreateDownloadInfo(AssetManager.DownloadType.INTRODUCTION);
@@ -245,7 +239,6 @@ public class AssetDownloadResolver : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06000EF4 RID: 3828 RVA: 0x000B52C8 File Offset: 0x000B34C8
 	public static IEnumerator ResolveActionMovie(string mov, string nam, AssetDownloadResolver.CancelCallBack cb = null)
 	{
 		Data data = Manager.DataList.Find((Data itm) => itm.name == (mov + AssetManager.ASSET_MOVIE_EXT).ToLower());
@@ -300,24 +293,18 @@ public class AssetDownloadResolver : BaseScene
 		yield break;
 	}
 
-	// Token: 0x02000946 RID: 2374
 	public class GUI
 	{
-		// Token: 0x06003B4C RID: 15180 RVA: 0x001D5225 File Offset: 0x001D3425
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
 			this.test = baseTr.Find("Text").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x04003C66 RID: 15462
 		public GameObject baseObj;
 
-		// Token: 0x04003C67 RID: 15463
 		public PguiTextCtrl test;
 	}
 
-	// Token: 0x02000947 RID: 2375
-	// (Invoke) Token: 0x06003B4E RID: 15182
 	public delegate void CancelCallBack();
 }

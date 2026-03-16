@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Ab;
@@ -6,10 +6,8 @@ using SGNFW.Common;
 using UnityEngine;
 using UnityStandardAssets.ImageEffects;
 
-// Token: 0x02000040 RID: 64
 public class AuthPlayer : MonoBehaviour
 {
-	// Token: 0x060000F0 RID: 240 RVA: 0x00006F9F File Offset: 0x0000519F
 	public static AuthPlayer InstantiateAuthPlayer(Transform parent = null, bool viewer = false)
 	{
 		AuthPlayer component = AssetManager.InstantiateAssetData("Framework/AuthPlayer", parent).GetComponent<AuthPlayer>();
@@ -17,23 +15,12 @@ public class AuthPlayer : MonoBehaviour
 		return component;
 	}
 
-	// Token: 0x17000011 RID: 17
-	// (get) Token: 0x060000F1 RID: 241 RVA: 0x00006FB8 File Offset: 0x000051B8
-	// (set) Token: 0x060000F2 RID: 242 RVA: 0x00006FC0 File Offset: 0x000051C0
 	public AuthCamera AuthCameraObj { get; set; }
 
-	// Token: 0x17000012 RID: 18
-	// (get) Token: 0x060000F3 RID: 243 RVA: 0x00006FC9 File Offset: 0x000051C9
-	// (set) Token: 0x060000F4 RID: 244 RVA: 0x00006FD1 File Offset: 0x000051D1
 	public AuthCamera AuthCameraObjSub { get; set; }
 
-	// Token: 0x17000013 RID: 19
-	// (get) Token: 0x060000F5 RID: 245 RVA: 0x00006FDA File Offset: 0x000051DA
-	// (set) Token: 0x060000F6 RID: 246 RVA: 0x00006FE2 File Offset: 0x000051E2
 	public bool viewer { get; set; }
 
-	// Token: 0x17000014 RID: 20
-	// (get) Token: 0x060000F7 RID: 247 RVA: 0x00006FEB File Offset: 0x000051EB
 	public string authName
 	{
 		get
@@ -46,8 +33,6 @@ public class AuthPlayer : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000015 RID: 21
-	// (get) Token: 0x060000F8 RID: 248 RVA: 0x0000700C File Offset: 0x0000520C
 	public AuthPlayer.PostEffectMotionCtrl isPostEffectMotionCtrl
 	{
 		get
@@ -72,72 +57,32 @@ public class AuthPlayer : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000016 RID: 22
-	// (get) Token: 0x060000F9 RID: 249 RVA: 0x00007139 File Offset: 0x00005339
-	// (set) Token: 0x060000FA RID: 250 RVA: 0x00007141 File Offset: 0x00005341
 	public CC_Technicolor techColor { get; private set; }
 
-	// Token: 0x17000017 RID: 23
-	// (get) Token: 0x060000FB RID: 251 RVA: 0x0000714A File Offset: 0x0000534A
-	// (set) Token: 0x060000FC RID: 252 RVA: 0x00007152 File Offset: 0x00005352
 	public CC_HueSaturationValue hueValue { get; private set; }
 
-	// Token: 0x17000018 RID: 24
-	// (get) Token: 0x060000FD RID: 253 RVA: 0x0000715B File Offset: 0x0000535B
-	// (set) Token: 0x060000FE RID: 254 RVA: 0x00007163 File Offset: 0x00005363
 	public CC_RadialBlur radBlur { get; private set; }
 
-	// Token: 0x17000019 RID: 25
-	// (get) Token: 0x060000FF RID: 255 RVA: 0x0000716C File Offset: 0x0000536C
-	// (set) Token: 0x06000100 RID: 256 RVA: 0x00007174 File Offset: 0x00005374
 	public CC_Wiggle wiggle { get; private set; }
 
-	// Token: 0x1700001A RID: 26
-	// (get) Token: 0x06000101 RID: 257 RVA: 0x0000717D File Offset: 0x0000537D
-	// (set) Token: 0x06000102 RID: 258 RVA: 0x00007185 File Offset: 0x00005385
 	public CC_RGBSplit rgbSprit { get; private set; }
 
-	// Token: 0x1700001B RID: 27
-	// (get) Token: 0x06000103 RID: 259 RVA: 0x0000718E File Offset: 0x0000538E
-	// (set) Token: 0x06000104 RID: 260 RVA: 0x00007196 File Offset: 0x00005396
 	public CC_ContrastVignette contrastVignette { get; private set; }
 
-	// Token: 0x1700001C RID: 28
-	// (get) Token: 0x06000105 RID: 261 RVA: 0x0000719F File Offset: 0x0000539F
-	// (set) Token: 0x06000106 RID: 262 RVA: 0x000071A7 File Offset: 0x000053A7
 	public CC_DoubleVision doubleVision { get; private set; }
 
-	// Token: 0x1700001D RID: 29
-	// (get) Token: 0x06000107 RID: 263 RVA: 0x000071B0 File Offset: 0x000053B0
-	// (set) Token: 0x06000108 RID: 264 RVA: 0x000071B8 File Offset: 0x000053B8
 	public CC_Negative negative { get; private set; }
 
-	// Token: 0x1700001E RID: 30
-	// (get) Token: 0x06000109 RID: 265 RVA: 0x000071C1 File Offset: 0x000053C1
-	// (set) Token: 0x0600010A RID: 266 RVA: 0x000071C9 File Offset: 0x000053C9
 	public CC_AnalogTV analogTV { get; private set; }
 
-	// Token: 0x1700001F RID: 31
-	// (get) Token: 0x0600010B RID: 267 RVA: 0x000071D2 File Offset: 0x000053D2
-	// (set) Token: 0x0600010C RID: 268 RVA: 0x000071DA File Offset: 0x000053DA
 	public FocusLine focusLine { get; private set; }
 
-	// Token: 0x17000020 RID: 32
-	// (get) Token: 0x0600010D RID: 269 RVA: 0x000071E3 File Offset: 0x000053E3
-	// (set) Token: 0x0600010E RID: 270 RVA: 0x000071EB File Offset: 0x000053EB
 	public SpeedLine speedLine { get; private set; }
 
-	// Token: 0x17000021 RID: 33
-	// (get) Token: 0x0600010F RID: 271 RVA: 0x000071F4 File Offset: 0x000053F4
-	// (set) Token: 0x06000110 RID: 272 RVA: 0x000071FC File Offset: 0x000053FC
 	public Blur blur { get; private set; }
 
-	// Token: 0x17000022 RID: 34
-	// (get) Token: 0x06000111 RID: 273 RVA: 0x00007205 File Offset: 0x00005405
-	// (set) Token: 0x06000112 RID: 274 RVA: 0x0000720D File Offset: 0x0000540D
 	private Coroutine InitializeCoroutine { get; set; }
 
-	// Token: 0x06000113 RID: 275 RVA: 0x00007218 File Offset: 0x00005418
 	public void InitializeByGacha(AuthPlayer.GachaParam.Before param)
 	{
 		this.isFinishDestroy = false;
@@ -215,7 +160,6 @@ public class AuthPlayer : MonoBehaviour
 		this.InitializeByParam("AT@AT_GCA_PO_0001_", null, param.stageData, null, null, false, false, false, list);
 	}
 
-	// Token: 0x06000114 RID: 276 RVA: 0x000073DC File Offset: 0x000055DC
 	public void InitializeByGacha(AuthPlayer.GachaParam.After param)
 	{
 		this.isFinishDestroy = false;
@@ -404,7 +348,6 @@ public class AuthPlayer : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000115 RID: 277 RVA: 0x00007850 File Offset: 0x00005A50
 	public void InitializeByGacha2(AuthPlayer.GachaParam.After param)
 	{
 		this.isFinishDestroy = false;
@@ -498,7 +441,6 @@ public class AuthPlayer : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000116 RID: 278 RVA: 0x00007AB0 File Offset: 0x00005CB0
 	private void AddEffectsBeforeVrsion(AuthPlayer.GachaParam.Before param, List<AnimationEvent> removeEventList)
 	{
 		AuthPlayer.GachaAnimationEventsBefore gachaAnimationEventsBefore = new AuthPlayer.GachaAnimationEventsBefore();
@@ -560,7 +502,6 @@ public class AuthPlayer : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000117 RID: 279 RVA: 0x00007BC8 File Offset: 0x00005DC8
 	private void AddEffectsAfterVrsion(AuthPlayer.GachaParam.After param, List<AnimationEvent> removeEventList)
 	{
 		AuthPlayer.GachaAnimationEventsAfter gachaAnimationEventsAfter = new AuthPlayer.GachaAnimationEventsAfter();
@@ -620,13 +561,11 @@ public class AuthPlayer : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000118 RID: 280 RVA: 0x00007CD8 File Offset: 0x00005ED8
 	public void Initialize(string authName, List<CharaModelHandle.InitializeParam> charaModelParam = null, StagePresetCtrl stageData = null, List<AuthCharaData> charaList = null, string replaceChara = null, bool isArtsMaxAction = false, bool isQuickAuth = false, bool isModelShadow = false)
 	{
 		this.InitializeByParam(authName, charaModelParam, stageData, charaList, replaceChara, isArtsMaxAction, isQuickAuth, isModelShadow, null);
 	}
 
-	// Token: 0x06000119 RID: 281 RVA: 0x00007CFC File Offset: 0x00005EFC
 	public void Initialize(string authName, List<CharaModelHandle> charaModelHandleList, StagePresetCtrl stageData)
 	{
 		List<CharaModelHandle.InitializeParam> list;
@@ -641,7 +580,6 @@ public class AuthPlayer : MonoBehaviour
 		this.InitializeByParam(authName, list, stageData, null, null, false, false, false, null);
 	}
 
-	// Token: 0x0600011A RID: 282 RVA: 0x00007D44 File Offset: 0x00005F44
 	public void InitializeByParam(string authName, List<CharaModelHandle.InitializeParam> charaInitializeParam = null, StagePresetCtrl stageData = null, List<AuthCharaData> charaList = null, string replaceChara = null, bool isArtsMaxAction = false, bool isQuickVoice = false, bool isModelShadow = false, List<AnimationEvent> removeEvent = null)
 	{
 		if (this.auth != null)
@@ -652,7 +590,6 @@ public class AuthPlayer : MonoBehaviour
 		this.InitializeCoroutine = base.StartCoroutine(this.InitializeInternal(authName, charaInitializeParam, stageData, charaList, replaceChara, Vector3.zero, isArtsMaxAction, isQuickVoice, isModelShadow, removeEvent));
 	}
 
-	// Token: 0x0600011B RID: 283 RVA: 0x00007D90 File Offset: 0x00005F90
 	private IEnumerator InitializeInternal(string authName, List<CharaModelHandle.InitializeParam> charaInitializeParam, StagePresetCtrl stageData, List<AuthCharaData> charaList, string replaceChara, Vector3 offset, bool isArtsMaxAction, bool isQuickAuth, bool isModelShadow, List<AnimationEvent> removeEvent)
 	{
 		if (this.auth != null)
@@ -1329,7 +1266,6 @@ public class AuthPlayer : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600011C RID: 284 RVA: 0x00007DEF File Offset: 0x00005FEF
 	private static string GetSoundName(string authName)
 	{
 		if (authName == null)
@@ -1343,7 +1279,6 @@ public class AuthPlayer : MonoBehaviour
 		return "prd_se_" + authName.Substring(AuthPlayer.AUTH_NAME_PREFIX.Length).ToLower();
 	}
 
-	// Token: 0x0600011D RID: 285 RVA: 0x00007E24 File Offset: 0x00006024
 	private static string GetOptionEffectName(string authName, int charaIndex)
 	{
 		if (authName == null)
@@ -1357,19 +1292,16 @@ public class AuthPlayer : MonoBehaviour
 		return "Ef_option_" + authName.Substring(AuthPlayer.AUTH_NAME_PREFIX.Length).ToLower() + "opt" + ((charaIndex == 0) ? "" : "s");
 	}
 
-	// Token: 0x0600011E RID: 286 RVA: 0x00007E80 File Offset: 0x00006080
 	public bool IsFinishInitialize()
 	{
 		return this.isFinishInitialize;
 	}
 
-	// Token: 0x0600011F RID: 287 RVA: 0x00007E88 File Offset: 0x00006088
 	private void OnDestroy()
 	{
 		this.DestroyProcessing();
 	}
 
-	// Token: 0x06000120 RID: 288 RVA: 0x00007E90 File Offset: 0x00006090
 	public void DestroyProcessing()
 	{
 		if (this.auth == null)
@@ -1428,7 +1360,6 @@ public class AuthPlayer : MonoBehaviour
 		this.stagePresetCtrl = null;
 	}
 
-	// Token: 0x06000121 RID: 289 RVA: 0x000080D4 File Offset: 0x000062D4
 	private void Update()
 	{
 		this.ProjectUpdate();
@@ -1443,13 +1374,11 @@ public class AuthPlayer : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000122 RID: 290 RVA: 0x0000812F File Offset: 0x0000632F
 	private void LateUpdate()
 	{
 		this.ProjectLateUpdate();
 	}
 
-	// Token: 0x06000123 RID: 291 RVA: 0x00008138 File Offset: 0x00006338
 	private void ProjectUpdate()
 	{
 		if (this.auth == null)
@@ -1961,7 +1890,6 @@ public class AuthPlayer : MonoBehaviour
 		this.time = this.GetTime();
 	}
 
-	// Token: 0x06000124 RID: 292 RVA: 0x00009D8C File Offset: 0x00007F8C
 	private void ProjectLateUpdate()
 	{
 		if (this.auth == null)
@@ -1982,7 +1910,6 @@ public class AuthPlayer : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000125 RID: 293 RVA: 0x00009E3C File Offset: 0x0000803C
 	private AuthCharaData GetCharaData(int index, string kind)
 	{
 		AuthCharaData authCharaData = null;
@@ -1997,13 +1924,11 @@ public class AuthPlayer : MonoBehaviour
 		return authCharaData;
 	}
 
-	// Token: 0x06000126 RID: 294 RVA: 0x00009E98 File Offset: 0x00008098
 	public AuthPlayer.AuthEffectData GetEffectParent(string name)
 	{
 		return this.effectList.Find((AuthPlayer.AuthEffectData item) => item.AuthObj.name == name);
 	}
 
-	// Token: 0x06000127 RID: 295 RVA: 0x00009ECC File Offset: 0x000080CC
 	public void PlayAuth(bool OldPlay = false)
 	{
 		if (this.auth == null)
@@ -2049,7 +1974,6 @@ public class AuthPlayer : MonoBehaviour
 		this.authRenderSetting.Param2Scene();
 	}
 
-	// Token: 0x06000128 RID: 296 RVA: 0x0000A0F4 File Offset: 0x000082F4
 	public void PlayFinishProcess()
 	{
 		if (this.isPlayed && !this.isActFinishProcess)
@@ -2115,7 +2039,6 @@ public class AuthPlayer : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000129 RID: 297 RVA: 0x0000A36C File Offset: 0x0000856C
 	public void StopSound()
 	{
 		if (this.auth != null)
@@ -2124,32 +2047,27 @@ public class AuthPlayer : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600012A RID: 298 RVA: 0x0000A391 File Offset: 0x00008591
 	public void Pause(bool pause)
 	{
 		this.pause = pause;
 	}
 
-	// Token: 0x0600012B RID: 299 RVA: 0x0000A39A File Offset: 0x0000859A
 	public void ForceFinish()
 	{
 		this.anim.ExStop(true);
 		this.PlayFinishProcess();
 	}
 
-	// Token: 0x0600012C RID: 300 RVA: 0x0000A3AE File Offset: 0x000085AE
 	public bool IsPlaying()
 	{
 		return this.auth != null && this.anim != null && this.anim.ExIsPlaying() && !this.pause;
 	}
 
-	// Token: 0x0600012D RID: 301 RVA: 0x0000A3E4 File Offset: 0x000085E4
 	public bool IsFinished()
 	{
 		return this.isPlayed && (this.anim == null || !this.anim.ExIsPlaying());
 	}
 
-	// Token: 0x0600012E RID: 302 RVA: 0x0000A40E File Offset: 0x0000860E
 	public GameObject GetCacheObj(string name)
 	{
 		if (!this.transCacheList.ContainsKey(name))
@@ -2159,7 +2077,6 @@ public class AuthPlayer : MonoBehaviour
 		return this.transCacheList[name].gameObject;
 	}
 
-	// Token: 0x0600012F RID: 303 RVA: 0x0000A431 File Offset: 0x00008631
 	public float GetLength()
 	{
 		if (!(this.anim == null))
@@ -2169,7 +2086,6 @@ public class AuthPlayer : MonoBehaviour
 		return 0f;
 	}
 
-	// Token: 0x06000130 RID: 304 RVA: 0x0000A45C File Offset: 0x0000865C
 	public float GetTime()
 	{
 		if (!(this.anim == null))
@@ -2179,7 +2095,6 @@ public class AuthPlayer : MonoBehaviour
 		return 0f;
 	}
 
-	// Token: 0x06000131 RID: 305 RVA: 0x0000A488 File Offset: 0x00008688
 	public string GetFrameInfo()
 	{
 		if (this.anim == null)
@@ -2190,13 +2105,11 @@ public class AuthPlayer : MonoBehaviour
 		return ((int)(state.time * 30f)).ToString() + "/" + ((int)(state.length * 30f)).ToString();
 	}
 
-	// Token: 0x06000132 RID: 306 RVA: 0x0000A4EE File Offset: 0x000086EE
 	public int GetCharaCount()
 	{
 		return this.charaCount;
 	}
 
-	// Token: 0x06000133 RID: 307 RVA: 0x0000A4F8 File Offset: 0x000086F8
 	public void PlayEffectByEventHandler(string effectName)
 	{
 		AuthPlayer.AuthEffectData authEffectData = this.effectList.Find((AuthPlayer.AuthEffectData item) => item.effectName == effectName);
@@ -2233,263 +2146,169 @@ public class AuthPlayer : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0400015D RID: 349
 	private const float FILM_APERTURE_H = 45.15556f;
 
-	// Token: 0x0400015E RID: 350
 	private const float FILM_APERTURE_V = 25.4f;
 
-	// Token: 0x0400015F RID: 351
 	private const float FILM_APERTURE_V_HALF = 0.12699999f;
 
-	// Token: 0x04000160 RID: 352
 	private const float RADIAN_TO_DEGREE = 57.295776f;
 
-	// Token: 0x04000161 RID: 353
 	private static readonly List<string> MAX_ARTS_EFFECT_NAME = new List<string> { "Ef_auth_pow_attack", "Ef_auth_pow_buff" };
 
-	// Token: 0x04000164 RID: 356
 	private Camera CharaCamera;
 
-	// Token: 0x04000166 RID: 358
 	private GameObject auth;
 
-	// Token: 0x04000167 RID: 359
 	private SimpleAnimation anim;
 
-	// Token: 0x04000168 RID: 360
 	public List<AuthCharaData> charaList;
 
-	// Token: 0x04000169 RID: 361
 	public Dictionary<string, string> modelChange;
 
-	// Token: 0x0400016A RID: 362
 	public List<GameObject> authLight;
 
-	// Token: 0x0400016B RID: 363
 	private AuthLightParam authLightParam;
 
-	// Token: 0x0400016C RID: 364
 	private List<AuthPlayer.AuthEffectData> effectList;
 
-	// Token: 0x0400016D RID: 365
 	public HashSet<string> efCtrlList;
 
-	// Token: 0x0400016E RID: 366
 	private List<string> loadLightAssetNameList;
 
-	// Token: 0x0400016F RID: 367
 	private RenderSettingParam authRenderSetting;
 
-	// Token: 0x04000170 RID: 368
 	private RenderSettingParam backupRenderSetting;
 
-	// Token: 0x04000171 RID: 369
 	private int fixKeepFps;
 
-	// Token: 0x04000172 RID: 370
 	private Dictionary<string, Transform> transCacheList;
 
-	// Token: 0x04000173 RID: 371
 	private Transform camPosObj;
 
-	// Token: 0x04000174 RID: 372
 	private Transform intrPosObj;
 
-	// Token: 0x04000175 RID: 373
 	private Transform fovObj;
 
-	// Token: 0x04000176 RID: 374
 	private Transform rollObj;
 
-	// Token: 0x04000177 RID: 375
 	private Transform technicolorObj;
 
-	// Token: 0x04000178 RID: 376
 	private Transform hueValueObj;
 
-	// Token: 0x04000179 RID: 377
 	private Transform radBlurObj;
 
-	// Token: 0x0400017A RID: 378
 	private Transform wiggleObj;
 
-	// Token: 0x0400017B RID: 379
 	private Transform rgbSpritObj;
 
-	// Token: 0x0400017C RID: 380
 	private Transform contrastVignetteObj;
 
-	// Token: 0x0400017D RID: 381
 	private Transform contrastVignetteRgbObj;
 
-	// Token: 0x0400017E RID: 382
 	private Transform contrastVignetteEdgeObj;
 
-	// Token: 0x0400017F RID: 383
 	private Transform doubleVisionObj;
 
-	// Token: 0x04000180 RID: 384
 	private Transform negativeObj;
 
-	// Token: 0x04000181 RID: 385
 	private Transform analogTVObj;
 
-	// Token: 0x04000182 RID: 386
 	private Transform focusLineObj;
 
-	// Token: 0x04000183 RID: 387
 	private Transform speedLineObj;
 
-	// Token: 0x04000184 RID: 388
 	private Transform blurObj;
 
-	// Token: 0x04000185 RID: 389
 	private Transform fogObj;
 
-	// Token: 0x04000186 RID: 390
 	private Transform camouflageObj;
 
-	// Token: 0x04000187 RID: 391
 	private string postEffectAssetName;
 
-	// Token: 0x04000188 RID: 392
 	public AuthPostEffectParam postEffectParam;
 
-	// Token: 0x04000195 RID: 405
 	private Vector3 offset;
 
-	// Token: 0x04000196 RID: 406
 	private float time;
 
-	// Token: 0x04000197 RID: 407
 	private bool pause;
 
-	// Token: 0x04000198 RID: 408
 	private bool prePause;
 
-	// Token: 0x04000199 RID: 409
 	private bool isFinishInitialize;
 
-	// Token: 0x0400019A RID: 410
 	private bool isPlayed;
 
-	// Token: 0x0400019B RID: 411
 	private bool isActFinishProcess;
 
-	// Token: 0x0400019C RID: 412
 	private int charaCount;
 
-	// Token: 0x0400019D RID: 413
 	private StagePresetCtrl stagePresetCtrl;
 
-	// Token: 0x0400019E RID: 414
 	private int stageDisableFrame = -1;
 
-	// Token: 0x0400019F RID: 415
 	private bool disableAuthFaceMotion;
 
-	// Token: 0x040001A0 RID: 416
 	private int backupPlayerLightMask;
 
-	// Token: 0x040001A1 RID: 417
 	private Camera backupEffectBillboardCamera;
 
-	// Token: 0x040001A2 RID: 418
 	private const string CUSTOM_CLIP_NAME = "Custom";
 
-	// Token: 0x040001A3 RID: 419
 	public bool isFinishDestroy = true;
 
-	// Token: 0x040001A4 RID: 420
 	public bool camouflage;
 
-	// Token: 0x040001A6 RID: 422
 	private static readonly string AUTH_NAME_PREFIX = "AT@";
 
-	// Token: 0x040001A7 RID: 423
 	public int objIndex;
 
-	// Token: 0x0200059F RID: 1439
 	public class PostEffectMotionCtrl
 	{
-		// Token: 0x0400298C RID: 10636
 		public bool techColor;
 
-		// Token: 0x0400298D RID: 10637
 		public bool hueValue;
 
-		// Token: 0x0400298E RID: 10638
 		public bool radBlur;
 
-		// Token: 0x0400298F RID: 10639
 		public bool wiggle;
 
-		// Token: 0x04002990 RID: 10640
 		public bool rgbSprit;
 
-		// Token: 0x04002991 RID: 10641
 		public bool contrastVignette;
 
-		// Token: 0x04002992 RID: 10642
 		public bool doubleVision;
 
-		// Token: 0x04002993 RID: 10643
 		public bool negative;
 
-		// Token: 0x04002994 RID: 10644
 		public bool analogTV;
 
-		// Token: 0x04002995 RID: 10645
 		public bool focusLine;
 
-		// Token: 0x04002996 RID: 10646
 		public bool speedLine;
 
-		// Token: 0x04002997 RID: 10647
 		public bool blur;
 
-		// Token: 0x04002998 RID: 10648
 		public bool fog;
 
-		// Token: 0x04002999 RID: 10649
 		public bool camouflage;
 	}
 
-	// Token: 0x020005A0 RID: 1440
 	public class AuthEffectData
 	{
-		// Token: 0x17000648 RID: 1608
-		// (get) Token: 0x06002F06 RID: 12038 RVA: 0x001B48D7 File Offset: 0x001B2AD7
-		// (set) Token: 0x06002F07 RID: 12039 RVA: 0x001B48DF File Offset: 0x001B2ADF
 		public Transform AuthObj { get; set; }
 
-		// Token: 0x17000649 RID: 1609
-		// (get) Token: 0x06002F08 RID: 12040 RVA: 0x001B48E8 File Offset: 0x001B2AE8
-		// (set) Token: 0x06002F09 RID: 12041 RVA: 0x001B48F0 File Offset: 0x001B2AF0
 		public GameObject Parent { get; set; }
 
-		// Token: 0x1700064A RID: 1610
-		// (get) Token: 0x06002F0A RID: 12042 RVA: 0x001B48F9 File Offset: 0x001B2AF9
-		// (set) Token: 0x06002F0B RID: 12043 RVA: 0x001B4901 File Offset: 0x001B2B01
 		public bool Played { get; set; }
 
-		// Token: 0x1700064B RID: 1611
-		// (get) Token: 0x06002F0C RID: 12044 RVA: 0x001B490A File Offset: 0x001B2B0A
-		// (set) Token: 0x06002F0D RID: 12045 RVA: 0x001B4912 File Offset: 0x001B2B12
 		public string effectName { get; set; }
 
-		// Token: 0x1700064C RID: 1612
-		// (get) Token: 0x06002F0E RID: 12046 RVA: 0x001B491B File Offset: 0x001B2B1B
-		// (set) Token: 0x06002F0F RID: 12047 RVA: 0x001B4923 File Offset: 0x001B2B23
 		public EffectData effectData { get; set; }
 
-		// Token: 0x1700064D RID: 1613
-		// (get) Token: 0x06002F10 RID: 12048 RVA: 0x001B492C File Offset: 0x001B2B2C
-		// (set) Token: 0x06002F11 RID: 12049 RVA: 0x001B4934 File Offset: 0x001B2B34
 		public bool isOption { get; set; }
 
-		// Token: 0x06002F12 RID: 12050 RVA: 0x001B4940 File Offset: 0x001B2B40
 		public AuthEffectData(Transform authObj, GameObject parent, string effectName, bool isOpt)
 		{
 			AuthPlayer.AuthEffectData <>4__this = this;
@@ -2533,13 +2352,11 @@ public class AuthPlayer : MonoBehaviour
 			});
 		}
 
-		// Token: 0x06002F13 RID: 12051 RVA: 0x001B49AA File Offset: 0x001B2BAA
 		public bool IsFinishLoadEffect()
 		{
 			return this.effectData != null;
 		}
 
-		// Token: 0x06002F14 RID: 12052 RVA: 0x001B49B5 File Offset: 0x001B2BB5
 		public void Destory()
 		{
 			if (this.IsFinishLoadEffect())
@@ -2550,157 +2367,103 @@ public class AuthPlayer : MonoBehaviour
 		}
 	}
 
-	// Token: 0x020005A1 RID: 1441
 	[Serializable]
 	public class GachaParam
 	{
-		// Token: 0x02001108 RID: 4360
 		public enum SkyType
 		{
-			// Token: 0x04005DB8 RID: 23992
 			INVALID,
-			// Token: 0x04005DB9 RID: 23993
 			NORMAL,
-			// Token: 0x04005DBA RID: 23994
 			NIGHT,
-			// Token: 0x04005DBB RID: 23995
 			NIGHT_STAR
 		}
 
-		// Token: 0x02001109 RID: 4361
 		public enum PutType
 		{
-			// Token: 0x04005DBD RID: 23997
 			INVALID,
-			// Token: 0x04005DBE RID: 23998
 			NORMAL,
-			// Token: 0x04005DBF RID: 23999
 			LUCKY_BEAST,
-			// Token: 0x04005DC0 RID: 24000
 			MIRAI,
-			// Token: 0x04005DC1 RID: 24001
 			MIRAI_KAKO,
-			// Token: 0x04005DC2 RID: 24002
 			MIRAI_NANA,
-			// Token: 0x04005DC3 RID: 24003
 			MIRAI_CARRENDER,
-			// Token: 0x04005DC4 RID: 24004
 			MIRAI_KAKO_NANA,
-			// Token: 0x04005DC5 RID: 24005
 			MIRAI_KAKO_CARRENDER,
-			// Token: 0x04005DC6 RID: 24006
 			MIRAI_NANA_CARRENDER,
-			// Token: 0x04005DC7 RID: 24007
 			FULL_MEMBERS
 		}
 
-		// Token: 0x0200110A RID: 4362
 		public enum PostActType
 		{
-			// Token: 0x04005DC9 RID: 24009
 			INVALID,
-			// Token: 0x04005DCA RID: 24010
 			NORMAL,
-			// Token: 0x04005DCB RID: 24011
 			JUMP
 		}
 
-		// Token: 0x0200110B RID: 4363
 		public enum EffectType
 		{
-			// Token: 0x04005DCD RID: 24013
 			INVALID,
-			// Token: 0x04005DCE RID: 24014
 			BLUE,
-			// Token: 0x04005DCF RID: 24015
 			GOLD,
-			// Token: 0x04005DD0 RID: 24016
 			RAINBOW
 		}
 
-		// Token: 0x0200110C RID: 4364
 		public class Before
 		{
-			// Token: 0x04005DD1 RID: 24017
 			public AuthPlayer.GachaParam.SkyType skyType;
 
-			// Token: 0x04005DD2 RID: 24018
 			public AuthPlayer.GachaParam.PutType putType;
 
-			// Token: 0x04005DD3 RID: 24019
 			public AuthPlayer.GachaParam.PostActType postActType;
 
-			// Token: 0x04005DD4 RID: 24020
 			public AuthPlayer.GachaParam.EffectType effectType;
 
-			// Token: 0x04005DD5 RID: 24021
 			public StagePresetCtrl stageData;
 		}
 
-		// Token: 0x0200110D RID: 4365
 		public class After
 		{
-			// Token: 0x04005DD6 RID: 24022
 			public AuthPlayer.GachaParam.PutType putType;
 
-			// Token: 0x04005DD7 RID: 24023
 			public AuthPlayer.GachaParam.EffectType effectType;
 
-			// Token: 0x04005DD8 RID: 24024
 			public bool isPromotion;
 
-			// Token: 0x04005DD9 RID: 24025
 			public int itemId;
 
-			// Token: 0x04005DDA RID: 24026
 			public StagePresetCtrl stageData;
 		}
 	}
 
-	// Token: 0x020005A2 RID: 1442
 	public class EffectConstants
 	{
-		// Token: 0x040029A0 RID: 10656
 		public const string AuthEffectPlay = "AuthEffectPlay";
 
-		// Token: 0x040029A1 RID: 10657
 		public const string SoundPlay = "SoundPlay";
 
-		// Token: 0x040029A2 RID: 10658
 		public const string EfAuthGachaALuckyBeast = "Ef_auth_gacha_a_luckybeast";
 
-		// Token: 0x040029A3 RID: 10659
 		public const string PrdSeAtGcaPo0001LuckyBeast = "prd_se_at_gca_po_0001_luckybeast";
 
-		// Token: 0x040029A4 RID: 10660
 		public const string EfAuthGachaAKako = "Ef_auth_gacha_a_kako";
 
-		// Token: 0x040029A5 RID: 10661
 		public const string EfAuthGachaACarrender = "Ef_auth_gacha_a_carrender";
 
-		// Token: 0x040029A6 RID: 10662
 		public const string EfAuthGachaANana = "Ef_auth_gacha_a_nana";
 
-		// Token: 0x040029A7 RID: 10663
 		public const string EfAuthGachaAMirai = "Ef_auth_gacha_a_mirai";
 
-		// Token: 0x040029A8 RID: 10664
 		public const string EfAuthGachaBKako = "Ef_auth_gacha_b_kako";
 
-		// Token: 0x040029A9 RID: 10665
 		public const string EfAuthGachaBCarrender = "Ef_auth_gacha_b_carrender";
 
-		// Token: 0x040029AA RID: 10666
 		public const string EfAuthGachaBNana = "Ef_auth_gacha_b_nana";
 
-		// Token: 0x040029AB RID: 10667
 		public const string EfAuthGachaBMirai = "Ef_auth_gacha_b_mirai";
 	}
 
-	// Token: 0x020005A3 RID: 1443
 	public class GachaAnimationEventsBefore
 	{
-		// Token: 0x040029AC RID: 10668
 		public List<ValueTuple<string, string>> miraiEventBefore = new List<ValueTuple<string, string>>
 		{
 			new ValueTuple<string, string>("AuthEffectPlay", "Ef_auth_gacha_a_luckybeast"),
@@ -2710,14 +2473,12 @@ public class AuthPlayer : MonoBehaviour
 			new ValueTuple<string, string>("AuthEffectPlay", "Ef_auth_gacha_a_nana")
 		};
 
-		// Token: 0x040029AD RID: 10669
 		public List<ValueTuple<string, string>> fullMembersEventsBefore = new List<ValueTuple<string, string>>
 		{
 			new ValueTuple<string, string>("AuthEffectPlay", "Ef_auth_gacha_a_luckybeast"),
 			new ValueTuple<string, string>("SoundPlay", "prd_se_at_gca_po_0001_luckybeast")
 		};
 
-		// Token: 0x040029AE RID: 10670
 		public List<ValueTuple<string, string>> normalEventsBefore = new List<ValueTuple<string, string>>
 		{
 			new ValueTuple<string, string>("AuthEffectPlay", "Ef_auth_gacha_a_luckybeast"),
@@ -2728,7 +2489,6 @@ public class AuthPlayer : MonoBehaviour
 			new ValueTuple<string, string>("AuthEffectPlay", "Ef_auth_gacha_a_mirai")
 		};
 
-		// Token: 0x040029AF RID: 10671
 		public List<ValueTuple<string, string>> luckyBeastEventsBefore = new List<ValueTuple<string, string>>
 		{
 			new ValueTuple<string, string>("AuthEffectPlay", "Ef_auth_gacha_a_mirai"),
@@ -2737,7 +2497,6 @@ public class AuthPlayer : MonoBehaviour
 			new ValueTuple<string, string>("AuthEffectPlay", "Ef_auth_gacha_a_nana")
 		};
 
-		// Token: 0x040029B0 RID: 10672
 		public List<ValueTuple<string, string>> miraiNanaEventsBefore = new List<ValueTuple<string, string>>
 		{
 			new ValueTuple<string, string>("AuthEffectPlay", "Ef_auth_gacha_a_luckybeast"),
@@ -2746,7 +2505,6 @@ public class AuthPlayer : MonoBehaviour
 			new ValueTuple<string, string>("AuthEffectPlay", "Ef_auth_gacha_a_carrender")
 		};
 
-		// Token: 0x040029B1 RID: 10673
 		public List<ValueTuple<string, string>> miraiCarrenderEventsBefore = new List<ValueTuple<string, string>>
 		{
 			new ValueTuple<string, string>("AuthEffectPlay", "Ef_auth_gacha_a_luckybeast"),
@@ -2755,7 +2513,6 @@ public class AuthPlayer : MonoBehaviour
 			new ValueTuple<string, string>("AuthEffectPlay", "Ef_auth_gacha_a_nana")
 		};
 
-		// Token: 0x040029B2 RID: 10674
 		public List<ValueTuple<string, string>> miraiNanaCarrenderEventsBefore = new List<ValueTuple<string, string>>
 		{
 			new ValueTuple<string, string>("AuthEffectPlay", "Ef_auth_gacha_a_luckybeast"),
@@ -2763,7 +2520,6 @@ public class AuthPlayer : MonoBehaviour
 			new ValueTuple<string, string>("AuthEffectPlay", "Ef_auth_gacha_a_kako")
 		};
 
-		// Token: 0x040029B3 RID: 10675
 		public List<ValueTuple<string, string>> miraiKakoEventsBefore = new List<ValueTuple<string, string>>
 		{
 			new ValueTuple<string, string>("AuthEffectPlay", "Ef_auth_gacha_a_luckybeast"),
@@ -2772,7 +2528,6 @@ public class AuthPlayer : MonoBehaviour
 			new ValueTuple<string, string>("AuthEffectPlay", "Ef_auth_gacha_a_nana")
 		};
 
-		// Token: 0x040029B4 RID: 10676
 		public List<ValueTuple<string, string>> miraiKakoNanaEventsBefore = new List<ValueTuple<string, string>>
 		{
 			new ValueTuple<string, string>("AuthEffectPlay", "Ef_auth_gacha_a_luckybeast"),
@@ -2780,7 +2535,6 @@ public class AuthPlayer : MonoBehaviour
 			new ValueTuple<string, string>("AuthEffectPlay", "Ef_auth_gacha_a_carrender")
 		};
 
-		// Token: 0x040029B5 RID: 10677
 		public List<ValueTuple<string, string>> miraiKakoCarrenderEventsBefore = new List<ValueTuple<string, string>>
 		{
 			new ValueTuple<string, string>("AuthEffectPlay", "Ef_auth_gacha_a_luckybeast"),
@@ -2789,37 +2543,26 @@ public class AuthPlayer : MonoBehaviour
 		};
 	}
 
-	// Token: 0x020005A4 RID: 1444
 	public class GachaAnimationEventsAfter
 	{
-		// Token: 0x040029B6 RID: 10678
 		public List<string> miraiEventsAfter = new List<string> { "Ef_auth_gacha_b_kako", "Ef_auth_gacha_b_carrender", "Ef_auth_gacha_b_nana" };
 
-		// Token: 0x040029B7 RID: 10679
 		public List<string> fullMembersEventsAfter = new List<string>();
 
-		// Token: 0x040029B8 RID: 10680
 		public List<string> normalEventsAfter = new List<string> { "Ef_auth_gacha_b_kako", "Ef_auth_gacha_b_carrender", "Ef_auth_gacha_b_nana", "Ef_auth_gacha_b_mirai" };
 
-		// Token: 0x040029B9 RID: 10681
 		public List<string> luckyBeastEventsAfter = new List<string> { "Ef_auth_gacha_b_mirai", "Ef_auth_gacha_b_kako", "Ef_auth_gacha_b_carrender", "Ef_auth_gacha_b_nana" };
 
-		// Token: 0x040029BA RID: 10682
 		public List<string> miraiNanaEventsAfter = new List<string> { "Ef_auth_gacha_b_kako", "Ef_auth_gacha_b_carrender" };
 
-		// Token: 0x040029BB RID: 10683
 		public List<string> miraiCarrenderEventsAfter = new List<string> { "Ef_auth_gacha_b_kako", "Ef_auth_gacha_b_nana" };
 
-		// Token: 0x040029BC RID: 10684
 		public List<string> miraiNanaCarrenderEventsAfter = new List<string> { "Ef_auth_gacha_b_kako" };
 
-		// Token: 0x040029BD RID: 10685
 		public List<string> miraiKakoEventsAfter = new List<string> { "Ef_auth_gacha_b_carrender", "Ef_auth_gacha_b_nana" };
 
-		// Token: 0x040029BE RID: 10686
 		public List<string> miraiKakoNanaEventsAfter = new List<string> { "Ef_auth_gacha_b_carrender" };
 
-		// Token: 0x040029BF RID: 10687
 		public List<string> miraiKakoCarrenderEventsAfter = new List<string> { "Ef_auth_gacha_b_nana" };
 	}
 }

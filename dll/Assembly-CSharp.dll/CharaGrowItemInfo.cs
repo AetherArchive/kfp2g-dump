@@ -1,11 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
-// Token: 0x020000C3 RID: 195
 public class CharaGrowItemInfo
 {
-	// Token: 0x060008CC RID: 2252 RVA: 0x000383F0 File Offset: 0x000365F0
 	public static List<CharaGrowItemInfo.NeedInfo> MakeCharaGrowNeedInfoList(int itemId)
 	{
 		List<CharaGrowItemInfo.NeedInfo> list = new List<CharaGrowItemInfo.NeedInfo>();
@@ -92,7 +90,6 @@ public class CharaGrowItemInfo
 		return list;
 	}
 
-	// Token: 0x04000750 RID: 1872
 	private static readonly List<ItemDef.Kind> sortKind = new List<ItemDef.Kind>
 	{
 		ItemDef.Kind.PROMOTE,
@@ -103,22 +100,16 @@ public class CharaGrowItemInfo
 		ItemDef.Kind.ABILITY_RELEASE
 	};
 
-	// Token: 0x020007BD RID: 1981
 	public class NeedInfo
 	{
-		// Token: 0x04003483 RID: 13443
 		public ItemDef.Kind needType;
 
-		// Token: 0x04003484 RID: 13444
 		public int num;
 
-		// Token: 0x04003485 RID: 13445
 		public int charaId;
 
-		// Token: 0x04003486 RID: 13446
 		public CharaPromoteOne charaPromoteOne;
 
-		// Token: 0x04003487 RID: 13447
 		public int promoteIndex;
 	}
 }

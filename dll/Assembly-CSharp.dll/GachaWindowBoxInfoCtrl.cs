@@ -1,14 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x02000141 RID: 321
 public class GachaWindowBoxInfoCtrl : MonoBehaviour
 {
-	// Token: 0x060011A2 RID: 4514 RVA: 0x000D58AD File Offset: 0x000D3AAD
 	private void Update()
 	{
 		if (this.IEWindowMove != null && !this.IEWindowMove.MoveNext())
@@ -17,7 +15,6 @@ public class GachaWindowBoxInfoCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060011A3 RID: 4515 RVA: 0x000D58CC File Offset: 0x000D3ACC
 	public void Initialize()
 	{
 		this.gachaWindowBoxInfoGuiData = new GachaWindowBoxInfoCtrl.GachaWindowBoxInfoGUI(base.transform);
@@ -26,13 +23,11 @@ public class GachaWindowBoxInfoCtrl : MonoBehaviour
 		this.gachaWindowBoxInfoGuiData.BtnClose.AddOnClickListener(new PguiButtonCtrl.OnClick(this.OnCliskCloseButton), PguiButtonCtrl.SoundType.DEFAULT);
 	}
 
-	// Token: 0x060011A4 RID: 4516 RVA: 0x000D592A File Offset: 0x000D3B2A
 	private void OnCliskCloseButton(PguiButtonCtrl button)
 	{
 		this.Close(null);
 	}
 
-	// Token: 0x060011A5 RID: 4517 RVA: 0x000D5933 File Offset: 0x000D3B33
 	public void Open(DataManagerGacha.GachaStaticData staticData, UnityAction openEndCb = null, UnityAction closeEndCb = null)
 	{
 		if (DataManagerGacha.Category.Box != staticData.gachaCategory)
@@ -47,7 +42,6 @@ public class GachaWindowBoxInfoCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060011A6 RID: 4518 RVA: 0x000D5962 File Offset: 0x000D3B62
 	private void Close(UnityAction closeEndCb = null)
 	{
 		if (this.IEWindowMove == null)
@@ -56,7 +50,6 @@ public class GachaWindowBoxInfoCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060011A7 RID: 4519 RVA: 0x000D5979 File Offset: 0x000D3B79
 	private IEnumerator OpenWindow(UnityAction openEndCb)
 	{
 		while (DataManager.IsServerRequesting())
@@ -79,7 +72,6 @@ public class GachaWindowBoxInfoCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060011A8 RID: 4520 RVA: 0x000D598F File Offset: 0x000D3B8F
 	private IEnumerator CloseWindow(UnityAction innerCloseEndCb = null)
 	{
 		this.gachaWindowBoxInfoGuiData.BaseAnim.ExPlayAnimation(SimpleAnimation.ExPguiStatus.END, null);
@@ -104,7 +96,6 @@ public class GachaWindowBoxInfoCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060011A9 RID: 4521 RVA: 0x000D59A8 File Offset: 0x000D3BA8
 	private void RefreshBoxRateInfo()
 	{
 		DataManagerGacha.ProbabilityData lastRequestRateViewData = DataManager.DmGacha.GetLastRequestRateViewData();
@@ -326,32 +317,20 @@ public class GachaWindowBoxInfoCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000EE5 RID: 3813
 	public GachaWindowBoxInfoCtrl.GachaWindowBoxInfoGUI gachaWindowBoxInfoGuiData;
 
-	// Token: 0x04000EE6 RID: 3814
 	private IEnumerator IEWindowMove;
 
-	// Token: 0x04000EE7 RID: 3815
 	private UnityAction windowCloseEndCb;
 
-	// Token: 0x04000EE8 RID: 3816
 	private DataManagerGacha.GachaStaticData currentGachaStaticData;
 
-	// Token: 0x02000AA0 RID: 2720
 	public class GachaWindowBoxInfoGUI
 	{
-		// Token: 0x1700095D RID: 2397
-		// (get) Token: 0x06003FFD RID: 16381 RVA: 0x001F3E0F File Offset: 0x001F200F
-		// (set) Token: 0x06003FFE RID: 16382 RVA: 0x001F3E17 File Offset: 0x001F2017
 		public PguiButtonCtrl LeftArrow { get; set; }
 
-		// Token: 0x1700095E RID: 2398
-		// (get) Token: 0x06003FFF RID: 16383 RVA: 0x001F3E20 File Offset: 0x001F2020
-		// (set) Token: 0x06004000 RID: 16384 RVA: 0x001F3E28 File Offset: 0x001F2028
 		public PguiButtonCtrl RightArrow { get; set; }
 
-		// Token: 0x06004001 RID: 16385 RVA: 0x001F3E34 File Offset: 0x001F2034
 		public GachaWindowBoxInfoGUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -367,26 +346,19 @@ public class GachaWindowBoxInfoCtrl : MonoBehaviour
 			baseTr.Find("Base/Window/Base/Info_Gachadrop/ScrollView").GetComponent<ScrollRect>().scrollSensitivity = ScrollParamDefine.GachaBoxInfo;
 		}
 
-		// Token: 0x040043B2 RID: 17330
 		public GameObject baseObj;
 
-		// Token: 0x040043B3 RID: 17331
 		public GameObject InBase;
 
-		// Token: 0x040043B4 RID: 17332
 		public PguiButtonCtrl BtnClose;
 
-		// Token: 0x040043B7 RID: 17335
 		public SimpleAnimation BaseAnim;
 
-		// Token: 0x040043B8 RID: 17336
 		public GameObject ScrollContent;
 	}
 
-	// Token: 0x02000AA1 RID: 2721
 	public class TabInnerFrameGUI
 	{
-		// Token: 0x06004002 RID: 16386 RVA: 0x001F3F1C File Offset: 0x001F211C
 		public TabInnerFrameGUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -403,23 +375,17 @@ public class GachaWindowBoxInfoCtrl : MonoBehaviour
 			this.Rect = this.Base.GetComponent<RectTransform>();
 		}
 
-		// Token: 0x040043B9 RID: 17337
 		public GameObject baseObj;
 
-		// Token: 0x040043BA RID: 17338
 		public PguiImageCtrl Base;
 
-		// Token: 0x040043BB RID: 17339
 		public PguiTextCtrl Title;
 
-		// Token: 0x040043BC RID: 17340
 		public RectTransform Rect;
 	}
 
-	// Token: 0x02000AA2 RID: 2722
 	public class BoxInfoLabel
 	{
-		// Token: 0x06004003 RID: 16387 RVA: 0x001F3FA8 File Offset: 0x001F21A8
 		public BoxInfoLabel(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -440,7 +406,6 @@ public class GachaWindowBoxInfoCtrl : MonoBehaviour
 			this.DisableImage = baseTr.Find("Disable").GetComponent<PguiImageCtrl>();
 		}
 
-		// Token: 0x06004004 RID: 16388 RVA: 0x001F40D8 File Offset: 0x001F22D8
 		public void Setup(DataManagerGacha.ProbabilityData.Element element)
 		{
 			this.DisableImage.gameObject.SetActive(false);
@@ -500,34 +465,24 @@ public class GachaWindowBoxInfoCtrl : MonoBehaviour
 			});
 		}
 
-		// Token: 0x040043BD RID: 17341
 		public GameObject baseObj;
 
-		// Token: 0x040043BE RID: 17342
 		public GameObject InBase;
 
-		// Token: 0x040043BF RID: 17343
 		public Image InBaseImage;
 
-		// Token: 0x040043C0 RID: 17344
 		public GameObject StarIconAllObj;
 
-		// Token: 0x040043C1 RID: 17345
 		public List<PguiImageCtrl> StarIconImageList;
 
-		// Token: 0x040043C2 RID: 17346
 		public PguiTextCtrl RarityText;
 
-		// Token: 0x040043C3 RID: 17347
 		public PguiTextCtrl ItemNameText;
 
-		// Token: 0x040043C4 RID: 17348
 		public PguiTextCtrl NumPercentText;
 
-		// Token: 0x040043C5 RID: 17349
 		public PguiReplaceSpriteCtrl MarkKind;
 
-		// Token: 0x040043C6 RID: 17350
 		public PguiImageCtrl DisableImage;
 	}
 }

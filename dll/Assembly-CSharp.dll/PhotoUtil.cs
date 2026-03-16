@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
@@ -6,10 +6,8 @@ using SGNFW.uGUI;
 using UnityEngine;
 using UnityEngine.Events;
 
-// Token: 0x020001B1 RID: 433
 public class PhotoUtil : MonoBehaviour
 {
-	// Token: 0x06001D44 RID: 7492 RVA: 0x0016C11C File Offset: 0x0016A31C
 	public static void OpenWindowConfirmReleasePhotoDeck(IconPhotoCtrl iconPhotoCtrl, IEnumerator requestServer)
 	{
 		string colorRedStartTag = PrjUtil.ColorRedStartTag;
@@ -140,7 +138,6 @@ public class PhotoUtil : MonoBehaviour
 		CanvasManager.HdlOpenWindowItemInfo.Open();
 	}
 
-	// Token: 0x06001D45 RID: 7493 RVA: 0x0016C4C4 File Offset: 0x0016A6C4
 	public static List<PhotoPackData> GetDropItemEffectPhotoDeck(QuestOnePackData qopd, List<PhotoPackData> dropItemEffectPhotoList)
 	{
 		if (qopd != null)
@@ -156,7 +153,6 @@ public class PhotoUtil : MonoBehaviour
 		return new List<PhotoPackData>();
 	}
 
-	// Token: 0x06001D46 RID: 7494 RVA: 0x0016C53C File Offset: 0x0016A73C
 	public static void RefDropItemEffectPhotoList(ref List<PhotoPackData> dropItemEffectPhotoList, PhotoPackData epd, bool isHelper)
 	{
 		if (epd == null)
@@ -181,13 +177,11 @@ public class PhotoUtil : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001D47 RID: 7495 RVA: 0x0016C5A9 File Offset: 0x0016A7A9
 	public static bool IsLevelLimitOverPhoto(PhotoPackData ppd)
 	{
 		return ppd != null && ppd.staticData.baseData.expPhotoType == PhotoDef.ExpPhotoType.LevelLimitOver;
 	}
 
-	// Token: 0x06001D48 RID: 7496 RVA: 0x0016C5C4 File Offset: 0x0016A7C4
 	public static DataManagerPhoto.PhotoLevelupResult CalcPhotoGrow(PhotoPackData basePhoto, List<PhotoPackData> feedPhotoList)
 	{
 		DataManagerPhoto.PhotoLevelupResult photoLevelupResult = new DataManagerPhoto.PhotoLevelupResult();
@@ -257,34 +251,24 @@ public class PhotoUtil : MonoBehaviour
 		return photoLevelupResult;
 	}
 
-	// Token: 0x04001585 RID: 5509
 	public static readonly string PhotoPocketNotReleasedText = "未解放";
 
-	// Token: 0x04001586 RID: 5510
 	public static readonly string NoSelectedText = "選択不可";
 
-	// Token: 0x04001587 RID: 5511
 	public static readonly string PhotoTypeText = "フォトタイプ";
 
-	// Token: 0x04001588 RID: 5512
 	public static readonly string FriendsText = "フレンズ";
 
-	// Token: 0x04001589 RID: 5513
 	public static readonly string SamePhotoText = "同一フォト";
 
-	// Token: 0x0400158A RID: 5514
 	public static readonly string StoryPhotoText = "ストーリーフォト";
 
-	// Token: 0x0400158B RID: 5515
 	public static readonly string NoFormationText = "編成不可";
 
-	// Token: 0x0400158C RID: 5516
 	public static readonly string NoStrengthenText = "強化対象外";
 
-	// Token: 0x02000F46 RID: 3910
 	public class SizeChangeBtnGUI
 	{
-		// Token: 0x06004F16 RID: 20246 RVA: 0x00238EFC File Offset: 0x002370FC
 		public SizeChangeBtnGUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -292,7 +276,6 @@ public class PhotoUtil : MonoBehaviour
 			this.Txt = baseTr.Find("BaseImage/On/Txt").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x06004F17 RID: 20247 RVA: 0x00238F48 File Offset: 0x00237148
 		public void Setup(PhotoUtil.SizeChangeBtnGUI.SetupParam param)
 		{
 			this.setupParam = param;
@@ -312,7 +295,6 @@ public class PhotoUtil : MonoBehaviour
 			}, PguiButtonCtrl.SoundType.DEFAULT);
 		}
 
-		// Token: 0x06004F18 RID: 20248 RVA: 0x00238F80 File Offset: 0x00237180
 		private void UpdateText(int index)
 		{
 			switch (index)
@@ -335,7 +317,6 @@ public class PhotoUtil : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06004F19 RID: 20249 RVA: 0x00239014 File Offset: 0x00237214
 		public void ResetScrollView()
 		{
 			this.UpdateText(this.setupParam.sizeIndex);
@@ -366,8 +347,6 @@ public class PhotoUtil : MonoBehaviour
 			this.setupParam.refScrollView.Refresh();
 		}
 
-		// Token: 0x17000B6A RID: 2922
-		// (get) Token: 0x06004F1A RID: 20250 RVA: 0x002391FB File Offset: 0x002373FB
 		public List<PhotoUtil.SizeChangeBtnGUI.IconPhotoParam> IconPhotoParamList
 		{
 			get
@@ -376,8 +355,6 @@ public class PhotoUtil : MonoBehaviour
 			}
 		}
 
-		// Token: 0x17000B6B RID: 2923
-		// (get) Token: 0x06004F1B RID: 20251 RVA: 0x00239208 File Offset: 0x00237408
 		public int SizeIndex
 		{
 			get
@@ -386,76 +363,52 @@ public class PhotoUtil : MonoBehaviour
 			}
 		}
 
-		// Token: 0x0400568D RID: 22157
 		public GameObject baseObj;
 
-		// Token: 0x0400568E RID: 22158
 		public PguiButtonCtrl Btn_SizeChange;
 
-		// Token: 0x0400568F RID: 22159
 		public PguiTextCtrl Txt;
 
-		// Token: 0x04005690 RID: 22160
 		private float scrollSize;
 
-		// Token: 0x04005691 RID: 22161
 		private PhotoUtil.SizeChangeBtnGUI.SetupParam setupParam = new PhotoUtil.SizeChangeBtnGUI.SetupParam();
 
-		// Token: 0x020011FF RID: 4607
-		// (Invoke) Token: 0x06005780 RID: 22400
 		public delegate void FuncResult(PhotoUtil.SizeChangeBtnGUI.ResultParam result);
 
-		// Token: 0x02001200 RID: 4608
 		public class IconPhotoParam
 		{
-			// Token: 0x0400628F RID: 25231
 			public Vector3 scale;
 
-			// Token: 0x04006290 RID: 25232
 			public Vector3 scaleCurrent;
 
-			// Token: 0x04006291 RID: 25233
 			public Vector3 scaleCount;
 
-			// Token: 0x04006292 RID: 25234
 			public int num;
 
-			// Token: 0x04006293 RID: 25235
 			public GameObject prefab;
 		}
 
-		// Token: 0x02001201 RID: 4609
 		public class SetupParam
 		{
-			// Token: 0x04006294 RID: 25236
 			public int sizeIndex;
 
-			// Token: 0x04006295 RID: 25237
 			public List<PhotoUtil.SizeChangeBtnGUI.IconPhotoParam> iconPhotoParamList;
 
-			// Token: 0x04006296 RID: 25238
 			public ReuseScroll refScrollView;
 
-			// Token: 0x04006297 RID: 25239
 			public PhotoUtil.SizeChangeBtnGUI.FuncResult funcResult;
 
-			// Token: 0x04006298 RID: 25240
 			public Action<int, GameObject> onStartItem;
 
-			// Token: 0x04006299 RID: 25241
 			public Action<int, GameObject> onUpdateItem;
 
-			// Token: 0x0400629A RID: 25242
 			public UnityAction resetCallback;
 
-			// Token: 0x0400629B RID: 25243
 			public Func<int> dispIconPhotoCountCallback;
 		}
 
-		// Token: 0x02001202 RID: 4610
 		public class ResultParam
 		{
-			// Token: 0x0400629C RID: 25244
 			public int sizeIndex;
 		}
 	}

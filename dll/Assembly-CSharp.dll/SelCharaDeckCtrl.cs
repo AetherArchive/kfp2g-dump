@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +9,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x020001B8 RID: 440
 public class SelCharaDeckCtrl : MonoBehaviour
 {
-	// Token: 0x1700041D RID: 1053
-	// (get) Token: 0x06001DF5 RID: 7669 RVA: 0x00174286 File Offset: 0x00172486
-	// (set) Token: 0x06001DF6 RID: 7670 RVA: 0x0017428E File Offset: 0x0017248E
 	private SelCharaDeckCtrl.Mode currentMode
 	{
 		get
@@ -28,8 +24,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x1700041E RID: 1054
-	// (get) Token: 0x06001DF7 RID: 7671 RVA: 0x001742A3 File Offset: 0x001724A3
 	private SelCharaDeckCtrl.Mode preMode
 	{
 		get
@@ -38,9 +32,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x1700041F RID: 1055
-	// (get) Token: 0x06001DF8 RID: 7672 RVA: 0x001742AB File Offset: 0x001724AB
-	// (set) Token: 0x06001DF9 RID: 7673 RVA: 0x001742BA File Offset: 0x001724BA
 	public bool TouchRect
 	{
 		get
@@ -55,9 +46,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000420 RID: 1056
-	// (get) Token: 0x06001DFA RID: 7674 RVA: 0x001742C3 File Offset: 0x001724C3
-	// (set) Token: 0x06001DFB RID: 7675 RVA: 0x001742D2 File Offset: 0x001724D2
 	public bool AnimeFinished
 	{
 		get
@@ -72,7 +60,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001DFC RID: 7676 RVA: 0x001742DB File Offset: 0x001724DB
 	public int GetDeckId()
 	{
 		if (this.currentDeckClone != null)
@@ -82,19 +69,16 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		return 0;
 	}
 
-	// Token: 0x06001DFD RID: 7677 RVA: 0x001742F2 File Offset: 0x001724F2
 	public bool FinishedAnim()
 	{
 		return !this.guiData.charaDeck.DeckSelect.ExIsPlaying();
 	}
 
-	// Token: 0x06001DFE RID: 7678 RVA: 0x0017430C File Offset: 0x0017250C
 	public bool IsPhotoEditMode()
 	{
 		return this.currentMode == SelCharaDeckCtrl.Mode.PHOTO_EDIT;
 	}
 
-	// Token: 0x06001DFF RID: 7679 RVA: 0x00174318 File Offset: 0x00172518
 	public void Setup(SelCharaDeckCtrl.SetupParam param, int _questOneId)
 	{
 		this.setupParam = param;
@@ -332,7 +316,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		CanvasManager.HdlOpenWindowRecommendedDeck.Register(registerData2);
 	}
 
-	// Token: 0x06001E00 RID: 7680 RVA: 0x00174DBC File Offset: 0x00172FBC
 	public void SetQuestSkipPopup(QuestUtil.UsrQuestSkipInfo skipInfo)
 	{
 		this.guiData.charaDeck.Popup_QuestSkip.SetActive(true);
@@ -340,7 +323,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		this.guiData.charaDeck.Popup_QuestSkip.transform.Find("Txt_Campaign").GetComponent<PguiTextCtrl>().text = skipInfo.popupMessage;
 	}
 
-	// Token: 0x06001E01 RID: 7681 RVA: 0x00174E2C File Offset: 0x0017302C
 	private void SetTabName(int idx, string nam)
 	{
 		if (nam.Length > 3)
@@ -353,7 +335,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E02 RID: 7682 RVA: 0x00174EA4 File Offset: 0x001730A4
 	public bool OnClickMenuReturn(UnityAction cb)
 	{
 		if (this.currentMode == SelCharaDeckCtrl.Mode.DECK_EDIT)
@@ -408,7 +389,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06001E03 RID: 7683 RVA: 0x0017500C File Offset: 0x0017320C
 	public bool OnClickMoveSequenceButton(SceneManager.SceneName sceneName, object sceneArgs)
 	{
 		if (this.currentMode == SelCharaDeckCtrl.Mode.DECK_EDIT && this.IsChangeClone())
@@ -441,7 +421,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06001E04 RID: 7684 RVA: 0x0017515B File Offset: 0x0017335B
 	public void SetActive(bool val, bool quick = false)
 	{
 		base.gameObject.SetActive(val);
@@ -451,7 +430,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E05 RID: 7685 RVA: 0x00175187 File Offset: 0x00173387
 	public SelCharaDeckCtrl.EditResultData GetEditResultData()
 	{
 		return new SelCharaDeckCtrl.EditResultData
@@ -462,7 +440,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		};
 	}
 
-	// Token: 0x06001E06 RID: 7686 RVA: 0x001751BC File Offset: 0x001733BC
 	public int ReloadDeckData(int selectDeckId = -1)
 	{
 		this.isChangeClone = false;
@@ -521,7 +498,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		return selectDeckId;
 	}
 
-	// Token: 0x06001E07 RID: 7687 RVA: 0x001753D6 File Offset: 0x001735D6
 	public bool ForceReturnTop()
 	{
 		bool flag = this.forceReturnTop;
@@ -529,20 +505,17 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		return flag;
 	}
 
-	// Token: 0x06001E08 RID: 7688 RVA: 0x001753E5 File Offset: 0x001735E5
 	private bool IsChangeClone()
 	{
 		return this.isChangeClone || (this.selPhotoEditCtrl != null && this.selPhotoEditCtrl.isChangeClone);
 	}
 
-	// Token: 0x06001E09 RID: 7689 RVA: 0x0017540C File Offset: 0x0017360C
 	private void activeCharaDeck()
 	{
 		this.guiData.charaDeck.baseObj.SetActive(true);
 		this.guiData.charaDeck.Anim_ToBattle.ExPlayAnimation(SimpleAnimation.ExPguiStatus.LOOP, null);
 	}
 
-	// Token: 0x06001E0A RID: 7690 RVA: 0x0017543C File Offset: 0x0017363C
 	private void ChangeMode(SelCharaDeckCtrl.Mode nextMode)
 	{
 		if (this.currentMode != nextMode)
@@ -594,7 +567,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		Verbose<PrjLog>.LogError("Error : SelCharaDeckCtrl.ChangeMode", null);
 	}
 
-	// Token: 0x06001E0B RID: 7691 RVA: 0x00175580 File Offset: 0x00173780
 	private void SetupDeckTopAnimation()
 	{
 		this.guiData.charaDeck.Btn_Chara.SetToggleIndex(1);
@@ -619,7 +591,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06001E0C RID: 7692 RVA: 0x00175680 File Offset: 0x00173880
 	private void ResetCurrentIcon()
 	{
 		if (this.selectCharaData != null)
@@ -634,7 +605,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E0D RID: 7693 RVA: 0x001756C8 File Offset: 0x001738C8
 	private void ResignEquipPhotoByDataId(long dataId)
 	{
 		for (int i = 0; i < this.currentDeckClone.equipPhotoList.Count; i++)
@@ -649,7 +619,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E0E RID: 7694 RVA: 0x00175744 File Offset: 0x00173944
 	private void SelectCharaIcon(SelCharaDeckCtrl.SelectCharaData newSelectChara, SelCharaDeckCtrl.SelectCharaData oldSelectChara)
 	{
 		SelCharaDeckCtrl.GUI.IconChara iconChara = this.guiData.SearchIconChara(newSelectChara);
@@ -793,7 +762,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E0F RID: 7695 RVA: 0x00175E4C File Offset: 0x0017404C
 	private void SetupSelectDisable()
 	{
 		foreach (SelCharaDeckCtrl.GUI.IconCharaPack iconCharaPack in this.guiData.charaDeck.iconCharaPacks)
@@ -806,7 +774,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E10 RID: 7696 RVA: 0x00175EF8 File Offset: 0x001740F8
 	private void SetupSelectDisable(SelCharaDeckCtrl.GUI.IconChara ic, bool deck)
 	{
 		CharaPackData charaPackData = ic.iconCharaSet.iconCharaCtrl.charaPackData;
@@ -860,7 +827,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		ic.iconCharaSet.iconCharaCtrl.IsEnableMask(ic.iconCharaSet.selected.activeSelf || ic.iconCharaSet.disable.activeSelf);
 	}
 
-	// Token: 0x06001E11 RID: 7697 RVA: 0x00176160 File Offset: 0x00174360
 	private void ChangeDeckInfo(int deckId)
 	{
 		SelCharaDeckCtrl.<>c__DisplayClass78_0 CS$<>8__locals1 = new SelCharaDeckCtrl.<>c__DisplayClass78_0();
@@ -1299,7 +1265,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E12 RID: 7698 RVA: 0x00177AC8 File Offset: 0x00175CC8
 	public static void DecorationPhotoFrame(SelCharaDeckCtrl.GUI.IconChara iconChara, int index, bool isEnablePhoto, bool isEnableFrame, bool isKizunaPhoto, bool isDisableKizunaPhoto, int lv, bool isHelper)
 	{
 		if (iconChara.iconBlankFrame != null && iconChara.iconBlankFrame[index] != null)
@@ -1356,7 +1321,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E13 RID: 7699 RVA: 0x00177CAC File Offset: 0x00175EAC
 	public static void DecorationAccessoryFrame(SelCharaDeckCtrl.GUI.IconChara iconChara, bool isOpen, bool isHelper)
 	{
 		if (iconChara != null && iconChara.iconAccessoryBlankFrame != null)
@@ -1374,67 +1338,56 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E14 RID: 7700 RVA: 0x00177D17 File Offset: 0x00175F17
 	public RectTransform GetCharaDeckRectTransform(int index)
 	{
 		return this.guiData.charaDeck.iconCharaPacks[index].iconChara.iconCharaSet.iconBase.transform as RectTransform;
 	}
 
-	// Token: 0x06001E15 RID: 7701 RVA: 0x00177D48 File Offset: 0x00175F48
 	public RectTransform GetCharaDeckReserveRectTransform(SelCharaDeckCtrl.FrameType type, int id)
 	{
 		return this.guiData.SearchIconChara(type, id).iconCharaSet.iconBase.transform as RectTransform;
 	}
 
-	// Token: 0x06001E16 RID: 7702 RVA: 0x00177D6B File Offset: 0x00175F6B
 	public float GetCharaDeckReserveScale(SelCharaDeckCtrl.FrameType type, int id)
 	{
 		return this.guiData.SearchIconChara(type, id).baseObj.transform.localScale.x;
 	}
 
-	// Token: 0x06001E17 RID: 7703 RVA: 0x00177D8E File Offset: 0x00175F8E
 	public RectTransform GetCharaDeckEditOKBtnRectTransform()
 	{
 		return this.guiData.charaDeck.Btn_EditOk.transform as RectTransform;
 	}
 
-	// Token: 0x06001E18 RID: 7704 RVA: 0x00177DAA File Offset: 0x00175FAA
 	public RectTransform GetCharaDeckEditToBattleBtnRectTransform()
 	{
 		return this.guiData.charaDeck.Btn_ToBattle.transform as RectTransform;
 	}
 
-	// Token: 0x06001E19 RID: 7705 RVA: 0x00177DC6 File Offset: 0x00175FC6
 	public bool IsPlayingAnimCharaDeckEditToBattleBtn()
 	{
 		return this.guiData.anim.ExIsPlaying();
 	}
 
-	// Token: 0x06001E1A RID: 7706 RVA: 0x00177DD8 File Offset: 0x00175FD8
 	public RectTransform GetCharaDeckPhotoRadioBtnRectTransform()
 	{
 		return this.guiData.charaDeck.Btn_Photo.transform as RectTransform;
 	}
 
-	// Token: 0x06001E1B RID: 7707 RVA: 0x00177DF4 File Offset: 0x00175FF4
 	public float GetCharaDeckPhotoRadioBtnScale()
 	{
 		return this.guiData.charaDeck.Btn_Photo.transform.localScale.x;
 	}
 
-	// Token: 0x06001E1C RID: 7708 RVA: 0x00177E15 File Offset: 0x00176015
 	public RectTransform GetCharaDeckPhotoRectTransform(int index)
 	{
 		return this.guiData.charaDeck.iconCharaPacks[index].iconChara.iconPhotoCtrl[0].transform as RectTransform;
 	}
 
-	// Token: 0x06001E1D RID: 7709 RVA: 0x00177E47 File Offset: 0x00176047
 	public float GetCharaDeckPhotoScale(int index)
 	{
 		return this.guiData.charaDeck.iconCharaPacks[index].iconChara.baseObj.transform.Find("PhotoIconView/Icon_Photo01").transform.localScale.x;
 	}
 
-	// Token: 0x06001E1E RID: 7710 RVA: 0x00177E88 File Offset: 0x00176088
 	public RectTransform GetPhotoDeckRectTransform()
 	{
 		if (!(this.selPhotoEditCtrl != null))
@@ -1444,19 +1397,16 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		return this.selPhotoEditCtrl.guiData.photoDeck.mainIconPhotoCtrl[0].baseObj.transform as RectTransform;
 	}
 
-	// Token: 0x06001E1F RID: 7711 RVA: 0x00177ED9 File Offset: 0x001760D9
 	public bool IsPhotoDeckTouchRect()
 	{
 		return !(this.selPhotoEditCtrl != null) || this.selPhotoEditCtrl.TouchRect;
 	}
 
-	// Token: 0x06001E20 RID: 7712 RVA: 0x00177EF6 File Offset: 0x001760F6
 	public bool IsPhotoEditPlayingAnim()
 	{
 		return this.selPhotoEditCtrl != null && this.selPhotoEditCtrl.IsPlayingdAnim();
 	}
 
-	// Token: 0x06001E21 RID: 7713 RVA: 0x00177F14 File Offset: 0x00176114
 	public RectTransform GetPhotoDeckReserveRectTransform(SelCharaDeckCtrl.FrameType type, int id)
 	{
 		SelPhotoEditCtrl.GUI.IconPhotoSet iconPhotoSet = ((this.selPhotoEditCtrl != null) ? this.selPhotoEditCtrl.guiData.SearchIconPhoto(type, id) : null);
@@ -1467,7 +1417,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		return new RectTransform();
 	}
 
-	// Token: 0x06001E22 RID: 7714 RVA: 0x00177F60 File Offset: 0x00176160
 	public float GetPhotoDeckReserveScale(SelCharaDeckCtrl.FrameType type, int id)
 	{
 		SelPhotoEditCtrl.GUI.IconPhotoSet iconPhotoSet = ((this.selPhotoEditCtrl != null) ? this.selPhotoEditCtrl.guiData.SearchIconPhoto(type, id) : null);
@@ -1478,7 +1427,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		return 1f;
 	}
 
-	// Token: 0x06001E23 RID: 7715 RVA: 0x00177FB0 File Offset: 0x001761B0
 	public void Init()
 	{
 		GameObject gameObject = Object.Instantiate<GameObject>((GameObject)Resources.Load("SelCmn/GUI/Prefab/GUI_CharaDeck"), base.transform);
@@ -1547,12 +1495,10 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		this.guiData.charaDeck.iconTacticsSkill.transform.parent.gameObject.AddComponent<PguiTouchTrigger>().AddListener(new UnityAction(this.OnTouchTacticsSkillIcon), null, null, null, null);
 	}
 
-	// Token: 0x06001E24 RID: 7716 RVA: 0x0017848C File Offset: 0x0017668C
 	public void Dest()
 	{
 	}
 
-	// Token: 0x06001E25 RID: 7717 RVA: 0x0017848E File Offset: 0x0017668E
 	public void CancelBattleStart()
 	{
 		if (this.currentMode == SelCharaDeckCtrl.Mode.GO_BATTLE)
@@ -1561,12 +1507,10 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E26 RID: 7718 RVA: 0x001784A5 File Offset: 0x001766A5
 	private void Start()
 	{
 	}
 
-	// Token: 0x06001E27 RID: 7719 RVA: 0x001784A8 File Offset: 0x001766A8
 	private void Update()
 	{
 		if (this.currentEnumerator != null)
@@ -1673,7 +1617,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E28 RID: 7720 RVA: 0x001787D0 File Offset: 0x001769D0
 	private void OnDestroy()
 	{
 		if (this.guiData != null && this.guiData.owMasterSkill.Window != null)
@@ -1682,7 +1625,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E29 RID: 7721 RVA: 0x0017880C File Offset: 0x00176A0C
 	private IEnumerator RequestUpdateDeck(SelCharaDeckCtrl.RequestCallBack callback)
 	{
 		bool flag = false;
@@ -1735,7 +1677,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001E2A RID: 7722 RVA: 0x00178824 File Offset: 0x00176A24
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		if (this.currentMode == SelCharaDeckCtrl.Mode.DECK_EDIT && button == this.guiData.charaDeck.Btn_EditOk)
@@ -1872,7 +1813,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E2B RID: 7723 RVA: 0x00178DD4 File Offset: 0x00176FD4
 	private void SetPartyName(string name)
 	{
 		int num = this.deckCloneList.IndexOf(this.deckCloneList.Find((UserDeckData itm) => itm.id == this.currentDeckClone.id));
@@ -1894,7 +1834,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		this.SetTabName(num, this.currentDeckClone.name);
 	}
 
-	// Token: 0x06001E2C RID: 7724 RVA: 0x00178E8C File Offset: 0x0017708C
 	private void RemovePhoto()
 	{
 		for (int i = 0; i < this.currentDeckClone.equipPhotoList.Count; i++)
@@ -1914,7 +1853,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		this.ChangeDeckInfo(-1);
 	}
 
-	// Token: 0x06001E2D RID: 7725 RVA: 0x00178F28 File Offset: 0x00177128
 	private void SetStaySkillAnim()
 	{
 		if (!this.guiData.charaDeck.StaySkillSettingAnim.gameObject.activeSelf && this.currentMode == SelCharaDeckCtrl.Mode.DECK_TOP)
@@ -1929,7 +1867,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06001E2E RID: 7726 RVA: 0x00178FB0 File Offset: 0x001771B0
 	private void OnClickMasterSkillButton(PguiButtonCtrl button)
 	{
 		SelCharaDeckCtrl.GUI.MasterSkillButton masterSkillButton = this.guiData.owMasterSkill.masterSkillButtonList.Find((SelCharaDeckCtrl.GUI.MasterSkillButton item) => item.CharaDeck_UserSkill_Btn == button);
@@ -1943,7 +1880,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		this.guiData.owMasterSkill.choiceMasterSkillId = this.haveMasterSkillList[int.Parse(button.name)].id;
 	}
 
-	// Token: 0x06001E2F RID: 7727 RVA: 0x00179078 File Offset: 0x00177278
 	private void OnClickTacticsChangeButton(PguiButtonCtrl button)
 	{
 		if (this.currentMode == SelCharaDeckCtrl.Mode.DECK_TOP || this.currentMode == SelCharaDeckCtrl.Mode.PHOTO_TOP || this.currentMode == SelCharaDeckCtrl.Mode.ACCESSORY_TOP)
@@ -1953,7 +1889,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E30 RID: 7728 RVA: 0x001790A4 File Offset: 0x001772A4
 	private bool OnSelectOpenWindowButtonCallback(int index)
 	{
 		if (index == PguiOpenWindowCtrl.CLOSE_BUTTON_INDEX)
@@ -2104,7 +2039,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001E31 RID: 7729 RVA: 0x00179408 File Offset: 0x00177608
 	private bool OnClickToggle(PguiToggleButtonCtrl pbc, int toggleIndex)
 	{
 		this.touchRect = true;
@@ -2334,7 +2268,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06001E32 RID: 7730 RVA: 0x00179A60 File Offset: 0x00177C60
 	private bool OnClickToggleStaySkill(PguiToggleButtonCtrl pbc, int toggleIndex)
 	{
 		this.touchRect = true;
@@ -2358,7 +2291,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06001E33 RID: 7731 RVA: 0x00179BC0 File Offset: 0x00177DC0
 	private bool OnSelectDeckTab(int index)
 	{
 		if (this.isChangeClone)
@@ -2373,7 +2305,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001E34 RID: 7732 RVA: 0x00179C48 File Offset: 0x00177E48
 	private void OnTouchCharaIcon(SelCharaDeckCtrl.FrameType type, SelCharaDeckCtrl.GUI.IconChara iconChara, int selPhoto)
 	{
 		CharaPackData charaPackData = iconChara.iconCharaSet.iconCharaCtrl.charaPackData;
@@ -2509,7 +2440,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		iconChara.iconCharaSet.iconCharaCtrl.IsEnableMask(iconChara.iconCharaSet.selected.activeSelf || iconChara.iconCharaSet.disable.activeSelf);
 	}
 
-	// Token: 0x06001E35 RID: 7733 RVA: 0x0017A0CC File Offset: 0x001782CC
 	private void OnTouchTacticsSkillIcon()
 	{
 		if (this.currentMode == SelCharaDeckCtrl.Mode.DECK_TOP || this.currentMode == SelCharaDeckCtrl.Mode.PHOTO_TOP || this.currentMode == SelCharaDeckCtrl.Mode.ACCESSORY_TOP)
@@ -2520,7 +2450,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E36 RID: 7734 RVA: 0x0017A108 File Offset: 0x00178308
 	private void OnStartItemChara(int index, GameObject go)
 	{
 		for (int i = 0; i < 2; i++)
@@ -2542,7 +2471,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E37 RID: 7735 RVA: 0x0017A1F8 File Offset: 0x001783F8
 	private void OnUpdateItemChara(int index, GameObject go)
 	{
 		QuestOnePackData questOnePackData = DataManager.DmQuest.GetQuestOnePackData(this.questOneId);
@@ -2600,7 +2528,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E38 RID: 7736 RVA: 0x0017A47C File Offset: 0x0017867C
 	private void OnStartItemMasterSkill(int index, GameObject go)
 	{
 		SelCharaDeckCtrl.GUI.MasterSkillButton masterSkillButton = new SelCharaDeckCtrl.GUI.MasterSkillButton(go.transform);
@@ -2608,7 +2535,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		this.guiData.owMasterSkill.masterSkillButtonList.Add(masterSkillButton);
 	}
 
-	// Token: 0x06001E39 RID: 7737 RVA: 0x0017A4C4 File Offset: 0x001786C4
 	private void OnUpdateItemMasterSkill(int index, GameObject go)
 	{
 		if (index < this.haveMasterSkillList.Count)
@@ -2630,7 +2556,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		go.SetActive(false);
 	}
 
-	// Token: 0x06001E3A RID: 7738 RVA: 0x0017A60C File Offset: 0x0017880C
 	private void OpenTacticsSkillInfoWindow()
 	{
 		CanvasManager.HdlOpenWindowTacticsSkillInfo.Open(new SelTacticsSkillInfoWindowCtrl.SetupParam
@@ -2642,7 +2567,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06001E3B RID: 7739 RVA: 0x0017A670 File Offset: 0x00178870
 	private void OnCloseTacticsSkillInfoWindowCallback()
 	{
 		SelTacticsSkillInfoWindowCtrl.EditResultData editResultData = CanvasManager.HdlOpenWindowTacticsSkillInfo.GetEditResultData();
@@ -2670,230 +2594,138 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x04001606 RID: 5638
 	private static readonly List<string> weekList = new List<string> { "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日", "日曜日" };
 
-	// Token: 0x04001607 RID: 5639
 	public bool isDebug;
 
-	// Token: 0x04001608 RID: 5640
 	public SelCharaDeckCtrl.SetupParam setupParam = new SelCharaDeckCtrl.SetupParam();
 
-	// Token: 0x04001609 RID: 5641
 	private bool isEnemyInfo;
 
-	// Token: 0x0400160A RID: 5642
 	private int questOneId = -1;
 
-	// Token: 0x0400160B RID: 5643
 	private CharaDef.AttributeMask enemyAttribute;
 
-	// Token: 0x0400160C RID: 5644
 	private IEnumerator currentEnumerator;
 
-	// Token: 0x0400160D RID: 5645
 	private bool isCheckKizunaLimit;
 
-	// Token: 0x0400160E RID: 5646
 	private bool isCheckBanned;
 
-	// Token: 0x0400160F RID: 5647
 	public bool isTutorial;
 
-	// Token: 0x04001610 RID: 5648
 	private SelCharaDeckCtrl.GUI guiData;
 
-	// Token: 0x04001611 RID: 5649
 	private SelPhotoEditCtrl selPhotoEditCtrl;
 
-	// Token: 0x04001612 RID: 5650
 	private SelCharaDeckCtrl.Mode _currentMode;
 
-	// Token: 0x04001613 RID: 5651
 	private SelCharaDeckCtrl.Mode _preMode;
 
-	// Token: 0x04001614 RID: 5652
 	private bool touchRect;
 
-	// Token: 0x04001615 RID: 5653
 	private bool animeFinished;
 
-	// Token: 0x04001616 RID: 5654
 	private List<UserDeckData> deckCloneList;
 
-	// Token: 0x04001617 RID: 5655
 	private UserDeckData currentDeckClone;
 
-	// Token: 0x04001618 RID: 5656
 	private List<CharaPackData> haveCharaPackList;
 
-	// Token: 0x04001619 RID: 5657
 	private CharaPackData helperCharaData;
 
-	// Token: 0x0400161A RID: 5658
 	private HelperPackData helperPackData;
 
-	// Token: 0x0400161B RID: 5659
 	private List<PhotoPackData> havePhotoPackList;
 
-	// Token: 0x0400161C RID: 5660
 	private CharaPackData removeButttonCharaData = CharaPackData.MakeInvalid();
 
-	// Token: 0x0400161D RID: 5661
 	private PhotoPackData removeButttonPhotoData = PhotoPackData.MakeInvalid();
 
-	// Token: 0x0400161E RID: 5662
 	private List<MasterSkillPackData> haveMasterSkillList;
 
-	// Token: 0x0400161F RID: 5663
 	private List<CharaPackData> dispCharaPackList;
 
-	// Token: 0x04001620 RID: 5664
 	private bool isChangeClone;
 
-	// Token: 0x04001621 RID: 5665
 	private int selectTabIndexTemporary;
 
-	// Token: 0x04001622 RID: 5666
 	private SelCharaDeckCtrl.SelectCharaData selectCharaData;
 
-	// Token: 0x04001623 RID: 5667
 	private SortFilterDefine.SortType sortType = SortFilterDefine.SortType.LEVEL;
 
-	// Token: 0x04001624 RID: 5668
 	private TrainingStaticData.DayOfWeekData dayOfWeekData;
 
-	// Token: 0x04001625 RID: 5669
 	private QuestUtil.UsrQuestSkipInfo skipInfo;
 
-	// Token: 0x04001626 RID: 5670
 	private int skipCount = -1;
 
-	// Token: 0x04001627 RID: 5671
 	private List<CharaStaticData> checkedCharaList = new List<CharaStaticData>();
 
-	// Token: 0x04001628 RID: 5672
 	private List<CharaPackData> bannedList = new List<CharaPackData>();
 
-	// Token: 0x04001629 RID: 5673
 	public static readonly List<KeyValuePair<PguiOpenWindowCtrl.BTN_TYPE, string>> questionButtonSet = new List<KeyValuePair<PguiOpenWindowCtrl.BTN_TYPE, string>>
 	{
 		new KeyValuePair<PguiOpenWindowCtrl.BTN_TYPE, string>(PguiOpenWindowCtrl.BTN_TYPE.NEGATIVE, PrjUtil.MakeMessage("破棄して移動")),
 		new KeyValuePair<PguiOpenWindowCtrl.BTN_TYPE, string>(PguiOpenWindowCtrl.BTN_TYPE.POSITIVE, PrjUtil.MakeMessage("保存して移動"))
 	};
 
-	// Token: 0x0400162A RID: 5674
 	private SceneManager.SceneName OnClickMoveSequenceName;
 
-	// Token: 0x0400162B RID: 5675
 	private object OnClickMoveSequenceArgs;
 
-	// Token: 0x0400162C RID: 5676
 	private bool forceReturnTop;
 
-	// Token: 0x02000F77 RID: 3959
 	public enum FrameType
 	{
-		// Token: 0x0400577B RID: 22395
 		INVALID,
-		// Token: 0x0400577C RID: 22396
 		DECK,
-		// Token: 0x0400577D RID: 22397
 		RESERVE
 	}
 
-	// Token: 0x02000F78 RID: 3960
 	public enum Mode
 	{
-		// Token: 0x0400577F RID: 22399
 		INVALID,
-		// Token: 0x04005780 RID: 22400
 		DECK_TOP,
-		// Token: 0x04005781 RID: 22401
 		DECK_EDIT,
-		// Token: 0x04005782 RID: 22402
 		PHOTO_TOP,
-		// Token: 0x04005783 RID: 22403
 		PHOTO_EDIT,
-		// Token: 0x04005784 RID: 22404
 		GO_BATTLE,
-		// Token: 0x04005785 RID: 22405
 		OW_DISCARD_CHARA_RETRUEN,
-		// Token: 0x04005786 RID: 22406
 		OW_DISCARD_PHOTO_RETRUEN,
-		// Token: 0x04005787 RID: 22407
 		OW_DISCARD_CHARA_TAB,
-		// Token: 0x04005788 RID: 22408
 		OW_MASTER_SKILL,
-		// Token: 0x04005789 RID: 22409
 		OW_ERROR_ALLOUT_CHARA,
-		// Token: 0x0400578A RID: 22410
 		OW_DISCARD_CHARA_MOVE_SCENE,
-		// Token: 0x0400578B RID: 22411
 		OW_DISCARD_PHOTO_MOVE_SCENE,
-		// Token: 0x0400578C RID: 22412
 		OW_PARTY_NAME,
-		// Token: 0x0400578D RID: 22413
 		OW_ENEMY_INFO,
-		// Token: 0x0400578E RID: 22414
 		OW_RECOMMEND,
-		// Token: 0x0400578F RID: 22415
 		OW_TACTICS_SKILL_INFO,
-		// Token: 0x04005790 RID: 22416
 		ACCESSORY_TOP,
-		// Token: 0x04005791 RID: 22417
 		OW_QUEST_SKIP
 	}
 
-	// Token: 0x02000F79 RID: 3961
 	public class SetupParam
 	{
-		// Token: 0x17000B7A RID: 2938
-		// (get) Token: 0x06004FB2 RID: 20402 RVA: 0x0023C6FF File Offset: 0x0023A8FF
-		// (set) Token: 0x06004FB3 RID: 20403 RVA: 0x0023C707 File Offset: 0x0023A907
 		public SceneManager.SceneName callScene { get; set; }
 
-		// Token: 0x17000B7B RID: 2939
-		// (get) Token: 0x06004FB4 RID: 20404 RVA: 0x0023C710 File Offset: 0x0023A910
-		// (set) Token: 0x06004FB5 RID: 20405 RVA: 0x0023C718 File Offset: 0x0023A918
 		public SelCharaDeckCtrl.OnClickGotoBattle callbackGotoBattle { get; set; }
 
-		// Token: 0x17000B7C RID: 2940
-		// (get) Token: 0x06004FB6 RID: 20406 RVA: 0x0023C721 File Offset: 0x0023A921
-		// (set) Token: 0x06004FB7 RID: 20407 RVA: 0x0023C729 File Offset: 0x0023A929
 		public HelperPackData helperPackData { get; set; }
 
-		// Token: 0x17000B7D RID: 2941
-		// (get) Token: 0x06004FB8 RID: 20408 RVA: 0x0023C732 File Offset: 0x0023A932
-		// (set) Token: 0x06004FB9 RID: 20409 RVA: 0x0023C73A File Offset: 0x0023A93A
 		public bool isReload { get; set; }
 
-		// Token: 0x17000B7E RID: 2942
-		// (get) Token: 0x06004FBA RID: 20410 RVA: 0x0023C743 File Offset: 0x0023A943
-		// (set) Token: 0x06004FBB RID: 20411 RVA: 0x0023C74B File Offset: 0x0023A94B
 		public UserDeckData.Category deckCategory { get; set; }
 
-		// Token: 0x17000B7F RID: 2943
-		// (get) Token: 0x06004FBC RID: 20412 RVA: 0x0023C754 File Offset: 0x0023A954
-		// (set) Token: 0x06004FBD RID: 20413 RVA: 0x0023C75C File Offset: 0x0023A95C
 		public int pvpSeasonId { get; set; }
 
-		// Token: 0x17000B80 RID: 2944
-		// (get) Token: 0x06004FBE RID: 20414 RVA: 0x0023C765 File Offset: 0x0023A965
-		// (set) Token: 0x06004FBF RID: 20415 RVA: 0x0023C76D File Offset: 0x0023A96D
 		public DayOfWeek trainingDay { get; set; }
 
-		// Token: 0x17000B81 RID: 2945
-		// (get) Token: 0x06004FC0 RID: 20416 RVA: 0x0023C776 File Offset: 0x0023A976
-		// (set) Token: 0x06004FC1 RID: 20417 RVA: 0x0023C77E File Offset: 0x0023A97E
 		public int attrIndex { get; set; }
 
-		// Token: 0x17000B82 RID: 2946
-		// (get) Token: 0x06004FC2 RID: 20418 RVA: 0x0023C787 File Offset: 0x0023A987
-		// (set) Token: 0x06004FC3 RID: 20419 RVA: 0x0023C78F File Offset: 0x0023A98F
 		public bool isPractice { get; set; }
 
-		// Token: 0x06004FC4 RID: 20420 RVA: 0x0023C798 File Offset: 0x0023A998
 		public SetupParam()
 		{
 			this.isReload = true;
@@ -2901,44 +2733,32 @@ public class SelCharaDeckCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x02000F7A RID: 3962
 	public class SelectCharaData
 	{
-		// Token: 0x06004FC5 RID: 20421 RVA: 0x0023C7AE File Offset: 0x0023A9AE
 		public SelectCharaData(SelCharaDeckCtrl.FrameType t, CharaPackData c)
 		{
 			this.type = t;
 			this.chara = c;
 		}
 
-		// Token: 0x0400579B RID: 22427
 		public SelCharaDeckCtrl.FrameType type;
 
-		// Token: 0x0400579C RID: 22428
 		public CharaPackData chara;
 	}
 
-	// Token: 0x02000F7B RID: 3963
 	public class EditResultData
 	{
-		// Token: 0x0400579D RID: 22429
 		public int currentDeckId;
 
-		// Token: 0x0400579E RID: 22430
 		public List<UserDeckData> editDeck = new List<UserDeckData>();
 
-		// Token: 0x0400579F RID: 22431
 		public HelperPackData helperData;
 	}
 
-	// Token: 0x02000F7C RID: 3964
-	// (Invoke) Token: 0x06004FC8 RID: 20424
 	public delegate bool OnClickGotoBattle();
 
-	// Token: 0x02000F7D RID: 3965
 	public class GUI
 	{
-		// Token: 0x06004FCB RID: 20427 RVA: 0x0023C7D8 File Offset: 0x0023A9D8
 		public GUI(Transform baseTr)
 		{
 			this.charaDeck = new SelCharaDeckCtrl.GUI.CharaDeck(baseTr.Find("DeckSelect"), 5);
@@ -2949,7 +2769,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 			CanvasManager.HdlQuestSkipWindowsCtrl.Initialize();
 		}
 
-		// Token: 0x06004FCC RID: 20428 RVA: 0x0023C85C File Offset: 0x0023AA5C
 		public SelCharaDeckCtrl.GUI.IconChara SearchIconChara(SelCharaDeckCtrl.SelectCharaData scd)
 		{
 			if (scd != null)
@@ -2972,7 +2791,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 			return null;
 		}
 
-		// Token: 0x06004FCD RID: 20429 RVA: 0x0023C8D8 File Offset: 0x0023AAD8
 		public SelCharaDeckCtrl.GUI.IconChara SearchIconChara(SelCharaDeckCtrl.FrameType type, int id)
 		{
 			if (id != 0)
@@ -2994,31 +2812,22 @@ public class SelCharaDeckCtrl : MonoBehaviour
 			return null;
 		}
 
-		// Token: 0x040057A0 RID: 22432
 		public SelCharaDeckCtrl.GUI.CharaDeck charaDeck;
 
-		// Token: 0x040057A1 RID: 22433
 		public SelCharaDeckCtrl.GUI.CharaDeckWindow owMasterSkill;
 
-		// Token: 0x040057A2 RID: 22434
 		public SimpleAnimation anim;
 
-		// Token: 0x040057A3 RID: 22435
 		public SelCharaDeckCtrl.GUI.OrderCardWindow orderCardWindow;
 
-		// Token: 0x040057A4 RID: 22436
 		public QuestSkipWindowsCtrl.QuestSkipWindow questSkipWindow;
 
-		// Token: 0x040057A5 RID: 22437
 		public SelCharaDeckCtrl.GUI.DeckReachedLimitListWindow reachedLimitListWindow;
 
-		// Token: 0x040057A6 RID: 22438
 		public List<SelCharaDeckCtrl.GUI.IconChara> reserveCharaIcon = new List<SelCharaDeckCtrl.GUI.IconChara>();
 
-		// Token: 0x0200120C RID: 4620
 		public class CharaDeckWindow
 		{
-			// Token: 0x060057A2 RID: 22434 RVA: 0x00257E0C File Offset: 0x0025600C
 			public CharaDeckWindow(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -3030,38 +2839,27 @@ public class SelCharaDeckCtrl : MonoBehaviour
 				this.Icon_Skill = baseTr.Find("Base/Window/CurrentSkill/Icon_Skill").GetComponent<PguiImageCtrl>();
 			}
 
-			// Token: 0x040062C9 RID: 25289
 			public GameObject baseObj;
 
-			// Token: 0x040062CA RID: 25290
 			public PguiTextCtrl Txt_UserSkill;
 
-			// Token: 0x040062CB RID: 25291
 			public PguiTextCtrl Txt_UserSkillLevel;
 
-			// Token: 0x040062CC RID: 25292
 			public PguiTextCtrl Txt_SkillInfo;
 
-			// Token: 0x040062CD RID: 25293
 			public PguiOpenWindowCtrl Window;
 
-			// Token: 0x040062CE RID: 25294
 			public ReuseScroll ScrollView;
 
-			// Token: 0x040062CF RID: 25295
 			public PguiImageCtrl Icon_Skill;
 
-			// Token: 0x040062D0 RID: 25296
 			public List<SelCharaDeckCtrl.GUI.MasterSkillButton> masterSkillButtonList = new List<SelCharaDeckCtrl.GUI.MasterSkillButton>();
 
-			// Token: 0x040062D1 RID: 25297
 			public int choiceMasterSkillId;
 		}
 
-		// Token: 0x0200120D RID: 4621
 		public class MasterSkillButton
 		{
-			// Token: 0x060057A3 RID: 22435 RVA: 0x00257EB0 File Offset: 0x002560B0
 			public MasterSkillButton(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -3073,32 +2871,23 @@ public class SelCharaDeckCtrl : MonoBehaviour
 				this.Icon_Skill = baseTr.Find("BaseImage/Icon_Skill").GetComponent<PguiImageCtrl>();
 			}
 
-			// Token: 0x040062D2 RID: 25298
 			public GameObject baseObj;
 
-			// Token: 0x040062D3 RID: 25299
 			public PguiButtonCtrl CharaDeck_UserSkill_Btn;
 
-			// Token: 0x040062D4 RID: 25300
 			public GameObject Current;
 
-			// Token: 0x040062D5 RID: 25301
 			public PguiTextCtrl Txt_UserSkill;
 
-			// Token: 0x040062D6 RID: 25302
 			public PguiTextCtrl Txt_UserSkillLevel;
 
-			// Token: 0x040062D7 RID: 25303
 			public PguiTextCtrl Txt_SkillInfo;
 
-			// Token: 0x040062D8 RID: 25304
 			public PguiImageCtrl Icon_Skill;
 		}
 
-		// Token: 0x0200120E RID: 4622
 		public class IconCharaSet
 		{
-			// Token: 0x060057A4 RID: 22436 RVA: 0x00257F4C File Offset: 0x0025614C
 			public IconCharaSet(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -3124,7 +2913,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 				this.disable.SetActive(false);
 			}
 
-			// Token: 0x060057A5 RID: 22437 RVA: 0x00258058 File Offset: 0x00256258
 			public void InvalidAE()
 			{
 				if (this.aeEffChange != null)
@@ -3137,35 +2925,25 @@ public class SelCharaDeckCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x040062D9 RID: 25305
 			public GameObject baseObj;
 
-			// Token: 0x040062DA RID: 25306
 			public RectTransform iconBase;
 
-			// Token: 0x040062DB RID: 25307
 			public IconCharaCtrl iconCharaCtrl;
 
-			// Token: 0x040062DC RID: 25308
 			public GameObject currentFrame;
 
-			// Token: 0x040062DD RID: 25309
 			public GameObject removeFrame;
 
-			// Token: 0x040062DE RID: 25310
 			public GameObject selected;
 
-			// Token: 0x040062DF RID: 25311
 			public GameObject disable;
 
-			// Token: 0x040062E0 RID: 25312
 			public PguiAECtrl aeEffChange;
 		}
 
-		// Token: 0x0200120F RID: 4623
 		public class IconChara
 		{
-			// Token: 0x060057A6 RID: 22438 RVA: 0x002580A8 File Offset: 0x002562A8
 			public IconChara(Transform baseTr, Transform banTr, int deckIndex = -1)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -3253,7 +3031,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x060057A7 RID: 22439 RVA: 0x0025847C File Offset: 0x0025667C
 			public void SetSprite(bool isDeck, CharaDef.AttributeType type = CharaDef.AttributeType.ALL)
 			{
 				this.Base_CharaBlank.InitForce();
@@ -3288,7 +3065,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x060057A8 RID: 22440 RVA: 0x00258520 File Offset: 0x00256720
 			public void SetSprite(bool isDeck, int index)
 			{
 				CharaDef.AttributeType attributeType = CharaDef.AttributeType.ALL;
@@ -3319,7 +3095,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 				this.SetSprite(isDeck, attributeType);
 			}
 
-			// Token: 0x060057A9 RID: 22441 RVA: 0x00258574 File Offset: 0x00256774
 			public void Setup(SelCharaDeckCtrl.GUI.IconChara.SetupParam param)
 			{
 				this.SetSprite(param.isDeck, param.index);
@@ -3375,102 +3150,69 @@ public class SelCharaDeckCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x040062E1 RID: 25313
 			public const int SCROLL_ITEM_NUN_H = 2;
 
-			// Token: 0x040062E2 RID: 25314
 			public GameObject baseObj;
 
-			// Token: 0x040062E3 RID: 25315
 			public SimpleAnimation anime;
 
-			// Token: 0x040062E4 RID: 25316
 			public SelCharaDeckCtrl.GUI.IconCharaSet iconCharaSet;
 
-			// Token: 0x040062E5 RID: 25317
 			public List<IconPhotoCtrl> iconPhotoCtrl;
 
-			// Token: 0x040062E6 RID: 25318
 			public List<PguiReplaceSpriteCtrl> iconPhotoKind;
 
-			// Token: 0x040062E7 RID: 25319
 			public List<PguiReplaceSpriteCtrl> iconBlankFrame;
 
-			// Token: 0x040062E8 RID: 25320
 			public List<PguiReplaceSpriteCtrl> iconStatusKind;
 
-			// Token: 0x040062E9 RID: 25321
 			public RectTransform[] photoRect;
 
-			// Token: 0x040062EA RID: 25322
 			public GameObject PhotoIconView;
 
-			// Token: 0x040062EB RID: 25323
 			public GameObject PhotoIconKind;
 
-			// Token: 0x040062EC RID: 25324
 			public GameObject Mark_Friend;
 
-			// Token: 0x040062ED RID: 25325
 			public PguiReplaceSpriteCtrl Base_CharaBlank;
 
-			// Token: 0x040062EE RID: 25326
 			public GameObject Base_CharaBlank_Friend;
 
-			// Token: 0x040062EF RID: 25327
 			public GameObject banObj;
 
-			// Token: 0x040062F0 RID: 25328
 			public GameObject AccessoryIconView;
 
-			// Token: 0x040062F1 RID: 25329
 			public RectTransform accessoryRect;
 
-			// Token: 0x040062F2 RID: 25330
 			public IconAccessoryCtrl iconAccessoryCtrl;
 
-			// Token: 0x040062F3 RID: 25331
 			public PguiReplaceSpriteCtrl iconAccessoryBlankFrame;
 
-			// Token: 0x02001248 RID: 4680
 			public class SetupParam
 			{
-				// Token: 0x04006433 RID: 25651
 				public SelCharaDeckCtrl.GUI.IconChara.SetupParam.OnTouchCharaIcon cbTouchCharaIcon;
 
-				// Token: 0x04006434 RID: 25652
 				public SelCharaDeckCtrl.GUI.IconChara.SetupParam.OnClickIconPhotoKind cbClickIconPhotoKind;
 
-				// Token: 0x04006435 RID: 25653
 				public bool isDeck;
 
-				// Token: 0x04006436 RID: 25654
 				public int index;
 
-				// Token: 0x0200125D RID: 4701
-				// (Invoke) Token: 0x0600589A RID: 22682
 				public delegate bool OnTouchCharaIcon(SelCharaDeckCtrl.FrameType type, SelCharaDeckCtrl.GUI.IconChara icon, int photo);
 
-				// Token: 0x0200125E RID: 4702
-				// (Invoke) Token: 0x0600589E RID: 22686
 				public delegate bool OnClickIconPhotoKind();
 			}
 		}
 
-		// Token: 0x02001210 RID: 4624
 		public class IconCharaPack
 		{
-			// Token: 0x040062F4 RID: 25332
 			public SelCharaDeckCtrl.GUI.IconChara iconChara;
 
-			// Token: 0x040062F5 RID: 25333
 			public GameObject helperBase;
 		}
 
-		// Token: 0x02001211 RID: 4625
 		public class CharaDeck
 		{
-			// Token: 0x060057AB RID: 22443 RVA: 0x00258728 File Offset: 0x00256928
 			public CharaDeck(Transform baseTr, int num = 5)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -3671,7 +3413,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x060057AC RID: 22444 RVA: 0x00258F94 File Offset: 0x00257194
 			public void ResizeScrollView(int count, int resize)
 			{
 				if (this.Txt_None == null)
@@ -3682,7 +3423,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 				this.ScrollView.ResizeFocesNoMove(resize);
 			}
 
-			// Token: 0x060057AD RID: 22445 RVA: 0x00258FC4 File Offset: 0x002571C4
 			public void SwitchHelperIcon(int index, bool isEnemyInfo = false)
 			{
 				for (int i = 0; i < this.iconCharaPacks.Count; i++)
@@ -3706,7 +3446,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x060057AE RID: 22446 RVA: 0x00259054 File Offset: 0x00257254
 			public void UpdateCampaignInfoCategory(QuestStaticChapter.Category category, int chapterId)
 			{
 				List<string> list = new List<string>(QuestUtil.GetCampaignMessageList(category, chapterId));
@@ -3714,187 +3453,128 @@ public class SelCharaDeckCtrl : MonoBehaviour
 				this.campaignInfo.DispCampaign(list, list2);
 			}
 
-			// Token: 0x060057AF RID: 22447 RVA: 0x00259088 File Offset: 0x00257288
 			public void ResetCampaignInfoCategory()
 			{
 				this.campaignInfo.ResetCampaign();
 			}
 
-			// Token: 0x040062F6 RID: 25334
 			public GameObject baseObj;
 
-			// Token: 0x040062F7 RID: 25335
 			public PguiButtonCtrl Btn_ToBattle;
 
-			// Token: 0x040062F8 RID: 25336
 			public SimpleAnimation Anim_ToBattle;
 
-			// Token: 0x040062F9 RID: 25337
 			public PguiButtonCtrl Btn_EditOk;
 
-			// Token: 0x040062FA RID: 25338
 			public PguiButtonCtrl Btn_QuestSkip;
 
-			// Token: 0x040062FB RID: 25339
 			public GameObject Popup_QuestSkip;
 
-			// Token: 0x040062FC RID: 25340
 			public PguiButtonCtrl Btn_SkillChange;
 
-			// Token: 0x040062FD RID: 25341
 			public PguiButtonCtrl Btn_TacticsChange;
 
-			// Token: 0x040062FE RID: 25342
 			public PguiButtonCtrl Btn_FilterOnOff;
 
-			// Token: 0x040062FF RID: 25343
 			public PguiButtonCtrl Btn_Sort;
 
-			// Token: 0x04006300 RID: 25344
 			public PguiButtonCtrl Btn_SortUpDown;
 
-			// Token: 0x04006301 RID: 25345
 			public PguiTextCtrl Txt_All;
 
-			// Token: 0x04006302 RID: 25346
 			public PguiTextCtrl Txt_HP;
 
-			// Token: 0x04006303 RID: 25347
 			public PguiTextCtrl Txt_ATK;
 
-			// Token: 0x04006304 RID: 25348
 			public PguiTextCtrl Txt_DEF;
 
-			// Token: 0x04006305 RID: 25349
 			public PguiTextCtrl Txt_SkillTypeName;
 
-			// Token: 0x04006306 RID: 25350
 			public PguiTextCtrl Txt_SkillName;
 
-			// Token: 0x04006307 RID: 25351
 			public PguiTextCtrl Txt_SkillLevel;
 
-			// Token: 0x04006308 RID: 25352
 			public PguiImageCtrl Icon_Skill;
 
-			// Token: 0x04006309 RID: 25353
 			public PguiReplaceSpriteCtrl PlayerIcon;
 
-			// Token: 0x0400630A RID: 25354
 			public GameObject PlayerMarkBan;
 
-			// Token: 0x0400630B RID: 25355
 			public GameObject EnemyInfo;
 
-			// Token: 0x0400630C RID: 25356
 			public List<SelBattleHelperCtrl.GUI.EnemyInfo> enemyInfoList = new List<SelBattleHelperCtrl.GUI.EnemyInfo>();
 
-			// Token: 0x0400630D RID: 25357
 			public PguiButtonCtrl Btn_EnemyInfo;
 
-			// Token: 0x0400630E RID: 25358
 			public QuestUtil.CampaignInfo campaignInfo;
 
-			// Token: 0x0400630F RID: 25359
 			public SimpleAnimation DeckSelect;
 
-			// Token: 0x04006310 RID: 25360
 			public List<SelCharaDeckCtrl.GUI.IconCharaPack> iconCharaPacks;
 
-			// Token: 0x04006311 RID: 25361
 			public ReuseScroll ScrollView;
 
-			// Token: 0x04006312 RID: 25362
 			public PguiTabGroupCtrl DeckTab;
 
-			// Token: 0x04006313 RID: 25363
 			public PguiToggleButtonCtrl Btn_Chara;
 
-			// Token: 0x04006314 RID: 25364
 			public PguiToggleButtonCtrl Btn_Photo;
 
-			// Token: 0x04006315 RID: 25365
 			public PguiToggleButtonCtrl Btn_Accessory;
 
-			// Token: 0x04006316 RID: 25366
 			public PguiButtonCtrl Btn_AutoDeck;
 
-			// Token: 0x04006317 RID: 25367
 			public PguiImageCtrl DeckWindowImage;
 
-			// Token: 0x04006318 RID: 25368
 			public SimpleAnimation StaySkillSettingAnim;
 
-			// Token: 0x04006319 RID: 25369
 			public List<PguiToggleButtonCtrl> Btn_StaySkills;
 
-			// Token: 0x0400631A RID: 25370
 			public GameObject StaySkillInfo;
 
-			// Token: 0x0400631B RID: 25371
 			public List<PguiTextCtrl> Txt_StaySkill_Switches;
 
-			// Token: 0x0400631C RID: 25372
 			public PguiButtonCtrl Btn_StaySkillSetting;
 
-			// Token: 0x0400631D RID: 25373
 			public PguiButtonCtrl Btn_PartyName;
 
-			// Token: 0x0400631E RID: 25374
 			public PguiReplaceSpriteCtrl PartyName;
 
-			// Token: 0x0400631F RID: 25375
 			public PguiButtonCtrl Btn_PhotoRemove;
 
-			// Token: 0x04006320 RID: 25376
 			public InfoPhotoItemEffectCtrl Info_PhotoEffect;
 
-			// Token: 0x04006321 RID: 25377
 			public PguiButtonCtrl Btn_OrderCardInfo;
 
-			// Token: 0x04006322 RID: 25378
 			public PguiTextCtrl Txt_Deck_Red;
 
-			// Token: 0x04006323 RID: 25379
 			public PguiTextCtrl Txt_Deck_Blue;
 
-			// Token: 0x04006324 RID: 25380
 			public PguiTextCtrl Txt_Deck_Green;
 
-			// Token: 0x04006325 RID: 25381
 			public PguiTextCtrl Txt_Deck_Special;
 
-			// Token: 0x04006326 RID: 25382
 			public PguiTextCtrl Txt_TotalPlasm;
 
-			// Token: 0x04006327 RID: 25383
 			public PguiReplaceSpriteCtrl iconTacticsSkill;
 
-			// Token: 0x04006328 RID: 25384
 			public GameObject iconTacticsSkillBase;
 
-			// Token: 0x04006329 RID: 25385
 			public GameObject iconTacticsSkillChangeMark;
 
-			// Token: 0x0400632A RID: 25386
 			public GameObject Txt_None;
 
-			// Token: 0x0400632B RID: 25387
 			public QuestUtil.QuestRuleInfo questRuleInfo;
 
-			// Token: 0x0400632C RID: 25388
 			public PguiButtonCtrl questSealedInfo;
 		}
 
-		// Token: 0x02001212 RID: 4626
 		public class OrderCardWindow
 		{
-			// Token: 0x060057B0 RID: 22448 RVA: 0x00259095 File Offset: 0x00257295
 			public OrderCardWindow()
 			{
 			}
 
-			// Token: 0x060057B1 RID: 22449 RVA: 0x002590A8 File Offset: 0x002572A8
 			public OrderCardWindow(Transform baseTr)
 			{
 				this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -3908,28 +3588,20 @@ public class SelCharaDeckCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x0400632D RID: 25389
 			public PguiOpenWindowCtrl owCtrl;
 
-			// Token: 0x0400632E RID: 25390
 			public PguiTextCtrl Txt_TotalR;
 
-			// Token: 0x0400632F RID: 25391
 			public PguiTextCtrl Txt_TotalB;
 
-			// Token: 0x04006330 RID: 25392
 			public PguiTextCtrl Txt_TotalG;
 
-			// Token: 0x04006331 RID: 25393
 			public PguiTextCtrl Txt_TotalS;
 
-			// Token: 0x04006332 RID: 25394
 			public List<SelCharaDeckCtrl.GUI.OrderCardWindow.CharaInfo> charaInfo = new List<SelCharaDeckCtrl.GUI.OrderCardWindow.CharaInfo>();
 
-			// Token: 0x0200124C RID: 4684
 			public class CharaInfo
 			{
-				// Token: 0x0600586C RID: 22636 RVA: 0x0025CF7C File Offset: 0x0025B17C
 				public CharaInfo(Transform baseTr)
 				{
 					this.iconCharaCtrl = baseTr.Find("Icon_Chara").GetComponent<IconCharaCtrl>();
@@ -3939,25 +3611,20 @@ public class SelCharaDeckCtrl : MonoBehaviour
 					}
 				}
 
-				// Token: 0x0400643E RID: 25662
 				public IconCharaCtrl iconCharaCtrl;
 
-				// Token: 0x0400643F RID: 25663
 				public List<CharaWindowCtrl.GUIOrderCard> guiOrderCardList = new List<CharaWindowCtrl.GUIOrderCard>();
 			}
 		}
 
-		// Token: 0x02001213 RID: 4627
 		public class DeckReachedLimitListWindow
 		{
-			// Token: 0x060057B2 RID: 22450 RVA: 0x0025915E File Offset: 0x0025735E
 			public DeckReachedLimitListWindow(Transform baseTr)
 			{
 				this.listWindow = baseTr.GetComponent<PguiOpenWindowCtrl>();
 				this.iconCharaListBase = baseTr.Find("Base/Window/IconCharaList").gameObject;
 			}
 
-			// Token: 0x060057B3 RID: 22451 RVA: 0x00259188 File Offset: 0x00257388
 			public void SetupCharaIcons(List<CharaPackData> charaList)
 			{
 				for (int i = 0; i < charaList.Count; i++)
@@ -3969,7 +3636,6 @@ public class SelCharaDeckCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x060057B4 RID: 22452 RVA: 0x00259204 File Offset: 0x00257404
 			public void DestroyCharaIcons()
 			{
 				foreach (GameObject gameObject in this.iconCharaListBase.GetChildList())
@@ -3978,15 +3644,11 @@ public class SelCharaDeckCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x04006333 RID: 25395
 			public PguiOpenWindowCtrl listWindow;
 
-			// Token: 0x04006334 RID: 25396
 			public GameObject iconCharaListBase;
 		}
 	}
 
-	// Token: 0x02000F7E RID: 3966
-	// (Invoke) Token: 0x06004FCF RID: 20431
 	public delegate void RequestCallBack();
 }

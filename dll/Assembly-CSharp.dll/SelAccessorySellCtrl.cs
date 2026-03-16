@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
@@ -7,14 +7,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x0200012D RID: 301
 public class SelAccessorySellCtrl : MonoBehaviour
 {
-	// Token: 0x17000343 RID: 835
-	// (get) Token: 0x06000F82 RID: 3970 RVA: 0x000B9B00 File Offset: 0x000B7D00
 	private List<DataManagerCharaAccessory.Accessory> sellAccessoryList { get; } = new List<DataManagerCharaAccessory.Accessory>();
 
-	// Token: 0x06000F83 RID: 3971 RVA: 0x000B9B08 File Offset: 0x000B7D08
 	public void Initialize()
 	{
 		GameObject gameObject = Object.Instantiate<GameObject>((GameObject)Resources.Load("SceneAccessory/GUI/Prefab/GUI_AccessorySell"), base.transform);
@@ -93,13 +89,11 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000F84 RID: 3972 RVA: 0x000B9FFC File Offset: 0x000B81FC
 	private int GetIconSizeIndex()
 	{
 		return DataManager.DmGameStatus.MakeUserFlagData().GetIconSizeData(SortFilterDefine.IconPlace.AccessorySell).SizeIndex;
 	}
 
-	// Token: 0x06000F85 RID: 3973 RVA: 0x000BA014 File Offset: 0x000B8214
 	private void Update()
 	{
 		if (this.serverRequestSell != null && !this.serverRequestSell.MoveNext())
@@ -108,7 +102,6 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000F86 RID: 3974 RVA: 0x000BA032 File Offset: 0x000B8232
 	public void Deestroy()
 	{
 		if (this.windowSelectAll != null)
@@ -118,7 +111,6 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000F87 RID: 3975 RVA: 0x000BA053 File Offset: 0x000B8253
 	public void Setup()
 	{
 		this.sellAccessoryList.Clear();
@@ -128,7 +120,6 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		this.ResizeScrollView();
 	}
 
-	// Token: 0x06000F88 RID: 3976 RVA: 0x000BA078 File Offset: 0x000B8278
 	public void ReloadDataManager()
 	{
 		this.dispAccessoryList.Clear();
@@ -138,14 +129,12 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		this.equippedAccessoryUniqIdList.AddRange(list.FindAll((CharaPackData item) => !AccessoryUtil.IsInvalid(item.dynamicData.accessory)).ConvertAll<long>((CharaPackData item) => item.dynamicData.accessory.UniqId));
 	}
 
-	// Token: 0x06000F89 RID: 3977 RVA: 0x000BA124 File Offset: 0x000B8324
 	private void UpdateUserInfo()
 	{
 		this.guiData.guiTop.Num_Own.ReplaceTextByDefault("Param01", DataManager.DmChAccessory.GetUserAccessoryList().Count.ToString() + "/" + DataManager.DmChAccessory.AccessoryStockLimit.ToString());
 		this.guiData.guiTop.PossessionGold.text = DataManager.DmItem.GetUserItemData(30101).num.ToString();
 	}
 
-	// Token: 0x06000F8A RID: 3978 RVA: 0x000BA1B0 File Offset: 0x000B83B0
 	private void UpdateSellAccessoryInfo()
 	{
 		this.guiData.guiTop.GetCoin_Num.text = this.CalcSellCoin().ToString();
@@ -154,7 +143,6 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		this.guiData.guiTop.Btn_SelectAll.SetActEnable(flag, false, false);
 	}
 
-	// Token: 0x06000F8B RID: 3979 RVA: 0x000BA220 File Offset: 0x000B8420
 	private int CalcSellCoin()
 	{
 		int num = 0;
@@ -165,7 +153,6 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		return num;
 	}
 
-	// Token: 0x06000F8C RID: 3980 RVA: 0x000BA284 File Offset: 0x000B8484
 	private bool AddToSellAccessoryList(DataManagerCharaAccessory.Accessory accessory)
 	{
 		int count = this.sellAccessoryList.Count;
@@ -177,13 +164,11 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		return count < count2;
 	}
 
-	// Token: 0x06000F8D RID: 3981 RVA: 0x000BA2C7 File Offset: 0x000B84C7
 	private bool RemoveFromSellAccessoryList(DataManagerCharaAccessory.Accessory accessory)
 	{
 		return this.sellAccessoryList.Remove(accessory);
 	}
 
-	// Token: 0x06000F8E RID: 3982 RVA: 0x000BA2D8 File Offset: 0x000B84D8
 	private void UpdateSelectStatus(AccessoryUtil.IconAccessorySet iconSet)
 	{
 		int num = this.sellAccessoryList.IndexOf(iconSet.iconAccessoryCtrl.accessory);
@@ -197,7 +182,6 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		iconSet.DispCount(false, null);
 	}
 
-	// Token: 0x06000F8F RID: 3983 RVA: 0x000BA334 File Offset: 0x000B8534
 	private void UpdateSelectStatusAll()
 	{
 		foreach (AccessoryUtil.IconAccessorySet iconAccessorySet in this.guiData.guiTop.iconAccessorySetList)
@@ -206,25 +190,21 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000F90 RID: 3984 RVA: 0x000BA394 File Offset: 0x000B8594
 	private bool HasFlag(SelAccessorySellCtrl.CategoryMask target, SelAccessorySellCtrl.CategoryMask flag)
 	{
 		return (target & flag) > SelAccessorySellCtrl.CategoryMask.None;
 	}
 
-	// Token: 0x06000F91 RID: 3985 RVA: 0x000BA39C File Offset: 0x000B859C
 	private void AddFlag(ref SelAccessorySellCtrl.CategoryMask target, SelAccessorySellCtrl.CategoryMask flag)
 	{
 		target |= flag;
 	}
 
-	// Token: 0x06000F92 RID: 3986 RVA: 0x000BA3A4 File Offset: 0x000B85A4
 	private void RemoveFlag(ref SelAccessorySellCtrl.CategoryMask target, SelAccessorySellCtrl.CategoryMask flag)
 	{
 		target &= ~flag;
 	}
 
-	// Token: 0x06000F93 RID: 3987 RVA: 0x000BA3AD File Offset: 0x000B85AD
 	private IEnumerator ServerRequestSell()
 	{
 		DataManager.DmChAccessory.RequestActionRemoveCharaAccessory(this.sellAccessoryList);
@@ -260,7 +240,6 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000F94 RID: 3988 RVA: 0x000BA3BC File Offset: 0x000B85BC
 	private void OnClickCancelAllButton(PguiButtonCtrl button)
 	{
 		this.sellAccessoryList.Clear();
@@ -268,26 +247,22 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		this.guiData.guiTop.ScrollView.Refresh();
 	}
 
-	// Token: 0x06000F95 RID: 3989 RVA: 0x000BA3E4 File Offset: 0x000B85E4
 	private void OnClickSelectAllButton(PguiButtonCtrl button)
 	{
 		this.windowSelectAll.owCtrl.Setup("まとめて選択", "", PguiOpenWindowCtrl.GetButtonPreset(PguiOpenWindowCtrl.PresetType.CANCEL_OK), true, new PguiOpenWindowCtrl.Callback(this.SelectAllWindowButtonCallback), null, false);
 		this.windowSelectAll.owCtrl.Open();
 	}
 
-	// Token: 0x06000F96 RID: 3990 RVA: 0x000BA430 File Offset: 0x000B8630
 	private void OnClickSellButton(PguiButtonCtrl button)
 	{
 		CanvasManager.HdlAccessoryCheckWindowCtrl.OpenSale(this.sellAccessoryList, new UnityAction(this.AccessoryCheckWindowCallback));
 	}
 
-	// Token: 0x06000F97 RID: 3991 RVA: 0x000BA44E File Offset: 0x000B864E
 	private void AccessoryCheckWindowCallback()
 	{
 		this.serverRequestSell = this.ServerRequestSell();
 	}
 
-	// Token: 0x06000F98 RID: 3992 RVA: 0x000BA45C File Offset: 0x000B865C
 	public bool OnClickRarityButton(PguiToggleButtonCtrl button, int index)
 	{
 		SelAccessorySellCtrl.CategoryType categoryType = (SelAccessorySellCtrl.CategoryType)this.windowSelectAll.RarityBtnList.FindIndex((PguiToggleButtonCtrl item) => item == button);
@@ -330,7 +305,6 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000F99 RID: 3993 RVA: 0x000BA540 File Offset: 0x000B8740
 	public bool OnClickLevelButton(PguiToggleButtonCtrl button, int index)
 	{
 		if (index == 0)
@@ -357,7 +331,6 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06000F9A RID: 3994 RVA: 0x000BA63C File Offset: 0x000B883C
 	public bool OnClickContractButton(PguiToggleButtonCtrl button, int index)
 	{
 		int num = this.windowSelectAll.ContractBtnList.FindIndex((PguiToggleButtonCtrl item) => item == button);
@@ -390,7 +363,6 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000F9B RID: 3995 RVA: 0x000BA6D0 File Offset: 0x000B88D0
 	private bool SelectAllWindowButtonCallback(int index)
 	{
 		if (SelAccessorySellCtrl.LvType.Invaid == this.lvType && this.categoryMask == SelAccessorySellCtrl.CategoryMask.None)
@@ -417,7 +389,6 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000F9C RID: 3996 RVA: 0x000BA7A0 File Offset: 0x000B89A0
 	private void ResizeScrollView()
 	{
 		this.guiData.guiTop.sizeChangeBtnGUI.ResetScrollView();
@@ -426,7 +397,6 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		this.guiData.guiTop.ResizeScrollView(this.dispAccessoryList.Count, this.dispAccessoryList.Count / this.guiData.guiTop.sizeChangeBtnGUI.IconAccessoryParamList[this.guiData.guiTop.sizeChangeBtnGUI.SizeIndex].num + 1);
 	}
 
-	// Token: 0x06000F9D RID: 3997 RVA: 0x000BA84C File Offset: 0x000B8A4C
 	public void OnClickMenuReturn()
 	{
 		SceneCharaEdit.Args args = new SceneCharaEdit.Args
@@ -436,7 +406,6 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		Singleton<SceneManager>.Instance.SetNextScene(SceneManager.SceneName.SceneCharaEdit, args);
 	}
 
-	// Token: 0x06000F9E RID: 3998 RVA: 0x000BA874 File Offset: 0x000B8A74
 	private void OnStartItemAccessorySelect(int index, GameObject go)
 	{
 		for (int i = 0; i < this.guiData.guiTop.sizeChangeBtnGUI.IconAccessoryParamList[this.guiData.guiTop.sizeChangeBtnGUI.SizeIndex].num; i++)
@@ -453,7 +422,6 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000F9F RID: 3999 RVA: 0x000BAA04 File Offset: 0x000B8C04
 	private void OnUpdateItemAccessorySelect(int index, GameObject go)
 	{
 		for (int i = 0; i < this.guiData.guiTop.sizeChangeBtnGUI.IconAccessoryParamList[this.guiData.guiTop.sizeChangeBtnGUI.SizeIndex].num; i++)
@@ -488,7 +456,6 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FA0 RID: 4000 RVA: 0x000BABAC File Offset: 0x000B8DAC
 	private void OnTouchPhotoIcon(IconAccessoryCtrl iconAcce)
 	{
 		SoundManager.Play("prd_se_click", false, false);
@@ -511,7 +478,6 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FA1 RID: 4001 RVA: 0x000BAC1C File Offset: 0x000B8E1C
 	private void OnChangeSortFilter()
 	{
 		this.ReloadDataManager();
@@ -519,7 +485,6 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		this.ResizeScrollView();
 	}
 
-	// Token: 0x06000FA2 RID: 4002 RVA: 0x000BAC30 File Offset: 0x000B8E30
 	private void OnUpdateAccessoryStatus(IconAccessoryCtrl iac)
 	{
 		DataManagerCharaAccessory.Accessory accessory = this.sellAccessoryList.Find((DataManagerCharaAccessory.Accessory x) => x.IsLock);
@@ -527,83 +492,53 @@ public class SelAccessorySellCtrl : MonoBehaviour
 		this.guiData.guiTop.ScrollView.Refresh();
 	}
 
-	// Token: 0x04000DCB RID: 3531
 	private SelAccessorySellCtrl.GUI guiData;
 
-	// Token: 0x04000DCC RID: 3532
 	private SelAccessorySellCtrl.SelectAllWindow windowSelectAll;
 
-	// Token: 0x04000DCD RID: 3533
 	private List<DataManagerCharaAccessory.Accessory> dispAccessoryList = new List<DataManagerCharaAccessory.Accessory>();
 
-	// Token: 0x04000DCE RID: 3534
 	private List<long> equippedAccessoryUniqIdList = new List<long>();
 
-	// Token: 0x04000DD0 RID: 3536
 	private SelAccessorySellCtrl.CategoryMask categoryMask;
 
-	// Token: 0x04000DD1 RID: 3537
 	private SelAccessorySellCtrl.LvType lvType = SelAccessorySellCtrl.LvType.Invaid;
 
-	// Token: 0x04000DD2 RID: 3538
 	private IEnumerator serverRequestSell;
 
-	// Token: 0x02000988 RID: 2440
 	private enum CategoryType
 	{
-		// Token: 0x04003D7A RID: 15738
 		S1,
-		// Token: 0x04003D7B RID: 15739
 		S2,
-		// Token: 0x04003D7C RID: 15740
 		S3,
-		// Token: 0x04003D7D RID: 15741
 		S4,
-		// Token: 0x04003D7E RID: 15742
 		NotOwned,
-		// Token: 0x04003D7F RID: 15743
 		Owned
 	}
 
-	// Token: 0x02000989 RID: 2441
 	[Flags]
 	private enum CategoryMask
 	{
-		// Token: 0x04003D81 RID: 15745
 		None = 0,
-		// Token: 0x04003D82 RID: 15746
 		S1 = 1,
-		// Token: 0x04003D83 RID: 15747
 		S2 = 2,
-		// Token: 0x04003D84 RID: 15748
 		S3 = 4,
-		// Token: 0x04003D85 RID: 15749
 		S4 = 8,
-		// Token: 0x04003D86 RID: 15750
 		Rarity = 15,
-		// Token: 0x04003D87 RID: 15751
 		NotOwned = 16,
-		// Token: 0x04003D88 RID: 15752
 		Owned = 32,
-		// Token: 0x04003D89 RID: 15753
 		Owner = 48
 	}
 
-	// Token: 0x0200098A RID: 2442
 	private enum LvType
 	{
-		// Token: 0x04003D8B RID: 15755
 		Invaid = -1,
-		// Token: 0x04003D8C RID: 15756
 		Lv1Only,
-		// Token: 0x04003D8D RID: 15757
 		Unspecified
 	}
 
-	// Token: 0x0200098B RID: 2443
 	public class Top
 	{
-		// Token: 0x06003C24 RID: 15396 RVA: 0x001D9DCC File Offset: 0x001D7FCC
 		public Top(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -625,7 +560,6 @@ public class SelAccessorySellCtrl : MonoBehaviour
 			this.Txt_None_Noitem.SetActive(false);
 		}
 
-		// Token: 0x06003C25 RID: 15397 RVA: 0x001D9F2C File Offset: 0x001D812C
 		public void ResizeScrollView(int count, int resize)
 		{
 			if (this.Txt_None_Noitem.activeSelf)
@@ -639,59 +573,41 @@ public class SelAccessorySellCtrl : MonoBehaviour
 			this.ScrollView.Resize(resize, 0);
 		}
 
-		// Token: 0x04003D8E RID: 15758
 		public GameObject baseObj;
 
-		// Token: 0x04003D8F RID: 15759
 		public PguiButtonCtrl Btn_FilterOnOff;
 
-		// Token: 0x04003D90 RID: 15760
 		public PguiButtonCtrl Btn_Sort;
 
-		// Token: 0x04003D91 RID: 15761
 		public PguiButtonCtrl Btn_SortUpDown;
 
-		// Token: 0x04003D92 RID: 15762
 		public PguiTextCtrl Num_Own;
 
-		// Token: 0x04003D93 RID: 15763
 		public PguiButtonCtrl Btn_CancelAll;
 
-		// Token: 0x04003D94 RID: 15764
 		public PguiButtonCtrl Btn_SelectAll;
 
-		// Token: 0x04003D95 RID: 15765
 		public PguiButtonCtrl Btn_buy;
 
-		// Token: 0x04003D96 RID: 15766
 		public ReuseScroll ScrollView;
 
-		// Token: 0x04003D97 RID: 15767
 		public PguiTextCtrl PossessionGold;
 
-		// Token: 0x04003D98 RID: 15768
 		public PguiTextCtrl GetCoin_Num;
 
-		// Token: 0x04003D99 RID: 15769
 		public AccessoryUtil.SizeChangeBtnGUI sizeChangeBtnGUI;
 
-		// Token: 0x04003D9A RID: 15770
 		public SortFilterBtnsAllCtrl SortFilterBar;
 
-		// Token: 0x04003D9B RID: 15771
 		public List<AccessoryUtil.IconAccessorySet> iconAccessorySetList;
 
-		// Token: 0x04003D9C RID: 15772
 		public GameObject Txt_None_Nofilter;
 
-		// Token: 0x04003D9D RID: 15773
 		public GameObject Txt_None_Noitem;
 	}
 
-	// Token: 0x0200098C RID: 2444
 	public class SelectAllWindow
 	{
-		// Token: 0x06003C26 RID: 15398 RVA: 0x001D9F68 File Offset: 0x001D8168
 		public SelectAllWindow(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -715,39 +631,29 @@ public class SelAccessorySellCtrl : MonoBehaviour
 			};
 		}
 
-		// Token: 0x04003D9E RID: 15774
 		public GameObject baseObj;
 
-		// Token: 0x04003D9F RID: 15775
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x04003DA0 RID: 15776
 		public PguiTextCtrl Txt_Massage;
 
-		// Token: 0x04003DA1 RID: 15777
 		public List<PguiToggleButtonCtrl> RarityBtnList;
 
-		// Token: 0x04003DA2 RID: 15778
 		public List<PguiToggleButtonCtrl> LevelBtnList;
 
-		// Token: 0x04003DA3 RID: 15779
 		public List<PguiToggleButtonCtrl> ContractBtnList;
 	}
 
-	// Token: 0x0200098D RID: 2445
 	public class GUI
 	{
-		// Token: 0x06003C27 RID: 15399 RVA: 0x001DA064 File Offset: 0x001D8264
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
 			this.guiTop = new SelAccessorySellCtrl.Top(this.baseObj.transform);
 		}
 
-		// Token: 0x04003DA4 RID: 15780
 		public GameObject baseObj;
 
-		// Token: 0x04003DA5 RID: 15781
 		public SelAccessorySellCtrl.Top guiTop;
 	}
 }

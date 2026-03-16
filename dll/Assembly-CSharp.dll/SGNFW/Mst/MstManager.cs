@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -14,11 +14,8 @@ using UnityEngine;
 
 namespace SGNFW.Mst
 {
-	// Token: 0x0200031F RID: 799
 	public class MstManager : Singleton<MstManager>
 	{
-		// Token: 0x17000609 RID: 1545
-		// (get) Token: 0x06002844 RID: 10308 RVA: 0x001A7877 File Offset: 0x001A5A77
 		public static List<MstVersion> MstVersionList
 		{
 			get
@@ -27,13 +24,8 @@ namespace SGNFW.Mst
 			}
 		}
 
-		// Token: 0x1700060A RID: 1546
-		// (get) Token: 0x06002845 RID: 10309 RVA: 0x001A787E File Offset: 0x001A5A7E
-		// (set) Token: 0x06002846 RID: 10310 RVA: 0x001A7885 File Offset: 0x001A5A85
 		public static bool IsMstDataCheck { get; set; }
 
-		// Token: 0x1700060B RID: 1547
-		// (get) Token: 0x06002847 RID: 10311 RVA: 0x001A788D File Offset: 0x001A5A8D
 		private string CacheBasePath
 		{
 			get
@@ -42,14 +34,12 @@ namespace SGNFW.Mst
 			}
 		}
 
-		// Token: 0x06002848 RID: 10312 RVA: 0x001A7894 File Offset: 0x001A5A94
 		private void MstVersion()
 		{
 			MstVersionCmd mstVersionCmd = MstVersionCmd.Create(Singleton<DMMHelpManager>.Instance.VewerID);
 			Singleton<DataManager>.Instance.ServerRequest(mstVersionCmd, new Action<Command>(this.MstVersionCb));
 		}
 
-		// Token: 0x06002849 RID: 10313 RVA: 0x001A78C8 File Offset: 0x001A5AC8
 		public void MstVersionCb(Command cmd)
 		{
 			MstVersionResponse mstVersionResponse = cmd.response as MstVersionResponse;
@@ -57,7 +47,6 @@ namespace SGNFW.Mst
 			this._state = MstManager.State.LOAD;
 		}
 
-		// Token: 0x0600284A RID: 10314 RVA: 0x001A78F4 File Offset: 0x001A5AF4
 		private IEnumerator MstDataStart(MstVersion mstVer)
 		{
 			string text = "";
@@ -135,14 +124,12 @@ namespace SGNFW.Mst
 			yield break;
 		}
 
-		// Token: 0x0600284B RID: 10315 RVA: 0x001A790A File Offset: 0x001A5B0A
 		private void MstDataCb(Command cmd)
 		{
 			Request request = cmd.request;
 			base.StartCoroutine(this.saveMstStart(cmd.optionMap["MSTDATA"] as MstVersion, cmd.response));
 		}
 
-		// Token: 0x0600284C RID: 10316 RVA: 0x001A793B File Offset: 0x001A5B3B
 		private IEnumerator saveMstStart(MstVersion mstVer, Response res)
 		{
 			MstDataResponse result = res as MstDataResponse;
@@ -178,7 +165,6 @@ namespace SGNFW.Mst
 			yield break;
 		}
 
-		// Token: 0x0600284D RID: 10317 RVA: 0x001A7958 File Offset: 0x001A5B58
 		private string decompressJsonBinary(byte[] compressJsonBinary)
 		{
 			MemoryStream memoryStream = new MemoryStream();
@@ -214,7 +200,6 @@ namespace SGNFW.Mst
 			return text;
 		}
 
-		// Token: 0x0600284E RID: 10318 RVA: 0x001A7A24 File Offset: 0x001A5C24
 		private void saveMstVerType(List<MstVersion> mstVerList)
 		{
 			string text = "";
@@ -256,7 +241,6 @@ namespace SGNFW.Mst
 			this.InitMstDataVersionCheck();
 		}
 
-		// Token: 0x0600284F RID: 10319 RVA: 0x001A7B44 File Offset: 0x001A5D44
 		public void RemoveMstDataCaches()
 		{
 			if (PlayerPrefs.HasKey("parade_mst_type_list"))
@@ -269,7 +253,6 @@ namespace SGNFW.Mst
 			}
 		}
 
-		// Token: 0x06002850 RID: 10320 RVA: 0x001A7BA0 File Offset: 0x001A5DA0
 		private void RemoveMstDataUnit(string cachePath, string basedata_type)
 		{
 			string text = cachePath + "/" + basedata_type + ".d";
@@ -283,7 +266,6 @@ namespace SGNFW.Mst
 			}
 		}
 
-		// Token: 0x06002851 RID: 10321 RVA: 0x001A7BF4 File Offset: 0x001A5DF4
 		private void InitMstDataVersionCheck()
 		{
 			MstManager._mst_ver.ForEach(delegate(MstVersion b)
@@ -298,7 +280,6 @@ namespace SGNFW.Mst
 			MstManager.IsMstDataCheck = false;
 		}
 
-		// Token: 0x06002852 RID: 10322 RVA: 0x001A7C25 File Offset: 0x001A5E25
 		private void UpdateMstVersionCheck(string type, string version)
 		{
 			if (!MstManager._mst_version_chek.ContainsKey(type))
@@ -312,7 +293,6 @@ namespace SGNFW.Mst
 			MstManager.CheckMstVersion();
 		}
 
-		// Token: 0x06002853 RID: 10323 RVA: 0x001A7C54 File Offset: 0x001A5E54
 		private static bool CheckMstVersion()
 		{
 			bool flag = true;
@@ -338,7 +318,6 @@ namespace SGNFW.Mst
 			return flag;
 		}
 
-		// Token: 0x06002854 RID: 10324 RVA: 0x001A7CF8 File Offset: 0x001A5EF8
 		private void cacheMst(string strType, string json)
 		{
 			if (json == null)
@@ -356,7 +335,6 @@ namespace SGNFW.Mst
 			}
 		}
 
-		// Token: 0x06002855 RID: 10325 RVA: 0x001A7D4C File Offset: 0x001A5F4C
 		public bool Refresh()
 		{
 			if (this._state == MstManager.State.INIT || this._state == MstManager.State.FINISH)
@@ -369,8 +347,6 @@ namespace SGNFW.Mst
 			return true;
 		}
 
-		// Token: 0x1700060C RID: 1548
-		// (get) Token: 0x06002856 RID: 10326 RVA: 0x001A7D76 File Offset: 0x001A5F76
 		public bool IsLoadFinish
 		{
 			get
@@ -379,7 +355,6 @@ namespace SGNFW.Mst
 			}
 		}
 
-		// Token: 0x06002857 RID: 10327 RVA: 0x001A7D84 File Offset: 0x001A5F84
 		public T GetMst<T>(MstType type)
 		{
 			if (!this._mst_map.ContainsKey(type))
@@ -390,7 +365,6 @@ namespace SGNFW.Mst
 			return (T)((object)this._mst_map[type]);
 		}
 
-		// Token: 0x06002858 RID: 10328 RVA: 0x001A7DD8 File Offset: 0x001A5FD8
 		public void GetMstCount(out int num, out int cnt)
 		{
 			num = MstManager._mst_version_chek.Count;
@@ -406,12 +380,10 @@ namespace SGNFW.Mst
 			cnt = num2;
 		}
 
-		// Token: 0x06002859 RID: 10329 RVA: 0x001A7E37 File Offset: 0x001A6037
 		protected override void OnSingletonAwake()
 		{
 		}
 
-		// Token: 0x0600285A RID: 10330 RVA: 0x001A7E3C File Offset: 0x001A603C
 		private void Update()
 		{
 			switch (this._state)
@@ -456,50 +428,34 @@ namespace SGNFW.Mst
 			}
 		}
 
-		// Token: 0x0600285B RID: 10331 RVA: 0x001A7F2D File Offset: 0x001A612D
 		private void Start()
 		{
 			this._state = MstManager.State.INIT;
 		}
 
-		// Token: 0x04002321 RID: 8993
 		private const int MSTDATA_DECOMPRESS_READ_BUFFER_SIZE = 131072;
 
-		// Token: 0x04002322 RID: 8994
 		private const string MST_PREFS_PREFIX = "parade_mst_version_";
 
-		// Token: 0x04002323 RID: 8995
 		private const string MST_PREFS_TYPE_LIST = "parade_mst_type_list";
 
-		// Token: 0x04002324 RID: 8996
 		private MstManager.State _state;
 
-		// Token: 0x04002325 RID: 8997
 		private int _loadCount;
 
-		// Token: 0x04002326 RID: 8998
 		private static List<MstVersion> _mst_ver = new List<MstVersion>();
 
-		// Token: 0x04002327 RID: 8999
 		private static Dictionary<string, string> _mst_version_chek = new Dictionary<string, string>();
 
-		// Token: 0x04002328 RID: 9000
 		private Dictionary<MstType, object> _mst_map = new Dictionary<MstType, object>();
 
-		// Token: 0x020010CA RID: 4298
 		private enum State
 		{
-			// Token: 0x04005D07 RID: 23815
 			INIT,
-			// Token: 0x04005D08 RID: 23816
 			VERSION,
-			// Token: 0x04005D09 RID: 23817
 			VERSION_WAIT,
-			// Token: 0x04005D0A RID: 23818
 			LOAD,
-			// Token: 0x04005D0B RID: 23819
 			LOAD_WAIT,
-			// Token: 0x04005D0C RID: 23820
 			FINISH
 		}
 	}

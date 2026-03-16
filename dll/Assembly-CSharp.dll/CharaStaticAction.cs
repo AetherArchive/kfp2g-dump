@@ -1,11 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Token: 0x02000061 RID: 97
 public class CharaStaticAction : ScriptableObject
 {
-	// Token: 0x06000292 RID: 658 RVA: 0x00015440 File Offset: 0x00013640
 	public string MakeSkillText(int skillLevel)
 	{
 		string text = this.actionEffect;
@@ -48,28 +46,20 @@ public class CharaStaticAction : ScriptableObject
 		return text;
 	}
 
-	// Token: 0x040003B6 RID: 950
 	public string actionName;
 
-	// Token: 0x040003B7 RID: 951
 	[Multiline(6)]
 	public string actionEffect;
 
-	// Token: 0x040003B8 RID: 952
 	public int actionInfoTime;
 
-	// Token: 0x040003B9 RID: 953
 	public CharaAuthParam authParam;
 
-	// Token: 0x040003BA RID: 954
 	public CharaActionParam actionParam;
 
-	// Token: 0x040003BB RID: 955
 	public CharaMotionParam motionParam;
 
-	// Token: 0x040003BC RID: 956
 	public List<CharaDamageParam> damageList;
 
-	// Token: 0x040003BD RID: 957
 	public List<CharaBuffParam> buffList;
 }

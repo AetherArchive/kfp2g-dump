@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,10 +9,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x0200016E RID: 366
 public class QuestUtil
 {
-	// Token: 0x060015E9 RID: 5609 RVA: 0x00112740 File Offset: 0x00110940
 	public static List<string> GetCampaignMessageList(QuestStaticChapter.Category category, int chapterId)
 	{
 		List<QuestStaticChapter> chapterDataList = DataManager.DmQuest.QuestStaticData.chapterDataList;
@@ -230,7 +228,6 @@ public class QuestUtil
 		return list;
 	}
 
-	// Token: 0x060015EA RID: 5610 RVA: 0x00113140 File Offset: 0x00111340
 	public static List<string> GetCampaignTimeList(QuestStaticChapter.Category category, int chapterId)
 	{
 		List<QuestStaticChapter> chapterDataList = DataManager.DmQuest.QuestStaticData.chapterDataList;
@@ -422,7 +419,6 @@ public class QuestUtil
 		return list;
 	}
 
-	// Token: 0x060015EB RID: 5611 RVA: 0x00113938 File Offset: 0x00111B38
 	public static bool CheckCampaignQuestGroup(int groupId)
 	{
 		long dt = TimeManager.Now.Ticks;
@@ -486,7 +482,6 @@ public class QuestUtil
 		return questStaticQuestGroup != null && questStaticQuestGroup.drawItemTermDataList.Exists((DataManagerQuest.DrawItemTermData item) => item.StartDateTime.Ticks <= dt && item.EndDateTime.Ticks >= dt);
 	}
 
-	// Token: 0x060015EC RID: 5612 RVA: 0x00113C1C File Offset: 0x00111E1C
 	public static void GetEnableEventReleaseEffects(ref List<DataManagerEvent.ReleaseEffects> releaseEffectsList, ref DataManagerEvent.ReleaseEffects releaseEffects, DataManagerEvent.EventData inEventData)
 	{
 		releaseEffects = releaseEffectsList.Find((DataManagerEvent.ReleaseEffects item) => item.EventId == inEventData.eventId);
@@ -515,7 +510,6 @@ public class QuestUtil
 		}
 	}
 
-	// Token: 0x060015ED RID: 5613 RVA: 0x00113CEC File Offset: 0x00111EEC
 	public static int ClearConditionQuestOneId(QuestStaticChapter.Category questCategory)
 	{
 		DataManagerServerMst.ModeReleaseData.ModeCategory modeCategory = DataManagerServerMst.ModeReleaseData.ModeCategory.GrowthQuest;
@@ -558,7 +552,6 @@ public class QuestUtil
 		return num;
 	}
 
-	// Token: 0x060015EE RID: 5614 RVA: 0x00113DC4 File Offset: 0x00111FC4
 	public static bool IsDispDhole()
 	{
 		DataManagerServerMst.ModeReleaseData modeReleaseData = DataManager.DmServerMst.ModeReleaseDataList.Find((DataManagerServerMst.ModeReleaseData item) => item.Category == DataManagerServerMst.ModeReleaseData.ModeCategory.DholeReturns);
@@ -590,7 +583,6 @@ public class QuestUtil
 		return true;
 	}
 
-	// Token: 0x060015EF RID: 5615 RVA: 0x00113F08 File Offset: 0x00112108
 	public static bool ClearConditionGrayOutButton(QuestStaticChapter.Category questCategory)
 	{
 		int num = QuestUtil.ClearConditionQuestOneId(questCategory);
@@ -606,7 +598,6 @@ public class QuestUtil
 		return questDynamicQuestOne != null && (questDynamicQuestOne.status == QuestOneStatus.CLEAR || questDynamicQuestOne.status == QuestOneStatus.COMPLETE);
 	}
 
-	// Token: 0x060015F0 RID: 5616 RVA: 0x00113F8C File Offset: 0x0011218C
 	public static List<QuestStaticChapter> CreateHardChapterDataList(QuestUtil.SelectData selectData)
 	{
 		List<int> playableMapIdList = DataManager.DmQuest.GetPlayableMapIdList(selectData.questCategory);
@@ -632,14 +623,12 @@ public class QuestUtil
 		return list2;
 	}
 
-	// Token: 0x060015F1 RID: 5617 RVA: 0x001140DC File Offset: 0x001122DC
 	public static bool IsHardMode(QuestUtil.SelectData selectData)
 	{
 		List<QuestStaticChapter> list = QuestUtil.CreateHardChapterDataList(selectData);
 		return DataManager.DmQuest.QuestStaticData.chapterDataList.Find((QuestStaticChapter item) => item.chapterId == selectData.chapterId) != null && list.Find((QuestStaticChapter item) => item.chapterId == selectData.chapterId) != null;
 	}
 
-	// Token: 0x060015F2 RID: 5618 RVA: 0x0011413C File Offset: 0x0011233C
 	private static List<QuestStaticChapter> CreateHardChapterDataList()
 	{
 		List<QuestStaticChapter> list = DataManager.DmQuest.QuestStaticData.chapterDataList.FindAll((QuestStaticChapter item) => item.hardChapterId != 0);
@@ -659,13 +648,11 @@ public class QuestUtil
 		return list2;
 	}
 
-	// Token: 0x060015F3 RID: 5619 RVA: 0x001141F4 File Offset: 0x001123F4
 	public static bool IsHardMode(int chapterId)
 	{
 		return QuestUtil.CreateHardChapterDataList().Find((QuestStaticChapter item) => item.chapterId == chapterId) != null;
 	}
 
-	// Token: 0x060015F4 RID: 5620 RVA: 0x00114228 File Offset: 0x00112428
 	public static void OpenBannerWebViewWindow(int eventId)
 	{
 		DataManagerEvent.EventData eventData = DataManager.DmEvent.GetEventData(eventId);
@@ -677,7 +664,6 @@ public class QuestUtil
 		CanvasManager.HdlWebViewWindowCtrl.Open(homeBannerData.actionParamURL);
 	}
 
-	// Token: 0x060015F5 RID: 5621 RVA: 0x00114268 File Offset: 0x00112468
 	public static bool EnableEventGrowthExpUpFromGroupQuestId(int groupQuestId)
 	{
 		Predicate<int> <>9__0;
@@ -697,7 +683,6 @@ public class QuestUtil
 		return false;
 	}
 
-	// Token: 0x060015F6 RID: 5622 RVA: 0x00114308 File Offset: 0x00112508
 	public static bool EnableEventGrowthExpUpFromQuesOneId(int questId)
 	{
 		QuestOnePackData qopd = DataManager.DmQuest.GetQuestOnePackData(questId);
@@ -732,7 +717,6 @@ public class QuestUtil
 		return false;
 	}
 
-	// Token: 0x060015F7 RID: 5623 RVA: 0x00114404 File Offset: 0x00112604
 	public static bool IsUnLockInformationCellvalQuest(DateTime tgtTime)
 	{
 		Predicate<QuestStaticMap> <>9__0;
@@ -755,7 +739,6 @@ public class QuestUtil
 		return false;
 	}
 
-	// Token: 0x060015F8 RID: 5624 RVA: 0x001144AC File Offset: 0x001126AC
 	public static bool IsUnLockInformationMainStory2(DateTime tgtTime)
 	{
 		Predicate<QuestStaticMap> <>9__0;
@@ -778,7 +761,6 @@ public class QuestUtil
 		return false;
 	}
 
-	// Token: 0x060015F9 RID: 5625 RVA: 0x00114554 File Offset: 0x00112754
 	public static bool IsUnLockInformationMainStory3(DateTime tgtTime)
 	{
 		Predicate<QuestStaticMap> <>9__0;
@@ -801,7 +783,6 @@ public class QuestUtil
 		return false;
 	}
 
-	// Token: 0x060015FA RID: 5626 RVA: 0x001145FC File Offset: 0x001127FC
 	public static void UpdateBG(Transform bgTr, int index, int count, string mapFolder, string mapPrefix)
 	{
 		Vector3 localPosition = bgTr.localPosition;
@@ -818,7 +799,6 @@ public class QuestUtil
 		bgTr.Find("Tex_Bg").GetComponent<PguiRawImageCtrl>().SetRawImage(string.Format("Texture2D/{0}/{1}{2}", mapFolder, mapPrefix, index / 3 + 1), true, false, null);
 	}
 
-	// Token: 0x060015FB RID: 5627 RVA: 0x001146E8 File Offset: 0x001128E8
 	public static void SetupBG(int selectQuestOneId, QuestStaticChapter.Category category = QuestStaticChapter.Category.INVALID, int selectEventId = 0)
 	{
 		string text = "PanelBg_HomeOut";
@@ -916,7 +896,6 @@ public class QuestUtil
 		CanvasManager.SetScenarioBgInQuestBgTexture(text2);
 	}
 
-	// Token: 0x060015FC RID: 5628 RVA: 0x00114870 File Offset: 0x00112A70
 	public static List<QuestStaticQuestOne.ReleaseConditions> GetEnableReleaseConditionsList(int mapId)
 	{
 		List<QuestStaticQuestGroup> list = new List<QuestStaticQuestGroup>(DataManager.DmQuest.QuestStaticData.mapDataMap[mapId].questGroupList);
@@ -930,7 +909,6 @@ public class QuestUtil
 		return list2[0].ReleaseConditionsList.FindAll((QuestStaticQuestOne.ReleaseConditions item) => item.questId != 0);
 	}
 
-	// Token: 0x060015FD RID: 5629 RVA: 0x00114938 File Offset: 0x00112B38
 	public static void OpenReleaseConditionWindow(int mapId, bool needTime, QuestUIMapInfo questUIMapInfo)
 	{
 		List<QuestStaticQuestOne.ReleaseConditions> enableReleaseConditionsList = QuestUtil.GetEnableReleaseConditionsList(mapId);
@@ -981,7 +959,6 @@ public class QuestUtil
 		CanvasManager.HdlCmnReleaseConditionWindowCtrl.Open(PrjUtil.MakeMessage("解放条件"), list);
 	}
 
-	// Token: 0x060015FE RID: 5630 RVA: 0x00114B48 File Offset: 0x00112D48
 	public static bool HasUnsafeAreaLeft(GameObject mapBoxObject, float leftSidePosX)
 	{
 		RectTransform rectTransform = mapBoxObject.transform as RectTransform;
@@ -996,7 +973,6 @@ public class QuestUtil
 		return vector.x > leftSidePosX;
 	}
 
-	// Token: 0x060015FF RID: 5631 RVA: 0x00114BBC File Offset: 0x00112DBC
 	public static float GetLeftSidePosX(GameObject mapBoxObject)
 	{
 		RectTransform rectTransform = mapBoxObject.transform as RectTransform;
@@ -1007,7 +983,6 @@ public class QuestUtil
 		return vector2.x + rectTransform.rect.width * 0.5f;
 	}
 
-	// Token: 0x06001600 RID: 5632 RVA: 0x00114C58 File Offset: 0x00112E58
 	public static bool HasUnsafeAreaRight(GameObject mapBoxObject, float rightSidePosX)
 	{
 		RectTransform rectTransform = mapBoxObject.transform as RectTransform;
@@ -1023,7 +998,6 @@ public class QuestUtil
 		return vector2.x < rightSidePosX;
 	}
 
-	// Token: 0x06001601 RID: 5633 RVA: 0x00114CE4 File Offset: 0x00112EE4
 	public static float GetRightSidePosX(GameObject mapBoxObject)
 	{
 		RectTransform rectTransform = mapBoxObject.transform as RectTransform;
@@ -1034,7 +1008,6 @@ public class QuestUtil
 		return vector2.x + rectTransform.rect.width * 0.5f;
 	}
 
-	// Token: 0x06001602 RID: 5634 RVA: 0x00114D80 File Offset: 0x00112F80
 	public static QuestUtil.UsrQuestSkipInfo GetSkipInfo(DataManagerMonthlyPack.PurchaseMonthlypackData mpd, QuestOnePackData questOnePackData)
 	{
 		QuestUtil.UsrQuestSkipInfo usrQuestSkipInfo = new QuestUtil.UsrQuestSkipInfo
@@ -1088,7 +1061,6 @@ public class QuestUtil
 		return usrQuestSkipInfo;
 	}
 
-	// Token: 0x06001603 RID: 5635 RVA: 0x00114ED4 File Offset: 0x001130D4
 	public static IEnumerator NoticeKizunaLimitReached(SelCharaDeckCtrl.RequestCallBack callback, int questOneId, List<int> charaIdList, int tryCount = 1, UnityAction<int> tryCountResetAction = null, int pvpKizunaExp = 0, int eventId = 0, bool isPractice = false)
 	{
 		int pushedButtonIndex = 0;
@@ -1285,7 +1257,6 @@ public class QuestUtil
 		yield break;
 	}
 
-	// Token: 0x06001604 RID: 5636 RVA: 0x00114F24 File Offset: 0x00113124
 	private static bool IsExistCampaignKizuna(QuestStaticChapter.Category category)
 	{
 		List<QuestStaticChapter> chapterDataList = DataManager.DmQuest.QuestStaticData.chapterDataList;
@@ -1345,7 +1316,6 @@ public class QuestUtil
 		return false;
 	}
 
-	// Token: 0x06001605 RID: 5637 RVA: 0x001151D0 File Offset: 0x001133D0
 	public static List<DataManagerPhoto.CalcDropBonusResult> GetCalcDropBonusResultDeck(QuestOnePackData qopd, List<PhotoPackData> effectPhotoList, List<DataManagerChara.BonusCharaData> dropBonusCharaList, List<int> pocketReleaseCountList)
 	{
 		List<DataManagerPhoto.CalcDropBonusResult> list = new List<DataManagerPhoto.CalcDropBonusResult>();
@@ -1374,7 +1344,6 @@ public class QuestUtil
 		return list;
 	}
 
-	// Token: 0x06001606 RID: 5638 RVA: 0x001152D8 File Offset: 0x001134D8
 	public static int GetEventId(int questOneId, bool onlyGrowth)
 	{
 		int num = 0;
@@ -1414,7 +1383,6 @@ public class QuestUtil
 		return num;
 	}
 
-	// Token: 0x06001607 RID: 5639 RVA: 0x001153B4 File Offset: 0x001135B4
 	public static bool IsBanTarget(CharaStaticData csd, QuestOnePackData qopd, List<CharaStaticData> checkedList = null)
 	{
 		bool flag = QuestUtil.IsBanTargetBySealed(csd, qopd);
@@ -1429,7 +1397,6 @@ public class QuestUtil
 		return QuestUtil.IsBanTargetByRules(csd, checkedList, qopd);
 	}
 
-	// Token: 0x06001608 RID: 5640 RVA: 0x001153E4 File Offset: 0x001135E4
 	public static bool IsBanTarget(CharaDynamicData cdd, QuestOnePackData qopd, List<CharaStaticData> checkedList = null)
 	{
 		if (cdd == null)
@@ -1460,7 +1427,6 @@ public class QuestUtil
 		return QuestUtil.IsBanTargetByRules(charaStaticData, checkedList, qopd);
 	}
 
-	// Token: 0x06001609 RID: 5641 RVA: 0x00115488 File Offset: 0x00113688
 	private static bool IsBanTargetByRules(CharaStaticData csd, List<CharaStaticData> checkedList, QuestOnePackData qopd)
 	{
 		if (qopd == null || qopd.questOne == null || qopd.questOne.ruleId == 0)
@@ -1479,7 +1445,6 @@ public class QuestUtil
 		return flag;
 	}
 
-	// Token: 0x0600160A RID: 5642 RVA: 0x00115538 File Offset: 0x00113738
 	private static bool IsBanTargetBySealed(CharaStaticData csd, QuestOnePackData qopd)
 	{
 		if (qopd == null || qopd.questGroup == null || !qopd.questGroup.limitGroupFlag || csd == null)
@@ -1508,7 +1473,6 @@ public class QuestUtil
 		return flag;
 	}
 
-	// Token: 0x0600160B RID: 5643 RVA: 0x0011561C File Offset: 0x0011381C
 	private static bool CheckRuleType(CharaStaticData csd, QuestStaticRule rule, List<CharaStaticData> checkedList)
 	{
 		if (csd == null)
@@ -1554,7 +1518,6 @@ public class QuestUtil
 		return flag;
 	}
 
-	// Token: 0x0600160C RID: 5644 RVA: 0x0011571B File Offset: 0x0011391B
 	public static IEnumerator NoticeBanned(SelCharaDeckCtrl.RequestCallBack callback, QuestOnePackData qopd, UserDeckData clone, CharaPackData removeButton, List<CharaPackData> haveCharaPackList)
 	{
 		QuestUtil.<>c__DisplayClass73_0 CS$<>8__locals1 = new QuestUtil.<>c__DisplayClass73_0();
@@ -1621,7 +1584,6 @@ public class QuestUtil
 		yield break;
 	}
 
-	// Token: 0x0600160D RID: 5645 RVA: 0x00115747 File Offset: 0x00113947
 	public static IEnumerator OpenQuestSealedInfo(int target)
 	{
 		List<DataManagerQuest.QuestSealedCharaData> list = DataManager.DmQuest.QuestSealedCharaDatas.FindAll((DataManagerQuest.QuestSealedCharaData item) => item.target == target);
@@ -1639,105 +1601,70 @@ public class QuestUtil
 		yield break;
 	}
 
-	// Token: 0x040011E7 RID: 4583
 	public static readonly string ARAI_STORY_BG = "Texture2D/Bg_Scenario/Jungle/bg_jungle";
 
-	// Token: 0x040011E8 RID: 4584
 	public static readonly string EVENT_BG = "PanelBg_Event";
 
-	// Token: 0x040011E9 RID: 4585
 	public static readonly float MOVING_SQR_MAGNITUDE = 40000f;
 
-	// Token: 0x040011EA RID: 4586
 	public static readonly float DEFAULT_SCREEN_WIDTH = 1280f;
 
-	// Token: 0x040011EB RID: 4587
 	public static readonly float DEFAULT_BG_WIDTH = 1654f;
 
-	// Token: 0x040011EC RID: 4588
 	public static readonly float DEFAULT_SCREEN_HEIGHT = 720f;
 
-	// Token: 0x040011ED RID: 4589
 	public static readonly float MAP_MASK_IMAGE_WIDTH = 89f;
 
-	// Token: 0x040011EE RID: 4590
 	public static readonly float MAP_MASK_IMAGE_HEIGHT = 42f;
 
-	// Token: 0x040011EF RID: 4591
 	public static readonly float BG_OFFSET_POS_Y = QuestUtil.DEFAULT_SCREEN_HEIGHT;
 
-	// Token: 0x040011F0 RID: 4592
 	public static readonly DateTime QuestClearDefaultDateTime = new DateTime(2000, 1, 1, 0, 0, 0);
 
-	// Token: 0x040011F1 RID: 4593
 	public static readonly string TitleMain = "メインストーリー";
 
-	// Token: 0x040011F2 RID: 4594
 	public static readonly string TitleMain2 = "メインストーリーS2";
 
-	// Token: 0x040011F3 RID: 4595
 	public static readonly string TitleMain3 = "メインストーリーS3";
 
-	// Token: 0x040011F4 RID: 4596
 	public static readonly string TitleCellval = "セーバルぶらり旅";
 
-	// Token: 0x040011F5 RID: 4597
 	public static readonly string TitleFriends = "フレンズストーリー";
 
-	// Token: 0x040011F6 RID: 4598
 	public static readonly string TitleEvent = "イベントストーリー";
 
-	// Token: 0x040011F7 RID: 4599
 	public static readonly string TitleArai = "アライさん隊長日誌";
 
-	// Token: 0x040011F8 RID: 4600
 	public static readonly string TitleGrow = "成長クエスト";
 
-	// Token: 0x040011F9 RID: 4601
 	public static readonly string TitleEtcetera = "すぺしゃるクエスト";
 
-	// Token: 0x040011FA RID: 4602
 	public static readonly string MapTexturePrefix = "map_texture0";
 
-	// Token: 0x040011FB RID: 4603
 	public static readonly string Map2TexturePrefix = "map2_texture0";
 
-	// Token: 0x040011FC RID: 4604
 	public static readonly string Map3TexturePrefix = "map3_texture0";
 
-	// Token: 0x040011FD RID: 4605
 	public static readonly string MapTextureFolder = "QuestMap";
 
-	// Token: 0x040011FE RID: 4606
 	public static readonly string MapTextureCellvalPrefix = "cellval_map_texture0";
 
-	// Token: 0x040011FF RID: 4607
 	public static readonly string MapTextureCellvalFolder = "CellvalMap";
 
-	// Token: 0x04001200 RID: 4608
 	public static readonly string WindowWord01 = "本日の残りクリア回数が0になりました。\nクリア回数は毎日0:00に回復します。";
 
-	// Token: 0x04001201 RID: 4609
 	public static readonly string WindowWord02 = "今回の残りクリア回数が0になりました。";
 
-	// Token: 0x04001202 RID: 4610
 	private static readonly int CampaignMaxCount = 1;
 
-	// Token: 0x04001203 RID: 4611
 	private static readonly float Rate10000 = 10000f;
 
-	// Token: 0x02000C46 RID: 3142
-	// (Invoke) Token: 0x0600455A RID: 17754
 	public delegate QuestUtil.SelectData OnGetSelectData();
 
-	// Token: 0x02000C47 RID: 3143
-	// (Invoke) Token: 0x0600455E RID: 17758
 	public delegate bool OnCheck();
 
-	// Token: 0x02000C48 RID: 3144
 	public class ItemOwnBase
 	{
-		// Token: 0x06004561 RID: 17761 RVA: 0x0020E6DA File Offset: 0x0020C8DA
 		public ItemOwnBase(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1745,20 +1672,15 @@ public class QuestUtil
 			this.Icon_Stone = baseTr.Find("Icon_Stone").GetComponent<PguiRawImageCtrl>();
 		}
 
-		// Token: 0x04004AC9 RID: 19145
 		public GameObject baseObj;
 
-		// Token: 0x04004ACA RID: 19146
 		public PguiTextCtrl Num_Txt;
 
-		// Token: 0x04004ACB RID: 19147
 		public PguiRawImageCtrl Icon_Stone;
 	}
 
-	// Token: 0x02000C49 RID: 3145
 	public class QuestListBarCmnInfo
 	{
-		// Token: 0x06004562 RID: 17762 RVA: 0x0020E71C File Offset: 0x0020C91C
 		public QuestListBarCmnInfo(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1794,7 +1716,6 @@ public class QuestUtil
 			this.iconItemCtrl.SetRaycastTargetIconItem(false);
 		}
 
-		// Token: 0x06004563 RID: 17763 RVA: 0x0020E9F4 File Offset: 0x0020CBF4
 		public void Setup(QuestUtil.QuestListBarCmnInfo.SetupParam setupParam)
 		{
 			int num = -1;
@@ -1941,111 +1862,79 @@ public class QuestUtil
 			this.Mark_NumPlus.gameObject.SetActive(num4 >= 0 && flag5);
 		}
 
-		// Token: 0x06004564 RID: 17764 RVA: 0x0020F104 File Offset: 0x0020D304
 		public void SetActiveQuestInfo(bool sw)
 		{
 			this.goQuestInfo.SetActive(sw);
 		}
 
-		// Token: 0x06004565 RID: 17765 RVA: 0x0020F112 File Offset: 0x0020D312
 		public void SetActiveIconItem(bool sw)
 		{
 			this.iconItemCtrl.gameObject.SetActive(sw);
 		}
 
-		// Token: 0x06004566 RID: 17766 RVA: 0x0020F125 File Offset: 0x0020D325
 		public void SetActiveIconPresentBox(bool sw)
 		{
 			this.Icon_PresentBox.gameObject.SetActive(sw);
 		}
 
-		// Token: 0x04004ACC RID: 19148
 		public GameObject baseObj;
 
-		// Token: 0x04004ACD RID: 19149
 		public GameObject DifficultInfo;
 
-		// Token: 0x04004ACE RID: 19150
 		public GameObject StaminaInfo;
 
-		// Token: 0x04004ACF RID: 19151
 		public PguiRawImageCtrl Icon_Item;
 
-		// Token: 0x04004AD0 RID: 19152
 		public IconItemCtrl iconItemCtrl;
 
-		// Token: 0x04004AD1 RID: 19153
 		public PguiImageCtrl Icon_PresentBox;
 
-		// Token: 0x04004AD2 RID: 19154
 		public PguiImageCtrl Mark_Complete;
 
-		// Token: 0x04004AD3 RID: 19155
 		public GameObject goQuestInfo;
 
-		// Token: 0x04004AD4 RID: 19156
 		public PguiTextCtrl numDifficult;
 
-		// Token: 0x04004AD5 RID: 19157
 		public PguiTextCtrl numStamina;
 
-		// Token: 0x04004AD6 RID: 19158
 		public PguiColorCtrl colorDifficult;
 
-		// Token: 0x04004AD7 RID: 19159
 		public PguiColorCtrl colorStamina;
 
-		// Token: 0x04004AD8 RID: 19160
 		public PguiTextCtrl Item_Num_Use;
 
-		// Token: 0x04004AD9 RID: 19161
 		public PguiTextCtrl textQuestName;
 
-		// Token: 0x04004ADA RID: 19162
 		public PguiTextCtrl Num_Count;
 
-		// Token: 0x04004ADB RID: 19163
 		public PguiImageCtrl Mark_NumPlus;
 
-		// Token: 0x04004ADC RID: 19164
 		public PguiImageCtrl Mark_NotContinue;
 
-		// Token: 0x04004ADD RID: 19165
 		public PguiImageCtrl Mark_Story;
 
-		// Token: 0x04004ADE RID: 19166
 		public PguiImageCtrl Mark_NotDhole;
 
-		// Token: 0x04004ADF RID: 19167
 		public PguiImageCtrl Mark_NotLeader;
 
-		// Token: 0x04004AE0 RID: 19168
 		public PguiImageCtrl[] goMissionFlagSub;
 
-		// Token: 0x02001197 RID: 4503
 		public class SetupParam
 		{
-			// Token: 0x0400604C RID: 24652
 			public QuestStaticQuestOne qsqo;
 
-			// Token: 0x0400604D RID: 24653
 			public QuestUtil.SelectData selectData;
 
-			// Token: 0x0400604E RID: 24654
 			public QuestOneStatus questOneStatus;
 
-			// Token: 0x0400604F RID: 24655
 			public int restGroupNum;
 
-			// Token: 0x04006050 RID: 24656
 			public bool enableChangeColor;
 		}
 	}
 
-	// Token: 0x02000C4A RID: 3146
 	public class SelectData
 	{
-		// Token: 0x06004567 RID: 17767 RVA: 0x0020F138 File Offset: 0x0020D338
 		public SelectData()
 		{
 			this.chapterId = 0;
@@ -2057,7 +1946,6 @@ public class QuestUtil
 			this.questCategory = QuestStaticChapter.Category.INVALID;
 		}
 
-		// Token: 0x06004568 RID: 17768 RVA: 0x0020F174 File Offset: 0x0020D374
 		public SelectData(QuestUtil.SelectData data)
 		{
 			this.chapterId = data.chapterId;
@@ -2069,7 +1957,6 @@ public class QuestUtil
 			this.questCategory = data.questCategory;
 		}
 
-		// Token: 0x06004569 RID: 17769 RVA: 0x0020F1DC File Offset: 0x0020D3DC
 		public override bool Equals(object obj)
 		{
 			if (obj == null)
@@ -2080,44 +1967,33 @@ public class QuestUtil
 			return selectData != null && (this.chapterId == selectData.chapterId && this.mapId == selectData.mapId) && this.questCategory == selectData.questCategory;
 		}
 
-		// Token: 0x0600456A RID: 17770 RVA: 0x0020F226 File Offset: 0x0020D426
 		public bool Equals(QuestUtil.SelectData p)
 		{
 			return p != null && (this.chapterId == p.chapterId && this.mapId == p.mapId) && this.questCategory == p.questCategory;
 		}
 
-		// Token: 0x0600456B RID: 17771 RVA: 0x0020F259 File Offset: 0x0020D459
 		public override int GetHashCode()
 		{
 			return base.GetHashCode();
 		}
 
-		// Token: 0x04004AE1 RID: 19169
 		public int chapterId;
 
-		// Token: 0x04004AE2 RID: 19170
 		public int mapId;
 
-		// Token: 0x04004AE3 RID: 19171
 		public int questOneId;
 
-		// Token: 0x04004AE4 RID: 19172
 		public int friendId;
 
-		// Token: 0x04004AE5 RID: 19173
 		public int eventId;
 
-		// Token: 0x04004AE6 RID: 19174
 		public int questGroupId;
 
-		// Token: 0x04004AE7 RID: 19175
 		public QuestStaticChapter.Category questCategory;
 	}
 
-	// Token: 0x02000C4B RID: 3147
 	public class CampaignInfo
 	{
-		// Token: 0x0600456C RID: 17772 RVA: 0x0020F264 File Offset: 0x0020D464
 		public CampaignInfo(Transform baseTr)
 		{
 			this.go = baseTr.Find("SelCmn_CampaignInfo_Quest").gameObject;
@@ -2127,7 +2003,6 @@ public class QuestUtil
 			this.start = false;
 		}
 
-		// Token: 0x0600456D RID: 17773 RVA: 0x0020F2C8 File Offset: 0x0020D4C8
 		public void ResetCampaign()
 		{
 			this.start = false;
@@ -2140,7 +2015,6 @@ public class QuestUtil
 			}
 		}
 
-		// Token: 0x0600456E RID: 17774 RVA: 0x0020F308 File Offset: 0x0020D508
 		public void DispCampaign(List<string> msgList, List<string> timeList)
 		{
 			bool flag = msgList.Count > 0 && timeList.Count > 0;
@@ -2206,78 +2080,54 @@ public class QuestUtil
 			}
 		}
 
-		// Token: 0x04004AE8 RID: 19176
 		public static readonly string DojoText = "挑戦可能！";
 
-		// Token: 0x04004AE9 RID: 19177
 		public GameObject go;
 
-		// Token: 0x04004AEA RID: 19178
 		public PguiTextCtrl Txt_Campaign;
 
-		// Token: 0x04004AEB RID: 19179
 		public PguiTextCtrl Txt_CampaignTime;
 
-		// Token: 0x04004AEC RID: 19180
 		private int count;
 
-		// Token: 0x04004AED RID: 19181
 		private bool start;
 	}
 
-	// Token: 0x02000C4C RID: 3148
 	public enum SkipType
 	{
-		// Token: 0x04004AEF RID: 19183
 		Disable,
-		// Token: 0x04004AF0 RID: 19184
 		EnableNoLimit,
-		// Token: 0x04004AF1 RID: 19185
 		EnableDailyLimit,
-		// Token: 0x04004AF2 RID: 19186
 		EnableWeeklyLimit,
-		// Token: 0x04004AF3 RID: 19187
 		EnableTotalLimit
 	}
 
-	// Token: 0x02000C4D RID: 3149
 	public class UsrQuestSkipInfo
 	{
-		// Token: 0x04004AF4 RID: 19188
 		public bool isSkippable;
 
-		// Token: 0x04004AF5 RID: 19189
 		public bool hasSkipLimit;
 
-		// Token: 0x04004AF6 RID: 19190
 		public bool isSkipByGroup;
 
-		// Token: 0x04004AF7 RID: 19191
 		public string prefixStr = "";
 
-		// Token: 0x04004AF8 RID: 19192
 		public string popupMessage = "";
 
-		// Token: 0x04004AF9 RID: 19193
 		public int restSkipCount;
 
-		// Token: 0x04004AFA RID: 19194
 		public int restSkipRecoveryCount;
 
-		// Token: 0x04004AFB RID: 19195
 		public DataManagerMonthlyPack.PurchaseMonthlypackData monthlyPackData;
 	}
 
-	// Token: 0x02000C4E RID: 3150
 	public class QuestRuleInfo
 	{
-		// Token: 0x06004571 RID: 17777 RVA: 0x0020F4D5 File Offset: 0x0020D6D5
 		public QuestRuleInfo(PguiButtonCtrl btn)
 		{
 			this.buttonRuleInfo = btn;
 		}
 
-		// Token: 0x06004572 RID: 17778 RVA: 0x0020F4E4 File Offset: 0x0020D6E4
 		public void Setup(int ruleId)
 		{
 			this.ruleInfo = string.Empty;
@@ -2333,17 +2183,14 @@ public class QuestUtil
 			this.buttonRuleInfo.AddOnClickListener(new PguiButtonCtrl.OnClick(this.OnClick), PguiButtonCtrl.SoundType.DEFAULT);
 		}
 
-		// Token: 0x06004573 RID: 17779 RVA: 0x0020F72A File Offset: 0x0020D92A
 		private void OnClick(PguiButtonCtrl button)
 		{
 			CanvasManager.HdlOpenWindowBasic.Setup(PrjUtil.MakeMessage("編成条件確認"), PrjUtil.MakeMessage(this.ruleInfo), PguiOpenWindowCtrl.GetButtonPreset(PguiOpenWindowCtrl.PresetType.CLOSE), true, null, null, false);
 			CanvasManager.HdlOpenWindowBasic.Open();
 		}
 
-		// Token: 0x04004AFC RID: 19196
 		public PguiButtonCtrl buttonRuleInfo;
 
-		// Token: 0x04004AFD RID: 19197
 		private string ruleInfo;
 	}
 }

@@ -1,15 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace SGNFW.uGUI
 {
-	// Token: 0x02000226 RID: 550
 	[RequireComponent(typeof(RectTransform))]
 	public class AlphaMask : MonoBehaviour
 	{
-		// Token: 0x06002315 RID: 8981 RVA: 0x00195E08 File Offset: 0x00194008
 		public void Apply(GameObject item)
 		{
 			if (!this.initialized)
@@ -23,7 +21,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x06002316 RID: 8982 RVA: 0x00195E50 File Offset: 0x00194050
 		private void Initialize()
 		{
 			Canvas.ForceUpdateCanvases();
@@ -70,7 +67,6 @@ namespace SGNFW.uGUI
 			this.initialized = true;
 		}
 
-		// Token: 0x06002317 RID: 8983 RVA: 0x0019611C File Offset: 0x0019431C
 		private Material ReplaceShaderToAlphaMask(Material material)
 		{
 			Shader shader = Shader.Find("Hidden/" + material.shader.name);
@@ -94,33 +90,26 @@ namespace SGNFW.uGUI
 			return material2;
 		}
 
-		// Token: 0x06002318 RID: 8984 RVA: 0x001961E3 File Offset: 0x001943E3
 		private void Awake()
 		{
 			this.matList = new List<Material>();
 		}
 
-		// Token: 0x06002319 RID: 8985 RVA: 0x001961F0 File Offset: 0x001943F0
 		private void OnDestroy()
 		{
 			this.matList.Clear();
 			this.matList = null;
 		}
 
-		// Token: 0x04001A78 RID: 6776
 		[SerializeField]
 		private Texture2D texture;
 
-		// Token: 0x04001A79 RID: 6777
 		private Vector2 offset;
 
-		// Token: 0x04001A7A RID: 6778
 		private Vector2 scale;
 
-		// Token: 0x04001A7B RID: 6779
 		private List<Material> matList;
 
-		// Token: 0x04001A7C RID: 6780
 		private bool initialized;
 	}
 }

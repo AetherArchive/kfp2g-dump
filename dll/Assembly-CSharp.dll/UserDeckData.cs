@@ -1,18 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SGNFW.HttpRequest.Protocol;
 
-// Token: 0x02000078 RID: 120
 [Serializable]
 public class UserDeckData
 {
-	// Token: 0x06000438 RID: 1080 RVA: 0x0001CE6F File Offset: 0x0001B06F
 	public UserDeckData.Category GetCategory()
 	{
 		return UserDeckData.Id2Category(this.id);
 	}
 
-	// Token: 0x06000439 RID: 1081 RVA: 0x0001CE7C File Offset: 0x0001B07C
 	public static UserDeckData.Category Id2Category(int id)
 	{
 		if (id <= 100)
@@ -30,22 +27,14 @@ public class UserDeckData
 		return UserDeckData.Category.INVALID;
 	}
 
-	// Token: 0x170000DF RID: 223
-	// (get) Token: 0x0600043A RID: 1082 RVA: 0x0001CE9A File Offset: 0x0001B09A
-	// (set) Token: 0x0600043B RID: 1083 RVA: 0x0001CEA2 File Offset: 0x0001B0A2
 	public List<List<long>> equipPhotoList { get; set; }
 
-	// Token: 0x170000E0 RID: 224
-	// (get) Token: 0x0600043C RID: 1084 RVA: 0x0001CEAB File Offset: 0x0001B0AB
-	// (set) Token: 0x0600043D RID: 1085 RVA: 0x0001CEB3 File Offset: 0x0001B0B3
 	public List<bool> waitSkillList { get; set; }
 
-	// Token: 0x0600043E RID: 1086 RVA: 0x0001CEBC File Offset: 0x0001B0BC
 	public UserDeckData()
 	{
 	}
 
-	// Token: 0x0600043F RID: 1087 RVA: 0x0001CEC4 File Offset: 0x0001B0C4
 	private UserDeckData(UserDeckData udd)
 	{
 		this.id = udd.id;
@@ -63,19 +52,16 @@ public class UserDeckData
 		this.pvpTacticsTermsValueId = udd.pvpTacticsTermsValueId;
 	}
 
-	// Token: 0x06000440 RID: 1088 RVA: 0x0001CF9C File Offset: 0x0001B19C
 	public UserDeckData Clone()
 	{
 		return new UserDeckData(this);
 	}
 
-	// Token: 0x06000441 RID: 1089 RVA: 0x0001CFA4 File Offset: 0x0001B1A4
 	public int GetHelperIndex()
 	{
 		return this.charaIdList.FindIndex((int item) => item == -1);
 	}
 
-	// Token: 0x06000442 RID: 1090 RVA: 0x0001CFD0 File Offset: 0x0001B1D0
 	public int IsEquipPhoto(long photoDataId)
 	{
 		int num = 0;
@@ -102,7 +88,6 @@ public class UserDeckData
 		return num;
 	}
 
-	// Token: 0x06000443 RID: 1091 RVA: 0x0001D07C File Offset: 0x0001B27C
 	public int CalcDeckKemoStatusWithPhoto(bool withoutDhole, int questOneId = 0)
 	{
 		int num = 0;
@@ -171,7 +156,6 @@ public class UserDeckData
 		return num;
 	}
 
-	// Token: 0x06000444 RID: 1092 RVA: 0x0001D32C File Offset: 0x0001B52C
 	public int CalcTotalPlasmPoint(bool withoutDhole)
 	{
 		int num = 0;
@@ -188,7 +172,6 @@ public class UserDeckData
 		return num;
 	}
 
-	// Token: 0x06000445 RID: 1093 RVA: 0x0001D3E4 File Offset: 0x0001B5E4
 	public void UpdateByServer(Decks serverData)
 	{
 		this.id = serverData.deck_id;
@@ -215,7 +198,6 @@ public class UserDeckData
 		this.pvpTacticsTermsValueId = serverData.tactics_param3;
 	}
 
-	// Token: 0x06000446 RID: 1094 RVA: 0x0001D544 File Offset: 0x0001B744
 	public Decks CreateByServer()
 	{
 		Decks decks = new Decks
@@ -246,46 +228,31 @@ public class UserDeckData
 		return decks;
 	}
 
-	// Token: 0x040004EF RID: 1263
 	public const int MAX_FRAME_NUM = 5;
 
-	// Token: 0x040004F0 RID: 1264
 	public const int DECK_HELPER_CHARA_ID = -1;
 
-	// Token: 0x040004F1 RID: 1265
 	public const int DECK_EMPTY_CHARA_ID = 0;
 
-	// Token: 0x040004F2 RID: 1266
 	public int id;
 
-	// Token: 0x040004F3 RID: 1267
 	public string name;
 
-	// Token: 0x040004F4 RID: 1268
 	public List<int> charaIdList;
 
-	// Token: 0x040004F5 RID: 1269
 	public int masterSkillId;
 
-	// Token: 0x040004F8 RID: 1272
 	public int pvpTacticsTypeId;
 
-	// Token: 0x040004F9 RID: 1273
 	public int pvpTacticsTermsTypeId;
 
-	// Token: 0x040004FA RID: 1274
 	public int pvpTacticsTermsValueId;
 
-	// Token: 0x02000668 RID: 1640
 	public enum Category
 	{
-		// Token: 0x04002EDB RID: 11995
 		INVALID,
-		// Token: 0x04002EDC RID: 11996
 		NORMAL,
-		// Token: 0x04002EDD RID: 11997
 		PVP,
-		// Token: 0x04002EDE RID: 11998
 		TRAINING
 	}
 }

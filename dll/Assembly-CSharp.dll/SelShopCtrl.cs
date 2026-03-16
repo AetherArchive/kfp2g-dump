@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,27 +9,14 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x0200017E RID: 382
 public class SelShopCtrl : MonoBehaviour
 {
-	// Token: 0x170003C7 RID: 967
-	// (get) Token: 0x0600187B RID: 6267 RVA: 0x0012C053 File Offset: 0x0012A253
-	// (set) Token: 0x0600187C RID: 6268 RVA: 0x0012C05B File Offset: 0x0012A25B
 	private SelShopCtrl.State currentStatus { get; set; }
 
-	// Token: 0x170003C8 RID: 968
-	// (get) Token: 0x0600187D RID: 6269 RVA: 0x0012C064 File Offset: 0x0012A264
-	// (set) Token: 0x0600187E RID: 6270 RVA: 0x0012C06C File Offset: 0x0012A26C
 	private SelShopCtrl.State requestStatus { get; set; }
 
-	// Token: 0x170003C9 RID: 969
-	// (get) Token: 0x0600187F RID: 6271 RVA: 0x0012C075 File Offset: 0x0012A275
-	// (set) Token: 0x06001880 RID: 6272 RVA: 0x0012C07D File Offset: 0x0012A27D
 	private int currentTabIndex { get; set; }
 
-	// Token: 0x170003CA RID: 970
-	// (get) Token: 0x06001881 RID: 6273 RVA: 0x0012C086 File Offset: 0x0012A286
-	// (set) Token: 0x06001882 RID: 6274 RVA: 0x0012C091 File Offset: 0x0012A291
 	public bool IsEnableScene
 	{
 		get
@@ -41,27 +28,14 @@ public class SelShopCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x170003CB RID: 971
-	// (get) Token: 0x06001883 RID: 6275 RVA: 0x0012C093 File Offset: 0x0012A293
-	// (set) Token: 0x06001884 RID: 6276 RVA: 0x0012C09B File Offset: 0x0012A29B
 	public HashSet<int> DispNewGoodsId { get; set; } = new HashSet<int>();
 
-	// Token: 0x170003CC RID: 972
-	// (get) Token: 0x06001885 RID: 6277 RVA: 0x0012C0A4 File Offset: 0x0012A2A4
-	// (set) Token: 0x06001886 RID: 6278 RVA: 0x0012C0AC File Offset: 0x0012A2AC
 	public SceneManager.SceneName RequestNextScene { get; private set; }
 
-	// Token: 0x170003CD RID: 973
-	// (get) Token: 0x06001887 RID: 6279 RVA: 0x0012C0B5 File Offset: 0x0012A2B5
-	// (set) Token: 0x06001888 RID: 6280 RVA: 0x0012C0BD File Offset: 0x0012A2BD
 	public object RequestNextSceneArgs { get; private set; }
 
-	// Token: 0x170003CE RID: 974
-	// (get) Token: 0x06001889 RID: 6281 RVA: 0x0012C0C6 File Offset: 0x0012A2C6
-	// (set) Token: 0x0600188A RID: 6282 RVA: 0x0012C0CE File Offset: 0x0012A2CE
 	private string SearchText { get; set; }
 
-	// Token: 0x0600188B RID: 6283 RVA: 0x0012C0D8 File Offset: 0x0012A2D8
 	public void Init()
 	{
 		this.requestStatus = SelShopCtrl.State.INVALID;
@@ -156,7 +130,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.selAssistantCtrl.Init(SelAssistantCtrl.Scene.SHOP);
 	}
 
-	// Token: 0x0600188C RID: 6284 RVA: 0x0012C79C File Offset: 0x0012A99C
 	public void Setup(SceneShopArgs args = null)
 	{
 		this.requestStatus = SelShopCtrl.State.INVALID;
@@ -175,7 +148,6 @@ public class SelShopCtrl : MonoBehaviour
 		}, false);
 	}
 
-	// Token: 0x0600188D RID: 6285 RVA: 0x0012C828 File Offset: 0x0012AA28
 	public void Teardown()
 	{
 		if (this.renderTextureChara != null)
@@ -185,7 +157,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.ReleaseShopData();
 	}
 
-	// Token: 0x0600188E RID: 6286 RVA: 0x0012C860 File Offset: 0x0012AA60
 	public void UpdateSel()
 	{
 		if (this.renderTextureChara != this.selAssistantCtrl.renderTextureChara)
@@ -254,7 +225,6 @@ public class SelShopCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600188F RID: 6287 RVA: 0x0012CAE0 File Offset: 0x0012ACE0
 	public void Destroy()
 	{
 		this.windowBuyEnd = null;
@@ -290,7 +260,6 @@ public class SelShopCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001890 RID: 6288 RVA: 0x0012CC26 File Offset: 0x0012AE26
 	private IEnumerator RequestSetup()
 	{
 		DataManager.DmShop.RequestGetShopList();
@@ -318,7 +287,6 @@ public class SelShopCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001891 RID: 6289 RVA: 0x0012CC38 File Offset: 0x0012AE38
 	private void SetupShopList()
 	{
 		this.SetupHiddenObject();
@@ -349,7 +317,6 @@ public class SelShopCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001892 RID: 6290 RVA: 0x0012CD78 File Offset: 0x0012AF78
 	private void SetupShop()
 	{
 		bool flag = false;
@@ -373,7 +340,6 @@ public class SelShopCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001893 RID: 6291 RVA: 0x0012CE04 File Offset: 0x0012B004
 	private void SetupHiddenObject()
 	{
 		this.DispNewGoodsId.Clear();
@@ -385,14 +351,12 @@ public class SelShopCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001894 RID: 6292 RVA: 0x0012CE94 File Offset: 0x0012B094
 	private void SetupShopListCreate(ShopData.TabCategory category)
 	{
 		List<ShopData> list = DataManager.DmShop.GetShopDataList(true, true, category);
 		this.shopDataList[(int)category] = list;
 	}
 
-	// Token: 0x06001895 RID: 6293 RVA: 0x0012CEBC File Offset: 0x0012B0BC
 	private void SetupShopListGUI(ShopData.TabCategory tabCategory)
 	{
 		this.guiData.ScrollViewList[(int)tabCategory].movementType = ScrollRect.MovementType.Elastic;
@@ -427,7 +391,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.guiData.ScrollBarList[(int)tabCategory].gameObject.SetActive(true);
 	}
 
-	// Token: 0x06001896 RID: 6294 RVA: 0x0012D178 File Offset: 0x0012B378
 	private void SetupTab()
 	{
 		for (int i = 0; i < 4; i++)
@@ -448,7 +411,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.OnSelectTab(this.currentTabIndex);
 	}
 
-	// Token: 0x06001897 RID: 6295 RVA: 0x0012D280 File Offset: 0x0012B480
 	private bool OnSelectTab(int tabIdx)
 	{
 		int num = 0;
@@ -464,7 +426,6 @@ public class SelShopCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001898 RID: 6296 RVA: 0x0012D2F4 File Offset: 0x0012B4F4
 	private void SortOneDataList(ShopData shopData)
 	{
 		ShopData.Sort sortType = shopData.SortType;
@@ -478,7 +439,6 @@ public class SelShopCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001899 RID: 6297 RVA: 0x0012D3C3 File Offset: 0x0012B5C3
 	private IEnumerator BuyEndUpdate()
 	{
 		while (!this.windowBuyEnd.owCtrl.FinishedClose())
@@ -493,7 +453,6 @@ public class SelShopCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600189A RID: 6298 RVA: 0x0012D3D4 File Offset: 0x0012B5D4
 	private void ItemUpdate()
 	{
 		if (this.shopDataList[this.currentTabIndex].Count == 0)
@@ -519,7 +478,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.guiShopWindowList[this.currentShopWindowFlip].TxtNoneFilteredObj.SetActive(this.shopDataList[this.currentTabIndex][this.currentShopIndex].oneDataList.Count <= 0);
 	}
 
-	// Token: 0x0600189B RID: 6299 RVA: 0x0012D52D File Offset: 0x0012B72D
 	private IEnumerator RequestWindowBuyCheck()
 	{
 		this.windowBuyConfirmCurrent.owCtrl.Setup(PrjUtil.MakeMessage(this.windowBuyConfirmCurrent.title), PrjUtil.MakeMessage(this.windowBuyConfirmCurrent.info), PguiOpenWindowCtrl.GetButtonPreset(this.windowBuyConfirmCurrent.notBuyPhoto ? PguiOpenWindowCtrl.PresetType.CLOSE_GREEN : PguiOpenWindowCtrl.PresetType.CANCEL_OK), true, new PguiOpenWindowCtrl.Callback(this.OnClickOwButton), null, false);
@@ -541,7 +499,6 @@ public class SelShopCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600189C RID: 6300 RVA: 0x0012D53C File Offset: 0x0012B73C
 	private IEnumerator RequestWindowBuyEnd()
 	{
 		while (!this.windowBuyConfirmCurrent.owCtrl.FinishedClose())
@@ -587,7 +544,6 @@ public class SelShopCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600189D RID: 6301 RVA: 0x0012D54C File Offset: 0x0012B74C
 	private bool OnClickOwButton(int index)
 	{
 		SelShopCtrl.State currentStatus = this.currentStatus;
@@ -644,7 +600,6 @@ public class SelShopCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x0600189E RID: 6302 RVA: 0x0012D6C4 File Offset: 0x0012B8C4
 	private void OnStartShopList(int index, GameObject go, int tabCategoryId)
 	{
 		if (this.shopDataList[tabCategoryId].Count <= index)
@@ -709,7 +664,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.shopBtnDataList[tabCategoryId][index].Txt.text = this.shopDataList[tabCategoryId][index].shopName;
 	}
 
-	// Token: 0x0600189F RID: 6303 RVA: 0x0012DA1C File Offset: 0x0012BC1C
 	private void OnStartBuyItemList(int index, GameObject go)
 	{
 		GameObject gameObject = (GameObject)AssetManager.GetAssetData("Cmn/GUI/Prefab/CmnShop_BuyItem");
@@ -725,7 +679,6 @@ public class SelShopCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060018A0 RID: 6304 RVA: 0x0012DAC4 File Offset: 0x0012BCC4
 	private void OnUpdateBuyItemList(int index, GameObject go)
 	{
 		HashSet<int> oldGoodsIdList = DataManager.DmShop.GetOldGoodsIdList();
@@ -856,7 +809,6 @@ public class SelShopCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060018A1 RID: 6305 RVA: 0x0012E196 File Offset: 0x0012C396
 	private void OnUpdateItem(int index, GameObject go)
 	{
 		if (this.charaGrowNeedInfoList != null && index < this.charaGrowNeedInfoList.Count)
@@ -868,7 +820,6 @@ public class SelShopCtrl : MonoBehaviour
 		go.SetActive(false);
 	}
 
-	// Token: 0x060018A2 RID: 6306 RVA: 0x0012E1D0 File Offset: 0x0012C3D0
 	public void OnStartBulkItem(int index, GameObject go)
 	{
 		SelShopCtrl.GridGUI gridGUI;
@@ -897,13 +848,11 @@ public class SelShopCtrl : MonoBehaviour
 		this.ItemSetup(index, gridGUI);
 	}
 
-	// Token: 0x060018A3 RID: 6307 RVA: 0x0012E2B8 File Offset: 0x0012C4B8
 	public void OnUpdateBulkItem(int index, GameObject go)
 	{
 		this.ItemSetup(index, new SelShopCtrl.GridGUI(go));
 	}
 
-	// Token: 0x060018A4 RID: 6308 RVA: 0x0012E2C8 File Offset: 0x0012C4C8
 	private void ItemSetup(int index, SelShopCtrl.GridGUI gridGUI)
 	{
 		int num = 0;
@@ -927,7 +876,6 @@ public class SelShopCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060018A5 RID: 6309 RVA: 0x0012E398 File Offset: 0x0012C598
 	private void OnClickPhotoGrowButton(PguiButtonCtrl button)
 	{
 		this.windowBuyConfirmCurrent.owCtrl.ForceClose();
@@ -945,7 +893,6 @@ public class SelShopCtrl : MonoBehaviour
 		};
 	}
 
-	// Token: 0x060018A6 RID: 6310 RVA: 0x0012E438 File Offset: 0x0012C638
 	private void OnClickPhotoSellButton(PguiButtonCtrl button)
 	{
 		this.windowBuyConfirmCurrent.owCtrl.ForceClose();
@@ -962,7 +909,6 @@ public class SelShopCtrl : MonoBehaviour
 		};
 	}
 
-	// Token: 0x060018A7 RID: 6311 RVA: 0x0012E4D4 File Offset: 0x0012C6D4
 	private void OnSliderValueChanged(float val)
 	{
 		if (this.currentStatus != SelShopCtrl.State.SHOP_BUY_CHECK)
@@ -973,7 +919,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.BuyItemUpdate(true);
 	}
 
-	// Token: 0x060018A8 RID: 6312 RVA: 0x0012E528 File Offset: 0x0012C728
 	private void OnClickPlusButton(PguiButtonCtrl button)
 	{
 		if (this.currentStatus != SelShopCtrl.State.SHOP_BUY_CHECK)
@@ -989,7 +934,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.BuyItemUpdate(true);
 	}
 
-	// Token: 0x060018A9 RID: 6313 RVA: 0x0012E59C File Offset: 0x0012C79C
 	private void OnClickMinusButton(PguiButtonCtrl button)
 	{
 		if (this.currentStatus != SelShopCtrl.State.SHOP_BUY_CHECK)
@@ -1005,7 +949,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.BuyItemUpdate(true);
 	}
 
-	// Token: 0x060018AA RID: 6314 RVA: 0x0012E60D File Offset: 0x0012C80D
 	private void OnClickPurchaseConfirmButton(PguiButtonCtrl button)
 	{
 		if (this.currentStatus != SelShopCtrl.State.SHOP_BUY_CHECK)
@@ -1015,7 +958,6 @@ public class SelShopCtrl : MonoBehaviour
 		CanvasManager.HdlPurchaseConfirmWindow.Initialize(this.windowBuyConfirmCurrent.itemData);
 	}
 
-	// Token: 0x060018AB RID: 6315 RVA: 0x0012E630 File Offset: 0x0012C830
 	private void OnClickMaxButton(PguiButtonCtrl button)
 	{
 		if (this.currentStatus != SelShopCtrl.State.SHOP_BUY_CHECK)
@@ -1027,7 +969,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.BuyItemUpdate(true);
 	}
 
-	// Token: 0x060018AC RID: 6316 RVA: 0x0012E680 File Offset: 0x0012C880
 	private void OnClickMinButton(PguiButtonCtrl button)
 	{
 		if (this.currentStatus != SelShopCtrl.State.SHOP_BUY_CHECK)
@@ -1039,7 +980,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.BuyItemUpdate(true);
 	}
 
-	// Token: 0x060018AD RID: 6317 RVA: 0x0012E6BC File Offset: 0x0012C8BC
 	private void OnClickGetButton(PguiButtonCtrl button)
 	{
 		SelShopCtrl.ShopBtn shopBtn = null;
@@ -1080,7 +1020,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.StartShop();
 	}
 
-	// Token: 0x060018AE RID: 6318 RVA: 0x0012E84C File Offset: 0x0012CA4C
 	private void StartShop()
 	{
 		this.guiData.back.SetActive(false);
@@ -1104,7 +1043,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.requestStatus = SelShopCtrl.State.SHOP;
 	}
 
-	// Token: 0x060018AF RID: 6319 RVA: 0x0012E98C File Offset: 0x0012CB8C
 	private void EndTimeUpdate()
 	{
 		PguiTextCtrl endTimeText = this.guiShopWindowList[this.currentShopWindowFlip].EndTimeText;
@@ -1127,7 +1065,6 @@ public class SelShopCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060018B0 RID: 6320 RVA: 0x0012EA9C File Offset: 0x0012CC9C
 	private void ChangeCurrentShopData(int index, int next, bool positionReset)
 	{
 		this.currentShopIndex = index;
@@ -1209,7 +1146,6 @@ public class SelShopCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060018B1 RID: 6321 RVA: 0x0012EE90 File Offset: 0x0012D090
 	private void OnClickPageButtonInternal(int move)
 	{
 		if (this.windowChangeAnime != null)
@@ -1235,7 +1171,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.windowChangeAnime = SelShopCtrl.WindowChangeAnime(move, component, component2);
 	}
 
-	// Token: 0x060018B2 RID: 6322 RVA: 0x0012F00E File Offset: 0x0012D20E
 	private static IEnumerator WindowChangeAnime(int move, SimpleAnimation animOut, SimpleAnimation animIn)
 	{
 		bool isOutFinish = false;
@@ -1251,26 +1186,22 @@ public class SelShopCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060018B3 RID: 6323 RVA: 0x0012F02B File Offset: 0x0012D22B
 	private void OnClickCheckButton(PguiButtonCtrl button)
 	{
 		this.SetBuyItemMode(!this.isBulkExChangeMode);
 		this.UpdateItemList();
 	}
 
-	// Token: 0x060018B4 RID: 6324 RVA: 0x0012F042 File Offset: 0x0012D242
 	private void OnClickPrevButton(PguiButtonCtrl button)
 	{
 		this.OnClickPageButtonInternal(-1);
 	}
 
-	// Token: 0x060018B5 RID: 6325 RVA: 0x0012F04B File Offset: 0x0012D24B
 	private void OnClickNextButton(PguiButtonCtrl button)
 	{
 		this.OnClickPageButtonInternal(1);
 	}
 
-	// Token: 0x060018B6 RID: 6326 RVA: 0x0012F054 File Offset: 0x0012D254
 	private void SelectGoods(ShopData.ItemOne shopItemOne)
 	{
 		int num = shopItemOne.maxChangeNum - shopItemOne.nowChangeNum;
@@ -1290,7 +1221,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.guiShopWindowList[this.currentShopWindowFlip].ScrollView.Refresh();
 	}
 
-	// Token: 0x060018B7 RID: 6327 RVA: 0x0012F12C File Offset: 0x0012D32C
 	private void OnClickItemButton(PguiButtonCtrl button)
 	{
 		ShopData.ItemOne itemOne = this.shopDataList[this.currentTabIndex][this.currentShopIndex].oneDataList.Find((ShopData.ItemOne item) => item.goodsId == button.GetComponent<PguiDataHolder>().id);
@@ -1558,7 +1488,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.SelectGoods(itemOne);
 	}
 
-	// Token: 0x060018B8 RID: 6328 RVA: 0x0012FDC4 File Offset: 0x0012DFC4
 	private void OnClickExchangeButton(PguiButtonCtrl button)
 	{
 		if (!this.isBulkExChangeMode)
@@ -1711,7 +1640,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.SetMoneyImage(this.windowBuyConfirmCurrent.UseMoneyImage, 40f);
 	}
 
-	// Token: 0x060018B9 RID: 6329 RVA: 0x00130550 File Offset: 0x0012E750
 	private void SetMoneyImage(PguiRawImageCtrl rawImage, float size = 40f)
 	{
 		if (!rawImage)
@@ -1729,7 +1657,6 @@ public class SelShopCtrl : MonoBehaviour
 		rawImage.GetComponent<RectTransform>().sizeDelta = new Vector2(size, size);
 	}
 
-	// Token: 0x060018BA RID: 6330 RVA: 0x001305C8 File Offset: 0x0012E7C8
 	private void BuyItemUpdate(bool isBuy = true)
 	{
 		bool flag = this.windowBuyConfirmCurrent.buyCount > 1;
@@ -1759,7 +1686,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.SetMoneyImage(this.windowBuyConfirmCurrent.UseMoneyImage, 40f);
 	}
 
-	// Token: 0x060018BB RID: 6331 RVA: 0x001307BC File Offset: 0x0012E9BC
 	private void OnClickItemInfo(PguiButtonCtrl button)
 	{
 		ShopData.ItemOne itemOne = this.shopDataList[this.currentTabIndex][this.currentShopIndex].oneDataList.Find((ShopData.ItemOne item) => item.goodsId == button.transform.parent.GetComponent<PguiDataHolder>().id);
@@ -1771,7 +1697,6 @@ public class SelShopCtrl : MonoBehaviour
 		CanvasManager.HdlItemPresetWindowCtrl.OpenByItem(itemData);
 	}
 
-	// Token: 0x060018BC RID: 6332 RVA: 0x0013082C File Offset: 0x0012EA2C
 	private void OnClickItemLock(PguiButtonCtrl button)
 	{
 		ShopData.ItemOne shopItemOne = this.shopDataList[this.currentTabIndex][this.currentShopIndex].oneDataList.Find((ShopData.ItemOne item) => item.goodsId == button.transform.parent.GetComponent<PguiDataHolder>().id);
@@ -1805,7 +1730,6 @@ public class SelShopCtrl : MonoBehaviour
 		CanvasManager.HdlCmnReleaseConditionWindowCtrl.Open(PrjUtil.MakeMessage("解放条件"), list);
 	}
 
-	// Token: 0x060018BD RID: 6333 RVA: 0x00130954 File Offset: 0x0012EB54
 	private int CalcBuyItemMax()
 	{
 		if (this.windowBuyConfirmCurrent.itemData == null)
@@ -1826,7 +1750,6 @@ public class SelShopCtrl : MonoBehaviour
 		return Math.Min(int.MaxValue / itemData.itemNum, num6);
 	}
 
-	// Token: 0x060018BE RID: 6334 RVA: 0x00130A58 File Offset: 0x0012EC58
 	private SelShopCtrl.ItemBuyCheckResult ItemBuyCheck(ShopData.ItemOne item)
 	{
 		SelShopCtrl.ItemBuyCheckResult itemBuyCheckResult = new SelShopCtrl.ItemBuyCheckResult();
@@ -1874,13 +1797,11 @@ public class SelShopCtrl : MonoBehaviour
 		return itemBuyCheckResult;
 	}
 
-	// Token: 0x060018BF RID: 6335 RVA: 0x00130B1E File Offset: 0x0012ED1E
 	private int GetShopCount()
 	{
 		return this.shopDataList[this.currentTabIndex].FindAll((ShopData x) => x.category != ShopData.Category.PURCHASE && x.category != ShopData.Category.MONTHLYPACK).Count;
 	}
 
-	// Token: 0x060018C0 RID: 6336 RVA: 0x00130B5C File Offset: 0x0012ED5C
 	public bool OnClickReturnButton()
 	{
 		if ((this.openShop != null && this.openShop.shopId != 0 && !this.openShop.disableSceneBack) || this.currentStatus != SelShopCtrl.State.SHOP)
@@ -1909,7 +1830,6 @@ public class SelShopCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x060018C1 RID: 6337 RVA: 0x00130D08 File Offset: 0x0012EF08
 	public void ReleaseShopData()
 	{
 		foreach (List<SelShopCtrl.ShopBtn> list in this.shopBtnDataList)
@@ -1938,7 +1858,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.renderTextureChara = null;
 	}
 
-	// Token: 0x060018C2 RID: 6338 RVA: 0x00130EA0 File Offset: 0x0012F0A0
 	private void ConvertBGImage(int tabIdx, int shopIdx)
 	{
 		if ((this.shopDataList[tabIdx][shopIdx].category == ShopData.Category.EVENT || this.shopDataList[tabIdx][shopIdx].category == ShopData.Category.EVENT_NOITEM_HIDE) && (this.currentStatus == SelShopCtrl.State.SHOP || this.currentStatus == SelShopCtrl.State.SHOP_BUY_CHECK || this.currentStatus == SelShopCtrl.State.SHOP_BUY_END))
@@ -1949,7 +1868,6 @@ public class SelShopCtrl : MonoBehaviour
 		CanvasManager.SetBgTexture("selbg_shop");
 	}
 
-	// Token: 0x060018C3 RID: 6339 RVA: 0x00130F14 File Offset: 0x0012F114
 	private void OnClickResetSearch(PguiButtonCtrl clickBtn = null)
 	{
 		this.SearchText = "";
@@ -1963,7 +1881,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.UpdateItemList();
 	}
 
-	// Token: 0x060018C4 RID: 6340 RVA: 0x00130FD4 File Offset: 0x0012F1D4
 	private void SetFilteredItemList()
 	{
 		List<ShopData.ItemOne> list = new List<ShopData.ItemOne>();
@@ -1991,7 +1908,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.UpdateItemList();
 	}
 
-	// Token: 0x060018C5 RID: 6341 RVA: 0x00131064 File Offset: 0x0012F264
 	private void UpdateItemList()
 	{
 		SelShopCtrl.GUIShopWindow guishopWindow = this.guiShopWindowList[this.currentShopWindowFlip];
@@ -2010,7 +1926,6 @@ public class SelShopCtrl : MonoBehaviour
 		guishopWindow.BaseObj.transform.Find("InBase/ScrollView").GetComponent<ReuseScroll>().Resize(count / SelShopCtrl.Shop_ListSet_Btn.SCROLL_ITEM_NUN_H + ((count % SelShopCtrl.Shop_ListSet_Btn.SCROLL_ITEM_NUN_H == 0) ? 0 : 1), 0);
 	}
 
-	// Token: 0x060018C6 RID: 6342 RVA: 0x0013116C File Offset: 0x0012F36C
 	private void SetBuyItemMode(bool isBulk)
 	{
 		this.isBulkExChangeMode = isBulk;
@@ -2020,7 +1935,6 @@ public class SelShopCtrl : MonoBehaviour
 		this.selectItemMoney = 0;
 	}
 
-	// Token: 0x060018C7 RID: 6343 RVA: 0x001311C0 File Offset: 0x0012F3C0
 	private void ShowItemResultWindow(List<ItemData> dispItemList)
 	{
 		int priceItemId = this.shopDataList[this.currentTabIndex][this.currentShopIndex].priceItemId;
@@ -2044,7 +1958,6 @@ public class SelShopCtrl : MonoBehaviour
 		CanvasManager.HdlGetItemSetWindowCtrl.Open();
 	}
 
-	// Token: 0x060018C8 RID: 6344 RVA: 0x00131284 File Offset: 0x0012F484
 	public void RequestSetupShopAssistant()
 	{
 		this.currentCharaId = DataManager.DmAssistant.UserData.shopAssistantCharaId;
@@ -2052,123 +1965,82 @@ public class SelShopCtrl : MonoBehaviour
 		this.renderTextureChara = this.selAssistantCtrl.renderTextureChara;
 	}
 
-	// Token: 0x040012D9 RID: 4825
 	private float SPACE_SIZE = 10f;
 
-	// Token: 0x040012DA RID: 4826
 	private const int BUY_COUNT_MAX = 9999999;
 
-	// Token: 0x040012DB RID: 4827
 	public SelAssistantCtrl selAssistantCtrl;
 
-	// Token: 0x040012DF RID: 4831
 	public SelShopCtrl.GUI guiData;
 
-	// Token: 0x040012E0 RID: 4832
 	private List<SelShopCtrl.GUIShopWindow> guiShopWindowList;
 
-	// Token: 0x040012E1 RID: 4833
 	private GameObject mainObj;
 
-	// Token: 0x040012E2 RID: 4834
 	public RenderTextureChara renderTextureChara;
 
-	// Token: 0x040012E3 RID: 4835
 	private int currentShopIndex;
 
-	// Token: 0x040012E4 RID: 4836
 	private int currentShopWindowFlip;
 
-	// Token: 0x040012E5 RID: 4837
 	private List<List<ShopData>> shopDataList;
 
-	// Token: 0x040012E6 RID: 4838
 	private List<List<SelShopCtrl.ShopBtn>> shopBtnDataList;
 
-	// Token: 0x040012E7 RID: 4839
 	private SelShopCtrl.WindowBuyConfirmNormal windowBuyConfirmNormal;
 
-	// Token: 0x040012E8 RID: 4840
 	private SelShopCtrl.WindowBuyConfirmKiraKira windowBuyConfirmKiraKira;
 
-	// Token: 0x040012E9 RID: 4841
 	private SelShopCtrl.WindowBuyConfirmGrow windowBuyConfirmGrow;
 
-	// Token: 0x040012EA RID: 4842
 	private SelShopCtrl.WindowBuyConfirmGrowKiraKira windowBuyConfirmGrowKiraKira;
 
-	// Token: 0x040012EB RID: 4843
 	private SelShopCtrl.WindowBuyConfirmBulk windowBuyConfirmBulk;
 
-	// Token: 0x040012EC RID: 4844
 	private SelShopCtrl.WindowBuyConfirm windowBuyConfirmCurrent;
 
-	// Token: 0x040012ED RID: 4845
 	private List<CharaGrowItemInfo.NeedInfo> charaGrowNeedInfoList;
 
-	// Token: 0x040012EE RID: 4846
 	private SelShopCtrl.WindowBuyEnd windowBuyEnd;
 
-	// Token: 0x040012EF RID: 4847
 	private SceneShopArgs openShop;
 
-	// Token: 0x040012F0 RID: 4848
 	private int currentCharaId;
 
-	// Token: 0x040012F1 RID: 4849
 	private IEnumerator windowChangeAnime;
 
-	// Token: 0x040012F2 RID: 4850
 	private bool isBulkExChangeMode;
 
-	// Token: 0x040012F4 RID: 4852
 	private bool isDispWarning;
 
-	// Token: 0x040012F7 RID: 4855
 	public List<int> selectGoodsIds = new List<int>();
 
-	// Token: 0x040012F8 RID: 4856
 	public List<ShopData.ItemOne> itemDataList = new List<ShopData.ItemOne>();
 
-	// Token: 0x040012F9 RID: 4857
 	private int selectItemMoney;
 
-	// Token: 0x040012FA RID: 4858
 	private List<ItemData> BuyitemData = new List<ItemData>();
 
-	// Token: 0x040012FB RID: 4859
 	private Dictionary<int, SelShopCtrl.GridGUI> gridGUIMap = new Dictionary<int, SelShopCtrl.GridGUI>();
 
-	// Token: 0x040012FC RID: 4860
 	private int columnCount;
 
-	// Token: 0x040012FD RID: 4861
 	private SelShopCtrl.WindowTextSearchChange windowTextSearchChange;
 
-	// Token: 0x040012FF RID: 4863
 	private List<ShopData.ItemOne> allItemDataList;
 
-	// Token: 0x02000D4D RID: 3405
 	private enum State
 	{
-		// Token: 0x04004E0A RID: 19978
 		INVALID,
-		// Token: 0x04004E0B RID: 19979
 		TOP,
-		// Token: 0x04004E0C RID: 19980
 		SHOP,
-		// Token: 0x04004E0D RID: 19981
 		SHOP_BUY_CHECK,
-		// Token: 0x04004E0E RID: 19982
 		SHOP_BUY_END,
-		// Token: 0x04004E0F RID: 19983
 		MAX
 	}
 
-	// Token: 0x02000D4E RID: 3406
 	public class Shop_ListSet_Btn
 	{
-		// Token: 0x060048B7 RID: 18615 RVA: 0x0021CD04 File Offset: 0x0021AF04
 		public Shop_ListSet_Btn(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -2190,62 +2062,43 @@ public class SelShopCtrl : MonoBehaviour
 			this.Select_Mark = baseTr.Find("BaseImage/Btn_CheckBox/BaseImage/Img_Check").gameObject;
 		}
 
-		// Token: 0x04004E10 RID: 19984
 		public static readonly int SCROLL_ITEM_NUN_H = 4;
 
-		// Token: 0x04004E11 RID: 19985
 		public GameObject baseObj;
 
-		// Token: 0x04004E12 RID: 19986
 		public PguiButtonCtrl CmnShop_BuyItem;
 
-		// Token: 0x04004E13 RID: 19987
 		public PguiButtonCtrl Cmn_Btn_Lock;
 
-		// Token: 0x04004E14 RID: 19988
 		public PguiButtonCtrl Info_Btn;
 
-		// Token: 0x04004E15 RID: 19989
 		public IconItemCtrl Icon_Item;
 
-		// Token: 0x04004E16 RID: 19990
 		public PguiTextCtrl Txt_BuyInfo01;
 
-		// Token: 0x04004E17 RID: 19991
 		public PguiTextCtrl Txt_BuyInfo02;
 
-		// Token: 0x04004E18 RID: 19992
 		public PguiRawImageCtrl Price_Item_Icon;
 
-		// Token: 0x04004E19 RID: 19993
 		public PguiTextCtrl Item_Num_Txt;
 
-		// Token: 0x04004E1A RID: 19994
 		public PguiTextCtrl Price_Num_Txt;
 
-		// Token: 0x04004E1B RID: 19995
 		public PguiTextCtrl Txt_ItemOwn;
 
-		// Token: 0x04004E1C RID: 19996
 		public PguiAECtrl Cmn_Mark_New;
 
-		// Token: 0x04004E1D RID: 19997
 		public GameObject Mark_Sold;
 
-		// Token: 0x04004E1E RID: 19998
 		public PguiTextCtrl Mark_Sold_Txt;
 
-		// Token: 0x04004E1F RID: 19999
 		public GameObject Select_CheckBox;
 
-		// Token: 0x04004E20 RID: 20000
 		public GameObject Select_Mark;
 	}
 
-	// Token: 0x02000D4F RID: 3407
 	public class ShopBtn
 	{
-		// Token: 0x060048B9 RID: 18617 RVA: 0x0021CE78 File Offset: 0x0021B078
 		public ShopBtn(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -2269,60 +2122,43 @@ public class SelShopCtrl : MonoBehaviour
 			this.Cmn_Mark_New = baseTr.Find("BaseImage/Cmn_Mark_New").gameObject;
 		}
 
-		// Token: 0x04004E21 RID: 20001
 		public GameObject baseObj;
 
-		// Token: 0x04004E22 RID: 20002
 		public PguiButtonCtrl BtnNone;
 
-		// Token: 0x04004E23 RID: 20003
 		public PguiRawImageCtrl ShopBanner;
 
-		// Token: 0x04004E24 RID: 20004
 		public PguiRawImageCtrl ShopBtn_Icon;
 
-		// Token: 0x04004E25 RID: 20005
 		public PguiTextCtrl Txt;
 
-		// Token: 0x04004E26 RID: 20006
 		public GameObject Mark;
 
-		// Token: 0x04004E27 RID: 20007
 		public int index;
 
-		// Token: 0x04004E28 RID: 20008
 		public ShopData itemData;
 
-		// Token: 0x04004E29 RID: 20009
 		public PguiRawImageCtrl ShopBtn_PriceIcon;
 
-		// Token: 0x04004E2A RID: 20010
 		public PguiTextCtrl PriceTxt;
 
-		// Token: 0x04004E2B RID: 20011
 		public PguiReplaceSpriteCtrl baseRepSprite;
 
-		// Token: 0x04004E2C RID: 20012
 		public GameObject Cmn_Mark_New;
 	}
 
-	// Token: 0x02000D50 RID: 3408
 	public class ShopWindow
 	{
-		// Token: 0x060048BA RID: 18618 RVA: 0x0021CF70 File Offset: 0x0021B170
 		public ShopWindow(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
 		}
 
-		// Token: 0x04004E2D RID: 20013
 		public GameObject baseObj;
 	}
 
-	// Token: 0x02000D51 RID: 3409
 	public class GUI
 	{
-		// Token: 0x060048BB RID: 18619 RVA: 0x0021CF84 File Offset: 0x0021B184
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -2368,44 +2204,31 @@ public class SelShopCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x04004E2E RID: 20014
 		public GameObject baseObj;
 
-		// Token: 0x04004E2F RID: 20015
 		public GameObject back;
 
-		// Token: 0x04004E30 RID: 20016
 		public PguiButtonCtrl BtnNext_Left;
 
-		// Token: 0x04004E31 RID: 20017
 		public PguiButtonCtrl BtnNext_Right;
 
-		// Token: 0x04004E32 RID: 20018
 		public PguiButtonCtrl BtnAssistantEdit;
 
-		// Token: 0x04004E33 RID: 20019
 		public MarkLockCtrl markLockAssistantEdit;
 
-		// Token: 0x04004E34 RID: 20020
 		public List<ScrollRect> ScrollViewList;
 
-		// Token: 0x04004E35 RID: 20021
 		public List<RectTransform> ScrollContentList;
 
-		// Token: 0x04004E36 RID: 20022
 		public List<PguiScrollbar> ScrollBarList;
 
-		// Token: 0x04004E37 RID: 20023
 		public List<GameObject> TabList;
 
-		// Token: 0x04004E38 RID: 20024
 		public PguiTabGroupCtrl TabGroup;
 	}
 
-	// Token: 0x02000D52 RID: 3410
 	public class GUIShopWindow
 	{
-		// Token: 0x060048BC RID: 18620 RVA: 0x0021D168 File Offset: 0x0021B368
 		public GUIShopWindow(Transform baseTr)
 		{
 			this.BaseObj = baseTr.gameObject;
@@ -2419,38 +2242,27 @@ public class SelShopCtrl : MonoBehaviour
 			this.ExchangeButton = baseTr.Find("InBase/Btn_BulkExchange").GetComponent<PguiButtonCtrl>();
 		}
 
-		// Token: 0x04004E39 RID: 20025
 		public GameObject BaseObj;
 
-		// Token: 0x04004E3A RID: 20026
 		public PguiTextCtrl NumOwn;
 
-		// Token: 0x04004E3B RID: 20027
 		public ReuseScroll ScrollView;
 
-		// Token: 0x04004E3C RID: 20028
 		public GameObject TxtNoneObj;
 
-		// Token: 0x04004E3D RID: 20029
 		public GameObject TxtNoneFilteredObj;
 
-		// Token: 0x04004E3E RID: 20030
 		public PguiTextCtrl EndTimeText;
 
-		// Token: 0x04004E3F RID: 20031
 		public PguiButtonCtrl SwitchModeButton;
 
-		// Token: 0x04004E40 RID: 20032
 		public GameObject SwitchModeCheck;
 
-		// Token: 0x04004E41 RID: 20033
 		public PguiButtonCtrl ExchangeButton;
 	}
 
-	// Token: 0x02000D53 RID: 3411
 	public class GUIFriendsUsecaseLabel
 	{
-		// Token: 0x060048BD RID: 18621 RVA: 0x0021D238 File Offset: 0x0021B438
 		public GUIFriendsUsecaseLabel(GameObject go, CharaGrowItemInfo.NeedInfo info)
 		{
 			Dictionary<ItemDef.Kind, string> dictionary = new Dictionary<ItemDef.Kind, string>
@@ -2524,26 +2336,19 @@ public class SelShopCtrl : MonoBehaviour
 			this.numText.text = info.num.ToString();
 		}
 
-		// Token: 0x04004E42 RID: 20034
 		public GameObject baseObj;
 
-		// Token: 0x04004E43 RID: 20035
 		public PguiButtonCtrl baseBtn;
 
-		// Token: 0x04004E44 RID: 20036
 		public IconCharaCtrl charaIcon;
 
-		// Token: 0x04004E45 RID: 20037
 		public PguiTextCtrl titleText;
 
-		// Token: 0x04004E46 RID: 20038
 		public PguiTextCtrl numText;
 	}
 
-	// Token: 0x02000D54 RID: 3412
 	public class WindowTextSearchChange
 	{
-		// Token: 0x060048BE RID: 18622 RVA: 0x0021D3C8 File Offset: 0x0021B5C8
 		public WindowTextSearchChange(Transform baseTr)
 		{
 			this.FirstInputField = baseTr.Find("Window0/InBase/InputField").GetComponent<InputField>();
@@ -2554,24 +2359,17 @@ public class SelShopCtrl : MonoBehaviour
 			this.SecondInputField.lineType = InputField.LineType.SingleLine;
 		}
 
-		// Token: 0x04004E47 RID: 20039
 		public InputField FirstInputField;
 
-		// Token: 0x04004E48 RID: 20040
 		public InputField SecondInputField;
 
-		// Token: 0x04004E49 RID: 20041
 		public PguiButtonCtrl firstResetButton;
 
-		// Token: 0x04004E4A RID: 20042
 		public PguiButtonCtrl secondResetButton;
 	}
 
-	// Token: 0x02000D55 RID: 3413
 	private class ItemBuyCheckResult
 	{
-		// Token: 0x17000A91 RID: 2705
-		// (get) Token: 0x060048BF RID: 18623 RVA: 0x0021D44B File Offset: 0x0021B64B
 		public bool IsLockNgReason
 		{
 			get
@@ -2580,36 +2378,24 @@ public class SelShopCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x04004E4B RID: 20043
 		public bool isBuy;
 
-		// Token: 0x04004E4C RID: 20044
 		public SelShopCtrl.ItemBuyCheckResult.Reason ngReason;
 
-		// Token: 0x020011CF RID: 4559
 		public enum Reason
 		{
-			// Token: 0x040061C1 RID: 25025
 			INVALID,
-			// Token: 0x040061C2 RID: 25026
 			SHOP_SOLDOUT,
-			// Token: 0x040061C3 RID: 25027
 			SHOP_MONEY_LACK,
-			// Token: 0x040061C4 RID: 25028
 			STACK_MAX,
-			// Token: 0x040061C5 RID: 25029
 			BEFORE_START_TIME,
-			// Token: 0x040061C6 RID: 25030
 			NO_CLAER_QUEST,
-			// Token: 0x040061C7 RID: 25031
 			NO_CLAER_MISSION
 		}
 	}
 
-	// Token: 0x02000D56 RID: 3414
 	public abstract class WindowBuyConfirm
 	{
-		// Token: 0x060048C1 RID: 18625 RVA: 0x0021D474 File Offset: 0x0021B674
 		public WindowBuyConfirm(Transform baseTr, Transform windowBase)
 		{
 			this.buyCount = 1;
@@ -2644,128 +2430,87 @@ public class SelShopCtrl : MonoBehaviour
 			this.SliderBar.maxValue = 100f;
 		}
 
-		// Token: 0x04004E4D RID: 20045
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x04004E4E RID: 20046
 		public PguiTextCtrl Txt_owErrorText;
 
-		// Token: 0x04004E4F RID: 20047
 		public PguiTextCtrl Txt_BuyCount;
 
-		// Token: 0x04004E50 RID: 20048
 		public PguiTextCtrl Txt_BuyItemName;
 
-		// Token: 0x04004E51 RID: 20049
 		public PguiTextCtrl Txt_BuyItemInfo;
 
-		// Token: 0x04004E52 RID: 20050
 		public PguiTextCtrl Txt_BuyItemCount;
 
-		// Token: 0x04004E53 RID: 20051
 		public PguiTextCtrl Txt_BuyItemType;
 
-		// Token: 0x04004E54 RID: 20052
 		public PguiTextCtrl Txt_BuyBeforeMoney;
 
-		// Token: 0x04004E55 RID: 20053
 		public PguiTextCtrl Txt_BuyAfterMoney;
 
-		// Token: 0x04004E56 RID: 20054
 		public PguiTextCtrl Txt_BuyBeforeCount;
 
-		// Token: 0x04004E57 RID: 20055
 		public PguiTextCtrl Txt_BuyAfterCount;
 
-		// Token: 0x04004E58 RID: 20056
 		public PguiTextCtrl Txt_ExchangeCount;
 
-		// Token: 0x04004E59 RID: 20057
 		public PguiTextCtrl Txt_Price;
 
-		// Token: 0x04004E5A RID: 20058
 		public PguiTextCtrl Txt_Warning;
 
-		// Token: 0x04004E5B RID: 20059
 		public IconItemCtrl IconItem;
 
-		// Token: 0x04004E5C RID: 20060
 		public PguiButtonCtrl InfoBtn;
 
-		// Token: 0x04004E5D RID: 20061
 		public GameObject BuyObject;
 
-		// Token: 0x04004E5E RID: 20062
 		public List<IconItemCtrl> IconItemDouble;
 
-		// Token: 0x04004E5F RID: 20063
 		public List<PguiTextCtrl> IconItemNumDouble;
 
-		// Token: 0x04004E60 RID: 20064
 		public PguiRawImageCtrl NeedInfoImage;
 
-		// Token: 0x04004E61 RID: 20065
 		public PguiRawImageCtrl UseInfoImage;
 
-		// Token: 0x04004E62 RID: 20066
 		public PguiRawImageCtrl UseMoneyImage;
 
-		// Token: 0x04004E63 RID: 20067
 		public GameObject Base_BuyInfo;
 
-		// Token: 0x04004E64 RID: 20068
 		public GameObject Parts_ItemUseInfo;
 
-		// Token: 0x04004E65 RID: 20069
 		public GameObject Parts_Exchange;
 
-		// Token: 0x04004E66 RID: 20070
 		public ShopData.ItemOne itemData;
 
-		// Token: 0x04004E67 RID: 20071
 		public ShopData.ItemOne replaceBeforeItemData;
 
-		// Token: 0x04004E68 RID: 20072
 		public bool isBuy;
 
-		// Token: 0x04004E69 RID: 20073
 		public int buyCount;
 
-		// Token: 0x04004E6A RID: 20074
 		public int buyMax;
 
-		// Token: 0x04004E6B RID: 20075
 		public string title;
 
-		// Token: 0x04004E6C RID: 20076
 		public string info;
 
-		// Token: 0x04004E6D RID: 20077
 		public bool tryingToBuyNotComeCharaClothes;
 
-		// Token: 0x04004E6E RID: 20078
 		public PguiButtonCtrl Btn_Plus;
 
-		// Token: 0x04004E6F RID: 20079
 		public PguiButtonCtrl Btn_Minus;
 
-		// Token: 0x04004E70 RID: 20080
 		public bool notBuyPhoto;
 
-		// Token: 0x04004E71 RID: 20081
 		public string buyComment;
 
-		// Token: 0x04004E72 RID: 20082
 		public string reqComment;
 
-		// Token: 0x04004E73 RID: 20083
 		public Slider SliderBar;
 	}
 
-	// Token: 0x02000D57 RID: 3415
 	public class WindowBuyConfirmNormal : SelShopCtrl.WindowBuyConfirm
 	{
-		// Token: 0x060048C2 RID: 18626 RVA: 0x0021D6F4 File Offset: 0x0021B8F4
 		public WindowBuyConfirmNormal(Transform baseTr)
 			: base(baseTr, baseTr.Find("Base/Window"))
 		{
@@ -2787,37 +2532,28 @@ public class SelShopCtrl : MonoBehaviour
 			this.Txt_Warning = this.BuyObjectDouble.transform.Find("Txt_Info").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x04004E74 RID: 20084
 		public GameObject Base_NotPhotoBuyInfo;
 
-		// Token: 0x04004E75 RID: 20085
 		public GameObject BuyObjectDouble;
 
-		// Token: 0x04004E76 RID: 20086
 		public PguiButtonCtrl Btn_PhotoGrow;
 
-		// Token: 0x04004E77 RID: 20087
 		public PguiButtonCtrl Btn_PhotoSell;
 	}
 
-	// Token: 0x02000D58 RID: 3416
 	public class WindowBuyConfirmKiraKira : SelShopCtrl.WindowBuyConfirmNormal
 	{
-		// Token: 0x060048C3 RID: 18627 RVA: 0x0021D841 File Offset: 0x0021BA41
 		public WindowBuyConfirmKiraKira(Transform baseTr)
 			: base(baseTr)
 		{
 			this.Btn_PurchaseConfirm = baseTr.Find("Base/Window/PurchaseConfirmButton").GetComponent<PguiButtonCtrl>();
 		}
 
-		// Token: 0x04004E78 RID: 20088
 		public PguiButtonCtrl Btn_PurchaseConfirm;
 	}
 
-	// Token: 0x02000D59 RID: 3417
 	public class WindowBuyConfirmGrow : SelShopCtrl.WindowBuyConfirm
 	{
-		// Token: 0x060048C4 RID: 18628 RVA: 0x0021D860 File Offset: 0x0021BA60
 		public WindowBuyConfirmGrow(Transform baseTr)
 			: base(baseTr, baseTr.Find("Base/Window/Nul"))
 		{
@@ -2825,31 +2561,24 @@ public class SelShopCtrl : MonoBehaviour
 			this.GrowCharaScroll = baseTr.Find("Base/Window/InBase/ScrollView").GetComponent<ReuseScroll>();
 		}
 
-		// Token: 0x04004E79 RID: 20089
 		public GameObject Message_NotFriends;
 
-		// Token: 0x04004E7A RID: 20090
 		public ReuseScroll GrowCharaScroll;
 	}
 
-	// Token: 0x02000D5A RID: 3418
 	public class WindowBuyConfirmGrowKiraKira : SelShopCtrl.WindowBuyConfirmGrow
 	{
-		// Token: 0x060048C5 RID: 18629 RVA: 0x0021D8A0 File Offset: 0x0021BAA0
 		public WindowBuyConfirmGrowKiraKira(Transform baseTr)
 			: base(baseTr)
 		{
 			this.Btn_PurchaseConfirm = baseTr.Find("Base/Window/Nul/PurchaseConfirmButton").GetComponent<PguiButtonCtrl>();
 		}
 
-		// Token: 0x04004E7B RID: 20091
 		public PguiButtonCtrl Btn_PurchaseConfirm;
 	}
 
-	// Token: 0x02000D5B RID: 3419
 	public class WindowBuyConfirmBulk : SelShopCtrl.WindowBuyConfirm
 	{
-		// Token: 0x060048C6 RID: 18630 RVA: 0x0021D8C0 File Offset: 0x0021BAC0
 		public WindowBuyConfirmBulk(Transform baseTr, GameObject layout)
 			: base(baseTr, baseTr.Find("Base/Window"))
 		{
@@ -2863,20 +2592,15 @@ public class SelShopCtrl : MonoBehaviour
 			this.ItemScroll = transform.Find("InBase/ScrollView").GetComponent<ReuseScroll>();
 		}
 
-		// Token: 0x04004E7C RID: 20092
 		public GameObject LayoutObject;
 
-		// Token: 0x04004E7D RID: 20093
 		public Transform scrollContent;
 
-		// Token: 0x04004E7E RID: 20094
 		public ReuseScroll ItemScroll;
 	}
 
-	// Token: 0x02000D5C RID: 3420
 	public class WindowBuyEnd
 	{
-		// Token: 0x060048C7 RID: 18631 RVA: 0x0021D974 File Offset: 0x0021BB74
 		public WindowBuyEnd(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -2895,47 +2619,33 @@ public class SelShopCtrl : MonoBehaviour
 			this.UseInfoImage.gameObject.SetActive(false);
 		}
 
-		// Token: 0x04004E7F RID: 20095
 		public GameObject baseObj;
 
-		// Token: 0x04004E80 RID: 20096
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x04004E81 RID: 20097
 		public PguiTextCtrl Txt_ItemName;
 
-		// Token: 0x04004E82 RID: 20098
 		public PguiTextCtrl Txt_ItemCount;
 
-		// Token: 0x04004E83 RID: 20099
 		public PguiTextCtrl Txt_ItemReq;
 
-		// Token: 0x04004E84 RID: 20100
 		public PguiTextCtrl Txt_BuyBeforeMoney;
 
-		// Token: 0x04004E85 RID: 20101
 		public PguiTextCtrl Txt_BuyAfterMoney;
 
-		// Token: 0x04004E86 RID: 20102
 		public PguiTextCtrl Txt_BuyBeforeCount;
 
-		// Token: 0x04004E87 RID: 20103
 		public PguiTextCtrl Txt_BuyAfterCount;
 
-		// Token: 0x04004E88 RID: 20104
 		public PguiRawImageCtrl UseInfoImage;
 
-		// Token: 0x04004E89 RID: 20105
 		public PguiRawImageCtrl UseMoneyImage;
 
-		// Token: 0x04004E8A RID: 20106
 		public GameObject Parts_ItemUseInfo;
 	}
 
-	// Token: 0x02000D5D RID: 3421
 	public class GridGUI
 	{
-		// Token: 0x060048C8 RID: 18632 RVA: 0x0021DA98 File Offset: 0x0021BC98
 		public GridGUI(GameObject go)
 		{
 			this.baseObj = go;
@@ -2952,13 +2662,10 @@ public class SelShopCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x04004E8B RID: 20107
 		public GameObject baseObj;
 
-		// Token: 0x04004E8C RID: 20108
 		public GridLayoutGroup gridLayoutGroup;
 
-		// Token: 0x04004E8D RID: 20109
 		public List<IconItemCtrl> iconItemList;
 	}
 }

@@ -1,14 +1,11 @@
-﻿using System;
+using System;
 using System.IO;
 using UnityEngine;
 
 namespace SGNFW.Common.SVNRevision
 {
-	// Token: 0x02000266 RID: 614
 	public class ClientRevision
 	{
-		// Token: 0x170005A4 RID: 1444
-		// (get) Token: 0x06002613 RID: 9747 RVA: 0x001A1148 File Offset: 0x0019F348
 		public static int No
 		{
 			get
@@ -23,7 +20,6 @@ namespace SGNFW.Common.SVNRevision
 			}
 		}
 
-		// Token: 0x04001BE3 RID: 7139
 		private static int no = -1;
 	}
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +10,8 @@ using SGNFW.Mst;
 using UnityEngine;
 using UnityEngine.Events;
 
-// Token: 0x0200017F RID: 383
 public class SceneTitle : BaseScene
 {
-	// Token: 0x060018D1 RID: 6353 RVA: 0x00131484 File Offset: 0x0012F684
 	public override void OnCreateScene()
 	{
 		this.basePanel = new GameObject();
@@ -29,7 +27,6 @@ public class SceneTitle : BaseScene
 		this.selTitleCtrl.Init();
 	}
 
-	// Token: 0x060018D2 RID: 6354 RVA: 0x0013154C File Offset: 0x0012F74C
 	public override void OnEnableScene(object args)
 	{
 		Singleton<AssetManager>.Instance.SetAbChkType(AssetManager.abCheckType.LOW);
@@ -64,12 +61,10 @@ public class SceneTitle : BaseScene
 		}
 	}
 
-	// Token: 0x060018D3 RID: 6355 RVA: 0x0013167C File Offset: 0x0012F87C
 	public override void OnStartControl()
 	{
 	}
 
-	// Token: 0x060018D4 RID: 6356 RVA: 0x0013167E File Offset: 0x0012F87E
 	private bool AppEndWindow(int index)
 	{
 		if (this.appEnd == 1)
@@ -79,7 +74,6 @@ public class SceneTitle : BaseScene
 		return true;
 	}
 
-	// Token: 0x060018D5 RID: 6357 RVA: 0x00131698 File Offset: 0x0012F898
 	public override void Update()
 	{
 		if (this.gotoNextSceneInternal != null && !this.gotoNextSceneInternal.MoveNext())
@@ -88,7 +82,6 @@ public class SceneTitle : BaseScene
 		}
 	}
 
-	// Token: 0x060018D6 RID: 6358 RVA: 0x001316B6 File Offset: 0x0012F8B6
 	private bool TermsWindow(int index)
 	{
 		if (!CanvasManager.HdlWebViewWindowCtrl.FinishedClose())
@@ -107,7 +100,6 @@ public class SceneTitle : BaseScene
 		return false;
 	}
 
-	// Token: 0x060018D7 RID: 6359 RVA: 0x001316F2 File Offset: 0x0012F8F2
 	private IEnumerator GotoNextSceneInternal()
 	{
 		SoundManager.Play("prd_se_title_tap", false, false);
@@ -193,7 +185,6 @@ public class SceneTitle : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060018D8 RID: 6360 RVA: 0x00131704 File Offset: 0x0012F904
 	private void GotoNextScene(bool isReboot)
 	{
 		if (this.appEnd != 0 || this.appEndObj.activeSelf)
@@ -212,21 +203,18 @@ public class SceneTitle : BaseScene
 		}
 	}
 
-	// Token: 0x060018D9 RID: 6361 RVA: 0x00131754 File Offset: 0x0012F954
 	public override void OnDisableScene()
 	{
 		this.basePanel.gameObject.SetActive(false);
 		AssetManager.UnloadAssetData(DataInitializeResolver.titleLogo, AssetManager.OWNER.DataInitialize);
 	}
 
-	// Token: 0x060018DA RID: 6362 RVA: 0x00131773 File Offset: 0x0012F973
 	public override void OnDestroyScene()
 	{
 		Object.Destroy(this.basePanel);
 		this.basePanel = null;
 	}
 
-	// Token: 0x060018DB RID: 6363 RVA: 0x00131787 File Offset: 0x0012F987
 	private IEnumerator CheckCooperation(Action<bool> action, GPGLoginResponse response)
 	{
 		int sel = 0;
@@ -272,7 +260,6 @@ public class SceneTitle : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060018DC RID: 6364 RVA: 0x001317A4 File Offset: 0x0012F9A4
 	private IEnumerator CheckTransfer(GPGLoginResponse response)
 	{
 		string text = "Google Play ゲームサービスと\n連携済みのゲームデータがあります\nゲームデータ連携を行いますか？";
@@ -320,7 +307,6 @@ public class SceneTitle : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060018DD RID: 6365 RVA: 0x001317BC File Offset: 0x0012F9BC
 	private string GetHyphen(string str1, string str2)
 	{
 		string text = string.Empty;
@@ -333,30 +319,21 @@ public class SceneTitle : BaseScene
 		return text;
 	}
 
-	// Token: 0x04001300 RID: 4864
 	private GameObject basePanel;
 
-	// Token: 0x04001301 RID: 4865
 	private SelTitleCtrl selTitleCtrl;
 
-	// Token: 0x04001302 RID: 4866
 	private GameObject appEndObj;
 
-	// Token: 0x04001303 RID: 4867
 	private int appEnd;
 
-	// Token: 0x04001304 RID: 4868
 	private bool pvp;
 
-	// Token: 0x04001305 RID: 4869
 	public static readonly string bgm = "prd_bgm0022";
 
-	// Token: 0x04001306 RID: 4870
 	private IEnumerator gotoNextSceneInternal;
 
-	// Token: 0x04001307 RID: 4871
 	private bool isServiceCloseByMst;
 
-	// Token: 0x04001308 RID: 4872
 	private int terms;
 }

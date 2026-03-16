@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -7,10 +7,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x02000142 RID: 322
 public class GachaWindowInfoCtrl : MonoBehaviour
 {
-	// Token: 0x060011AB RID: 4523 RVA: 0x000D658C File Offset: 0x000D478C
 	public void Initialize()
 	{
 		this.detailWindowGuiData = new GachaWindowInfoCtrl.GachaDetailInfoWindowGUI(base.transform);
@@ -27,7 +25,6 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		}, PguiButtonCtrl.SoundType.DEFAULT);
 	}
 
-	// Token: 0x060011AC RID: 4524 RVA: 0x000D6624 File Offset: 0x000D4824
 	public IEnumerator Open(DataManagerGacha.GachaPackData gpd, UnityAction finishCb)
 	{
 		while (DataManager.IsServerRequesting())
@@ -46,7 +43,6 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060011AD RID: 4525 RVA: 0x000D6644 File Offset: 0x000D4844
 	private void SetupGachaRate(GachaWindowInfoCtrl.TotalRatioLabelGUI ratioLabel, List<DataManagerGacha.ProbabilityData.Element> elementList, bool isDecided4)
 	{
 		for (int i = 0; i < 3; i++)
@@ -69,7 +65,6 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060011AE RID: 4526 RVA: 0x000D6784 File Offset: 0x000D4984
 	private void SetupRateList()
 	{
 		DataManagerGacha.GachaStaticData selectGachaStaticData = this.detailWindowGuiData.SelectGachaStaticData;
@@ -285,7 +280,6 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		this.detailWindowGuiData.gachaDetailTabMap[GachaWindowInfoCtrl.TabType.TabRate].ScrollRect.verticalNormalizedPosition = 1f;
 	}
 
-	// Token: 0x060011AF RID: 4527 RVA: 0x000D7250 File Offset: 0x000D5450
 	private void SetupFriendsPhotoTreeHouseFurnitureItemList()
 	{
 		DataManagerGacha.GachaStaticData selectGachaStaticData = this.detailWindowGuiData.SelectGachaStaticData;
@@ -542,7 +536,6 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060011B0 RID: 4528 RVA: 0x000D7ED0 File Offset: 0x000D60D0
 	private void SetupOptionList()
 	{
 		GachaWindowInfoCtrl.TabType tabType = GachaWindowInfoCtrl.TabType.TabOption;
@@ -715,7 +708,6 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060011B1 RID: 4529 RVA: 0x000D86C8 File Offset: 0x000D68C8
 	private void RefleshGachaDetailWindow()
 	{
 		bool flag = true;
@@ -763,7 +755,6 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		this.SetupOptionList();
 	}
 
-	// Token: 0x060011B2 RID: 4530 RVA: 0x000D886E File Offset: 0x000D6A6E
 	private IEnumerator UpdateDetailWindow(int gachaId)
 	{
 		if (gachaId == 0)
@@ -780,7 +771,6 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060011B3 RID: 4531 RVA: 0x000D8884 File Offset: 0x000D6A84
 	public void Close()
 	{
 		if (this.m_Sequence == GachaWindowInfoCtrl.Sequence.ACTIVE)
@@ -789,7 +779,6 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060011B4 RID: 4532 RVA: 0x000D8898 File Offset: 0x000D6A98
 	private void OnClickArrowButton(PguiButtonCtrl button, int direction)
 	{
 		if (direction == 0)
@@ -804,7 +793,6 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		this.updateGachaDetail = this.UpdateDetailWindow(this.detailWindowGuiData.SelectGachaStaticData.stepNextGachaId);
 	}
 
-	// Token: 0x060011B5 RID: 4533 RVA: 0x000D88E6 File Offset: 0x000D6AE6
 	private void OnClickCloseButton(PguiButtonCtrl button)
 	{
 		if (button == this.detailWindowGuiData.BtnClose)
@@ -813,7 +801,6 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060011B6 RID: 4534 RVA: 0x000D8904 File Offset: 0x000D6B04
 	private bool OnSelectTab(int index)
 	{
 		this.currentTab = (GachaWindowInfoCtrl.TabType)index;
@@ -825,7 +812,6 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x060011B7 RID: 4535 RVA: 0x000D8990 File Offset: 0x000D6B90
 	private void Update()
 	{
 		switch (this.m_Sequence)
@@ -885,7 +871,6 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		this.m_ReqSequence = GachaWindowInfoCtrl.Sequence.NONE;
 	}
 
-	// Token: 0x060011B8 RID: 4536 RVA: 0x000D8AE8 File Offset: 0x000D6CE8
 	private DataManagerGacha.ProbabilityData.Type TabType2ProbabilityType(GachaWindowInfoCtrl.TabType type)
 	{
 		switch (type)
@@ -902,19 +887,16 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		return DataManagerGacha.ProbabilityData.Type.Undefined;
 	}
 
-	// Token: 0x060011B9 RID: 4537 RVA: 0x000D8B28 File Offset: 0x000D6D28
 	private bool IsDecidedFour(DataManagerGacha.GachaStaticTypeData typeData)
 	{
 		return typeData.lastTimeBenefitRarity == 0 && typeData.lastTimeBenefitRarity4 != 0;
 	}
 
-	// Token: 0x060011BA RID: 4538 RVA: 0x000D8B3D File Offset: 0x000D6D3D
 	private bool IsDecidedRarity(DataManagerGacha.GachaStaticTypeData typeData)
 	{
 		return typeData.lastTimeBenefitRarity != 0 || typeData.lastTimeBenefitRarity4 != 0;
 	}
 
-	// Token: 0x060011BB RID: 4539 RVA: 0x000D8B54 File Offset: 0x000D6D54
 	private void OpenTreeHouseFurnitureWindow(ItemStaticBase isb)
 	{
 		TreeHouseFurnitureStatic treeHouseFurnitureStaticData = DataManager.DmTreeHouse.GetTreeHouseFurnitureStaticData(isb.GetId());
@@ -924,7 +906,6 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x060011BF RID: 4543 RVA: 0x000D8BAC File Offset: 0x000D6DAC
 	[CompilerGenerated]
 	private void <SetupOptionList>g__SetupBonusIcon|25_0(IconItemCtrl itemIcon, int id, int num)
 	{
@@ -962,7 +943,6 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x060011C0 RID: 4544 RVA: 0x000D8C68 File Offset: 0x000D6E68
 	[CompilerGenerated]
 	internal static void <SetupOptionList>g__SetupBonusIconItemSet|25_1(IconItemCtrl itemIcon, int id)
 	{
@@ -982,54 +962,32 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x04000EE9 RID: 3817
 	private GachaWindowInfoCtrl.GachaDetailInfoWindowGUI detailWindowGuiData;
 
-	// Token: 0x04000EEA RID: 3818
 	private IEnumerator updateGachaDetail;
 
-	// Token: 0x04000EEB RID: 3819
 	private const int LineCount = 3;
 
-	// Token: 0x04000EEC RID: 3820
 	private const int ColumnCount = 4;
 
-	// Token: 0x04000EED RID: 3821
 	private GachaWindowInfoCtrl.Sequence m_ReqSequence;
 
-	// Token: 0x04000EEE RID: 3822
 	private GachaWindowInfoCtrl.Sequence m_Sequence = GachaWindowInfoCtrl.Sequence.INACTIVE;
 
-	// Token: 0x04000EEF RID: 3823
 	private GachaWindowInfoCtrl.TabType currentTab;
 
-	// Token: 0x04000EF0 RID: 3824
 	private UnityAction m_CallBack;
 
-	// Token: 0x02000AA7 RID: 2727
 	public class GachaDetailInfoWindowGUI
 	{
-		// Token: 0x17000963 RID: 2403
-		// (get) Token: 0x0600401E RID: 16414 RVA: 0x001F4652 File Offset: 0x001F2852
-		// (set) Token: 0x0600401F RID: 16415 RVA: 0x001F465A File Offset: 0x001F285A
 		public PguiButtonCtrl LeftArrow { get; set; }
 
-		// Token: 0x17000964 RID: 2404
-		// (get) Token: 0x06004020 RID: 16416 RVA: 0x001F4663 File Offset: 0x001F2863
-		// (set) Token: 0x06004021 RID: 16417 RVA: 0x001F466B File Offset: 0x001F286B
 		public PguiButtonCtrl RightArrow { get; set; }
 
-		// Token: 0x17000965 RID: 2405
-		// (get) Token: 0x06004022 RID: 16418 RVA: 0x001F4674 File Offset: 0x001F2874
-		// (set) Token: 0x06004023 RID: 16419 RVA: 0x001F467C File Offset: 0x001F287C
 		public PguiTextCtrl StepNum { get; set; }
 
-		// Token: 0x17000966 RID: 2406
-		// (get) Token: 0x06004025 RID: 16421 RVA: 0x001F468E File Offset: 0x001F288E
-		// (set) Token: 0x06004024 RID: 16420 RVA: 0x001F4685 File Offset: 0x001F2885
 		public DataManagerGacha.GachaStaticData SelectGachaStaticData { get; set; }
 
-		// Token: 0x06004026 RID: 16422 RVA: 0x001F4698 File Offset: 0x001F2898
 		public GachaDetailInfoWindowGUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1050,34 +1008,23 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 			this.BaseAnim = this.InBase.GetComponent<SimpleAnimation>();
 		}
 
-		// Token: 0x040043DB RID: 17371
 		public GameObject baseObj;
 
-		// Token: 0x040043DC RID: 17372
 		public GameObject InBase;
 
-		// Token: 0x040043DD RID: 17373
 		public PguiButtonCtrl BtnClose;
 
-		// Token: 0x040043DE RID: 17374
 		public PguiTabGroupCtrl TabGroup;
 
-		// Token: 0x040043DF RID: 17375
 		public Dictionary<GachaWindowInfoCtrl.TabType, GachaWindowInfoCtrl.GachaInfoTab> gachaDetailTabMap;
 
-		// Token: 0x040043E3 RID: 17379
 		public SimpleAnimation BaseAnim;
 	}
 
-	// Token: 0x02000AA8 RID: 2728
 	public class GachaInfoTab
 	{
-		// Token: 0x17000967 RID: 2407
-		// (get) Token: 0x06004027 RID: 16423 RVA: 0x001F480B File Offset: 0x001F2A0B
-		// (set) Token: 0x06004028 RID: 16424 RVA: 0x001F4813 File Offset: 0x001F2A13
 		public PguiTextCtrl NoneText { get; set; }
 
-		// Token: 0x06004029 RID: 16425 RVA: 0x001F481C File Offset: 0x001F2A1C
 		public GachaInfoTab(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1093,23 +1040,17 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x040043E5 RID: 17381
 		public GameObject baseObj;
 
-		// Token: 0x040043E6 RID: 17382
 		public ScrollRect ScrollRect;
 
-		// Token: 0x040043E7 RID: 17383
 		public RectTransform Viewport;
 
-		// Token: 0x040043E8 RID: 17384
 		public RectTransform Content;
 	}
 
-	// Token: 0x02000AA9 RID: 2729
 	public class TabInnerFrameGUI
 	{
-		// Token: 0x0600402A RID: 16426 RVA: 0x001F48CC File Offset: 0x001F2ACC
 		public TabInnerFrameGUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1118,23 +1059,17 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 			this.Rect = this.Base.GetComponent<RectTransform>();
 		}
 
-		// Token: 0x040043EA RID: 17386
 		public GameObject baseObj;
 
-		// Token: 0x040043EB RID: 17387
 		public PguiImageCtrl Base;
 
-		// Token: 0x040043EC RID: 17388
 		public PguiTextCtrl Title;
 
-		// Token: 0x040043ED RID: 17389
 		public RectTransform Rect;
 	}
 
-	// Token: 0x02000AAA RID: 2730
 	public class RarityStarBar
 	{
-		// Token: 0x0600402B RID: 16427 RVA: 0x001F4928 File Offset: 0x001F2B28
 		public RarityStarBar(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1147,23 +1082,17 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 			this.RarityText = baseTr.Find("Txt_Rarity").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x040043EE RID: 17390
 		public GameObject baseObj;
 
-		// Token: 0x040043EF RID: 17391
 		public GameObject IconAllObj;
 
-		// Token: 0x040043F0 RID: 17392
 		public List<PguiImageCtrl> IconAllList;
 
-		// Token: 0x040043F1 RID: 17393
 		public PguiTextCtrl RarityText;
 	}
 
-	// Token: 0x02000AAB RID: 2731
 	public class ItemInfoLabelGUI
 	{
-		// Token: 0x0600402C RID: 16428 RVA: 0x001F49B8 File Offset: 0x001F2BB8
 		public ItemInfoLabelGUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1190,65 +1119,45 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 			this.DisableImage = baseTr.Find("Base/Disable").GetComponent<PguiImageCtrl>();
 		}
 
-		// Token: 0x040043F2 RID: 17394
 		public GameObject baseObj;
 
-		// Token: 0x040043F3 RID: 17395
 		public GameObject IconAllObj;
 
-		// Token: 0x040043F4 RID: 17396
 		public List<PguiImageCtrl> IconAllList;
 
-		// Token: 0x040043F5 RID: 17397
 		public PguiTextCtrl RarityText;
 
-		// Token: 0x040043F6 RID: 17398
 		public PguiTextCtrl RateNormal;
 
-		// Token: 0x040043F7 RID: 17399
 		public PguiTextCtrl RateDecided3;
 
-		// Token: 0x040043F8 RID: 17400
 		public PguiTextCtrl RateDecidedFriends;
 
-		// Token: 0x040043F9 RID: 17401
 		public PguiTextCtrl RateDecidedCeiling;
 
-		// Token: 0x040043FA RID: 17402
 		public PguiTextCtrl BoxStack;
 
-		// Token: 0x040043FB RID: 17403
 		public GameObject RateNormalText;
 
-		// Token: 0x040043FC RID: 17404
 		public GameObject RateDecided3Text;
 
-		// Token: 0x040043FD RID: 17405
 		public GameObject RateDecidedFriendsText;
 
-		// Token: 0x040043FE RID: 17406
 		public GameObject RateDecidedCeilingText;
 
-		// Token: 0x040043FF RID: 17407
 		public PguiTextCtrl Name;
 
-		// Token: 0x04004400 RID: 17408
 		public IconItemCtrl Icon_Item;
 
-		// Token: 0x04004401 RID: 17409
 		public PguiImageCtrl Mark_Limited;
 
-		// Token: 0x04004402 RID: 17410
 		public PguiImageCtrl Mark_New;
 
-		// Token: 0x04004403 RID: 17411
 		public PguiImageCtrl DisableImage;
 	}
 
-	// Token: 0x02000AAC RID: 2732
 	public class OmakeInfoLabelGUI
 	{
-		// Token: 0x0600402D RID: 16429 RVA: 0x001F4B7C File Offset: 0x001F2D7C
 		public OmakeInfoLabelGUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1266,38 +1175,27 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 			this.DisableImage = baseTr.Find("Base/Disable").GetComponent<PguiImageCtrl>();
 		}
 
-		// Token: 0x04004404 RID: 17412
 		public GameObject baseObj;
 
-		// Token: 0x04004405 RID: 17413
 		public GameObject IconAllObj;
 
-		// Token: 0x04004406 RID: 17414
 		public List<PguiImageCtrl> IconAllList;
 
-		// Token: 0x04004407 RID: 17415
 		public PguiTextCtrl RarityText;
 
-		// Token: 0x04004408 RID: 17416
 		public PguiTextCtrl Name;
 
-		// Token: 0x04004409 RID: 17417
 		public IconItemCtrl Icon_Item;
 
-		// Token: 0x0400440A RID: 17418
 		public PguiImageCtrl Mark_Limited;
 
-		// Token: 0x0400440B RID: 17419
 		public PguiImageCtrl Mark_New;
 
-		// Token: 0x0400440C RID: 17420
 		public PguiImageCtrl DisableImage;
 	}
 
-	// Token: 0x02000AAD RID: 2733
 	public class TotalRatioLabelGUI
 	{
-		// Token: 0x0600402E RID: 16430 RVA: 0x001F4C78 File Offset: 0x001F2E78
 		public TotalRatioLabelGUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1320,41 +1218,29 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 			this.RarityBase = baseTr.Find("Base/Rarity_All").gameObject;
 		}
 
-		// Token: 0x0400440D RID: 17421
 		public GameObject baseObj;
 
-		// Token: 0x0400440E RID: 17422
 		public List<PguiTextCtrl> NumList;
 
-		// Token: 0x0400440F RID: 17423
 		public PguiTextCtrl Txt02;
 
-		// Token: 0x04004410 RID: 17424
 		public GameObject NumAll03;
 
-		// Token: 0x04004411 RID: 17425
 		public GameObject Txt03;
 
-		// Token: 0x04004412 RID: 17426
 		public GameObject NumAll04;
 
-		// Token: 0x04004413 RID: 17427
 		public GameObject Txt04;
 
-		// Token: 0x04004414 RID: 17428
 		public PguiTextCtrl LabelTitle;
 
-		// Token: 0x04004415 RID: 17429
 		public GameObject StarBase;
 
-		// Token: 0x04004416 RID: 17430
 		public GameObject RarityBase;
 	}
 
-	// Token: 0x02000AAE RID: 2734
 	public class RatioLabelFriendsPhotoGUI
 	{
-		// Token: 0x0600402F RID: 16431 RVA: 0x001F4DAC File Offset: 0x001F2FAC
 		public RatioLabelFriendsPhotoGUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1380,20 +1266,15 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 			};
 		}
 
-		// Token: 0x04004417 RID: 17431
 		public GameObject baseObj;
 
-		// Token: 0x04004418 RID: 17432
 		public List<PguiTextCtrl> charaNumList;
 
-		// Token: 0x04004419 RID: 17433
 		public List<PguiTextCtrl> photoNumList;
 	}
 
-	// Token: 0x02000AAF RID: 2735
 	public class RatioLabelItemGUI
 	{
-		// Token: 0x06004030 RID: 16432 RVA: 0x001F4EA0 File Offset: 0x001F30A0
 		public RatioLabelItemGUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1409,68 +1290,45 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 			};
 		}
 
-		// Token: 0x0400441A RID: 17434
 		public GameObject baseObj;
 
-		// Token: 0x0400441B RID: 17435
 		public PguiTextCtrl Txt_Kind;
 
-		// Token: 0x0400441C RID: 17436
 		public List<PguiTextCtrl> itemNumList;
 	}
 
-	// Token: 0x02000AB0 RID: 2736
 	public class DetailMessageGUI
 	{
-		// Token: 0x06004031 RID: 16433 RVA: 0x001F4F55 File Offset: 0x001F3155
 		public DetailMessageGUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
 			this.DetailText = baseTr.Find("Txt").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x0400441D RID: 17437
 		public GameObject baseObj;
 
-		// Token: 0x0400441E RID: 17438
 		public PguiTextCtrl DetailText;
 	}
 
-	// Token: 0x02000AB1 RID: 2737
 	public enum TabType
 	{
-		// Token: 0x04004420 RID: 17440
 		TabRate,
-		// Token: 0x04004421 RID: 17441
 		TabFriends,
-		// Token: 0x04004422 RID: 17442
 		TabPhoto,
-		// Token: 0x04004423 RID: 17443
 		TabTreeHouseFurniture,
-		// Token: 0x04004424 RID: 17444
 		TabItem,
-		// Token: 0x04004425 RID: 17445
 		TabOption
 	}
 
-	// Token: 0x02000AB2 RID: 2738
 	private enum Sequence
 	{
-		// Token: 0x04004427 RID: 17447
 		NONE,
-		// Token: 0x04004428 RID: 17448
 		INACTIVE,
-		// Token: 0x04004429 RID: 17449
 		OPEN_START,
-		// Token: 0x0400442A RID: 17450
 		OPEN_WAIT,
-		// Token: 0x0400442B RID: 17451
 		ACTIVE,
-		// Token: 0x0400442C RID: 17452
 		CALLBACK_ACTION,
-		// Token: 0x0400442D RID: 17453
 		CLOSE_START,
-		// Token: 0x0400442E RID: 17454
 		CLOSE_WAIT
 	}
 }

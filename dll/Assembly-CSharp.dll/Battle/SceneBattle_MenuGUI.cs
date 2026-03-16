@@ -1,14 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Battle
 {
-	// Token: 0x0200021C RID: 540
 	public class SceneBattle_MenuGUI
 	{
-		// Token: 0x060022F0 RID: 8944 RVA: 0x00194DE4 File Offset: 0x00192FE4
 		public SceneBattle_MenuGUI(Transform baseTr)
 		{
 			this.btnInfo = baseTr.Find("Base/Window/Box00/Btn_CharaInfo").GetComponent<PguiButtonCtrl>();
@@ -36,34 +34,24 @@ namespace Battle
 			}
 		}
 
-		// Token: 0x04001A16 RID: 6678
 		public SimpleAnimation anim;
 
-		// Token: 0x04001A17 RID: 6679
 		public PguiButtonCtrl btnInfo;
 
-		// Token: 0x04001A18 RID: 6680
 		public PguiButtonCtrl btnRetire;
 
-		// Token: 0x04001A19 RID: 6681
 		public PguiButtonCtrl btnCancel;
 
-		// Token: 0x04001A1A RID: 6682
 		public PguiButtonCtrl btnClose;
 
-		// Token: 0x04001A1B RID: 6683
 		public PguiTextCtrl txtWave;
 
-		// Token: 0x04001A1C RID: 6684
 		public PguiTextCtrl numWave;
 
-		// Token: 0x04001A1D RID: 6685
 		public PguiTextCtrl numTurn;
 
-		// Token: 0x04001A1E RID: 6686
 		public HorizontalLayoutGroup icnCharaBase;
 
-		// Token: 0x04001A1F RID: 6687
 		public List<PguiRawImageCtrl> icnChara;
 	}
 }

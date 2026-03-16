@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
@@ -7,10 +7,8 @@ using SGNFW.uGUI;
 using UnityEngine;
 using UnityEngine.Events;
 
-// Token: 0x02000163 RID: 355
 public class SelRankingCtrl : MonoBehaviour
 {
-	// Token: 0x060014C1 RID: 5313 RVA: 0x000FCBE0 File Offset: 0x000FADE0
 	public void Initialize()
 	{
 		this.RankingMenuList = new List<SelRankingCtrl.RankingMenu>
@@ -35,7 +33,6 @@ public class SelRankingCtrl : MonoBehaviour
 		this.trainingSeasonId = 0;
 	}
 
-	// Token: 0x060014C2 RID: 5314 RVA: 0x000FCD3C File Offset: 0x000FAF3C
 	public void Setup()
 	{
 		HomeCheckResult homeCheckResult = DataManager.DmHome.GetHomeCheckResult();
@@ -53,7 +50,6 @@ public class SelRankingCtrl : MonoBehaviour
 		this.trainingRankingWindow.tab.Setup(1, new PguiTabGroupCtrl.OnSelectTab(this.onClickTabSeason));
 	}
 
-	// Token: 0x060014C3 RID: 5315 RVA: 0x000FCDCC File Offset: 0x000FAFCC
 	public void UpdateSel()
 	{
 		if (this.trainingRankingwindowOpen != null && !this.trainingRankingwindowOpen.MoveNext())
@@ -62,7 +58,6 @@ public class SelRankingCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060014C4 RID: 5316 RVA: 0x000FCDEC File Offset: 0x000FAFEC
 	public void Destroy()
 	{
 		if (null != this.kemoStatusRankingWindowCtrl)
@@ -78,19 +73,16 @@ public class SelRankingCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060014C5 RID: 5317 RVA: 0x000FCE45 File Offset: 0x000FB045
 	private void OnClickTrainingButton()
 	{
 		this.trainingRankingwindowOpen = this.SeasonDisp();
 	}
 
-	// Token: 0x060014C6 RID: 5318 RVA: 0x000FCE53 File Offset: 0x000FB053
 	private void OnClickRankingButton()
 	{
 		this.kemoStatusRankingWindowCtrl.Open(new KemoStatusRankingWindowCtrl.SetupParam());
 	}
 
-	// Token: 0x060014C7 RID: 5319 RVA: 0x000FCE68 File Offset: 0x000FB068
 	private void OnStartItem(int index, GameObject go)
 	{
 		if (index < this.RankingMenuList.Count)
@@ -107,7 +99,6 @@ public class SelRankingCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060014C8 RID: 5320 RVA: 0x000FCEC0 File Offset: 0x000FB0C0
 	private void OnUpdateItem(int index, GameObject go)
 	{
 		if (index < this.RankingMenuList.Count)
@@ -125,7 +116,6 @@ public class SelRankingCtrl : MonoBehaviour
 		go.SetActive(false);
 	}
 
-	// Token: 0x060014C9 RID: 5321 RVA: 0x000FCF34 File Offset: 0x000FB134
 	private void InitializeTrainingRankingWindow()
 	{
 		this.trainingRankingWindowBaseObj = Object.Instantiate<GameObject>((GameObject)AssetManager.GetAssetData("SceneTraining/GUI/Prefab/GUI_Training_Window"), Singleton<CanvasManager>.Instance.SystemMiddleArea);
@@ -144,7 +134,6 @@ public class SelRankingCtrl : MonoBehaviour
 		Object.Destroy(this.trainingRankingWindowBaseObj.transform.Find("Window_UserParty").gameObject);
 	}
 
-	// Token: 0x060014CA RID: 5322 RVA: 0x000FD0A3 File Offset: 0x000FB2A3
 	private IEnumerator SeasonDisp()
 	{
 		if (this.trainingSeasonId == 0)
@@ -169,7 +158,6 @@ public class SelRankingCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060014CB RID: 5323 RVA: 0x000FD0B4 File Offset: 0x000FB2B4
 	private void SeasonListDisp(int idx)
 	{
 		idx = 1 - idx;
@@ -191,13 +179,11 @@ public class SelRankingCtrl : MonoBehaviour
 		this.trainingRankingWindow.noRank.SetActive(this.trainingSeasonList == null || this.trainingSeasonList.Count <= 0);
 	}
 
-	// Token: 0x060014CC RID: 5324 RVA: 0x000FD28D File Offset: 0x000FB48D
 	private void SetupSeason(int index, GameObject go)
 	{
 		this.UpdateSeason(index, go);
 	}
 
-	// Token: 0x060014CD RID: 5325 RVA: 0x000FD298 File Offset: 0x000FB498
 	private void UpdateSeason(int index, GameObject go)
 	{
 		SeasonTrainingRankingData.RankingOne rankingOne = ((this.trainingSeasonList != null && index >= 0 && index < this.trainingSeasonList.Count) ? this.trainingSeasonList[index] : null);
@@ -227,58 +213,43 @@ public class SelRankingCtrl : MonoBehaviour
 		iconCharaCtrl.DispRanking();
 	}
 
-	// Token: 0x060014CE RID: 5326 RVA: 0x000FD5A8 File Offset: 0x000FB7A8
 	private bool onClickTabSeason(int idx)
 	{
 		this.SeasonListDisp(idx);
 		return true;
 	}
 
-	// Token: 0x040010ED RID: 4333
 	private SelRankingCtrl.GUI guiData;
 
-	// Token: 0x040010EE RID: 4334
 	private List<SelRankingCtrl.RankingMenu> RankingMenuList;
 
-	// Token: 0x040010EF RID: 4335
 	private KemoStatusRankingWindowCtrl kemoStatusRankingWindowCtrl;
 
-	// Token: 0x040010F0 RID: 4336
 	private SceneTraining.WIN_SEASON trainingRankingWindow;
 
-	// Token: 0x040010F1 RID: 4337
 	private GameObject trainingRankingWindowBaseObj;
 
-	// Token: 0x040010F2 RID: 4338
 	private List<SeasonTrainingRankingData.RankingOne> trainingSeasonList;
 
-	// Token: 0x040010F3 RID: 4339
 	private int trainingSeasonId;
 
-	// Token: 0x040010F4 RID: 4340
 	private IEnumerator trainingRankingwindowOpen;
 
-	// Token: 0x02000B9F RID: 2975
 	public class GUI
 	{
-		// Token: 0x06004382 RID: 17282 RVA: 0x0020324C File Offset: 0x0020144C
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
 			this.ScrollView = baseTr.Find("Scenario_Chapter_Ranking/All/WindowAll/ScrollView").GetComponent<ReuseScroll>();
 		}
 
-		// Token: 0x04004840 RID: 18496
 		public GameObject baseObj;
 
-		// Token: 0x04004841 RID: 18497
 		public ReuseScroll ScrollView;
 	}
 
-	// Token: 0x02000BA0 RID: 2976
 	public class GUIMenuBar
 	{
-		// Token: 0x06004383 RID: 17283 RVA: 0x00203276 File Offset: 0x00201476
 		public GUIMenuBar(Transform baseTr)
 		{
 			this.BaseObj = baseTr.gameObject;
@@ -286,20 +257,15 @@ public class SelRankingCtrl : MonoBehaviour
 			this.Txt_Title = baseTr.Find("BaseImage/Txt").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x04004842 RID: 18498
 		public GameObject BaseObj;
 
-		// Token: 0x04004843 RID: 18499
 		public PguiButtonCtrl BarButton;
 
-		// Token: 0x04004844 RID: 18500
 		public PguiTextCtrl Txt_Title;
 	}
 
-	// Token: 0x02000BA1 RID: 2977
 	public class RankingMenu
 	{
-		// Token: 0x06004384 RID: 17284 RVA: 0x002032AC File Offset: 0x002014AC
 		public RankingMenu(string title, UnityAction action, bool isSealed)
 		{
 			this.Title = title;
@@ -307,13 +273,10 @@ public class SelRankingCtrl : MonoBehaviour
 			this.IsSealed = isSealed;
 		}
 
-		// Token: 0x04004845 RID: 18501
 		public string Title;
 
-		// Token: 0x04004846 RID: 18502
 		public UnityAction Action;
 
-		// Token: 0x04004847 RID: 18503
 		public bool IsSealed;
 	}
 }

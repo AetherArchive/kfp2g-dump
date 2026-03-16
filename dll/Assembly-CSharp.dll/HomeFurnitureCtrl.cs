@@ -1,14 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.uGUI;
 using UnityEngine;
 
-// Token: 0x0200014F RID: 335
 public class HomeFurnitureCtrl : MonoBehaviour
 {
-	// Token: 0x17000378 RID: 888
-	// (get) Token: 0x060012C3 RID: 4803 RVA: 0x000E3880 File Offset: 0x000E1A80
 	public bool isActive
 	{
 		get
@@ -17,8 +14,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000379 RID: 889
-	// (get) Token: 0x060012C4 RID: 4804 RVA: 0x000E3888 File Offset: 0x000E1A88
 	public bool isView
 	{
 		get
@@ -27,12 +22,8 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x1700037A RID: 890
-	// (get) Token: 0x060012C5 RID: 4805 RVA: 0x000E3890 File Offset: 0x000E1A90
-	// (set) Token: 0x060012C6 RID: 4806 RVA: 0x000E3898 File Offset: 0x000E1A98
 	public bool isSetup { get; private set; }
 
-	// Token: 0x060012C7 RID: 4807 RVA: 0x000E38A4 File Offset: 0x000E1AA4
 	public void Init(GameObject stage, Transform baseTr, Transform winTr)
 	{
 		this.fieldStage = stage;
@@ -90,7 +81,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		this.isSetup = false;
 	}
 
-	// Token: 0x060012C8 RID: 4808 RVA: 0x000E3C68 File Offset: 0x000E1E68
 	public void Setup(List<HomeFurnitureMapping> hfm, List<int> fn)
 	{
 		this.isSetup = false;
@@ -164,7 +154,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		this.Update();
 	}
 
-	// Token: 0x060012C9 RID: 4809 RVA: 0x000E4118 File Offset: 0x000E2318
 	private int SortPlace(HomePlacementStatic a, HomePlacementStatic b)
 	{
 		int num = a.sortPriority - b.sortPriority;
@@ -175,7 +164,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		return num;
 	}
 
-	// Token: 0x060012CA RID: 4810 RVA: 0x000E4148 File Offset: 0x000E2348
 	public void TearDown()
 	{
 		this.isSetup = false;
@@ -209,7 +197,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		this.infoIcon.transform.Find("Texture_Item").GetComponent<PguiRawImageCtrl>().SetTexture(null, true);
 	}
 
-	// Token: 0x060012CB RID: 4811 RVA: 0x000E42A8 File Offset: 0x000E24A8
 	private void updateFunitureMap()
 	{
 		if (this.furnitureMap != null)
@@ -245,7 +232,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060012CC RID: 4812 RVA: 0x000E4394 File Offset: 0x000E2594
 	private void destroyModel(HomeFurnitureStatic hfs, GameObject obj)
 	{
 		string modelFileName = hfs.modelFileName;
@@ -266,7 +252,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		PrjUtil.ReleaseMemory(PrjUtil.UnloadUnused / 50);
 	}
 
-	// Token: 0x060012CD RID: 4813 RVA: 0x000E43FC File Offset: 0x000E25FC
 	public GameObject GetFurnitureModel(int place)
 	{
 		foreach (HomePlacementStatic homePlacementStatic in this.placeData.Keys)
@@ -279,7 +264,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x060012CE RID: 4814 RVA: 0x000E4470 File Offset: 0x000E2670
 	public GameObject GetFurnitureModel(HomeFurnitureStatic.Category cat)
 	{
 		HomePlacementStatic homePlacementStatic = this.placeMap.Find((HomePlacementStatic itm) => itm.enableFurnitureCategory == cat);
@@ -290,7 +274,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x060012CF RID: 4815 RVA: 0x000E44B3 File Offset: 0x000E26B3
 	public int GetPlaceId()
 	{
 		if (!this.isActive)
@@ -300,7 +283,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		return this.placeId;
 	}
 
-	// Token: 0x060012D0 RID: 4816 RVA: 0x000E44C8 File Offset: 0x000E26C8
 	public bool isBadge()
 	{
 		bool flag = false;
@@ -318,14 +300,12 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		return flag;
 	}
 
-	// Token: 0x060012D1 RID: 4817 RVA: 0x000E4560 File Offset: 0x000E2760
 	private void SetupFurnitureCategory(int index, GameObject go)
 	{
 		go.GetComponent<PguiToggleButtonCtrl>().AddOnClickListener(new PguiToggleButtonCtrl.OnClick(this.OnClickCategory));
 		this.UpdateFurnitureCategory(index, go);
 	}
 
-	// Token: 0x060012D2 RID: 4818 RVA: 0x000E4584 File Offset: 0x000E2784
 	private void UpdateFurnitureCategory(int index, GameObject go)
 	{
 		if (index < 0 || index >= this.placeMap.Count)
@@ -355,7 +335,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060012D3 RID: 4819 RVA: 0x000E46D4 File Offset: 0x000E28D4
 	private void SetupFurnitureIcon(int index, GameObject go)
 	{
 		if (go.GetComponent<PguiTouchTrigger>() == null)
@@ -371,7 +350,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		this.UpdateFurnitureIcon(index, go);
 	}
 
-	// Token: 0x060012D4 RID: 4820 RVA: 0x000E4740 File Offset: 0x000E2940
 	private void UpdateFurnitureIcon(int index, GameObject go)
 	{
 		HomeFurniturePackData hfpd = ((this.userMap.ContainsKey(this.categoryId) && this.userMap[this.categoryId].Count > index) ? this.userMap[this.categoryId][index] : null);
@@ -423,7 +401,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060012D5 RID: 4821 RVA: 0x000E49D8 File Offset: 0x000E2BD8
 	private void ClickIcon(GameObject go)
 	{
 		if (this.furnitureMap == null)
@@ -509,7 +486,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060012D6 RID: 4822 RVA: 0x000E4D64 File Offset: 0x000E2F64
 	private IEnumerator UpdateNewBadge()
 	{
 		if (this.furnitureNew.Count > 0)
@@ -525,7 +501,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060012D7 RID: 4823 RVA: 0x000E4D74 File Offset: 0x000E2F74
 	private void ClickLongIcon(GameObject go)
 	{
 		if (this.iconBtn.ContainsKey(go))
@@ -565,13 +540,11 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060012D8 RID: 4824 RVA: 0x000E4ECD File Offset: 0x000E30CD
 	private bool ClickInfo(int index)
 	{
 		return true;
 	}
 
-	// Token: 0x060012D9 RID: 4825 RVA: 0x000E4ED0 File Offset: 0x000E30D0
 	private bool OnClickCategory(PguiToggleButtonCtrl toggle, int index)
 	{
 		if (!this.isFuniture)
@@ -619,7 +592,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x060012DA RID: 4826 RVA: 0x000E51B4 File Offset: 0x000E33B4
 	public void OnClickFunitureStart()
 	{
 		if (!this.isFuniture)
@@ -631,7 +603,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060012DB RID: 4827 RVA: 0x000E51E6 File Offset: 0x000E33E6
 	private void OnClickFunitureReturn(PguiButtonCtrl button)
 	{
 		if (this.isFuniture)
@@ -644,7 +615,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060012DC RID: 4828 RVA: 0x000E521F File Offset: 0x000E341F
 	private void OnClickFunitureView(PguiButtonCtrl button)
 	{
 		if (this.isFuniture)
@@ -654,7 +624,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060012DD RID: 4829 RVA: 0x000E5250 File Offset: 0x000E3450
 	private void OnClickFunitureEffect(PguiButtonCtrl button)
 	{
 		if (this.isFuniture)
@@ -664,7 +633,6 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060012DE RID: 4830 RVA: 0x000E5288 File Offset: 0x000E3488
 	private void Update()
 	{
 		Dictionary<int, HomeFurnitureStatic> dictionary = new Dictionary<int, HomeFurnitureStatic>();
@@ -769,81 +737,55 @@ public class HomeFurnitureCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000F6C RID: 3948
 	private GameObject fieldStage;
 
-	// Token: 0x04000F6D RID: 3949
 	private PguiOpenWindowCtrl infoWindow;
 
-	// Token: 0x04000F6E RID: 3950
 	private GameObject infoIcon;
 
-	// Token: 0x04000F6F RID: 3951
 	private PguiOpenWindowCtrl effectWindow;
 
-	// Token: 0x04000F70 RID: 3952
 	private SimpleAnimation furnitureWindow;
 
-	// Token: 0x04000F71 RID: 3953
 	private SimpleAnimation furnitureButton;
 
-	// Token: 0x04000F72 RID: 3954
 	private PguiButtonCtrl furnitureWindowBack;
 
-	// Token: 0x04000F73 RID: 3955
 	private PguiButtonCtrl furnitureWindowView;
 
-	// Token: 0x04000F74 RID: 3956
 	private PguiButtonCtrl furnitureWindowEffect;
 
-	// Token: 0x04000F75 RID: 3957
 	private PguiTextCtrl numOwn;
 
-	// Token: 0x04000F76 RID: 3958
 	private int sumOwn;
 
-	// Token: 0x04000F77 RID: 3959
 	private ReuseScroll categoryScroll;
 
-	// Token: 0x04000F78 RID: 3960
 	private ReuseScroll itemScroll;
 
-	// Token: 0x04000F79 RID: 3961
 	private bool isFuniture;
 
-	// Token: 0x04000F7A RID: 3962
 	private bool isFunitureView;
 
-	// Token: 0x04000F7B RID: 3963
 	private bool isFunitureEnd;
 
-	// Token: 0x04000F7C RID: 3964
 	private List<HomePlacementStatic> placeMap;
 
-	// Token: 0x04000F7D RID: 3965
 	private Dictionary<HomePlacementStatic, KeyValuePair<HomeFurnitureStatic, GameObject>> placeData;
 
-	// Token: 0x04000F7E RID: 3966
 	private List<HomeFurnitureMapping> furnitureMap;
 
-	// Token: 0x04000F7F RID: 3967
 	private List<int> furnitureNew;
 
-	// Token: 0x04000F80 RID: 3968
 	private List<HomeFurniturePackData> userData;
 
-	// Token: 0x04000F81 RID: 3969
 	private Dictionary<HomeFurnitureStatic.Category, List<HomeFurniturePackData>> userMap;
 
-	// Token: 0x04000F82 RID: 3970
 	private int placeId;
 
-	// Token: 0x04000F83 RID: 3971
 	private HomeFurnitureStatic.Category categoryId;
 
-	// Token: 0x04000F84 RID: 3972
 	private Dictionary<PguiToggleButtonCtrl, HomePlacementStatic> placeBtn;
 
-	// Token: 0x04000F85 RID: 3973
 	private Dictionary<GameObject, HomeFurniturePackData> iconBtn;
 }

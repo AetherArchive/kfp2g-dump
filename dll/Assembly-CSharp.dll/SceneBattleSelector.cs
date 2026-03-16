@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +8,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityStandardAssets.ImageEffects;
 
-// Token: 0x02000121 RID: 289
 public class SceneBattleSelector : BaseScene
 {
-	// Token: 0x17000334 RID: 820
-	// (get) Token: 0x06000EBB RID: 3771 RVA: 0x000B3831 File Offset: 0x000B1A31
 	public SceneBattleSelector.Args BsArgs
 	{
 		get
@@ -21,7 +18,6 @@ public class SceneBattleSelector : BaseScene
 		}
 	}
 
-	// Token: 0x06000EBC RID: 3772 RVA: 0x000B383C File Offset: 0x000B1A3C
 	public override void OnCreateScene()
 	{
 		this.basePanel = Object.Instantiate<GameObject>((GameObject)Resources.Load("SceneBattleSelector/GUI/Prefab/GUI_BattleSelector"));
@@ -39,7 +35,6 @@ public class SceneBattleSelector : BaseScene
 		SceneManager.AddPanelByBaseCanvas(SceneManager.CanvasType.FRONT, this.basePanel.transform, true);
 	}
 
-	// Token: 0x06000EBD RID: 3773 RVA: 0x000B38A0 File Offset: 0x000B1AA0
 	public override void OnEnableScene(object args)
 	{
 		this.friendSelectInternalCoroutine = null;
@@ -128,13 +123,11 @@ public class SceneBattleSelector : BaseScene
 		this.requestNextScene = SceneManager.SceneName.None;
 	}
 
-	// Token: 0x06000EBE RID: 3774 RVA: 0x000B3B1B File Offset: 0x000B1D1B
 	public override bool OnEnableSceneWait()
 	{
 		return !DataManager.IsServerRequesting();
 	}
 
-	// Token: 0x06000EBF RID: 3775 RVA: 0x000B3B28 File Offset: 0x000B1D28
 	public override void OnStartSceneFade()
 	{
 		if (this.bsArgs.detailCharaId != 0 || this.bsArgs.detailPhotoId != 0L || this.bsArgs.detailAccesssoryId != 0L)
@@ -166,7 +159,6 @@ public class SceneBattleSelector : BaseScene
 		}
 	}
 
-	// Token: 0x06000EC0 RID: 3776 RVA: 0x000B3C81 File Offset: 0x000B1E81
 	private IEnumerator FriendSelectInternal(HelperPackData helperPackData, int attrIndex)
 	{
 		this.selBattleHelperCtrl.PlayStartAnim(false);
@@ -197,7 +189,6 @@ public class SceneBattleSelector : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06000EC1 RID: 3777 RVA: 0x000B3CA0 File Offset: 0x000B1EA0
 	private void SetupCaution()
 	{
 		string text = "";
@@ -224,7 +215,6 @@ public class SceneBattleSelector : BaseScene
 		}
 	}
 
-	// Token: 0x06000EC2 RID: 3778 RVA: 0x000B3D63 File Offset: 0x000B1F63
 	public void OnFriendSelect(HelperPackData helperPackData, int attrIndex)
 	{
 		if (this.selBattleHelperCtrl.IsPlayingAnim())
@@ -238,7 +228,6 @@ public class SceneBattleSelector : BaseScene
 		this.friendSelectInternalCoroutine = Singleton<SceneManager>.Instance.StartCoroutine(this.FriendSelectInternal(helperPackData, attrIndex));
 	}
 
-	// Token: 0x06000EC3 RID: 3779 RVA: 0x000B3D94 File Offset: 0x000B1F94
 	private IEnumerator TutorialInternal()
 	{
 		CanvasManager.HdlTutorialMaskCtrl.SetEnable(true);
@@ -282,7 +271,6 @@ public class SceneBattleSelector : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06000EC4 RID: 3780 RVA: 0x000B3DA3 File Offset: 0x000B1FA3
 	private IEnumerator TutorialInternal2()
 	{
 		CanvasManager.HdlTutorialMaskCtrl.SetFrame(0, false, null, true, null);
@@ -296,13 +284,11 @@ public class SceneBattleSelector : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06000EC5 RID: 3781 RVA: 0x000B3DAB File Offset: 0x000B1FAB
 	private bool OnClickMoveSequenceButton(SceneManager.SceneName sceneName, object sceneArgs)
 	{
 		return this.friendSelectInternalCoroutine == null && this.IERequestBattleStart == null && this.IEMenuRetrunInternal == null && this.IEMenuRetrunInternal2 == null && CanvasManager.HdlSelCharaDeck.OnClickMoveSequenceButton(sceneName, sceneArgs);
 	}
 
-	// Token: 0x06000EC6 RID: 3782 RVA: 0x000B3DDF File Offset: 0x000B1FDF
 	private IEnumerator MenuRetrunInternal()
 	{
 		CanvasManager.HdlCmnMenu.SetupMenu(true, PrjUtil.MakeMessage("助っ人選択"), new PguiCmnMenuCtrl.OnClickReturnButton(this.OnClickButtonMenuRetrun), "", new PguiCmnMenuCtrl.OnClickMoveSequenceButton(this.OnClickMoveSequenceButton), null);
@@ -319,7 +305,6 @@ public class SceneBattleSelector : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06000EC7 RID: 3783 RVA: 0x000B3DEE File Offset: 0x000B1FEE
 	private IEnumerator MenuRetrunInternal2()
 	{
 		if (this.bsArgs.menuBackSceneName != SceneManager.SceneName.None)
@@ -345,7 +330,6 @@ public class SceneBattleSelector : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06000EC8 RID: 3784 RVA: 0x000B3E00 File Offset: 0x000B2000
 	private void OnClickButtonMenuRetrun()
 	{
 		if (this.friendSelectInternalCoroutine != null)
@@ -376,7 +360,6 @@ public class SceneBattleSelector : BaseScene
 		}
 	}
 
-	// Token: 0x06000EC9 RID: 3785 RVA: 0x000B3E88 File Offset: 0x000B2088
 	private bool OnClickBattleButton()
 	{
 		if (this.IERequestBattleStart != null)
@@ -390,7 +373,6 @@ public class SceneBattleSelector : BaseScene
 		return true;
 	}
 
-	// Token: 0x06000ECA RID: 3786 RVA: 0x000B3EE1 File Offset: 0x000B20E1
 	private IEnumerator RequestBattleStart()
 	{
 		if (this.bsArgs.tutorialSequence != TutorialUtil.Sequence.INVALID)
@@ -568,7 +550,6 @@ public class SceneBattleSelector : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06000ECB RID: 3787 RVA: 0x000B3EF0 File Offset: 0x000B20F0
 	public override void Update()
 	{
 		bool flag = true;
@@ -625,7 +606,6 @@ public class SceneBattleSelector : BaseScene
 		CanvasManager.HdlCmnMenu.UpdateMenu(flag, true);
 	}
 
-	// Token: 0x06000ECC RID: 3788 RVA: 0x000B4048 File Offset: 0x000B2248
 	public override void OnDisableScene()
 	{
 		if (this.bsArgs.tutorialSequence != TutorialUtil.Sequence.INVALID)
@@ -658,14 +638,12 @@ public class SceneBattleSelector : BaseScene
 		CanvasManager.DestoryBgTexture();
 	}
 
-	// Token: 0x06000ECD RID: 3789 RVA: 0x000B4105 File Offset: 0x000B2305
 	public override void OnDestroyScene()
 	{
 		Object.Destroy(this.basePanel);
 		this.basePanel = null;
 	}
 
-	// Token: 0x06000ECE RID: 3790 RVA: 0x000B411C File Offset: 0x000B231C
 	private List<int> GetConvertDrawId(int questOneId)
 	{
 		QuestOnePackData questOnePackData = DataManager.DmQuest.GetQuestOnePackData(questOneId);
@@ -686,88 +664,60 @@ public class SceneBattleSelector : BaseScene
 		return list;
 	}
 
-	// Token: 0x04000D6D RID: 3437
 	private GameObject basePanel;
 
-	// Token: 0x04000D6E RID: 3438
 	private SceneBattleSelector.Args bsArgs;
 
-	// Token: 0x04000D6F RID: 3439
 	private SceneManager.SceneName requestNextScene;
 
-	// Token: 0x04000D70 RID: 3440
 	private SceneBattleArgs sceneBattleArg;
 
-	// Token: 0x04000D71 RID: 3441
 	private SelBattleHelperCtrl selBattleHelperCtrl;
 
-	// Token: 0x04000D72 RID: 3442
 	private object nextSceneArgs;
 
-	// Token: 0x04000D73 RID: 3443
 	private string playScenarioName;
 
-	// Token: 0x04000D74 RID: 3444
 	private HelperPackData selectHelper;
 
-	// Token: 0x04000D75 RID: 3445
 	private int selectAttrIndex;
 
-	// Token: 0x04000D76 RID: 3446
 	private Coroutine friendSelectInternalCoroutine;
 
-	// Token: 0x04000D77 RID: 3447
 	private int selectQuestOneId;
 
-	// Token: 0x04000D78 RID: 3448
 	private IEnumerator IERequestBattleStart;
 
-	// Token: 0x04000D79 RID: 3449
 	private IEnumerator IEMenuRetrunInternal;
 
-	// Token: 0x04000D7A RID: 3450
 	private IEnumerator IEMenuRetrunInternal2;
 
-	// Token: 0x04000D7B RID: 3451
 	private IEnumerator IEHelperChange;
 
-	// Token: 0x04000D7C RID: 3452
 	private SelCharaDeckCtrl.SetupParam setupParam = new SelCharaDeckCtrl.SetupParam();
 
-	// Token: 0x02000919 RID: 2329
 	public class Args
 	{
-		// Token: 0x04003B81 RID: 15233
 		public TutorialUtil.Sequence tutorialSequence;
 
-		// Token: 0x04003B82 RID: 15234
 		public int selectQuestOneId;
 
-		// Token: 0x04003B83 RID: 15235
 		public SceneManager.SceneName menuBackSceneName;
 
-		// Token: 0x04003B84 RID: 15236
 		public object menuBackSceneArgs;
 
-		// Token: 0x04003B85 RID: 15237
 		public int detailCharaId;
 
-		// Token: 0x04003B86 RID: 15238
 		public long detailPhotoId;
 
-		// Token: 0x04003B87 RID: 15239
 		public long detailAccesssoryId;
 
-		// Token: 0x04003B88 RID: 15240
 		public UnityAction destroyQuestMapDataCB;
 
-		// Token: 0x04003B89 RID: 15241
 		public SceneManager.SceneName recordCameSceneName;
 
-		// Token: 0x04003B8A RID: 15242
 		public UnityAction<bool> setActiveQuestMapDataCB;
 
-		// Token: 0x04003B8B RID: 15243
 		public long coopLastUpdatePoint;
 	}
 }

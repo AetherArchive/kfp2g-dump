@@ -1,11 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Token: 0x02000132 RID: 306
 public class SelCharaGrowMiracle
 {
-	// Token: 0x0600106B RID: 4203 RVA: 0x000C772C File Offset: 0x000C592C
 	public SelCharaGrowMiracle(Transform baseTr)
 	{
 		this.GrowMiracleGUI = new SelCharaGrowMiracle.CharaGrowMiracleGUI();
@@ -15,7 +13,6 @@ public class SelCharaGrowMiracle
 		this.GrowMiracleGUI.miracleUpTab = new SelCharaGrowMiracle.MiracleUpTab(baseTr.Find("CharaGrow_Main").Find("Main/Right/ArtsLv"));
 	}
 
-	// Token: 0x0600106C RID: 4204 RVA: 0x000C77D8 File Offset: 0x000C59D8
 	public void SetupItemMiracle(int charaId)
 	{
 		GrowItemList nextItemByArtsUp = DataManager.DmChara.GetUserCharaData(charaId).GetNextItemByArtsUp(0);
@@ -32,7 +29,6 @@ public class SelCharaGrowMiracle
 		}
 	}
 
-	// Token: 0x0600106D RID: 4205 RVA: 0x000C7928 File Offset: 0x000C5B28
 	public void UpdateMiracle(int charaId)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(charaId);
@@ -76,23 +72,17 @@ public class SelCharaGrowMiracle
 		this.GrowMiracleGUI.miracleUpTab.Txt_LvInfo.gameObject.SetActive(false);
 	}
 
-	// Token: 0x04000E4E RID: 3662
 	public SelCharaGrowMiracle.CharaGrowMiracleGUI GrowMiracleGUI;
 
-	// Token: 0x02000A09 RID: 2569
 	public class MiracleItem
 	{
-		// Token: 0x04004027 RID: 16423
 		public IconItemCtrl iconItemCtrl;
 
-		// Token: 0x04004028 RID: 16424
 		public PguiTextCtrl itemNum;
 	}
 
-	// Token: 0x02000A0A RID: 2570
 	public class MiracleUpTab
 	{
-		// Token: 0x06003E32 RID: 15922 RVA: 0x001E5A02 File Offset: 0x001E3C02
 		public MiracleUpTab(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -101,26 +91,19 @@ public class SelCharaGrowMiracle
 			this.Txt_LvInfo = baseTr.Find("Txt_LvInfo").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x04004029 RID: 16425
 		public GameObject baseObj;
 
-		// Token: 0x0400402A RID: 16426
 		public static readonly int COUNT = 8;
 
-		// Token: 0x0400402B RID: 16427
 		public List<SelCharaGrowMiracle.MiracleItem> iconItemList;
 
-		// Token: 0x0400402C RID: 16428
 		public List<RectTransform> iconBaseList;
 
-		// Token: 0x0400402D RID: 16429
 		public PguiTextCtrl Txt_LvInfo;
 	}
 
-	// Token: 0x02000A0B RID: 2571
 	public class WindowMiracle
 	{
-		// Token: 0x06003E34 RID: 15924 RVA: 0x001E5A4C File Offset: 0x001E3C4C
 		public WindowMiracle(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -137,41 +120,29 @@ public class SelCharaGrowMiracle
 			this.skillInfoAfter = new CharaUtil.GUISkillInfo(baseTr.Find("Base/Window/CharaInfo_List_Skill_Short_After"));
 		}
 
-		// Token: 0x0400402E RID: 16430
 		private static readonly int COUNT = 8;
 
-		// Token: 0x0400402F RID: 16431
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x04004030 RID: 16432
 		public PguiTextCtrl Txt_ArtsName;
 
-		// Token: 0x04004031 RID: 16433
 		public PguiTextCtrl Num_Lv_Before;
 
-		// Token: 0x04004032 RID: 16434
 		public PguiTextCtrl Num_Lv_After;
 
-		// Token: 0x04004033 RID: 16435
 		public List<IconItemCtrl> iconItemList = new List<IconItemCtrl>();
 
-		// Token: 0x04004034 RID: 16436
 		public PguiTextCtrl ItemUse_Num;
 
-		// Token: 0x04004035 RID: 16437
 		public PguiTextCtrl ItemOwn_Num;
 
-		// Token: 0x04004036 RID: 16438
 		public CharaUtil.GUISkillInfo skillInfoBefore;
 
-		// Token: 0x04004037 RID: 16439
 		public CharaUtil.GUISkillInfo skillInfoAfter;
 	}
 
-	// Token: 0x02000A0C RID: 2572
 	public class WindowArtsResult
 	{
-		// Token: 0x06003E36 RID: 15926 RVA: 0x001E5B58 File Offset: 0x001E3D58
 		public WindowArtsResult(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -180,29 +151,21 @@ public class SelCharaGrowMiracle
 			this.Num_Lv_After = baseTr.Find("Base/Window/Txt_ArtsName/Img_Yaji/Num_Lv_After").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x04004038 RID: 16440
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x04004039 RID: 16441
 		public PguiTextCtrl Txt_ArtsName;
 
-		// Token: 0x0400403A RID: 16442
 		public PguiTextCtrl Num_Lv_Before;
 
-		// Token: 0x0400403B RID: 16443
 		public PguiTextCtrl Num_Lv_After;
 	}
 
-	// Token: 0x02000A0D RID: 2573
 	public class CharaGrowMiracleGUI
 	{
-		// Token: 0x0400403C RID: 16444
 		public SelCharaGrowMiracle.WindowMiracle miracleWindow;
 
-		// Token: 0x0400403D RID: 16445
 		public SelCharaGrowMiracle.WindowArtsResult miracleResultWindow;
 
-		// Token: 0x0400403E RID: 16446
 		public SelCharaGrowMiracle.MiracleUpTab miracleUpTab;
 	}
 }

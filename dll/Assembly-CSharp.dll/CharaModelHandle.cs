@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
@@ -7,70 +7,32 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
 
-// Token: 0x02000047 RID: 71
 public class CharaModelHandle : MonoBehaviour
 {
-	// Token: 0x17000026 RID: 38
-	// (get) Token: 0x0600016A RID: 362 RVA: 0x0000B69E File Offset: 0x0000989E
-	// (set) Token: 0x0600016B RID: 363 RVA: 0x0000B6A6 File Offset: 0x000098A6
 	public bool enabledFaceMotion { get; set; }
 
-	// Token: 0x17000027 RID: 39
-	// (get) Token: 0x0600016C RID: 364 RVA: 0x0000B6AF File Offset: 0x000098AF
-	// (set) Token: 0x0600016D RID: 365 RVA: 0x0000B6B7 File Offset: 0x000098B7
 	public CharaModelHandle.EyeMotType eyeMotionType { get; set; }
 
-	// Token: 0x17000028 RID: 40
-	// (get) Token: 0x0600016E RID: 366 RVA: 0x0000B6C0 File Offset: 0x000098C0
-	// (set) Token: 0x0600016F RID: 367 RVA: 0x0000B6C8 File Offset: 0x000098C8
 	public Transform headFollowObj { get; set; }
 
-	// Token: 0x17000029 RID: 41
-	// (get) Token: 0x06000170 RID: 368 RVA: 0x0000B6D1 File Offset: 0x000098D1
-	// (set) Token: 0x06000171 RID: 369 RVA: 0x0000B6D9 File Offset: 0x000098D9
 	public Transform eyeFollowObj { get; set; }
 
-	// Token: 0x1700002A RID: 42
-	// (get) Token: 0x06000172 RID: 370 RVA: 0x0000B6E2 File Offset: 0x000098E2
-	// (set) Token: 0x06000173 RID: 371 RVA: 0x0000B6EA File Offset: 0x000098EA
 	public Transform mouthFollowObj { get; set; }
 
-	// Token: 0x1700002B RID: 43
-	// (get) Token: 0x06000174 RID: 372 RVA: 0x0000B6F3 File Offset: 0x000098F3
-	// (set) Token: 0x06000175 RID: 373 RVA: 0x0000B6FB File Offset: 0x000098FB
 	public Vector3 eyeAngleL { get; set; }
 
-	// Token: 0x1700002C RID: 44
-	// (get) Token: 0x06000176 RID: 374 RVA: 0x0000B704 File Offset: 0x00009904
-	// (set) Token: 0x06000177 RID: 375 RVA: 0x0000B70C File Offset: 0x0000990C
 	public Vector3 eyeAngleR { get; set; }
 
-	// Token: 0x1700002D RID: 45
-	// (get) Token: 0x06000178 RID: 376 RVA: 0x0000B715 File Offset: 0x00009915
-	// (set) Token: 0x06000179 RID: 377 RVA: 0x0000B71D File Offset: 0x0000991D
 	public float mouthAngle { get; set; }
 
-	// Token: 0x1700002E RID: 46
-	// (get) Token: 0x0600017A RID: 378 RVA: 0x0000B726 File Offset: 0x00009926
-	// (set) Token: 0x0600017B RID: 379 RVA: 0x0000B72E File Offset: 0x0000992E
 	public bool haraOffset { get; set; }
 
-	// Token: 0x1700002F RID: 47
-	// (get) Token: 0x0600017C RID: 380 RVA: 0x0000B737 File Offset: 0x00009937
-	// (set) Token: 0x0600017D RID: 381 RVA: 0x0000B73F File Offset: 0x0000993F
 	public CharaModelHandle.InitializeParam initializeParam { get; private set; }
 
-	// Token: 0x17000030 RID: 48
-	// (get) Token: 0x0600017E RID: 382 RVA: 0x0000B748 File Offset: 0x00009948
-	// (set) Token: 0x0600017F RID: 383 RVA: 0x0000B750 File Offset: 0x00009950
 	public string modelName { get; private set; }
 
-	// Token: 0x17000031 RID: 49
-	// (get) Token: 0x06000180 RID: 384 RVA: 0x0000B759 File Offset: 0x00009959
-	// (set) Token: 0x06000181 RID: 385 RVA: 0x0000B761 File Offset: 0x00009961
 	public string loadVoiceCueSheetName { get; private set; }
 
-	// Token: 0x06000182 RID: 386 RVA: 0x0000B76C File Offset: 0x0000996C
 	public static CharaModelHandle.BlendShapeIndex MakeBlendShapeIndex(string flagName, int xyzIndex)
 	{
 		int num = new List<string>(CharaModelHandle.FLAG_LIST).IndexOf(flagName);
@@ -81,17 +43,10 @@ public class CharaModelHandle : MonoBehaviour
 		return CharaModelHandle.BlendShapeIndex.Max;
 	}
 
-	// Token: 0x17000032 RID: 50
-	// (get) Token: 0x06000183 RID: 387 RVA: 0x0000B7A1 File Offset: 0x000099A1
-	// (set) Token: 0x06000184 RID: 388 RVA: 0x0000B7A9 File Offset: 0x000099A9
 	public float shadowSize { get; set; }
 
-	// Token: 0x17000033 RID: 51
-	// (get) Token: 0x06000185 RID: 389 RVA: 0x0000B7B2 File Offset: 0x000099B2
-	// (set) Token: 0x06000186 RID: 390 RVA: 0x0000B7BA File Offset: 0x000099BA
 	public float shadowHeight { get; set; }
 
-	// Token: 0x06000187 RID: 391 RVA: 0x0000B7C4 File Offset: 0x000099C4
 	private string skirt2long(string str)
 	{
 		KeyValuePair<string, string> keyValuePair = this.longSkirt.Find((KeyValuePair<string, string> itm) => itm.Key == str);
@@ -102,7 +57,6 @@ public class CharaModelHandle : MonoBehaviour
 		return str;
 	}
 
-	// Token: 0x06000188 RID: 392 RVA: 0x0000B828 File Offset: 0x00009A28
 	private string skirt2short(string str)
 	{
 		KeyValuePair<string, string> keyValuePair = this.longSkirt.Find((KeyValuePair<string, string> itm) => itm.Value == str);
@@ -113,7 +67,6 @@ public class CharaModelHandle : MonoBehaviour
 		return str;
 	}
 
-	// Token: 0x06000189 RID: 393 RVA: 0x0000B88C File Offset: 0x00009A8C
 	public void Initialize(int charaId, bool isShadow = true, bool isShadowModel = false, int clothImageId = 0, bool longSkirt = false, bool isMotionSe = false, bool isDisableVoice = false, DataManagerCharaAccessory.Accessory accessory = null)
 	{
 		CharaModelHandle.InitializeParam initializeParam = CharaModelHandle.InitializeParam.CreaateByCharaId(charaId, clothImageId, longSkirt, isShadow);
@@ -124,7 +77,6 @@ public class CharaModelHandle : MonoBehaviour
 		this.Initialize(initializeParam);
 	}
 
-	// Token: 0x0600018A RID: 394 RVA: 0x0000B8CC File Offset: 0x00009ACC
 	public void Initialize(CharaPackData cpd, bool isShadow = true, bool isShadowModel = false, bool isMotionSe = false)
 	{
 		CharaModelHandle.InitializeParam initializeParam = CharaModelHandle.InitializeParam.CreaateByCharaId(cpd.id, cpd.equipClothImageId, cpd.equipLongSkirt, isShadow);
@@ -134,7 +86,6 @@ public class CharaModelHandle : MonoBehaviour
 		this.Initialize(initializeParam);
 	}
 
-	// Token: 0x0600018B RID: 395 RVA: 0x0000B92C File Offset: 0x00009B2C
 	public void Initialize(CharaModelHandle.InitializeParam initParam)
 	{
 		this.DestoryInternal();
@@ -218,7 +169,6 @@ public class CharaModelHandle : MonoBehaviour
 		this.initializeRoutine.MoveNext();
 	}
 
-	// Token: 0x0600018C RID: 396 RVA: 0x0000BCDC File Offset: 0x00009EDC
 	private static List<string> MakeOptionModelName(string bodyModelName, string optionSuffix)
 	{
 		List<string> list = new List<string>();
@@ -249,7 +199,6 @@ public class CharaModelHandle : MonoBehaviour
 		return list;
 	}
 
-	// Token: 0x0600018D RID: 397 RVA: 0x0000BDF3 File Offset: 0x00009FF3
 	private IEnumerator InitializeInternal(string bodyModelName, bool isShadow, bool isShadowModel, bool isDisableVoice, DataManagerCharaAccessory.Accessory accessory)
 	{
 		string luckyPath = null;
@@ -956,7 +905,6 @@ public class CharaModelHandle : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600018E RID: 398 RVA: 0x0000BE28 File Offset: 0x0000A028
 	private void SetFlagList(Transform root, string flagSuffix = "")
 	{
 		this.flagList.Clear();
@@ -974,7 +922,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600018F RID: 399 RVA: 0x0000BEB8 File Offset: 0x0000A0B8
 	private void SetEyeObj(Transform root, string flagSuffix = "")
 	{
 		string text = string.Concat(new string[] { "pelvis", flagSuffix, "/j_upperbody", flagSuffix, "/j_chest", flagSuffix, "/j_neck", flagSuffix, "/j_head", flagSuffix });
@@ -982,19 +929,16 @@ public class CharaModelHandle : MonoBehaviour
 		this.eyeCtrlR = root.Find(text + "/j_eye_r" + flagSuffix);
 	}
 
-	// Token: 0x06000190 RID: 400 RVA: 0x0000BF3F File Offset: 0x0000A13F
 	public bool IsFinishInitialize()
 	{
 		return this.assetModelName.IndexOf("_1015_") > 0 || this.assetModelName.IndexOf("_1016_") > 0 || this.isFinishInit;
 	}
 
-	// Token: 0x06000191 RID: 401 RVA: 0x0000BF6F File Offset: 0x0000A16F
 	private void OnDestroy()
 	{
 		this.DestoryInternal();
 	}
 
-	// Token: 0x06000192 RID: 402 RVA: 0x0000BF78 File Offset: 0x0000A178
 	public void DestoryInternal()
 	{
 		if (this.initializeRoutine != null)
@@ -1161,13 +1105,11 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000193 RID: 403 RVA: 0x0000C564 File Offset: 0x0000A764
 	private void Update()
 	{
 		this.UpdateInternal();
 	}
 
-	// Token: 0x06000194 RID: 404 RVA: 0x0000C56C File Offset: 0x0000A76C
 	public void UpdateInternal()
 	{
 		if (this.initializeRoutine != null && !this.initializeRoutine.MoveNext())
@@ -1598,7 +1540,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000195 RID: 405 RVA: 0x0000D794 File Offset: 0x0000B994
 	private void SetEnv()
 	{
 		int num = this.layer;
@@ -1760,7 +1701,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000196 RID: 406 RVA: 0x0000E074 File Offset: 0x0000C274
 	private void setPuyo()
 	{
 		int num = this.layer;
@@ -1792,7 +1732,6 @@ public class CharaModelHandle : MonoBehaviour
 		this.puyoObj.GetComponentsInChildren<MeshRenderer>(true)[0].material.SetFloat("_Alpha", this.alpha);
 	}
 
-	// Token: 0x06000197 RID: 407 RVA: 0x0000E140 File Offset: 0x0000C340
 	private void SetFaceData(CharaModelHandle.BlendShapeIndex bsi, float val)
 	{
 		if (val > 10f)
@@ -1860,7 +1799,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000198 RID: 408 RVA: 0x0000E2E4 File Offset: 0x0000C4E4
 	private void SetEyeAngle(Transform ball, Vector3 minus, Vector3 plus, Vector2 old)
 	{
 		float z = ball.localEulerAngles.z;
@@ -1876,7 +1814,6 @@ public class CharaModelHandle : MonoBehaviour
 		ball.localEulerAngles = new Vector3(num, num3, z);
 	}
 
-	// Token: 0x06000199 RID: 409 RVA: 0x0000E3F8 File Offset: 0x0000C5F8
 	private float SetAngle(float ang, float start, float end, float minus, float plus)
 	{
 		float num = Mathf.DeltaAngle(0f, ang);
@@ -1915,7 +1852,6 @@ public class CharaModelHandle : MonoBehaviour
 		return num;
 	}
 
-	// Token: 0x0600019A RID: 410 RVA: 0x0000E478 File Offset: 0x0000C678
 	private void LateUpdate()
 	{
 		this.viewCamera = null;
@@ -2398,7 +2334,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600019B RID: 411 RVA: 0x0000FD00 File Offset: 0x0000DF00
 	public void SetModelActive(bool act)
 	{
 		if (this.puyoObj != null)
@@ -2427,7 +2362,6 @@ public class CharaModelHandle : MonoBehaviour
 		this.modelActive = act;
 	}
 
-	// Token: 0x0600019C RID: 412 RVA: 0x0000FDC6 File Offset: 0x0000DFC6
 	public void SetShadowActive(bool act)
 	{
 		if (this.isFinishInit && this.shadowActive != act && this.shadow != null)
@@ -2437,19 +2371,16 @@ public class CharaModelHandle : MonoBehaviour
 		this.shadowActive = act;
 	}
 
-	// Token: 0x0600019D RID: 413 RVA: 0x0000FE05 File Offset: 0x0000E005
 	public void SetWeaponActive(bool act)
 	{
 		this.weaponActive = act;
 	}
 
-	// Token: 0x0600019E RID: 414 RVA: 0x0000FE0E File Offset: 0x0000E00E
 	public bool IsModelActive()
 	{
 		return this.modelActive;
 	}
 
-	// Token: 0x0600019F RID: 415 RVA: 0x0000FE16 File Offset: 0x0000E016
 	public void SetPuyoTex(string tex)
 	{
 		if (this.puyoObj != null && string.IsNullOrEmpty(this.puyoReq) && this.puyoTex != tex)
@@ -2459,13 +2390,11 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001A0 RID: 416 RVA: 0x0000FE56 File Offset: 0x0000E056
 	public void PlayAnimation(CharaMotionDefine.ActKey key, bool loop = false, float speed = 1f, float crossfade = 0f, float crossfadeL = 0f, bool turn = false)
 	{
 		this.PlayAnimation(key.ToString(), loop, speed, crossfade, crossfadeL, turn);
 	}
 
-	// Token: 0x060001A1 RID: 417 RVA: 0x0000FE74 File Offset: 0x0000E074
 	public void PlayAnimation(string key, bool loop = false, float speed = 1f, float crossfade = 0f, float crossfadeL = 0f, bool turn = false)
 	{
 		this.motionReq.name = (this.initializeParam.isViewer ? key : (this.initializeParam.longSkirt ? this.skirt2long(key) : this.skirt2short(key)));
@@ -2479,13 +2408,11 @@ public class CharaModelHandle : MonoBehaviour
 		this.motionRot = -1f;
 	}
 
-	// Token: 0x060001A2 RID: 418 RVA: 0x0000FF1A File Offset: 0x0000E11A
 	public bool IsCurrentAnimation(CharaMotionDefine.ActKey key)
 	{
 		return this.IsCurrentAnimation(key.ToString());
 	}
 
-	// Token: 0x060001A3 RID: 419 RVA: 0x0000FF30 File Offset: 0x0000E130
 	public bool IsCurrentAnimation(string key)
 	{
 		string text = (string.IsNullOrEmpty(this.motionReq.name) ? this.motionName : this.motionReq.name);
@@ -2496,7 +2423,6 @@ public class CharaModelHandle : MonoBehaviour
 		return text == key;
 	}
 
-	// Token: 0x060001A4 RID: 420 RVA: 0x0000FF8B File Offset: 0x0000E18B
 	public bool IsLoopAnimation()
 	{
 		if (!string.IsNullOrEmpty(this.motionReq.name))
@@ -2506,25 +2432,21 @@ public class CharaModelHandle : MonoBehaviour
 		return this.motionLoop;
 	}
 
-	// Token: 0x060001A5 RID: 421 RVA: 0x0000FFB1 File Offset: 0x0000E1B1
 	public void SetLoopAnimation(bool sw)
 	{
 		this.motionLoop = sw;
 	}
 
-	// Token: 0x060001A6 RID: 422 RVA: 0x0000FFBA File Offset: 0x0000E1BA
 	public void SetAnimationSpeed(float spd)
 	{
 		this.motionSpeed = spd;
 	}
 
-	// Token: 0x060001A7 RID: 423 RVA: 0x0000FFC3 File Offset: 0x0000E1C3
 	public void SetPosition(Vector3 pos)
 	{
 		this.motionPos = pos;
 	}
 
-	// Token: 0x060001A8 RID: 424 RVA: 0x0000FFCC File Offset: 0x0000E1CC
 	public void SetRotation(float rot)
 	{
 		this.motionRot = rot;
@@ -2534,7 +2456,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001A9 RID: 425 RVA: 0x0000FFF8 File Offset: 0x0000E1F8
 	public float GetAnimationTime(string key = null)
 	{
 		if (!this.isFinishInit)
@@ -2560,7 +2481,6 @@ public class CharaModelHandle : MonoBehaviour
 		return Mathf.Clamp01(state.time / state.clip.length);
 	}
 
-	// Token: 0x060001AA RID: 426 RVA: 0x000100BC File Offset: 0x0000E2BC
 	public void SetAnimationTime(float tim)
 	{
 		if (!this.isFinishInit)
@@ -2602,7 +2522,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001AB RID: 427 RVA: 0x000101AC File Offset: 0x0000E3AC
 	public float GetAnimationLength(string key = null)
 	{
 		if (!this.isFinishInit)
@@ -2628,7 +2547,6 @@ public class CharaModelHandle : MonoBehaviour
 		return 0f;
 	}
 
-	// Token: 0x060001AC RID: 428 RVA: 0x00010254 File Offset: 0x0000E454
 	public CharaMotionDefine.ActKey GetCurrentAnimation()
 	{
 		CharaMotionDefine.ActKey actKey = CharaMotionDefine.ActKey.INVALID;
@@ -2648,7 +2566,6 @@ public class CharaModelHandle : MonoBehaviour
 		return actKey;
 	}
 
-	// Token: 0x060001AD RID: 429 RVA: 0x000102D0 File Offset: 0x0000E4D0
 	public bool IsSameAnimation(CharaMotionDefine.ActKey a, CharaMotionDefine.ActKey b)
 	{
 		bool flag = true;
@@ -2675,7 +2592,6 @@ public class CharaModelHandle : MonoBehaviour
 		return flag;
 	}
 
-	// Token: 0x060001AE RID: 430 RVA: 0x0001037C File Offset: 0x0000E57C
 	public void PlayAnimationByAuth(string key, float startTime, float speed, bool loop)
 	{
 		this.motionReq.name = "";
@@ -2749,19 +2665,16 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001AF RID: 431 RVA: 0x0001065A File Offset: 0x0000E85A
 	public void SetAuthPlayer(AuthPlayer ap)
 	{
 		this.authPlayer = ap;
 	}
 
-	// Token: 0x060001B0 RID: 432 RVA: 0x00010663 File Offset: 0x0000E863
 	public bool IsPlaying()
 	{
 		return this.isFinishInit && (this.partsDataBody.animation.enabled || !string.IsNullOrEmpty(this.motionReq.name)) && !this.motionEnd;
 	}
 
-	// Token: 0x060001B1 RID: 433 RVA: 0x0001069C File Offset: 0x0000E89C
 	public List<SimpleAnimation> GetEnableAnimationList()
 	{
 		List<SimpleAnimation> list = new List<SimpleAnimation>();
@@ -2776,7 +2689,6 @@ public class CharaModelHandle : MonoBehaviour
 		return list;
 	}
 
-	// Token: 0x060001B2 RID: 434 RVA: 0x00010744 File Offset: 0x0000E944
 	public void SetEyeColor(Color color)
 	{
 		this.eyeColor = color;
@@ -2793,7 +2705,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001B3 RID: 435 RVA: 0x000107C8 File Offset: 0x0000E9C8
 	public void SetEyeColorByReferencer(float a)
 	{
 		Color color = this.partsDataBody.referencer.refAnimationObj.GetComponent<CharaModelReferencer>().eyeColor;
@@ -2801,13 +2712,11 @@ public class CharaModelHandle : MonoBehaviour
 		this.SetEyeColor(color);
 	}
 
-	// Token: 0x060001B4 RID: 436 RVA: 0x000107FF File Offset: 0x0000E9FF
 	public Color GetEyeColor()
 	{
 		return this.eyeColor;
 	}
 
-	// Token: 0x060001B5 RID: 437 RVA: 0x00010808 File Offset: 0x0000EA08
 	public void SetCheekColor(Color color)
 	{
 		this.cheekColor = color;
@@ -2821,13 +2730,11 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001B6 RID: 438 RVA: 0x0001085F File Offset: 0x0000EA5F
 	public Color GetCheekColor()
 	{
 		return this.cheekColor;
 	}
 
-	// Token: 0x060001B7 RID: 439 RVA: 0x00010868 File Offset: 0x0000EA68
 	public void SetFaceParam(List<float> param)
 	{
 		if (this.isFinishInit)
@@ -2842,7 +2749,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001B8 RID: 440 RVA: 0x000108B4 File Offset: 0x0000EAB4
 	public List<float> GetFaceParam()
 	{
 		List<float> list = new List<float>();
@@ -2856,7 +2762,6 @@ public class CharaModelHandle : MonoBehaviour
 		return list;
 	}
 
-	// Token: 0x060001B9 RID: 441 RVA: 0x000108FD File Offset: 0x0000EAFD
 	public float GetMouthAngle()
 	{
 		if (!this.isFinishInit || !(this.mouthCtrl != null))
@@ -2866,7 +2771,6 @@ public class CharaModelHandle : MonoBehaviour
 		return Mathf.DeltaAngle(0f, this.mouthCtrl.localEulerAngles.x);
 	}
 
-	// Token: 0x060001BA RID: 442 RVA: 0x00010938 File Offset: 0x0000EB38
 	public void SetFacePackData(FacePackData packData, Transform mouthFollowObj = null, Transform eyeFollowObj = null)
 	{
 		if (packData == null)
@@ -2880,7 +2784,6 @@ public class CharaModelHandle : MonoBehaviour
 		this.SetCheekColor(packData.cheekColor);
 	}
 
-	// Token: 0x060001BB RID: 443 RVA: 0x000109A2 File Offset: 0x0000EBA2
 	public void SetLayer(int lay)
 	{
 		this.layer = lay;
@@ -2895,38 +2798,32 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001BC RID: 444 RVA: 0x000109CE File Offset: 0x0000EBCE
 	public void SetLayer(string lay)
 	{
 		this.SetLayer(LayerMask.NameToLayer(lay));
 	}
 
-	// Token: 0x060001BD RID: 445 RVA: 0x000109DC File Offset: 0x0000EBDC
 	public int GetLayer()
 	{
 		return this.layer;
 	}
 
-	// Token: 0x060001BE RID: 446 RVA: 0x000109E4 File Offset: 0x0000EBE4
 	public int GetPartsBodyLayer()
 	{
 		return this.partsDataBody.rootObj.layer;
 	}
 
-	// Token: 0x060001BF RID: 447 RVA: 0x000109F6 File Offset: 0x0000EBF6
 	public void SetAlpha(float a)
 	{
 		this.alpha = a;
 		this.fade = 0f;
 	}
 
-	// Token: 0x060001C0 RID: 448 RVA: 0x00010A0A File Offset: 0x0000EC0A
 	public float GetAlpha()
 	{
 		return this.alpha;
 	}
 
-	// Token: 0x060001C1 RID: 449 RVA: 0x00010A14 File Offset: 0x0000EC14
 	public void FadeIn(float time)
 	{
 		this.fade = time;
@@ -2945,7 +2842,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001C2 RID: 450 RVA: 0x00010A60 File Offset: 0x0000EC60
 	public void FadeOut(float time, UnityAction action = null)
 	{
 		this.fade = time;
@@ -2971,13 +2867,11 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001C3 RID: 451 RVA: 0x00010AC6 File Offset: 0x0000ECC6
 	public bool IsDisp()
 	{
 		return this.fade > 0f || (this.fade == 0f && this.alpha > 0f);
 	}
 
-	// Token: 0x060001C4 RID: 452 RVA: 0x00010AF4 File Offset: 0x0000ECF4
 	public HashSet<Camera> GetViewCamera()
 	{
 		if (this.viewCamera == null)
@@ -2994,13 +2888,11 @@ public class CharaModelHandle : MonoBehaviour
 		return this.viewCamera;
 	}
 
-	// Token: 0x060001C5 RID: 453 RVA: 0x00010BA0 File Offset: 0x0000EDA0
 	public void SetNeighboringAlpha(Vector3 na)
 	{
 		this.NeighboringAlpha = new Vector4(na.x, na.y, na.z, this.NeighboringAlpha.w);
 	}
 
-	// Token: 0x060001C6 RID: 454 RVA: 0x00010BCA File Offset: 0x0000EDCA
 	public void SetMatCap(float mc)
 	{
 		if (this.matCap >= 0f)
@@ -3009,7 +2901,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001C7 RID: 455 RVA: 0x00010BE5 File Offset: 0x0000EDE5
 	public float GetMatCap()
 	{
 		if (this.matCap < 0f)
@@ -3019,7 +2910,6 @@ public class CharaModelHandle : MonoBehaviour
 		return this.matCap;
 	}
 
-	// Token: 0x060001C8 RID: 456 RVA: 0x00010C00 File Offset: 0x0000EE00
 	public Vector3 GetHaraPos()
 	{
 		if (!(this.pelvis == null))
@@ -3029,7 +2919,6 @@ public class CharaModelHandle : MonoBehaviour
 		return base.transform.position;
 	}
 
-	// Token: 0x060001C9 RID: 457 RVA: 0x00010C27 File Offset: 0x0000EE27
 	public Vector3 GetHeadPos()
 	{
 		if (!(this.headCtrl == null))
@@ -3039,7 +2928,6 @@ public class CharaModelHandle : MonoBehaviour
 		return this.GetHaraPos();
 	}
 
-	// Token: 0x060001CA RID: 458 RVA: 0x00010C4C File Offset: 0x0000EE4C
 	public Vector3 GetNodePos(string node)
 	{
 		Transform transform = this.childAll.Find((Transform itm) => itm.name == node);
@@ -3050,13 +2938,11 @@ public class CharaModelHandle : MonoBehaviour
 		return this.GetHaraPos();
 	}
 
-	// Token: 0x060001CB RID: 459 RVA: 0x00010C94 File Offset: 0x0000EE94
 	public Transform GetNodeTransform(string node)
 	{
 		return this.childAll.Find((Transform itm) => itm.name == node);
 	}
 
-	// Token: 0x060001CC RID: 460 RVA: 0x00010CC5 File Offset: 0x0000EEC5
 	public Vector3 GetHaraLocalPos()
 	{
 		if (!(this.pelvis == null))
@@ -3066,13 +2952,11 @@ public class CharaModelHandle : MonoBehaviour
 		return base.transform.localPosition;
 	}
 
-	// Token: 0x060001CD RID: 461 RVA: 0x00010CEC File Offset: 0x0000EEEC
 	public Vector3 GetCharaScale()
 	{
 		return this.partsDataBody.rootObj.transform.Find("root").localScale;
 	}
 
-	// Token: 0x060001CE RID: 462 RVA: 0x00010D10 File Offset: 0x0000EF10
 	public void SetEnableUpdateOffscreen()
 	{
 		SkinnedMeshRenderer[] componentsInChildren = this.partsDataBody.rootObj.GetComponentsInChildren<SkinnedMeshRenderer>(true);
@@ -3082,7 +2966,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001CF RID: 463 RVA: 0x00010D48 File Offset: 0x0000EF48
 	public void SetScaleOne()
 	{
 		if (this.isFinishInit)
@@ -3105,7 +2988,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001D0 RID: 464 RVA: 0x00010DD8 File Offset: 0x0000EFD8
 	public float GetMotionTime(bool disp = false)
 	{
 		if (!string.IsNullOrEmpty(this.motionName))
@@ -3136,7 +3018,6 @@ public class CharaModelHandle : MonoBehaviour
 		return 0f;
 	}
 
-	// Token: 0x060001D1 RID: 465 RVA: 0x00010E59 File Offset: 0x0000F059
 	public void SetMotionTime(float time)
 	{
 		if (this.motionTime != time)
@@ -3145,7 +3026,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001D2 RID: 466 RVA: 0x00010E6B File Offset: 0x0000F06B
 	public void SetMotionFrame(int frame)
 	{
 		if ((int)(this.motionTime * 30f) != frame)
@@ -3154,7 +3034,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001D3 RID: 467 RVA: 0x00010E8C File Offset: 0x0000F08C
 	public float GetMotionLength(bool disp = false)
 	{
 		if (!string.IsNullOrEmpty(this.motionName))
@@ -3185,7 +3064,6 @@ public class CharaModelHandle : MonoBehaviour
 		return 0f;
 	}
 
-	// Token: 0x060001D4 RID: 468 RVA: 0x00010F0D File Offset: 0x0000F10D
 	public void UpdateCharaObjByAuth(Transform charaObj, string suffix)
 	{
 		if (charaObj != null)
@@ -3197,20 +3075,17 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001D5 RID: 469 RVA: 0x00010F46 File Offset: 0x0000F146
 	public void SetEffect(EffectData eff)
 	{
 		this.effect.Add(new KeyValuePair<EffectData, Vector3>(eff, (eff.effectObject == null) ? Vector3.zero : eff.effectObject.transform.localPosition));
 	}
 
-	// Token: 0x060001D6 RID: 470 RVA: 0x00010F80 File Offset: 0x0000F180
 	public void DestroyEffect(EffectData eff)
 	{
 		this.effect.RemoveAll((KeyValuePair<EffectData, Vector3> itm) => itm.Key == eff);
 		EffectManager.DestroyEffect(eff);
 	}
 
-	// Token: 0x060001D7 RID: 471 RVA: 0x00010FC0 File Offset: 0x0000F1C0
 	public void DispAccessory(int typ, bool sw, bool cf = false)
 	{
 		CharaModelHandle.AccEff accEff = this.accEff.Find((CharaModelHandle.AccEff itm) => itm != null && itm.typ == typ);
@@ -3236,7 +3111,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001D8 RID: 472 RVA: 0x00011054 File Offset: 0x0000F254
 	private void UpdateEarEffect()
 	{
 		if (this.charaEffect == null)
@@ -3278,7 +3152,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001D9 RID: 473 RVA: 0x00011270 File Offset: 0x0000F470
 	private void UpdateSparkleEffect()
 	{
 		if (this.charaEffect == null)
@@ -3310,7 +3183,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001DA RID: 474 RVA: 0x000113B0 File Offset: 0x0000F5B0
 	private void UpdateAuraEffect()
 	{
 		if (this.charaEffect == null)
@@ -3341,7 +3213,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060001DB RID: 475 RVA: 0x000114D0 File Offset: 0x0000F6D0
 	private void UpdateObjectEffect()
 	{
 		if (this.charaEffect == null)
@@ -3374,88 +3245,60 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	}
 
-	// Token: 0x040001D1 RID: 465
 	public static readonly string CHARA_MODEL_PATH = "Charas/Model/";
 
-	// Token: 0x040001D2 RID: 466
 	public static readonly string OPTION_SUFFIX_EAR = "_ear";
 
-	// Token: 0x040001D3 RID: 467
 	public static readonly string OPTION_SUFFIX_TAIL = "_tail";
 
-	// Token: 0x040001DD RID: 477
 	private bool haraOffOld;
 
-	// Token: 0x040001DE RID: 478
 	private static readonly float mouthFollowStart = 20f;
 
-	// Token: 0x040001DF RID: 479
 	private static readonly float mouthFollowEnd = 60f;
 
-	// Token: 0x040001E0 RID: 480
 	private static readonly float mouthAngleMinus = -8.3f;
 
-	// Token: 0x040001E1 RID: 481
 	private static readonly float mouthAnglePlus = 8.3f;
 
-	// Token: 0x040001E2 RID: 482
 	private static readonly float eyeFollowStart = 10f;
 
-	// Token: 0x040001E3 RID: 483
 	private static readonly float eyeFollowEnd = 50f;
 
-	// Token: 0x040001E4 RID: 484
 	private static readonly Vector3 eyeAngleMinusR = new Vector3(-23.5f, -10f, -3f);
 
-	// Token: 0x040001E5 RID: 485
 	private static readonly Vector3 eyeAnglePlusR = new Vector3(16f, 13f, 3f);
 
-	// Token: 0x040001E6 RID: 486
 	private static readonly Vector3 eyeAngleMinusL = new Vector3(-16f, -10f, -3f);
 
-	// Token: 0x040001E7 RID: 487
 	private static readonly Vector3 eyeAnglePlusL = new Vector3(23.5f, 13f, 3f);
 
-	// Token: 0x040001E8 RID: 488
 	private static readonly float headFollowStart = 15f;
 
-	// Token: 0x040001E9 RID: 489
 	private static readonly float headFollowEnd = 45f;
 
-	// Token: 0x040001EA RID: 490
 	private static readonly float headAngleMinus = -30f;
 
-	// Token: 0x040001EB RID: 491
 	private static readonly float headAnglePlus = 30f;
 
-	// Token: 0x040001EC RID: 492
 	private static readonly float followSpeed = 6f;
 
-	// Token: 0x040001ED RID: 493
 	private float mouthAngleOld;
 
-	// Token: 0x040001EE RID: 494
 	private Vector2 eyeAngleOldR;
 
-	// Token: 0x040001EF RID: 495
 	private Vector2 eyeAngleOldL;
 
-	// Token: 0x040001F0 RID: 496
 	private Quaternion headRotationOld;
 
-	// Token: 0x040001F1 RID: 497
 	private float mouthFollowFade;
 
-	// Token: 0x040001F2 RID: 498
 	private float eyeFollowFade;
 
-	// Token: 0x040001F3 RID: 499
 	private float headFollowFade;
 
-	// Token: 0x040001F4 RID: 500
 	private UnityAction fadeOutEnd;
 
-	// Token: 0x040001F5 RID: 501
 	private static readonly List<CharaModelHandle.WeaponOffsetParam> WeaponOffsetList = new List<CharaModelHandle.WeaponOffsetParam>
 	{
 		new CharaModelHandle.WeaponOffsetParam
@@ -3474,151 +3317,102 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	};
 
-	// Token: 0x040001F6 RID: 502
 	private List<KeyValuePair<Transform, Transform>> weaponCmnOff;
 
-	// Token: 0x040001FA RID: 506
 	private CharaModelHandle.PartsData partsDataBody = new CharaModelHandle.PartsData();
 
-	// Token: 0x040001FB RID: 507
 	private CharaModelHandle.PartsData[] partsDataEar = new CharaModelHandle.PartsData[5];
 
-	// Token: 0x040001FC RID: 508
 	private CharaModelHandle.PartsData[] partsDataTail = new CharaModelHandle.PartsData[5];
 
-	// Token: 0x040001FD RID: 509
 	private int earTyp;
 
-	// Token: 0x040001FE RID: 510
 	private int earTypBef;
 
-	// Token: 0x040001FF RID: 511
 	private int earTypFrm;
 
-	// Token: 0x04000200 RID: 512
 	private int earTypAft;
 
-	// Token: 0x04000201 RID: 513
 	private int tailTyp;
 
-	// Token: 0x04000202 RID: 514
 	private int tailTypBef;
 
-	// Token: 0x04000203 RID: 515
 	private int tailTypFrm;
 
-	// Token: 0x04000204 RID: 516
 	private int tailTypAft;
 
-	// Token: 0x04000205 RID: 517
 	private List<CharaModelHandle.BlendShapeData> blendShapeList = new List<CharaModelHandle.BlendShapeData>();
 
-	// Token: 0x04000206 RID: 518
 	private Dictionary<string, List<GameObject>> modelList = new Dictionary<string, List<GameObject>>();
 
-	// Token: 0x04000207 RID: 519
 	private List<GameObject> weaponList = new List<GameObject>();
 
-	// Token: 0x04000208 RID: 520
 	private Transform bonWeaponA;
 
-	// Token: 0x04000209 RID: 521
 	private Transform bonWeaponB;
 
-	// Token: 0x0400020A RID: 522
 	private int weaponDispA = -1;
 
-	// Token: 0x0400020B RID: 523
 	private int weaponDispB = -1;
 
-	// Token: 0x0400020C RID: 524
 	private int weaponDispSub;
 
-	// Token: 0x0400020D RID: 525
 	private List<Transform> childAll;
 
-	// Token: 0x0400020E RID: 526
 	private List<Transform> childEar;
 
-	// Token: 0x0400020F RID: 527
 	private List<Transform> childTail;
 
-	// Token: 0x04000210 RID: 528
 	private Transform eyeBallL;
 
-	// Token: 0x04000211 RID: 529
 	private Transform eyeBallR;
 
-	// Token: 0x04000212 RID: 530
 	private Transform eyeCtrlL;
 
-	// Token: 0x04000213 RID: 531
 	private Transform eyeCtrlR;
 
-	// Token: 0x04000214 RID: 532
 	private List<Renderer> eyeBall = new List<Renderer>();
 
-	// Token: 0x04000215 RID: 533
 	private Color eyeColor = Color.clear;
 
-	// Token: 0x04000216 RID: 534
 	private Renderer cheek;
 
-	// Token: 0x04000217 RID: 535
 	private Color cheekColor = Color.white;
 
-	// Token: 0x04000218 RID: 536
 	private List<Renderer> parts = new List<Renderer>();
 
-	// Token: 0x04000219 RID: 537
 	private List<Color> partsColor = new List<Color>();
 
-	// Token: 0x0400021A RID: 538
 	private List<float> partsAnim = new List<float>();
 
-	// Token: 0x0400021B RID: 539
 	private List<float> partsTime = new List<float>();
 
-	// Token: 0x0400021C RID: 540
 	private Transform mouthCtrl;
 
-	// Token: 0x0400021D RID: 541
 	private Transform headCtrl;
 
-	// Token: 0x0400021E RID: 542
 	private Transform pelvis;
 
-	// Token: 0x0400021F RID: 543
 	private Transform upperBody;
 
-	// Token: 0x04000220 RID: 544
 	private Transform lowerBody;
 
-	// Token: 0x04000221 RID: 545
 	private Transform thighL;
 
-	// Token: 0x04000222 RID: 546
 	private Transform thighR;
 
-	// Token: 0x04000223 RID: 547
 	private List<Transform> wrist;
 
-	// Token: 0x04000224 RID: 548
 	private Transform mdlSubweapon;
 
-	// Token: 0x04000225 RID: 549
 	private Transform bonSubweapon;
 
-	// Token: 0x04000226 RID: 550
 	private Transform partsAlphaObj;
 
-	// Token: 0x04000227 RID: 551
 	public static readonly string[] FLAG_LIST = new string[] { "flag_weapon_a", "flag_brow_a", "flag_brow_b", "flag_brow_c", "flag_eye_a", "flag_eye_b", "flag_eye_c", "flag_mouth_a", "flag_mouth_b", "flag_mouth_c" };
 
-	// Token: 0x04000228 RID: 552
 	private List<Transform> flagList = new List<Transform>();
 
-	// Token: 0x04000229 RID: 553
 	private static readonly CharaModelHandle.BlendShapeIndex[,] FACE_LIST = new CharaModelHandle.BlendShapeIndex[,]
 	{
 		{
@@ -3673,7 +3467,6 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	};
 
-	// Token: 0x0400022A RID: 554
 	public static readonly CharaModelHandle.BlendShapeIndex[,] COLOR_LIST = new CharaModelHandle.BlendShapeIndex[,]
 	{
 		{
@@ -3699,142 +3492,96 @@ public class CharaModelHandle : MonoBehaviour
 		}
 	};
 
-	// Token: 0x0400022B RID: 555
 	private int layer;
 
-	// Token: 0x0400022C RID: 556
 	private float alpha;
 
-	// Token: 0x0400022D RID: 557
 	private float fade;
 
-	// Token: 0x0400022E RID: 558
 	private Vector4 NeighboringAlpha = new Vector4(0f, -1f, 0f, 1f);
 
-	// Token: 0x0400022F RID: 559
 	private float matCap = -1f;
 
-	// Token: 0x04000230 RID: 560
 	public bool camouflage;
 
-	// Token: 0x04000231 RID: 561
 	private float camouflageAlpha;
 
-	// Token: 0x04000232 RID: 562
 	private List<CullingCheck> cullingList;
 
-	// Token: 0x04000233 RID: 563
 	private List<Material> materials;
 
-	// Token: 0x04000234 RID: 564
 	private Dictionary<Transform, Quaternion> crossBone;
 
-	// Token: 0x04000235 RID: 565
 	private Dictionary<Transform, Quaternion> crossBoneL;
 
-	// Token: 0x04000236 RID: 566
 	private Dictionary<Transform, Vector3> crossRoot;
 
-	// Token: 0x04000237 RID: 567
 	private Dictionary<Transform, Transform> crossWeapon;
 
-	// Token: 0x04000238 RID: 568
 	private float crossFade;
 
-	// Token: 0x04000239 RID: 569
 	private float crossFadeL;
 
-	// Token: 0x0400023A RID: 570
 	private CharaModelHandle.MotionReq motionReq;
 
-	// Token: 0x0400023B RID: 571
 	private string motionName;
 
-	// Token: 0x0400023C RID: 572
 	private bool motionLoop;
 
-	// Token: 0x0400023D RID: 573
 	private float motionLength;
 
-	// Token: 0x0400023E RID: 574
 	private float motionTime;
 
-	// Token: 0x0400023F RID: 575
 	private float motionTimeReq;
 
-	// Token: 0x04000240 RID: 576
 	private float motionSpeed;
 
-	// Token: 0x04000241 RID: 577
 	private bool motionEnd;
 
-	// Token: 0x04000242 RID: 578
 	private Vector3 motionPos;
 
-	// Token: 0x04000243 RID: 579
 	private float motionRot;
 
-	// Token: 0x04000244 RID: 580
 	private GameObject shadow;
 
-	// Token: 0x04000245 RID: 581
 	private Material shadowMat;
 
-	// Token: 0x04000248 RID: 584
 	private GameObject shadowModel;
 
-	// Token: 0x04000249 RID: 585
 	private List<KeyValuePair<Transform, Transform>> shadowBone;
 
-	// Token: 0x0400024A RID: 586
 	private CullingCheck shadowCull;
 
-	// Token: 0x0400024B RID: 587
 	private Camera shadowCamera;
 
-	// Token: 0x0400024C RID: 588
 	private List<KeyValuePair<EffectData, Vector3>> effect = new List<KeyValuePair<EffectData, Vector3>>();
 
-	// Token: 0x0400024D RID: 589
 	public List<EffectData> charaEffect;
 
-	// Token: 0x0400024E RID: 590
 	private string charaEffectName = string.Empty;
 
-	// Token: 0x0400024F RID: 591
 	private CharaModelHandle.CharaEffectType charaEffectType;
 
-	// Token: 0x04000250 RID: 592
 	public bool isAccessoryAnchor;
 
-	// Token: 0x04000251 RID: 593
 	private List<CharaModelHandle.AccEff> accEff;
 
-	// Token: 0x04000252 RID: 594
 	private static Transform accCamChara = null;
 
-	// Token: 0x04000253 RID: 595
 	private static int accCamType = 0;
 
-	// Token: 0x04000254 RID: 596
 	private GameObject puyoObj;
 
-	// Token: 0x04000255 RID: 597
 	private string puyoTex;
 
-	// Token: 0x04000256 RID: 598
 	private string puyoReq;
 
-	// Token: 0x04000257 RID: 599
 	private float puyoBreath;
 
-	// Token: 0x04000258 RID: 600
 	private bool isFinishInit;
 
-	// Token: 0x04000259 RID: 601
 	private AuthPlayer authPlayer;
 
-	// Token: 0x0400025A RID: 602
 	private readonly List<KeyValuePair<string, string>> longSkirt = new List<KeyValuePair<string, string>>
 	{
 		new KeyValuePair<string, string>(CharaMotionDefine.ActKey.PVP_ENTRY.ToString(), CharaMotionDefine.ActKey.PVP_ENTRY_LONG.ToString()),
@@ -3845,7 +3592,6 @@ public class CharaModelHandle : MonoBehaviour
 		new KeyValuePair<string, string>(CharaMotionDefine.ActKey.PIC_SITTING_DOWN.ToString(), CharaMotionDefine.ActKey.PIC_SITTING_DOWN_LONG.ToString())
 	};
 
-	// Token: 0x0400025B RID: 603
 	private readonly List<string> rootResetMotion = new List<string>
 	{
 		CharaMotionDefine.ActKey.H_ITEM_BED_LP.ToString(),
@@ -3880,10 +3626,8 @@ public class CharaModelHandle : MonoBehaviour
 		CharaMotionDefine.ActKey.MYR_TALK_4MOT_NOHAND.ToString()
 	};
 
-	// Token: 0x0400025C RID: 604
 	private readonly List<string> crossFadeOffMotion = new List<string> { CharaMotionDefine.ActKey.GACHA_LP.ToString() };
 
-	// Token: 0x0400025D RID: 605
 	private readonly List<string> tailOffMotion = new List<string>
 	{
 		CharaMotionDefine.ActKey.MYR_SLEEP_1.ToString(),
@@ -3892,78 +3636,53 @@ public class CharaModelHandle : MonoBehaviour
 		CharaMotionDefine.ActKey.MYR_SLEEP_4.ToString()
 	};
 
-	// Token: 0x0400025E RID: 606
 	private IEnumerator initializeRoutine;
 
-	// Token: 0x0400025F RID: 607
 	private string assetModelName = string.Empty;
 
-	// Token: 0x04000260 RID: 608
 	private bool assetIsShadow;
 
-	// Token: 0x04000261 RID: 609
 	private bool modelActive = true;
 
-	// Token: 0x04000262 RID: 610
 	private bool shadowActive = true;
 
-	// Token: 0x04000263 RID: 611
 	private bool weaponActive = true;
 
-	// Token: 0x04000264 RID: 612
 	private HashSet<Camera> viewCamera;
 
-	// Token: 0x020005DD RID: 1501
 	public enum EyeMotType
 	{
-		// Token: 0x04002A47 RID: 10823
 		DISABLE,
-		// Token: 0x04002A48 RID: 10824
 		ENABLE_CHARA,
-		// Token: 0x04002A49 RID: 10825
 		ENABLE_AUTH
 	}
 
-	// Token: 0x020005DE RID: 1502
 	public enum CharaEffectType
 	{
-		// Token: 0x04002A4B RID: 10827
 		DISABLE,
-		// Token: 0x04002A4C RID: 10828
 		EAR,
-		// Token: 0x04002A4D RID: 10829
 		SPARKLE,
-		// Token: 0x04002A4E RID: 10830
 		AURA,
-		// Token: 0x04002A4F RID: 10831
 		OBJECT
 	}
 
-	// Token: 0x020005DF RID: 1503
 	private class WeaponOffsetParam
 	{
-		// Token: 0x04002A50 RID: 10832
 		public string weaponSuffix;
 
-		// Token: 0x04002A51 RID: 10833
 		public string offsetRootNode;
 
-		// Token: 0x04002A52 RID: 10834
 		public Vector3 offsetPos;
 
-		// Token: 0x04002A53 RID: 10835
 		public Quaternion offsetRot;
 	}
 
-	// Token: 0x020005E0 RID: 1504
 	public class PartsData
 	{
-		// Token: 0x06002F87 RID: 12167 RVA: 0x001B714F File Offset: 0x001B534F
 		public PartsData()
 		{
 		}
 
-		// Token: 0x06002F88 RID: 12168 RVA: 0x001B7164 File Offset: 0x001B5364
 		public PartsData(GameObject rootObj, bool body = false, string modelName = null)
 		{
 			if (rootObj == null && !string.IsNullOrEmpty(modelName))
@@ -3992,7 +3711,6 @@ public class CharaModelHandle : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06002F89 RID: 12169 RVA: 0x001B728C File Offset: 0x001B548C
 		public void ReloadAnimationKey()
 		{
 			this.animationKeyList.Clear();
@@ -4005,23 +3723,17 @@ public class CharaModelHandle : MonoBehaviour
 			}
 		}
 
-		// Token: 0x04002A54 RID: 10836
 		public GameObject rootObj;
 
-		// Token: 0x04002A55 RID: 10837
 		public SimpleAnimation animation;
 
-		// Token: 0x04002A56 RID: 10838
 		public Dictionary<string, bool> animationKeyList = new Dictionary<string, bool>();
 
-		// Token: 0x04002A57 RID: 10839
 		public CharaModelReferencer referencer;
 	}
 
-	// Token: 0x020005E1 RID: 1505
 	public class InitializeParam
 	{
-		// Token: 0x06002F8A RID: 12170 RVA: 0x001B7318 File Offset: 0x001B5518
 		public InitializeParam(string bodyModelName, bool longSkirt, bool isShadow)
 		{
 			this.bodyModelName = bodyModelName;
@@ -4034,7 +3746,6 @@ public class CharaModelHandle : MonoBehaviour
 			this.isViewer = false;
 		}
 
-		// Token: 0x06002F8B RID: 12171 RVA: 0x001B736C File Offset: 0x001B556C
 		public InitializeParam(string bodyModelName, bool longSkirt, bool isShadow, bool isModelShadow, int layer)
 		{
 			this.bodyModelName = bodyModelName;
@@ -4047,7 +3758,6 @@ public class CharaModelHandle : MonoBehaviour
 			this.isViewer = false;
 		}
 
-		// Token: 0x06002F8C RID: 12172 RVA: 0x001B73BC File Offset: 0x001B55BC
 		public static CharaModelHandle.InitializeParam CreaateByCharaId(int charaId, int clothImageId, bool longSkirt, bool isShadow)
 		{
 			ItemDef.Kind kind = ItemDef.Id2Kind(charaId);
@@ -4081,34 +3791,24 @@ public class CharaModelHandle : MonoBehaviour
 			return new CharaModelHandle.InitializeParam("ch_0001_a", longSkirt, isShadow);
 		}
 
-		// Token: 0x04002A58 RID: 10840
 		public string bodyModelName;
 
-		// Token: 0x04002A59 RID: 10841
 		public bool longSkirt;
 
-		// Token: 0x04002A5A RID: 10842
 		public bool isShadow;
 
-		// Token: 0x04002A5B RID: 10843
 		public bool isShadowModel;
 
-		// Token: 0x04002A5C RID: 10844
 		public bool isEnableMotionSE;
 
-		// Token: 0x04002A5D RID: 10845
 		public bool isDisableVoice;
 
-		// Token: 0x04002A5E RID: 10846
 		public DataManagerCharaAccessory.Accessory accessory;
 
-		// Token: 0x04002A5F RID: 10847
 		public int layer;
 
-		// Token: 0x04002A60 RID: 10848
 		public bool isViewer;
 
-		// Token: 0x04002A61 RID: 10849
 		private static readonly List<string> ImageID2suffix = new List<string>
 		{
 			"a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
@@ -4117,137 +3817,84 @@ public class CharaModelHandle : MonoBehaviour
 		};
 	}
 
-	// Token: 0x020005E2 RID: 1506
 	public enum PartsType
 	{
-		// Token: 0x04002A63 RID: 10851
 		Body,
-		// Token: 0x04002A64 RID: 10852
 		Ear,
-		// Token: 0x04002A65 RID: 10853
 		Tail,
-		// Token: 0x04002A66 RID: 10854
 		Max
 	}
 
-	// Token: 0x020005E3 RID: 1507
 	public enum BlendShapeIndex
 	{
-		// Token: 0x04002A68 RID: 10856
 		weapon_a,
-		// Token: 0x04002A69 RID: 10857
 		weapon_b,
-		// Token: 0x04002A6A RID: 10858
 		brow_down_r,
-		// Token: 0x04002A6B RID: 10859
 		brow_down_l,
-		// Token: 0x04002A6C RID: 10860
 		brow_up_r,
-		// Token: 0x04002A6D RID: 10861
 		brow_up_l,
-		// Token: 0x04002A6E RID: 10862
 		brow_sad_r,
-		// Token: 0x04002A6F RID: 10863
 		brow_sad_l,
-		// Token: 0x04002A70 RID: 10864
 		brow_anger_r,
-		// Token: 0x04002A71 RID: 10865
 		brow_anger_l,
-		// Token: 0x04002A72 RID: 10866
 		eye_close,
-		// Token: 0x04002A73 RID: 10867
 		eye_smile,
-		// Token: 0x04002A74 RID: 10868
 		eye_anger,
-		// Token: 0x04002A75 RID: 10869
 		eye_sad,
-		// Token: 0x04002A76 RID: 10870
 		eye_wink_r,
-		// Token: 0x04002A77 RID: 10871
 		eye_wink_l,
-		// Token: 0x04002A78 RID: 10872
 		eye_special_a,
-		// Token: 0x04002A79 RID: 10873
 		eye_special_b,
-		// Token: 0x04002A7A RID: 10874
 		mouth_a,
-		// Token: 0x04002A7B RID: 10875
 		mouth_i,
-		// Token: 0x04002A7C RID: 10876
 		mouth_n,
-		// Token: 0x04002A7D RID: 10877
 		mouth_o,
-		// Token: 0x04002A7E RID: 10878
 		mouth_smile,
-		// Token: 0x04002A7F RID: 10879
 		mouth_sad,
-		// Token: 0x04002A80 RID: 10880
 		mouth_special_a,
-		// Token: 0x04002A81 RID: 10881
 		mouth_special_b,
-		// Token: 0x04002A82 RID: 10882
 		sub_weapon,
-		// Token: 0x04002A83 RID: 10883
 		Max
 	}
 
-	// Token: 0x020005E4 RID: 1508
 	public class BlendShapeData
 	{
-		// Token: 0x04002A84 RID: 10884
 		public SkinnedMeshRenderer mesh;
 
-		// Token: 0x04002A85 RID: 10885
 		public int idx;
 
-		// Token: 0x04002A86 RID: 10886
 		public float val;
 
-		// Token: 0x04002A87 RID: 10887
 		public string mdlkey;
 
-		// Token: 0x04002A88 RID: 10888
 		public int mdlidx;
 	}
 
-	// Token: 0x020005E5 RID: 1509
 	public class MotionReq
 	{
-		// Token: 0x04002A89 RID: 10889
 		public string name;
 
-		// Token: 0x04002A8A RID: 10890
 		public bool loop;
 
-		// Token: 0x04002A8B RID: 10891
 		public float speed;
 
-		// Token: 0x04002A8C RID: 10892
 		public float fade;
 
-		// Token: 0x04002A8D RID: 10893
 		public float fadeL;
 
-		// Token: 0x04002A8E RID: 10894
 		public bool turn;
 	}
 
-	// Token: 0x020005E6 RID: 1510
 	public class AccEff
 	{
-		// Token: 0x04002A8F RID: 10895
 		public int typ;
 
-		// Token: 0x04002A90 RID: 10896
 		public string name;
 
-		// Token: 0x04002A91 RID: 10897
 		public DataManagerCharaAccessory.DispPosition pos;
 
-		// Token: 0x04002A92 RID: 10898
 		public bool dsp;
 
-		// Token: 0x04002A93 RID: 10899
 		public EffectData eff;
 	}
 }

@@ -1,19 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-// Token: 0x020001C4 RID: 452
 public class SortFilterBtnsAllCtrl
 {
-	// Token: 0x1700042B RID: 1067
-	// (get) Token: 0x06001EFE RID: 7934 RVA: 0x00180C3E File Offset: 0x0017EE3E
-	// (set) Token: 0x06001EFF RID: 7935 RVA: 0x00180C46 File Offset: 0x0017EE46
 	private SortFilterDefine.RegisterType RegisterType { get; set; }
 
-	// Token: 0x1700042C RID: 1068
-	// (get) Token: 0x06001F00 RID: 7936 RVA: 0x00180C4F File Offset: 0x0017EE4F
-	// (set) Token: 0x06001F01 RID: 7937 RVA: 0x00180C57 File Offset: 0x0017EE57
 	public SortFilterDefine.SortType SortType
 	{
 		get
@@ -27,9 +20,6 @@ public class SortFilterBtnsAllCtrl
 		}
 	}
 
-	// Token: 0x1700042D RID: 1069
-	// (get) Token: 0x06001F02 RID: 7938 RVA: 0x00180C7B File Offset: 0x0017EE7B
-	// (set) Token: 0x06001F03 RID: 7939 RVA: 0x00180C83 File Offset: 0x0017EE83
 	private bool Order
 	{
 		get
@@ -44,27 +34,14 @@ public class SortFilterBtnsAllCtrl
 		}
 	}
 
-	// Token: 0x1700042E RID: 1070
-	// (get) Token: 0x06001F04 RID: 7940 RVA: 0x00180CB1 File Offset: 0x0017EEB1
-	// (set) Token: 0x06001F05 RID: 7941 RVA: 0x00180CB9 File Offset: 0x0017EEB9
 	public int SelectCharaId { get; set; }
 
-	// Token: 0x1700042F RID: 1071
-	// (get) Token: 0x06001F06 RID: 7942 RVA: 0x00180CC2 File Offset: 0x0017EEC2
-	// (set) Token: 0x06001F07 RID: 7943 RVA: 0x00180CCA File Offset: 0x0017EECA
 	public DataManagerCharaAccessory.Accessory GrowTargetAccessory { get; set; }
 
-	// Token: 0x17000430 RID: 1072
-	// (get) Token: 0x06001F08 RID: 7944 RVA: 0x00180CD3 File Offset: 0x0017EED3
-	// (set) Token: 0x06001F09 RID: 7945 RVA: 0x00180CDB File Offset: 0x0017EEDB
 	public List<DataManagerCharaAccessory.Accessory> SelectAccessoryList { get; set; }
 
-	// Token: 0x17000431 RID: 1073
-	// (get) Token: 0x06001F0A RID: 7946 RVA: 0x00180CE4 File Offset: 0x0017EEE4
-	// (set) Token: 0x06001F0B RID: 7947 RVA: 0x00180CEC File Offset: 0x0017EEEC
 	private UnityAction SortFilterChangedCallBack { get; set; }
 
-	// Token: 0x06001F0C RID: 7948 RVA: 0x00180CF8 File Offset: 0x0017EEF8
 	public SortFilterBtnsAllCtrl(SortFilterDefine.RegisterType registerType, GameObject go, UnityAction changeCallBack)
 	{
 		this.FilterOnOffButton = go.transform.Find("Btn_FilterOnOff").GetComponent<PguiButtonCtrl>();
@@ -96,7 +73,6 @@ public class SortFilterBtnsAllCtrl
 		}, PguiButtonCtrl.SoundType.DEFAULT);
 	}
 
-	// Token: 0x06001F0D RID: 7949 RVA: 0x00180E64 File Offset: 0x0017F064
 	private void OnFilterChanged(bool changed, AccessorySortFilter.FilterStatus filterStatus)
 	{
 		SortFilterDefine.RegisterType registerType = this.RegisterType;
@@ -108,7 +84,6 @@ public class SortFilterBtnsAllCtrl
 		}
 	}
 
-	// Token: 0x06001F0E RID: 7950 RVA: 0x00180E9F File Offset: 0x0017F09F
 	private void OnSortChanged(bool changed, SortFilterDefine.SortType st)
 	{
 		if (changed)
@@ -118,7 +93,6 @@ public class SortFilterBtnsAllCtrl
 		}
 	}
 
-	// Token: 0x06001F0F RID: 7951 RVA: 0x00180EB4 File Offset: 0x0017F0B4
 	private void UpdateFilterButton()
 	{
 		AccessorySortFilter.FilterStatus filterStatus = SortFilterManager.Accessory.GetFilterStatus(this.RegisterType);
@@ -133,7 +107,6 @@ public class SortFilterBtnsAllCtrl
 		this.FilterOff.SetActive(true);
 	}
 
-	// Token: 0x06001F10 RID: 7952 RVA: 0x00180F38 File Offset: 0x0017F138
 	private void SortFilterChanged()
 	{
 		DataManagerGameStatus.UserFlagData.SortTypeData sortTypeData = new DataManagerGameStatus.UserFlagData.SortTypeData(this.RegisterType, this.sortType, this.Order);
@@ -146,7 +119,6 @@ public class SortFilterBtnsAllCtrl
 		sortFilterChangedCallBack();
 	}
 
-	// Token: 0x06001F11 RID: 7953 RVA: 0x00180F7C File Offset: 0x0017F17C
 	public List<DataManagerCharaAccessory.Accessory> GetSortFilteredAccessoryList()
 	{
 		List<DataManagerCharaAccessory.Accessory> list;
@@ -263,42 +235,30 @@ public class SortFilterBtnsAllCtrl
 		return list;
 	}
 
-	// Token: 0x06001F12 RID: 7954 RVA: 0x00181370 File Offset: 0x0017F570
 	public void RequestUpdateSortData()
 	{
 		SortFilterManager.RequestUpdateSortTypeData();
 	}
 
-	// Token: 0x0400169B RID: 5787
 	private PguiButtonCtrl FilterOnOffButton;
 
-	// Token: 0x0400169C RID: 5788
 	private GameObject FilterOn;
 
-	// Token: 0x0400169D RID: 5789
 	private GameObject FilterOff;
 
-	// Token: 0x0400169E RID: 5790
 	private PguiButtonCtrl SortButton;
 
-	// Token: 0x0400169F RID: 5791
 	private PguiTextCtrl SortText;
 
-	// Token: 0x040016A0 RID: 5792
 	private PguiButtonCtrl SortUpDown;
 
-	// Token: 0x040016A1 RID: 5793
 	private GameObject SortUp;
 
-	// Token: 0x040016A2 RID: 5794
 	private GameObject SortDown;
 
-	// Token: 0x040016A3 RID: 5795
 	private AccessorySortWindowCtrl ASWC;
 
-	// Token: 0x040016A5 RID: 5797
 	private SortFilterDefine.SortType sortType;
 
-	// Token: 0x040016A6 RID: 5798
 	private bool order;
 }

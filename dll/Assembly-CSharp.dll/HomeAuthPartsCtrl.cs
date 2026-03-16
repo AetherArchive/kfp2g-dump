@@ -1,12 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SGNFW.Common;
 using UnityEngine;
 
-// Token: 0x0200014A RID: 330
 public class HomeAuthPartsCtrl
 {
-	// Token: 0x06001262 RID: 4706 RVA: 0x000DEE28 File Offset: 0x000DD028
 	public HomeAuthPartsCtrl(Transform baseTr, List<int> charaIds)
 	{
 		this._artsPlayers = new List<AuthPlayer>();
@@ -45,7 +43,6 @@ public class HomeAuthPartsCtrl
 		AssetManager.LoadAssetData(HomeAuthPartsCtrl.GACHA_STAGE_PATH_NIGHT, AssetManager.OWNER.IntroductionFriends, 0, null);
 	}
 
-	// Token: 0x06001263 RID: 4707 RVA: 0x000DEFD4 File Offset: 0x000DD1D4
 	public void SetupStage(GameObject mainField)
 	{
 		this._artsStage = AssetManager.InstantiateAssetData(HomeAuthPartsCtrl.ARTS_STAGE_PATH, null).GetComponent<StagePresetCtrl>();
@@ -59,7 +56,6 @@ public class HomeAuthPartsCtrl
 		this._artsStage.gameObject.SetActive(false);
 	}
 
-	// Token: 0x06001264 RID: 4708 RVA: 0x000DF098 File Offset: 0x000DD298
 	public void InitializeAuthPlayers(CharaStaticData chara, int idx)
 	{
 		this._rocketPlayers[idx].InitializeByGacha(new AuthPlayer.GachaParam.Before
@@ -82,7 +78,6 @@ public class HomeAuthPartsCtrl
 		this._artsPlayers[idx].Initialize(chara.artsData.authParam.authName, null, this._artsStage, null, null, false, false, false);
 	}
 
-	// Token: 0x06001265 RID: 4709 RVA: 0x000DF18F File Offset: 0x000DD38F
 	public void SetStageActive(bool isInit)
 	{
 		this._gachaStage.gameObject.SetActive(isInit);
@@ -90,20 +85,17 @@ public class HomeAuthPartsCtrl
 		this._artsStage.gameObject.SetActive(!isInit);
 	}
 
-	// Token: 0x06001266 RID: 4710 RVA: 0x000DF1C7 File Offset: 0x000DD3C7
 	public void SwapGachaStage(bool isNight)
 	{
 		this._gachaStage.gameObject.SetActive(!isNight);
 		this._gachaStageNight.gameObject.SetActive(isNight);
 	}
 
-	// Token: 0x06001267 RID: 4711 RVA: 0x000DF1EE File Offset: 0x000DD3EE
 	public void DeactivateArtsStage()
 	{
 		this._artsStage.gameObject.SetActive(false);
 	}
 
-	// Token: 0x06001268 RID: 4712 RVA: 0x000DF204 File Offset: 0x000DD404
 	public void SetAuthPlayersActive(int idx, bool isActive)
 	{
 		this._artsPlayers[idx].gameObject.SetActive(isActive);
@@ -111,25 +103,21 @@ public class HomeAuthPartsCtrl
 		this._boxPlayers[idx].gameObject.SetActive(isActive);
 	}
 
-	// Token: 0x06001269 RID: 4713 RVA: 0x000DF256 File Offset: 0x000DD456
 	public AuthPlayer GetArtsPlayer(int index)
 	{
 		return this._artsPlayers[index];
 	}
 
-	// Token: 0x0600126A RID: 4714 RVA: 0x000DF264 File Offset: 0x000DD464
 	public AuthPlayer GetRocketPlayer(int index)
 	{
 		return this._rocketPlayers[index];
 	}
 
-	// Token: 0x0600126B RID: 4715 RVA: 0x000DF272 File Offset: 0x000DD472
 	public AuthPlayer GetBoxPlayer(int index)
 	{
 		return this._boxPlayers[index];
 	}
 
-	// Token: 0x0600126C RID: 4716 RVA: 0x000DF280 File Offset: 0x000DD480
 	public bool IsArtsPlayersLoading()
 	{
 		return this._artsPlayers.Exists(delegate(AuthPlayer player)
@@ -142,19 +130,16 @@ public class HomeAuthPartsCtrl
 		});
 	}
 
-	// Token: 0x0600126D RID: 4717 RVA: 0x000DF2AC File Offset: 0x000DD4AC
 	public bool IsRocketPlayersLoading()
 	{
 		return this._rocketPlayers.Exists((AuthPlayer player) => !player.IsFinishInitialize());
 	}
 
-	// Token: 0x0600126E RID: 4718 RVA: 0x000DF2D8 File Offset: 0x000DD4D8
 	public bool IsBoxPlayersLoading()
 	{
 		return this._boxPlayers.Exists((AuthPlayer player) => !player.IsFinishInitialize());
 	}
 
-	// Token: 0x0600126F RID: 4719 RVA: 0x000DF304 File Offset: 0x000DD504
 	public void Destroy()
 	{
 		for (int i = 0; i < this._artsPlayers.Count; i++)
@@ -180,30 +165,21 @@ public class HomeAuthPartsCtrl
 		this._boxPlayers = null;
 	}
 
-	// Token: 0x04000F22 RID: 3874
 	public static readonly string ARTS_STAGE_PATH = StagePresetCtrl.PackDataPath + "SD_savannahr_noon_a";
 
-	// Token: 0x04000F23 RID: 3875
 	public static readonly string GACHA_STAGE_PATH = StagePresetCtrl.PackDataPath + "SD_gacha_noon_a";
 
-	// Token: 0x04000F24 RID: 3876
 	public static readonly string GACHA_STAGE_PATH_NIGHT = StagePresetCtrl.PackDataPath + "SD_gacha_night_a";
 
-	// Token: 0x04000F25 RID: 3877
 	private List<AuthPlayer> _artsPlayers;
 
-	// Token: 0x04000F26 RID: 3878
 	private List<AuthPlayer> _rocketPlayers;
 
-	// Token: 0x04000F27 RID: 3879
 	private List<AuthPlayer> _boxPlayers;
 
-	// Token: 0x04000F28 RID: 3880
 	private StagePresetCtrl _artsStage;
 
-	// Token: 0x04000F29 RID: 3881
 	private StagePresetCtrl _gachaStage;
 
-	// Token: 0x04000F2A RID: 3882
 	private StagePresetCtrl _gachaStageNight;
 }

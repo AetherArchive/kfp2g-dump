@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +12,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x02000181 RID: 385
 public class SelTitleCtrl : MonoBehaviour
 {
-	// Token: 0x060018E1 RID: 6369 RVA: 0x00131828 File Offset: 0x0012FA28
 	public void Init()
 	{
 		this.guiData = new SelTitleCtrl.GUI(AssetManager.InstantiateAssetData("SceneTitle/GUI/Prefab/GUI_Title", base.transform).transform);
@@ -50,7 +48,6 @@ public class SelTitleCtrl : MonoBehaviour
 		this.setting = SelTitleCtrl.PHASE.NONE;
 	}
 
-	// Token: 0x060018E2 RID: 6370 RVA: 0x00131A84 File Offset: 0x0012FC84
 	public void Setup(UnityAction<bool> gotoNextScene)
 	{
 		this.guiData.Num_Txt_Id.text = LoginManager.FriendCode.ToString();
@@ -65,7 +62,6 @@ public class SelTitleCtrl : MonoBehaviour
 		this.openingEnumerator = this.Opening();
 	}
 
-	// Token: 0x060018E3 RID: 6371 RVA: 0x00131B58 File Offset: 0x0012FD58
 	public void SetEnableTransferButton(bool e)
 	{
 		SelTitleCtrl.WIN win = this.winData;
@@ -76,20 +72,17 @@ public class SelTitleCtrl : MonoBehaviour
 		win.Btn_Migration.gameObject.SetActive(e);
 	}
 
-	// Token: 0x060018E4 RID: 6372 RVA: 0x00131B75 File Offset: 0x0012FD75
 	public void SetupGraphic()
 	{
 		this.setting = SelTitleCtrl.PHASE.NONE;
 		this.graphicEnumerator = this.Graphic();
 	}
 
-	// Token: 0x060018E5 RID: 6373 RVA: 0x00131B8A File Offset: 0x0012FD8A
 	public bool CheckGraphic()
 	{
 		return this.graphicEnumerator == null;
 	}
 
-	// Token: 0x060018E6 RID: 6374 RVA: 0x00131B95 File Offset: 0x0012FD95
 	private IEnumerator Opening()
 	{
 		this.guiData.AEImage_Title.PauseAnimation(PguiAECtrl.AmimeType.START, null);
@@ -107,7 +100,6 @@ public class SelTitleCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060018E7 RID: 6375 RVA: 0x00131BA4 File Offset: 0x0012FDA4
 	private IEnumerator Setting()
 	{
 		this.winData.setting.Setup(null, null, null, true, null, null, false);
@@ -122,7 +114,6 @@ public class SelTitleCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060018E8 RID: 6376 RVA: 0x00131BB3 File Offset: 0x0012FDB3
 	private IEnumerator GoogleSetting()
 	{
 		GPGLoginResponse response = null;
@@ -148,7 +139,6 @@ public class SelTitleCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060018E9 RID: 6377 RVA: 0x00131BC2 File Offset: 0x0012FDC2
 	private IEnumerator Graphic()
 	{
 		int[] option = SceneManager.GetOption();
@@ -168,7 +158,6 @@ public class SelTitleCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060018EA RID: 6378 RVA: 0x00131BD1 File Offset: 0x0012FDD1
 	private IEnumerator Recovery()
 	{
 		SelTitleCtrl.<>c__DisplayClass29_0 CS$<>8__locals1 = new SelTitleCtrl.<>c__DisplayClass29_0();
@@ -225,7 +214,6 @@ public class SelTitleCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060018EB RID: 6379 RVA: 0x00131BE0 File Offset: 0x0012FDE0
 	private IEnumerator Migration()
 	{
 		if (LoginManager.IsDmmLink)
@@ -311,7 +299,6 @@ public class SelTitleCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060018EC RID: 6380 RVA: 0x00131BEF File Offset: 0x0012FDEF
 	private IEnumerator DeleteAccount()
 	{
 		SelTitleCtrl.<>c__DisplayClass31_0 CS$<>8__locals1 = new SelTitleCtrl.<>c__DisplayClass31_0();
@@ -369,7 +356,6 @@ public class SelTitleCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060018ED RID: 6381 RVA: 0x00131BFE File Offset: 0x0012FDFE
 	private IEnumerator GoogleAccountLink()
 	{
 		GPGLoginResponse response = null;
@@ -660,7 +646,6 @@ public class SelTitleCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060018EE RID: 6382 RVA: 0x00131C0D File Offset: 0x0012FE0D
 	private IEnumerator GoogleAccountRelease()
 	{
 		GPGLoginResponse response = null;
@@ -752,7 +737,6 @@ public class SelTitleCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060018EF RID: 6383 RVA: 0x00131C1C File Offset: 0x0012FE1C
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		if (this.graphicEnumerator != null || this.recoveryEnumerator != null || this.migrationEnumerator != null || this.deleteAccountEnumerator != null)
@@ -823,7 +807,6 @@ public class SelTitleCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060018F0 RID: 6384 RVA: 0x00131DA0 File Offset: 0x0012FFA0
 	private bool OnClickToggle(PguiToggleButtonCtrl pbc, int toggleIndex)
 	{
 		int[] option = SceneManager.GetOption();
@@ -856,7 +839,6 @@ public class SelTitleCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x060018F1 RID: 6385 RVA: 0x00131E64 File Offset: 0x00130064
 	private string GetHyphen(string str1, string str2)
 	{
 		string text = string.Empty;
@@ -869,7 +851,6 @@ public class SelTitleCtrl : MonoBehaviour
 		return text;
 	}
 
-	// Token: 0x060018F2 RID: 6386 RVA: 0x00131EB4 File Offset: 0x001300B4
 	public void Update()
 	{
 		if (this.openingEnumerator != null && !this.openingEnumerator.MoveNext())
@@ -997,58 +978,40 @@ public class SelTitleCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04001309 RID: 4873
 	private IEnumerator openingEnumerator;
 
-	// Token: 0x0400130A RID: 4874
 	private IEnumerator settingEnumerator;
 
-	// Token: 0x0400130B RID: 4875
 	private IEnumerator graphicEnumerator;
 
-	// Token: 0x0400130C RID: 4876
 	private IEnumerator recoveryEnumerator;
 
-	// Token: 0x0400130D RID: 4877
 	private IEnumerator migrationEnumerator;
 
-	// Token: 0x0400130E RID: 4878
 	private IEnumerator deleteAccountEnumerator;
 
-	// Token: 0x0400130F RID: 4879
 	private IEnumerator googleSettingEnumerator;
 
-	// Token: 0x04001310 RID: 4880
 	private IEnumerator googleAccountLinkEnumerator;
 
-	// Token: 0x04001311 RID: 4881
 	private IEnumerator googleAccountReleaseEnumerator;
 
-	// Token: 0x04001312 RID: 4882
 	private SelTitleCtrl.GUI guiData;
 
-	// Token: 0x04001313 RID: 4883
 	private SelTitleCtrl.WIN winData;
 
-	// Token: 0x04001314 RID: 4884
 	private SelTitleCtrl.GoogleAccountWindow googleWindowData;
 
-	// Token: 0x04001315 RID: 4885
 	private bool pvp;
 
-	// Token: 0x04001316 RID: 4886
 	private SelTitleCtrl.PHASE setting;
 
-	// Token: 0x04001317 RID: 4887
 	private UnityAction<bool> gotoNextScene;
 
-	// Token: 0x04001318 RID: 4888
 	private bool isSetupBanner;
 
-	// Token: 0x02000D73 RID: 3443
 	public class GUI
 	{
-		// Token: 0x06004920 RID: 18720 RVA: 0x0021ED04 File Offset: 0x0021CF04
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1060,32 +1023,23 @@ public class SelTitleCtrl : MonoBehaviour
 			this.logo = baseTr.Find("Auth_Title/Texture_Logo").GetComponent<PguiRawImageCtrl>();
 		}
 
-		// Token: 0x04004ED1 RID: 20177
 		public GameObject baseObj;
 
-		// Token: 0x04004ED2 RID: 20178
 		public PguiButtonCtrl Btn_Termsofuse;
 
-		// Token: 0x04004ED3 RID: 20179
 		public PguiButtonCtrl Btn_Dataid;
 
-		// Token: 0x04004ED4 RID: 20180
 		public PguiTextCtrl Num_Txt_Id;
 
-		// Token: 0x04004ED5 RID: 20181
 		public PguiTextCtrl Num_Txt_Ver;
 
-		// Token: 0x04004ED6 RID: 20182
 		public PguiAECtrl AEImage_Title;
 
-		// Token: 0x04004ED7 RID: 20183
 		public PguiRawImageCtrl logo;
 	}
 
-	// Token: 0x02000D74 RID: 3444
 	public class WIN
 	{
-		// Token: 0x06004921 RID: 18721 RVA: 0x0021EDA8 File Offset: 0x0021CFA8
 		public WIN(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1110,56 +1064,39 @@ public class SelTitleCtrl : MonoBehaviour
 			this.graphic.transform.Find("Base/Window/Txt_ Suishou").gameObject.SetActive(false);
 		}
 
-		// Token: 0x04004ED8 RID: 20184
 		public GameObject baseObj;
 
-		// Token: 0x04004ED9 RID: 20185
 		public PguiOpenWindowCtrl setting;
 
-		// Token: 0x04004EDA RID: 20186
 		public PguiOpenWindowCtrl migration;
 
-		// Token: 0x04004EDB RID: 20187
 		public PguiOpenWindowCtrl graphic;
 
-		// Token: 0x04004EDC RID: 20188
 		public PguiOpenWindowCtrl deleteAccount;
 
-		// Token: 0x04004EDD RID: 20189
 		public PguiOpenWindowCtrl deleteAccountFinal;
 
-		// Token: 0x04004EDE RID: 20190
 		public PguiButtonCtrl Btn_Graphic;
 
-		// Token: 0x04004EDF RID: 20191
 		public PguiButtonCtrl Btn_Recovery;
 
-		// Token: 0x04004EE0 RID: 20192
 		public PguiButtonCtrl Btn_Migration;
 
-		// Token: 0x04004EE1 RID: 20193
 		public PguiButtonCtrl Btn_DeleteAccount;
 
-		// Token: 0x04004EE2 RID: 20194
 		public PguiToggleButtonCtrl Tgl_High;
 
-		// Token: 0x04004EE3 RID: 20195
 		public PguiToggleButtonCtrl Tgl_Normal;
 
-		// Token: 0x04004EE4 RID: 20196
 		public PguiToggleButtonCtrl Tgl_Light;
 
-		// Token: 0x04004EE5 RID: 20197
 		public InputField InputFieldPass;
 
-		// Token: 0x04004EE6 RID: 20198
 		public InputField InputFieldPass2;
 	}
 
-	// Token: 0x02000D75 RID: 3445
 	public class GoogleAccountWindow
 	{
-		// Token: 0x06004922 RID: 18722 RVA: 0x0021EFEC File Offset: 0x0021D1EC
 		public GoogleAccountWindow(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1172,49 +1109,32 @@ public class SelTitleCtrl : MonoBehaviour
 			this.linkedText = this.setting.transform.Find("Base/Window/Layout/Btn_Link/Linked").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x04004EE7 RID: 20199
 		public GameObject baseObj;
 
-		// Token: 0x04004EE8 RID: 20200
 		public PguiOpenWindowCtrl setting;
 
-		// Token: 0x04004EE9 RID: 20201
 		public PguiOpenWindowCtrl idPassLink;
 
-		// Token: 0x04004EEA RID: 20202
 		public PguiButtonCtrl Btn_idPassLink;
 
-		// Token: 0x04004EEB RID: 20203
 		public PguiButtonCtrl Btn_accountLink;
 
-		// Token: 0x04004EEC RID: 20204
 		public PguiButtonCtrl Btn_release;
 
-		// Token: 0x04004EED RID: 20205
 		public PguiButtonCtrl Btn_setting_close;
 
-		// Token: 0x04004EEE RID: 20206
 		public PguiTextCtrl linkedText;
 	}
 
-	// Token: 0x02000D76 RID: 3446
 	private enum PHASE
 	{
-		// Token: 0x04004EF0 RID: 20208
 		NONE,
-		// Token: 0x04004EF1 RID: 20209
 		GRAPHIC,
-		// Token: 0x04004EF2 RID: 20210
 		RECOVERY,
-		// Token: 0x04004EF3 RID: 20211
 		MIGRATION,
-		// Token: 0x04004EF4 RID: 20212
 		DELETE,
-		// Token: 0x04004EF5 RID: 20213
 		SETTING,
-		// Token: 0x04004EF6 RID: 20214
 		GPG_LINK,
-		// Token: 0x04004EF7 RID: 20215
 		GPG_RELEASE
 	}
 }

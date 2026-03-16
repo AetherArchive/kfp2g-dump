@@ -1,11 +1,9 @@
-﻿using System;
+using System;
 using AEAuth3;
 using UnityEngine;
 
-// Token: 0x02000110 RID: 272
 public class ScenarioGUIPlyBtns : MonoBehaviour
 {
-	// Token: 0x06000D08 RID: 3336 RVA: 0x00051D08 File Offset: 0x0004FF08
 	private void Start()
 	{
 		this.mTimeSwitchBtn = base.transform.Find("TimeBtnsAll/Btn_Yaji").gameObject;
@@ -32,7 +30,6 @@ public class ScenarioGUIPlyBtns : MonoBehaviour
 		this.SetFade(false, ScenarioDefine.FADE_TYPE.WHITE_OUT, true);
 	}
 
-	// Token: 0x06000D09 RID: 3337 RVA: 0x00051F14 File Offset: 0x00050114
 	private void Update()
 	{
 		if (this.bAnim)
@@ -64,14 +61,12 @@ public class ScenarioGUIPlyBtns : MonoBehaviour
 		this.mTimeSwitchBtn.GetComponent<PguiButtonCtrl>().androidBackKeyTarget = !this.bLogWindowShow;
 	}
 
-	// Token: 0x06000D0A RID: 3338 RVA: 0x00051FED File Offset: 0x000501ED
 	private void OnClickTimeSwithBtn(PguiButtonCtrl button)
 	{
 		this.bOpenFlag = !this.bOpenFlag;
 		this.bAnim = true;
 	}
 
-	// Token: 0x06000D0B RID: 3339 RVA: 0x00052008 File Offset: 0x00050208
 	private void OnClickAutoSwithBtn(PguiButtonCtrl button)
 	{
 		this.bAutoFlag = !this.bAutoFlag;
@@ -87,19 +82,16 @@ public class ScenarioGUIPlyBtns : MonoBehaviour
 		this.mMarkAuto.SetActive(this.bAutoFlag);
 	}
 
-	// Token: 0x06000D0C RID: 3340 RVA: 0x00052098 File Offset: 0x00050298
 	private void OnClickSkip(PguiButtonCtrl button)
 	{
 		this.bSkipWindowShow = !this.bSkipWindowShow;
 	}
 
-	// Token: 0x06000D0D RID: 3341 RVA: 0x000520A9 File Offset: 0x000502A9
 	private void OnClickLog(PguiButtonCtrl button)
 	{
 		this.bLogWindowShow = !this.bLogWindowShow;
 	}
 
-	// Token: 0x06000D0E RID: 3342 RVA: 0x000520BC File Offset: 0x000502BC
 	public void SetFade(bool isFront, ScenarioDefine.FADE_TYPE type, bool immediate = false)
 	{
 		if (isFront)
@@ -149,13 +141,11 @@ public class ScenarioGUIPlyBtns : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000D0F RID: 3343 RVA: 0x00052227 File Offset: 0x00050427
 	public bool IsFadeEnd()
 	{
 		return !this.mFade.GetComponent<SimpleAnimation>().ExIsPlaying();
 	}
 
-	// Token: 0x06000D10 RID: 3344 RVA: 0x0005223C File Offset: 0x0005043C
 	public void DispOff()
 	{
 		this.mSimpleAnimTimeSwith.gameObject.SetActive(false);
@@ -163,45 +153,31 @@ public class ScenarioGUIPlyBtns : MonoBehaviour
 		this.mMarkAuto.SetActive(false);
 	}
 
-	// Token: 0x04000A72 RID: 2674
 	private GameObject mTimeSwitchBtn;
 
-	// Token: 0x04000A73 RID: 2675
 	private SimpleAnimation mSimpleAnimTimeSwith;
 
-	// Token: 0x04000A74 RID: 2676
 	private GameObject mAutoStartBtn;
 
-	// Token: 0x04000A75 RID: 2677
 	public bool bAutoFlag;
 
-	// Token: 0x04000A76 RID: 2678
 	private GameObject mAutoStopBtn;
 
-	// Token: 0x04000A77 RID: 2679
 	private GameObject mMarkAuto;
 
-	// Token: 0x04000A78 RID: 2680
 	private GameObject mSkipBtn;
 
-	// Token: 0x04000A79 RID: 2681
 	public bool bSkipWindowShow;
 
-	// Token: 0x04000A7A RID: 2682
 	private GameObject mLogBtn;
 
-	// Token: 0x04000A7B RID: 2683
 	public bool bLogWindowShow;
 
-	// Token: 0x04000A7C RID: 2684
 	public bool bOpenFlag;
 
-	// Token: 0x04000A7D RID: 2685
 	private bool bAnim;
 
-	// Token: 0x04000A7E RID: 2686
 	public GameObject mFade;
 
-	// Token: 0x04000A7F RID: 2687
 	public AEImage mNoMark;
 }

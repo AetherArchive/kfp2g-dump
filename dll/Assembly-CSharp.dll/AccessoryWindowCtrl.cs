@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
@@ -6,10 +6,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x0200018D RID: 397
 public class AccessoryWindowCtrl : MonoBehaviour
 {
-	// Token: 0x06001A7B RID: 6779 RVA: 0x00156B90 File Offset: 0x00154D90
 	public void Initialize()
 	{
 		this.guiData = new AccessoryWindowCtrl.GUI(base.transform);
@@ -26,7 +24,6 @@ public class AccessoryWindowCtrl : MonoBehaviour
 		this.ResetPrevData();
 	}
 
-	// Token: 0x06001A7C RID: 6780 RVA: 0x00156C51 File Offset: 0x00154E51
 	public void Update()
 	{
 		if (this.RequestStatusFunc != null && !this.RequestStatusFunc.MoveNext())
@@ -41,7 +38,6 @@ public class AccessoryWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001A7D RID: 6781 RVA: 0x00156C80 File Offset: 0x00154E80
 	public void Open(AccessoryWindowCtrl.SetupParam setupParam)
 	{
 		this.windowCloseEndCb = setupParam.windowCloseEndCb;
@@ -63,7 +59,6 @@ public class AccessoryWindowCtrl : MonoBehaviour
 		windowOpenEndCb();
 	}
 
-	// Token: 0x06001A7E RID: 6782 RVA: 0x00156D1C File Offset: 0x00154F1C
 	public void OpenPrev()
 	{
 		if (this.prevOpenParam == null)
@@ -79,13 +74,11 @@ public class AccessoryWindowCtrl : MonoBehaviour
 		this.Open(setupParam);
 	}
 
-	// Token: 0x06001A7F RID: 6783 RVA: 0x00156D64 File Offset: 0x00154F64
 	public void ResetPrevData()
 	{
 		this.prevOpenParam = null;
 	}
 
-	// Token: 0x06001A80 RID: 6784 RVA: 0x00156D70 File Offset: 0x00154F70
 	private void ChangeAccessory(DataManagerCharaAccessory.Accessory acce)
 	{
 		this.dispAccessory = acce;
@@ -98,7 +91,6 @@ public class AccessoryWindowCtrl : MonoBehaviour
 		this.SetupAccessoryGrowButton();
 	}
 
-	// Token: 0x06001A81 RID: 6785 RVA: 0x00156E2C File Offset: 0x0015502C
 	private void DispMaxLevelAccesory(int accessoryId)
 	{
 		DataManagerCharaAccessory.AccessoryData accessoryData = DataManager.DmChAccessory.GetAccessoryData(accessoryId);
@@ -116,7 +108,6 @@ public class AccessoryWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001A82 RID: 6786 RVA: 0x00156F30 File Offset: 0x00155130
 	private void RefleshIcon()
 	{
 		this.guiData.iconAccessoryCtrl.Setup(new IconAccessoryCtrl.SetupParam
@@ -132,7 +123,6 @@ public class AccessoryWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001A83 RID: 6787 RVA: 0x00156FA4 File Offset: 0x001551A4
 	private void UpdateInfo()
 	{
 		this.guiData.Txt_DispType.text = AccessoryUtil.MakeDispTypeString(this.dispAccessory);
@@ -146,7 +136,6 @@ public class AccessoryWindowCtrl : MonoBehaviour
 		this.UpdateStatusUpParam(list);
 	}
 
-	// Token: 0x06001A84 RID: 6788 RVA: 0x00157044 File Offset: 0x00155244
 	private void UpdateStatusUpParam(List<AccessoryUtil.ParamPackData.BaseParam> dispStatusList)
 	{
 		for (int i = 0; i < this.guiData.guiParamUpList.Count; i++)
@@ -156,7 +145,6 @@ public class AccessoryWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001A85 RID: 6789 RVA: 0x0015709C File Offset: 0x0015529C
 	private void SetupKeyButton()
 	{
 		int num = ((!AccessoryUtil.IsInvalid(this.dispAccessory) && this.dispAccessory.IsLock) ? 1 : 0);
@@ -164,7 +152,6 @@ public class AccessoryWindowCtrl : MonoBehaviour
 		this.guiData.Btn_Key.gameObject.SetActive(this.haveAccessory);
 	}
 
-	// Token: 0x06001A86 RID: 6790 RVA: 0x001570F4 File Offset: 0x001552F4
 	private void SetupArrowButton()
 	{
 		bool flag = this.IsDispArrowButton();
@@ -172,13 +159,11 @@ public class AccessoryWindowCtrl : MonoBehaviour
 		this.guiData.Btn_Yaji_Right.gameObject.SetActive(flag);
 	}
 
-	// Token: 0x06001A87 RID: 6791 RVA: 0x00157134 File Offset: 0x00155334
 	private bool IsDispArrowButton()
 	{
 		return !AccessoryUtil.IsInvalid(this.dispAccessory) && this.dispAccessoryList != null && 1 < this.dispAccessoryList.Count && 0 <= this.dispAccessoryList.IndexOf(this.dispAccessory);
 	}
 
-	// Token: 0x06001A88 RID: 6792 RVA: 0x00157174 File Offset: 0x00155374
 	private void SetupAccessoryGrowButton()
 	{
 		bool flag = this.prevOpenParam != null;
@@ -186,13 +171,11 @@ public class AccessoryWindowCtrl : MonoBehaviour
 		this.guiData.Btn_AccessoryGrow.gameObject.SetActive(flag2);
 	}
 
-	// Token: 0x06001A89 RID: 6793 RVA: 0x001571F9 File Offset: 0x001553F9
 	public void SetPvpSeasonId(int seasonId)
 	{
 		this.pvpSeasonId = seasonId;
 	}
 
-	// Token: 0x06001A8A RID: 6794 RVA: 0x00157202 File Offset: 0x00155402
 	private IEnumerator RequestUpdateStatus()
 	{
 		if (AccessoryUtil.IsInvalid(this.dispAccessory))
@@ -209,7 +192,6 @@ public class AccessoryWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001A8B RID: 6795 RVA: 0x00157211 File Offset: 0x00155411
 	private bool OnClickOwButton(int index)
 	{
 		if (-1 == index)
@@ -225,19 +207,16 @@ public class AccessoryWindowCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06001A8C RID: 6796 RVA: 0x00157232 File Offset: 0x00155432
 	private void OnClickLeftArrowButton(PguiButtonCtrl button)
 	{
 		this.RequestClickArrowButton(button, -1);
 	}
 
-	// Token: 0x06001A8D RID: 6797 RVA: 0x0015723C File Offset: 0x0015543C
 	private void OnClickRightArrowButton(PguiButtonCtrl button)
 	{
 		this.RequestClickArrowButton(button, 1);
 	}
 
-	// Token: 0x06001A8E RID: 6798 RVA: 0x00157248 File Offset: 0x00155448
 	private void RequestClickArrowButton(PguiButtonCtrl button, int slideIndexNum)
 	{
 		int num = this.dispAccessoryList.IndexOf(this.dispAccessory);
@@ -254,7 +233,6 @@ public class AccessoryWindowCtrl : MonoBehaviour
 		this.ChangeAccessory(this.dispAccessoryList[num]);
 	}
 
-	// Token: 0x06001A8F RID: 6799 RVA: 0x00157298 File Offset: 0x00155498
 	private bool OnClickLockButton(PguiToggleButtonCtrl pbc, int toggleIndex)
 	{
 		SoundManager.Play("prd_se_photo_lock_unlock", false, false);
@@ -266,7 +244,6 @@ public class AccessoryWindowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001A90 RID: 6800 RVA: 0x001572E0 File Offset: 0x001554E0
 	private void OnClickAccessoryGrowButton(PguiButtonCtrl button)
 	{
 		object obj = null;
@@ -344,37 +321,26 @@ public class AccessoryWindowCtrl : MonoBehaviour
 		Singleton<SceneManager>.Instance.SetNextScene(SceneManager.SceneName.SceneCharaEdit, args);
 	}
 
-	// Token: 0x04001436 RID: 5174
 	public AccessoryWindowCtrl.GUI guiData;
 
-	// Token: 0x04001437 RID: 5175
 	private UnityAction windowCloseEndCb;
 
-	// Token: 0x04001438 RID: 5176
 	private UnityAction updateStasusEndCb;
 
-	// Token: 0x04001439 RID: 5177
 	private DataManagerCharaAccessory.Accessory dispAccessory;
 
-	// Token: 0x0400143A RID: 5178
 	private List<DataManagerCharaAccessory.Accessory> dispAccessoryList;
 
-	// Token: 0x0400143B RID: 5179
 	private bool haveAccessory;
 
-	// Token: 0x0400143C RID: 5180
 	private AccessoryWindowCtrl.SetupParam prevOpenParam;
 
-	// Token: 0x0400143D RID: 5181
 	private int pvpSeasonId;
 
-	// Token: 0x0400143E RID: 5182
 	private IEnumerator RequestStatusFunc;
 
-	// Token: 0x02000E76 RID: 3702
 	public class GUI
 	{
-		// Token: 0x06004CC5 RID: 19653 RVA: 0x0022F298 File Offset: 0x0022D498
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -396,47 +362,33 @@ public class AccessoryWindowCtrl : MonoBehaviour
 			this.Btn_AccessoryGrow = baseTr.Find("Base/Window/Btn_AccessoryGrow").GetComponent<PguiButtonCtrl>();
 		}
 
-		// Token: 0x04005334 RID: 21300
 		public GameObject baseObj;
 
-		// Token: 0x04005335 RID: 21301
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x04005336 RID: 21302
 		public PguiTextCtrl Txt_GachaInfo;
 
-		// Token: 0x04005337 RID: 21303
 		public PguiToggleButtonCtrl Btn_Key;
 
-		// Token: 0x04005338 RID: 21304
 		public IconAccessoryCtrl iconAccessoryCtrl;
 
-		// Token: 0x04005339 RID: 21305
 		public PguiButtonCtrl Btn_Yaji_Left;
 
-		// Token: 0x0400533A RID: 21306
 		public PguiButtonCtrl Btn_Yaji_Right;
 
-		// Token: 0x0400533B RID: 21307
 		public PguiTextCtrl Txt_DispType;
 
-		// Token: 0x0400533C RID: 21308
 		public PguiTextCtrl Txt_Lv;
 
-		// Token: 0x0400533D RID: 21309
 		public List<AccessoryWindowCtrl.GUIParamUp> guiParamUpList;
 
-		// Token: 0x0400533E RID: 21310
 		public PguiTextCtrl Txt_Info;
 
-		// Token: 0x0400533F RID: 21311
 		public PguiButtonCtrl Btn_AccessoryGrow;
 	}
 
-	// Token: 0x02000E77 RID: 3703
 	public class GUIParamUp
 	{
-		// Token: 0x06004CC6 RID: 19654 RVA: 0x0022F3CC File Offset: 0x0022D5CC
 		public GUIParamUp(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -445,7 +397,6 @@ public class AccessoryWindowCtrl : MonoBehaviour
 			this.damage = new AccessoryWindowCtrl.GUIParamUp.Damage(baseTr.Find("Base_Dmage"));
 		}
 
-		// Token: 0x06004CC7 RID: 19655 RVA: 0x0022F430 File Offset: 0x0022D630
 		public void Setup(AccessoryUtil.ParamPackData.BaseParam param)
 		{
 			this.baseObj.SetActive(false);
@@ -497,39 +448,29 @@ public class AccessoryWindowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x04005340 RID: 21312
 		public GameObject baseObj;
 
-		// Token: 0x04005341 RID: 21313
 		public PguiTextCtrl Txt_Num;
 
-		// Token: 0x04005342 RID: 21314
 		public AccessoryWindowCtrl.GUIParamUp.Normal nomal;
 
-		// Token: 0x04005343 RID: 21315
 		public AccessoryWindowCtrl.GUIParamUp.Damage damage;
 
-		// Token: 0x020011E4 RID: 4580
 		public class Normal
 		{
-			// Token: 0x06005751 RID: 22353 RVA: 0x00256806 File Offset: 0x00254A06
 			public Normal(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
 				this.Txt_ParamName = baseTr.Find("Txt_01").GetComponent<PguiTextCtrl>();
 			}
 
-			// Token: 0x04006206 RID: 25094
 			public GameObject baseObj;
 
-			// Token: 0x04006207 RID: 25095
 			public PguiTextCtrl Txt_ParamName;
 		}
 
-		// Token: 0x020011E5 RID: 4581
 		public class Damage
 		{
-			// Token: 0x06005752 RID: 22354 RVA: 0x00256830 File Offset: 0x00254A30
 			public Damage(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -539,27 +480,20 @@ public class AccessoryWindowCtrl : MonoBehaviour
 				this.colorCtrl = baseTr.GetComponent<PguiColorCtrl>();
 			}
 
-			// Token: 0x04006208 RID: 25096
 			public GameObject baseObj;
 
-			// Token: 0x04006209 RID: 25097
 			public PguiTextCtrl Txt_ParamName;
 
-			// Token: 0x0400620A RID: 25098
 			public PguiGradientCtrl gradientCtrl;
 
-			// Token: 0x0400620B RID: 25099
 			public Image Img_Bg;
 
-			// Token: 0x0400620C RID: 25100
 			public PguiColorCtrl colorCtrl;
 		}
 	}
 
-	// Token: 0x02000E78 RID: 3704
 	public class SetupParam
 	{
-		// Token: 0x06004CC8 RID: 19656 RVA: 0x0022F6E1 File Offset: 0x0022D8E1
 		public SetupParam()
 		{
 			this.windowOpenEndCb = null;
@@ -570,22 +504,16 @@ public class AccessoryWindowCtrl : MonoBehaviour
 			this.dispMaxAccessoryId = 0;
 		}
 
-		// Token: 0x04005344 RID: 21316
 		public UnityAction windowOpenEndCb;
 
-		// Token: 0x04005345 RID: 21317
 		public UnityAction windowCloseEndCb;
 
-		// Token: 0x04005346 RID: 21318
 		public UnityAction updateStasusEndCb;
 
-		// Token: 0x04005347 RID: 21319
 		public DataManagerCharaAccessory.Accessory acce;
 
-		// Token: 0x04005348 RID: 21320
 		public List<DataManagerCharaAccessory.Accessory> acceList;
 
-		// Token: 0x04005349 RID: 21321
 		public int dispMaxAccessoryId;
 	}
 }

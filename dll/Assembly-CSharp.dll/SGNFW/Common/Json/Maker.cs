@@ -1,18 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 
 namespace SGNFW.Common.Json
 {
-	// Token: 0x02000274 RID: 628
 	public class Maker
 	{
-		// Token: 0x170005BA RID: 1466
-		// (get) Token: 0x06002693 RID: 9875 RVA: 0x001A2085 File Offset: 0x001A0285
-		// (set) Token: 0x06002692 RID: 9874 RVA: 0x001A207C File Offset: 0x001A027C
 		public bool IsError { get; private set; }
 
-		// Token: 0x06002694 RID: 9876 RVA: 0x001A2090 File Offset: 0x001A0290
 		public Data Make(string text)
 		{
 			Verbose<Verbose>.Enabled = true;
@@ -33,7 +28,6 @@ namespace SGNFW.Common.Json
 			return token.data;
 		}
 
-		// Token: 0x06002695 RID: 9877 RVA: 0x001A211C File Offset: 0x001A031C
 		public bool TrimWhiteSpace()
 		{
 			while (this.p < this.length)
@@ -83,7 +77,6 @@ namespace SGNFW.Common.Json
 			return this.p < this.length;
 		}
 
-		// Token: 0x06002696 RID: 9878 RVA: 0x001A22D0 File Offset: 0x001A04D0
 		public Data ParseObject()
 		{
 			Dictionary<string, Data> dictionary = new Dictionary<string, Data>();
@@ -123,7 +116,6 @@ namespace SGNFW.Common.Json
 			return null;
 		}
 
-		// Token: 0x06002697 RID: 9879 RVA: 0x001A2390 File Offset: 0x001A0590
 		public Data ParseArray()
 		{
 			List<Data> list = new List<Data>();
@@ -158,7 +150,6 @@ namespace SGNFW.Common.Json
 			return null;
 		}
 
-		// Token: 0x06002698 RID: 9880 RVA: 0x001A2414 File Offset: 0x001A0614
 		public Data ParseChar()
 		{
 			long num = 0L;
@@ -252,7 +243,6 @@ namespace SGNFW.Common.Json
 			return null;
 		}
 
-		// Token: 0x06002699 RID: 9881 RVA: 0x001A2544 File Offset: 0x001A0744
 		public Data ParseString()
 		{
 			this.bp_ = 0;
@@ -394,7 +384,6 @@ namespace SGNFW.Common.Json
 			return null;
 		}
 
-		// Token: 0x0600269A RID: 9882 RVA: 0x001A27F8 File Offset: 0x001A09F8
 		private void prepareBuffer_()
 		{
 			if (this.bp_ + 4 >= this.bufferLength_)
@@ -407,7 +396,6 @@ namespace SGNFW.Common.Json
 			}
 		}
 
-		// Token: 0x0600269B RID: 9883 RVA: 0x001A2848 File Offset: 0x001A0A48
 		public Data ParseBooleanOrNull()
 		{
 			if (this.length - this.p >= 5 && string.Compare(this.text, this.p, "false", 0, 5) == 0)
@@ -432,7 +420,6 @@ namespace SGNFW.Common.Json
 			return null;
 		}
 
-		// Token: 0x0600269C RID: 9884 RVA: 0x001A290C File Offset: 0x001A0B0C
 		public Data ParseNumber()
 		{
 			int num = this.p;
@@ -449,7 +436,6 @@ namespace SGNFW.Common.Json
 			return new Data(long.Parse(text));
 		}
 
-		// Token: 0x0600269D RID: 9885 RVA: 0x001A2990 File Offset: 0x001A0B90
 		private Maker.Token GetToken()
 		{
 			Maker.Token token = default(Maker.Token);
@@ -582,56 +568,37 @@ namespace SGNFW.Common.Json
 			return token;
 		}
 
-		// Token: 0x04001C58 RID: 7256
 		private int p;
 
-		// Token: 0x04001C59 RID: 7257
 		private int length;
 
-		// Token: 0x04001C5A RID: 7258
 		private string text;
 
-		// Token: 0x04001C5B RID: 7259
 		private int line;
 
-		// Token: 0x04001C5C RID: 7260
 		private char[] buffer_ = new char[128];
 
-		// Token: 0x04001C5D RID: 7261
 		private int bufferLength_ = 128;
 
-		// Token: 0x04001C5E RID: 7262
 		private int bp_;
 
-		// Token: 0x04001C5F RID: 7263
 		private const int DEFAULT_BUFFER_LENGTH = 128;
 
-		// Token: 0x020010A4 RID: 4260
 		private enum TokenType
 		{
-			// Token: 0x04005C4C RID: 23628
 			Invalid,
-			// Token: 0x04005C4D RID: 23629
 			ObjectEnd,
-			// Token: 0x04005C4E RID: 23630
 			ObjectSeparator,
-			// Token: 0x04005C4F RID: 23631
 			ArrayEnd,
-			// Token: 0x04005C50 RID: 23632
 			Separator,
-			// Token: 0x04005C51 RID: 23633
 			JsonData,
-			// Token: 0x04005C52 RID: 23634
 			End
 		}
 
-		// Token: 0x020010A5 RID: 4261
 		private struct Token
 		{
-			// Token: 0x04005C53 RID: 23635
 			public Maker.TokenType type;
 
-			// Token: 0x04005C54 RID: 23636
 			public Data data;
 		}
 	}

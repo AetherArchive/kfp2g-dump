@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SGNFW.Common;
 using SGNFW.Http;
@@ -8,10 +8,8 @@ using SGNFW.Mst;
 using SGNFW.Thread;
 using UnityEngine;
 
-// Token: 0x0200010C RID: 268
 public class NetworkSample : MonoBehaviour
 {
-	// Token: 0x06000CF3 RID: 3315 RVA: 0x00050818 File Offset: 0x0004EA18
 	private void Start()
 	{
 		FitGUI.Initialize(1080, 1920, 24, 24, 32, 0, 0);
@@ -29,7 +27,6 @@ public class NetworkSample : MonoBehaviour
 		this.stateStr = "サーバ選択";
 	}
 
-	// Token: 0x06000CF4 RID: 3316 RVA: 0x000508C0 File Offset: 0x0004EAC0
 	private void OnGUI()
 	{
 		GUILayout.BeginVertical(new GUILayoutOption[] { FitGUI.Width(FitGUI.orgWidth) });
@@ -70,7 +67,6 @@ public class NetworkSample : MonoBehaviour
 		GUILayout.EndVertical();
 	}
 
-	// Token: 0x06000CF5 RID: 3317 RVA: 0x0005098C File Offset: 0x0004EB8C
 	private void OnGUI_SelectServer(float w, float h)
 	{
 		if (FitGUI.Button("Intra01", w, h * 0.1f, null))
@@ -101,7 +97,6 @@ public class NetworkSample : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000CF6 RID: 3318 RVA: 0x00050A75 File Offset: 0x0004EC75
 	private void GetUrl()
 	{
 		Singleton<LoginManager>.Instance.GetUrl(delegate(Command res)
@@ -112,7 +107,6 @@ public class NetworkSample : MonoBehaviour
 		}, "1.0.0", 0, 2);
 	}
 
-	// Token: 0x06000CF7 RID: 3319 RVA: 0x00050A94 File Offset: 0x0004EC94
 	private void OnGUI_Login(float w, float h)
 	{
 		if (FitGUI.Button("LOGIN", w, h * 0.1f, null))
@@ -166,7 +160,6 @@ public class NetworkSample : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000CF8 RID: 3320 RVA: 0x00050BF5 File Offset: 0x0004EDF5
 	private void CbUserInfo(Command cmd, int resCode, string errorMsg)
 	{
 		if (resCode != 0)
@@ -178,7 +171,6 @@ public class NetworkSample : MonoBehaviour
 		Response response = cmd.response;
 	}
 
-	// Token: 0x06000CF9 RID: 3321 RVA: 0x00050C10 File Offset: 0x0004EE10
 	private void OnGUI_AccountTransfer(float w, float h)
 	{
 		this.transferId_ = FitGUI.TextField(this.transferId_, w, h * 0.1f);
@@ -200,7 +192,6 @@ public class NetworkSample : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000CFA RID: 3322 RVA: 0x00050CB8 File Offset: 0x0004EEB8
 	private void OnGUI_AccountTransferPass(float w, float h)
 	{
 		this.password_ = FitGUI.TextField(this.password_, w, h * 0.1f);
@@ -220,20 +211,17 @@ public class NetworkSample : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000CFB RID: 3323 RVA: 0x00050D41 File Offset: 0x0004EF41
 	private void StartLogin()
 	{
 		Singleton<LoginManager>.Instance.Login(new Action<Command>(this.OnCompleteLogin), "PARADEMSV", false);
 	}
 
-	// Token: 0x06000CFC RID: 3324 RVA: 0x00050D5F File Offset: 0x0004EF5F
 	private void OnCompleteLogin(Command cmd)
 	{
 		this.state_ = NetworkSample.State.Menu;
 		this.stateStr = "ログイン完了";
 	}
 
-	// Token: 0x06000CFD RID: 3325 RVA: 0x00050D74 File Offset: 0x0004EF74
 	private void OnGUI_Menu(float w, float h)
 	{
 		float width = FitGUI.GetWidth(w - 20f);
@@ -495,49 +483,32 @@ public class NetworkSample : MonoBehaviour
 		GUI.EndScrollView();
 	}
 
-	// Token: 0x04000A57 RID: 2647
 	private string sampleTitle_ = "Network Sample";
 
-	// Token: 0x04000A58 RID: 2648
 	private string stateStr = "";
 
-	// Token: 0x04000A59 RID: 2649
 	private NetworkSample.State state_;
 
-	// Token: 0x04000A5A RID: 2650
 	private string account = "";
 
-	// Token: 0x04000A5B RID: 2651
 	private string transferId_ = "";
 
-	// Token: 0x04000A5C RID: 2652
 	private string password_ = "";
 
-	// Token: 0x04000A5D RID: 2653
 	private Vector2 scrollViewVec = Vector2.zero;
 
-	// Token: 0x04000A5E RID: 2654
 	private const int btnCount = 48;
 
-	// Token: 0x04000A5F RID: 2655
 	private long questStartHash;
 
-	// Token: 0x0200084D RID: 2125
 	private enum State
 	{
-		// Token: 0x04003764 RID: 14180
 		SelectServer,
-		// Token: 0x04003765 RID: 14181
 		GetUrl,
-		// Token: 0x04003766 RID: 14182
 		Login,
-		// Token: 0x04003767 RID: 14183
 		GetMstDataWait,
-		// Token: 0x04003768 RID: 14184
 		AccountTransfer,
-		// Token: 0x04003769 RID: 14185
 		AccountTransferPass,
-		// Token: 0x0400376A RID: 14186
 		Menu
 	}
 }

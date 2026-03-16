@@ -1,12 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x02000193 RID: 403
 public class CharaUtil : MonoBehaviour
 {
-	// Token: 0x06001ACD RID: 6861 RVA: 0x001583C0 File Offset: 0x001565C0
 	public static List<CharaStaticData> CreateNotHaveCharaStaticDataList(List<CharaPackData> haveCharaPackList)
 	{
 		List<CharaStaticData> tempList = new List<CharaStaticData>();
@@ -28,7 +26,6 @@ public class CharaUtil : MonoBehaviour
 		return list;
 	}
 
-	// Token: 0x06001ACE RID: 6862 RVA: 0x00158498 File Offset: 0x00156698
 	public static int SortCharaName(CharaStaticData a, CharaStaticData b)
 	{
 		int num = 0;
@@ -50,14 +47,12 @@ public class CharaUtil : MonoBehaviour
 		return num;
 	}
 
-	// Token: 0x06001ACF RID: 6863 RVA: 0x0015851C File Offset: 0x0015671C
 	public static void SortCharaStaticData(ref List<CharaStaticData> charaStaticDataList)
 	{
 		charaStaticDataList.Sort((CharaStaticData a, CharaStaticData b) => a.baseData.rankLow - b.baseData.rankLow);
 		PrjUtil.InsertionSort<CharaStaticData>(ref charaStaticDataList, (CharaStaticData a, CharaStaticData b) => CharaUtil.SortCharaName(a, b));
 	}
 
-	// Token: 0x06001AD0 RID: 6864 RVA: 0x00158574 File Offset: 0x00156774
 	public static void FilterCharaStaticData(ref List<CharaStaticData> charaStaticDataList, SortFilterDefine.RegisterType registerType)
 	{
 		List<CharaDef.AttributeType> attr = CanvasManager.HdlOpenWindowSortFilter.GetAttributeType(registerType);
@@ -94,7 +89,6 @@ public class CharaUtil : MonoBehaviour
 		CharaUtil.FriendsCharacteristicResist(ref charaStaticDataList, characteristicResistAndOrStatus, characteristicResistList);
 	}
 
-	// Token: 0x06001AD1 RID: 6865 RVA: 0x001586F0 File Offset: 0x001568F0
 	public static void OnUpdateChara(int index, GameObject go, List<CharaPackData> dispCharaPackList, List<CharaStaticData> notHaveCharaStaticDataList, SortFilterDefine.SortType sortType, GameObject Txt_CharaSelect, bool isCharaQuest)
 	{
 		GridLayoutGroup component = go.GetComponent<GridLayoutGroup>();
@@ -192,7 +186,6 @@ public class CharaUtil : MonoBehaviour
 		component.enabled = true;
 	}
 
-	// Token: 0x06001AD2 RID: 6866 RVA: 0x001589E8 File Offset: 0x00156BE8
 	public static void SetupRectTransformOutScreenRange(GameObject go, Vector2 pos)
 	{
 		RectTransform rectTransform = go.transform as RectTransform;
@@ -204,7 +197,6 @@ public class CharaUtil : MonoBehaviour
 		rectTransform.anchoredPosition = pos;
 	}
 
-	// Token: 0x06001AD3 RID: 6867 RVA: 0x00158A70 File Offset: 0x00156C70
 	public static void FriendsMiracleTarget(ref List<CharaStaticData> charaStaticDataList, List<DataManagerChara.FilterData> miracleTargetList)
 	{
 		List<CharaStaticData> list = new List<CharaStaticData>();
@@ -250,7 +242,6 @@ public class CharaUtil : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001AD4 RID: 6868 RVA: 0x00158C08 File Offset: 0x00156E08
 	private static void FriendsMiracleEffect(ref List<CharaStaticData> charaStaticDataList, SortFilterDefine.AndOrState miracleEffectAndOrStatus, List<DataManagerChara.FilterData> miracleEffectList)
 	{
 		switch (miracleEffectAndOrStatus)
@@ -268,7 +259,6 @@ public class CharaUtil : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001AD5 RID: 6869 RVA: 0x00158C2C File Offset: 0x00156E2C
 	private static void FriendsMiracleEffectAnd(ref List<CharaStaticData> charaStaticDataList, List<DataManagerChara.FilterData> miracleEffectList)
 	{
 		if (miracleEffectList.Count <= 0)
@@ -306,7 +296,6 @@ public class CharaUtil : MonoBehaviour
 		charaStaticDataList = list;
 	}
 
-	// Token: 0x06001AD6 RID: 6870 RVA: 0x00158D50 File Offset: 0x00156F50
 	private static void FriendsMiracleEffectOr(ref List<CharaStaticData> charaStaicDataList, List<DataManagerChara.FilterData> miracleEffectList)
 	{
 		if (miracleEffectList.Count <= 0)
@@ -341,7 +330,6 @@ public class CharaUtil : MonoBehaviour
 		charaStaicDataList = list;
 	}
 
-	// Token: 0x06001AD7 RID: 6871 RVA: 0x00158E6C File Offset: 0x0015706C
 	private static bool isCharaHaveAttack(CharaStaticData charaStaticData, List<DataManagerChara.FilterData> miracleEffectList)
 	{
 		bool flag = false;
@@ -361,7 +349,6 @@ public class CharaUtil : MonoBehaviour
 		return flag && charaStaticData.artsData.damageList.Count != 0;
 	}
 
-	// Token: 0x06001AD8 RID: 6872 RVA: 0x00158F14 File Offset: 0x00157114
 	private static void FriendsCharacteristicCondition(ref List<CharaStaticData> charaStaticDataList, List<DataManagerChara.FilterData> conditionList)
 	{
 		if (conditionList.Count <= 0)
@@ -439,7 +426,6 @@ public class CharaUtil : MonoBehaviour
 		charaStaticDataList = list3;
 	}
 
-	// Token: 0x06001AD9 RID: 6873 RVA: 0x00159204 File Offset: 0x00157404
 	private static void FriendsCharacteristicTarget(ref List<CharaStaticData> charaPackDataList, List<DataManagerChara.FilterData> targetList)
 	{
 		if (targetList.Count <= 0)
@@ -475,7 +461,6 @@ public class CharaUtil : MonoBehaviour
 		charaPackDataList = list;
 	}
 
-	// Token: 0x06001ADA RID: 6874 RVA: 0x00159328 File Offset: 0x00157528
 	private static void FriendsCharacteristicEffect(ref List<CharaStaticData> charaStaticDataList, SortFilterDefine.AndOrState andOrStatus, List<DataManagerChara.FilterData> effectList)
 	{
 		if (effectList.Count <= 0)
@@ -497,7 +482,6 @@ public class CharaUtil : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001ADB RID: 6875 RVA: 0x00159358 File Offset: 0x00157558
 	private static void FriendsCharacteristicEffectAnd(ref List<CharaStaticData> charaPackDataList, List<DataManagerChara.FilterData> effectList)
 	{
 		List<CharaStaticData> list = new List<CharaStaticData>();
@@ -527,7 +511,6 @@ public class CharaUtil : MonoBehaviour
 		charaPackDataList = list;
 	}
 
-	// Token: 0x06001ADC RID: 6876 RVA: 0x00159460 File Offset: 0x00157660
 	private static void FriendsCharacteristicEffectOr(ref List<CharaStaticData> charaPackDataList, List<DataManagerChara.FilterData> effectList)
 	{
 		List<CharaStaticData> list = new List<CharaStaticData>();
@@ -558,7 +541,6 @@ public class CharaUtil : MonoBehaviour
 		charaPackDataList = list;
 	}
 
-	// Token: 0x06001ADD RID: 6877 RVA: 0x00159568 File Offset: 0x00157768
 	private static void FriendsCharacteristicResist(ref List<CharaStaticData> charaPackDataList, SortFilterDefine.AndOrState andOrState, List<DataManagerChara.FilterData> resistList)
 	{
 		if (resistList.Count <= 0)
@@ -602,7 +584,6 @@ public class CharaUtil : MonoBehaviour
 		charaPackDataList = list;
 	}
 
-	// Token: 0x06001ADE RID: 6878 RVA: 0x001596D8 File Offset: 0x001578D8
 	private static List<CharaBuffParamAbility> GetCharaAbilityList(CharaStaticData charaData)
 	{
 		List<CharaBuffParamAbility> list = new List<CharaBuffParamAbility>();
@@ -644,13 +625,10 @@ public class CharaUtil : MonoBehaviour
 		return list;
 	}
 
-	// Token: 0x04001463 RID: 5219
 	private static readonly int SCROLL_ITEM_ADD_SIZE = 30;
 
-	// Token: 0x02000E86 RID: 3718
 	public class GUISkillInfo
 	{
-		// Token: 0x06004CF0 RID: 19696 RVA: 0x0022FC74 File Offset: 0x0022DE74
 		public GUISkillInfo(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -682,7 +660,6 @@ public class CharaUtil : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06004CF1 RID: 19697 RVA: 0x0022FD88 File Offset: 0x0022DF88
 		public void Setup(CharaUtil.GUISkillInfo.SetupParam setupParam)
 		{
 			List<string> list = new List<string> { "けものミラクル", "とくいわざ", "たいきスキル", "とくせい", "キセキとくせい", "なないろとくせい" };
@@ -783,63 +760,42 @@ public class CharaUtil : MonoBehaviour
 			}
 		}
 
-		// Token: 0x0400536C RID: 21356
 		public GameObject baseObj;
 
-		// Token: 0x0400536D RID: 21357
 		public PguiTextCtrl Txt_Kind;
 
-		// Token: 0x0400536E RID: 21358
 		public PguiTextCtrl Txt_Name;
 
-		// Token: 0x0400536F RID: 21359
 		public PguiTextCtrl Num_Lv;
 
-		// Token: 0x04005370 RID: 21360
 		public GameObject Icon_OrderCard;
 
-		// Token: 0x04005371 RID: 21361
 		public PguiTextCtrl Txt_Info;
 
-		// Token: 0x04005372 RID: 21362
 		public GameObject Disable;
 
-		// Token: 0x04005373 RID: 21363
 		public MarkLockCtrl markLockCtrl;
 
-		// Token: 0x04005374 RID: 21364
 		public PguiTextCtrl Num_Mp;
 
-		// Token: 0x020011E6 RID: 4582
 		public enum Type
 		{
-			// Token: 0x0400620E RID: 25102
 			KemonoMiracle,
-			// Token: 0x0400620F RID: 25103
 			SpecialtyAttack,
-			// Token: 0x04006210 RID: 25104
 			WaitAction,
-			// Token: 0x04006211 RID: 25105
 			Ability,
-			// Token: 0x04006212 RID: 25106
 			SpecialtyAbility,
-			// Token: 0x04006213 RID: 25107
 			NanairoAbility
 		}
 
-		// Token: 0x020011E7 RID: 4583
 		public class SetupParam
 		{
-			// Token: 0x04006214 RID: 25108
 			public CharaUtil.GUISkillInfo.Type type;
 
-			// Token: 0x04006215 RID: 25109
 			public CharaPackData charaPackData;
 
-			// Token: 0x04006216 RID: 25110
 			public bool maxDisp;
 
-			// Token: 0x04006217 RID: 25111
 			public int offsetKemonoMiracleLv;
 		}
 	}

@@ -1,21 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Token: 0x020001C5 RID: 453
 public class SortWindowCtrl : MonoBehaviour
 {
-	// Token: 0x17000432 RID: 1074
-	// (get) Token: 0x06001F17 RID: 7959 RVA: 0x001813E7 File Offset: 0x0017F5E7
-	// (set) Token: 0x06001F18 RID: 7960 RVA: 0x001813EF File Offset: 0x0017F5EF
 	public CharaDef.AttributeType AttributeType { get; private set; }
 
-	// Token: 0x17000433 RID: 1075
-	// (get) Token: 0x06001F19 RID: 7961 RVA: 0x001813F8 File Offset: 0x0017F5F8
-	// (set) Token: 0x06001F1A RID: 7962 RVA: 0x00181400 File Offset: 0x0017F600
 	private Dictionary<SortFilterDefine.RegisterType, DataManagerGameStatus.UserFlagData.SortTypeData> SortTypeDataMap { get; set; }
 
-	// Token: 0x06001F1B RID: 7963 RVA: 0x0018140C File Offset: 0x0017F60C
 	public bool Initialize()
 	{
 		this.registerSaveMap = new Dictionary<SortFilterDefine.RegisterType, RegisterSaveData>();
@@ -31,7 +23,6 @@ public class SortWindowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001F1C RID: 7964 RVA: 0x00181494 File Offset: 0x0017F694
 	public void Create(GameObject baseWindow)
 	{
 		this.guiData = new SortWindowCtrl.GUI(baseWindow.transform);
@@ -48,7 +39,6 @@ public class SortWindowCtrl : MonoBehaviour
 		this.SortTypeDataMap = new Dictionary<SortFilterDefine.RegisterType, DataManagerGameStatus.UserFlagData.SortTypeData>();
 	}
 
-	// Token: 0x06001F1D RID: 7965 RVA: 0x00181578 File Offset: 0x0017F778
 	public void InitializeFriendsFilter(GameObject friendsFilterWindow)
 	{
 		this.guiFriendsFilterData = new SortWindowCtrl.GUICharaFilter(friendsFilterWindow.transform);
@@ -64,7 +54,6 @@ public class SortWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001F1E RID: 7966 RVA: 0x00181674 File Offset: 0x0017F874
 	public void Register(SortWindowCtrl.RegisterData regData, bool isSolutionList, List<CharaPackData> bannedCharaList = null)
 	{
 		this.bannedCharaList = bannedCharaList;
@@ -98,13 +87,11 @@ public class SortWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001F1F RID: 7967 RVA: 0x0018173C File Offset: 0x0017F93C
 	public void RegistSortCharaAttribute(CharaDef.AttributeType attr)
 	{
 		this.AttributeType = attr;
 	}
 
-	// Token: 0x06001F20 RID: 7968 RVA: 0x00181748 File Offset: 0x0017F948
 	public void SolutionList(SortFilterDefine.RegisterType regType, List<CharaPackData> bannedCharaList = null)
 	{
 		if (this.registerMap.ContainsKey(regType))
@@ -123,7 +110,6 @@ public class SortWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001F21 RID: 7969 RVA: 0x00181802 File Offset: 0x0017FA02
 	public SortWindowCtrl.RegisterData GetRegisterData(SortFilterDefine.RegisterType regType)
 	{
 		if (this.registerMap.ContainsKey(regType))
@@ -133,7 +119,6 @@ public class SortWindowCtrl : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06001F22 RID: 7970 RVA: 0x00181820 File Offset: 0x0017FA20
 	public List<CharaDef.AttributeType> GetAttributeType(SortFilterDefine.RegisterType regType)
 	{
 		if (this.registerMap.ContainsKey(regType))
@@ -143,7 +128,6 @@ public class SortWindowCtrl : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06001F23 RID: 7971 RVA: 0x00181843 File Offset: 0x0017FA43
 	public List<int> GetBonusCharaIdList(SortFilterDefine.RegisterType regType)
 	{
 		if (this.registerMap.ContainsKey(regType))
@@ -153,7 +137,6 @@ public class SortWindowCtrl : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06001F24 RID: 7972 RVA: 0x00181866 File Offset: 0x0017FA66
 	public bool[] GetHanamaru(SortFilterDefine.RegisterType regType)
 	{
 		if (this.registerMap.ContainsKey(regType))
@@ -163,7 +146,6 @@ public class SortWindowCtrl : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06001F25 RID: 7973 RVA: 0x00181889 File Offset: 0x0017FA89
 	public bool[] GetFavorite(SortFilterDefine.RegisterType regType)
 	{
 		if (this.registerMap.ContainsKey(regType))
@@ -173,7 +155,6 @@ public class SortWindowCtrl : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06001F26 RID: 7974 RVA: 0x001818AC File Offset: 0x0017FAAC
 	public List<DataManagerChara.FilterData> GetMiracleTargetList(SortFilterDefine.RegisterType regType)
 	{
 		if (this.registerMap.ContainsKey(regType))
@@ -183,7 +164,6 @@ public class SortWindowCtrl : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06001F27 RID: 7975 RVA: 0x001818CF File Offset: 0x0017FACF
 	public List<DataManagerChara.FilterData> GetMiracleEffectList(SortFilterDefine.RegisterType regType)
 	{
 		if (this.registerMap.ContainsKey(regType))
@@ -193,7 +173,6 @@ public class SortWindowCtrl : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06001F28 RID: 7976 RVA: 0x001818F2 File Offset: 0x0017FAF2
 	public SortFilterDefine.AndOrState GetMiracleAndOrStatus(SortFilterDefine.RegisterType regType)
 	{
 		if (this.registerMap.ContainsKey(regType))
@@ -203,7 +182,6 @@ public class SortWindowCtrl : MonoBehaviour
 		return SortFilterDefine.AndOrState.Invalid;
 	}
 
-	// Token: 0x06001F29 RID: 7977 RVA: 0x00181915 File Offset: 0x0017FB15
 	public List<DataManagerChara.FilterData> GetCharacteristicTargetList(SortFilterDefine.RegisterType regType)
 	{
 		if (this.registerMap.ContainsKey(regType))
@@ -213,7 +191,6 @@ public class SortWindowCtrl : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06001F2A RID: 7978 RVA: 0x00181938 File Offset: 0x0017FB38
 	public List<DataManagerChara.FilterData> GetCharacteristicConditionList(SortFilterDefine.RegisterType regType)
 	{
 		if (this.registerMap.ContainsKey(regType))
@@ -223,7 +200,6 @@ public class SortWindowCtrl : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06001F2B RID: 7979 RVA: 0x0018195B File Offset: 0x0017FB5B
 	public List<DataManagerChara.FilterData> GetCharacteristicEffectList(SortFilterDefine.RegisterType regType)
 	{
 		if (this.registerMap.ContainsKey(regType))
@@ -233,7 +209,6 @@ public class SortWindowCtrl : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06001F2C RID: 7980 RVA: 0x0018197E File Offset: 0x0017FB7E
 	public List<DataManagerChara.FilterData> GetCharacteristicResistList(SortFilterDefine.RegisterType regType)
 	{
 		if (this.registerMap.ContainsKey(regType))
@@ -243,7 +218,6 @@ public class SortWindowCtrl : MonoBehaviour
 		return null;
 	}
 
-	// Token: 0x06001F2D RID: 7981 RVA: 0x001819A1 File Offset: 0x0017FBA1
 	public SortFilterDefine.AndOrState GetCharacteristicEffectAndOrStatus(SortFilterDefine.RegisterType regType)
 	{
 		if (this.registerMap.ContainsKey(regType))
@@ -253,7 +227,6 @@ public class SortWindowCtrl : MonoBehaviour
 		return SortFilterDefine.AndOrState.Invalid;
 	}
 
-	// Token: 0x06001F2E RID: 7982 RVA: 0x001819C4 File Offset: 0x0017FBC4
 	public SortFilterDefine.AndOrState GetCharacteristicResistAndOrStatus(SortFilterDefine.RegisterType regType)
 	{
 		if (this.registerMap.ContainsKey(regType))
@@ -263,7 +236,6 @@ public class SortWindowCtrl : MonoBehaviour
 		return SortFilterDefine.AndOrState.Invalid;
 	}
 
-	// Token: 0x06001F2F RID: 7983 RVA: 0x001819E8 File Offset: 0x0017FBE8
 	public static SortFilterDefine.SortFilterType RegisterType2SortType(SortFilterDefine.RegisterType regType)
 	{
 		SortFilterDefine.SortFilterType sortFilterType = SortFilterDefine.SortFilterType.INVALID;
@@ -304,7 +276,6 @@ public class SortWindowCtrl : MonoBehaviour
 		return sortFilterType;
 	}
 
-	// Token: 0x06001F30 RID: 7984 RVA: 0x00181A70 File Offset: 0x0017FC70
 	public void RequestActionUpdateSortType()
 	{
 		if (this.SortTypeDataMap == null)
@@ -315,7 +286,6 @@ public class SortWindowCtrl : MonoBehaviour
 		this.SortTypeDataMap.Clear();
 	}
 
-	// Token: 0x06001F31 RID: 7985 RVA: 0x00181AA0 File Offset: 0x0017FCA0
 	private void DecorationRegisterButton(SortWindowCtrl.RegisterData regData)
 	{
 		SortFilterDefine.RegisterType register = regData.register;
@@ -369,7 +339,6 @@ public class SortWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001F32 RID: 7986 RVA: 0x00181F34 File Offset: 0x00180134
 	private void Open()
 	{
 		RegisterSaveData registerSaveData = this.registerSaveMap[this.currentRegisterType];
@@ -508,12 +477,10 @@ public class SortWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001F33 RID: 7987 RVA: 0x001826B4 File Offset: 0x001808B4
 	private void cb(bool b, SortFilterDefine.SortType t)
 	{
 	}
 
-	// Token: 0x06001F34 RID: 7988 RVA: 0x001826B6 File Offset: 0x001808B6
 	private void ResetSearchText()
 	{
 		if (this.currentFilterType == SortFilterDefine.SortFilterType.CHARA_FILTER)
@@ -522,7 +489,6 @@ public class SortWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001F35 RID: 7989 RVA: 0x001826CC File Offset: 0x001808CC
 	private void OnClickRegisterButton(SortFilterDefine.RegisterType regType, PguiButtonCtrl button)
 	{
 		if (this.registerMap.ContainsKey(regType))
@@ -567,7 +533,6 @@ public class SortWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001F36 RID: 7990 RVA: 0x00182860 File Offset: 0x00180A60
 	private bool OnClickWindowButton(int index)
 	{
 		switch (index)
@@ -609,7 +574,6 @@ public class SortWindowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001F37 RID: 7991 RVA: 0x001829D4 File Offset: 0x00180BD4
 	private bool OnClickButton(PguiToggleButtonCtrl button, int index)
 	{
 		if (this.currentFilterType == SortFilterDefine.SortFilterType.CHARA_FILTER || this.currentFilterType == SortFilterDefine.SortFilterType.PHOTO_FILTER)
@@ -630,7 +594,6 @@ public class SortWindowCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06001F38 RID: 7992 RVA: 0x00182A50 File Offset: 0x00180C50
 	public void RegistFriendsFilter()
 	{
 		RegisterSaveData registerSaveData = this.registerSaveMap[this.currentRegisterType];
@@ -665,7 +628,6 @@ public class SortWindowCtrl : MonoBehaviour
 		this.SortTypeDataMap[this.currentRegisterType] = new DataManagerGameStatus.UserFlagData.SortTypeData(this.currentRegisterType, this.currentSortTarget.sortType, registerSaveData.SortOrder);
 	}
 
-	// Token: 0x06001F39 RID: 7993 RVA: 0x00182C58 File Offset: 0x00180E58
 	public void RegistFriendsSort()
 	{
 		RegisterSaveData registerSaveData = this.registerSaveMap[this.currentRegisterType];
@@ -677,7 +639,6 @@ public class SortWindowCtrl : MonoBehaviour
 		this.SortTypeDataMap[this.currentRegisterType] = new DataManagerGameStatus.UserFlagData.SortTypeData(this.currentRegisterType, this.currentSortTarget.sortType, registerSaveData.SortOrder);
 	}
 
-	// Token: 0x06001F3A RID: 7994 RVA: 0x00182CEC File Offset: 0x00180EEC
 	public void RegistPhotoFilter()
 	{
 		SortWindowCtrl.RegisterData registerData = this.registerMap[this.currentRegisterType];
@@ -728,7 +689,6 @@ public class SortWindowCtrl : MonoBehaviour
 		this.SortTypeDataMap[this.currentRegisterType] = new DataManagerGameStatus.UserFlagData.SortTypeData(this.currentRegisterType, this.currentSortTarget.sortType, registerSaveData.SortOrder);
 	}
 
-	// Token: 0x06001F3B RID: 7995 RVA: 0x00182FD4 File Offset: 0x001811D4
 	public void RegistPhotoSort()
 	{
 		SortWindowCtrl.RegisterData registerData = this.registerMap[this.currentRegisterType];
@@ -741,40 +701,29 @@ public class SortWindowCtrl : MonoBehaviour
 		this.SortTypeDataMap[this.currentRegisterType] = new DataManagerGameStatus.UserFlagData.SortTypeData(this.currentRegisterType, this.currentSortTarget.sortType, registerSaveData.SortOrder);
 	}
 
-	// Token: 0x06001F3C RID: 7996 RVA: 0x00183079 File Offset: 0x00181279
 	public void UpdateBannedCharaList(List<CharaPackData> list)
 	{
 		this.bannedCharaList = list;
 	}
 
-	// Token: 0x040016AB RID: 5803
 	private SortWindowCtrl.GUI guiData;
 
-	// Token: 0x040016AC RID: 5804
 	private SortWindowCtrl.GUICharaFilter guiFriendsFilterData;
 
-	// Token: 0x040016AD RID: 5805
 	private SortFilterDefine.SortFilterType currentFilterType;
 
-	// Token: 0x040016AE RID: 5806
 	private Dictionary<SortFilterDefine.RegisterType, SortWindowCtrl.RegisterData> registerMap;
 
-	// Token: 0x040016AF RID: 5807
 	private Dictionary<SortFilterDefine.RegisterType, RegisterSaveData> registerSaveMap;
 
-	// Token: 0x040016B0 RID: 5808
 	private SortFilterDefine.RegisterType currentRegisterType;
 
-	// Token: 0x040016B1 RID: 5809
 	private SortWindowCtrl.SortTarget currentSortTarget;
 
-	// Token: 0x040016B4 RID: 5812
 	private List<CharaPackData> bannedCharaList;
 
-	// Token: 0x02000FFA RID: 4090
 	public class GUI
 	{
-		// Token: 0x06005197 RID: 20887 RVA: 0x00246C78 File Offset: 0x00244E78
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -820,26 +769,19 @@ public class SortWindowCtrl : MonoBehaviour
 			this.Btn_EventList = new List<PguiToggleButtonCtrl> { baseTr.Find("Base/Window/Sort/Btn_Event01").GetComponent<PguiToggleButtonCtrl>() };
 		}
 
-		// Token: 0x040059AD RID: 22957
 		public GameObject baseObj;
 
-		// Token: 0x040059AE RID: 22958
 		public List<PguiTextCtrl> Num_TxtList;
 
-		// Token: 0x040059AF RID: 22959
 		public List<PguiToggleButtonCtrl> BtnList;
 
-		// Token: 0x040059B0 RID: 22960
 		public List<PguiToggleButtonCtrl> Btn_EventList;
 
-		// Token: 0x040059B1 RID: 22961
 		public PguiOpenWindowCtrl baseWindow;
 	}
 
-	// Token: 0x02000FFB RID: 4091
 	public class GUICharaFilter
 	{
-		// Token: 0x06005198 RID: 20888 RVA: 0x00246F9C File Offset: 0x0024519C
 		public GUICharaFilter(Transform baseTr)
 		{
 			baseTr.Find("Base/Window/ScrollView/Scrollbar_Vertical").GetComponent<PguiScrollbar>().SetScrollBarValue(1f);
@@ -864,34 +806,25 @@ public class SortWindowCtrl : MonoBehaviour
 			};
 		}
 
-		// Token: 0x040059B2 RID: 22962
 		public GameObject baseObj;
 
-		// Token: 0x040059B3 RID: 22963
 		public List<PguiToggleButtonCtrl> Btn;
 
-		// Token: 0x040059B4 RID: 22964
 		public PguiToggleButtonCtrl Btn_Hanamaru;
 
-		// Token: 0x040059B5 RID: 22965
 		public PguiToggleButtonCtrl Btn_Favorite;
 
-		// Token: 0x040059B6 RID: 22966
 		public List<PguiToggleButtonCtrl> Btn_EventList;
 
-		// Token: 0x040059B7 RID: 22967
 		public PguiOpenWindowCtrl baseWindow;
 	}
 
-	// Token: 0x02000FFC RID: 4092
 	public class SortTarget
 	{
-		// Token: 0x06005199 RID: 20889 RVA: 0x00247115 File Offset: 0x00245315
 		public SortTarget()
 		{
 		}
 
-		// Token: 0x0600519A RID: 20890 RVA: 0x00247134 File Offset: 0x00245334
 		public SortTarget(SortWindowCtrl.SortTarget st)
 		{
 			if (st == null)
@@ -952,82 +885,55 @@ public class SortWindowCtrl : MonoBehaviour
 			this.includePhotoSearchText = st.includePhotoSearchText;
 		}
 
-		// Token: 0x040059B8 RID: 22968
 		public List<PhotoPackData> photoList;
 
-		// Token: 0x040059B9 RID: 22969
 		public List<CharaPackData> charaList;
 
-		// Token: 0x040059BA RID: 22970
 		public List<HelperPackData> helperList;
 
-		// Token: 0x040059BB RID: 22971
 		public List<PhotoPackData> disableFilterPhotoList;
 
-		// Token: 0x040059BC RID: 22972
 		public List<CharaPackData> disableFilterCharaList;
 
-		// Token: 0x040059BD RID: 22973
 		public List<HelperPackData> disableFilterHelperList;
 
-		// Token: 0x040059BE RID: 22974
 		public List<PhotoPackData> upperDisableSortPhotoList;
 
-		// Token: 0x040059BF RID: 22975
 		public List<PhotoPackData> lowerDisableSortPhotoList;
 
-		// Token: 0x040059C0 RID: 22976
 		public List<CharaPackData> disableSortCharaList;
 
-		// Token: 0x040059C1 RID: 22977
 		public List<HelperPackData> disableSortHelperList;
 
-		// Token: 0x040059C2 RID: 22978
 		public Dictionary<SortFilterDefine.PhotoAlbumRegistrationStatus, HashSet<int>> photoAlbumRegistrationStatusMap;
 
-		// Token: 0x040059C3 RID: 22979
 		public PhotoPackData basePhotoPackData;
 
-		// Token: 0x040059C4 RID: 22980
 		public SortFilterDefine.SortType sortType;
 
-		// Token: 0x040059C5 RID: 22981
 		public bool includePhotoBonus;
 
-		// Token: 0x040059C6 RID: 22982
 		public string includeFriendsSearchText = "";
 
-		// Token: 0x040059C7 RID: 22983
 		public string includePhotoSearchText = "";
 	}
 
-	// Token: 0x02000FFD RID: 4093
 	public class RegisterData
 	{
-		// Token: 0x040059C8 RID: 22984
 		public SortFilterDefine.RegisterType register;
 
-		// Token: 0x040059C9 RID: 22985
 		public PguiButtonCtrl filterButton;
 
-		// Token: 0x040059CA RID: 22986
 		public PguiButtonCtrl sortButton;
 
-		// Token: 0x040059CB RID: 22987
 		public PguiButtonCtrl sortUdButton;
 
-		// Token: 0x040059CC RID: 22988
 		public SortWindowCtrl.FuncGetTarget funcGetTargetBaseList;
 
-		// Token: 0x040059CD RID: 22989
 		public SortWindowCtrl.FuncDisideTarget funcDisideTarget;
 	}
 
-	// Token: 0x02000FFE RID: 4094
-	// (Invoke) Token: 0x0600519D RID: 20893
 	public delegate SortWindowCtrl.SortTarget FuncGetTarget();
 
-	// Token: 0x02000FFF RID: 4095
-	// (Invoke) Token: 0x060051A1 RID: 20897
 	public delegate void FuncDisideTarget(SortWindowCtrl.SortTarget result);
 }

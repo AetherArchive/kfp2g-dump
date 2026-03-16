@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,10 +6,8 @@ using SGNFW.HttpRequest.Protocol;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x02000133 RID: 307
 public class SelCharaGrowMulti
 {
-	// Token: 0x0600106E RID: 4206 RVA: 0x000C7BD0 File Offset: 0x000C5DD0
 	public SelCharaGrowMulti(Transform baseTr)
 	{
 		this.GrowMultiGUI = new SelCharaGrowMulti.CharaGrowMultiGUI();
@@ -18,13 +16,11 @@ public class SelCharaGrowMulti
 		this.GrowMultiGUI.growMultiCheckWindow = new SelCharaGrowMulti.WindowGrowMultiCheck(Object.Instantiate<Transform>(gameObject.transform.Find("Window_GrowMulti_Check"), baseTr).transform, this);
 	}
 
-	// Token: 0x0600106F RID: 4207 RVA: 0x000C7C55 File Offset: 0x000C5E55
 	public bool IsSelected(SelCharaGrowMulti.GrowCategory key)
 	{
 		return this.GrowMultiGUI.growMultiSelectWindow.toggleButtonMap[key].GetToggleIndex() == 1;
 	}
 
-	// Token: 0x06001070 RID: 4208 RVA: 0x000C7C78 File Offset: 0x000C5E78
 	public void UpdateGrowMulti(SelCharaGrowCtrl selCharaGrowCtrl)
 	{
 		bool flag = this.GrowMultiGUI.growMultiCheckWindow.owCtrl.FinishedOpen();
@@ -40,7 +36,6 @@ public class SelCharaGrowMulti
 		}
 	}
 
-	// Token: 0x06001071 RID: 4209 RVA: 0x000C7CFC File Offset: 0x000C5EFC
 	public static bool UpdateItemInputList(List<ItemInput> itemList, int itemId, int num)
 	{
 		if (itemId == 0)
@@ -72,51 +67,34 @@ public class SelCharaGrowMulti
 		return true;
 	}
 
-	// Token: 0x04000E4F RID: 3663
 	private const int TOGGLE_OFF = 0;
 
-	// Token: 0x04000E50 RID: 3664
 	public const int TOGGLE_ON = 1;
 
-	// Token: 0x04000E51 RID: 3665
 	public SelCharaGrowMulti.CharaGrowMultiGUI GrowMultiGUI;
 
-	// Token: 0x04000E52 RID: 3666
 	private Rect safeArea;
 
-	// Token: 0x02000A0E RID: 2574
 	public enum GrowCategory
 	{
-		// Token: 0x04004040 RID: 16448
 		Level,
-		// Token: 0x04004041 RID: 16449
 		Wild,
-		// Token: 0x04004042 RID: 16450
 		Rank,
-		// Token: 0x04004043 RID: 16451
 		Arts,
-		// Token: 0x04004044 RID: 16452
 		Nanairo,
-		// Token: 0x04004045 RID: 16453
 		LevelLimit = 10,
-		// Token: 0x04004046 RID: 16454
 		KizunaLimit
 	}
 
-	// Token: 0x02000A0F RID: 2575
 	public class CharaGrowMultiGUI
 	{
-		// Token: 0x04004047 RID: 16455
 		public SelCharaGrowMulti.WindowGrowMultiSelect growMultiSelectWindow;
 
-		// Token: 0x04004048 RID: 16456
 		public SelCharaGrowMulti.WindowGrowMultiCheck growMultiCheckWindow;
 	}
 
-	// Token: 0x02000A10 RID: 2576
 	public class WindowGrowMultiSelect
 	{
-		// Token: 0x06003E39 RID: 15929 RVA: 0x001E5BCC File Offset: 0x001E3DCC
 		public WindowGrowMultiSelect(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -137,7 +115,6 @@ public class SelCharaGrowMulti
 			}
 		}
 
-		// Token: 0x06003E3A RID: 15930 RVA: 0x001E5D6C File Offset: 0x001E3F6C
 		public void InitContent(List<bool> enhanceList)
 		{
 			this.owCtrl.choiceR.GetComponent<PguiButtonCtrl>().SetActEnable(false, false, false);
@@ -201,7 +178,6 @@ public class SelCharaGrowMulti
 			}
 		}
 
-		// Token: 0x06003E3B RID: 15931 RVA: 0x001E60C8 File Offset: 0x001E42C8
 		public IEnumerator DispMessageMark()
 		{
 			while (!this.owCtrl.FinishedOpen())
@@ -239,7 +215,6 @@ public class SelCharaGrowMulti
 			yield break;
 		}
 
-		// Token: 0x06003E3C RID: 15932 RVA: 0x001E60D8 File Offset: 0x001E42D8
 		public void OnClickSelectAllBtn(PguiButtonCtrl btn)
 		{
 			if (!this.toggleButtonMap.Values.Any<PguiToggleButtonCtrl>((PguiToggleButtonCtrl x) => x.ActEnable && x.GetToggleIndex() == 0))
@@ -271,7 +246,6 @@ public class SelCharaGrowMulti
 			}
 		}
 
-		// Token: 0x06003E3D RID: 15933 RVA: 0x001E6200 File Offset: 0x001E4400
 		public bool OnClickToggleBtn(PguiToggleButtonCtrl btn, int index)
 		{
 			while (this.UpdateToggleButton(btn, index))
@@ -296,7 +270,6 @@ public class SelCharaGrowMulti
 			return true;
 		}
 
-		// Token: 0x06003E3E RID: 15934 RVA: 0x001E6304 File Offset: 0x001E4504
 		private bool UpdateToggleButton(PguiToggleButtonCtrl btn, int index)
 		{
 			bool flag = false;
@@ -336,7 +309,6 @@ public class SelCharaGrowMulti
 			return flag;
 		}
 
-		// Token: 0x06003E3F RID: 15935 RVA: 0x001E662A File Offset: 0x001E482A
 		private bool IsToggleOn(PguiToggleButtonCtrl targetBtn, PguiToggleButtonCtrl thisBtn, int thisIndex)
 		{
 			if (thisBtn == targetBtn)
@@ -346,35 +318,25 @@ public class SelCharaGrowMulti
 			return targetBtn.GetToggleIndex() == 1;
 		}
 
-		// Token: 0x04004049 RID: 16457
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x0400404A RID: 16458
 		public PguiTextCtrl noItemMessage;
 
-		// Token: 0x0400404B RID: 16459
 		public GameObject mainContent;
 
-		// Token: 0x0400404C RID: 16460
 		public PguiButtonCtrl selectAllBtn;
 
-		// Token: 0x0400404D RID: 16461
 		public PguiTextCtrl selectAllBtnTxt;
 
-		// Token: 0x0400404E RID: 16462
 		public Dictionary<SelCharaGrowMulti.GrowCategory, PguiToggleButtonCtrl> toggleButtonMap = new Dictionary<SelCharaGrowMulti.GrowCategory, PguiToggleButtonCtrl>();
 
-		// Token: 0x0400404F RID: 16463
 		private readonly List<PguiAECtrl> yellowBadgeList = new List<PguiAECtrl>();
 
-		// Token: 0x04004050 RID: 16464
 		public CharaPackData cpd;
 	}
 
-	// Token: 0x02000A11 RID: 2577
 	public class WindowGrowMultiCheck
 	{
-		// Token: 0x06003E41 RID: 15937 RVA: 0x001E6660 File Offset: 0x001E4860
 		public WindowGrowMultiCheck(Transform baseTr, SelCharaGrowMulti selCharaGrowMulti)
 		{
 			this.selCharaGrowMulti = selCharaGrowMulti;
@@ -427,7 +389,6 @@ public class SelCharaGrowMulti
 			this.nanairoInfo = new CharaUtil.GUISkillInfo(this.nanairoInfoObj.transform.Find("CharaInfo_List_Skill_06_nanairo"));
 		}
 
-		// Token: 0x06003E42 RID: 15938 RVA: 0x001E6B64 File Offset: 0x001E4D64
 		public void SetUpGrowMultiContent(CharaPackData cpd)
 		{
 			this.iconChara.Setup(cpd, SortFilterDefine.SortType.LEVEL, false, null, 0, -1, 0);
@@ -464,7 +425,6 @@ public class SelCharaGrowMulti
 			this.afterLevelLimitId = cpd.dynamicData.levelLimitId;
 		}
 
-		// Token: 0x06003E43 RID: 15939 RVA: 0x001E6EA0 File Offset: 0x001E50A0
 		public void SetUpLevelInfo(CharaPackData cpd, ref List<int> selectLvUpItemIdList, ref int lvUpCostCoin)
 		{
 			lvUpCostCoin = 0;
@@ -519,7 +479,6 @@ public class SelCharaGrowMulti
 			this.execMap[growCategory] = this.useItemMap[growCategory].Count > 0;
 		}
 
-		// Token: 0x06003E44 RID: 15940 RVA: 0x001E70F4 File Offset: 0x001E52F4
 		private List<int> CalcLvUpItem(CharaPackData cpd, int limitLevel)
 		{
 			List<DataManagerServerMst.CharaLevelItem> list = cpd.LevelItemUseOrderList(false);
@@ -560,7 +519,6 @@ public class SelCharaGrowMulti
 			return list2;
 		}
 
-		// Token: 0x06003E45 RID: 15941 RVA: 0x001E7264 File Offset: 0x001E5464
 		public void SetUpWildInfo(CharaPackData cpd)
 		{
 			SelCharaGrowMulti.GrowCategory growCategory = SelCharaGrowMulti.GrowCategory.Wild;
@@ -652,7 +610,6 @@ public class SelCharaGrowMulti
 			this.execMap[growCategory] = false;
 		}
 
-		// Token: 0x06003E46 RID: 15942 RVA: 0x001E7550 File Offset: 0x001E5750
 		public void SetUpRankInfo(CharaPackData cpd, ref List<int> selectLvUpItemIdList, ref int lvUpCostCoin)
 		{
 			SelCharaGrowMulti.GrowCategory growCategory = SelCharaGrowMulti.GrowCategory.Rank;
@@ -700,7 +657,6 @@ public class SelCharaGrowMulti
 			this.execMap[growCategory] = false;
 		}
 
-		// Token: 0x06003E47 RID: 15943 RVA: 0x001E77DC File Offset: 0x001E59DC
 		public void SetUpArtsInfo(CharaPackData cpd)
 		{
 			SelCharaGrowMulti.GrowCategory growCategory = SelCharaGrowMulti.GrowCategory.Arts;
@@ -760,7 +716,6 @@ public class SelCharaGrowMulti
 			this.execMap[growCategory] = false;
 		}
 
-		// Token: 0x06003E48 RID: 15944 RVA: 0x001E7AF4 File Offset: 0x001E5CF4
 		public void SetUpNanairoInfo(CharaPackData cpd)
 		{
 			SelCharaGrowMulti.GrowCategory growCategory = SelCharaGrowMulti.GrowCategory.Nanairo;
@@ -807,7 +762,6 @@ public class SelCharaGrowMulti
 			this.execMap[growCategory] = false;
 		}
 
-		// Token: 0x06003E49 RID: 15945 RVA: 0x001E7D00 File Offset: 0x001E5F00
 		public void SetUpLevelLimitInfo(CharaPackData cpd, ref List<int> selectLvUpItemIdList, ref int lvUpCostCoin)
 		{
 			SelCharaGrowMulti.GrowCategory growCategory = SelCharaGrowMulti.GrowCategory.LevelLimit;
@@ -862,7 +816,6 @@ public class SelCharaGrowMulti
 			this.execMap[growCategory] = false;
 		}
 
-		// Token: 0x06003E4A RID: 15946 RVA: 0x001E7F5C File Offset: 0x001E615C
 		public void SetUpKizunaLevelLimitInfo(CharaPackData cpd)
 		{
 			SelCharaGrowMulti.GrowCategory growCategory = SelCharaGrowMulti.GrowCategory.KizunaLimit;
@@ -887,7 +840,6 @@ public class SelCharaGrowMulti
 			this.execMap[growCategory] = false;
 		}
 
-		// Token: 0x06003E4B RID: 15947 RVA: 0x001E80B4 File Offset: 0x001E62B4
 		public void UpdateUseItemList()
 		{
 			this.useItemList.Clear();
@@ -901,7 +853,6 @@ public class SelCharaGrowMulti
 			}
 		}
 
-		// Token: 0x06003E4C RID: 15948 RVA: 0x001E8178 File Offset: 0x001E6378
 		public void SortUseItemList()
 		{
 			this.useItemList.Clear();
@@ -927,7 +878,6 @@ public class SelCharaGrowMulti
 			}
 		}
 
-		// Token: 0x06003E4D RID: 15949 RVA: 0x001E8270 File Offset: 0x001E6470
 		public void SetUseItemList(CharaPackData cpd)
 		{
 			this.SortUseItemList();
@@ -993,7 +943,6 @@ public class SelCharaGrowMulti
 			this.itemUseInfoLayout.preferredHeight = (float)Math.Ceiling((double)this.useItemList.Count / 8.0) * this.itemUseInfoRowOriginObj.GetComponent<RectTransform>().sizeDelta.y - this.itemUseInfoRowListObj.transform.localPosition.y;
 		}
 
-		// Token: 0x06003E4E RID: 15950 RVA: 0x001E8638 File Offset: 0x001E6838
 		public void SetParamInfo(CharaPackData cpd)
 		{
 			PrjUtil.ParamPreset paramPreset = PrjUtil.CalcParamByChara(cpd.dynamicData, cpd.dynamicData.level, cpd.dynamicData.rank);
@@ -1011,7 +960,6 @@ public class SelCharaGrowMulti
 			SelCharaGrowWild.WindowWildResult.SetWindowParam(list, list2, this.paramAll);
 		}
 
-		// Token: 0x06003E4F RID: 15951 RVA: 0x001E8764 File Offset: 0x001E6964
 		public void SetNotExecMessage()
 		{
 			string text = "";
@@ -1049,7 +997,6 @@ public class SelCharaGrowMulti
 			this.notExecMsg.ReplaceTextByDefault("Param01", text);
 		}
 
-		// Token: 0x06003E50 RID: 15952 RVA: 0x001E88A8 File Offset: 0x001E6AA8
 		public void Reset()
 		{
 			foreach (object obj in Enum.GetValues(typeof(SelCharaGrowMulti.GrowCategory)))
@@ -1065,115 +1012,78 @@ public class SelCharaGrowMulti
 			this.promoteRequestList.Clear();
 		}
 
-		// Token: 0x04004051 RID: 16465
 		private readonly SelCharaGrowMulti selCharaGrowMulti;
 
-		// Token: 0x04004052 RID: 16466
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x04004053 RID: 16467
 		public ScrollRect infoScrollRect;
 
-		// Token: 0x04004054 RID: 16468
 		public GameObject scrollContent;
 
-		// Token: 0x04004055 RID: 16469
 		public GameObject messageInfoObj;
 
-		// Token: 0x04004056 RID: 16470
 		public PguiTextCtrl notExecMsg;
 
-		// Token: 0x04004057 RID: 16471
 		public Dictionary<SelCharaGrowMulti.GrowCategory, bool> execMap = new Dictionary<SelCharaGrowMulti.GrowCategory, bool>();
 
-		// Token: 0x04004058 RID: 16472
 		public IconCharaCtrl iconChara;
 
-		// Token: 0x04004059 RID: 16473
 		public Dictionary<SelCharaGrowMulti.GrowCategory, PguiTextCtrl> categoryTxtMap = new Dictionary<SelCharaGrowMulti.GrowCategory, PguiTextCtrl>();
 
-		// Token: 0x0400405A RID: 16474
 		public Dictionary<SelCharaGrowMulti.GrowCategory, PguiTextCtrl> beforeTxtMap = new Dictionary<SelCharaGrowMulti.GrowCategory, PguiTextCtrl>();
 
-		// Token: 0x0400405B RID: 16475
 		public Dictionary<SelCharaGrowMulti.GrowCategory, PguiTextCtrl> afterTxtMap = new Dictionary<SelCharaGrowMulti.GrowCategory, PguiTextCtrl>();
 
-		// Token: 0x0400405C RID: 16476
 		public List<PguiImageCtrl> beforeStarAll = new List<PguiImageCtrl>();
 
-		// Token: 0x0400405D RID: 16477
 		public List<PguiImageCtrl> afterStarAll = new List<PguiImageCtrl>();
 
-		// Token: 0x0400405E RID: 16478
 		public List<PguiImageCtrl> addStarAll = new List<PguiImageCtrl>();
 
-		// Token: 0x0400405F RID: 16479
 		public List<ItemInput> useItemList = new List<ItemInput>();
 
-		// Token: 0x04004060 RID: 16480
 		public Dictionary<SelCharaGrowMulti.GrowCategory, List<ItemInput>> useItemMap = new Dictionary<SelCharaGrowMulti.GrowCategory, List<ItemInput>>();
 
-		// Token: 0x04004061 RID: 16481
 		public LayoutElement itemUseInfoLayout;
 
-		// Token: 0x04004062 RID: 16482
 		public GameObject itemUseInfoRowListObj;
 
-		// Token: 0x04004063 RID: 16483
 		public GameObject itemUseInfoRowOriginObj;
 
-		// Token: 0x04004064 RID: 16484
 		public List<GameObject> itemUseInfoRowObjList = new List<GameObject>();
 
-		// Token: 0x04004065 RID: 16485
 		public const int SCROLL_ITEMS_PER_ROW = 8;
 
-		// Token: 0x04004066 RID: 16486
 		public GameObject paramObj;
 
-		// Token: 0x04004067 RID: 16487
 		public List<PguiTextCtrl> paramAll = new List<PguiTextCtrl>();
 
-		// Token: 0x04004068 RID: 16488
 		public GameObject artsInfoObj;
 
-		// Token: 0x04004069 RID: 16489
 		public PguiTextCtrl artsNameTxt;
 
-		// Token: 0x0400406A RID: 16490
 		public CharaUtil.GUISkillInfo artsInfoBefore;
 
-		// Token: 0x0400406B RID: 16491
 		public CharaUtil.GUISkillInfo artsInfoAfter;
 
-		// Token: 0x0400406C RID: 16492
 		public GameObject nanairoInfoObj;
 
-		// Token: 0x0400406D RID: 16493
 		public PguiTextCtrl nanairoNameTxt;
 
-		// Token: 0x0400406E RID: 16494
 		public CharaUtil.GUISkillInfo nanairoInfo;
 
-		// Token: 0x0400406F RID: 16495
 		public int afterLevel;
 
-		// Token: 0x04004070 RID: 16496
 		public int afterPromoteNum;
 
-		// Token: 0x04004071 RID: 16497
 		private List<bool> afterPromoteFlag;
 
-		// Token: 0x04004072 RID: 16498
 		public int afterRank;
 
-		// Token: 0x04004073 RID: 16499
 		public int afterArtsLv;
 
-		// Token: 0x04004074 RID: 16500
 		public int afterLevelLimitId;
 
-		// Token: 0x04004075 RID: 16501
 		public List<WildResult> promoteRequestList = new List<WildResult>();
 	}
 }

@@ -1,11 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Token: 0x0200019E RID: 414
 public class FollowWindowCtrl : PguiOpenWindowCtrl
 {
-	// Token: 0x06001B86 RID: 7046 RVA: 0x0015F858 File Offset: 0x0015DA58
 	private static void InitializeAnimation(FollowWindowCtrl.Mode mode, SimpleAnimation anime, SelCharaDeckCtrl.GUI.CharaDeck charaDeck)
 	{
 		if (anime != null && charaDeck != null)
@@ -37,12 +35,8 @@ public class FollowWindowCtrl : PguiOpenWindowCtrl
 		}
 	}
 
-	// Token: 0x170003DF RID: 991
-	// (get) Token: 0x06001B87 RID: 7047 RVA: 0x0015F919 File Offset: 0x0015DB19
-	// (set) Token: 0x06001B88 RID: 7048 RVA: 0x0015F921 File Offset: 0x0015DB21
 	private FollowWindowCtrl.Mode CurrentMode { get; set; }
 
-	// Token: 0x06001B89 RID: 7049 RVA: 0x0015F92C File Offset: 0x0015DB2C
 	public void Init()
 	{
 		if (this.guiData != null)
@@ -73,7 +67,6 @@ public class FollowWindowCtrl : PguiOpenWindowCtrl
 		}
 	}
 
-	// Token: 0x06001B8A RID: 7050 RVA: 0x0015FA64 File Offset: 0x0015DC64
 	private bool OnClickCharaButton(PguiToggleButtonCtrl buttonCtrl, int toggleIndex)
 	{
 		if (this.CurrentMode != FollowWindowCtrl.Mode.DECK_TOP)
@@ -95,7 +88,6 @@ public class FollowWindowCtrl : PguiOpenWindowCtrl
 		return false;
 	}
 
-	// Token: 0x06001B8B RID: 7051 RVA: 0x0015FB54 File Offset: 0x0015DD54
 	private bool OnClickPhotoButton(PguiToggleButtonCtrl buttonCtrl, int toggleIndex)
 	{
 		if (this.CurrentMode != FollowWindowCtrl.Mode.PHOTO_TOP)
@@ -113,7 +105,6 @@ public class FollowWindowCtrl : PguiOpenWindowCtrl
 		return false;
 	}
 
-	// Token: 0x06001B8C RID: 7052 RVA: 0x0015FC14 File Offset: 0x0015DE14
 	private bool OnClickAccessoryButton(PguiToggleButtonCtrl buttonCtrl, int toggleIndex)
 	{
 		if (this.CurrentMode != FollowWindowCtrl.Mode.ACCESSORY_TOP)
@@ -138,7 +129,6 @@ public class FollowWindowCtrl : PguiOpenWindowCtrl
 		return false;
 	}
 
-	// Token: 0x06001B8D RID: 7053 RVA: 0x0015FCF0 File Offset: 0x0015DEF0
 	public void SetUserProfile(HelperPackData hpd)
 	{
 		foreach (SelCharaDeckCtrl.GUI.IconCharaPack iconCharaPack in this.guiData.charaDeck.iconCharaPacks)
@@ -197,47 +187,33 @@ public class FollowWindowCtrl : PguiOpenWindowCtrl
 		this.guiData.charaDeck.SwitchHelperIcon(-1, false);
 	}
 
-	// Token: 0x040014AB RID: 5291
 	private FollowWindowCtrl.GUI guiData;
 
-	// Token: 0x02000EC6 RID: 3782
 	public enum Mode
 	{
-		// Token: 0x040054AC RID: 21676
 		INVALID,
-		// Token: 0x040054AD RID: 21677
 		DECK_TOP,
-		// Token: 0x040054AE RID: 21678
 		PHOTO_TOP,
-		// Token: 0x040054AF RID: 21679
 		ACCESSORY_TOP
 	}
 
-	// Token: 0x02000EC7 RID: 3783
-	// (Invoke) Token: 0x06004DBD RID: 19901
 	public delegate void OnClick();
 
-	// Token: 0x02000EC8 RID: 3784
 	public class GUI
 	{
-		// Token: 0x06004DC0 RID: 19904 RVA: 0x00233E14 File Offset: 0x00232014
 		public GUI(Transform baseTr)
 		{
 			this.profile = new FollowWindowCtrl.Profile(baseTr.Find("Base/Window/Profile"));
 			this.charaDeck = new SelCharaDeckCtrl.GUI.CharaDeck(baseTr.Find("Base/Window/DeckSelect"), 7);
 		}
 
-		// Token: 0x040054B0 RID: 21680
 		public FollowWindowCtrl.Profile profile;
 
-		// Token: 0x040054B1 RID: 21681
 		public SelCharaDeckCtrl.GUI.CharaDeck charaDeck;
 	}
 
-	// Token: 0x02000EC9 RID: 3785
 	public class Profile
 	{
-		// Token: 0x06004DC1 RID: 19905 RVA: 0x00233E4C File Offset: 0x0023204C
 		public Profile(Transform baseTr)
 		{
 			this.IconCharaCtrl = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Chara, baseTr.Find("Icon_Chara")).GetComponent<IconCharaCtrl>();
@@ -247,19 +223,14 @@ public class FollowWindowCtrl : PguiOpenWindowCtrl
 			this.Achievement = baseTr.Find("Achievement").GetComponent<AchievementCtrl>();
 		}
 
-		// Token: 0x040054B2 RID: 21682
 		public IconCharaCtrl IconCharaCtrl;
 
-		// Token: 0x040054B3 RID: 21683
 		public PguiTextCtrl Txt_Rank;
 
-		// Token: 0x040054B4 RID: 21684
 		public PguiTextCtrl Txt_Name;
 
-		// Token: 0x040054B5 RID: 21685
 		public PguiTextCtrl Txt_Comment;
 
-		// Token: 0x040054B6 RID: 21686
 		public AchievementCtrl Achievement;
 	}
 }

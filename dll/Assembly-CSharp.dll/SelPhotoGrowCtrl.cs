@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,20 +11,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x0200013A RID: 314
 public class SelPhotoGrowCtrl : MonoBehaviour
 {
-	// Token: 0x1700034E RID: 846
-	// (get) Token: 0x060010C9 RID: 4297 RVA: 0x000CC115 File Offset: 0x000CA315
-	// (set) Token: 0x060010CA RID: 4298 RVA: 0x000CC11D File Offset: 0x000CA31D
 	public SelPhotoGrowCtrl.Mode CurrentMode { get; private set; }
 
-	// Token: 0x1700034F RID: 847
-	// (get) Token: 0x060010CB RID: 4299 RVA: 0x000CC126 File Offset: 0x000CA326
-	// (set) Token: 0x060010CC RID: 4300 RVA: 0x000CC12E File Offset: 0x000CA32E
 	private SelPhotoGrowCtrl.PhotoGrowEffectPahse GrowEffectPahse { get; set; }
 
-	// Token: 0x060010CD RID: 4301 RVA: 0x000CC138 File Offset: 0x000CA338
 	public void Init()
 	{
 		this.cloneUserOptionData = DataManager.DmUserInfo.optionData.Clone();
@@ -215,7 +207,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		this.guiData.photoGrowConfirmWindow.ScrollView.Setup(10, 0);
 	}
 
-	// Token: 0x060010CE RID: 4302 RVA: 0x000CCA98 File Offset: 0x000CAC98
 	private SortWindowCtrl.SortTarget SortTargetPhotoMaterial()
 	{
 		List<PhotoPackData> list = new List<PhotoPackData>();
@@ -229,7 +220,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		};
 	}
 
-	// Token: 0x060010CF RID: 4303 RVA: 0x000CCAE8 File Offset: 0x000CACE8
 	public void Setup(SelPhotoGrowCtrl.SetupParam param)
 	{
 		this.setupParam = param;
@@ -247,34 +237,29 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		this.guiData.photoGrowMain.sizeChangeBtnGUI.ResetScrollView();
 	}
 
-	// Token: 0x060010D0 RID: 4304 RVA: 0x000CCBA8 File Offset: 0x000CADA8
 	private void SetupBasePhotoPackData(PhotoPackData ppd)
 	{
 		this.basePhotoPackData = ppd;
 		this.requestMode = SelPhotoGrowCtrl.Mode.GROW_MAIN;
 	}
 
-	// Token: 0x060010D1 RID: 4305 RVA: 0x000CCBB8 File Offset: 0x000CADB8
 	public void SetupBySceneForce(long photoId)
 	{
 		this.SetupBasePhotoPackData(DataManager.DmPhoto.GetUserPhotoData(photoId));
 		this.CurrentMode = SelPhotoGrowCtrl.Mode.PHOTO_SELECT;
 	}
 
-	// Token: 0x060010D2 RID: 4306 RVA: 0x000CCBD2 File Offset: 0x000CADD2
 	public void Dest()
 	{
 		this.ClearFeedPhotoPackList();
 	}
 
-	// Token: 0x060010D3 RID: 4307 RVA: 0x000CCBDA File Offset: 0x000CADDA
 	public void ReloadDataManager()
 	{
 		this.<ReloadDataManager>g__SetupPhotoList|48_0();
 		this.ReloadDeckPhotoIdList();
 	}
 
-	// Token: 0x060010D4 RID: 4308 RVA: 0x000CCBE8 File Offset: 0x000CADE8
 	private void ReloadDeckPhotoIdList()
 	{
 		this.deckPhotoDataIdList.Clear();
@@ -329,14 +314,12 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060010D5 RID: 4309 RVA: 0x000CCF1C File Offset: 0x000CB11C
 	private void ExecSort()
 	{
 		CanvasManager.HdlOpenWindowSortFilter.SolutionList(SortFilterDefine.RegisterType.PHOTO_GROW_TOP, null);
 		CanvasManager.HdlOpenWindowSortFilter.SolutionList(SortFilterDefine.RegisterType.PHOTO_GROW_MAIN, null);
 	}
 
-	// Token: 0x060010D6 RID: 4310 RVA: 0x000CCF38 File Offset: 0x000CB138
 	private void OnClickPanel()
 	{
 		if (this.CurrentMode == SelPhotoGrowCtrl.Mode.GROW_EFFECT)
@@ -355,7 +338,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060010D7 RID: 4311 RVA: 0x000CCF70 File Offset: 0x000CB170
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		if (this.CurrentMode != SelPhotoGrowCtrl.Mode.GROW_MAIN)
@@ -385,7 +367,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060010D8 RID: 4312 RVA: 0x000CD150 File Offset: 0x000CB350
 	private void OnClickPhotoGrowExecuteButton(PguiButtonCtrl button)
 	{
 		if (this.CurrentMode != SelPhotoGrowCtrl.Mode.GROW_MAIN)
@@ -467,7 +448,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		this.requestMode = SelPhotoGrowCtrl.Mode.OW_CONFIRM;
 	}
 
-	// Token: 0x060010D9 RID: 4313 RVA: 0x000CD51C File Offset: 0x000CB71C
 	private bool OnSelectOpenWindowButtonCallback(int index)
 	{
 		if (this.CurrentMode == SelPhotoGrowCtrl.Mode.OW_CONFIRM)
@@ -490,7 +470,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x060010DA RID: 4314 RVA: 0x000CD58C File Offset: 0x000CB78C
 	private void OnUpdatePhotoLock(IconPhotoCtrl iconPhoto)
 	{
 		if (iconPhoto.photoPackData.dynamicData.lockFlag && this.feedPhotoPackList.Contains(iconPhoto.photoPackData))
@@ -500,7 +479,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		this.guiData.photoGrowMain.ScrollView.Refresh();
 	}
 
-	// Token: 0x060010DB RID: 4315 RVA: 0x000CD5DC File Offset: 0x000CB7DC
 	private void OnUpdatePhotoFavorite(IconPhotoCtrl iconPhoto)
 	{
 		if (iconPhoto.photoPackData.dynamicData.favoriteFlag && this.feedPhotoPackList.Contains(iconPhoto.photoPackData))
@@ -510,7 +488,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		this.guiData.photoGrowMain.ScrollView.Refresh();
 	}
 
-	// Token: 0x060010DC RID: 4316 RVA: 0x000CD62C File Offset: 0x000CB82C
 	private void OnTouchSelectBasePhotoIcon(IconPhotoCtrl iconPhoto)
 	{
 		SoundManager.Play("prd_se_click", false, false);
@@ -524,7 +501,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060010DD RID: 4317 RVA: 0x000CD67C File Offset: 0x000CB87C
 	private void OnTouchSelectMaterialPhotoIcon(IconPhotoCtrl iconPhoto)
 	{
 		SoundManager.Play("prd_se_click", false, false);
@@ -600,7 +576,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060010DE RID: 4318 RVA: 0x000CD8FC File Offset: 0x000CBAFC
 	private IEnumerator RequestUpdatePhoto(PhotoPackData photoPackData)
 	{
 		DataManager.DmPhoto.RequestActionPhotoRelease(photoPackData.dataId);
@@ -619,7 +594,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060010DF RID: 4319 RVA: 0x000CD914 File Offset: 0x000CBB14
 	private void SettingGrowMainBySelectInfo()
 	{
 		DataManagerPhoto.PhotoLevelupResult photoLevelupResult = PhotoUtil.CalcPhotoGrow(this.basePhotoPackData, this.feedPhotoPackList);
@@ -707,7 +681,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		infoPhotoItemEffectCtrl.Setup(setupParam);
 	}
 
-	// Token: 0x060010E0 RID: 4320 RVA: 0x000CE040 File Offset: 0x000CC240
 	private void OnStartItemPhotoSelect(int index, GameObject go)
 	{
 		for (int i = 0; i < this.guiData.photoGrowTop.sizeChangeBtnGUI.IconPhotoParamList[this.guiData.photoGrowTop.sizeChangeBtnGUI.SizeIndex].num; i++)
@@ -734,7 +707,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		go.GetComponent<GridLayoutGroup>().SetLayoutHorizontal();
 	}
 
-	// Token: 0x060010E1 RID: 4321 RVA: 0x000CE22C File Offset: 0x000CC42C
 	private void OnUpdateItemPhotoSelect(int index, GameObject go)
 	{
 		for (int i = 0; i < this.guiData.photoGrowTop.sizeChangeBtnGUI.IconPhotoParamList[this.guiData.photoGrowTop.sizeChangeBtnGUI.SizeIndex].num; i++)
@@ -776,7 +748,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060010E2 RID: 4322 RVA: 0x000CE3F0 File Offset: 0x000CC5F0
 	private void OnStartItemMainFeed(int index, GameObject go)
 	{
 		for (int i = 0; i < this.guiData.photoGrowMain.sizeChangeBtnGUI.IconPhotoParamList[this.guiData.photoGrowMain.sizeChangeBtnGUI.SizeIndex].num; i++)
@@ -811,7 +782,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		go.GetComponent<GridLayoutGroup>().SetLayoutHorizontal();
 	}
 
-	// Token: 0x060010E3 RID: 4323 RVA: 0x000CE614 File Offset: 0x000CC814
 	private void OnUpdateItemMainFeed(int index, GameObject go)
 	{
 		for (int i = 0; i < this.guiData.photoGrowMain.sizeChangeBtnGUI.IconPhotoParamList[this.guiData.photoGrowMain.sizeChangeBtnGUI.SizeIndex].num; i++)
@@ -915,19 +885,16 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060010E4 RID: 4324 RVA: 0x000CEAF8 File Offset: 0x000CCCF8
 	private bool CheckBasePhoto()
 	{
 		return this.guiData.photoGrowMain.baseIconPhotoCtrl.photoPackData != null && this.guiData.photoGrowMain.baseIconPhotoCtrl.photoPackData.staticData != null && !this.guiData.photoGrowMain.baseIconPhotoCtrl.photoPackData.IsInvalid();
 	}
 
-	// Token: 0x060010E5 RID: 4325 RVA: 0x000CEB58 File Offset: 0x000CCD58
 	private bool CanLevelLimitOver(PhotoPackData ppd)
 	{
 		return ppd != null && this.CheckBasePhoto() && (this.guiData.photoGrowMain.baseIconPhotoCtrl.photoPackData.staticData.GetId() == ppd.staticData.GetId() || (PhotoUtil.IsLevelLimitOverPhoto(ppd) && ppd.staticData.GetRarity() >= this.guiData.photoGrowMain.baseIconPhotoCtrl.photoPackData.staticData.GetRarity())) && this.guiData.photoGrowMain.baseIconPhotoCtrl.photoPackData.dynamicData.levelRank < 4;
 	}
 
-	// Token: 0x060010E6 RID: 4326 RVA: 0x000CEBFC File Offset: 0x000CCDFC
 	private bool UnuseLevelLimitOverPhoto(PhotoPackData targetPPD)
 	{
 		if (!this.CheckBasePhoto())
@@ -942,7 +909,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		return PhotoUtil.IsLevelLimitOverPhoto(targetPPD) && targetPPD.staticData.GetRarity() < rarity;
 	}
 
-	// Token: 0x060010E7 RID: 4327 RVA: 0x000CEC50 File Offset: 0x000CCE50
 	private bool CheckPhotoForbiddenDiscard(PhotoPackData targetPPD)
 	{
 		if (!this.CheckBasePhoto())
@@ -958,7 +924,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		return (forbiddenDiscardFlg || isForbiddenUseLimitOverPhoto) && PhotoUtil.IsLevelLimitOverPhoto(targetPPD);
 	}
 
-	// Token: 0x060010E8 RID: 4328 RVA: 0x000CECC4 File Offset: 0x000CCEC4
 	private void OnStartItemWindowPhotoGrow(int index, GameObject go)
 	{
 		for (int i = 0; i < SelPhotoGrowCtrl.PhotoGrowConfirmWindow.SCROLL_ITEM_NUN_H; i++)
@@ -971,7 +936,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060010E9 RID: 4329 RVA: 0x000CED68 File Offset: 0x000CCF68
 	private void OnUpdateItemWindowPhotoGrow(int index, GameObject go)
 	{
 		for (int i = 0; i < SelPhotoGrowCtrl.PhotoGrowConfirmWindow.SCROLL_ITEM_NUN_H; i++)
@@ -995,7 +959,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060010EA RID: 4330 RVA: 0x000CEE2C File Offset: 0x000CD02C
 	private void OnDestroy()
 	{
 		if (this.guiData.photoGrowConfirmWindow.owCtrl != null)
@@ -1010,7 +973,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060010EB RID: 4331 RVA: 0x000CEE9C File Offset: 0x000CD09C
 	private void Update()
 	{
 		if (this.CurrentMode == SelPhotoGrowCtrl.Mode.SERVER_REQUEST_GROW && !this.serverRequestGrow.MoveNext())
@@ -1315,7 +1277,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060010EC RID: 4332 RVA: 0x000CFAEC File Offset: 0x000CDCEC
 	private void OpenItemWindow(List<ItemData> getItem, string message, PguiOpenWindowCtrl.Callback closeCallback)
 	{
 		CanvasManager.HdlGetItemWindowCtrl.Setup(getItem, new GetItemWindowCtrl.SetupParam
@@ -1326,7 +1287,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		CanvasManager.HdlGetItemWindowCtrl.Open();
 	}
 
-	// Token: 0x060010ED RID: 4333 RVA: 0x000CFB39 File Offset: 0x000CDD39
 	private IEnumerator GrowGageEffect(PhotoPackData affterPhoto, DataManagerPhoto.PhotoLevelupResult result)
 	{
 		this.SettingGrowGageEffectParam(result.photoDataId, result.befLevel, result.befLevelRank, result.befLimitLevel, result.befLevel, result.befLevelRank, result.befLimitLevel);
@@ -1374,7 +1334,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060010EE RID: 4334 RVA: 0x000CFB50 File Offset: 0x000CDD50
 	private void SettingGrowGageEffectParam(long photoDataId, int befLevel, int befLevelRank, int befLimitLevel, int aftLevel, int aftLevelRank, int aftLimitLevel)
 	{
 		string text = ((aftLevel > befLevel) ? SelPhotoGrowCtrl.UP_PARAM_COLOR_CODE : SelPhotoGrowCtrl.NORMAL_PARAM_COLOR_CODE);
@@ -1408,7 +1367,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060010EF RID: 4335 RVA: 0x000CFDB6 File Offset: 0x000CDFB6
 	private IEnumerator ServerRequestGrow(PhotoPackData basePhoto, List<PhotoPackData> feedPhotoList)
 	{
 		DataManager.DmPhoto.RequestActionPhotoGrow(basePhoto, this.feedPhotoPackList);
@@ -1421,13 +1379,11 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060010F0 RID: 4336 RVA: 0x000CFDCC File Offset: 0x000CDFCC
 	private void ClearFeedPhotoPackList()
 	{
 		this.feedPhotoPackList.Clear();
 	}
 
-	// Token: 0x060010F1 RID: 4337 RVA: 0x000CFDDC File Offset: 0x000CDFDC
 	private void SettingGrowMain()
 	{
 		this.ClearFeedPhotoPackList();
@@ -1437,7 +1393,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		this.SettingGrowMainBySelectInfo();
 	}
 
-	// Token: 0x060010F2 RID: 4338 RVA: 0x000CFE95 File Offset: 0x000CE095
 	private IEnumerator Wait(float second)
 	{
 		float timeSinceStartup = Time.realtimeSinceStartup;
@@ -1448,7 +1403,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060010F3 RID: 4339 RVA: 0x000CFEA4 File Offset: 0x000CE0A4
 	private bool ReturnPhotoSelect()
 	{
 		if (this.setupParam.onReturnSceneNameCB() == SceneManager.SceneName.None && this.CurrentMode == SelPhotoGrowCtrl.Mode.GROW_MAIN)
@@ -1460,7 +1414,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x060010F4 RID: 4340 RVA: 0x000CFED4 File Offset: 0x000CE0D4
 	public void OnClickMenuReturn(UnityAction callback)
 	{
 		if (this.ReturnPhotoSelect())
@@ -1480,7 +1433,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x060010F5 RID: 4341 RVA: 0x000CFF2C File Offset: 0x000CE12C
 	private void WindowCloseStatusCallBack(List<ItemDef.Rarity> rarityList, List<SortFilterDefine.PhotoLevelType> photoLevelList, List<PhotoDef.Type> photoTypeList)
 	{
 		this.LatestRarityList = rarityList;
@@ -1489,7 +1441,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		this.AutoSelectGrowPhotoList();
 	}
 
-	// Token: 0x060010F6 RID: 4342 RVA: 0x000CFF4C File Offset: 0x000CE14C
 	private List<PhotoPackData> UnSelectableMaterialPhotoList(List<PhotoPackData> targetPhotoList, ref List<PhotoPackData> withoutDisableList)
 	{
 		List<PhotoPackData> list = new List<PhotoPackData>();
@@ -1523,7 +1474,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		return list;
 	}
 
-	// Token: 0x060010F7 RID: 4343 RVA: 0x000D0074 File Offset: 0x000CE274
 	private void AutoSelectGrowPhotoList()
 	{
 		List<PhotoPackData> list = new List<PhotoPackData>();
@@ -1608,7 +1558,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		this.guiData.photoGrowMain.ScrollView.Refresh();
 	}
 
-	// Token: 0x06001105 RID: 4357 RVA: 0x000D0808 File Offset: 0x000CEA08
 	[CompilerGenerated]
 	private void <ReloadDataManager>g__SetupPhotoList|48_0()
 	{
@@ -1625,7 +1574,6 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		this.dispPhotoPackList = new List<PhotoPackData>(this.havePhotoPackList);
 	}
 
-	// Token: 0x0600110F RID: 4367 RVA: 0x000D0AA4 File Offset: 0x000CECA4
 	[CompilerGenerated]
 	internal static void <AutoSelectGrowPhotoList>g__SortPhotoTypeLevel|88_0(ref List<PhotoPackData> targetPhotoList)
 	{
@@ -1649,149 +1597,97 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 		targetPhotoList.AddRange(list2);
 	}
 
-	// Token: 0x04000E6F RID: 3695
 	private static readonly string UP_PARAM_COLOR_CODE = "#FF7C17FF";
 
-	// Token: 0x04000E70 RID: 3696
 	private static readonly string NORMAL_PARAM_COLOR_CODE = "#533C06FF";
 
-	// Token: 0x04000E71 RID: 3697
 	private static readonly Color UP_PARAM_COLOR = new Color32(byte.MaxValue, 124, 23, byte.MaxValue);
 
-	// Token: 0x04000E72 RID: 3698
 	private static readonly Color NORMAL_PARAM_COLOR = new Color32(83, 60, 6, byte.MaxValue);
 
-	// Token: 0x04000E73 RID: 3699
 	private SelPhotoGrowCtrl.Mode requestMode;
 
-	// Token: 0x04000E75 RID: 3701
 	private SelPhotoGrowCtrl.SetupParam setupParam = new SelPhotoGrowCtrl.SetupParam();
 
-	// Token: 0x04000E76 RID: 3702
 	private SelPhotoGrowCtrl.GUI guiData;
 
-	// Token: 0x04000E77 RID: 3703
 	private SortFilterDefine.SortType sortTypeTop = SortFilterDefine.SortType.LEVEL;
 
-	// Token: 0x04000E78 RID: 3704
 	private SortFilterDefine.SortType sortTypeMain = SortFilterDefine.SortType.LEVEL;
 
-	// Token: 0x04000E79 RID: 3705
 	private List<PhotoPackData> haveAllPhotoPackList = new List<PhotoPackData>();
 
-	// Token: 0x04000E7A RID: 3706
 	private List<PhotoPackData> havePhotoPackList = new List<PhotoPackData>();
 
-	// Token: 0x04000E7B RID: 3707
 	private List<PhotoPackData> dispAllPhotoPackList = new List<PhotoPackData>();
 
-	// Token: 0x04000E7C RID: 3708
 	private List<PhotoPackData> dispPhotoPackList = new List<PhotoPackData>();
 
-	// Token: 0x04000E7D RID: 3709
 	private PhotoPackData basePhotoPackData;
 
-	// Token: 0x04000E7E RID: 3710
 	private List<PhotoPackData> feedPhotoPackList = new List<PhotoPackData>();
 
-	// Token: 0x04000E7F RID: 3711
 	private List<SelPhotoGrowCtrl.FeedPhotoPack> _feedPhotoPackList;
 
-	// Token: 0x04000E80 RID: 3712
 	private List<long> deckPhotoDataIdList = new List<long>();
 
-	// Token: 0x04000E81 RID: 3713
 	private bool simulateGrowLvMax;
 
-	// Token: 0x04000E82 RID: 3714
 	private bool SimulateGrowBreakLimitMax;
 
-	// Token: 0x04000E83 RID: 3715
 	private UserOptionData cloneUserOptionData;
 
-	// Token: 0x04000E84 RID: 3716
 	private List<ItemDef.Rarity> LatestRarityList;
 
-	// Token: 0x04000E85 RID: 3717
 	private List<SortFilterDefine.PhotoLevelType> LatestPhotoLevelList;
 
-	// Token: 0x04000E86 RID: 3718
 	private List<PhotoDef.Type> LatestPhotoTypeList;
 
-	// Token: 0x04000E88 RID: 3720
 	private List<PhotoPackData> optionPhotoPacks = new List<PhotoPackData>();
 
-	// Token: 0x04000E89 RID: 3721
 	private bool effectChangeAction;
 
-	// Token: 0x04000E8A RID: 3722
 	private IEnumerator growGageEffect;
 
-	// Token: 0x04000E8B RID: 3723
 	private IEnumerator serverRequestGrow;
 
-	// Token: 0x02000A46 RID: 2630
 	public class SetupParam
 	{
-		// Token: 0x040041A0 RID: 16800
 		public SceneCharaEdit.OnReturnSceneName onReturnSceneNameCB;
 	}
 
-	// Token: 0x02000A47 RID: 2631
 	public enum FrameType
 	{
-		// Token: 0x040041A2 RID: 16802
 		INVALID,
-		// Token: 0x040041A3 RID: 16803
 		PHOTO_SELECT,
-		// Token: 0x040041A4 RID: 16804
 		GROW_MAIN
 	}
 
-	// Token: 0x02000A48 RID: 2632
 	public enum Mode
 	{
-		// Token: 0x040041A6 RID: 16806
 		INVALID,
-		// Token: 0x040041A7 RID: 16807
 		PHOTO_SELECT,
-		// Token: 0x040041A8 RID: 16808
 		GROW_MAIN,
-		// Token: 0x040041A9 RID: 16809
 		OW_CONFIRM,
-		// Token: 0x040041AA RID: 16810
 		SERVER_REQUEST_GROW,
-		// Token: 0x040041AB RID: 16811
 		GROW_EFFECT
 	}
 
-	// Token: 0x02000A49 RID: 2633
 	public enum PhotoGrowEffectPahse
 	{
-		// Token: 0x040041AD RID: 16813
 		None,
-		// Token: 0x040041AE RID: 16814
 		Initialize,
-		// Token: 0x040041AF RID: 16815
 		GageUp,
-		// Token: 0x040041B0 RID: 16816
 		GrowResult,
-		// Token: 0x040041B1 RID: 16817
 		BreakthroughLimitMax,
-		// Token: 0x040041B2 RID: 16818
 		GrowthMax,
-		// Token: 0x040041B3 RID: 16819
 		ReturnPhoto,
-		// Token: 0x040041B4 RID: 16820
 		TouchWait,
-		// Token: 0x040041B5 RID: 16821
 		Refresh
 	}
 
-	// Token: 0x02000A4A RID: 2634
 	public class PhotoGrowTop
 	{
-		// Token: 0x06003EB2 RID: 16050 RVA: 0x001EB92C File Offset: 0x001E9B2C
 		public PhotoGrowTop(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1810,21 +1706,18 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 			this.Txt_None.SetActive(false);
 		}
 
-		// Token: 0x06003EB3 RID: 16051 RVA: 0x001EBA67 File Offset: 0x001E9C67
 		public void ResizeScrollView(int count, int resize)
 		{
 			this.Txt_None.SetActive(count <= 0);
 			this.ScrollView.ResizeFocesNoMove(1 + resize);
 		}
 
-		// Token: 0x06003EB4 RID: 16052 RVA: 0x001EBA89 File Offset: 0x001E9C89
 		public void InitializeCampaignInfo()
 		{
 			this.campaignGrowData = DataManager.DmCampaign.PresentCampaignGrowPhotoData;
 			this.UpdateCampaignInfo();
 		}
 
-		// Token: 0x06003EB5 RID: 16053 RVA: 0x001EBAA4 File Offset: 0x001E9CA4
 		public void UpdateCampaignInfo()
 		{
 			if (this.campaignGrowData == null)
@@ -1845,50 +1738,35 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x040041B6 RID: 16822
 		public static readonly int SCROLL_ITEM_NUN_H = 6;
 
-		// Token: 0x040041B7 RID: 16823
 		public GameObject baseObj;
 
-		// Token: 0x040041B8 RID: 16824
 		public PguiButtonCtrl Btn_FilterOnOff;
 
-		// Token: 0x040041B9 RID: 16825
 		public PguiButtonCtrl Btn_Sort;
 
-		// Token: 0x040041BA RID: 16826
 		public PguiButtonCtrl Btn_SortUpDown;
 
-		// Token: 0x040041BB RID: 16827
 		public ReuseScroll ScrollView;
 
-		// Token: 0x040041BC RID: 16828
 		public PguiTextCtrl Num_Own;
 
-		// Token: 0x040041BD RID: 16829
 		public SimpleAnimation SelCmn_AllInOut;
 
-		// Token: 0x040041BE RID: 16830
 		public GameObject Campaign;
 
-		// Token: 0x040041BF RID: 16831
 		private PguiTextCtrl CampaignTimeText;
 
-		// Token: 0x040041C0 RID: 16832
 		private DataManagerCampaign.CampaignGrowData campaignGrowData;
 
-		// Token: 0x040041C1 RID: 16833
 		public PhotoUtil.SizeChangeBtnGUI sizeChangeBtnGUI;
 
-		// Token: 0x040041C2 RID: 16834
 		public GameObject Txt_None;
 	}
 
-	// Token: 0x02000A4B RID: 2635
 	public class PhotoGrowMain
 	{
-		// Token: 0x06003EB7 RID: 16055 RVA: 0x001EBB3C File Offset: 0x001E9D3C
 		public PhotoGrowMain(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1947,21 +1825,18 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 			this.Txt_None.SetActive(false);
 		}
 
-		// Token: 0x06003EB8 RID: 16056 RVA: 0x001EBF22 File Offset: 0x001EA122
 		public void ResizeScrollView(int count, int resize)
 		{
 			this.Txt_None.SetActive(count <= 0);
 			this.ScrollView.ResizeFocesNoMove(1 + resize);
 		}
 
-		// Token: 0x06003EB9 RID: 16057 RVA: 0x001EBF44 File Offset: 0x001EA144
 		public void InitializeCampaignInfo()
 		{
 			this.campaignGrowData = DataManager.DmCampaign.PresentCampaignGrowPhotoData;
 			this.UpdateCampaignInfo();
 		}
 
-		// Token: 0x06003EBA RID: 16058 RVA: 0x001EBF5C File Offset: 0x001EA15C
 		public void UpdateCampaignInfo()
 		{
 			if (this.campaignGrowData == null)
@@ -1982,104 +1857,71 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x040041C3 RID: 16835
 		public static readonly int SCROLL_ITEM_NUN_H = 6;
 
-		// Token: 0x040041C4 RID: 16836
 		public GameObject baseObj;
 
-		// Token: 0x040041C5 RID: 16837
 		public PguiButtonCtrl Btn_FilterOnOff;
 
-		// Token: 0x040041C6 RID: 16838
 		public PguiButtonCtrl Btn_Sort;
 
-		// Token: 0x040041C7 RID: 16839
 		public PguiButtonCtrl Btn_SortUpDown;
 
-		// Token: 0x040041C8 RID: 16840
 		public PguiButtonCtrl ButtonL;
 
-		// Token: 0x040041C9 RID: 16841
 		public PguiButtonCtrl ButtonC;
 
-		// Token: 0x040041CA RID: 16842
 		public PguiButtonCtrl ButtonR;
 
-		// Token: 0x040041CB RID: 16843
 		public PguiTextCtrl Num_Lv_Before;
 
-		// Token: 0x040041CC RID: 16844
 		public PguiTextCtrl Num_Lv_After;
 
-		// Token: 0x040041CD RID: 16845
 		public PguiTextCtrl Num_Exp_Next;
 
-		// Token: 0x040041CE RID: 16846
 		public List<PguiTextCtrl> Num_Before;
 
-		// Token: 0x040041CF RID: 16847
 		public List<PguiTextCtrl> Num_After;
 
-		// Token: 0x040041D0 RID: 16848
 		public PguiTextCtrl OwnCoin;
 
-		// Token: 0x040041D1 RID: 16849
 		public PguiTextCtrl Num_Coin;
 
-		// Token: 0x040041D2 RID: 16850
 		public ReuseScroll ScrollView;
 
-		// Token: 0x040041D3 RID: 16851
 		public IconPhotoCtrl baseIconPhotoCtrl;
 
-		// Token: 0x040041D4 RID: 16852
 		public PguiImageCtrl Gage_Up;
 
-		// Token: 0x040041D5 RID: 16853
 		public PguiImageCtrl Gage;
 
-		// Token: 0x040041D6 RID: 16854
 		public PguiTextCtrl Num_SelPhoto;
 
-		// Token: 0x040041D7 RID: 16855
 		public SimpleAnimation SelCmn_AllInOut;
 
-		// Token: 0x040041D8 RID: 16856
 		public List<GameObject> RebirthIcon_Before = new List<GameObject>();
 
-		// Token: 0x040041D9 RID: 16857
 		public List<GameObject> RebirthIcon_After = new List<GameObject>();
 
-		// Token: 0x040041DA RID: 16858
 		public GameObject Campaign;
 
-		// Token: 0x040041DB RID: 16859
 		private PguiTextCtrl CampaignTimeText;
 
-		// Token: 0x040041DC RID: 16860
 		private DataManagerCampaign.CampaignGrowData campaignGrowData;
 
-		// Token: 0x040041DD RID: 16861
 		public PhotoUtil.SizeChangeBtnGUI sizeChangeBtnGUI;
 
-		// Token: 0x040041DE RID: 16862
 		public PguiButtonCtrl Btn_Info;
 
-		// Token: 0x040041DF RID: 16863
 		public InfoPhotoItemEffectCtrl infoPhotoItemEffectCtrl;
 
-		// Token: 0x040041E0 RID: 16864
 		public List<PguiTextCtrl> Num_Percents;
 
-		// Token: 0x040041E1 RID: 16865
 		public GameObject Txt_None;
 	}
 
-	// Token: 0x02000A4C RID: 2636
 	public class PhotoGrowConfirmWindow
 	{
-		// Token: 0x06003EBC RID: 16060 RVA: 0x001EBFF4 File Offset: 0x001EA1F4
 		public PhotoGrowConfirmWindow(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -2094,44 +1936,31 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 			this.LeftFukidasiText = baseTr.Find("Base/Window/tex_Fukidashi_Left/Txt_Info").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x040041E2 RID: 16866
 		public static readonly int SCROLL_ITEM_NUN_H = 5;
 
-		// Token: 0x040041E3 RID: 16867
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x040041E4 RID: 16868
 		public PguiTextCtrl MassageText;
 
-		// Token: 0x040041E5 RID: 16869
 		public PguiTextCtrl MassageCautionText;
 
-		// Token: 0x040041E6 RID: 16870
 		public PguiTextCtrl Num_CoinUse;
 
-		// Token: 0x040041E7 RID: 16871
 		public PguiTextCtrl Num_CoinOwn;
 
-		// Token: 0x040041E8 RID: 16872
 		public ReuseScroll ScrollView;
 
-		// Token: 0x040041E9 RID: 16873
 		public GameObject RightFukidasiBase;
 
-		// Token: 0x040041EA RID: 16874
 		public PguiTextCtrl RightFukidasiText;
 
-		// Token: 0x040041EB RID: 16875
 		public GameObject LeftFukidasiBase;
 
-		// Token: 0x040041EC RID: 16876
 		public PguiTextCtrl LeftFukidasiText;
 	}
 
-	// Token: 0x02000A4D RID: 2637
 	public class PhotoGrowAuth
 	{
-		// Token: 0x06003EBE RID: 16062 RVA: 0x001EC0E4 File Offset: 0x001EA2E4
 		public PhotoGrowAuth(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -2164,63 +1993,44 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 			};
 		}
 
-		// Token: 0x040041ED RID: 16877
 		public GameObject baseObj;
 
-		// Token: 0x040041EE RID: 16878
 		public PguiTextCtrl Num_Lv_After;
 
-		// Token: 0x040041EF RID: 16879
 		public List<PguiTextCtrl> Num_After;
 
-		// Token: 0x040041F0 RID: 16880
 		public PguiPanel touchPanel;
 
-		// Token: 0x040041F1 RID: 16881
 		public PguiAECtrl AEImage_Front;
 
-		// Token: 0x040041F2 RID: 16882
 		public PguiAECtrl AEImage_Back;
 
-		// Token: 0x040041F3 RID: 16883
 		public PguiAECtrl AEImage_LevelUp;
 
-		// Token: 0x040041F4 RID: 16884
 		public PguiAECtrl AEImage_Result;
 
-		// Token: 0x040041F5 RID: 16885
 		public IconPhotoCtrl iconPhoto;
 
-		// Token: 0x040041F6 RID: 16886
 		public PguiImageCtrl Gage;
 
-		// Token: 0x040041F7 RID: 16887
 		public List<GameObject> RebirthIcon_After = new List<GameObject>();
 
-		// Token: 0x040041F8 RID: 16888
 		public InfoPhotoItemEffectCtrl infoPhotoItemEffectCtrl;
 
-		// Token: 0x040041F9 RID: 16889
 		public List<PguiTextCtrl> Num_Percents;
 
-		// Token: 0x0200116E RID: 4462
 		public class AuthIcon
 		{
-			// Token: 0x04005FB3 RID: 24499
 			public GameObject Icon_Card;
 
-			// Token: 0x04005FB4 RID: 24500
 			public IconPhotoCtrl IconCardCtrl;
 
-			// Token: 0x04005FB5 RID: 24501
 			public PguiAECtrl AEImage;
 		}
 	}
 
-	// Token: 0x02000A4E RID: 2638
 	public class WindowPhotoCharacteristic
 	{
-		// Token: 0x06003EBF RID: 16063 RVA: 0x001EC2BC File Offset: 0x001EA4BC
 		public WindowPhotoCharacteristic(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -2231,29 +2041,21 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 			this.Txt_Info_After = baseTr.Find("Base/Window/PhotoInfo_After/Txt_Info").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x040041FA RID: 16890
 		public GameObject baseObj;
 
-		// Token: 0x040041FB RID: 16891
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x040041FC RID: 16892
 		public PguiTextCtrl Txt_PhotoName_Before;
 
-		// Token: 0x040041FD RID: 16893
 		public PguiTextCtrl Txt_Info_Before;
 
-		// Token: 0x040041FE RID: 16894
 		public PguiTextCtrl Txt_PhotoName_After;
 
-		// Token: 0x040041FF RID: 16895
 		public PguiTextCtrl Txt_Info_After;
 	}
 
-	// Token: 0x02000A4F RID: 2639
 	private class GUI
 	{
-		// Token: 0x06003EC0 RID: 16064 RVA: 0x001EC340 File Offset: 0x001EA540
 		public GUI(Transform baseTr)
 		{
 			GameObject gameObject = Object.Instantiate<GameObject>((GameObject)Resources.Load("SceneCharaEdit/GUI/Prefab/GUI_PhotoGrow"), baseTr);
@@ -2267,43 +2069,29 @@ public class SelPhotoGrowCtrl : MonoBehaviour
 			this.photoGrowTop.baseObj.SetActive(false);
 		}
 
-		// Token: 0x04004200 RID: 16896
 		public SelPhotoGrowCtrl.PhotoGrowTop photoGrowTop;
 
-		// Token: 0x04004201 RID: 16897
 		public SelPhotoGrowCtrl.PhotoGrowMain photoGrowMain;
 
-		// Token: 0x04004202 RID: 16898
 		public GameObject baseObj;
 
-		// Token: 0x04004203 RID: 16899
 		public Dictionary<GameObject, SelPhotoEditCtrl.GUI.IconPhotoSet> topSelectPhotoIcon = new Dictionary<GameObject, SelPhotoEditCtrl.GUI.IconPhotoSet>();
 
-		// Token: 0x04004204 RID: 16900
 		public Dictionary<GameObject, SelPhotoEditCtrl.GUI.IconPhotoSet> reservePhotoIcon = new Dictionary<GameObject, SelPhotoEditCtrl.GUI.IconPhotoSet>();
 
-		// Token: 0x04004205 RID: 16901
 		public SelPhotoGrowCtrl.PhotoGrowConfirmWindow photoGrowConfirmWindow;
 
-		// Token: 0x04004206 RID: 16902
 		public PhotoGrowSelectWindowCtrl photoGrowSelectWindow;
 
-		// Token: 0x04004207 RID: 16903
 		public SelPhotoGrowCtrl.PhotoGrowAuth photoGrowAuth;
 
-		// Token: 0x04004208 RID: 16904
 		public SelPhotoGrowCtrl.WindowPhotoCharacteristic photoCharacteristicWindow;
 	}
 
-	// Token: 0x02000A50 RID: 2640
 	private class FeedPhotoPack
 	{
-		// Token: 0x17000931 RID: 2353
-		// (get) Token: 0x06003EC1 RID: 16065 RVA: 0x001EC467 File Offset: 0x001EA667
-		// (set) Token: 0x06003EC2 RID: 16066 RVA: 0x001EC46F File Offset: 0x001EA66F
 		public bool IsDispOverlimits { get; set; }
 
-		// Token: 0x04004209 RID: 16905
 		public PhotoPackData data;
 	}
 }

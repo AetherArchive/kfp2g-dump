@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +8,8 @@ using SGNFW.uGUI;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x0200015E RID: 350
 public class SceneStoryView : BaseScene
 {
-	// Token: 0x06001406 RID: 5126 RVA: 0x000F3A7C File Offset: 0x000F1C7C
 	public override void OnCreateScene()
 	{
 		this.basePanel = AssetManager.InstantiateAssetData("SceneMenu/GUI/Prefab/GUI_Memories", null).GetComponent<SimpleAnimation>();
@@ -113,7 +111,6 @@ public class SceneStoryView : BaseScene
 		this.moviePanel.gameObject.SetActive(false);
 	}
 
-	// Token: 0x06001407 RID: 5127 RVA: 0x000F41E0 File Offset: 0x000F23E0
 	public override void OnEnableScene(object args)
 	{
 		this.requestNextScene = SceneManager.SceneName.None;
@@ -235,7 +232,6 @@ public class SceneStoryView : BaseScene
 		}
 	}
 
-	// Token: 0x06001408 RID: 5128 RVA: 0x000F4804 File Offset: 0x000F2A04
 	public override void Update()
 	{
 		bool flag = true;
@@ -507,7 +503,6 @@ public class SceneStoryView : BaseScene
 		CanvasManager.HdlCmnMenu.UpdateMenu(flag, true);
 	}
 
-	// Token: 0x06001409 RID: 5129 RVA: 0x000F5064 File Offset: 0x000F3264
 	private void ScenarioSetup()
 	{
 		if (this.scenarioName.Count > 0)
@@ -520,7 +515,6 @@ public class SceneStoryView : BaseScene
 		}
 	}
 
-	// Token: 0x0600140A RID: 5130 RVA: 0x000F50D8 File Offset: 0x000F32D8
 	private void UpdatePanel(List<SceneStoryView.MODE> m, SimpleAnimation a)
 	{
 		if (m.Contains(this.mode))
@@ -566,7 +560,6 @@ public class SceneStoryView : BaseScene
 		}
 	}
 
-	// Token: 0x0600140B RID: 5131 RVA: 0x000F51D8 File Offset: 0x000F33D8
 	public override void OnDisableScene()
 	{
 		CanvasManager.HdlCmnMenu.SetActiveMenu(true);
@@ -579,7 +572,6 @@ public class SceneStoryView : BaseScene
 		this.basePanel.ExPlayAnimation(SimpleAnimation.ExPguiStatus.END, null);
 	}
 
-	// Token: 0x0600140C RID: 5132 RVA: 0x000F5230 File Offset: 0x000F3430
 	public override bool OnDisableSceneWait()
 	{
 		if (this.basePanel.ExIsPlaying())
@@ -623,7 +615,6 @@ public class SceneStoryView : BaseScene
 		return true;
 	}
 
-	// Token: 0x0600140D RID: 5133 RVA: 0x000F540C File Offset: 0x000F360C
 	public override void OnDestroyScene()
 	{
 		this.guiData = null;
@@ -643,7 +634,6 @@ public class SceneStoryView : BaseScene
 		this.moviePanel = null;
 	}
 
-	// Token: 0x0600140E RID: 5134 RVA: 0x000F54A8 File Offset: 0x000F36A8
 	private void OnClickReturnButton()
 	{
 		SceneStoryView.MODE mode = this.mode;
@@ -747,7 +737,6 @@ public class SceneStoryView : BaseScene
 		this.UpdateBookmarkButtonActive();
 	}
 
-	// Token: 0x0600140F RID: 5135 RVA: 0x000F5718 File Offset: 0x000F3918
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		if (button == this.guiData.BtnScenario)
@@ -903,7 +892,6 @@ public class SceneStoryView : BaseScene
 		}
 	}
 
-	// Token: 0x06001410 RID: 5136 RVA: 0x000F5C66 File Offset: 0x000F3E66
 	private void OnClickPhotoAlbumButton(PguiButtonCtrl button)
 	{
 		this.requestNextScene = SceneManager.SceneName.ScenePhotoAlbum;
@@ -914,7 +902,6 @@ public class SceneStoryView : BaseScene
 		};
 	}
 
-	// Token: 0x06001411 RID: 5137 RVA: 0x000F5C8C File Offset: 0x000F3E8C
 	private void UpdateChapterByCategory()
 	{
 		bool flag = this.mode == SceneStoryView.MODE.CATEGORY || this.mode == SceneStoryView.MODE.MAIN || this.mode == SceneStoryView.MODE.CELLVAL || this.mode == SceneStoryView.MODE.MAIN2 || this.mode == SceneStoryView.MODE.MAIN3;
@@ -953,7 +940,6 @@ public class SceneStoryView : BaseScene
 		}
 	}
 
-	// Token: 0x06001412 RID: 5138 RVA: 0x000F5D4C File Offset: 0x000F3F4C
 	private void UpdateModeByCategory()
 	{
 		string text = string.Empty;
@@ -1009,7 +995,6 @@ public class SceneStoryView : BaseScene
 		CanvasManager.HdlCmnMenu.SetupMenu(true, text, new PguiCmnMenuCtrl.OnClickReturnButton(this.OnClickReturnButton), "", null, null);
 	}
 
-	// Token: 0x06001413 RID: 5139 RVA: 0x000F5E54 File Offset: 0x000F4054
 	private void UpdateChapterList(QuestStaticChapter.Category cat)
 	{
 		bool flag = false;
@@ -1195,7 +1180,6 @@ public class SceneStoryView : BaseScene
 		}
 	}
 
-	// Token: 0x06001414 RID: 5140 RVA: 0x000F6710 File Offset: 0x000F4910
 	private int QuestSort(int a, int b)
 	{
 		if (a >= 0 && b >= 0)
@@ -1205,12 +1189,10 @@ public class SceneStoryView : BaseScene
 		return a - b;
 	}
 
-	// Token: 0x06001415 RID: 5141 RVA: 0x000F6730 File Offset: 0x000F4930
 	private void SetupFriends(int index, GameObject go)
 	{
 	}
 
-	// Token: 0x06001416 RID: 5142 RVA: 0x000F6734 File Offset: 0x000F4934
 	private void UpdateFriends(int index, GameObject go)
 	{
 		List<Transform> list = new List<Transform>();
@@ -1248,7 +1230,6 @@ public class SceneStoryView : BaseScene
 		}
 	}
 
-	// Token: 0x06001417 RID: 5143 RVA: 0x000F68CC File Offset: 0x000F4ACC
 	private void SetupCommunicationSelect(int index, GameObject go)
 	{
 		if (this.CommunicationCtrl.BarIconMap == null)
@@ -1271,7 +1252,6 @@ public class SceneStoryView : BaseScene
 		}
 	}
 
-	// Token: 0x06001418 RID: 5144 RVA: 0x000F69B0 File Offset: 0x000F4BB0
 	private void UpdateCommunicationSelect(int index, GameObject go)
 	{
 		int count = this.CommunicationCtrl.BarIconMap.Count;
@@ -1294,7 +1274,6 @@ public class SceneStoryView : BaseScene
 		}
 	}
 
-	// Token: 0x06001419 RID: 5145 RVA: 0x000F6AB0 File Offset: 0x000F4CB0
 	private void OnClickCommunicationFriendsIcon(int chId)
 	{
 		if (this.mode == SceneStoryView.MODE.COMMUNICATIONSELECT)
@@ -1306,7 +1285,6 @@ public class SceneStoryView : BaseScene
 		}
 	}
 
-	// Token: 0x0600141A RID: 5146 RVA: 0x000F6B0C File Offset: 0x000F4D0C
 	private void OnClickFriends(GameObject go)
 	{
 		int id = ((this.mode == SceneStoryView.MODE.FRIENDS) ? int.Parse(go.name) : 0);
@@ -1328,14 +1306,12 @@ public class SceneStoryView : BaseScene
 		}
 	}
 
-	// Token: 0x0600141B RID: 5147 RVA: 0x000F6C03 File Offset: 0x000F4E03
 	private void SetupChapter(int index, GameObject go)
 	{
 		this.UpdateChapter(index, go);
 		go.GetComponent<PguiButtonCtrl>().AddOnClickListener(new PguiButtonCtrl.OnClick(this.OnClickChapter), PguiButtonCtrl.SoundType.DEFAULT);
 	}
 
-	// Token: 0x0600141C RID: 5148 RVA: 0x000F6C28 File Offset: 0x000F4E28
 	private void UpdateChapter(int index, GameObject go)
 	{
 		if (index < 0 || index >= this.chapterKey.Count)
@@ -1405,7 +1381,6 @@ public class SceneStoryView : BaseScene
 		go.transform.Find("BaseImage/Txt").GetComponent<PguiTextCtrl>().text = text;
 	}
 
-	// Token: 0x0600141D RID: 5149 RVA: 0x000F6E34 File Offset: 0x000F5034
 	private void OnClickChapter(PguiButtonCtrl go)
 	{
 		if (this.mode != SceneStoryView.MODE.CATEGORY && this.mode != SceneStoryView.MODE.MAIN && this.mode != SceneStoryView.MODE.CELLVAL && this.mode != SceneStoryView.MODE.MAIN2 && this.mode != SceneStoryView.MODE.MAIN3 && this.mode != SceneStoryView.MODE.EVENT && this.mode != SceneStoryView.MODE.ARAI && this.mode != SceneStoryView.MODE.PVP && this.mode != SceneStoryView.MODE.ETC && this.mode != SceneStoryView.MODE.LOGIN_SCENARIO_LIST)
@@ -1476,14 +1451,12 @@ public class SceneStoryView : BaseScene
 		this.guiData.story.transform.Find("All/WindowAll/SortFilterBtnsAll/Txt_btn").GetComponent<PguiTextCtrl>().text = go.transform.Find("BaseImage/Txt").GetComponent<PguiTextCtrl>().text;
 	}
 
-	// Token: 0x0600141E RID: 5150 RVA: 0x000F701C File Offset: 0x000F521C
 	private void SetupStory(int index, GameObject go)
 	{
 		this.UpdateStory(index, go);
 		go.GetComponent<PguiButtonCtrl>().AddOnClickListener(new PguiButtonCtrl.OnClick(this.OnClickStory), PguiButtonCtrl.SoundType.DEFAULT);
 	}
 
-	// Token: 0x0600141F RID: 5151 RVA: 0x000F7040 File Offset: 0x000F5240
 	private void UpdateStory(int index, GameObject go)
 	{
 		if (index < 0 || index >= this.storyList.Count)
@@ -1629,7 +1602,6 @@ public class SceneStoryView : BaseScene
 		}
 	}
 
-	// Token: 0x06001420 RID: 5152 RVA: 0x000F7528 File Offset: 0x000F5728
 	private void OnClickStory(PguiButtonCtrl go)
 	{
 		if (this.mode != SceneStoryView.MODE.STORY)
@@ -1676,7 +1648,6 @@ public class SceneStoryView : BaseScene
 		}
 	}
 
-	// Token: 0x06001421 RID: 5153 RVA: 0x000F766C File Offset: 0x000F586C
 	private void UpdateBookmarkChara(int now)
 	{
 		Transform transform = this.friendsList.Find((Transform item) => item.gameObject.name == now.ToString());
@@ -1692,14 +1663,12 @@ public class SceneStoryView : BaseScene
 		this.UpdateBookmarkScenarioAllCheck();
 	}
 
-	// Token: 0x06001422 RID: 5154 RVA: 0x000F76F0 File Offset: 0x000F58F0
 	private void UpdateBookmarkScenario(GameObject go, int target)
 	{
 		int currentBookmark = DataManager.DmBookmark.GetCurrentBookmark(this.currentCategory);
 		go.transform.Find("BaseImage/Bookmark").gameObject.SetActive(target == currentBookmark);
 	}
 
-	// Token: 0x06001423 RID: 5155 RVA: 0x000F772C File Offset: 0x000F592C
 	private void UpdateBookmarkScenarioAllCheck()
 	{
 		int currentBookmark = DataManager.DmBookmark.GetCurrentBookmark(this.currentCategory);
@@ -1717,14 +1686,12 @@ public class SceneStoryView : BaseScene
 		}
 	}
 
-	// Token: 0x06001424 RID: 5156 RVA: 0x000F77E4 File Offset: 0x000F59E4
 	private void UpdateBookmarkButtonActive()
 	{
 		int currentBookmark = DataManager.DmBookmark.GetCurrentBookmark(this.currentCategory);
 		this.bookmarkStoryButton.SetActEnable(currentBookmark != 0, false, false);
 	}
 
-	// Token: 0x06001425 RID: 5157 RVA: 0x000F7814 File Offset: 0x000F5A14
 	private void SetupMovie(int index, GameObject go)
 	{
 		List<Transform> list = new List<Transform>();
@@ -1747,7 +1714,6 @@ public class SceneStoryView : BaseScene
 		}
 	}
 
-	// Token: 0x06001426 RID: 5158 RVA: 0x000F78F8 File Offset: 0x000F5AF8
 	private void OnClickMovie(PguiButtonCtrl go)
 	{
 		if (this.mode != SceneStoryView.MODE.MOVIE)
@@ -1759,7 +1725,6 @@ public class SceneStoryView : BaseScene
 		this.mode = SceneStoryView.MODE.LOAD;
 	}
 
-	// Token: 0x06001427 RID: 5159 RVA: 0x000F792C File Offset: 0x000F5B2C
 	private void SkipMovie()
 	{
 		MstMovieData mstMovieData = DataManager.DmServerMst.mstMovieDataList.Find((MstMovieData itm) => itm.movieId == this.movieId);
@@ -1778,211 +1743,142 @@ public class SceneStoryView : BaseScene
 		this.mode = SceneStoryView.MODE.LOAD;
 	}
 
-	// Token: 0x04001078 RID: 4216
 	private SceneStoryView.Args SceneArgs;
 
-	// Token: 0x04001079 RID: 4217
 	private SimpleAnimation basePanel;
 
-	// Token: 0x0400107A RID: 4218
 	private SimpleAnimation moviePanel;
 
-	// Token: 0x0400107B RID: 4219
 	private SceneManager.SceneName requestNextScene;
 
-	// Token: 0x0400107C RID: 4220
 	private object requestNextSceneArgs;
 
-	// Token: 0x0400107D RID: 4221
 	private Transform hidePanel;
 
-	// Token: 0x0400107E RID: 4222
 	private GameObject charaPlate;
 
-	// Token: 0x0400107F RID: 4223
 	private GameObject moviePlate;
 
-	// Token: 0x04001080 RID: 4224
 	private SceneStoryView.GUI guiData;
 
-	// Token: 0x04001081 RID: 4225
 	private SceneStoryView.MOVIE movieData;
 
-	// Token: 0x04001082 RID: 4226
 	private SceneStoryView.MODE mode;
 
-	// Token: 0x04001083 RID: 4227
 	private SceneStoryView.MODE type;
 
-	// Token: 0x04001084 RID: 4228
 	private SceneStoryView.MODE currentCategory;
 
-	// Token: 0x04001085 RID: 4229
 	private List<CharaPackData> haveFriendsPackList;
 
-	// Token: 0x04001086 RID: 4230
 	private List<CharaPackData> dispFriendsPackList;
 
-	// Token: 0x04001087 RID: 4231
 	private SortFilterDefine.SortType sortType;
 
-	// Token: 0x04001088 RID: 4232
 	private ReuseScroll friendsScroll;
 
-	// Token: 0x04001089 RID: 4233
 	private List<Transform> friendsList;
 
-	// Token: 0x0400108A RID: 4234
 	private Dictionary<int, List<int>> chapterList;
 
-	// Token: 0x0400108B RID: 4235
 	private List<int> chapterKey;
 
-	// Token: 0x0400108C RID: 4236
 	private ReuseScroll chapterScroll;
 
-	// Token: 0x0400108D RID: 4237
 	private Dictionary<PguiButtonCtrl, int> chapterBtn;
 
-	// Token: 0x0400108E RID: 4238
 	private PguiButtonCtrl bookmarkStoryButton;
 
-	// Token: 0x0400108F RID: 4239
 	private List<int> storyList;
 
-	// Token: 0x04001090 RID: 4240
 	private ReuseScroll storyScroll;
 
-	// Token: 0x04001091 RID: 4241
 	private Dictionary<PguiButtonCtrl, int> storyBtn;
 
-	// Token: 0x04001092 RID: 4242
 	private List<Transform> movieList;
 
-	// Token: 0x04001093 RID: 4243
 	private ReuseScroll movieScroll;
 
-	// Token: 0x04001094 RID: 4244
 	private CommunicationCtrl CommunicationCtrl;
 
-	// Token: 0x04001095 RID: 4245
 	private ScenarioScene scenarioCtrl;
 
-	// Token: 0x04001096 RID: 4246
 	private DateTime scenarioLoading;
 
-	// Token: 0x04001097 RID: 4247
 	private int scenarioQuest;
 
-	// Token: 0x04001098 RID: 4248
 	private List<string> scenarioName;
 
-	// Token: 0x04001099 RID: 4249
 	private GameObject movieCtrl;
 
-	// Token: 0x0400109A RID: 4250
 	private float movieTime;
 
-	// Token: 0x0400109B RID: 4251
 	private float seekTime;
 
-	// Token: 0x0400109C RID: 4252
 	private int movieId;
 
-	// Token: 0x0400109D RID: 4253
 	private string movieName;
 
-	// Token: 0x0400109E RID: 4254
 	private IEnumerator movieLoad;
 
-	// Token: 0x0400109F RID: 4255
 	private int currentCharaId;
 
-	// Token: 0x040010A0 RID: 4256
 	private int currentChapterId;
 
-	// Token: 0x040010A1 RID: 4257
 	private int currentCategoryId;
 
-	// Token: 0x040010A2 RID: 4258
 	private bool isLoginScenario;
 
-	// Token: 0x040010A3 RID: 4259
 	private static readonly float CTRL_TIME = 1.5f;
 
-	// Token: 0x040010A4 RID: 4260
 	private static readonly string TITLE_MEMORYS = "思い出";
 
-	// Token: 0x040010A5 RID: 4261
 	private static readonly string TITLE_SCENARIO = "ストーリー回想";
 
-	// Token: 0x040010A6 RID: 4262
 	private static readonly string TITLE_MOVIE = "ムービー回想";
 
-	// Token: 0x040010A7 RID: 4263
 	private static readonly string TITLE_CATEGORY = "メインストーリー";
 
-	// Token: 0x040010A8 RID: 4264
 	private static readonly string TITLE_MAIN = "メインストーリー";
 
-	// Token: 0x040010A9 RID: 4265
 	private static readonly string TITLE_CELLVAL = "セーバルぶらり旅";
 
-	// Token: 0x040010AA RID: 4266
 	private static readonly string TITLE_MAIN2 = "メインストーリー\u3000シーズン２";
 
-	// Token: 0x040010AB RID: 4267
 	private static readonly string TITLE_MAIN3 = "メインストーリー\u3000シーズン３";
 
-	// Token: 0x040010AC RID: 4268
 	private static readonly string TITLE_FRIENDS = "フレンズストーリー";
 
-	// Token: 0x040010AD RID: 4269
 	private static readonly string TITLE_EVENT = "イベントストーリー";
 
-	// Token: 0x040010AE RID: 4270
 	private static readonly string TITLE_ARAI = "アライさん隊長日誌";
 
-	// Token: 0x040010AF RID: 4271
 	private static readonly string TITLE_OTHER = "その他";
 
-	// Token: 0x040010B0 RID: 4272
 	private static readonly string TITLE_PVPEVENT = "とくべつくんれんシナリオ";
 
-	// Token: 0x040010B1 RID: 4273
 	private static readonly string TITLE_COMMUNICATION = "交流";
 
-	// Token: 0x040010B2 RID: 4274
 	private static readonly string TITLE_LOGIN_STORY = "ログインストーリー";
 
-	// Token: 0x02000B5B RID: 2907
 	public class Args
 	{
-		// Token: 0x0400471C RID: 18204
 		public SceneStoryView.Args.VIEWTYPE viewType;
 
-		// Token: 0x0400471D RID: 18205
 		public SceneManager.SceneName resultNextSceneName;
 
-		// Token: 0x0400471E RID: 18206
 		public object resultNextSceneArgs;
 
-		// Token: 0x02001190 RID: 4496
 		public enum VIEWTYPE
 		{
-			// Token: 0x04006035 RID: 24629
 			NONE,
-			// Token: 0x04006036 RID: 24630
 			MOVIE,
-			// Token: 0x04006037 RID: 24631
 			PVPEVENT
 		}
 	}
 
-	// Token: 0x02000B5C RID: 2908
 	public class GUI
 	{
-		// Token: 0x0600429E RID: 17054 RVA: 0x00200B5C File Offset: 0x001FED5C
 		public GUI(Transform baseTr)
 		{
 			this.select = baseTr.Find("Memories_Select").GetComponent<SimpleAnimation>();
@@ -2007,65 +1903,45 @@ public class SceneStoryView : BaseScene
 			this.BtnPvp = this.scenario.transform.Find("All/Scenario_Btn_PVP").GetComponent<PguiButtonCtrl>();
 		}
 
-		// Token: 0x0400471F RID: 18207
 		public SimpleAnimation select;
 
-		// Token: 0x04004720 RID: 18208
 		public SimpleAnimation scenario;
 
-		// Token: 0x04004721 RID: 18209
 		public SimpleAnimation chapter;
 
-		// Token: 0x04004722 RID: 18210
 		public SimpleAnimation friend;
 
-		// Token: 0x04004723 RID: 18211
 		public SimpleAnimation story;
 
-		// Token: 0x04004724 RID: 18212
 		public SimpleAnimation nothing;
 
-		// Token: 0x04004725 RID: 18213
 		public SimpleAnimation movie;
 
-		// Token: 0x04004726 RID: 18214
 		public SimpleAnimation communication;
 
-		// Token: 0x04004727 RID: 18215
 		public SimpleAnimation communicationSelect;
 
-		// Token: 0x04004728 RID: 18216
 		public PguiButtonCtrl BtnScenario;
 
-		// Token: 0x04004729 RID: 18217
 		public PguiButtonCtrl BtnMovie;
 
-		// Token: 0x0400472A RID: 18218
 		public PguiButtonCtrl BtnPhotoAlbum;
 
-		// Token: 0x0400472B RID: 18219
 		public PguiButtonCtrl BtnCommunication;
 
-		// Token: 0x0400472C RID: 18220
 		public PguiButtonCtrl BtnMain;
 
-		// Token: 0x0400472D RID: 18221
 		public PguiButtonCtrl BtnFriends;
 
-		// Token: 0x0400472E RID: 18222
 		public PguiButtonCtrl BtnEvent;
 
-		// Token: 0x0400472F RID: 18223
 		public PguiButtonCtrl BtnArai;
 
-		// Token: 0x04004730 RID: 18224
 		public PguiButtonCtrl BtnPvp;
 	}
 
-	// Token: 0x02000B5D RID: 2909
 	public class MOVIE
 	{
-		// Token: 0x0600429F RID: 17055 RVA: 0x00200D84 File Offset: 0x001FEF84
 		public MOVIE(Transform baseTr)
 		{
 			this.BtnSkip = baseTr.Find("All/Btn_Skip").GetComponent<PguiButtonCtrl>();
@@ -2074,83 +1950,47 @@ public class SceneStoryView : BaseScene
 			this.seek = baseTr.Find("All/SeekBar").GetComponent<PguiSlider>();
 		}
 
-		// Token: 0x04004731 RID: 18225
 		public PguiButtonCtrl BtnSkip;
 
-		// Token: 0x04004732 RID: 18226
 		public PguiButtonCtrl BtnPlay;
 
-		// Token: 0x04004733 RID: 18227
 		public PguiButtonCtrl BtnStop;
 
-		// Token: 0x04004734 RID: 18228
 		public PguiSlider seek;
 	}
 
-	// Token: 0x02000B5E RID: 2910
 	public enum MODE
 	{
-		// Token: 0x04004736 RID: 18230
 		NONE,
-		// Token: 0x04004737 RID: 18231
 		SELECT,
-		// Token: 0x04004738 RID: 18232
 		SCENARIO,
-		// Token: 0x04004739 RID: 18233
 		ANY2CATEGORY,
-		// Token: 0x0400473A RID: 18234
 		CATEGORY,
-		// Token: 0x0400473B RID: 18235
 		ANY2MAIN,
-		// Token: 0x0400473C RID: 18236
 		MAIN,
-		// Token: 0x0400473D RID: 18237
 		ANY2CELLVAL,
-		// Token: 0x0400473E RID: 18238
 		CELLVAL,
-		// Token: 0x0400473F RID: 18239
 		ANY2MAIN2,
-		// Token: 0x04004740 RID: 18240
 		MAIN2,
-		// Token: 0x04004741 RID: 18241
 		FRIENDS,
-		// Token: 0x04004742 RID: 18242
 		EVENT,
-		// Token: 0x04004743 RID: 18243
 		ARAI,
-		// Token: 0x04004744 RID: 18244
 		PVP,
-		// Token: 0x04004745 RID: 18245
 		PVP2ETC,
-		// Token: 0x04004746 RID: 18246
 		ETC,
-		// Token: 0x04004747 RID: 18247
 		ETC2PVP,
-		// Token: 0x04004748 RID: 18248
 		STORY,
-		// Token: 0x04004749 RID: 18249
 		MOVIE,
-		// Token: 0x0400474A RID: 18250
 		COMMUNICATIONCHARA,
-		// Token: 0x0400474B RID: 18251
 		COMMUNICATIONSELECT,
-		// Token: 0x0400474C RID: 18252
 		NOTHING,
-		// Token: 0x0400474D RID: 18253
 		LOAD,
-		// Token: 0x0400474E RID: 18254
 		PLAY,
-		// Token: 0x0400474F RID: 18255
 		STOP,
-		// Token: 0x04004750 RID: 18256
 		CLOSE,
-		// Token: 0x04004751 RID: 18257
 		ANY2MAIN3,
-		// Token: 0x04004752 RID: 18258
 		MAIN3,
-		// Token: 0x04004753 RID: 18259
 		LOGIN_SCENARIO_GROUP,
-		// Token: 0x04004754 RID: 18260
 		LOGIN_SCENARIO_LIST
 	}
 }

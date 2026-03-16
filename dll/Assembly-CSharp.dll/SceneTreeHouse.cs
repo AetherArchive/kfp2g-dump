@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -14,11 +14,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-// Token: 0x02000184 RID: 388
 public class SceneTreeHouse : BaseScene
 {
-	// Token: 0x170003D0 RID: 976
-	// (get) Token: 0x06001936 RID: 6454 RVA: 0x00134FC9 File Offset: 0x001331C9
 	private bool IsNight
 	{
 		get
@@ -27,13 +24,11 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x06001937 RID: 6455 RVA: 0x00134FD4 File Offset: 0x001331D4
 	private string stampIcon(int id)
 	{
 		return "Texture2D/Icon_Stamp/icon_stamp_" + id.ToString("D2");
 	}
 
-	// Token: 0x06001938 RID: 6456 RVA: 0x00134FEC File Offset: 0x001331EC
 	private float ClampAngle(float f)
 	{
 		while (f < 0f)
@@ -47,19 +42,16 @@ public class SceneTreeHouse : BaseScene
 		return f;
 	}
 
-	// Token: 0x06001939 RID: 6457 RVA: 0x00135015 File Offset: 0x00133215
 	private float Round30(float f)
 	{
 		return Mathf.Round(this.ClampAngle(f) / 30f) * 30f;
 	}
 
-	// Token: 0x0600193A RID: 6458 RVA: 0x0013502F File Offset: 0x0013322F
 	private float Round90(float f)
 	{
 		return Mathf.Round(this.ClampAngle(f) / 90f) * 90f;
 	}
 
-	// Token: 0x0600193B RID: 6459 RVA: 0x0013504C File Offset: 0x0013324C
 	public override void OnCreateScene()
 	{
 		this.guiData = new SceneTreeHouse.GUI(AssetManager.InstantiateAssetData("SceneTreeHouse/GUI/Prefab/GUI_TreeHouse", null).transform);
@@ -397,7 +389,6 @@ public class SceneTreeHouse : BaseScene
 		this.smallFurnitureDataList = DataManager.DmTreeHouse.GetSmallFurnitureData();
 	}
 
-	// Token: 0x0600193C RID: 6460 RVA: 0x00136918 File Offset: 0x00134B18
 	public override bool OnCreateSceneWait()
 	{
 		if (!AssetManager.IsLoadFinishAssetData(SceneTreeHouse.LOCATOR_PATH))
@@ -588,7 +579,6 @@ public class SceneTreeHouse : BaseScene
 		return true;
 	}
 
-	// Token: 0x0600193D RID: 6461 RVA: 0x001373EC File Offset: 0x001355EC
 	private IEnumerator StageLoad(bool ini)
 	{
 		this.camBCG.enabled = true;
@@ -744,7 +734,6 @@ public class SceneTreeHouse : BaseScene
 		goto IL_01FC;
 	}
 
-	// Token: 0x0600193E RID: 6462 RVA: 0x00137404 File Offset: 0x00135604
 	private void ChangeStageLight()
 	{
 		if (this.stageCtrl == null || this.stageLight == null)
@@ -777,7 +766,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x0600193F RID: 6463 RVA: 0x0013760C File Offset: 0x0013580C
 	public override void OnEnableScene(object args)
 	{
 		CanvasManager.HdlCmnMenu.SetupMenu(true, "わいわいツリーハウス", new PguiCmnMenuCtrl.OnClickReturnButton(this.OnClickButtonMenuRetrun), "", new PguiCmnMenuCtrl.OnClickMoveSequenceButton(this.OnClickButtonMenu), null);
@@ -936,7 +924,6 @@ public class SceneTreeHouse : BaseScene
 			.Count > 0);
 	}
 
-	// Token: 0x06001940 RID: 6464 RVA: 0x00137FFC File Offset: 0x001361FC
 	public override bool OnEnableSceneWait()
 	{
 		if (DataManager.IsServerRequesting())
@@ -1283,7 +1270,6 @@ public class SceneTreeHouse : BaseScene
 		return true;
 	}
 
-	// Token: 0x06001941 RID: 6465 RVA: 0x001392F4 File Offset: 0x001374F4
 	private int SetFurniture(bool other)
 	{
 		List<SceneTreeHouse.FurnitureCtrl> list = (other ? this.otherFurniture : this.furnitureList);
@@ -1447,7 +1433,6 @@ public class SceneTreeHouse : BaseScene
 		return num;
 	}
 
-	// Token: 0x06001942 RID: 6466 RVA: 0x00139A64 File Offset: 0x00137C64
 	private List<Vector3> CalcFloorCorner(Transform trs, SceneTreeHouse.FurnitureData fd)
 	{
 		float num = (float)fd.siz.x * 0.25f - 0.05f;
@@ -1461,7 +1446,6 @@ public class SceneTreeHouse : BaseScene
 		};
 	}
 
-	// Token: 0x06001943 RID: 6467 RVA: 0x00139B0C File Offset: 0x00137D0C
 	private void ChkRug(bool other)
 	{
 		List<SceneTreeHouse.FurnitureCtrl> list = new List<SceneTreeHouse.FurnitureCtrl>((other ? this.otherFurniture : this.furnitureList).FindAll((SceneTreeHouse.FurnitureCtrl itm) => itm.data.dat.category == TreeHouseFurnitureStatic.Category.RUG));
@@ -1496,7 +1480,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x06001944 RID: 6468 RVA: 0x00139CF8 File Offset: 0x00137EF8
 	private void SetChara(bool other)
 	{
 		List<SceneTreeHouse.CharaCtrl> list = (other ? this.otherChara : this.charaList);
@@ -1533,7 +1516,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x06001945 RID: 6469 RVA: 0x00139E84 File Offset: 0x00138084
 	private void SetMonthlyPackInfo()
 	{
 		this.monthlyDay = TimeManager.Now.Day;
@@ -1566,7 +1548,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x06001946 RID: 6470 RVA: 0x0013A09C File Offset: 0x0013829C
 	private void ResetGyro()
 	{
 		this.guiData.btnGyro.gameObject.SetActive(SceneTreeHouse.gyroMode >= 0);
@@ -1581,7 +1562,6 @@ public class SceneTreeHouse : BaseScene
 		this.gyroAng = Vector2.zero;
 	}
 
-	// Token: 0x06001947 RID: 6471 RVA: 0x0013A20C File Offset: 0x0013840C
 	private void NextGyrocam()
 	{
 		SceneTreeHouse.FurnitureCtrl furnitureCtrl = this.gyroLst.Find((SceneTreeHouse.FurnitureCtrl itm) => itm.cam.Contains(this.gyroCam));
@@ -1602,7 +1582,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x06001948 RID: 6472 RVA: 0x0013A2A9 File Offset: 0x001384A9
 	public override void OnStartSceneFadeWait()
 	{
 		this.CtrlPaper();
@@ -1611,7 +1590,6 @@ public class SceneTreeHouse : BaseScene
 		this.CtrlChara(false);
 	}
 
-	// Token: 0x06001949 RID: 6473 RVA: 0x0013A2C6 File Offset: 0x001384C6
 	public override void OnStartControl()
 	{
 		this.guiData.anime.ExResumeAnimation(null);
@@ -1620,7 +1598,6 @@ public class SceneTreeHouse : BaseScene
 		this.MakefurnitureDataDisp();
 	}
 
-	// Token: 0x0600194A RID: 6474 RVA: 0x0013A308 File Offset: 0x00138508
 	public override void Update()
 	{
 		if (this.ienum.Count <= 0 && !this.winPanel.activeSelf && Input.GetKeyDown(KeyCode.Escape))
@@ -1915,7 +1892,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x0600194B RID: 6475 RVA: 0x0013B3B0 File Offset: 0x001395B0
 	private void SetBtnOk(bool b, bool c)
 	{
 		this.guiData.btnOk.SetActEnable(b, true, false);
@@ -1923,7 +1899,6 @@ public class SceneTreeHouse : BaseScene
 		this.guiData.btnViewPlace.gameObject.SetActive(c);
 	}
 
-	// Token: 0x0600194C RID: 6476 RVA: 0x0013B40C File Offset: 0x0013960C
 	private void PlacementFurniture()
 	{
 		if (this.IsPlacement() && this.furnitureMove != null)
@@ -2087,7 +2062,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x0600194D RID: 6477 RVA: 0x0013BF10 File Offset: 0x0013A110
 	private void CtrlAction(bool other)
 	{
 		List<SceneTreeHouse.FurnitureCtrl> list = new List<SceneTreeHouse.FurnitureCtrl>((other ? this.otherFurniture : this.furnitureList).FindAll((SceneTreeHouse.FurnitureCtrl itm) => itm.no > 0 && itm.mdl != null));
@@ -2324,7 +2298,6 @@ public class SceneTreeHouse : BaseScene
 		act.RemoveAll((SceneTreeHouse.ActionCtrl itm) => rmv.Contains(itm));
 	}
 
-	// Token: 0x0600194E RID: 6478 RVA: 0x0013CCE8 File Offset: 0x0013AEE8
 	private void CtrlFurniture(bool other)
 	{
 		bool flag = false;
@@ -3212,7 +3185,6 @@ public class SceneTreeHouse : BaseScene
 		list.RemoveAll((SceneTreeHouse.FurnitureCtrl itm) => itm.no < 0 && itm.obj == null);
 	}
 
-	// Token: 0x0600194F RID: 6479 RVA: 0x00140298 File Offset: 0x0013E498
 	private void FurnitureEffect1006Init(SceneTreeHouse.FurnitureCtrl fc)
 	{
 		if (fc.data.dat.charaActionId != 1006)
@@ -3226,13 +3198,11 @@ public class SceneTreeHouse : BaseScene
 		EffectManager.ReqLoadEffect(SceneTreeHouse.eff611051AdName, AssetManager.OWNER.TreeHouseStage, 0, null);
 	}
 
-	// Token: 0x06001950 RID: 6480 RVA: 0x00140304 File Offset: 0x0013E504
 	private bool FurnitureEffect1006Check(SceneTreeHouse.FurnitureCtrl fc)
 	{
 		return fc.data.dat.charaActionId != 1006 || (EffectManager.IsLoadFinishEffect(SceneTreeHouse.eff611051StName) && EffectManager.IsLoadFinishEffect(SceneTreeHouse.eff611051LpName) && EffectManager.IsLoadFinishEffect(SceneTreeHouse.eff611051EnName) && EffectManager.IsLoadFinishEffect(SceneTreeHouse.eff611051EbName) && EffectManager.IsLoadFinishEffect(SceneTreeHouse.eff611051AdName));
 	}
 
-	// Token: 0x06001951 RID: 6481 RVA: 0x00140368 File Offset: 0x0013E568
 	private void FurnitureEffect1006Term(SceneTreeHouse.FurnitureCtrl fc)
 	{
 		if (fc.data.dat.charaActionId != 1006)
@@ -3246,7 +3216,6 @@ public class SceneTreeHouse : BaseScene
 		EffectManager.UnloadEffect(SceneTreeHouse.eff611051AdName, AssetManager.OWNER.TreeHouseStage);
 	}
 
-	// Token: 0x06001952 RID: 6482 RVA: 0x001403CC File Offset: 0x0013E5CC
 	private void FurnitureEffect1006(SceneTreeHouse.FurnitureCtrl fc, List<SceneTreeHouse.ActionCtrl> act)
 	{
 		if (fc.data.dat.charaActionId != 1006)
@@ -3332,7 +3301,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x06001953 RID: 6483 RVA: 0x00140780 File Offset: 0x0013E980
 	private void FurnitureEffect2006Init(SceneTreeHouse.FurnitureCtrl fc)
 	{
 		if (fc.data.dat.charaActionId != 2006)
@@ -3346,13 +3314,11 @@ public class SceneTreeHouse : BaseScene
 		EffectManager.ReqLoadEffect(SceneTreeHouse.eff611052AdName, AssetManager.OWNER.TreeHouseStage, 0, null);
 	}
 
-	// Token: 0x06001954 RID: 6484 RVA: 0x001407EC File Offset: 0x0013E9EC
 	private bool FurnitureEffect2006Check(SceneTreeHouse.FurnitureCtrl fc)
 	{
 		return fc.data.dat.charaActionId != 2006 || (EffectManager.IsLoadFinishEffect(SceneTreeHouse.eff611052StName) && EffectManager.IsLoadFinishEffect(SceneTreeHouse.eff611052LpName) && EffectManager.IsLoadFinishEffect(SceneTreeHouse.eff611052EnName) && EffectManager.IsLoadFinishEffect(SceneTreeHouse.eff611052EbName) && EffectManager.IsLoadFinishEffect(SceneTreeHouse.eff611052AdName));
 	}
 
-	// Token: 0x06001955 RID: 6485 RVA: 0x00140850 File Offset: 0x0013EA50
 	private void FurnitureEffect2006Term(SceneTreeHouse.FurnitureCtrl fc)
 	{
 		if (fc.data.dat.charaActionId != 2006)
@@ -3366,7 +3332,6 @@ public class SceneTreeHouse : BaseScene
 		EffectManager.UnloadEffect(SceneTreeHouse.eff611052AdName, AssetManager.OWNER.TreeHouseStage);
 	}
 
-	// Token: 0x06001956 RID: 6486 RVA: 0x001408B4 File Offset: 0x0013EAB4
 	private void FurnitureEffect2006(SceneTreeHouse.FurnitureCtrl fc, List<SceneTreeHouse.ActionCtrl> act)
 	{
 		if (fc.data.dat.charaActionId != 2006)
@@ -3452,7 +3417,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x06001957 RID: 6487 RVA: 0x00140C64 File Offset: 0x0013EE64
 	private void SetAlpha(SceneTreeHouse.FurnitureCtrl fc)
 	{
 		float num = fc.alpha;
@@ -3469,7 +3433,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x06001958 RID: 6488 RVA: 0x00140D68 File Offset: 0x0013EF68
 	private void SetAlpha(MeshRenderer[] mesh, float alpha, bool sdw)
 	{
 		int num = ((alpha <= 0f) ? SceneTreeHouse.ignoreLayer : ((alpha < 1f) ? SceneTreeHouse.stageAlphaLayer : this.stageLocator.layer));
@@ -3492,7 +3455,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x06001959 RID: 6489 RVA: 0x00140E70 File Offset: 0x0013F070
 	private void StickInit(SceneTreeHouse.FurnitureCtrl fc)
 	{
 		if (fc.stick == null)
@@ -3513,7 +3475,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x0600195A RID: 6490 RVA: 0x00140F74 File Offset: 0x0013F174
 	private void StickCtrl(SceneTreeHouse.FurnitureCtrl fc, int typ, Vector3 pos)
 	{
 		if (fc.stick == null || typ >= fc.stick.Count || typ < -fc.stick.Count)
@@ -3572,7 +3533,6 @@ public class SceneTreeHouse : BaseScene
 		fc.stick[typ].localEulerAngles = new Vector3(num, 0f, num2);
 	}
 
-	// Token: 0x0600195B RID: 6491 RVA: 0x001411A0 File Offset: 0x0013F3A0
 	private void CtrlPaper()
 	{
 		using (List<SceneTreeHouse.PaperCtrl>.Enumerator enumerator = this.paperList.GetEnumerator())
@@ -3664,7 +3624,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x0600195C RID: 6492 RVA: 0x001415AC File Offset: 0x0013F7AC
 	private void CtrlChara(bool other)
 	{
 		float num = 1f;
@@ -3992,7 +3951,6 @@ public class SceneTreeHouse : BaseScene
 		list2.RemoveAll((SceneTreeHouse.CharaCtrl itm) => itm.no < 0 && itm.hdl == null);
 	}
 
-	// Token: 0x0600195D RID: 6493 RVA: 0x00142804 File Offset: 0x00140A04
 	private void CtrlCharaActionLoop(SceneTreeHouse.CharaCtrl cc, ref CharaMotionDefine.ActKey mot, ref bool lp)
 	{
 		if (cc.act == 1001)
@@ -4098,7 +4056,6 @@ public class SceneTreeHouse : BaseScene
 		lp = true;
 	}
 
-	// Token: 0x0600195E RID: 6494 RVA: 0x00142C58 File Offset: 0x00140E58
 	private void CtrlCharaActionSynchro(SceneTreeHouse.CharaCtrl cc, ref CharaMotionDefine.ActKey mot, ref bool lp, SceneTreeHouse.ActionCtrl ac)
 	{
 		if (cc.act != 1004 && cc.act != 2028)
@@ -4180,7 +4137,6 @@ public class SceneTreeHouse : BaseScene
 		mot = list[0];
 	}
 
-	// Token: 0x0600195F RID: 6495 RVA: 0x00142ED8 File Offset: 0x001410D8
 	private void CtrlCharaActionAlone(SceneTreeHouse.CharaCtrl cc, ref CharaMotionDefine.ActKey mot, ref bool lp, SceneTreeHouse.ActionCtrl ac)
 	{
 		if (cc.act != 2004)
@@ -4229,7 +4185,6 @@ public class SceneTreeHouse : BaseScene
 		mot = list[0];
 	}
 
-	// Token: 0x06001960 RID: 6496 RVA: 0x00142FC4 File Offset: 0x001411C4
 	private void CtrlCharaActionSequence(SceneTreeHouse.CharaCtrl cc, ref CharaMotionDefine.ActKey mot, ref bool lp, SceneTreeHouse.ActionCtrl ac)
 	{
 		List<CharaMotionDefine.ActKey> list;
@@ -4274,7 +4229,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x06001961 RID: 6497 RVA: 0x0014311C File Offset: 0x0014131C
 	private void CtrlCharaAction1006(SceneTreeHouse.CharaCtrl cc, ref CharaMotionDefine.ActKey mot, ref bool lp, SceneTreeHouse.ActionCtrl ac, SceneTreeHouse.FurnitureCtrl fc, float a)
 	{
 		if (cc.act != 1006)
@@ -4402,7 +4356,6 @@ public class SceneTreeHouse : BaseScene
 		this.StickCtrl(fc, flag2 ? cc.idx : (-1 - cc.idx), flag2 ? cc.hdl.transform.InverseTransformPoint(cc.hdl.GetNodePos("j_wrist_l")) : Vector3.zero);
 	}
 
-	// Token: 0x06001962 RID: 6498 RVA: 0x001435D0 File Offset: 0x001417D0
 	private void CtrlCharaAction2006(SceneTreeHouse.CharaCtrl cc, ref CharaMotionDefine.ActKey mot, ref bool lp, SceneTreeHouse.ActionCtrl ac, SceneTreeHouse.FurnitureCtrl fc, float a)
 	{
 		if (cc.act != 2006)
@@ -4459,7 +4412,6 @@ public class SceneTreeHouse : BaseScene
 		this.StickCtrl(fc, flag2 ? 0 : (-1), flag2 ? cc.hdl.transform.InverseTransformPoint(cc.hdl.GetNodePos("j_wrist_l")) : Vector3.zero);
 	}
 
-	// Token: 0x06001963 RID: 6499 RVA: 0x00143754 File Offset: 0x00141954
 	private void CtrlCharaActionWanage(SceneTreeHouse.CharaCtrl cc, ref CharaMotionDefine.ActKey mot, ref bool lp, SceneTreeHouse.ActionCtrl ac, SceneTreeHouse.FurnitureCtrl fc, float a, ref List<VOICE_TYPE> voc)
 	{
 		if (cc.act != 1010 && cc.act != 1026)
@@ -4744,7 +4696,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x06001964 RID: 6500 RVA: 0x001443E0 File Offset: 0x001425E0
 	private void CtrlCharaActionBall(SceneTreeHouse.CharaCtrl cc, ref CharaMotionDefine.ActKey mot, ref bool lp, SceneTreeHouse.ActionCtrl ac, SceneTreeHouse.FurnitureCtrl fc, float a, ref List<VOICE_TYPE> voc)
 	{
 		if (cc.act != 1013 && cc.act != 1027)
@@ -4998,7 +4949,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x06001965 RID: 6501 RVA: 0x00144F44 File Offset: 0x00143144
 	private void CtrlCharaAction1023(SceneTreeHouse.CharaCtrl cc, CharaMotionDefine.ActKey mot, SceneTreeHouse.FurnitureCtrl fc)
 	{
 		if (cc.act != 1023)
@@ -5048,7 +4998,6 @@ public class SceneTreeHouse : BaseScene
 		fc.handle.localPosition = vector2;
 	}
 
-	// Token: 0x06001966 RID: 6502 RVA: 0x001450D8 File Offset: 0x001432D8
 	private void CtrlCharaEffect(SceneTreeHouse.CharaCtrl cc, CharaMotionDefine.ActKey mot, SceneTreeHouse.ActionCtrl ac, Transform tmp, float a)
 	{
 		if (cc.eff == null)
@@ -5415,7 +5364,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x06001967 RID: 6503 RVA: 0x001463D8 File Offset: 0x001445D8
 	private Vector3 ChkFloorColli(Vector3 prv, Vector3 nxt, float sx, float sz)
 	{
 		bool flag = sx > 0f;
@@ -5488,7 +5436,6 @@ public class SceneTreeHouse : BaseScene
 		return nxt;
 	}
 
-	// Token: 0x06001968 RID: 6504 RVA: 0x001465F4 File Offset: 0x001447F4
 	private bool ChkFloorGrid(Vector3 p)
 	{
 		bool flag = false;
@@ -5506,7 +5453,6 @@ public class SceneTreeHouse : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06001969 RID: 6505 RVA: 0x0014668C File Offset: 0x0014488C
 	private Vector3 ChkWallColli(Vector3 prv, Vector3 nxt, float sx, float sy)
 	{
 		bool flag = sx > 0f;
@@ -5563,7 +5509,6 @@ public class SceneTreeHouse : BaseScene
 		return nxt;
 	}
 
-	// Token: 0x0600196A RID: 6506 RVA: 0x001468EC File Offset: 0x00144AEC
 	private float ChkWallGrid(Vector3 p)
 	{
 		float num = -9999f;
@@ -5582,7 +5527,6 @@ public class SceneTreeHouse : BaseScene
 		return num;
 	}
 
-	// Token: 0x0600196B RID: 6507 RVA: 0x001469B8 File Offset: 0x00144BB8
 	private List<SceneTreeHouse.FurnitureCtrl> ChkPutFloor()
 	{
 		using (List<SceneTreeHouse.FurnitureCtrl>.Enumerator enumerator = this.furnitureList.GetEnumerator())
@@ -6093,7 +6037,6 @@ public class SceneTreeHouse : BaseScene
 		return lst;
 	}
 
-	// Token: 0x0600196C RID: 6508 RVA: 0x00148204 File Offset: 0x00146404
 	private bool ChkFloor(Vector3 p, List<Vector3> b)
 	{
 		for (int i = 0; i < b.Count; i++)
@@ -6108,7 +6051,6 @@ public class SceneTreeHouse : BaseScene
 		return true;
 	}
 
-	// Token: 0x0600196D RID: 6509 RVA: 0x0014826C File Offset: 0x0014646C
 	private List<SceneTreeHouse.FurnitureCtrl> ChkPutWall()
 	{
 		List<SceneTreeHouse.FurnitureCtrl> lst = new List<SceneTreeHouse.FurnitureCtrl>();
@@ -6546,7 +6488,6 @@ public class SceneTreeHouse : BaseScene
 		return lst;
 	}
 
-	// Token: 0x0600196E RID: 6510 RVA: 0x00149B4C File Offset: 0x00147D4C
 	private bool ChkWall(Vector3 p, List<Vector3> b)
 	{
 		float num = b[0].x;
@@ -6564,13 +6505,11 @@ public class SceneTreeHouse : BaseScene
 		return p.x >= num && p.x <= num2 && p.y >= y && p.y <= y2;
 	}
 
-	// Token: 0x0600196F RID: 6511 RVA: 0x00149BE1 File Offset: 0x00147DE1
 	private bool ChkLine(float p1, float p2, float b11, float b12, float b21, float b22)
 	{
 		return (b21 - b11) * (p2 - b12) - (p1 - b11) * (b22 - b12) >= 0f;
 	}
 
-	// Token: 0x06001970 RID: 6512 RVA: 0x00149C00 File Offset: 0x00147E00
 	private float ChkDistance(Vector3 p, List<Vector3> b)
 	{
 		float num = 999999f;
@@ -6593,7 +6532,6 @@ public class SceneTreeHouse : BaseScene
 		return num;
 	}
 
-	// Token: 0x06001971 RID: 6513 RVA: 0x00149CB4 File Offset: 0x00147EB4
 	private float ChkDistance(float p1, float p2, float b11, float b12, float b21, float b22)
 	{
 		float num = b21 - b11;
@@ -6604,97 +6542,81 @@ public class SceneTreeHouse : BaseScene
 		return num4 * num4 + num5 * num5;
 	}
 
-	// Token: 0x06001972 RID: 6514 RVA: 0x00149CFC File Offset: 0x00147EFC
 	private bool IsTop()
 	{
 		return !this.guiOther.baseObj.activeSelf && (this.guiData.anime.ExIsCurrent("START") || this.guiData.anime.ExIsCurrent("END_SUB") || this.guiData.anime.ExIsCurrent("END03") || this.guiData.anime.ExIsCurrent("END04") || this.guiData.anime.ExIsCurrent("CAMERA_END"));
 	}
 
-	// Token: 0x06001973 RID: 6515 RVA: 0x00149D90 File Offset: 0x00147F90
 	private bool IsHide()
 	{
 		return !this.guiOther.baseObj.activeSelf && this.guiData.anime.ExIsCurrent("END02");
 	}
 
-	// Token: 0x06001974 RID: 6516 RVA: 0x00149DBC File Offset: 0x00147FBC
 	private bool IsEdit()
 	{
 		return !this.guiOther.baseObj.activeSelf && (this.guiData.anime.ExIsCurrent("LOOP") || this.guiData.anime.ExIsCurrent("LOOP_END") || this.guiData.anime.ExIsCurrent("END"));
 	}
 
-	// Token: 0x06001975 RID: 6517 RVA: 0x00149E22 File Offset: 0x00148022
 	private bool IsChara()
 	{
 		return !this.guiOther.baseObj.activeSelf && this.guiData.anime.ExIsCurrent("START_SUB");
 	}
 
-	// Token: 0x06001976 RID: 6518 RVA: 0x00149E50 File Offset: 0x00148050
 	private bool IsFurniture()
 	{
 		return !this.guiOther.baseObj.activeSelf && (this.guiData.anime.ExIsCurrent("LOOP_SUB") || this.guiData.anime.ExIsCurrent("LOOP_END02"));
 	}
 
-	// Token: 0x06001977 RID: 6519 RVA: 0x00149E9F File Offset: 0x0014809F
 	private bool IsPlacement()
 	{
 		return !this.guiOther.baseObj.activeSelf && this.guiData.anime.ExIsCurrent("LOOP_SUB02");
 	}
 
-	// Token: 0x06001978 RID: 6520 RVA: 0x00149ECC File Offset: 0x001480CC
 	private bool IsCamera()
 	{
 		return !this.guiOther.baseObj.activeSelf && (this.guiData.anime.ExIsCurrent("CAMERA_START") || this.guiData.anime.ExIsCurrent("CAMERA_HIDE_END"));
 	}
 
-	// Token: 0x06001979 RID: 6521 RVA: 0x00149F1C File Offset: 0x0014811C
 	private bool IsCameraHide()
 	{
 		return !this.guiOther.baseObj.activeSelf && (this.guiData.anime.ExIsCurrent("CAMERA_HIDE") || this.guiData.anime.ExIsCurrent("VR_POPUP"));
 	}
 
-	// Token: 0x0600197A RID: 6522 RVA: 0x00149F6C File Offset: 0x0014816C
 	private bool IsOther()
 	{
 		return this.guiOther.baseObj.activeSelf && (this.guiOther.anime.ExIsCurrent("START") || this.guiOther.anime.ExIsCurrent("END02") || this.guiOther.anime.ExIsCurrent("END_PROF") || this.guiOther.anime.ExIsCurrent("CAMERA_END"));
 	}
 
-	// Token: 0x0600197B RID: 6523 RVA: 0x00149FEC File Offset: 0x001481EC
 	private bool IsOtherHide()
 	{
 		return this.guiOther.baseObj.activeSelf && (this.guiOther.anime.ExIsCurrent("START02") || this.guiOther.anime.ExIsCurrent("ESC_PROF"));
 	}
 
-	// Token: 0x0600197C RID: 6524 RVA: 0x0014A03B File Offset: 0x0014823B
 	private bool IsOtherInfo()
 	{
 		return this.guiOther.baseObj.activeSelf && this.guiOther.anime.ExIsCurrent("START_PROF");
 	}
 
-	// Token: 0x0600197D RID: 6525 RVA: 0x0014A068 File Offset: 0x00148268
 	private bool IsOtherCamera()
 	{
 		return this.guiOther.baseObj.activeSelf && (this.guiOther.anime.ExIsCurrent("CAMERA_START") || this.guiOther.anime.ExIsCurrent("CAMERA_HIDE_END"));
 	}
 
-	// Token: 0x0600197E RID: 6526 RVA: 0x0014A0B7 File Offset: 0x001482B7
 	private bool IsOtherCameraHide()
 	{
 		return this.guiOther.baseObj.activeSelf && this.guiOther.anime.ExIsCurrent("CAMERA_HIDE");
 	}
 
-	// Token: 0x0600197F RID: 6527 RVA: 0x0014A0E2 File Offset: 0x001482E2
 	private void Top2Chara()
 	{
 		this.guiData.anime.ExPlayAnimation("START_SUB", null);
 	}
 
-	// Token: 0x06001980 RID: 6528 RVA: 0x0014A0FA File Offset: 0x001482FA
 	private void Chara2Top()
 	{
 		this.guiData.anime.ExPlayAnimation("END_SUB", null);
 	}
 
-	// Token: 0x06001981 RID: 6529 RVA: 0x0014A114 File Offset: 0x00148314
 	private void Top2Edit()
 	{
 		this.guiData.popupMachineAll.SetActive(false);
@@ -6715,7 +6637,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x06001982 RID: 6530 RVA: 0x0014A217 File Offset: 0x00148417
 	private void Edit2Top()
 	{
 		this.guiData.anime.ExPlayAnimation("END03", null);
@@ -6724,7 +6645,6 @@ public class SceneTreeHouse : BaseScene
 		this.RemoveMachineUITemporarily();
 	}
 
-	// Token: 0x06001983 RID: 6531 RVA: 0x0014A248 File Offset: 0x00148448
 	private void Edit2Furniture()
 	{
 		this.guiData.anime.ExPlayAnimation("LOOP_SUB", null);
@@ -6741,7 +6661,6 @@ public class SceneTreeHouse : BaseScene
 		this.isMove = 0;
 	}
 
-	// Token: 0x06001984 RID: 6532 RVA: 0x0014A32C File Offset: 0x0014852C
 	private void Edit2Placement()
 	{
 		this.guiData.anime.ExPlayAnimation("LOOP_SUB02", null);
@@ -6750,7 +6669,6 @@ public class SceneTreeHouse : BaseScene
 		this.guiData.furnitureList.SetActive(false);
 	}
 
-	// Token: 0x06001985 RID: 6533 RVA: 0x0014A388 File Offset: 0x00148588
 	private void Furniture2Edit()
 	{
 		bool flag = this.furnitureList.Find((SceneTreeHouse.FurnitureCtrl itm) => itm.no > 0) != null;
@@ -6771,7 +6689,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x06001986 RID: 6534 RVA: 0x0014A4A0 File Offset: 0x001486A0
 	private void Furniture2Placement()
 	{
 		this.guiData.anime.ExPlayAnimation("LOOP_SUB02", null);
@@ -6779,7 +6696,6 @@ public class SceneTreeHouse : BaseScene
 		this.guiData.btnTid.gameObject.SetActive(false);
 	}
 
-	// Token: 0x06001987 RID: 6535 RVA: 0x0014A4E0 File Offset: 0x001486E0
 	private void Placement2Furniture()
 	{
 		this.guiData.anime.ExPlayAnimation("LOOP_END02", null);
@@ -6795,7 +6711,6 @@ public class SceneTreeHouse : BaseScene
 		this.guiData.btnPlacemennt.SetActEnable(true, false, false);
 	}
 
-	// Token: 0x06001988 RID: 6536 RVA: 0x0014A5BC File Offset: 0x001487BC
 	private void Placement2Edit()
 	{
 		bool flag = this.furnitureList.Find((SceneTreeHouse.FurnitureCtrl itm) => itm.no > 0) != null;
@@ -6816,7 +6731,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x06001989 RID: 6537 RVA: 0x0014A6D4 File Offset: 0x001488D4
 	private void Top2Hide()
 	{
 		this.guiData.popupMachineAll.SetActive(false);
@@ -6824,7 +6738,6 @@ public class SceneTreeHouse : BaseScene
 		CanvasManager.HdlCmnMenu.SetActiveMenu(false);
 	}
 
-	// Token: 0x0600198A RID: 6538 RVA: 0x0014A709 File Offset: 0x00148909
 	private void Hide2Top()
 	{
 		this.guiData.popupMachineAll.SetActive(true);
@@ -6832,7 +6745,6 @@ public class SceneTreeHouse : BaseScene
 		CanvasManager.HdlCmnMenu.SetActiveMenu(true);
 	}
 
-	// Token: 0x0600198B RID: 6539 RVA: 0x0014A73E File Offset: 0x0014893E
 	private void Top2Camera()
 	{
 		this.guiData.popupMachineAll.SetActive(false);
@@ -6840,7 +6752,6 @@ public class SceneTreeHouse : BaseScene
 		CanvasManager.HdlCmnMenu.SetActiveMenu(false);
 	}
 
-	// Token: 0x0600198C RID: 6540 RVA: 0x0014A773 File Offset: 0x00148973
 	private void Camera2Top()
 	{
 		this.guiData.anime.ExPlayAnimation("CAMERA_END", null);
@@ -6849,83 +6760,70 @@ public class SceneTreeHouse : BaseScene
 		this.RemoveMachineUITemporarily();
 	}
 
-	// Token: 0x0600198D RID: 6541 RVA: 0x0014A7A4 File Offset: 0x001489A4
 	private void Camera2Hide()
 	{
 		this.guiData.anime.ExPlayAnimation("CAMERA_HIDE", null);
 	}
 
-	// Token: 0x0600198E RID: 6542 RVA: 0x0014A7BC File Offset: 0x001489BC
 	private void Hide2Camera()
 	{
 		this.guiData.anime.ExPlayAnimation("CAMERA_HIDE_END", null);
 	}
 
-	// Token: 0x0600198F RID: 6543 RVA: 0x0014A7D4 File Offset: 0x001489D4
 	private void InfoVR()
 	{
 		this.guiData.anime.ExPlayAnimation("VR_POPUP", null);
 	}
 
-	// Token: 0x06001990 RID: 6544 RVA: 0x0014A7EC File Offset: 0x001489EC
 	private void Other2Hide()
 	{
 		this.guiOther.anime.ExPlayAnimation("START02", null);
 	}
 
-	// Token: 0x06001991 RID: 6545 RVA: 0x0014A804 File Offset: 0x00148A04
 	private void Hide2Other()
 	{
 		this.guiOther.anime.ExPlayAnimation("END02", null);
 		this.guiOther.btnInfo.transform.Find("BaseImage/Mark_PullDown").GetComponent<PguiReplaceSpriteCtrl>().Replace(1);
 	}
 
-	// Token: 0x06001992 RID: 6546 RVA: 0x0014A841 File Offset: 0x00148A41
 	private void Other2Info()
 	{
 		this.guiOther.anime.ExPlayAnimation("START_PROF", null);
 		this.guiOther.btnInfo.transform.Find("BaseImage/Mark_PullDown").GetComponent<PguiReplaceSpriteCtrl>().Replace(2);
 	}
 
-	// Token: 0x06001993 RID: 6547 RVA: 0x0014A87E File Offset: 0x00148A7E
 	private void Info2Other()
 	{
 		this.guiOther.anime.ExPlayAnimation("END_PROF", null);
 		this.guiOther.btnInfo.transform.Find("BaseImage/Mark_PullDown").GetComponent<PguiReplaceSpriteCtrl>().Replace(1);
 	}
 
-	// Token: 0x06001994 RID: 6548 RVA: 0x0014A8BB File Offset: 0x00148ABB
 	private void Info2Hide()
 	{
 		this.guiOther.anime.ExPlayAnimation("ESC_PROF", null);
 	}
 
-	// Token: 0x06001995 RID: 6549 RVA: 0x0014A8D3 File Offset: 0x00148AD3
 	private void Other2Camera()
 	{
 		this.guiOther.anime.ExPlayAnimation("CAMERA_START", null);
 	}
 
-	// Token: 0x06001996 RID: 6550 RVA: 0x0014A8EB File Offset: 0x00148AEB
 	private void Camera2Other()
 	{
 		this.guiOther.anime.ExPlayAnimation("CAMERA_END", null);
 		this.gyroCam = null;
 	}
 
-	// Token: 0x06001997 RID: 6551 RVA: 0x0014A90A File Offset: 0x00148B0A
 	private void OtherCamera2Hide()
 	{
 		this.guiOther.anime.ExPlayAnimation("CAMERA_HIDE", null);
 	}
 
-	// Token: 0x06001998 RID: 6552 RVA: 0x0014A922 File Offset: 0x00148B22
 	private void Hide2OtherCamera()
 	{
 		this.guiOther.anime.ExPlayAnimation("CAMERA_HIDE_END", null);
 	}
 
-	// Token: 0x06001999 RID: 6553 RVA: 0x0014A93C File Offset: 0x00148B3C
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		if (this.winPanel.activeSelf)
@@ -7550,7 +7448,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x0600199A RID: 6554 RVA: 0x0014BC04 File Offset: 0x00149E04
 	private void NewFurniture()
 	{
 		if (this.furnitureSel >= 0 && this.furnitureSel < this.allFurnitureDataList.Count)
@@ -7669,7 +7566,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x0600199B RID: 6555 RVA: 0x0014C17C File Offset: 0x0014A37C
 	private void DecideFurniture()
 	{
 		if (this.furnitureMove != null && this.furnitureMove.obj != null)
@@ -7811,7 +7707,6 @@ public class SceneTreeHouse : BaseScene
 		this.CalcMachineUI();
 	}
 
-	// Token: 0x0600199C RID: 6556 RVA: 0x0014C9C8 File Offset: 0x0014ABC8
 	private void CancelFurniture()
 	{
 		if (this.furnitureMove != null)
@@ -7888,7 +7783,6 @@ public class SceneTreeHouse : BaseScene
 		this.Placement2Edit();
 	}
 
-	// Token: 0x0600199D RID: 6557 RVA: 0x0014CE4C File Offset: 0x0014B04C
 	private void TidFurniture()
 	{
 		if (this.isMove != 0 && this.furnitureMove != null)
@@ -7939,13 +7833,11 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x0600199E RID: 6558 RVA: 0x0014D064 File Offset: 0x0014B264
 	private bool OnClickButtonMenu(SceneManager.SceneName sceneName, object sceneArgs)
 	{
 		return false;
 	}
 
-	// Token: 0x0600199F RID: 6559 RVA: 0x0014D068 File Offset: 0x0014B268
 	private void OnClickButtonMenuRetrun()
 	{
 		if (this.winPanel.activeSelf)
@@ -8027,7 +7919,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x060019A0 RID: 6560 RVA: 0x0014D1AB File Offset: 0x0014B3AB
 	private void OnTouchStart(Info info)
 	{
 		this.singleTap = false;
@@ -8043,7 +7934,6 @@ public class SceneTreeHouse : BaseScene
 		this.touchView = true;
 	}
 
-	// Token: 0x060019A1 RID: 6561 RVA: 0x0014D1E0 File Offset: 0x0014B3E0
 	private void OnTouchStart2(Info infoA, Info infoB, float distance, float rotation)
 	{
 		this.singleTap = false;
@@ -8063,13 +7953,11 @@ public class SceneTreeHouse : BaseScene
 		this.touchView = true;
 	}
 
-	// Token: 0x060019A2 RID: 6562 RVA: 0x0014D22F File Offset: 0x0014B42F
 	private void OnTouchEnd(Info info)
 	{
 		this.touchView = false;
 	}
 
-	// Token: 0x060019A3 RID: 6563 RVA: 0x0014D238 File Offset: 0x0014B438
 	private void OnTouchMove(Info info)
 	{
 		if (!this.touchView)
@@ -8116,7 +8004,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x060019A4 RID: 6564 RVA: 0x0014D4D4 File Offset: 0x0014B6D4
 	private void OnTouchMove2(Info infoA, Info infoB, float distance, float rotation)
 	{
 		if (!this.touchView)
@@ -8153,7 +8040,6 @@ public class SceneTreeHouse : BaseScene
 		this.moveView = infoA.DeltaPosition;
 	}
 
-	// Token: 0x060019A5 RID: 6565 RVA: 0x0014D5D0 File Offset: 0x0014B7D0
 	private void OnPinch(Info fingerA, Info fingerB, float distance, float rotation)
 	{
 		if (!this.touchView)
@@ -8176,7 +8062,6 @@ public class SceneTreeHouse : BaseScene
 		this.pinchView = distance * Mathf.Sqrt(1280f / (float)Screen.width * (720f / (float)Screen.height)) * 0.1f;
 	}
 
-	// Token: 0x060019A6 RID: 6566 RVA: 0x0014D690 File Offset: 0x0014B890
 	private void OnWheel(Info info, float distance)
 	{
 		if (this.touchView)
@@ -8203,7 +8088,6 @@ public class SceneTreeHouse : BaseScene
 		this.wheelView = distance * 10f;
 	}
 
-	// Token: 0x060019A7 RID: 6567 RVA: 0x0014D740 File Offset: 0x0014B940
 	private void OnTap(Info info)
 	{
 		if (!this.singleTap || this.doubleTap)
@@ -8448,7 +8332,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x060019A8 RID: 6568 RVA: 0x0014DFB0 File Offset: 0x0014C1B0
 	private float ChkScrDst(Vector3 cp, Vector2 tp)
 	{
 		if (this.camera.fieldCamera.WorldToViewportPoint(cp).z > 0.3f)
@@ -8474,7 +8357,6 @@ public class SceneTreeHouse : BaseScene
 		return 999999f;
 	}
 
-	// Token: 0x060019A9 RID: 6569 RVA: 0x0014E08C File Offset: 0x0014C28C
 	private void OnDoubleTap(Info info)
 	{
 		this.singleTap = false;
@@ -8506,7 +8388,6 @@ public class SceneTreeHouse : BaseScene
 		this.Hide2Camera();
 	}
 
-	// Token: 0x060019AA RID: 6570 RVA: 0x0014E164 File Offset: 0x0014C364
 	private void OnLongTap(Info info)
 	{
 		this.singleTap = false;
@@ -8538,14 +8419,12 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x060019AB RID: 6571 RVA: 0x0014E1F0 File Offset: 0x0014C3F0
 	private void RemoveMachineUITemporarily()
 	{
 		this.guiData.popupMachineAll.SetActive(false);
 		this.removeMachineUI = SceneTreeHouse.REMOVE_MACHINE_UI_SEC;
 	}
 
-	// Token: 0x060019AC RID: 6572 RVA: 0x0014E210 File Offset: 0x0014C410
 	private void CalcMachineUI()
 	{
 		if (!this.IsTop())
@@ -8578,7 +8457,6 @@ public class SceneTreeHouse : BaseScene
 		this.removeMachineUI = 0f;
 	}
 
-	// Token: 0x060019AD RID: 6573 RVA: 0x0014E38C File Offset: 0x0014C58C
 	private void AddMachineUI(SceneTreeHouse.FurnitureCtrl fc)
 	{
 		if (fc.machinePopup == null)
@@ -8609,7 +8487,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x060019AE RID: 6574 RVA: 0x0014E470 File Offset: 0x0014C670
 	private bool IsNewMachineOn(SceneTreeHouse.FurnitureData fd)
 	{
 		MstMasterRoomMachineData mstMachineData = DataManager.DmTreeHouse.GetMstMasterRoomMachineList().Find((MstMasterRoomMachineData x) => x.id == fd.dat.machineId);
@@ -8621,7 +8498,6 @@ public class SceneTreeHouse : BaseScene
 		return (mstMachineData.getItemTime * 60 - masterRoomMachineDataModel.nextsecond) * 100 / (mstMachineData.getItemTime * 60) >= mstMachineData.mdlOnoffPercent;
 	}
 
-	// Token: 0x060019AF RID: 6575 RVA: 0x0014E528 File Offset: 0x0014C728
 	private void UpdateMachineDisp(SceneTreeHouse.FurnitureCtrl fc, bool execOnOff)
 	{
 		if (fc.machinePopup == null)
@@ -8653,7 +8529,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x060019B0 RID: 6576 RVA: 0x0014E678 File Offset: 0x0014C878
 	private int GetNumMachine(MasterRoomMachineDataModel machineTimeData, MstMasterRoomMachineData mstMachineData)
 	{
 		long num = PrjUtil.ConvertTimeToTicks(machineTimeData.lastGettime);
@@ -8662,21 +8537,18 @@ public class SceneTreeHouse : BaseScene
 		return ((mstMachineData.getItemId > 0) ? mstMachineData.getItemNum : mstMachineData.getStaminaNum) * num2;
 	}
 
-	// Token: 0x060019B1 RID: 6577 RVA: 0x0014E6E0 File Offset: 0x0014C8E0
 	private bool IsMachineStackMax(MasterRoomMachineDataModel machineTimeData, MstMasterRoomMachineData mstMachineData)
 	{
 		long num = PrjUtil.ConvertTimeToTicks(machineTimeData.lastGettime);
 		return (int)((TimeManager.Now.Ticks - num) / TimeManager.Second2Tick((long)(mstMachineData.getItemTime * 60))) >= mstMachineData.stackMax;
 	}
 
-	// Token: 0x060019B2 RID: 6578 RVA: 0x0014E724 File Offset: 0x0014C924
 	private long GetMachinePassTime(MasterRoomMachineDataModel machineTimeData)
 	{
 		long num = PrjUtil.ConvertTimeToTicks(machineTimeData.lastGettime);
 		return TimeManager.Now.Ticks - num;
 	}
 
-	// Token: 0x060019B3 RID: 6579 RVA: 0x0014E74C File Offset: 0x0014C94C
 	private void OnClickMachine(PguiButtonCtrl button)
 	{
 		if (this.IsTop())
@@ -8685,7 +8557,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x060019B4 RID: 6580 RVA: 0x0014E768 File Offset: 0x0014C968
 	private IEnumerator MachineOpen(PguiButtonCtrl button)
 	{
 		this.winMachine.isPrepared = false;
@@ -8723,7 +8594,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019B5 RID: 6581 RVA: 0x0014E77E File Offset: 0x0014C97E
 	private bool DecideMachine(int idx)
 	{
 		if (idx > 0)
@@ -8733,7 +8603,6 @@ public class SceneTreeHouse : BaseScene
 		return true;
 	}
 
-	// Token: 0x060019B6 RID: 6582 RVA: 0x0014E796 File Offset: 0x0014C996
 	private IEnumerator ReceiveMcnItem()
 	{
 		DataManager.DmTreeHouse.RequestActionReceiveMcnItem(false, this.winMachine.fc.no);
@@ -8747,7 +8616,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019B7 RID: 6583 RVA: 0x0014E7A5 File Offset: 0x0014C9A5
 	private bool DecideMachineAll(int idx)
 	{
 		if (idx > 0)
@@ -8757,7 +8625,6 @@ public class SceneTreeHouse : BaseScene
 		return true;
 	}
 
-	// Token: 0x060019B8 RID: 6584 RVA: 0x0014E7BD File Offset: 0x0014C9BD
 	private IEnumerator ReceiveMcnItemAll()
 	{
 		DataManager.DmTreeHouse.RequestActionReceiveMcnItem(true, 0);
@@ -8770,7 +8637,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019B9 RID: 6585 RVA: 0x0014E7CC File Offset: 0x0014C9CC
 	private IEnumerator MachineReceiveOpen(bool is_all)
 	{
 		this.winPanel.SetActive(true);
@@ -8816,7 +8682,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019BA RID: 6586 RVA: 0x0014E7E2 File Offset: 0x0014C9E2
 	private IEnumerator MachineAllOpen()
 	{
 		this.winPanel.SetActive(true);
@@ -8845,7 +8710,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019BB RID: 6587 RVA: 0x0014E7F4 File Offset: 0x0014C9F4
 	private SceneTreeHouse.FurnitureCtrl ChkFurniturePos(Vector2 infoPos, bool isForMove)
 	{
 		int num = 970299;
@@ -8947,7 +8811,6 @@ public class SceneTreeHouse : BaseScene
 		return furnitureCtrl;
 	}
 
-	// Token: 0x060019BC RID: 6588 RVA: 0x0014EC5C File Offset: 0x0014CE5C
 	private void SetMoveFurniture()
 	{
 		float num = Mathf.DeltaAngle(0f, this.furnitureMove.obj.transform.eulerAngles.y);
@@ -8985,7 +8848,6 @@ public class SceneTreeHouse : BaseScene
 		SoundManager.Play("prd_se_room_furniture_set", false, false);
 	}
 
-	// Token: 0x060019BD RID: 6589 RVA: 0x0014EDE8 File Offset: 0x0014CFE8
 	private void InitMoveFurniture()
 	{
 		if (this.furnitureMove.data.dat.category == TreeHouseFurnitureStatic.Category.CURTAIN || this.furnitureMove.data.dat.category == TreeHouseFurnitureStatic.Category.WALL_HANGINGS)
@@ -9018,7 +8880,6 @@ public class SceneTreeHouse : BaseScene
 		this.furnitureMove.movdep = this.furnitureMove.depend;
 	}
 
-	// Token: 0x060019BE RID: 6590 RVA: 0x0014F004 File Offset: 0x0014D204
 	private bool OnUiTap(Vector2 pos)
 	{
 		PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
@@ -9028,7 +8889,6 @@ public class SceneTreeHouse : BaseScene
 		return list.Count > 0;
 	}
 
-	// Token: 0x060019BF RID: 6591 RVA: 0x0014F040 File Offset: 0x0014D240
 	public override void OnDisableScene()
 	{
 		if (this.furnitureMapSave != null)
@@ -9097,7 +8957,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x060019C0 RID: 6592 RVA: 0x0014F370 File Offset: 0x0014D570
 	public override bool OnDisableSceneWait()
 	{
 		this.CtrlPaper();
@@ -9232,7 +9091,6 @@ public class SceneTreeHouse : BaseScene
 		return true;
 	}
 
-	// Token: 0x060019C1 RID: 6593 RVA: 0x0014F924 File Offset: 0x0014DB24
 	public override void OnDestroyScene()
 	{
 		Object.Destroy(this.guiData.baseObj);
@@ -9269,7 +9127,6 @@ public class SceneTreeHouse : BaseScene
 		this.field = null;
 	}
 
-	// Token: 0x060019C2 RID: 6594 RVA: 0x0014FA54 File Offset: 0x0014DC54
 	private IEnumerator PlayTutorial()
 	{
 		yield return null;
@@ -9306,7 +9163,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019C3 RID: 6595 RVA: 0x0014FA63 File Offset: 0x0014DC63
 	private IEnumerator GetStamp(bool stamp = false)
 	{
 		SceneTreeHouse.<>c__DisplayClass394_0 CS$<>8__locals1 = new SceneTreeHouse.<>c__DisplayClass394_0();
@@ -9393,13 +9249,11 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019C4 RID: 6596 RVA: 0x0014FA79 File Offset: 0x0014DC79
 	private void SetupGetStamp(int index, GameObject go)
 	{
 		this.UpdateGetStamp(index, go);
 	}
 
-	// Token: 0x060019C5 RID: 6597 RVA: 0x0014FA84 File Offset: 0x0014DC84
 	private void UpdateGetStamp(int index, GameObject go)
 	{
 		TreeHouseReceiveStampLog.Log log = ((index >= 0 && index < this.logList.Count) ? this.logList[index] : null);
@@ -9440,12 +9294,10 @@ public class SceneTreeHouse : BaseScene
 		transform.gameObject.SetActive(false);
 	}
 
-	// Token: 0x060019C6 RID: 6598 RVA: 0x0014FDC8 File Offset: 0x0014DFC8
 	private void SetupGetMachine(int index, GameObject go)
 	{
 	}
 
-	// Token: 0x060019C7 RID: 6599 RVA: 0x0014FDCC File Offset: 0x0014DFCC
 	private void UpdateGetMachine(int index, GameObject go)
 	{
 		MasterRoomMachineReceiveModel masterRoomMachineReceiveModel = ((index >= 0 && index < DataManager.DmTreeHouse.GetMachineReceiveList().Count) ? DataManager.DmTreeHouse.GetMachineReceiveList()[index] : null);
@@ -9458,7 +9310,6 @@ public class SceneTreeHouse : BaseScene
 		transform.Find("Txt_Num").GetComponent<PguiTextCtrl>().text = ((masterRoomMachineReceiveModel.getItemId > 0) ? masterRoomMachineReceiveModel.getItemNum.ToString() : masterRoomMachineReceiveModel.getStamina.ToString());
 	}
 
-	// Token: 0x060019C8 RID: 6600 RVA: 0x0014FE86 File Offset: 0x0014E086
 	private void SetupMachineAll(int index, GameObject go)
 	{
 		AEImage component = go.transform.Find("BaseImage").Find("AEImage_Max").GetComponent<AEImage>();
@@ -9466,7 +9317,6 @@ public class SceneTreeHouse : BaseScene
 		component.autoPlay = true;
 	}
 
-	// Token: 0x060019C9 RID: 6601 RVA: 0x0014FEB8 File Offset: 0x0014E0B8
 	private void UpdateMachineAll(int index, GameObject go)
 	{
 		List<MasterRoomMachineDataModel> treeHouseMachineFntrTimeList = DataManager.DmHome.GetHomeCheckResult().GetTreeHouseMachineFntrTimeList();
@@ -9512,7 +9362,6 @@ public class SceneTreeHouse : BaseScene
 		component.playOutTime = 0f;
 	}
 
-	// Token: 0x060019CA RID: 6602 RVA: 0x001501CC File Offset: 0x0014E3CC
 	private void SetupTreeHouseChara(int index, GameObject go)
 	{
 		foreach (object obj in go.transform)
@@ -9546,7 +9395,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x060019CB RID: 6603 RVA: 0x00150394 File Offset: 0x0014E594
 	private void OnClickChara(Transform icn, int no)
 	{
 		if (this.IsTop())
@@ -9599,7 +9447,6 @@ public class SceneTreeHouse : BaseScene
 		SoundManager.Play("prd_se_click", false, false);
 	}
 
-	// Token: 0x060019CC RID: 6604 RVA: 0x00150614 File Offset: 0x0014E814
 	private void OnClickCharaList(Transform tmp)
 	{
 		if (this.chgChr <= 0)
@@ -9672,13 +9519,11 @@ public class SceneTreeHouse : BaseScene
 		SoundManager.Play((id > 0) ? "prd_se_click" : "prd_se_cancel", false, false);
 	}
 
-	// Token: 0x060019CD RID: 6605 RVA: 0x0015098C File Offset: 0x0014EB8C
 	private void OnClickCharaOk()
 	{
 		this.ienum.Add(this.ChangeChara());
 	}
 
-	// Token: 0x060019CE RID: 6606 RVA: 0x0015099F File Offset: 0x0014EB9F
 	private IEnumerator ChangeChara()
 	{
 		if (this.chgChr > 0)
@@ -9825,7 +9670,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019CF RID: 6607 RVA: 0x001509B0 File Offset: 0x0014EBB0
 	private GameObject MakeFurniture(int no, int id, Vector3 pos, float dir, bool other)
 	{
 		GameObject gameObject = new GameObject((other ? "O" : "M") + no.ToString() + "-" + id.ToString());
@@ -9835,7 +9679,6 @@ public class SceneTreeHouse : BaseScene
 		return gameObject;
 	}
 
-	// Token: 0x060019D0 RID: 6608 RVA: 0x00150A2C File Offset: 0x0014EC2C
 	private void SetupCategory(int index, GameObject go)
 	{
 		PguiToggleButtonCtrl component = go.GetComponent<PguiToggleButtonCtrl>();
@@ -9847,7 +9690,6 @@ public class SceneTreeHouse : BaseScene
 		this.UpdateCategory(index, go);
 	}
 
-	// Token: 0x060019D1 RID: 6609 RVA: 0x00150A74 File Offset: 0x0014EC74
 	private void UpdateCategory(int index, GameObject go)
 	{
 		List<TreeHouseFurnitureStatic.Category> list = new List<TreeHouseFurnitureStatic.Category>(DataManagerTreeHouse.categoryList.Keys);
@@ -9868,7 +9710,6 @@ public class SceneTreeHouse : BaseScene
 		go.GetComponent<PguiToggleButtonCtrl>().SetToggleIndex((cat == this.categorySel) ? 1 : 0);
 	}
 
-	// Token: 0x060019D2 RID: 6610 RVA: 0x00150BC8 File Offset: 0x0014EDC8
 	private bool OnClickCategory(PguiToggleButtonCtrl button, int index)
 	{
 		if (button.GetToggleIndex() == 1)
@@ -9890,7 +9731,6 @@ public class SceneTreeHouse : BaseScene
 		return true;
 	}
 
-	// Token: 0x060019D3 RID: 6611 RVA: 0x00150CC0 File Offset: 0x0014EEC0
 	private void MakefurnitureDataDisp()
 	{
 		if (this.categorySel != TreeHouseFurnitureStatic.Category.WALL_HANGINGS && SceneTreeHouse.furnitureDispType != SceneTreeHouse.FurnitureDispType.ALL && SceneTreeHouse.furnitureDispType != SceneTreeHouse.FurnitureDispType.FAVORITE)
@@ -9939,7 +9779,6 @@ public class SceneTreeHouse : BaseScene
 		this.guiData.furnitureNone.text = "所持しているインテリアはありません";
 	}
 
-	// Token: 0x060019D4 RID: 6612 RVA: 0x00150F14 File Offset: 0x0014F114
 	private bool DispFunitureType(SceneTreeHouse.FurnitureData fd)
 	{
 		if (fd.dat.category == this.categorySel && fd.num > 0)
@@ -9973,7 +9812,6 @@ public class SceneTreeHouse : BaseScene
 		return false;
 	}
 
-	// Token: 0x060019D5 RID: 6613 RVA: 0x00150FA4 File Offset: 0x0014F1A4
 	private int SortFurnitureNumber(SceneTreeHouse.FurnitureData a, SceneTreeHouse.FurnitureData b)
 	{
 		int num = a.dat.subCategory - b.dat.subCategory;
@@ -9984,7 +9822,6 @@ public class SceneTreeHouse : BaseScene
 		return num;
 	}
 
-	// Token: 0x060019D6 RID: 6614 RVA: 0x00150FE8 File Offset: 0x0014F1E8
 	private int SortFurnitureDescend(SceneTreeHouse.FurnitureData a, SceneTreeHouse.FurnitureData b)
 	{
 		int num = b.sortSiz - a.sortSiz;
@@ -9995,7 +9832,6 @@ public class SceneTreeHouse : BaseScene
 		return num;
 	}
 
-	// Token: 0x060019D7 RID: 6615 RVA: 0x00151010 File Offset: 0x0014F210
 	private int SortFurnitureAscend(SceneTreeHouse.FurnitureData a, SceneTreeHouse.FurnitureData b)
 	{
 		int num = a.sortSiz - b.sortSiz;
@@ -10006,7 +9842,6 @@ public class SceneTreeHouse : BaseScene
 		return num;
 	}
 
-	// Token: 0x060019D8 RID: 6616 RVA: 0x00151038 File Offset: 0x0014F238
 	private int SortFurnitureName(SceneTreeHouse.FurnitureData a, SceneTreeHouse.FurnitureData b)
 	{
 		int num = DataManager.DmPhoto.ComparePhotoPackDataNyName(new string[]
@@ -10025,7 +9860,6 @@ public class SceneTreeHouse : BaseScene
 		return num;
 	}
 
-	// Token: 0x060019D9 RID: 6617 RVA: 0x001510A4 File Offset: 0x0014F2A4
 	private bool ExecSort(int index)
 	{
 		if (index == 2)
@@ -10039,7 +9873,6 @@ public class SceneTreeHouse : BaseScene
 		return true;
 	}
 
-	// Token: 0x060019DA RID: 6618 RVA: 0x00151120 File Offset: 0x0014F320
 	private bool OnClickSort(PguiToggleButtonCtrl button, int index)
 	{
 		if (button.GetToggleIndex() == 1)
@@ -10053,7 +9886,6 @@ public class SceneTreeHouse : BaseScene
 		return true;
 	}
 
-	// Token: 0x060019DB RID: 6619 RVA: 0x00151184 File Offset: 0x0014F384
 	private void SetupFurniture(int index, GameObject go)
 	{
 		PguiButtonCtrl pguiButtonCtrl = go.GetComponent<PguiButtonCtrl>();
@@ -10086,7 +9918,6 @@ public class SceneTreeHouse : BaseScene
 		this.UpdateFurniture(index, go);
 	}
 
-	// Token: 0x060019DC RID: 6620 RVA: 0x001512AC File Offset: 0x0014F4AC
 	private void UpdateFurniture(int index, GameObject go)
 	{
 		SceneTreeHouse.FurnitureData fd = ((index >= 0 && index < this.furnitureDataDisp.Count) ? this.furnitureDataDisp[index] : null);
@@ -10243,7 +10074,6 @@ public class SceneTreeHouse : BaseScene
 		go.transform.Find("BaseImage/BtnFavorite").GetComponent<PguiToggleButtonCtrl>().SetToggleIndex((fd != null && this.favoriteFuniture.Contains(fd.dat.GetId())) ? 1 : 0);
 	}
 
-	// Token: 0x060019DD RID: 6621 RVA: 0x00151994 File Offset: 0x0014FB94
 	private void OnClickFurniture(PguiButtonCtrl button)
 	{
 		SceneTreeHouse.FurnitureData furnitureData = ((this.furnitureSel >= 0 && this.furnitureSel < this.allFurnitureDataList.Count) ? this.allFurnitureDataList[this.furnitureSel] : null);
@@ -10257,7 +10087,6 @@ public class SceneTreeHouse : BaseScene
 		this.ienum.Add(this.UpdateNewBadge());
 	}
 
-	// Token: 0x060019DE RID: 6622 RVA: 0x00151A68 File Offset: 0x0014FC68
 	private void OnClickFurnitureSet(PguiButtonCtrl button)
 	{
 		this.furnitureSel = button.transform.parent.GetComponent<PguiDataHolder>().id;
@@ -10275,7 +10104,6 @@ public class SceneTreeHouse : BaseScene
 		this.ienum.Add(this.UpdateNewBadge());
 	}
 
-	// Token: 0x060019DF RID: 6623 RVA: 0x00151B4D File Offset: 0x0014FD4D
 	private IEnumerator OnClickTid(PguiDataHolder pdh)
 	{
 		SceneTreeHouse.FurnitureData fd = ((pdh.id >= 0 && pdh.id < this.allFurnitureDataList.Count) ? this.allFurnitureDataList[pdh.id] : null);
@@ -10341,7 +10169,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019E0 RID: 6624 RVA: 0x00151B64 File Offset: 0x0014FD64
 	private bool OnClickFurnitureFavorite(PguiDataHolder pdh, int toggleIndex)
 	{
 		SceneTreeHouse.FurnitureData furnitureData = ((pdh.id >= 0 && pdh.id < this.allFurnitureDataList.Count) ? this.allFurnitureDataList[pdh.id] : null);
@@ -10361,7 +10188,6 @@ public class SceneTreeHouse : BaseScene
 		return true;
 	}
 
-	// Token: 0x060019E1 RID: 6625 RVA: 0x00151BEC File Offset: 0x0014FDEC
 	private IEnumerator UpdateFavorite()
 	{
 		HashSet<int> hashSet = new HashSet<int>(new List<int>(DataManager.DmTreeHouse.FavoriteFurnitureItemIdList).FindAll((int itm) => !this.favoriteFuniture.Contains(itm)));
@@ -10378,7 +10204,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019E2 RID: 6626 RVA: 0x00151BFB File Offset: 0x0014FDFB
 	private IEnumerator UpdateNewBadge()
 	{
 		if (this.furnitureNew.Count > 0)
@@ -10394,7 +10219,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019E3 RID: 6627 RVA: 0x00151C0A File Offset: 0x0014FE0A
 	private IEnumerator OnClickFurnitureIconLong(PguiDataHolder pdh)
 	{
 		SceneTreeHouse.FurnitureData furnitureData = ((pdh.id >= 0 && pdh.id < this.allFurnitureDataList.Count) ? this.allFurnitureDataList[pdh.id] : null);
@@ -10420,7 +10244,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019E4 RID: 6628 RVA: 0x00151C20 File Offset: 0x0014FE20
 	private IEnumerator SaveFurniture(List<TreeHouseFurnitureMapping> lst = null)
 	{
 		this.furnitureMapSave = ((lst == null) ? this.MakeFurnitureMap() : lst);
@@ -10433,7 +10256,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019E5 RID: 6629 RVA: 0x00151C38 File Offset: 0x0014FE38
 	private List<TreeHouseFurnitureMapping> MakeFurnitureMap()
 	{
 		List<TreeHouseFurnitureMapping> list = new List<TreeHouseFurnitureMapping>();
@@ -10474,7 +10296,6 @@ public class SceneTreeHouse : BaseScene
 		return list;
 	}
 
-	// Token: 0x060019E6 RID: 6630 RVA: 0x00151DB0 File Offset: 0x0014FFB0
 	private List<TreeHouseFurnitureMapping> CheckFurnitureMap(List<TreeHouseFurnitureMapping> map)
 	{
 		if (map == null)
@@ -10503,7 +10324,6 @@ public class SceneTreeHouse : BaseScene
 		return list;
 	}
 
-	// Token: 0x060019E7 RID: 6631 RVA: 0x00151E51 File Offset: 0x00150051
 	private IEnumerator ResetFurniture()
 	{
 		bool reset = false;
@@ -10541,7 +10361,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019E8 RID: 6632 RVA: 0x00151E60 File Offset: 0x00150060
 	private IEnumerator CancelFurnitureEdit()
 	{
 		bool cancel = false;
@@ -10579,7 +10398,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019E9 RID: 6633 RVA: 0x00151E6F File Offset: 0x0015006F
 	private IEnumerator MysetOpen()
 	{
 		this.winPanel.SetActive(true);
@@ -10605,7 +10423,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019EA RID: 6634 RVA: 0x00151E80 File Offset: 0x00150080
 	private void OnClickMyset(PguiButtonCtrl button)
 	{
 		if (!this.winPanel.activeSelf)
@@ -10643,7 +10460,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x060019EB RID: 6635 RVA: 0x00151F56 File Offset: 0x00150156
 	private IEnumerator MysetSave(SceneTreeHouse.BAR_MYSET bar)
 	{
 		SceneTreeHouse.<>c__DisplayClass434_0 CS$<>8__locals1 = new SceneTreeHouse.<>c__DisplayClass434_0();
@@ -10707,7 +10523,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019EC RID: 6636 RVA: 0x00151F6C File Offset: 0x0015016C
 	private IEnumerator MysetLoad(SceneTreeHouse.BAR_MYSET bar)
 	{
 		SceneTreeHouse.<>c__DisplayClass435_0 CS$<>8__locals1 = new SceneTreeHouse.<>c__DisplayClass435_0();
@@ -10749,7 +10564,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019ED RID: 6637 RVA: 0x00151F82 File Offset: 0x00150182
 	private IEnumerator SocialOpen()
 	{
 		if (!this.socialInfo)
@@ -10783,7 +10597,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019EE RID: 6638 RVA: 0x00151F94 File Offset: 0x00150194
 	private bool onClickTabSocial(int idx)
 	{
 		if (!this.IsTop() && !this.IsOther())
@@ -10807,7 +10620,6 @@ public class SceneTreeHouse : BaseScene
 		return true;
 	}
 
-	// Token: 0x060019EF RID: 6639 RVA: 0x00151FF4 File Offset: 0x001501F4
 	private void SetupSocial(int idx)
 	{
 		this.socialTabTyp = idx + TreeHouseSocialTabType.FOLLOW;
@@ -10871,7 +10683,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x060019F0 RID: 6640 RVA: 0x0015240C File Offset: 0x0015060C
 	private void SaveSocialIndex()
 	{
 		if (this.socialIndex.ContainsKey(this.socialTabTyp))
@@ -10880,7 +10691,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x060019F1 RID: 6641 RVA: 0x00152468 File Offset: 0x00150668
 	private void SetOpenConf()
 	{
 		this.winSocial.openConf.transform.Find("Name/Txt").GetComponent<PguiTextCtrl>().text = DataManager.DmTreeHouse.PublicInfo.houseName;
@@ -10901,7 +10711,6 @@ public class SceneTreeHouse : BaseScene
 		this.winSocial.openConf.transform.Find("OpenConf/Txt").GetComponent<PguiTextCtrl>().text = text;
 	}
 
-	// Token: 0x060019F2 RID: 6642 RVA: 0x00152554 File Offset: 0x00150754
 	private void OnClickSocial(PguiButtonCtrl button)
 	{
 		if (!this.IsTop() && !this.IsOther())
@@ -10970,7 +10779,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x060019F3 RID: 6643 RVA: 0x001526F8 File Offset: 0x001508F8
 	private void SetupSocialList(int index, GameObject go)
 	{
 		go.GetComponent<PguiButtonCtrl>().SetActEnable(false, false, true);
@@ -10985,14 +10793,12 @@ public class SceneTreeHouse : BaseScene
 		this.UpdateSocialList(index, go);
 	}
 
-	// Token: 0x060019F4 RID: 6644 RVA: 0x00152768 File Offset: 0x00150968
 	private void UpdateSocialList(int index, GameObject go)
 	{
 		TreeHouseSocialUser treeHouseSocialUser = ((this.socialUserList != null && index >= 0 && index < this.socialUserList.Count) ? this.socialUserList[index] : null);
 		this.SetUserData(go.transform, treeHouseSocialUser, index);
 	}
 
-	// Token: 0x060019F5 RID: 6645 RVA: 0x001527B0 File Offset: 0x001509B0
 	private void SetupSocialRank(int index, GameObject go)
 	{
 		go.GetComponent<PguiButtonCtrl>().SetActEnable(false, false, true);
@@ -11008,7 +10814,6 @@ public class SceneTreeHouse : BaseScene
 		this.UpdateSocialRank(index, go);
 	}
 
-	// Token: 0x060019F6 RID: 6646 RVA: 0x0015283C File Offset: 0x00150A3C
 	private void UpdateSocialRank(int index, GameObject go)
 	{
 		List<TreeHouseSocialUser> list = ((this.socialTabTyp == TreeHouseSocialTabType.RANKING) ? DataManager.DmTreeHouse.SocialRankingDataList : null);
@@ -11026,7 +10831,6 @@ public class SceneTreeHouse : BaseScene
 		this.SetUserData(go.transform.Find("TreeHouse_Social_ListBar"), treeHouseSocialUser, index);
 	}
 
-	// Token: 0x060019F7 RID: 6647 RVA: 0x00152A1C File Offset: 0x00150C1C
 	private void SetUserData(Transform tmp, TreeHouseSocialUser thsu, int index)
 	{
 		PguiButtonCtrl component = tmp.Find("BaseImage/Img_Line/Btn_Mission").GetComponent<PguiButtonCtrl>();
@@ -11089,7 +10893,6 @@ public class SceneTreeHouse : BaseScene
 		tmp.Find("Txt_PresentUser").GetComponent<PguiTextCtrl>().ReplaceTextByDefault(new string[] { "Param01", "Param02" }, new string[] { text2, text3 });
 	}
 
-	// Token: 0x060019F8 RID: 6648 RVA: 0x00152E24 File Offset: 0x00151024
 	private void OnClickVisit(PguiButtonCtrl button)
 	{
 		if (!this.winPanel.activeSelf || !this.winSocial.win.FinishedOpen() || (!this.IsTop() && !this.IsOther()) || this.ienum.Count > 0)
@@ -11116,7 +10919,6 @@ public class SceneTreeHouse : BaseScene
 		this.ienum.Add(this.StartOther(treeHouseSocialUser.friendId));
 	}
 
-	// Token: 0x060019F9 RID: 6649 RVA: 0x00152F3C File Offset: 0x0015113C
 	private void OnClickNextVisit()
 	{
 		if (this.socialVisitUserList != null && (this.socialUserList == null || this.socialUserList.Count == 0))
@@ -11145,7 +10947,6 @@ public class SceneTreeHouse : BaseScene
 		this.ienum.Add(this.StartOther(treeHouseSocialUser.friendId));
 	}
 
-	// Token: 0x060019FA RID: 6650 RVA: 0x00153038 File Offset: 0x00151238
 	private void OnClickStamp(Transform tmp, int id)
 	{
 		if (!this.IsOther() || this.IsOtherInfo() || this.IsOtherHide() || this.IsOtherCamera() || this.IsOtherCameraHide())
@@ -11174,7 +10975,6 @@ public class SceneTreeHouse : BaseScene
 		SoundManager.Play("prd_se_click", false, false);
 	}
 
-	// Token: 0x060019FB RID: 6651 RVA: 0x0015310C File Offset: 0x0015130C
 	private IEnumerator SendStamp(Transform tmp, int id)
 	{
 		DataManager.DmTreeHouse.RequestActionSendStamp(DataManager.DmTreeHouse.SocialVisitUserData.friendId, id, this.visitTabTyp);
@@ -11201,7 +11001,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019FC RID: 6652 RVA: 0x00153129 File Offset: 0x00151329
 	private IEnumerator NameOpen()
 	{
 		SceneTreeHouse.<>c__DisplayClass451_0 CS$<>8__locals1 = new SceneTreeHouse.<>c__DisplayClass451_0();
@@ -11263,7 +11062,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019FD RID: 6653 RVA: 0x00153138 File Offset: 0x00151338
 	private IEnumerator CommentOpen()
 	{
 		SceneTreeHouse.<>c__DisplayClass452_0 CS$<>8__locals1 = new SceneTreeHouse.<>c__DisplayClass452_0();
@@ -11316,7 +11114,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019FE RID: 6654 RVA: 0x00153147 File Offset: 0x00151347
 	private IEnumerator ConfOpen()
 	{
 		SceneTreeHouse.<>c__DisplayClass453_0 CS$<>8__locals1 = new SceneTreeHouse.<>c__DisplayClass453_0();
@@ -11359,7 +11156,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060019FF RID: 6655 RVA: 0x00153158 File Offset: 0x00151358
 	private bool OnClickOpenConf(PguiToggleButtonCtrl button, int index)
 	{
 		if (button.GetToggleIndex() == 1)
@@ -11381,7 +11177,6 @@ public class SceneTreeHouse : BaseScene
 		return true;
 	}
 
-	// Token: 0x06001A00 RID: 6656 RVA: 0x001531DD File Offset: 0x001513DD
 	private IEnumerator SearchFriend(int friendId)
 	{
 		string text;
@@ -11419,7 +11214,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001A01 RID: 6657 RVA: 0x001531F3 File Offset: 0x001513F3
 	private IEnumerator CopyMyid()
 	{
 		GUIUtility.systemCopyBuffer = DataManager.DmUserInfo.friendId.ToString();
@@ -11434,7 +11228,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001A02 RID: 6658 RVA: 0x00153202 File Offset: 0x00151402
 	private IEnumerator MusicOpen()
 	{
 		this.winPanel.SetActive(true);
@@ -11447,7 +11240,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001A03 RID: 6659 RVA: 0x00153214 File Offset: 0x00151414
 	private void OnClickMusic(PguiButtonCtrl button)
 	{
 		if (!this.IsTop())
@@ -11472,13 +11264,11 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x06001A04 RID: 6660 RVA: 0x00153290 File Offset: 0x00151490
 	private void SetupBgmLineup(int index, GameObject go)
 	{
 		this.UpdateBgmLineup(index, go);
 	}
 
-	// Token: 0x06001A05 RID: 6661 RVA: 0x0015329C File Offset: 0x0015149C
 	private void UpdateBgmLineup(int index, GameObject go)
 	{
 		List<Transform> list = new List<Transform>();
@@ -11513,7 +11303,6 @@ public class SceneTreeHouse : BaseScene
 		}
 	}
 
-	// Token: 0x06001A06 RID: 6662 RVA: 0x001533D8 File Offset: 0x001515D8
 	private void OnClickBgmLineup(GameObject go)
 	{
 		int id = int.Parse(go.name);
@@ -11539,7 +11328,6 @@ public class SceneTreeHouse : BaseScene
 		this.playBgm = this.ChangeBgm(id);
 	}
 
-	// Token: 0x06001A07 RID: 6663 RVA: 0x001534D0 File Offset: 0x001516D0
 	private int ChangeBgm(int id)
 	{
 		this.testBgm = -1f;
@@ -11556,7 +11344,6 @@ public class SceneTreeHouse : BaseScene
 		return num;
 	}
 
-	// Token: 0x06001A08 RID: 6664 RVA: 0x001535E0 File Offset: 0x001517E0
 	private IEnumerator ChargeOpen()
 	{
 		if (DataManager.DmHome.GetHomeCheckResult() == null || DataManager.DmHome.GetHomeCheckResult().IsTreeHouseBatteryCharge())
@@ -11599,7 +11386,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001A09 RID: 6665 RVA: 0x001535EF File Offset: 0x001517EF
 	private bool DecideCharge(int idx)
 	{
 		if (idx > 0)
@@ -11609,7 +11395,6 @@ public class SceneTreeHouse : BaseScene
 		return true;
 	}
 
-	// Token: 0x06001A0A RID: 6666 RVA: 0x00153607 File Offset: 0x00151807
 	private IEnumerator UseFuel()
 	{
 		if (this.chargeTim > this.batteryTim)
@@ -11656,7 +11441,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001A0B RID: 6667 RVA: 0x00153618 File Offset: 0x00151818
 	private void OnClickFuel(Transform fuel)
 	{
 		if (!this.IsTop())
@@ -11691,7 +11475,6 @@ public class SceneTreeHouse : BaseScene
 		this.DispChargeNum(fuel.Find("ItemIconSet"), this.chargeItm.use_item_num);
 	}
 
-	// Token: 0x06001A0C RID: 6668 RVA: 0x001536FC File Offset: 0x001518FC
 	private void OnLongClickFuel(Transform fuel)
 	{
 		if (!this.IsTop())
@@ -11713,7 +11496,6 @@ public class SceneTreeHouse : BaseScene
 		this.ienum.Add(this.FuelOpen(fuel));
 	}
 
-	// Token: 0x06001A0D RID: 6669 RVA: 0x00153754 File Offset: 0x00151954
 	private IEnumerator FuelOpen(Transform fuel)
 	{
 		SceneTreeHouse.<>c__DisplayClass468_0 CS$<>8__locals1 = new SceneTreeHouse.<>c__DisplayClass468_0();
@@ -11766,7 +11548,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001A0E RID: 6670 RVA: 0x0015376C File Offset: 0x0015196C
 	private void OnClickCharge(PguiButtonCtrl button)
 	{
 		if (!this.IsTop())
@@ -11810,14 +11591,12 @@ public class SceneTreeHouse : BaseScene
 		this.winChargeUse.slider.value = (float)this.chargeItm.use_item_num;
 	}
 
-	// Token: 0x06001A0F RID: 6671 RVA: 0x00153868 File Offset: 0x00151A68
 	private void DispChargeNum(Transform tmp, int num)
 	{
 		tmp.Find("Count").gameObject.SetActive(num > 0);
 		tmp.Find("Count/Num_Count").GetComponent<PguiTextCtrl>().text = num.ToString();
 	}
 
-	// Token: 0x06001A10 RID: 6672 RVA: 0x0015389F File Offset: 0x00151A9F
 	private IEnumerator ChargeGet()
 	{
 		ItemData userItemData = DataManager.DmItem.GetUserItemData(this.batteryData.getItemId);
@@ -11849,7 +11628,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001A11 RID: 6673 RVA: 0x001538AE File Offset: 0x00151AAE
 	private IEnumerator StartVR()
 	{
 		SceneTreeHouse.<>c__DisplayClass472_0 CS$<>8__locals1 = new SceneTreeHouse.<>c__DisplayClass472_0();
@@ -11884,7 +11662,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001A12 RID: 6674 RVA: 0x001538BD File Offset: 0x00151ABD
 	private IEnumerator StartOther(int id)
 	{
 		this.winSocial.win.ForceClose();
@@ -12055,13 +11832,11 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001A13 RID: 6675 RVA: 0x001538D3 File Offset: 0x00151AD3
 	private void OnClickEndVisit()
 	{
 		this.ienum.Add(this.EndOther());
 	}
 
-	// Token: 0x06001A14 RID: 6676 RVA: 0x001538E6 File Offset: 0x00151AE6
 	private IEnumerator EndOther()
 	{
 		if (this.IsOther())
@@ -12134,7 +11909,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001A15 RID: 6677 RVA: 0x001538F5 File Offset: 0x00151AF5
 	private IEnumerator FollowOther()
 	{
 		IEnumerator ie = DataManagerHelper.RequestFollowApply(DataManager.DmTreeHouse.SocialVisitUserData.friendId);
@@ -12158,7 +11932,6 @@ public class SceneTreeHouse : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001A17 RID: 6679 RVA: 0x00153954 File Offset: 0x00151B54
 	// Note: this type is marked as 'beforefieldinit'.
 	static SceneTreeHouse()
 	{
@@ -12462,7 +12235,6 @@ public class SceneTreeHouse : BaseScene
 		SceneTreeHouse.TREE_HOUSE_KEY = "treeHouse";
 	}
 
-	// Token: 0x06001A27 RID: 6695 RVA: 0x00154ABB File Offset: 0x00152CBB
 	[CompilerGenerated]
 	private bool <SearchFriend>g__decide|455_0(int idx)
 	{
@@ -12471,7 +12243,6 @@ public class SceneTreeHouse : BaseScene
 		return true;
 	}
 
-	// Token: 0x06001A28 RID: 6696 RVA: 0x00154ADA File Offset: 0x00152CDA
 	[CompilerGenerated]
 	private bool <CopyMyid>g__decide|456_0(int idx)
 	{
@@ -12480,7 +12251,6 @@ public class SceneTreeHouse : BaseScene
 		return true;
 	}
 
-	// Token: 0x06001A29 RID: 6697 RVA: 0x00154AFC File Offset: 0x00152CFC
 	[CompilerGenerated]
 	internal static bool <ChargeGet>g__decide|471_0(int idx)
 	{
@@ -12496,7 +12266,6 @@ public class SceneTreeHouse : BaseScene
 		return true;
 	}
 
-	// Token: 0x06001A2A RID: 6698 RVA: 0x00154B3E File Offset: 0x00152D3E
 	[CompilerGenerated]
 	private bool <StartOther>g__decide|473_2(int idx)
 	{
@@ -12505,250 +12274,168 @@ public class SceneTreeHouse : BaseScene
 		return true;
 	}
 
-	// Token: 0x04001333 RID: 4915
 	private SceneTreeHouse.GUI guiData;
 
-	// Token: 0x04001334 RID: 4916
 	private SceneTreeHouse.GUI_OTHER guiOther;
 
-	// Token: 0x04001335 RID: 4917
 	private GameObject winPanel;
 
-	// Token: 0x04001336 RID: 4918
 	private SceneTreeHouse.WIN_MYSET winMyset;
 
-	// Token: 0x04001337 RID: 4919
 	private SceneTreeHouse.WIN_GETSTAMP winGetstamp;
 
-	// Token: 0x04001338 RID: 4920
 	private SceneTreeHouse.WIN_SOCIAL winSocial;
 
-	// Token: 0x04001339 RID: 4921
 	private SceneTreeHouse.WIN_OPENCONF winOpenconf;
 
-	// Token: 0x0400133A RID: 4922
 	private SceneTreeHouse.WIN_FURNITURE winFurniture;
 
-	// Token: 0x0400133B RID: 4923
 	private SceneTreeHouse.WIN_FILTER winFilter;
 
-	// Token: 0x0400133C RID: 4924
 	private SceneTreeHouse.WIN_SORT winSort;
 
-	// Token: 0x0400133D RID: 4925
 	private SceneTreeHouse.WIN_NAME winName;
 
-	// Token: 0x0400133E RID: 4926
 	private SceneTreeHouse.WIN_COMMENT winComment;
 
-	// Token: 0x0400133F RID: 4927
 	private SceneTreeHouse.WIN_MUSIC winMusic;
 
-	// Token: 0x04001340 RID: 4928
 	private SceneTreeHouse.WIN_CHARGE winCharge;
 
-	// Token: 0x04001341 RID: 4929
 	private SceneTreeHouse.WIN_CHARGE_USE winChargeUse;
 
-	// Token: 0x04001342 RID: 4930
 	private SceneTreeHouse.WIN_CHARGE_GET winChargeGet;
 
-	// Token: 0x04001343 RID: 4931
 	private SceneTreeHouse.WIN_MACHINE winMachine;
 
-	// Token: 0x04001344 RID: 4932
 	private SceneTreeHouse.WIN_MACHINE_GET winMachineGet;
 
-	// Token: 0x04001345 RID: 4933
 	private SceneTreeHouse.WIN_MACHINE_ALL winMachineAll;
 
-	// Token: 0x04001346 RID: 4934
 	private SceneTreeHouse.WIN_VR winVR;
 
-	// Token: 0x04001347 RID: 4935
 	private List<SceneTreeHouse.FurnitureData> allFurnitureDataList;
 
-	// Token: 0x04001348 RID: 4936
 	private List<SceneTreeHouse.FurnitureData> furnitureDataDisp;
 
-	// Token: 0x04001349 RID: 4937
 	private static readonly string eff611051StName = "Ef_stage_surface_game_st";
 
-	// Token: 0x0400134A RID: 4938
 	private static readonly string eff611051LpName = "Ef_stage_surface_game_lp";
 
-	// Token: 0x0400134B RID: 4939
 	private static readonly string eff611051EnName = "Ef_stage_surface_game_en";
 
-	// Token: 0x0400134C RID: 4940
 	private static readonly string eff611051EbName = "Ef_stage_surface_game_en_b";
 
-	// Token: 0x0400134D RID: 4941
 	private static readonly string eff611051AdName = "Ef_stage_surface_game_wait";
 
-	// Token: 0x0400134E RID: 4942
 	private static readonly string eff611052StName = "Ef_stage_surface_game_solo_st";
 
-	// Token: 0x0400134F RID: 4943
 	private static readonly string eff611052LpName = "Ef_stage_surface_game_solo_lp";
 
-	// Token: 0x04001350 RID: 4944
 	private static readonly string eff611052EnName = "Ef_stage_surface_game_solo_en";
 
-	// Token: 0x04001351 RID: 4945
 	private static readonly string eff611052EbName = "Ef_stage_surface_game_solo_en_b";
 
-	// Token: 0x04001352 RID: 4946
 	private static readonly string eff611052AdName = "Ef_stage_surface_game_solo_wait";
 
-	// Token: 0x04001353 RID: 4947
 	private List<int> furnitureNew;
 
-	// Token: 0x04001354 RID: 4948
 	private GameObject field;
 
-	// Token: 0x04001355 RID: 4949
 	private Transform hidePanel;
 
-	// Token: 0x04001356 RID: 4950
 	private FieldCameraScaler camera;
 
-	// Token: 0x04001357 RID: 4951
 	private CC_BrightnessContrastGamma camBCG;
 
-	// Token: 0x04001358 RID: 4952
 	private FieldCameraScaler camL;
 
-	// Token: 0x04001359 RID: 4953
 	private FieldCameraScaler camR;
 
-	// Token: 0x0400135A RID: 4954
 	private static readonly string LOCATOR_PATH = "Stage/Stage/st_room_captain_locator_a";
 
-	// Token: 0x0400135B RID: 4955
 	private static readonly string GRID_FLOOR_PATH = "Stage/Stage/st_room_captain_grid_a";
 
-	// Token: 0x0400135C RID: 4956
 	private static readonly string GRID_WALL_PATH = "Stage/Stage/st_room_captain_grid_wall_a";
 
-	// Token: 0x0400135D RID: 4957
 	private static readonly string GRID_DEPEND_PATH = "Stage/Stage/st_room_captain_grid_one_a";
 
-	// Token: 0x0400135E RID: 4958
 	private static readonly string BOARD_PATH = "Stage/Stage/st_room_captain_gridboard_a";
 
-	// Token: 0x0400135F RID: 4959
 	private static readonly string CURTAIN_BOARD_PATH = "Stage/Stage/st_room_captain_gridboard_curtain_a";
 
-	// Token: 0x04001360 RID: 4960
 	private static readonly List<string> STAGE_PATH = new List<string> { "SD_room_captain_timezone_a_morning", "SD_room_captain_timezone_b_noon", "SD_room_captain_timezone_c_evening", "SD_room_captain_timezone_d_night" };
 
-	// Token: 0x04001361 RID: 4961
 	private static readonly string FURNITURE_PATH = "Stage/Captain_furniture/";
 
-	// Token: 0x04001362 RID: 4962
 	private GameObject stageLocator;
 
-	// Token: 0x04001363 RID: 4963
 	private GameObject floorGrid;
 
-	// Token: 0x04001364 RID: 4964
 	private GameObject wallGrid;
 
-	// Token: 0x04001365 RID: 4965
 	private StagePresetCtrl stageCtrl;
 
-	// Token: 0x04001366 RID: 4966
 	private Dictionary<string, List<Light>> stageLight;
 
-	// Token: 0x04001367 RID: 4967
 	private string lightName;
 
-	// Token: 0x04001368 RID: 4968
 	private IEnumerator stageLoad;
 
-	// Token: 0x04001369 RID: 4969
 	private SceneHome.StageType stageType;
 
-	// Token: 0x0400136A RID: 4970
 	private List<SceneTreeHouse.CamDat> camView;
 
-	// Token: 0x0400136B RID: 4971
 	private List<SceneTreeHouse.CamDat> camOther;
 
-	// Token: 0x0400136C RID: 4972
 	private List<SceneTreeHouse.CamDat> camEdit;
 
-	// Token: 0x0400136D RID: 4973
 	private int camViewNo;
 
-	// Token: 0x0400136E RID: 4974
 	private int camOtherNo;
 
-	// Token: 0x0400136F RID: 4975
 	private int camEditNo;
 
-	// Token: 0x04001370 RID: 4976
 	private List<Transform> wallLoc;
 
-	// Token: 0x04001371 RID: 4977
 	private List<Transform> curtainLoc;
 
-	// Token: 0x04001372 RID: 4978
 	private List<GameObject> curtainBoard;
 
-	// Token: 0x04001373 RID: 4979
 	private List<Vector3> wallPos;
 
-	// Token: 0x04001374 RID: 4980
 	private Transform lightLoc;
 
-	// Token: 0x04001375 RID: 4981
 	private float removeMachineUI;
 
-	// Token: 0x04001376 RID: 4982
 	private static readonly float REMOVE_MACHINE_UI_SEC = 0.5f;
 
-	// Token: 0x04001377 RID: 4983
 	private bool touchView;
 
-	// Token: 0x04001378 RID: 4984
 	private Vector2 moveView;
 
-	// Token: 0x04001379 RID: 4985
 	private float pinchView;
 
-	// Token: 0x0400137A RID: 4986
 	private float wheelView;
 
-	// Token: 0x0400137B RID: 4987
 	private bool singleTap;
 
-	// Token: 0x0400137C RID: 4988
 	private bool doubleTap;
 
-	// Token: 0x0400137D RID: 4989
 	private List<SceneTreeHouse.FurnitureCtrl> gyroLst;
 
-	// Token: 0x0400137E RID: 4990
 	private Transform gyroCam;
 
-	// Token: 0x0400137F RID: 4991
 	private static int gyroMode = -1;
 
-	// Token: 0x04001380 RID: 4992
 	private Quaternion gyroBase;
 
-	// Token: 0x04001381 RID: 4993
 	private Vector2 gyroAng;
 
-	// Token: 0x04001382 RID: 4994
 	private float gyroFov;
 
-	// Token: 0x04001383 RID: 4995
 	private float gyroSpace;
 
-	// Token: 0x04001384 RID: 4996
 	private static readonly List<KeyValuePair<List<CharaMotionDefine.ActKey>, List<VOICE_TYPE>>> voiceList = new List<KeyValuePair<List<CharaMotionDefine.ActKey>, List<VOICE_TYPE>>>
 	{
 		new KeyValuePair<List<CharaMotionDefine.ActKey>, List<VOICE_TYPE>>(new List<CharaMotionDefine.ActKey>
@@ -12846,7 +12533,6 @@ public class SceneTreeHouse : BaseScene
 		})
 	};
 
-	// Token: 0x04001385 RID: 4997
 	private static readonly List<KeyValuePair<List<CharaMotionDefine.ActKey>, List<VOICE_TYPE>>> voiceMot = new List<KeyValuePair<List<CharaMotionDefine.ActKey>, List<VOICE_TYPE>>>
 	{
 		new KeyValuePair<List<CharaMotionDefine.ActKey>, List<VOICE_TYPE>>(new List<CharaMotionDefine.ActKey>
@@ -12857,61 +12543,42 @@ public class SceneTreeHouse : BaseScene
 		new KeyValuePair<List<CharaMotionDefine.ActKey>, List<VOICE_TYPE>>(new List<CharaMotionDefine.ActKey> { CharaMotionDefine.ActKey.MYR_GAME_EMO_SAD }, new List<VOICE_TYPE> { VOICE_TYPE.DMP01 })
 	};
 
-	// Token: 0x04001386 RID: 4998
 	private static readonly List<VOICE_TYPE> voiceTrw = new List<VOICE_TYPE> { VOICE_TYPE.ATK01 };
 
-	// Token: 0x04001387 RID: 4999
 	private int gridRot;
 
-	// Token: 0x04001388 RID: 5000
 	private Vector3 movePos;
 
-	// Token: 0x04001389 RID: 5001
 	private Vector3 moveNrm;
 
-	// Token: 0x0400138A RID: 5002
 	private float moveRot;
 
-	// Token: 0x0400138B RID: 5003
 	private GameObject moveCurtain;
 
-	// Token: 0x0400138C RID: 5004
 	private int isMove;
 
-	// Token: 0x0400138D RID: 5005
 	private string kizunaRatio;
 
-	// Token: 0x0400138E RID: 5006
 	private int monthlyDay;
 
-	// Token: 0x0400138F RID: 5007
 	private GameObject furnitureBase;
 
-	// Token: 0x04001390 RID: 5008
 	private List<SceneTreeHouse.FurnitureCtrl> furnitureList;
 
-	// Token: 0x04001391 RID: 5009
 	private SceneTreeHouse.FurnitureCtrl furnitureMove;
 
-	// Token: 0x04001392 RID: 5010
 	private int furniturePlace;
 
-	// Token: 0x04001393 RID: 5011
 	private int furnitureSel;
 
-	// Token: 0x04001394 RID: 5012
 	private TreeHouseFurnitureStatic.Category categorySel;
 
-	// Token: 0x04001395 RID: 5013
 	private HashSet<int> favoriteFuniture;
 
-	// Token: 0x04001396 RID: 5014
 	private static SceneTreeHouse.FurnitureDispType furnitureDispType = SceneTreeHouse.FurnitureDispType.ALL;
 
-	// Token: 0x04001397 RID: 5015
 	private static readonly int rugStack = 3;
 
-	// Token: 0x04001398 RID: 5016
 	private static Dictionary<TreeHouseFurnitureStatic.Category, SceneTreeHouse.FurnitureSortType> furnitureSortType = new Dictionary<TreeHouseFurnitureStatic.Category, SceneTreeHouse.FurnitureSortType>
 	{
 		{
@@ -12952,88 +12619,60 @@ public class SceneTreeHouse : BaseScene
 		}
 	};
 
-	// Token: 0x04001399 RID: 5017
 	private List<SceneTreeHouse.PaperCtrl> paperList;
 
-	// Token: 0x0400139A RID: 5018
 	private GameObject doorBase;
 
-	// Token: 0x0400139B RID: 5019
 	private Dictionary<GameObject, Vector3> doorGridMap;
 
-	// Token: 0x0400139C RID: 5020
 	private static readonly Vector3 DOOR_BATH_POS = new Vector3(0f, 1.07f, -5.27f);
 
-	// Token: 0x0400139D RID: 5021
 	private static readonly Vector3[,] DOOR_GRID_POS_AND_SIZE;
 
-	// Token: 0x0400139E RID: 5022
 	private List<int> bgmList;
 
-	// Token: 0x0400139F RID: 5023
 	private GameObject bgmPanel;
 
-	// Token: 0x040013A0 RID: 5024
 	private List<Transform> bgmLineup;
 
-	// Token: 0x040013A1 RID: 5025
 	private int playBgm;
 
-	// Token: 0x040013A2 RID: 5026
 	private float testBgm;
 
-	// Token: 0x040013A3 RID: 5027
 	private static readonly string TREE_HOUSE_BGM;
 
-	// Token: 0x040013A4 RID: 5028
 	private GameObject charaBase;
 
-	// Token: 0x040013A5 RID: 5029
 	private List<SceneTreeHouse.CharaCtrl> charaList;
 
-	// Token: 0x040013A6 RID: 5030
 	private List<CharaPackData> haveCharaPackList;
 
-	// Token: 0x040013A7 RID: 5031
 	private List<CharaPackData> dispCharaPackList;
 
-	// Token: 0x040013A8 RID: 5032
 	private SortFilterDefine.SortType charaSortType = SortFilterDefine.SortType.LEVEL;
 
-	// Token: 0x040013A9 RID: 5033
 	private List<Transform> treehouseChara;
 
-	// Token: 0x040013AA RID: 5034
 	private static readonly int ScrollDeckNum;
 
-	// Token: 0x040013AB RID: 5035
 	private Dictionary<int, int> changeList;
 
-	// Token: 0x040013AC RID: 5036
 	private int chgChr;
 
-	// Token: 0x040013AD RID: 5037
 	private List<SceneTreeHouse.ActionCtrl> actionList;
 
-	// Token: 0x040013AE RID: 5038
 	private bool socialInfo;
 
-	// Token: 0x040013AF RID: 5039
 	private TreeHouseSocialTabType socialTabTyp;
 
-	// Token: 0x040013B0 RID: 5040
 	private TreeHouseSocialTabType visitTabTyp;
 
-	// Token: 0x040013B1 RID: 5041
 	private List<SceneTreeHouse.FurnitureCtrl> otherFurniture;
 
-	// Token: 0x040013B2 RID: 5042
 	private List<SceneTreeHouse.CharaCtrl> otherChara;
 
-	// Token: 0x040013B3 RID: 5043
 	private List<SceneTreeHouse.ActionCtrl> otherAction;
 
-	// Token: 0x040013B4 RID: 5044
 	private Dictionary<TreeHouseSocialTabType, int> socialIndex = new Dictionary<TreeHouseSocialTabType, int>
 	{
 		{
@@ -13054,283 +12693,190 @@ public class SceneTreeHouse : BaseScene
 		}
 	};
 
-	// Token: 0x040013B5 RID: 5045
 	private List<TreeHouseSocialUser> socialUserList;
 
-	// Token: 0x040013B6 RID: 5046
 	private List<TreeHouseSocialUser> socialVisitUserList;
 
-	// Token: 0x040013B7 RID: 5047
 	private int socialUserIdx;
 
-	// Token: 0x040013B8 RID: 5048
 	private int socialVisitUserIdx;
 
-	// Token: 0x040013B9 RID: 5049
 	private List<int> socialVisitList;
 
-	// Token: 0x040013BA RID: 5050
 	private List<TreeHouseFurnitureMapping> furnitureMapEdit;
 
-	// Token: 0x040013BB RID: 5051
 	private List<TreeHouseFurnitureMapping> furnitureMapSave;
 
-	// Token: 0x040013BC RID: 5052
 	private MstMasterRoomMachineData batteryData;
 
-	// Token: 0x040013BD RID: 5053
 	private int batteryTim;
 
-	// Token: 0x040013BE RID: 5054
 	private List<MstMasterRoomFuelData> fuelData;
 
-	// Token: 0x040013BF RID: 5055
 	private ItemData batteryInfo;
 
-	// Token: 0x040013C0 RID: 5056
 	private List<UseItem> chargeFuel;
 
-	// Token: 0x040013C1 RID: 5057
 	private UseItem chargeItm;
 
-	// Token: 0x040013C2 RID: 5058
 	private int chargeTim;
 
-	// Token: 0x040013C3 RID: 5059
 	private List<TreeHouseReceiveStampLog.Log> logList;
 
-	// Token: 0x040013C4 RID: 5060
 	private List<IEnumerator> ienum;
 
-	// Token: 0x040013C5 RID: 5061
 	private static readonly int stageLayer;
 
-	// Token: 0x040013C6 RID: 5062
 	private static readonly int stageAlphaLayer;
 
-	// Token: 0x040013C7 RID: 5063
 	private static readonly int charaLayer;
 
-	// Token: 0x040013C8 RID: 5064
 	private static readonly int charaAlphaLayer;
 
-	// Token: 0x040013C9 RID: 5065
 	private static readonly int charaShadowLayer;
 
-	// Token: 0x040013CA RID: 5066
 	private static readonly int ignoreLayer;
 
-	// Token: 0x040013CB RID: 5067
 	private static readonly int bloomLayer;
 
-	// Token: 0x040013CC RID: 5068
 	private static readonly List<CharaMotionDefine.ActKey> chat_mot;
 
-	// Token: 0x040013CD RID: 5069
 	private static readonly List<CharaMotionDefine.ActKey> tea_mot;
 
-	// Token: 0x040013CE RID: 5070
 	private static readonly List<CharaMotionDefine.ActKey> play_mot;
 
-	// Token: 0x040013CF RID: 5071
 	private static readonly List<CharaMotionDefine.ActKey> talk_mot;
 
-	// Token: 0x040013D0 RID: 5072
 	private static readonly List<CharaMotionDefine.ActKey> drw1_mot;
 
-	// Token: 0x040013D1 RID: 5073
 	private static readonly List<CharaMotionDefine.ActKey> drw2_mot;
 
-	// Token: 0x040013D2 RID: 5074
 	private static readonly List<CharaMotionDefine.ActKey> drw2n_mot;
 
-	// Token: 0x040013D3 RID: 5075
 	private static readonly CharaMotionDefine.ActKey drwe_mot;
 
-	// Token: 0x040013D4 RID: 5076
 	private static readonly List<CharaMotionDefine.ActKey> cos1_mot;
 
-	// Token: 0x040013D5 RID: 5077
 	private static readonly List<CharaMotionDefine.ActKey> cos2_mot;
 
-	// Token: 0x040013D6 RID: 5078
 	private static readonly List<CharaMotionDefine.ActKey> cos1n_mot;
 
-	// Token: 0x040013D7 RID: 5079
 	private static readonly List<CharaMotionDefine.ActKey> cos2n_mot;
 
-	// Token: 0x040013D8 RID: 5080
 	private static readonly List<CharaMotionDefine.ActKey> gam1_mot;
 
-	// Token: 0x040013D9 RID: 5081
 	private static readonly List<CharaMotionDefine.ActKey> gam2_mot;
 
-	// Token: 0x040013DA RID: 5082
 	private static readonly List<CharaMotionDefine.ActKey> gamn_mot;
 
-	// Token: 0x040013DB RID: 5083
 	private static readonly List<CharaMotionDefine.ActKey> game_mot;
 
-	// Token: 0x040013DC RID: 5084
 	private static readonly List<CharaMotionDefine.ActKey> sleep_mot;
 
-	// Token: 0x040013DD RID: 5085
 	private static readonly List<CharaMotionDefine.ActKey> book_mot;
 
-	// Token: 0x040013DE RID: 5086
 	private static readonly List<CharaMotionDefine.ActKey> kitchen_mot;
 
-	// Token: 0x040013DF RID: 5087
 	private static readonly CharaMotionDefine.ActKey greentea_mot;
 
-	// Token: 0x040013E0 RID: 5088
 	private static readonly List<CharaMotionDefine.ActKey> see_mot;
 
-	// Token: 0x040013E1 RID: 5089
 	private static readonly List<CharaMotionDefine.ActKey> ring_mot;
 
-	// Token: 0x040013E2 RID: 5090
 	private static readonly List<CharaMotionDefine.ActKey> ringe_mot;
 
-	// Token: 0x040013E3 RID: 5091
 	private static readonly List<CharaMotionDefine.ActKey> ball_mot;
 
-	// Token: 0x040013E4 RID: 5092
 	private static readonly List<CharaMotionDefine.ActKey> balle_mot;
 
-	// Token: 0x040013E5 RID: 5093
 	private static readonly List<CharaMotionDefine.ActKey> diary_mot;
 
-	// Token: 0x040013E6 RID: 5094
 	private static readonly List<CharaMotionDefine.ActKey> banner_mot;
 
-	// Token: 0x040013E7 RID: 5095
 	private static readonly List<CharaMotionDefine.ActKey> kakizome_mot;
 
-	// Token: 0x040013E8 RID: 5096
 	private static readonly List<CharaMotionDefine.ActKey> garden_mot;
 
-	// Token: 0x040013E9 RID: 5097
 	private static readonly CharaMotionDefine.ActKey gardenn_mot;
 
-	// Token: 0x040013EA RID: 5098
 	private static readonly List<CharaMotionDefine.ActKey> xylo_mot;
 
-	// Token: 0x040013EB RID: 5099
 	private static readonly CharaMotionDefine.ActKey xylo1_mot;
 
-	// Token: 0x040013EC RID: 5100
 	private static readonly List<CharaMotionDefine.ActKey> curry_mot;
 
-	// Token: 0x040013ED RID: 5101
 	private static readonly List<CharaMotionDefine.ActKey> tent_mot;
 
-	// Token: 0x040013EE RID: 5102
 	private static readonly List<CharaMotionDefine.ActKey> bed_mot;
 
-	// Token: 0x040013EF RID: 5103
 	private static readonly CharaMotionDefine.ActKey cook_mot;
 
-	// Token: 0x040013F0 RID: 5104
 	private static readonly List<CharaMotionDefine.ActKey> jpntea_mot;
 
-	// Token: 0x040013F1 RID: 5105
 	private static readonly List<CharaMotionDefine.ActKey> sweets_mot;
 
-	// Token: 0x040013F2 RID: 5106
 	private static readonly List<CharaMotionDefine.ActKey> car_mot;
 
-	// Token: 0x040013F3 RID: 5107
 	private static readonly List<CharaMotionDefine.ActKey> sand_mot;
 
-	// Token: 0x040013F4 RID: 5108
 	private static readonly CharaMotionDefine.ActKey carn_mot;
 
-	// Token: 0x040013F5 RID: 5109
 	private static readonly CharaMotionDefine.ActKey doll_mot;
 
-	// Token: 0x040013F6 RID: 5110
 	private static readonly float friendsDistance;
 
-	// Token: 0x040013F7 RID: 5111
 	private static readonly float neighborDistance;
 
-	// Token: 0x040013F8 RID: 5112
 	private static readonly Dictionary<SceneTreeHouse.EmoTyp, string> emoEffName;
 
-	// Token: 0x040013F9 RID: 5113
 	private List<TreeHouseSmallFurnitureData> smallFurnitureDataList = new List<TreeHouseSmallFurnitureData>();
 
-	// Token: 0x040013FA RID: 5114
 	private static readonly string cupEffName;
 
-	// Token: 0x040013FB RID: 5115
 	private static readonly string penEffName;
 
-	// Token: 0x040013FC RID: 5116
 	private static readonly string penEasterEffName;
 
-	// Token: 0x040013FD RID: 5117
 	private static readonly string potEffName;
 
-	// Token: 0x040013FE RID: 5118
 	private static readonly string ringEffName;
 
-	// Token: 0x040013FF RID: 5119
 	private static readonly string ringNewYearEffName;
 
-	// Token: 0x04001400 RID: 5120
 	private static readonly string ballEffName;
 
-	// Token: 0x04001401 RID: 5121
 	private static readonly string ballBasketEffName;
 
-	// Token: 0x04001402 RID: 5122
 	private static readonly string gdnEffName;
 
-	// Token: 0x04001403 RID: 5123
 	private static readonly string gdnChristmasEffName;
 
-	// Token: 0x04001404 RID: 5124
 	private static readonly string gdnTinplateEffName;
 
-	// Token: 0x04001405 RID: 5125
 	private static readonly string stkEffName;
 
-	// Token: 0x04001406 RID: 5126
 	private static readonly string spnEffName;
 
-	// Token: 0x04001407 RID: 5127
 	private static readonly string grnEffName;
 
-	// Token: 0x04001408 RID: 5128
 	private static readonly string mkr1EffName;
 
-	// Token: 0x04001409 RID: 5129
 	private static readonly string mkr2EffName;
 
-	// Token: 0x0400140A RID: 5130
 	private static readonly string mkr1YewYearEffName;
 
-	// Token: 0x0400140B RID: 5131
 	private static readonly string mkr2YewYearEffName;
 
-	// Token: 0x0400140C RID: 5132
 	private static readonly string onpEffName;
 
-	// Token: 0x0400140D RID: 5133
 	private static readonly string ladleEffName;
 
-	// Token: 0x0400140E RID: 5134
 	private static readonly string jpncupEffName;
 
-	// Token: 0x0400140F RID: 5135
 	private static readonly string TREE_HOUSE_KEY;
 
-	// Token: 0x02000DAE RID: 3502
 	public class GUI
 	{
-		// Token: 0x06004A17 RID: 18967 RVA: 0x002237C8 File Offset: 0x002219C8
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -13415,218 +12961,147 @@ public class SceneTreeHouse : BaseScene
 			this.machineAllBadge = this.btnMachineAll.transform.Find("BaseImage/Cmn_Badge").gameObject;
 		}
 
-		// Token: 0x04004FD5 RID: 20437
 		public GameObject baseObj;
 
-		// Token: 0x04004FD6 RID: 20438
 		public SimpleAnimation anime;
 
-		// Token: 0x04004FD7 RID: 20439
 		public GameObject topBtn;
 
-		// Token: 0x04004FD8 RID: 20440
 		public PguiButtonCtrl btnEdit;
 
-		// Token: 0x04004FD9 RID: 20441
 		public PguiButtonCtrl btnMyset;
 
-		// Token: 0x04004FDA RID: 20442
 		public PguiButtonCtrl btnShop;
 
-		// Token: 0x04004FDB RID: 20443
 		public PguiButtonCtrl btnGacha;
 
-		// Token: 0x04004FDC RID: 20444
 		public PguiButtonCtrl btnSocial;
 
-		// Token: 0x04004FDD RID: 20445
 		public PguiButtonCtrl btnCharge;
 
-		// Token: 0x04004FDE RID: 20446
 		public PguiButtonCtrl btnMachineAll;
 
-		// Token: 0x04004FDF RID: 20447
 		public GameObject editBtn;
 
-		// Token: 0x04004FE0 RID: 20448
 		public PguiButtonCtrl btnPlacemennt;
 
-		// Token: 0x04004FE1 RID: 20449
 		public PguiButtonCtrl btnMove;
 
-		// Token: 0x04004FE2 RID: 20450
 		public PguiButtonCtrl btnReset;
 
-		// Token: 0x04004FE3 RID: 20451
 		public PguiButtonCtrl btnShopEdit;
 
-		// Token: 0x04004FE4 RID: 20452
 		public PguiButtonCtrl btnGachaEdit;
 
-		// Token: 0x04004FE5 RID: 20453
 		public PguiButtonCtrl btnCancelEdit;
 
-		// Token: 0x04004FE6 RID: 20454
 		public GameObject rightBtn;
 
-		// Token: 0x04004FE7 RID: 20455
 		public PguiButtonCtrl btnHide;
 
-		// Token: 0x04004FE8 RID: 20456
 		public PguiButtonCtrl btnView;
 
-		// Token: 0x04004FE9 RID: 20457
 		public PguiButtonCtrl btnMusic;
 
-		// Token: 0x04004FEA RID: 20458
 		public PguiButtonCtrl btnCamera;
 
-		// Token: 0x04004FEB RID: 20459
 		public GameObject rightEditBtn;
 
-		// Token: 0x04004FEC RID: 20460
 		public PguiButtonCtrl btnOkEdit;
 
-		// Token: 0x04004FED RID: 20461
 		public PguiButtonCtrl btnViewEdit;
 
-		// Token: 0x04004FEE RID: 20462
 		public GameObject placeBtn;
 
-		// Token: 0x04004FEF RID: 20463
 		public PguiButtonCtrl btnViewPlace;
 
-		// Token: 0x04004FF0 RID: 20464
 		public PguiButtonCtrl btnRotR;
 
-		// Token: 0x04004FF1 RID: 20465
 		public PguiButtonCtrl btnRotL;
 
-		// Token: 0x04004FF2 RID: 20466
 		public PguiButtonCtrl btnRotG;
 
-		// Token: 0x04004FF3 RID: 20467
 		public GameObject carpetInfo;
 
-		// Token: 0x04004FF4 RID: 20468
 		public GameObject rightPlaceBtn;
 
-		// Token: 0x04004FF5 RID: 20469
 		public PguiButtonCtrl btnOk;
 
-		// Token: 0x04004FF6 RID: 20470
 		public PguiButtonCtrl btnCancel;
 
-		// Token: 0x04004FF7 RID: 20471
 		public PguiButtonCtrl btnTid;
 
-		// Token: 0x04004FF8 RID: 20472
 		public GameObject furnitureList;
 
-		// Token: 0x04004FF9 RID: 20473
 		public PguiTextCtrl furnitureNone;
 
-		// Token: 0x04004FFA RID: 20474
 		public PguiButtonCtrl btnClose;
 
-		// Token: 0x04004FFB RID: 20475
 		public PguiButtonCtrl btnInfo;
 
-		// Token: 0x04004FFC RID: 20476
 		public PguiButtonCtrl btnFilter;
 
-		// Token: 0x04004FFD RID: 20477
 		public PguiButtonCtrl btnSort;
 
-		// Token: 0x04004FFE RID: 20478
 		public PguiButtonCtrl btnDisp;
 
-		// Token: 0x04004FFF RID: 20479
 		public ReuseScroll categoryScroll;
 
-		// Token: 0x04005000 RID: 20480
 		public ReuseScroll furnitureScroll;
 
-		// Token: 0x04005001 RID: 20481
 		public Transform charaIconAll;
 
-		// Token: 0x04005002 RID: 20482
 		public List<Transform> charaIcon;
 
-		// Token: 0x04005003 RID: 20483
 		public Transform charaSelect;
 
-		// Token: 0x04005004 RID: 20484
 		public ReuseScroll charaScroll;
 
-		// Token: 0x04005005 RID: 20485
 		public PguiButtonCtrl btnOkChara;
 
-		// Token: 0x04005006 RID: 20486
 		public PguiAECtrl loading;
 
-		// Token: 0x04005007 RID: 20487
 		public GameObject tipsHand;
 
-		// Token: 0x04005008 RID: 20488
 		public GameObject tipsMouse;
 
-		// Token: 0x04005009 RID: 20489
 		public PguiButtonCtrl btnTipsHand;
 
-		// Token: 0x0400500A RID: 20490
 		public PguiButtonCtrl btnTipsMouse;
 
-		// Token: 0x0400500B RID: 20491
 		public GameObject chkTipsHand;
 
-		// Token: 0x0400500C RID: 20492
 		public GameObject chkTipsMouse;
 
-		// Token: 0x0400500D RID: 20493
 		public GameObject cameraBtn;
 
-		// Token: 0x0400500E RID: 20494
 		public PguiButtonCtrl btnResetCam;
 
-		// Token: 0x0400500F RID: 20495
 		public PguiButtonCtrl btnGyro;
 
-		// Token: 0x04005010 RID: 20496
 		public PguiButtonCtrl btnVR;
 
-		// Token: 0x04005011 RID: 20497
 		public GameObject camendBtn;
 
-		// Token: 0x04005012 RID: 20498
 		public PguiButtonCtrl btnCancelCam;
 
-		// Token: 0x04005013 RID: 20499
 		public GameObject rightCameraBtn;
 
-		// Token: 0x04005014 RID: 20500
 		public PguiButtonCtrl btnReturn;
 
-		// Token: 0x04005015 RID: 20501
 		public PguiButtonCtrl btnHideCam;
 
-		// Token: 0x04005016 RID: 20502
 		public GameObject VRPop;
 
-		// Token: 0x04005017 RID: 20503
 		public GameObject popupMachineAll;
 
-		// Token: 0x04005018 RID: 20504
 		public GameObject popupMachineCmn;
 
-		// Token: 0x04005019 RID: 20505
 		public GameObject machineAllBadge;
 	}
 
-	// Token: 0x02000DAF RID: 3503
 	public class GUI_OTHER
 	{
-		// Token: 0x06004A18 RID: 18968 RVA: 0x00223FB8 File Offset: 0x002221B8
 		public GUI_OTHER(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -13668,89 +13143,61 @@ public class SceneTreeHouse : BaseScene
 			this.btnHideCam = this.rightCameraBtn.transform.Find("Btn_Hide").GetComponent<PguiButtonCtrl>();
 		}
 
-		// Token: 0x0400501A RID: 20506
 		public GameObject baseObj;
 
-		// Token: 0x0400501B RID: 20507
 		public SimpleAnimation anime;
 
-		// Token: 0x0400501C RID: 20508
 		public GameObject stampAll;
 
-		// Token: 0x0400501D RID: 20509
 		public List<Transform> stamp;
 
-		// Token: 0x0400501E RID: 20510
 		public GameObject rightBtn;
 
-		// Token: 0x0400501F RID: 20511
 		public PguiButtonCtrl btnBack;
 
-		// Token: 0x04005020 RID: 20512
 		public PguiButtonCtrl btnHide;
 
-		// Token: 0x04005021 RID: 20513
 		public PguiButtonCtrl btnView;
 
-		// Token: 0x04005022 RID: 20514
 		public PguiButtonCtrl btnFollow;
 
-		// Token: 0x04005023 RID: 20515
 		public PguiButtonCtrl btnCamera;
 
-		// Token: 0x04005024 RID: 20516
 		public PguiTextCtrl houseName;
 
-		// Token: 0x04005025 RID: 20517
 		public PguiButtonCtrl btnSocial;
 
-		// Token: 0x04005026 RID: 20518
 		public PguiButtonCtrl btnNext;
 
-		// Token: 0x04005027 RID: 20519
 		public PguiButtonCtrl btnInfo;
 
-		// Token: 0x04005028 RID: 20520
 		public PguiTextCtrl name;
 
-		// Token: 0x04005029 RID: 20521
 		public PguiTextCtrl comment;
 
-		// Token: 0x0400502A RID: 20522
 		public GameObject cameraBtn;
 
-		// Token: 0x0400502B RID: 20523
 		public PguiButtonCtrl btnResetCam;
 
-		// Token: 0x0400502C RID: 20524
 		public PguiButtonCtrl btnGyro;
 
-		// Token: 0x0400502D RID: 20525
 		public PguiButtonCtrl btnVR;
 
-		// Token: 0x0400502E RID: 20526
 		public GameObject camendBtn;
 
-		// Token: 0x0400502F RID: 20527
 		public PguiButtonCtrl btnCancelCam;
 
-		// Token: 0x04005030 RID: 20528
 		public GameObject rightCameraBtn;
 
-		// Token: 0x04005031 RID: 20529
 		public PguiButtonCtrl btnReturn;
 
-		// Token: 0x04005032 RID: 20530
 		public PguiButtonCtrl btnHideCam;
 
-		// Token: 0x04005033 RID: 20531
 		public AchievementCtrl achievement;
 	}
 
-	// Token: 0x02000DB0 RID: 3504
 	public class WIN_MYSET
 	{
-		// Token: 0x06004A19 RID: 18969 RVA: 0x00224290 File Offset: 0x00222490
 		public WIN_MYSET(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -13772,17 +13219,13 @@ public class SceneTreeHouse : BaseScene
 			}
 		}
 
-		// Token: 0x04005034 RID: 20532
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x04005035 RID: 20533
 		public List<SceneTreeHouse.BAR_MYSET> list;
 	}
 
-	// Token: 0x02000DB1 RID: 3505
 	public class BAR_MYSET
 	{
-		// Token: 0x06004A1A RID: 18970 RVA: 0x0022431C File Offset: 0x0022251C
 		public BAR_MYSET(Transform tmp)
 		{
 			this.baseObj = tmp.gameObject;
@@ -13795,32 +13238,23 @@ public class SceneTreeHouse : BaseScene
 			this.load = tmp.Find("Btn_Load").GetComponent<PguiButtonCtrl>();
 		}
 
-		// Token: 0x04005036 RID: 20534
 		public GameObject baseObj;
 
-		// Token: 0x04005037 RID: 20535
 		public PguiTextCtrl num;
 
-		// Token: 0x04005038 RID: 20536
 		public PguiTextCtrl name;
 
-		// Token: 0x04005039 RID: 20537
 		public PguiTextCtrl date;
 
-		// Token: 0x0400503A RID: 20538
 		public PguiButtonCtrl save;
 
-		// Token: 0x0400503B RID: 20539
 		public PguiButtonCtrl load;
 
-		// Token: 0x0400503C RID: 20540
 		public GameObject disable;
 	}
 
-	// Token: 0x02000DB2 RID: 3506
 	public class WIN_GETSTAMP
 	{
-		// Token: 0x06004A1B RID: 18971 RVA: 0x002243CC File Offset: 0x002225CC
 		public WIN_GETSTAMP(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -13830,23 +13264,17 @@ public class SceneTreeHouse : BaseScene
 			this.scroll = baseTr.Find("List/ScrollView").GetComponent<ReuseScroll>();
 		}
 
-		// Token: 0x0400503D RID: 20541
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x0400503E RID: 20542
 		public PguiTextCtrl msg;
 
-		// Token: 0x0400503F RID: 20543
 		public PguiTextCtrl msg2;
 
-		// Token: 0x04005040 RID: 20544
 		public ReuseScroll scroll;
 	}
 
-	// Token: 0x02000DB3 RID: 3507
 	public class WIN_SOCIAL
 	{
-		// Token: 0x06004A1C RID: 18972 RVA: 0x0022443C File Offset: 0x0022263C
 		public WIN_SOCIAL(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -13884,74 +13312,51 @@ public class SceneTreeHouse : BaseScene
 			this.inputField = this.search.transform.Find("Search/InputField").GetComponent<InputField>();
 		}
 
-		// Token: 0x04005041 RID: 20545
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x04005042 RID: 20546
 		public PguiTabGroupCtrl tab;
 
-		// Token: 0x04005043 RID: 20547
 		public PguiReplaceSpriteCtrl header;
 
-		// Token: 0x04005044 RID: 20548
 		public PguiTextCtrl date;
 
-		// Token: 0x04005045 RID: 20549
 		public PguiTextCtrl last;
 
-		// Token: 0x04005046 RID: 20550
 		public ReuseScroll scrList;
 
-		// Token: 0x04005047 RID: 20551
 		public ReuseScroll scrRank;
 
-		// Token: 0x04005048 RID: 20552
 		public GameObject openConf;
 
-		// Token: 0x04005049 RID: 20553
 		public PguiButtonCtrl btnName;
 
-		// Token: 0x0400504A RID: 20554
 		public PguiButtonCtrl btnComment;
 
-		// Token: 0x0400504B RID: 20555
 		public PguiButtonCtrl btnOpenconf;
 
-		// Token: 0x0400504C RID: 20556
 		public PguiTextCtrl txtConfMyid;
 
-		// Token: 0x0400504D RID: 20557
 		public PguiButtonCtrl btnConfCopy;
 
-		// Token: 0x0400504E RID: 20558
 		public List<Transform> stamp;
 
-		// Token: 0x0400504F RID: 20559
 		public GameObject noData;
 
-		// Token: 0x04005050 RID: 20560
 		public GameObject search;
 
-		// Token: 0x04005051 RID: 20561
 		public PguiButtonCtrl btnVisit;
 
-		// Token: 0x04005052 RID: 20562
 		public PguiButtonCtrl btnCopy;
 
-		// Token: 0x04005053 RID: 20563
 		public Text txtSearch;
 
-		// Token: 0x04005054 RID: 20564
 		public PguiTextCtrl txtMyid;
 
-		// Token: 0x04005055 RID: 20565
 		public InputField inputField;
 	}
 
-	// Token: 0x02000DB4 RID: 3508
 	public class WIN_OPENCONF
 	{
-		// Token: 0x06004A1D RID: 18973 RVA: 0x002246B4 File Offset: 0x002228B4
 		public WIN_OPENCONF(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -13961,23 +13366,17 @@ public class SceneTreeHouse : BaseScene
 			this.btnPrivate = baseTr.Find("Btn_Private").GetComponent<PguiToggleButtonCtrl>();
 		}
 
-		// Token: 0x04005056 RID: 20566
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x04005057 RID: 20567
 		public PguiToggleButtonCtrl btnOpen;
 
-		// Token: 0x04005058 RID: 20568
 		public PguiToggleButtonCtrl btnFollower;
 
-		// Token: 0x04005059 RID: 20569
 		public PguiToggleButtonCtrl btnPrivate;
 	}
 
-	// Token: 0x02000DB5 RID: 3509
 	public class WIN_FURNITURE
 	{
-		// Token: 0x06004A1E RID: 18974 RVA: 0x00224724 File Offset: 0x00222924
 		public WIN_FURNITURE(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -13990,46 +13389,34 @@ public class SceneTreeHouse : BaseScene
 			this.nextSSR = baseTr.Find("Info02/Txt_NextEffect").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x0400505A RID: 20570
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x0400505B RID: 20571
 		public PguiTextCtrl ratio;
 
-		// Token: 0x0400505C RID: 20572
 		public PguiTextCtrl bonus;
 
-		// Token: 0x0400505D RID: 20573
 		public PguiTextCtrl next;
 
-		// Token: 0x0400505E RID: 20574
 		public PguiTextCtrl ratioSSR;
 
-		// Token: 0x0400505F RID: 20575
 		public PguiTextCtrl bonusSSR;
 
-		// Token: 0x04005060 RID: 20576
 		public PguiTextCtrl nextSSR;
 	}
 
-	// Token: 0x02000DB6 RID: 3510
 	public class WIN_FILTER
 	{
-		// Token: 0x06004A1F RID: 18975 RVA: 0x002247D4 File Offset: 0x002229D4
 		public WIN_FILTER(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
 			baseTr = this.win.WindowRectTransform;
 		}
 
-		// Token: 0x04005061 RID: 20577
 		public PguiOpenWindowCtrl win;
 	}
 
-	// Token: 0x02000DB7 RID: 3511
 	public class WIN_SORT
 	{
-		// Token: 0x06004A20 RID: 18976 RVA: 0x002247F8 File Offset: 0x002229F8
 		public WIN_SORT(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -14042,143 +13429,82 @@ public class SceneTreeHouse : BaseScene
 			}
 		}
 
-		// Token: 0x04005062 RID: 20578
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x04005063 RID: 20579
 		public List<PguiToggleButtonCtrl> btn;
 	}
 
-	// Token: 0x02000DB8 RID: 3512
 	private enum FurnitureSortType
 	{
-		// Token: 0x04005065 RID: 20581
 		NUMBER,
-		// Token: 0x04005066 RID: 20582
 		DESCEND,
-		// Token: 0x04005067 RID: 20583
 		ASCEND,
-		// Token: 0x04005068 RID: 20584
 		NAME
 	}
 
-	// Token: 0x02000DB9 RID: 3513
 	private enum FurnitureDispType
 	{
-		// Token: 0x0400506A RID: 20586
 		ALL,
-		// Token: 0x0400506B RID: 20587
 		FAVORITE,
-		// Token: 0x0400506C RID: 20588
 		BANNER,
-		// Token: 0x0400506D RID: 20589
 		POSTER
 	}
 
-	// Token: 0x02000DBA RID: 3514
 	private enum MarkFriendsAction
 	{
-		// Token: 0x0400506F RID: 20591
 		INVALID,
-		// Token: 0x04005070 RID: 20592
 		CHARA_ACTION,
-		// Token: 0x04005071 RID: 20593
 		POSTER_BOARD,
-		// Token: 0x04005072 RID: 20594
 		CLOCK,
-		// Token: 0x04005073 RID: 20595
 		BOX,
-		// Token: 0x04005074 RID: 20596
 		CAMERA,
-		// Token: 0x04005075 RID: 20597
 		MACHINE
 	}
 
-	// Token: 0x02000DBB RID: 3515
 	public enum CharaReactionId
 	{
-		// Token: 0x04005077 RID: 20599
 		INVALID,
-		// Token: 0x04005078 RID: 20600
 		GATHERING_TABLE = 1001,
-		// Token: 0x04005079 RID: 20601
 		TEA_TABLE,
-		// Token: 0x0400507A RID: 20602
 		TSUMIKI,
-		// Token: 0x0400507B RID: 20603
 		EASEL,
-		// Token: 0x0400507C RID: 20604
 		STAND_MIRROR,
-		// Token: 0x0400507D RID: 20605
 		ARCADE,
-		// Token: 0x0400507E RID: 20606
 		KOTATSU = 1009,
-		// Token: 0x0400507F RID: 20607
 		RING,
-		// Token: 0x04005080 RID: 20608
 		READING,
-		// Token: 0x04005081 RID: 20609
 		COUNTER,
-		// Token: 0x04005082 RID: 20610
 		BALL_HIT,
-		// Token: 0x04005083 RID: 20611
 		SLEEP_BAG,
-		// Token: 0x04005084 RID: 20612
 		DIARY,
-		// Token: 0x04005085 RID: 20613
 		PLANTER,
-		// Token: 0x04005086 RID: 20614
 		XYLOPHONE,
-		// Token: 0x04005087 RID: 20615
 		STEW,
-		// Token: 0x04005088 RID: 20616
 		TENT,
-		// Token: 0x04005089 RID: 20617
 		LARGE_POT,
-		// Token: 0x0400508A RID: 20618
 		TEA_CEREMONY,
-		// Token: 0x0400508B RID: 20619
 		PARFAIT,
-		// Token: 0x0400508C RID: 20620
 		BABY_CAR,
-		// Token: 0x0400508D RID: 20621
 		SAND_BOX,
-		// Token: 0x0400508E RID: 20622
 		RING_NEW_YEAR = 1026,
-		// Token: 0x0400508F RID: 20623
 		BASCKETBALL,
-		// Token: 0x04005090 RID: 20624
 		EASEL_SINGLE = 2004,
-		// Token: 0x04005091 RID: 20625
 		MIC,
-		// Token: 0x04005092 RID: 20626
 		ARCADE_SINGLE,
-		// Token: 0x04005093 RID: 20627
 		BED = 2009,
-		// Token: 0x04005094 RID: 20628
 		JAPANESE_TEA = 2012,
-		// Token: 0x04005095 RID: 20629
 		BANNER_PAINT = 2015,
-		// Token: 0x04005096 RID: 20630
 		PLANTER_SINGLE,
-		// Token: 0x04005097 RID: 20631
 		XYLOPHONE_SINGLE,
-		// Token: 0x04005098 RID: 20632
 		PLANTER_XSMAS,
-		// Token: 0x04005099 RID: 20633
 		KAKIZOME,
-		// Token: 0x0400509A RID: 20634
 		PLANTER_TINPLATE,
-		// Token: 0x0400509B RID: 20635
 		EGG_PAINTING = 2028,
-		// Token: 0x0400509C RID: 20636
 		STUFFED_ANIMAL
 	}
 
-	// Token: 0x02000DBC RID: 3516
 	public class WIN_NAME
 	{
-		// Token: 0x06004A21 RID: 18977 RVA: 0x0022488C File Offset: 0x00222A8C
 		public WIN_NAME(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -14187,20 +13513,15 @@ public class SceneTreeHouse : BaseScene
 			this.errorMessage = baseTr.Find("Massage_03").gameObject;
 		}
 
-		// Token: 0x0400509D RID: 20637
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x0400509E RID: 20638
 		public InputField inputField;
 
-		// Token: 0x0400509F RID: 20639
 		public GameObject errorMessage;
 	}
 
-	// Token: 0x02000DBD RID: 3517
 	public class WIN_COMMENT
 	{
-		// Token: 0x06004A22 RID: 18978 RVA: 0x002248E4 File Offset: 0x00222AE4
 		public WIN_COMMENT(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -14209,20 +13530,15 @@ public class SceneTreeHouse : BaseScene
 			this.errorMessage = baseTr.Find("Massage_03").gameObject;
 		}
 
-		// Token: 0x040050A0 RID: 20640
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x040050A1 RID: 20641
 		public InputField inputField;
 
-		// Token: 0x040050A2 RID: 20642
 		public GameObject errorMessage;
 	}
 
-	// Token: 0x02000DBE RID: 3518
 	public class WIN_MUSIC
 	{
-		// Token: 0x06004A23 RID: 18979 RVA: 0x0022493C File Offset: 0x00222B3C
 		public WIN_MUSIC(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -14232,23 +13548,17 @@ public class SceneTreeHouse : BaseScene
 			this.imgChk = this.btnChk.transform.Find("BaseImage/Img_Check").gameObject;
 		}
 
-		// Token: 0x040050A3 RID: 20643
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x040050A4 RID: 20644
 		public ReuseScroll scroll;
 
-		// Token: 0x040050A5 RID: 20645
 		public PguiButtonCtrl btnChk;
 
-		// Token: 0x040050A6 RID: 20646
 		public GameObject imgChk;
 	}
 
-	// Token: 0x02000DBF RID: 3519
 	public class WIN_CHARGE
 	{
-		// Token: 0x06004A24 RID: 18980 RVA: 0x002249B4 File Offset: 0x00222BB4
 		public WIN_CHARGE(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -14262,20 +13572,15 @@ public class SceneTreeHouse : BaseScene
 			};
 		}
 
-		// Token: 0x040050A7 RID: 20647
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x040050A8 RID: 20648
 		public Transform batteryGet;
 
-		// Token: 0x040050A9 RID: 20649
 		public List<Transform> fuel;
 	}
 
-	// Token: 0x02000DC0 RID: 3520
 	public class WIN_CHARGE_USE
 	{
-		// Token: 0x06004A25 RID: 18981 RVA: 0x00224A30 File Offset: 0x00222C30
 		public WIN_CHARGE_USE(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -14287,29 +13592,21 @@ public class SceneTreeHouse : BaseScene
 			this.btnMinus = baseTr.Find("Btn_Minus").GetComponent<PguiButtonCtrl>();
 		}
 
-		// Token: 0x040050AA RID: 20650
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x040050AB RID: 20651
 		public Transform fuelInfo;
 
-		// Token: 0x040050AC RID: 20652
 		public Transform batteryGet;
 
-		// Token: 0x040050AD RID: 20653
 		public Slider slider;
 
-		// Token: 0x040050AE RID: 20654
 		public PguiButtonCtrl btnPlus;
 
-		// Token: 0x040050AF RID: 20655
 		public PguiButtonCtrl btnMinus;
 	}
 
-	// Token: 0x02000DC1 RID: 3521
 	public class WIN_CHARGE_GET
 	{
-		// Token: 0x06004A26 RID: 18982 RVA: 0x00224AC0 File Offset: 0x00222CC0
 		public WIN_CHARGE_GET(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -14317,20 +13614,15 @@ public class SceneTreeHouse : BaseScene
 			this.batteryGet = baseTr.Find("GetItem");
 		}
 
-		// Token: 0x040050B0 RID: 20656
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x040050B1 RID: 20657
 		public Transform batteryGet;
 
-		// Token: 0x040050B2 RID: 20658
 		public PguiTextCtrl getNum;
 	}
 
-	// Token: 0x02000DC2 RID: 3522
 	private class WIN_MACHINE
 	{
-		// Token: 0x06004A27 RID: 18983 RVA: 0x00224AF4 File Offset: 0x00222CF4
 		public WIN_MACHINE(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -14346,53 +13638,37 @@ public class SceneTreeHouse : BaseScene
 			this.numAfterItemText = baseTr.Find("Parts_ItemGet/Num_AfterTxt").gameObject.GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x040050B3 RID: 20659
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x040050B4 RID: 20660
 		public PguiTextCtrl furnitureText;
 
-		// Token: 0x040050B5 RID: 20661
 		public Transform furnitureIcon;
 
-		// Token: 0x040050B6 RID: 20662
 		public SceneTreeHouse.FurnitureCtrl fc;
 
-		// Token: 0x040050B7 RID: 20663
 		public PguiTextCtrl itemNameText;
 
-		// Token: 0x040050B8 RID: 20664
 		public PguiTextCtrl itemGetNumText;
 
-		// Token: 0x040050B9 RID: 20665
 		public AEImage getMax;
 
-		// Token: 0x040050BA RID: 20666
 		public Transform itemGetTimeInfo;
 
-		// Token: 0x040050BB RID: 20667
 		public PguiTextCtrl itemGetTxt01;
 
-		// Token: 0x040050BC RID: 20668
 		public PguiTextCtrl numBeforeItemText;
 
-		// Token: 0x040050BD RID: 20669
 		public PguiTextCtrl numAfterItemText;
 
-		// Token: 0x040050BE RID: 20670
 		public MasterRoomMachineDataModel machineTimeData;
 
-		// Token: 0x040050BF RID: 20671
 		public MstMasterRoomMachineData mstMachineData;
 
-		// Token: 0x040050C0 RID: 20672
 		public bool isPrepared;
 	}
 
-	// Token: 0x02000DC3 RID: 3523
 	public class WIN_MACHINE_GET
 	{
-		// Token: 0x06004A28 RID: 18984 RVA: 0x00224BFC File Offset: 0x00222DFC
 		public WIN_MACHINE_GET(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -14402,23 +13678,17 @@ public class SceneTreeHouse : BaseScene
 			this.scroll = this.allArea.Find("List/ScrollView").GetComponent<ReuseScroll>();
 		}
 
-		// Token: 0x040050C1 RID: 20673
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x040050C2 RID: 20674
 		public Transform oneArea;
 
-		// Token: 0x040050C3 RID: 20675
 		public Transform allArea;
 
-		// Token: 0x040050C4 RID: 20676
 		public ReuseScroll scroll;
 	}
 
-	// Token: 0x02000DC4 RID: 3524
 	public class WIN_MACHINE_ALL
 	{
-		// Token: 0x06004A29 RID: 18985 RVA: 0x00224C68 File Offset: 0x00222E68
 		public WIN_MACHINE_ALL(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -14427,68 +13697,49 @@ public class SceneTreeHouse : BaseScene
 			this.scroll = baseTr.Find("List/ScrollView").GetComponent<ReuseScroll>();
 		}
 
-		// Token: 0x040050C5 RID: 20677
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x040050C6 RID: 20678
 		public Transform noMachine;
 
-		// Token: 0x040050C7 RID: 20679
 		public ReuseScroll scroll;
 	}
 
-	// Token: 0x02000DC5 RID: 3525
 	public class WIN_VR
 	{
-		// Token: 0x06004A2A RID: 18986 RVA: 0x00224CBB File Offset: 0x00222EBB
 		public WIN_VR(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
 		}
 
-		// Token: 0x040050C8 RID: 20680
 		public PguiOpenWindowCtrl win;
 	}
 
-	// Token: 0x02000DC6 RID: 3526
 	private class FurnitureData
 	{
-		// Token: 0x040050C9 RID: 20681
 		public TreeHouseFurnitureStatic dat;
 
-		// Token: 0x040050CA RID: 20682
 		public Vector3Int siz;
 
-		// Token: 0x040050CB RID: 20683
 		public int sortSiz;
 
-		// Token: 0x040050CC RID: 20684
 		public Vector3 objSiz;
 
-		// Token: 0x040050CD RID: 20685
 		public float posY;
 
-		// Token: 0x040050CE RID: 20686
 		public int num;
 	}
 
-	// Token: 0x02000DC7 RID: 3527
 	private class CamDat
 	{
-		// Token: 0x040050CF RID: 20687
 		public Transform bas;
 
-		// Token: 0x040050D0 RID: 20688
 		public Vector2 ang;
 
-		// Token: 0x040050D1 RID: 20689
 		public float fov;
 	}
 
-	// Token: 0x02000DC8 RID: 3528
 	private class FurnitureCtrl
 	{
-		// Token: 0x06004A2D RID: 18989 RVA: 0x00224CE0 File Offset: 0x00222EE0
 		public FurnitureCtrl(int n, SceneTreeHouse.FurnitureData fd, Vector3 p, float d, GameObject o, bool isOn)
 		{
 			this.no = n;
@@ -14529,7 +13780,6 @@ public class SceneTreeHouse : BaseScene
 			this.machinePopup = null;
 		}
 
-		// Token: 0x06004A2E RID: 18990 RVA: 0x00224E14 File Offset: 0x00223014
 		public void CalcCorner()
 		{
 			Transform transform = this.obj.transform;
@@ -14576,147 +13826,100 @@ public class SceneTreeHouse : BaseScene
 			};
 		}
 
-		// Token: 0x040050D2 RID: 20690
 		public int no;
 
-		// Token: 0x040050D3 RID: 20691
 		public SceneTreeHouse.FurnitureData data;
 
-		// Token: 0x040050D4 RID: 20692
 		public Vector3 pos;
 
-		// Token: 0x040050D5 RID: 20693
 		public float dir;
 
-		// Token: 0x040050D6 RID: 20694
 		public string path;
 
-		// Token: 0x040050D7 RID: 20695
 		public GameObject obj;
 
-		// Token: 0x040050D8 RID: 20696
 		public GameObject mdl;
 
-		// Token: 0x040050D9 RID: 20697
 		public List<GameObject> on;
 
-		// Token: 0x040050DA RID: 20698
 		public List<GameObject> off;
 
-		// Token: 0x040050DB RID: 20699
 		public List<Transform> chr;
 
-		// Token: 0x040050DC RID: 20700
 		public MeshRenderer[] mesh;
 
-		// Token: 0x040050DD RID: 20701
 		public float alpha;
 
-		// Token: 0x040050DE RID: 20702
 		public GameObject board;
 
-		// Token: 0x040050DF RID: 20703
 		public List<Vector3> corner;
 
-		// Token: 0x040050E0 RID: 20704
 		public Vector3 walloff;
 
-		// Token: 0x040050E1 RID: 20705
 		public EffectData eff;
 
-		// Token: 0x040050E2 RID: 20706
 		public GameObject depend;
 
-		// Token: 0x040050E3 RID: 20707
 		public GameObject movdep;
 
-		// Token: 0x040050E4 RID: 20708
 		public Dictionary<GameObject, Vector3> grid;
 
-		// Token: 0x040050E5 RID: 20709
 		public Dictionary<GameObject, Vector3> pstr;
 
-		// Token: 0x040050E6 RID: 20710
 		public string mainTex;
 
-		// Token: 0x040050E7 RID: 20711
 		public string addTex;
 
-		// Token: 0x040050E8 RID: 20712
 		public List<Transform> action;
 
-		// Token: 0x040050E9 RID: 20713
 		public List<Transform> stick;
 
-		// Token: 0x040050EA RID: 20714
 		public List<Vector3> stickMin;
 
-		// Token: 0x040050EB RID: 20715
 		public List<Vector3> stickMax;
 
-		// Token: 0x040050EC RID: 20716
 		public int rug;
 
-		// Token: 0x040050ED RID: 20717
 		public string light;
 
-		// Token: 0x040050EE RID: 20718
 		public Transform sw;
 
-		// Token: 0x040050EF RID: 20719
 		public bool onoff;
 
-		// Token: 0x040050F0 RID: 20720
 		public bool chgmdl;
 
-		// Token: 0x040050F1 RID: 20721
 		public List<Transform> clockH;
 
-		// Token: 0x040050F2 RID: 20722
 		public List<Transform> clockM;
 
-		// Token: 0x040050F3 RID: 20723
 		public List<Transform> clockS;
 
-		// Token: 0x040050F4 RID: 20724
 		public List<Transform> cam;
 
-		// Token: 0x040050F5 RID: 20725
 		public Transform handle;
 
-		// Token: 0x040050F6 RID: 20726
 		public GameObject machinePopup;
 	}
 
-	// Token: 0x02000DC9 RID: 3529
 	private class PaperCtrl
 	{
-		// Token: 0x040050F7 RID: 20727
 		public TreeHouseFurnitureStatic.Category cat;
 
-		// Token: 0x040050F8 RID: 20728
 		public string mdlnam;
 
-		// Token: 0x040050F9 RID: 20729
 		public bool enable;
 
-		// Token: 0x040050FA RID: 20730
 		public string path;
 
-		// Token: 0x040050FB RID: 20731
 		public GameObject mdl;
 
-		// Token: 0x040050FC RID: 20732
 		public MeshRenderer[] mesh;
 
-		// Token: 0x040050FD RID: 20733
 		public bool chgmdl;
 	}
 
-	// Token: 0x02000DCA RID: 3530
 	private class CharaCtrl
 	{
-		// Token: 0x06004A30 RID: 18992 RVA: 0x00225058 File Offset: 0x00223258
 		public CharaCtrl(int n, CharaPackData cpd)
 		{
 			this.no = n;
@@ -14741,133 +13944,89 @@ public class SceneTreeHouse : BaseScene
 			this.voiceTime = -0.1f;
 		}
 
-		// Token: 0x040050FE RID: 20734
 		public int no;
 
-		// Token: 0x040050FF RID: 20735
 		public CharaPackData chara;
 
-		// Token: 0x04005100 RID: 20736
 		public bool noHand;
 
-		// Token: 0x04005101 RID: 20737
 		public CharaModelHandle hdl;
 
-		// Token: 0x04005102 RID: 20738
 		public EffectData cup;
 
-		// Token: 0x04005103 RID: 20739
 		public EffectData stk;
 
-		// Token: 0x04005104 RID: 20740
 		public float stkL;
 
-		// Token: 0x04005105 RID: 20741
 		public float stkR;
 
-		// Token: 0x04005106 RID: 20742
 		public List<EffectData> onp;
 
-		// Token: 0x04005107 RID: 20743
 		public EffectData eff;
 
-		// Token: 0x04005108 RID: 20744
 		public List<SceneTreeHouse.CharaCtrl.Effect> ring;
 
-		// Token: 0x04005109 RID: 20745
 		public List<SceneTreeHouse.CharaCtrl.Effect> ball;
 
-		// Token: 0x0400510A RID: 20746
 		public float tim;
 
-		// Token: 0x0400510B RID: 20747
 		public float itvl;
 
-		// Token: 0x0400510C RID: 20748
 		public int act;
 
-		// Token: 0x0400510D RID: 20749
 		public int idx;
 
-		// Token: 0x0400510E RID: 20750
 		public bool spe;
 
-		// Token: 0x0400510F RID: 20751
 		public bool tlk;
 
-		// Token: 0x04005110 RID: 20752
 		public VOICE_TYPE voice;
 
-		// Token: 0x04005111 RID: 20753
 		public float voiceTime;
 
-		// Token: 0x020011D0 RID: 4560
 		public class Effect
 		{
-			// Token: 0x040061C8 RID: 25032
 			public int idx;
 
-			// Token: 0x040061C9 RID: 25033
 			public Transform bone;
 
-			// Token: 0x040061CA RID: 25034
 			public EffectData eff;
 
-			// Token: 0x040061CB RID: 25035
 			public MeshRenderer[] mesh;
 
-			// Token: 0x040061CC RID: 25036
 			public float alpha;
 
-			// Token: 0x040061CD RID: 25037
 			public int typ;
 
-			// Token: 0x040061CE RID: 25038
 			public Vector3 bas;
 
-			// Token: 0x040061CF RID: 25039
 			public Vector3 tag;
 
-			// Token: 0x040061D0 RID: 25040
 			public float tim;
 		}
 	}
 
-	// Token: 0x02000DCB RID: 3531
 	private class ActionCtrl
 	{
-		// Token: 0x04005112 RID: 20754
 		public int furniture;
 
-		// Token: 0x04005113 RID: 20755
 		public List<int> chara;
 
-		// Token: 0x04005114 RID: 20756
 		public int step;
 
-		// Token: 0x04005115 RID: 20757
 		public int flag;
 
-		// Token: 0x04005116 RID: 20758
 		public float motSpd;
 	}
 
-	// Token: 0x02000DCC RID: 3532
 	private enum EmoTyp
 	{
-		// Token: 0x04005118 RID: 20760
 		INVALID,
-		// Token: 0x04005119 RID: 20761
 		SPEAK,
-		// Token: 0x0400511A RID: 20762
 		GAME,
-		// Token: 0x0400511B RID: 20763
 		SLEEP,
-		// Token: 0x0400511C RID: 20764
 		HAPPY,
-		// Token: 0x0400511D RID: 20765
 		STROKE,
-		// Token: 0x0400511E RID: 20766
 		SUPPRISE
 	}
 }

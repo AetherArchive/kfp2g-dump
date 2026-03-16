@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using CriWare;
@@ -7,10 +7,8 @@ using SGNFW.Common;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x02000140 RID: 320
 public class GachaAuthCtrl
 {
-	// Token: 0x06001190 RID: 4496 RVA: 0x000D4B28 File Offset: 0x000D2D28
 	public void Initialize()
 	{
 		this.IsDestroy = false;
@@ -95,7 +93,6 @@ public class GachaAuthCtrl
 		this.guiDataGachaAuth.baseObj.SetActive(false);
 	}
 
-	// Token: 0x06001191 RID: 4497 RVA: 0x000D502C File Offset: 0x000D322C
 	public IEnumerator SetupPlayAuth(DataManagerGacha.PlayResult playResult, bool tutorialFlg = false)
 	{
 		List<GachaAuthCtrl.AuthItem> list = new List<GachaAuthCtrl.AuthItem>();
@@ -125,7 +122,6 @@ public class GachaAuthCtrl
 		yield break;
 	}
 
-	// Token: 0x06001192 RID: 4498 RVA: 0x000D5049 File Offset: 0x000D3249
 	public IEnumerator PlayCharaPresentAuth(DataManagerPresent.UserPresentData presentData, List<int> haveCharaId, List<ItemData> replaceItemList)
 	{
 		List<GachaAuthCtrl.AuthItem> list = new List<GachaAuthCtrl.AuthItem>();
@@ -148,7 +144,6 @@ public class GachaAuthCtrl
 		yield break;
 	}
 
-	// Token: 0x06001193 RID: 4499 RVA: 0x000D506D File Offset: 0x000D326D
 	public IEnumerator PlayGreetingForOtherScene(List<GachaAuthCtrl.AuthItem> authItemList, bool isHomeAuth = false)
 	{
 		GachaAuthCtrl.<>c__DisplayClass29_0 CS$<>8__locals1 = new GachaAuthCtrl.<>c__DisplayClass29_0();
@@ -196,7 +191,6 @@ public class GachaAuthCtrl
 		yield break;
 	}
 
-	// Token: 0x06001194 RID: 4500 RVA: 0x000D508A File Offset: 0x000D328A
 	private IEnumerator PlayAuth(List<GachaAuthCtrl.AuthItem> authItemList, int gachaId, bool tutorialFlg)
 	{
 		this.loadData = null;
@@ -214,7 +208,6 @@ public class GachaAuthCtrl
 		yield break;
 	}
 
-	// Token: 0x06001195 RID: 4501 RVA: 0x000D50AE File Offset: 0x000D32AE
 	private IEnumerator DispLoading(GachaAuthCtrl.cbDispLoading cbEnd)
 	{
 		DateTime dt = TimeManager.SystemNow;
@@ -275,7 +268,6 @@ public class GachaAuthCtrl
 		yield break;
 	}
 
-	// Token: 0x06001196 RID: 4502 RVA: 0x000D50C4 File Offset: 0x000D32C4
 	private IEnumerator PlayAuthInternal(List<GachaAuthCtrl.AuthItem> authItemList, int gachaId, bool tutorialFlg)
 	{
 		GachaAuthCtrl.<>c__DisplayClass33_0 CS$<>8__locals1 = new GachaAuthCtrl.<>c__DisplayClass33_0();
@@ -952,7 +944,6 @@ public class GachaAuthCtrl
 		yield break;
 	}
 
-	// Token: 0x06001197 RID: 4503 RVA: 0x000D50E8 File Offset: 0x000D32E8
 	private IEnumerator PlayGreeting(List<GachaAuthCtrl.AuthItem> authItemList, bool tutorialFlg, bool isDispLoading, bool clothChange, GameObject bgObj = null, bool isHomeAuth = false)
 	{
 		GachaAuthCtrl.<>c__DisplayClass34_0 CS$<>8__locals1 = new GachaAuthCtrl.<>c__DisplayClass34_0();
@@ -1185,7 +1176,6 @@ public class GachaAuthCtrl
 		yield break;
 	}
 
-	// Token: 0x06001198 RID: 4504 RVA: 0x000D5124 File Offset: 0x000D3324
 	private IEnumerator LoadAuth(List<GachaAuthCtrl.AuthItem> authItem, List<AuthPlayer.GachaParam.After> afterParam)
 	{
 		foreach (AuthPlayer.GachaParam.After after in afterParam)
@@ -1264,7 +1254,6 @@ public class GachaAuthCtrl
 		yield break;
 	}
 
-	// Token: 0x06001199 RID: 4505 RVA: 0x000D5144 File Offset: 0x000D3344
 	private AuthPlayer.GachaParam.Before GetBeforeGachaParamByPresentBox(List<GachaAuthCtrl.AuthItem> authItemList)
 	{
 		ItemDef.Rarity rarity = DataManager.DmItem.GetItemStaticBase(authItemList[0].itemId).GetRarity();
@@ -1290,14 +1279,12 @@ public class GachaAuthCtrl
 		return before;
 	}
 
-	// Token: 0x0600119A RID: 4506 RVA: 0x000D51C8 File Offset: 0x000D33C8
 	private AuthPlayer.GachaParam.Before GetBeforeGachaParam(List<GachaAuthCtrl.AuthItem> authItemList, ResultRarity resultRarity)
 	{
 		int highRarity = resultRarity.GetHighRarity(authItemList);
 		return this.LotteryBeforeGachaParam(highRarity, resultRarity.SKY_PER, resultRarity.POST_PER, resultRarity.PUT_PER, resultRarity.PUT_PER_V, resultRarity.EFF_PER);
 	}
 
-	// Token: 0x0600119B RID: 4507 RVA: 0x000D5204 File Offset: 0x000D3404
 	private AuthPlayer.GachaParam.Before LotteryBeforeGachaParam(int highRarity, int[,] skyPer, int[,] postPer, int[,] putPer, int[,] putPer_v, int[,] effPer)
 	{
 		AuthPlayer.GachaParam.Before before = new AuthPlayer.GachaParam.Before();
@@ -1467,14 +1454,12 @@ public class GachaAuthCtrl
 		return before;
 	}
 
-	// Token: 0x0600119C RID: 4508 RVA: 0x000D5478 File Offset: 0x000D3678
 	private string GetPremiumSEName(List<GachaAuthCtrl.AuthItem> authItemList, ResultRarity resultRarity)
 	{
 		List<string> list = new List<string> { "prd_se_gacha_premium_1", "prd_se_gacha_premium_2", "prd_se_gacha_premium_3" };
 		return resultRarity.LotteryPremiumSEName(authItemList, list);
 	}
 
-	// Token: 0x0600119D RID: 4509 RVA: 0x000D54B4 File Offset: 0x000D36B4
 	private List<AuthPlayer.GachaParam.After> GetAfterGachaParam(List<GachaAuthCtrl.AuthItem> authItemList, AuthPlayer.GachaParam.Before beforeGachaParam, ResultRarity resultRarity)
 	{
 		List<AuthPlayer.GachaParam.After> list = new List<AuthPlayer.GachaParam.After>();
@@ -1500,7 +1485,6 @@ public class GachaAuthCtrl
 		return list;
 	}
 
-	// Token: 0x0600119E RID: 4510 RVA: 0x000D55B8 File Offset: 0x000D37B8
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		if (this.guiDataGachaAuth.skipButton != null && button == this.guiDataGachaAuth.skipButton)
@@ -1509,7 +1493,6 @@ public class GachaAuthCtrl
 		}
 	}
 
-	// Token: 0x0600119F RID: 4511 RVA: 0x000D55E8 File Offset: 0x000D37E8
 	public void DestroyAllObject()
 	{
 		this.IsDestroy = true;
@@ -1605,73 +1588,50 @@ public class GachaAuthCtrl
 		DataManagerGacha.ReleasePuCharaList();
 	}
 
-	// Token: 0x04000ED0 RID: 3792
 	private GachaAuthCtrl.GUIGachaAuth guiDataGachaAuth;
 
-	// Token: 0x04000ED1 RID: 3793
 	private AuthPlayer gachaAuth_common;
 
-	// Token: 0x04000ED2 RID: 3794
 	private List<AuthPlayer> gachaAuthFirstList;
 
-	// Token: 0x04000ED3 RID: 3795
 	private List<AuthPlayer> gachaAuthSecondList;
 
-	// Token: 0x04000ED4 RID: 3796
 	private List<AuthPlayer> gachaAuth_miracle;
 
-	// Token: 0x04000ED5 RID: 3797
 	private GachaAuthCtrl.GachaAeGreeting gachaAeGreeting;
 
-	// Token: 0x04000ED6 RID: 3798
 	private GameObject gachaWipe_Top;
 
-	// Token: 0x04000ED7 RID: 3799
 	private GameObject gachaWipe_Change;
 
-	// Token: 0x04000ED8 RID: 3800
 	private GameObject gachaWipe_End;
 
-	// Token: 0x04000ED9 RID: 3801
 	private PguiAECtrl AEImage_Wipe_Top;
 
-	// Token: 0x04000EDA RID: 3802
 	private PguiAECtrl AEImage_Wipe_Change;
 
-	// Token: 0x04000EDB RID: 3803
 	private PguiAECtrl AEImage_Wipe_End;
 
-	// Token: 0x04000EDC RID: 3804
 	private StagePresetCtrl gachaAuthStage;
 
-	// Token: 0x04000EDD RID: 3805
 	private StagePresetCtrl miracleStage;
 
-	// Token: 0x04000EDE RID: 3806
 	private IEnumerator loadData;
 
-	// Token: 0x04000EDF RID: 3807
 	private int playAuthIdx;
 
-	// Token: 0x04000EE0 RID: 3808
 	private bool touchByGachaAuth;
 
-	// Token: 0x04000EE1 RID: 3809
 	private bool gachaAllSkipFlag;
 
-	// Token: 0x04000EE2 RID: 3810
 	private bool AuthEndFlg;
 
-	// Token: 0x04000EE3 RID: 3811
 	private GameObject MainFieldGachaAuth;
 
-	// Token: 0x04000EE4 RID: 3812
 	private bool IsDestroy;
 
-	// Token: 0x02000A86 RID: 2694
 	public class GachaAeGreeting
 	{
-		// Token: 0x06003F8F RID: 16271 RVA: 0x001EF9CC File Offset: 0x001EDBCC
 		public GachaAeGreeting(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1710,71 +1670,49 @@ public class GachaAuthCtrl
 			this.AEImage_NewComer.InitForce();
 		}
 
-		// Token: 0x040042FE RID: 17150
 		public GameObject baseObj;
 
-		// Token: 0x040042FF RID: 17151
 		public PguiAECtrl aeCtrl;
 
-		// Token: 0x04004300 RID: 17152
 		public PguiTextCtrl Txt_CharaKind;
 
-		// Token: 0x04004301 RID: 17153
 		public PguiTextCtrl Txt_CharaName;
 
-		// Token: 0x04004302 RID: 17154
 		public PguiTextCtrl Txt_WName;
 
-		// Token: 0x04004303 RID: 17155
 		public PguiTextCtrl Txt_CharaName_Eng;
 
-		// Token: 0x04004304 RID: 17156
 		public PguiTextCtrl Txt_Serif;
 
-		// Token: 0x04004305 RID: 17157
 		public RenderTextureChara RenderChara;
 
-		// Token: 0x04004306 RID: 17158
 		public List<PguiAECtrl> Icon_Star;
 
-		// Token: 0x04004307 RID: 17159
 		public Image Bg_Pattern;
 
-		// Token: 0x04004308 RID: 17160
 		public PguiColorCtrl Bg_Color;
 
-		// Token: 0x04004309 RID: 17161
 		public Image Top_Mat;
 
-		// Token: 0x0400430A RID: 17162
 		public Image Bot_Mat;
 
-		// Token: 0x0400430B RID: 17163
 		public PguiColorCtrl Top_Mat_Color;
 
-		// Token: 0x0400430C RID: 17164
 		public PguiColorCtrl Bot_Mat_Color;
 
-		// Token: 0x0400430D RID: 17165
 		public PguiReplaceSpriteCtrl Top_Pt;
 
-		// Token: 0x0400430E RID: 17166
 		public PguiReplaceSpriteCtrl Bot_Pt;
 
-		// Token: 0x0400430F RID: 17167
 		public Image Img_No;
 
-		// Token: 0x04004310 RID: 17168
 		public PguiColorCtrl Img_No_Color;
 
-		// Token: 0x04004311 RID: 17169
 		public PguiReplaceAECtrl AEImage_NewComer;
 	}
 
-	// Token: 0x02000A87 RID: 2695
 	public class GachaAeItemGet
 	{
-		// Token: 0x06003F90 RID: 16272 RVA: 0x001EFCE8 File Offset: 0x001EDEE8
 		public GachaAeItemGet(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1782,45 +1720,32 @@ public class GachaAuthCtrl
 			this.Icon_Item = this.baseObj.transform.Find("Icon_Item").gameObject;
 		}
 
-		// Token: 0x04004312 RID: 17170
 		public GameObject baseObj;
 
-		// Token: 0x04004313 RID: 17171
 		public PguiAECtrl aeCtrl;
 
-		// Token: 0x04004314 RID: 17172
 		public GameObject Icon_Item;
 	}
 
-	// Token: 0x02000A88 RID: 2696
 	public class AuthItem
 	{
-		// Token: 0x04004315 RID: 17173
 		public int itemId;
 
-		// Token: 0x04004316 RID: 17174
 		public bool isNew;
 
-		// Token: 0x04004317 RID: 17175
 		public bool replaced;
 
-		// Token: 0x04004318 RID: 17176
 		public ItemData replaceItem;
 
-		// Token: 0x04004319 RID: 17177
 		public ItemData replaceItemEx;
 
-		// Token: 0x0400431A RID: 17178
 		public bool replaceItemIsNew;
 
-		// Token: 0x0400431B RID: 17179
 		public bool replaceItemExIsNew;
 	}
 
-	// Token: 0x02000A89 RID: 2697
 	public class GachaAeNickName
 	{
-		// Token: 0x06003F92 RID: 16274 RVA: 0x001EFD50 File Offset: 0x001EDF50
 		public GachaAeNickName(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1831,26 +1756,19 @@ public class GachaAuthCtrl
 			this.Txt_WName_White = this.baseObj.transform.Find("WName_White/Txt_WName_White").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x0400431C RID: 17180
 		public GameObject baseObj;
 
-		// Token: 0x0400431D RID: 17181
 		public PguiAECtrl aeCtrl;
 
-		// Token: 0x0400431E RID: 17182
 		public PguiReplaceAECtrl repCtrl;
 
-		// Token: 0x0400431F RID: 17183
 		public PguiTextCtrl Txt_WName;
 
-		// Token: 0x04004320 RID: 17184
 		public PguiTextCtrl Txt_WName_White;
 	}
 
-	// Token: 0x02000A8A RID: 2698
 	private class GUIGachaAuth
 	{
-		// Token: 0x06003F93 RID: 16275 RVA: 0x001EFDFC File Offset: 0x001EDFFC
 		public GUIGachaAuth(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1911,50 +1829,34 @@ public class GachaAuthCtrl
 			this.skipButton = this.baseObj.transform.Find("Btn_Skip").GetComponent<PguiButtonCtrl>();
 		}
 
-		// Token: 0x04004321 RID: 17185
 		public GameObject baseObj;
 
-		// Token: 0x04004322 RID: 17186
 		public PguiAECtrl AEImage_New_Chara;
 
-		// Token: 0x04004323 RID: 17187
 		public PguiAECtrl AEImage_New_Photo;
 
-		// Token: 0x04004324 RID: 17188
 		public PguiAECtrl AEImage_New_Interior;
 
-		// Token: 0x04004325 RID: 17189
 		public PguiAECtrl AEImage_PhotoEffect;
 
-		// Token: 0x04004326 RID: 17190
 		public PguiAECtrl AEImage_EventEffect;
 
-		// Token: 0x04004327 RID: 17191
 		public PguiAECtrl AEImage_BonusCharaEffect;
 
-		// Token: 0x04004328 RID: 17192
 		public GachaAuthCtrl.GachaAeNickName ResultFriends_WName;
 
-		// Token: 0x04004329 RID: 17193
 		public List<PguiAECtrl> ResultFriendsList;
 
-		// Token: 0x0400432A RID: 17194
 		public List<PguiAECtrl> ResultPhotoList;
 
-		// Token: 0x0400432B RID: 17195
 		public List<PguiAECtrl> ResultFurnitureList;
 
-		// Token: 0x0400432C RID: 17196
 		public GachaAuthCtrl.GachaAeItemGet gachaAeItemGet;
 
-		// Token: 0x0400432D RID: 17197
 		public GachaAuthCtrl.GachaAeItemGet gachaAeItemBonus;
 
-		// Token: 0x0400432E RID: 17198
 		public PguiButtonCtrl skipButton;
 	}
 
-	// Token: 0x02000A8B RID: 2699
-	// (Invoke) Token: 0x06003F95 RID: 16277
 	public delegate bool cbDispLoading();
 }

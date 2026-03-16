@@ -1,14 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using SGNFW.Common;
 using SGNFW.HttpRequest.Protocol;
 using UnityEngine;
 
-// Token: 0x0200010B RID: 267
 public class TutorialUtil
 {
-	// Token: 0x06000CED RID: 3309 RVA: 0x0004FAC8 File Offset: 0x0004DCC8
 	public static void RequestNextSequence(TutorialUtil.Sequence nowSeq)
 	{
 		SceneManager.SceneName sceneName = SceneManager.SceneName.None;
@@ -241,7 +239,6 @@ public class TutorialUtil
 		}
 	}
 
-	// Token: 0x06000CEE RID: 3310 RVA: 0x0004FFDC File Offset: 0x0004E1DC
 	public static void UpdateDataManagerByCharaGrow()
 	{
 		DataManager.DmChara.GetUserCharaData(1).dynamicData.promoteFlag[0] = true;
@@ -259,7 +256,6 @@ public class TutorialUtil
 		DataManager.DmItem.UpdateUserDataByDirect(list, 2);
 	}
 
-	// Token: 0x06000CEF RID: 3311 RVA: 0x00050074 File Offset: 0x0004E274
 	private static void UpdateDataManagerByDirect(TutorialUtil.Sequence seq)
 	{
 		switch (seq)
@@ -465,7 +461,6 @@ public class TutorialUtil
 		}
 	}
 
-	// Token: 0x06000CF0 RID: 3312 RVA: 0x000507D1 File Offset: 0x0004E9D1
 	public static void SetHelper(int helper)
 	{
 		TutorialUtil.SelectHelperCharaId = helper;
@@ -475,68 +470,39 @@ public class TutorialUtil
 		}
 	}
 
-	// Token: 0x04000A53 RID: 2643
 	private static readonly string tutorialRestartKey = "tutorialRestart";
 
-	// Token: 0x04000A54 RID: 2644
 	private static int SelectHelperCharaId = -1;
 
-	// Token: 0x04000A55 RID: 2645
 	public static readonly int TutorialPhotoId = 7001;
 
-	// Token: 0x04000A56 RID: 2646
 	public static readonly int TutorialGuestCharaId = 29;
 
-	// Token: 0x0200084B RID: 2123
 	public enum Sequence
 	{
-		// Token: 0x04003747 RID: 14151
 		INVALID,
-		// Token: 0x04003748 RID: 14152
 		FIRST,
-		// Token: 0x04003749 RID: 14153
 		USER_SETTING,
-		// Token: 0x0400374A RID: 14154
 		SCENARIO_00,
-		// Token: 0x0400374B RID: 14155
 		BATTLE_00,
-		// Token: 0x0400374C RID: 14156
 		SCENARIO_01,
-		// Token: 0x0400374D RID: 14157
 		SCENARIO_02,
-		// Token: 0x0400374E RID: 14158
 		BATTLE_01,
-		// Token: 0x0400374F RID: 14159
 		SCENARIO_03,
-		// Token: 0x04003750 RID: 14160
 		GACHA_PLAY,
-		// Token: 0x04003751 RID: 14161
 		SCENARIO_04,
-		// Token: 0x04003752 RID: 14162
 		PARTY_EDIT,
-		// Token: 0x04003753 RID: 14163
 		HELPER_SELECT_00,
-		// Token: 0x04003754 RID: 14164
 		BATTLE_02,
-		// Token: 0x04003755 RID: 14165
 		SCENARIO_05,
-		// Token: 0x04003756 RID: 14166
 		CHARA_GROW,
-		// Token: 0x04003757 RID: 14167
 		HELPER_SELECT_01,
-		// Token: 0x04003758 RID: 14168
 		SCENARIO_06,
-		// Token: 0x04003759 RID: 14169
 		BATTLE_03,
-		// Token: 0x0400375A RID: 14170
 		SCENARIO_07,
-		// Token: 0x0400375B RID: 14171
 		DATA_RESET,
-		// Token: 0x0400375C RID: 14172
 		OPENING_MOVIE,
-		// Token: 0x0400375D RID: 14173
 		QUEST_GUIDE,
-		// Token: 0x0400375E RID: 14174
 		END
 	}
 }

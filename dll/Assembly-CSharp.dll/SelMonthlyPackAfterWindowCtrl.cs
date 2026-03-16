@@ -1,13 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using SGNFW.Common;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x020001BB RID: 443
 public class SelMonthlyPackAfterWindowCtrl : MonoBehaviour
 {
-	// Token: 0x06001E6D RID: 7789 RVA: 0x0017AD34 File Offset: 0x00178F34
 	public void Init()
 	{
 		GameObject gameObject = Object.Instantiate<GameObject>((GameObject)Resources.Load("SelCmn/GUI/Prefab/GUI_CmnShop_PassAfter_Window"), base.transform);
@@ -29,7 +27,6 @@ public class SelMonthlyPackAfterWindowCtrl : MonoBehaviour
 		this.nowPack = null;
 	}
 
-	// Token: 0x06001E6E RID: 7790 RVA: 0x0017AE19 File Offset: 0x00179019
 	public void Setup()
 	{
 		this.isActiveWindow = true;
@@ -37,13 +34,11 @@ public class SelMonthlyPackAfterWindowCtrl : MonoBehaviour
 		this.nowPack = null;
 	}
 
-	// Token: 0x06001E6F RID: 7791 RVA: 0x0017AE30 File Offset: 0x00179030
 	public bool IsActiveWindow()
 	{
 		return this.isActiveWindow;
 	}
 
-	// Token: 0x06001E70 RID: 7792 RVA: 0x0017AE38 File Offset: 0x00179038
 	private void Update()
 	{
 		if (this.requestStatus != this.currentStatus)
@@ -65,7 +60,6 @@ public class SelMonthlyPackAfterWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001E71 RID: 7793 RVA: 0x0017AEB2 File Offset: 0x001790B2
 	private IEnumerator SetupSequence()
 	{
 		this.nowPack = DataManager.DmMonthlyPack.nowPackData.MonthlypackData;
@@ -200,7 +194,6 @@ public class SelMonthlyPackAfterWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001E72 RID: 7794 RVA: 0x0017AEC1 File Offset: 0x001790C1
 	private void OnClickMissionButton(PguiButtonCtrl button)
 	{
 		if (this.isActiveWindow)
@@ -210,7 +203,6 @@ public class SelMonthlyPackAfterWindowCtrl : MonoBehaviour
 		this.requestStatus = SelMonthlyPackAfterWindowCtrl.Status.ERROR;
 	}
 
-	// Token: 0x06001E73 RID: 7795 RVA: 0x0017AEDF File Offset: 0x001790DF
 	private bool OnClickOwButton(int index)
 	{
 		this.requestStatus = SelMonthlyPackAfterWindowCtrl.Status.NONE;
@@ -218,28 +210,20 @@ public class SelMonthlyPackAfterWindowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x0400163B RID: 5691
 	private SelMonthlyPackAfterWindowCtrl.Window window;
 
-	// Token: 0x0400163C RID: 5692
 	private SelMonthlyPackAfterWindowCtrl.Status requestStatus;
 
-	// Token: 0x0400163D RID: 5693
 	private SelMonthlyPackAfterWindowCtrl.Status currentStatus;
 
-	// Token: 0x0400163E RID: 5694
 	private bool isActiveWindow;
 
-	// Token: 0x0400163F RID: 5695
 	private DataManagerMonthlyPack.PurchaseMonthlypackData nowPack;
 
-	// Token: 0x04001640 RID: 5696
 	private IEnumerator setupSequence;
 
-	// Token: 0x02000FAE RID: 4014
 	public class Window
 	{
-		// Token: 0x06005095 RID: 20629 RVA: 0x00241D48 File Offset: 0x0023FF48
 		public Window(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -249,30 +233,21 @@ public class SelMonthlyPackAfterWindowCtrl : MonoBehaviour
 			this.Btn_Mission4 = baseTr.Find("Base/Window/Bonus_04/Bonus01/Btn_Mission").GetComponent<PguiButtonCtrl>();
 		}
 
-		// Token: 0x04005876 RID: 22646
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x04005877 RID: 22647
 		public PguiButtonCtrl Btn_Info;
 
-		// Token: 0x04005878 RID: 22648
 		public PguiButtonCtrl Btn_Mission;
 
-		// Token: 0x04005879 RID: 22649
 		public PguiButtonCtrl Btn_Mission3;
 
-		// Token: 0x0400587A RID: 22650
 		public PguiButtonCtrl Btn_Mission4;
 	}
 
-	// Token: 0x02000FAF RID: 4015
 	public enum Status
 	{
-		// Token: 0x0400587C RID: 22652
 		NONE,
-		// Token: 0x0400587D RID: 22653
 		ERROR,
-		// Token: 0x0400587E RID: 22654
 		SETUP
 	}
 }

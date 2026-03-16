@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
@@ -8,41 +8,23 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x02000173 RID: 371
 public class SelEventCoopCtrl : MonoBehaviour
 {
-	// Token: 0x1700039F RID: 927
-	// (get) Token: 0x0600174B RID: 5963 RVA: 0x001234DE File Offset: 0x001216DE
-	// (set) Token: 0x0600174C RID: 5964 RVA: 0x001234E6 File Offset: 0x001216E6
 	public SelEventCoopCtrl.GUI GuiData { get; private set; }
 
-	// Token: 0x170003A0 RID: 928
-	// (get) Token: 0x0600174D RID: 5965 RVA: 0x001234EF File Offset: 0x001216EF
-	// (set) Token: 0x0600174E RID: 5966 RVA: 0x001234F7 File Offset: 0x001216F7
 	private string LoadAssetPath { get; set; }
 
-	// Token: 0x170003A1 RID: 929
-	// (get) Token: 0x06001750 RID: 5968 RVA: 0x00123508 File Offset: 0x00121708
-	// (set) Token: 0x0600174F RID: 5967 RVA: 0x00123500 File Offset: 0x00121700
 	private static Dictionary<SelEventCoopCtrl.AttributeType, int> MapIdPairs { get; set; }
 
-	// Token: 0x170003A2 RID: 930
-	// (get) Token: 0x06001751 RID: 5969 RVA: 0x0012350F File Offset: 0x0012170F
-	// (set) Token: 0x06001752 RID: 5970 RVA: 0x00123517 File Offset: 0x00121717
 	public QuestUtil.SelectData SelectData { private get; set; }
 
-	// Token: 0x170003A3 RID: 931
-	// (get) Token: 0x06001754 RID: 5972 RVA: 0x00123529 File Offset: 0x00121729
-	// (set) Token: 0x06001753 RID: 5971 RVA: 0x00123520 File Offset: 0x00121720
 	private int SelectRankingIndex { get; set; }
 
-	// Token: 0x06001755 RID: 5973 RVA: 0x00123531 File Offset: 0x00121731
 	public bool FinishedRequestGetCoopInfo()
 	{
 		return this.requestGetCoopInfo == null;
 	}
 
-	// Token: 0x06001756 RID: 5974 RVA: 0x0012353C File Offset: 0x0012173C
 	public float GetOffsetPosY()
 	{
 		if (this.GuiData == null)
@@ -52,7 +34,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 		return this.GuiData.questSelect.GetOffsetPosY();
 	}
 
-	// Token: 0x06001757 RID: 5975 RVA: 0x0012355C File Offset: 0x0012175C
 	public void SetupQuestSelect()
 	{
 		if (this.GuiData != null)
@@ -62,13 +43,11 @@ public class SelEventCoopCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001758 RID: 5976 RVA: 0x0012358E File Offset: 0x0012178E
 	public bool IsBonus(int mapId)
 	{
 		return SelEventCoopCtrl.MapIdPairs[SelEventCoopCtrl.AttributeType.BONUS] == mapId;
 	}
 
-	// Token: 0x06001759 RID: 5977 RVA: 0x001235A0 File Offset: 0x001217A0
 	public static bool OpenedBonus()
 	{
 		DataManagerEvent.CoopData lastCoopInfo = DataManager.DmEvent.LastCoopInfo;
@@ -87,7 +66,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 		return flag;
 	}
 
-	// Token: 0x0600175A RID: 5978 RVA: 0x00123630 File Offset: 0x00121830
 	public void Init(SelEventCoopCtrl.InitParam _initParam, SelEventCoopCtrl.SetupParam _setupParam)
 	{
 		this.createGui = null;
@@ -127,7 +105,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 		this.Setup(_setupParam);
 	}
 
-	// Token: 0x0600175B RID: 5979 RVA: 0x001236D4 File Offset: 0x001218D4
 	public void Setup(SelEventCoopCtrl.SetupParam _setupParam)
 	{
 		this.setupParam = _setupParam;
@@ -139,7 +116,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 		this.createGui = Singleton<SceneManager>.Instance.StartCoroutine(this.CreateGUI());
 	}
 
-	// Token: 0x0600175C RID: 5980 RVA: 0x00123704 File Offset: 0x00121904
 	public void UpdateDecoration()
 	{
 		CanvasManager.HdlHelpWindowCtrl.SetCurrentOpenHelpByCoop(true, this.setupParam.eventData.eventId);
@@ -185,30 +161,25 @@ public class SelEventCoopCtrl : MonoBehaviour
 		CanvasManager.SetBgTexture(SelEventCoopCtrl.BG_NAME);
 	}
 
-	// Token: 0x0600175D RID: 5981 RVA: 0x00123A84 File Offset: 0x00121C84
 	public void Dest()
 	{
 		SelEventCoopCtrl.GUI guiData = this.GuiData;
 	}
 
-	// Token: 0x0600175E RID: 5982 RVA: 0x00123A8D File Offset: 0x00121C8D
 	public void Destroy()
 	{
 	}
 
-	// Token: 0x0600175F RID: 5983 RVA: 0x00123A8F File Offset: 0x00121C8F
 	public static void PlayBGM()
 	{
 		SoundManager.PlayBGM("prd_bgm0068");
 	}
 
-	// Token: 0x06001760 RID: 5984 RVA: 0x00123A9B File Offset: 0x00121C9B
 	public static void OpenHelpWindow(int eventId, bool isPriorityPickup)
 	{
 		CanvasManager.HdlCmnFeedPageWindowCtrl.Open(CmnFeedPageWindowCtrl.Type.PAGE_FEED, "イベントの遊びかた", SelEventCoopCtrl.GetTipsFilePath(eventId, isPriorityPickup), null);
 	}
 
-	// Token: 0x06001761 RID: 5985 RVA: 0x00123AB5 File Offset: 0x00121CB5
 	public IEnumerator RequestBounusClearReset(int mapId)
 	{
 		QuestStaticMap mapData = DataManager.DmQuest.QuestStaticData.mapDataMap[mapId];
@@ -244,7 +215,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001762 RID: 5986 RVA: 0x00123AC4 File Offset: 0x00121CC4
 	public IEnumerator RequestBounusClearResetFromGroup(int mapId)
 	{
 		QuestStaticMap mapData = DataManager.DmQuest.QuestStaticData.mapDataMap[mapId];
@@ -277,7 +247,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001763 RID: 5987 RVA: 0x00123AD4 File Offset: 0x00121CD4
 	private static List<string> GetTipsFilePath(int eventId, bool isPriorityPickup)
 	{
 		DataManagerEvent.EventData eventData = DataManager.DmEvent.GetEventData(eventId);
@@ -303,7 +272,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 		return new List<string> { "Texture2D/Tutorial_Window/Event_Multi/tutorial_multievent_01", "Texture2D/Tutorial_Window/Event_Multi/tutorial_multievent_02", "Texture2D/Tutorial_Window/Event_Multi/tutorial_multievent_03", "Texture2D/Tutorial_Window/Event_Multi/tutorial_multievent_04" };
 	}
 
-	// Token: 0x06001764 RID: 5988 RVA: 0x00123BF8 File Offset: 0x00121DF8
 	private IEnumerator LoadAssetObject(string path)
 	{
 		AssetManager.LoadAssetData(path, AssetManager.OWNER.QuestSelector, 0, null);
@@ -314,7 +282,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001765 RID: 5989 RVA: 0x00123C07 File Offset: 0x00121E07
 	private IEnumerator CreateGUI()
 	{
 		if (this.GuiData == null)
@@ -442,7 +409,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001766 RID: 5990 RVA: 0x00123C16 File Offset: 0x00121E16
 	private IEnumerator RequestGetCoopInfo(int mapId)
 	{
 		int oldTermId = 0;
@@ -504,12 +470,10 @@ public class SelEventCoopCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001767 RID: 5991 RVA: 0x00123C2C File Offset: 0x00121E2C
 	private void Start()
 	{
 	}
 
-	// Token: 0x06001768 RID: 5992 RVA: 0x00123C2E File Offset: 0x00121E2E
 	private void Update()
 	{
 		if (this.requestGetCoopInfo != null && !this.requestGetCoopInfo.MoveNext())
@@ -518,7 +482,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001769 RID: 5993 RVA: 0x00123C4C File Offset: 0x00121E4C
 	private void SetActiveLRButton()
 	{
 		DataManagerEvent.CoopData lastCoopInfo = DataManager.DmEvent.LastCoopInfo;
@@ -530,7 +493,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600176A RID: 5994 RVA: 0x00123CF0 File Offset: 0x00121EF0
 	private void OnClickLR(PguiButtonCtrl button)
 	{
 		DataManagerEvent.CoopData.MapInfo mapInfo = DataManager.DmEvent.LastCoopInfo.MapInfoMap[this.SelectData.mapId];
@@ -543,73 +505,49 @@ public class SelEventCoopCtrl : MonoBehaviour
 		this.SetActiveLRButton();
 	}
 
-	// Token: 0x04001260 RID: 4704
 	public static readonly string BG_NAME = "selbg_event_multi";
 
-	// Token: 0x04001262 RID: 4706
 	private SelEventCoopCtrl.InitParam initParam = new SelEventCoopCtrl.InitParam();
 
-	// Token: 0x04001263 RID: 4707
 	private SelEventCoopCtrl.SetupParam setupParam = new SelEventCoopCtrl.SetupParam();
 
-	// Token: 0x04001265 RID: 4709
 	private Coroutine createGui;
 
-	// Token: 0x04001269 RID: 4713
 	private IEnumerator requestGetCoopInfo;
 
-	// Token: 0x02000CE6 RID: 3302
 	private enum AttributeType
 	{
-		// Token: 0x04004CD0 RID: 19664
 		RED,
-		// Token: 0x04004CD1 RID: 19665
 		GREEN,
-		// Token: 0x04004CD2 RID: 19666
 		BLUE,
-		// Token: 0x04004CD3 RID: 19667
 		PINK,
-		// Token: 0x04004CD4 RID: 19668
 		LIME,
-		// Token: 0x04004CD5 RID: 19669
 		AQUA,
-		// Token: 0x04004CD6 RID: 19670
 		BONUS
 	}
 
-	// Token: 0x02000CE7 RID: 3303
 	public class InitParam
 	{
-		// Token: 0x04004CD7 RID: 19671
 		public UnityAction reqShopSequenceCB;
 
-		// Token: 0x04004CD8 RID: 19672
 		public UnityAction selectObjsCB;
 
-		// Token: 0x04004CD9 RID: 19673
 		public GameObject chapterLeftObject;
 
-		// Token: 0x04004CDA RID: 19674
 		public GameObject chapterRightObject;
 	}
 
-	// Token: 0x02000CE8 RID: 3304
 	public class SetupParam
 	{
-		// Token: 0x04004CDB RID: 19675
 		public DataManagerEvent.EventData eventData;
 
-		// Token: 0x04004CDC RID: 19676
 		public UnityAction reqNextSequenceCB;
 
-		// Token: 0x04004CDD RID: 19677
 		public UnityAction<Transform> pointTouchCB;
 	}
 
-	// Token: 0x02000CE9 RID: 3305
 	public class GUI
 	{
-		// Token: 0x06004791 RID: 18321 RVA: 0x00218C7E File Offset: 0x00216E7E
 		public GUI(Transform mapBaseTr, Transform questLeftBaseTr, Transform questRightBaseTr)
 		{
 			this.mapSelect = new SelEventCoopCtrl.GUI.MapSelect(mapBaseTr);
@@ -617,16 +555,12 @@ public class SelEventCoopCtrl : MonoBehaviour
 			this.questSelect = new SelEventCoopCtrl.GUI.QuestSelect(questLeftBaseTr, questRightBaseTr);
 		}
 
-		// Token: 0x04004CDE RID: 19678
 		public SelEventCoopCtrl.GUI.MapSelect mapSelect;
 
-		// Token: 0x04004CDF RID: 19679
 		public SelEventCoopCtrl.GUI.QuestSelect questSelect;
 
-		// Token: 0x020011BA RID: 4538
 		public class PlayerInfo
 		{
-			// Token: 0x060056F6 RID: 22262 RVA: 0x00254ECB File Offset: 0x002530CB
 			public PlayerInfo(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -634,7 +568,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 				this.anim = baseTr.GetComponent<SimpleAnimation>();
 			}
 
-			// Token: 0x060056F7 RID: 22263 RVA: 0x00254F04 File Offset: 0x00253104
 			public void Setup(List<DataManagerEvent.CoopData.DispLog> logs, int index, bool isRaid)
 			{
 				this.baseObj.SetActive(true);
@@ -664,20 +597,15 @@ public class SelEventCoopCtrl : MonoBehaviour
 				});
 			}
 
-			// Token: 0x0400613F RID: 24895
 			public GameObject baseObj;
 
-			// Token: 0x04006140 RID: 24896
 			public PguiTextCtrl Txt_Info;
 
-			// Token: 0x04006141 RID: 24897
 			public SimpleAnimation anim;
 		}
 
-		// Token: 0x020011BB RID: 4539
 		public class MapSelect
 		{
-			// Token: 0x060056F8 RID: 22264 RVA: 0x00254FDC File Offset: 0x002531DC
 			public MapSelect(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -726,7 +654,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 				this.playerInfo.baseObj.gameObject.SetActive(false);
 			}
 
-			// Token: 0x060056F9 RID: 22265 RVA: 0x002551B8 File Offset: 0x002533B8
 			public void Setup(UnityAction<Transform> pointTouchCB)
 			{
 				foreach (KeyValuePair<SelEventCoopCtrl.AttributeType, int> keyValuePair in SelEventCoopCtrl.MapIdPairs)
@@ -740,7 +667,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x060056FA RID: 22266 RVA: 0x00255288 File Offset: 0x00253488
 			public void UpdateObject(int eventId)
 			{
 				foreach (SelEventCoopCtrl.GUI.MapSelect.IMapPoint mapPoint in this.mapPointPairs.Values)
@@ -766,78 +692,52 @@ public class SelEventCoopCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x04006142 RID: 24898
 			public GameObject baseObj;
 
-			// Token: 0x04006143 RID: 24899
 			private Dictionary<SelEventCoopCtrl.AttributeType, SelEventCoopCtrl.GUI.MapSelect.IMapPoint> mapPointPairs;
 
-			// Token: 0x04006144 RID: 24900
 			public SelEventCoopCtrl.GUI.MapSelect.EventInfo eventInfo;
 
-			// Token: 0x04006145 RID: 24901
 			public PguiButtonCtrl Btn_Mission;
 
-			// Token: 0x04006146 RID: 24902
 			public PguiTextCtrl Txt_Mission_Num;
 
-			// Token: 0x04006147 RID: 24903
 			public PguiRawImageCtrl EventBanner;
 
-			// Token: 0x04006148 RID: 24904
 			public PguiTextCtrl Txt_Term;
 
-			// Token: 0x04006149 RID: 24905
 			public PguiTextCtrl Txt_RaidTerm;
 
-			// Token: 0x0400614A RID: 24906
 			public SelEventCoopCtrl.GUI.PlayerInfo playerInfo;
 
-			// Token: 0x0400614B RID: 24907
 			public GameObject Go_Left;
 
-			// Token: 0x02001242 RID: 4674
 			public class IMapPoint
 			{
-				// Token: 0x06005844 RID: 22596 RVA: 0x0025B53A File Offset: 0x0025973A
 				public IMapPoint(Transform baseTr)
 				{
 					this.baseObj = baseTr.gameObject;
 					this.baseRtf = baseTr as RectTransform;
 				}
 
-				// Token: 0x06005845 RID: 22597 RVA: 0x0025B55A File Offset: 0x0025975A
 				public void Setup(UnityAction<Transform> pointTouchCB)
 				{
 					PrjUtil.AddTouchEventTrigger(this.baseRtf.gameObject, pointTouchCB);
 				}
 
-				// Token: 0x040063ED RID: 25581
 				public GameObject baseObj;
 
-				// Token: 0x040063EE RID: 25582
 				public RectTransform baseRtf;
 			}
 
-			// Token: 0x02001243 RID: 4675
 			public class MapPoint : SelEventCoopCtrl.GUI.MapSelect.IMapPoint
 			{
-				// Token: 0x17000D1F RID: 3359
-				// (get) Token: 0x06005846 RID: 22598 RVA: 0x0025B56D File Offset: 0x0025976D
-				// (set) Token: 0x06005847 RID: 22599 RVA: 0x0025B575 File Offset: 0x00259775
 				private bool FinishedHardQuest { get; set; }
 
-				// Token: 0x17000D20 RID: 3360
-				// (get) Token: 0x06005848 RID: 22600 RVA: 0x0025B57E File Offset: 0x0025977E
-				// (set) Token: 0x06005849 RID: 22601 RVA: 0x0025B586 File Offset: 0x00259786
 				private bool PlayedHardQuestAE { get; set; }
 
-				// Token: 0x17000D21 RID: 3361
-				// (get) Token: 0x0600584A RID: 22602 RVA: 0x0025B58F File Offset: 0x0025978F
-				// (set) Token: 0x0600584B RID: 22603 RVA: 0x0025B597 File Offset: 0x00259797
 				private bool PlayedPointClearAE { get; set; }
 
-				// Token: 0x0600584C RID: 22604 RVA: 0x0025B5A0 File Offset: 0x002597A0
 				public MapPoint(Transform baseTr)
 					: base(baseTr)
 				{
@@ -859,7 +759,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 					this.PlayedPointClearAE = false;
 				}
 
-				// Token: 0x0600584D RID: 22605 RVA: 0x0025B6EC File Offset: 0x002598EC
 				public void Setup()
 				{
 					DataManagerEvent.CoopData coopInfo = DataManager.DmEvent.LastCoopInfo;
@@ -1001,46 +900,31 @@ public class SelEventCoopCtrl : MonoBehaviour
 					this.Mark_Complete.gameObject.SetActive(num2 >= questStaticQuestGroup.questOneList.Count);
 				}
 
-				// Token: 0x040063EF RID: 25583
 				public PguiImageCtrl ClearGage_Gage;
 
-				// Token: 0x040063F0 RID: 25584
 				public PguiImageCtrl Mark_Complete;
 
-				// Token: 0x040063F1 RID: 25585
 				public PguiTextCtrl Txt_Clear;
 
-				// Token: 0x040063F2 RID: 25586
 				public PguiAECtrl AEimage_HardQuest;
 
-				// Token: 0x040063F3 RID: 25587
 				public PguiAECtrl AEimage_PointClear;
 
-				// Token: 0x040063F4 RID: 25588
 				public PguiAECtrl AEimage_Aura;
 
-				// Token: 0x040063F5 RID: 25589
 				public GameObject AnchorObj;
 
-				// Token: 0x040063F6 RID: 25590
 				public PguiRawImageCtrl Icon_Boss;
 
-				// Token: 0x040063F7 RID: 25591
 				public RectTransform bus;
 
-				// Token: 0x040063F8 RID: 25592
 				public GameObject Campaign;
 			}
 
-			// Token: 0x02001244 RID: 4676
 			public class MapPointBonus : SelEventCoopCtrl.GUI.MapSelect.IMapPoint
 			{
-				// Token: 0x17000D22 RID: 3362
-				// (get) Token: 0x0600584E RID: 22606 RVA: 0x0025BBD0 File Offset: 0x00259DD0
-				// (set) Token: 0x0600584F RID: 22607 RVA: 0x0025BBD8 File Offset: 0x00259DD8
 				private bool PlayedBonusOpenAE { get; set; }
 
-				// Token: 0x06005850 RID: 22608 RVA: 0x0025BBE4 File Offset: 0x00259DE4
 				public MapPointBonus(Transform baseTr)
 					: base(baseTr)
 				{
@@ -1079,7 +963,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 					this.PlayedBonusOpenAE = false;
 				}
 
-				// Token: 0x06005851 RID: 22609 RVA: 0x0025BD08 File Offset: 0x00259F08
 				public void Setup(int eventId)
 				{
 					DataManagerEvent.CoopData lastCoopInfo = DataManager.DmEvent.LastCoopInfo;
@@ -1128,23 +1011,17 @@ public class SelEventCoopCtrl : MonoBehaviour
 					}
 				}
 
-				// Token: 0x040063FC RID: 25596
 				private Dictionary<SelEventCoopCtrl.AttributeType, PguiImageCtrl> attrPairs;
 
-				// Token: 0x040063FD RID: 25597
 				public PguiRawImageCtrl Tex;
 
-				// Token: 0x040063FE RID: 25598
 				public PguiTextCtrl Num;
 
-				// Token: 0x040063FF RID: 25599
 				public PguiAECtrl AEimage_BonusOpen;
 			}
 
-			// Token: 0x02001245 RID: 4677
 			public class EventInfo
 			{
-				// Token: 0x06005852 RID: 22610 RVA: 0x0025BFC0 File Offset: 0x0025A1C0
 				public EventInfo(Transform baseTr)
 				{
 					this.baseObj = baseTr.gameObject;
@@ -1158,7 +1035,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 					this.TotalItem_Type_Txt = baseTr.Find("TotalItem/Txt").GetComponent<PguiTextCtrl>();
 				}
 
-				// Token: 0x06005853 RID: 22611 RVA: 0x0025C094 File Offset: 0x0025A294
 				public void UpdateObject()
 				{
 					DataManager.DmEvent.GetCoopConditionDataList();
@@ -1179,56 +1055,43 @@ public class SelEventCoopCtrl : MonoBehaviour
 					this.TotalItem_Num_Txt.text = string.Format("{0}", num);
 				}
 
-				// Token: 0x04006401 RID: 25601
 				public GameObject baseObj;
 
-				// Token: 0x04006402 RID: 25602
 				public PguiButtonCtrl Btn_Gacha;
 
-				// Token: 0x04006403 RID: 25603
 				public PguiButtonCtrl Btn_ShopEvent;
 
-				// Token: 0x04006404 RID: 25604
 				public PguiImageCtrl ItemOwnBase;
 
-				// Token: 0x04006405 RID: 25605
 				public PguiRawImageCtrl Icon_Stone;
 
-				// Token: 0x04006406 RID: 25606
 				public PguiTextCtrl TotalItem_Num_Txt;
 
-				// Token: 0x04006407 RID: 25607
 				public PguiTextCtrl ItemOwnBase_Num_Txt;
 
-				// Token: 0x04006408 RID: 25608
 				public PguiTextCtrl TotalItem_Type_Txt;
 			}
 		}
 
-		// Token: 0x020011BC RID: 4540
 		public class QuestSelect
 		{
-			// Token: 0x060056FB RID: 22267 RVA: 0x00255358 File Offset: 0x00253558
 			public QuestSelect(Transform leftBaseTr, Transform rightBaseTr)
 			{
 				this.left = new SelEventCoopCtrl.GUI.QuestSelect.Left(leftBaseTr);
 				this.right = new SelEventCoopCtrl.GUI.QuestSelect.Right(rightBaseTr);
 			}
 
-			// Token: 0x060056FC RID: 22268 RVA: 0x00255378 File Offset: 0x00253578
 			public void SetActive(bool sw)
 			{
 				this.left.baseObj.SetActive(sw);
 				this.right.baseObj.SetActive(sw);
 			}
 
-			// Token: 0x060056FD RID: 22269 RVA: 0x0025539C File Offset: 0x0025359C
 			public float GetOffsetPosY()
 			{
 				return this.right.GetOffsetPosY();
 			}
 
-			// Token: 0x060056FE RID: 22270 RVA: 0x002553AC File Offset: 0x002535AC
 			public void Setup(int mapId, int index, bool isRaid, bool isBonus = false)
 			{
 				DataManagerEvent.CoopData lastCoopInfo = DataManager.DmEvent.LastCoopInfo;
@@ -1254,16 +1117,12 @@ public class SelEventCoopCtrl : MonoBehaviour
 				this.SetActive(false);
 			}
 
-			// Token: 0x0400614C RID: 24908
 			public SelEventCoopCtrl.GUI.QuestSelect.Left left;
 
-			// Token: 0x0400614D RID: 24909
 			public SelEventCoopCtrl.GUI.QuestSelect.Right right;
 
-			// Token: 0x02001246 RID: 4678
 			public class Left
 			{
-				// Token: 0x06005854 RID: 22612 RVA: 0x0025C19C File Offset: 0x0025A39C
 				public Left(Transform baseTr)
 				{
 					this.baseObj = baseTr.gameObject;
@@ -1297,7 +1156,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 					this.Raid_BlankRanking = baseTr.Find("WindowBase/Raid_Ranking/Blank").gameObject;
 				}
 
-				// Token: 0x06005855 RID: 22613 RVA: 0x0025C420 File Offset: 0x0025A620
 				public void Setup(int mapId, int index)
 				{
 					DataManagerEvent.CoopData lastCoopInfo = DataManager.DmEvent.LastCoopInfo;
@@ -1326,7 +1184,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 					}
 				}
 
-				// Token: 0x06005856 RID: 22614 RVA: 0x0025C55C File Offset: 0x0025A75C
 				public void ConvertRankingInRaid(bool isRaid)
 				{
 					this.Ranking.SetActive(!isRaid);
@@ -1344,7 +1201,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 					}
 				}
 
-				// Token: 0x06005857 RID: 22615 RVA: 0x0025C5EC File Offset: 0x0025A7EC
 				public void SetupRanking(int mapId, int rankingListIndex)
 				{
 					DataManagerEvent.CoopData lastCoopInfo = DataManager.DmEvent.LastCoopInfo;
@@ -1377,82 +1233,56 @@ public class SelEventCoopCtrl : MonoBehaviour
 					this.ScrollBar.gameObject.SetActive(false);
 				}
 
-				// Token: 0x04006409 RID: 25609
 				public GameObject baseObj;
 
-				// Token: 0x0400640A RID: 25610
 				public SelEventCoopCtrl.GUI.PlayerInfo playerInfo;
 
-				// Token: 0x0400640B RID: 25611
 				public GameObject Ranking;
 
-				// Token: 0x0400640C RID: 25612
 				public GameObject HighScorePlayer;
 
-				// Token: 0x0400640D RID: 25613
 				public SelFollowCtrl.GuiFriendBar Friend_ListBar_Friend;
 
-				// Token: 0x0400640E RID: 25614
 				public PguiButtonCtrl Btn_Yaji_Left;
 
-				// Token: 0x0400640F RID: 25615
 				public PguiButtonCtrl Btn_Yaji_Right;
 
-				// Token: 0x04006410 RID: 25616
 				public PguiImageCtrl Complete;
 
-				// Token: 0x04006411 RID: 25617
 				public PguiTextCtrl Title;
 
-				// Token: 0x04006412 RID: 25618
 				public PguiTextCtrl MyScore_Txt;
 
-				// Token: 0x04006413 RID: 25619
 				public ReuseScroll ScrollView;
 
-				// Token: 0x04006414 RID: 25620
 				public GameObject Blank;
 
-				// Token: 0x04006415 RID: 25621
 				public GameObject BlankRanking;
 
-				// Token: 0x04006416 RID: 25622
 				public GameObject ScrollBar;
 
-				// Token: 0x04006417 RID: 25623
 				public GameObject Raid_Ranking;
 
-				// Token: 0x04006418 RID: 25624
 				public PguiButtonCtrl Raid_Btn_Yaji_Left;
 
-				// Token: 0x04006419 RID: 25625
 				public PguiButtonCtrl Raid_Btn_Yaji_Right;
 
-				// Token: 0x0400641A RID: 25626
 				public PguiImageCtrl Raid_Complete;
 
-				// Token: 0x0400641B RID: 25627
 				public PguiTextCtrl Raid_Title;
 
-				// Token: 0x0400641C RID: 25628
 				public PguiTextCtrl Raid_MyScore_Txt;
 
-				// Token: 0x0400641D RID: 25629
 				public ReuseScroll Raid_ScrollView;
 
-				// Token: 0x0400641E RID: 25630
 				public GameObject Raid_ScrollBar;
 
-				// Token: 0x0400641F RID: 25631
 				public SelEventCoopCtrl.GUI.PlayerInfo Raid_playerInfo;
 
-				// Token: 0x04006420 RID: 25632
 				public GameObject Raid_BlankRanking;
 
-				// Token: 0x02001259 RID: 4697
 				public class ListBarPlayer
 				{
-					// Token: 0x0600588C RID: 22668 RVA: 0x0025D32C File Offset: 0x0025B52C
 					public ListBarPlayer(Transform baseTr)
 					{
 						this.baseObj = baseTr.gameObject;
@@ -1473,7 +1303,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 						this.Achievement = baseTr.Find("BaseImage/Achievement").GetComponent<AchievementCtrl>();
 					}
 
-					// Token: 0x0600588D RID: 22669 RVA: 0x0025D490 File Offset: 0x0025B690
 					public void SetupRanking(int ranking)
 					{
 						this.Rank_1.gameObject.SetActive(ranking == 1);
@@ -1485,57 +1314,40 @@ public class SelEventCoopCtrl : MonoBehaviour
 						this.Num_Rank_11_20.text = string.Format("{0}", ranking);
 					}
 
-					// Token: 0x04006466 RID: 25702
 					public GameObject baseObj;
 
-					// Token: 0x04006467 RID: 25703
 					public PguiImageCtrl Mark_Friend;
 
-					// Token: 0x04006468 RID: 25704
 					public PguiImageCtrl Rank_1;
 
-					// Token: 0x04006469 RID: 25705
 					public PguiImageCtrl Rank_2;
 
-					// Token: 0x0400646A RID: 25706
 					public PguiImageCtrl Rank_3;
 
-					// Token: 0x0400646B RID: 25707
 					public PguiImageCtrl Rank_4_10;
 
-					// Token: 0x0400646C RID: 25708
 					public PguiImageCtrl Rank_11_20;
 
-					// Token: 0x0400646D RID: 25709
 					public PguiRawImageCtrl Icon_Stone;
 
-					// Token: 0x0400646E RID: 25710
 					public PguiTextCtrl Txt_FriendName;
 
-					// Token: 0x0400646F RID: 25711
 					public PguiTextCtrl Num_Rank;
 
-					// Token: 0x04006470 RID: 25712
 					public PguiTextCtrl Num_Txt;
 
-					// Token: 0x04006471 RID: 25713
 					public PguiTextCtrl Num_Rank_4_10;
 
-					// Token: 0x04006472 RID: 25714
 					public PguiTextCtrl Num_Rank_11_20;
 
-					// Token: 0x04006473 RID: 25715
 					public IconCharaCtrl IconChara;
 
-					// Token: 0x04006474 RID: 25716
 					public AchievementCtrl Achievement;
 				}
 			}
 
-			// Token: 0x02001247 RID: 4679
 			public class Right
 			{
-				// Token: 0x06005858 RID: 22616 RVA: 0x0025C7F4 File Offset: 0x0025A9F4
 				public Right(Transform baseTr)
 				{
 					this.baseObj = baseTr.gameObject;
@@ -1558,7 +1370,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 					this.CharaIcon = this.All.transform.Find("CharaIcon/Texture").GetComponent<PguiRawImageCtrl>();
 				}
 
-				// Token: 0x06005859 RID: 22617 RVA: 0x0025CA2C File Offset: 0x0025AC2C
 				public DataManagerEvent.CoopConditionData GetNextCoopConditionData(DataManagerEvent.CoopData.MapInfo mapInfo)
 				{
 					DataManagerEvent.CoopConditionData coopConditionData = null;
@@ -1573,7 +1384,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 					return coopConditionData;
 				}
 
-				// Token: 0x0600585A RID: 22618 RVA: 0x0025CA90 File Offset: 0x0025AC90
 				public void SetupNormal(DataManagerEvent.CoopConditionData coopConditionData, int mapId)
 				{
 					DataManagerEvent.CoopData.MapInfo mapInfo = DataManager.DmEvent.LastCoopInfo.MapInfoMap[mapId];
@@ -1592,7 +1402,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 					}
 				}
 
-				// Token: 0x0600585B RID: 22619 RVA: 0x0025CB98 File Offset: 0x0025AD98
 				public void SetupHard(DataManagerEvent.CoopHardQuestData coopHardData, int mapId)
 				{
 					DataManagerEvent.CoopData.MapInfo mapInfo = DataManager.DmEvent.LastCoopInfo.MapInfoMap[mapId];
@@ -1609,7 +1418,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 					Singleton<SceneManager>.Instance.StartCoroutine(this.StimulateLayoutGroupObject());
 				}
 
-				// Token: 0x0600585C RID: 22620 RVA: 0x0025CCB2 File Offset: 0x0025AEB2
 				private IEnumerator StimulateLayoutGroupObject()
 				{
 					yield return null;
@@ -1619,7 +1427,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 					yield break;
 				}
 
-				// Token: 0x0600585D RID: 22621 RVA: 0x0025CCC4 File Offset: 0x0025AEC4
 				public void SetupGauge(int mapId, bool isRaid)
 				{
 					DataManagerEvent.CoopData.MapInfo mapInfo = DataManager.DmEvent.LastCoopInfo.MapInfoMap[mapId];
@@ -1641,7 +1448,6 @@ public class SelEventCoopCtrl : MonoBehaviour
 					this.Txt_Difficulty.text = mapInfo.StaticNextCoopConditionData.LevelName;
 				}
 
-				// Token: 0x0600585E RID: 22622 RVA: 0x0025CD58 File Offset: 0x0025AF58
 				public void SetupCharaIcon(int mapId, bool isRaid)
 				{
 					this.CharaIcon.gameObject.SetActive(isRaid);
@@ -1649,13 +1455,11 @@ public class SelEventCoopCtrl : MonoBehaviour
 					this.CharaIcon.SetRawImage("Texture2D/" + texturePath, true, false, null);
 				}
 
-				// Token: 0x0600585F RID: 22623 RVA: 0x0025CDBD File Offset: 0x0025AFBD
 				public float GetOffsetPosY()
 				{
 					return (this.All.transform as RectTransform).sizeDelta.y;
 				}
 
-				// Token: 0x06005860 RID: 22624 RVA: 0x0025CDDC File Offset: 0x0025AFDC
 				public void ConvertPrefabToRaid(bool isRaid)
 				{
 					this.Icon_Stone.gameObject.SetActive(!isRaid);
@@ -1667,58 +1471,40 @@ public class SelEventCoopCtrl : MonoBehaviour
 					this.Contents_Txt01.text = (isRaid ? "残りHP" : "次の全体報酬まで");
 				}
 
-				// Token: 0x04006421 RID: 25633
 				public GameObject baseObj;
 
-				// Token: 0x04006422 RID: 25634
 				public GameObject All;
 
-				// Token: 0x04006423 RID: 25635
 				public GameObject Normal;
 
-				// Token: 0x04006424 RID: 25636
 				public PguiTextCtrl Num_Txt;
 
-				// Token: 0x04006425 RID: 25637
 				public PguiButtonCtrl Btn_GetItem;
 
-				// Token: 0x04006426 RID: 25638
 				public GameObject Hard;
 
-				// Token: 0x04006427 RID: 25639
 				public PguiTextCtrl Contents_Txt01;
 
-				// Token: 0x04006428 RID: 25640
 				public PguiTextCtrl Contents_Txt02;
 
-				// Token: 0x04006429 RID: 25641
 				public PguiTextCtrl Contents_Txt04;
 
-				// Token: 0x0400642A RID: 25642
 				public PguiImageCtrl Gauge;
 
-				// Token: 0x0400642B RID: 25643
 				public GameObject Txt_Complete;
 
-				// Token: 0x0400642C RID: 25644
 				public PguiRawImageCtrl Icon_Stone;
 
-				// Token: 0x0400642D RID: 25645
 				public PguiTextCtrl Txt_Difficulty;
 
-				// Token: 0x0400642E RID: 25646
 				public HorizontalLayoutGroup Contents;
 
-				// Token: 0x0400642F RID: 25647
 				public PguiTextCtrl Title;
 
-				// Token: 0x04006430 RID: 25648
 				public GameObject NormalContents;
 
-				// Token: 0x04006431 RID: 25649
 				public GameObject LvBase;
 
-				// Token: 0x04006432 RID: 25650
 				public PguiRawImageCtrl CharaIcon;
 			}
 		}

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using SGNFW.HttpRequest.Protocol;
@@ -6,29 +6,23 @@ using SGNFW.Mst;
 using SGNFW.uGUI;
 using UnityEngine;
 
-// Token: 0x02000198 RID: 408
 public class CmnKizunaBuffWindowCtrl : MonoBehaviour
 {
-	// Token: 0x06001B25 RID: 6949 RVA: 0x0015D94D File Offset: 0x0015BB4D
 	public void Setup(GameObject obj)
 	{
 		this.buffInfoData = new CmnKizunaBuffWindowCtrl.GUIBuffInfoData(obj);
 		this.buffInfoData.Setup();
 	}
 
-	// Token: 0x06001B26 RID: 6950 RVA: 0x0015D966 File Offset: 0x0015BB66
 	public void SetupBuffInfo()
 	{
 		this.buffInfoData.SetupInfo(this.buffInfoData.currentTabIndex);
 	}
 
-	// Token: 0x04001483 RID: 5251
 	public CmnKizunaBuffWindowCtrl.GUIBuffInfoData buffInfoData;
 
-	// Token: 0x02000EAB RID: 3755
 	public class GUIBuffInfoData
 	{
-		// Token: 0x06004D51 RID: 19793 RVA: 0x00231D44 File Offset: 0x0022FF44
 		public GUIBuffInfoData(GameObject obj)
 		{
 			this.baseObj = obj;
@@ -57,7 +51,6 @@ public class CmnKizunaBuffWindowCtrl : MonoBehaviour
 			this.currentTabIndex = 0;
 		}
 
-		// Token: 0x06004D52 RID: 19794 RVA: 0x00231F60 File Offset: 0x00230160
 		public void Setup()
 		{
 			List<MstCharaKizunaBuffData> mstKizunaBuffList = DataManager.DmChara.GetMstKizunaBuffList();
@@ -68,7 +61,6 @@ public class CmnKizunaBuffWindowCtrl : MonoBehaviour
 			this.scroll.Resize((this.currentBuffInfo == null) ? 0 : this.currentBuffInfo.Count, 0);
 		}
 
-		// Token: 0x06004D53 RID: 19795 RVA: 0x0023200C File Offset: 0x0023020C
 		public void SetupInfo(int index)
 		{
 			CharaKizunaQualified userKizunaQualified = DataManager.DmChara.GetUserKizunaQualified();
@@ -96,13 +88,11 @@ public class CmnKizunaBuffWindowCtrl : MonoBehaviour
 			this.tryInfoTxt.ReplaceTextByDefault("Param01", ((float)tryDamageRatio / 10f).ToString("F1"));
 		}
 
-		// Token: 0x06004D54 RID: 19796 RVA: 0x0023218A File Offset: 0x0023038A
 		private void SetupBuffInfoItem(int index, GameObject go)
 		{
 			this.UpdateBuffInfoItem(index, go);
 		}
 
-		// Token: 0x06004D55 RID: 19797 RVA: 0x00232194 File Offset: 0x00230394
 		private void UpdateBuffInfoItem(int index, GameObject go)
 		{
 			go.SetActive(this.currentBuffInfo.Count<MstCharaKizunaBuffData>() >= index);
@@ -174,7 +164,6 @@ public class CmnKizunaBuffWindowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06004D56 RID: 19798 RVA: 0x002324E4 File Offset: 0x002306E4
 		private bool OnSelectTab(int index)
 		{
 			this.currentTabIndex = index;
@@ -184,55 +173,38 @@ public class CmnKizunaBuffWindowCtrl : MonoBehaviour
 			return true;
 		}
 
-		// Token: 0x04005422 RID: 21538
 		public GameObject baseObj;
 
-		// Token: 0x04005423 RID: 21539
 		public GameObject bonusInfoObj;
 
-		// Token: 0x04005424 RID: 21540
 		public GameObject bonusTotalInfoObj;
 
-		// Token: 0x04005425 RID: 21541
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x04005426 RID: 21542
 		public PguiTabGroupCtrl tab;
 
-		// Token: 0x04005427 RID: 21543
 		public PguiTextCtrl buffTargetInfoTxt;
 
-		// Token: 0x04005428 RID: 21544
 		public PguiTextCtrl buffQualifiedInfoTxt;
 
-		// Token: 0x04005429 RID: 21545
 		public PguiTextCtrl hpInfoTxt;
 
-		// Token: 0x0400542A RID: 21546
 		public PguiTextCtrl atkInfoTxt;
 
-		// Token: 0x0400542B RID: 21547
 		public PguiTextCtrl defInfoTxt;
 
-		// Token: 0x0400542C RID: 21548
 		public PguiTextCtrl avoidInfoTxt;
 
-		// Token: 0x0400542D RID: 21549
 		public PguiTextCtrl beatInfoTxt;
 
-		// Token: 0x0400542E RID: 21550
 		public PguiTextCtrl actionInfoTxt;
 
-		// Token: 0x0400542F RID: 21551
 		public PguiTextCtrl tryInfoTxt;
 
-		// Token: 0x04005430 RID: 21552
 		public ReuseScroll scroll;
 
-		// Token: 0x04005431 RID: 21553
 		private List<MstCharaKizunaBuffData> currentBuffInfo;
 
-		// Token: 0x04005432 RID: 21554
 		public int currentTabIndex;
 	}
 }

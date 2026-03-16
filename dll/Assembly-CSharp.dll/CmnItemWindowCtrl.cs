@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.HttpRequest.Protocol;
@@ -7,10 +7,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x02000197 RID: 407
 public class CmnItemWindowCtrl : MonoBehaviour
 {
-	// Token: 0x06001B17 RID: 6935 RVA: 0x0015CE2C File Offset: 0x0015B02C
 	public void Init()
 	{
 		this.guiSellItemInfoWindow = new CmnItemWindowCtrl.GUI_SellItemInfoWindow(CanvasManager.HdlSellItemInfoWindowCtrl.transform);
@@ -19,7 +17,6 @@ public class CmnItemWindowCtrl : MonoBehaviour
 		this.guiItemBankContentWindow.OpenWindowCtrl.Setup(null, null, null, true, null, null, false);
 	}
 
-	// Token: 0x06001B18 RID: 6936 RVA: 0x0015CE95 File Offset: 0x0015B095
 	private void Update()
 	{
 		if (this.enumSellItem != null && !this.enumSellItem.MoveNext())
@@ -28,7 +25,6 @@ public class CmnItemWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001B19 RID: 6937 RVA: 0x0015CEB4 File Offset: 0x0015B0B4
 	public void OpenBuyInfoWindow(ItemData itemData)
 	{
 		this.guiSellItemInfoWindow.Initialize();
@@ -84,7 +80,6 @@ public class CmnItemWindowCtrl : MonoBehaviour
 		this.guiSellItemInfoWindow.OpenWindowCtrl.Open();
 	}
 
-	// Token: 0x06001B1A RID: 6938 RVA: 0x0015D28C File Offset: 0x0015B48C
 	private void OnClickPlusButton()
 	{
 		this.guiSellItemInfoWindow.BuyInfo.inputNum++;
@@ -96,7 +91,6 @@ public class CmnItemWindowCtrl : MonoBehaviour
 		this.UpdateSellInfo();
 	}
 
-	// Token: 0x06001B1B RID: 6939 RVA: 0x0015D310 File Offset: 0x0015B510
 	private void OnClickMinusButton()
 	{
 		this.guiSellItemInfoWindow.BuyInfo.inputNum--;
@@ -108,14 +102,12 @@ public class CmnItemWindowCtrl : MonoBehaviour
 		this.UpdateSellInfo();
 	}
 
-	// Token: 0x06001B1C RID: 6940 RVA: 0x0015D37E File Offset: 0x0015B57E
 	private void OnSliderValueChanged(float value)
 	{
 		this.guiSellItemInfoWindow.BuyInfo.inputNum = int.Parse(value.ToString());
 		this.UpdateSellInfo();
 	}
 
-	// Token: 0x06001B1D RID: 6941 RVA: 0x0015D3A4 File Offset: 0x0015B5A4
 	private void UpdateSellInfo()
 	{
 		ItemData userItemData = DataManager.DmItem.GetUserItemData(this.guiSellItemInfoWindow.BuyInfo.IconItemId);
@@ -134,7 +126,6 @@ public class CmnItemWindowCtrl : MonoBehaviour
 		this.guiSellItemInfoWindow.BtnOkDisableText.text = ((this.guiSellItemInfoWindow.BuyInfo.inputNum > 0) ? "" : "売却できません");
 	}
 
-	// Token: 0x06001B1E RID: 6942 RVA: 0x0015D5BC File Offset: 0x0015B7BC
 	private void OpenSellReportWindow(bool isGoldStock)
 	{
 		this.guiSellItemInfoWindow.Initialize();
@@ -169,7 +160,6 @@ public class CmnItemWindowCtrl : MonoBehaviour
 		this.selItemViewCtrl.RefreshScrollItem();
 	}
 
-	// Token: 0x06001B1F RID: 6943 RVA: 0x0015D763 File Offset: 0x0015B963
 	private IEnumerator SellItemExecute()
 	{
 		List<ItemInput> list = new List<ItemInput>();
@@ -188,7 +178,6 @@ public class CmnItemWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001B20 RID: 6944 RVA: 0x0015D774 File Offset: 0x0015B974
 	public void OpenBankContentWindow(ItemData itemData)
 	{
 		this.guiItemBankContentWindow.baseObj.transform.SetAsLastSibling();
@@ -212,35 +201,24 @@ public class CmnItemWindowCtrl : MonoBehaviour
 		this.guiItemBankContentWindow.OpenWindowCtrl.Open();
 	}
 
-	// Token: 0x0400147F RID: 5247
 	private IEnumerator enumSellItem;
 
-	// Token: 0x04001480 RID: 5248
 	private CmnItemWindowCtrl.GUI_SellItemInfoWindow guiSellItemInfoWindow;
 
-	// Token: 0x04001481 RID: 5249
 	private CmnItemWindowCtrl.GUI_ItemBankContentWindow guiItemBankContentWindow;
 
-	// Token: 0x04001482 RID: 5250
 	public SelItemViewCtrl selItemViewCtrl;
 
-	// Token: 0x02000EA7 RID: 3751
 	private enum WindowMode
 	{
-		// Token: 0x04005408 RID: 21512
 		BuyInfo,
-		// Token: 0x04005409 RID: 21513
 		SetInfo,
-		// Token: 0x0400540A RID: 21514
 		BuyReport,
-		// Token: 0x0400540B RID: 21515
 		ImgInfo
 	}
 
-	// Token: 0x02000EA8 RID: 3752
 	public class GUI_SellItemInfoWindow
 	{
-		// Token: 0x06004D48 RID: 19784 RVA: 0x00231AB0 File Offset: 0x0022FCB0
 		public GUI_SellItemInfoWindow(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -255,7 +233,6 @@ public class CmnItemWindowCtrl : MonoBehaviour
 			this.BuyInfo = new CmnItemWindowCtrl.GUI_SellItemInfoWindow.BuyInfoData(transform.Find("Base_BuyInfo").gameObject);
 		}
 
-		// Token: 0x06004D49 RID: 19785 RVA: 0x00231B80 File Offset: 0x0022FD80
 		public void Initialize()
 		{
 			this.WindowBtnClose.gameObject.SetActive(true);
@@ -263,50 +240,34 @@ public class CmnItemWindowCtrl : MonoBehaviour
 			this.BtnOkDisableText.text = "";
 		}
 
-		// Token: 0x0400540C RID: 21516
 		public GameObject baseObj;
 
-		// Token: 0x0400540D RID: 21517
 		public PguiOpenWindowCtrl OpenWindowCtrl;
 
-		// Token: 0x0400540E RID: 21518
 		public PguiButtonCtrl WindowBtnClose;
 
-		// Token: 0x0400540F RID: 21519
 		public PguiButtonCtrl BtnOK;
 
-		// Token: 0x04005410 RID: 21520
 		public PguiTextCtrl BtnOkDisableText;
 
-		// Token: 0x04005411 RID: 21521
 		public CmnItemWindowCtrl.GUI_SellItemInfoWindow.BuyInfoData BuyInfo;
 
-		// Token: 0x04005412 RID: 21522
 		public CmnItemWindowCtrl.GUI_SellItemInfoWindow.BuyReportData BuyReport;
 
-		// Token: 0x04005413 RID: 21523
 		public CmnItemWindowCtrl.GUI_SellItemInfoWindow.SetInfoData SetInfo;
 
-		// Token: 0x04005414 RID: 21524
 		public IconItemCtrl presetIconItem;
 
-		// Token: 0x04005415 RID: 21525
 		public PguiTextCtrl presetItemNum;
 
-		// Token: 0x04005416 RID: 21526
 		public PguiTextCtrl presetItemName;
 
-		// Token: 0x04005417 RID: 21527
 		public PguiTextCtrl presetItemInfo;
 
-		// Token: 0x04005418 RID: 21528
 		public ReuseScroll ScrollView;
 
-		// Token: 0x020011EB RID: 4587
 		public class BuyInfoData
 		{
-			// Token: 0x17000D08 RID: 3336
-			// (get) Token: 0x06005756 RID: 22358 RVA: 0x00256CD1 File Offset: 0x00254ED1
 			public ItemData ItemData
 			{
 				get
@@ -315,7 +276,6 @@ public class CmnItemWindowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x06005757 RID: 22359 RVA: 0x00256CE4 File Offset: 0x00254EE4
 			public BuyInfoData(GameObject obj)
 			{
 				this.baseObj = obj;
@@ -348,7 +308,6 @@ public class CmnItemWindowCtrl : MonoBehaviour
 				this.GoldImage = transform.Find("Parts_Exchange/Parts_ItemUseCoin/Icon_Tex").GetComponent<PguiRawImageCtrl>();
 			}
 
-			// Token: 0x06005758 RID: 22360 RVA: 0x00256F40 File Offset: 0x00255140
 			public void SetIconImage()
 			{
 				this.NeedInfoImage.SetRawImage(DataManager.DmItem.GetItemStaticBase(30101).GetIconName(), true, false, null);
@@ -359,98 +318,67 @@ public class CmnItemWindowCtrl : MonoBehaviour
 				this.GoldImage.GetComponent<RectTransform>().sizeDelta = new Vector2(40f, 40f);
 			}
 
-			// Token: 0x04006236 RID: 25142
 			public GameObject baseObj;
 
-			// Token: 0x04006237 RID: 25143
 			public IconItemCtrl IconItem;
 
-			// Token: 0x04006238 RID: 25144
 			public GameObject IconItemNumTextWindow;
 
-			// Token: 0x04006239 RID: 25145
 			public PguiTextCtrl IconItemNumText;
 
-			// Token: 0x0400623A RID: 25146
 			public PguiTextCtrl ItemNameText;
 
-			// Token: 0x0400623B RID: 25147
 			public PguiTextCtrl ItemInfoText;
 
-			// Token: 0x0400623C RID: 25148
 			public GameObject ButtonInfo;
 
-			// Token: 0x0400623D RID: 25149
 			public GameObject Parts_Exchange;
 
-			// Token: 0x0400623E RID: 25150
 			public PguiButtonCtrl BtnPlus;
 
-			// Token: 0x0400623F RID: 25151
 			public PguiButtonCtrl BtnMinus;
 
-			// Token: 0x04006240 RID: 25152
 			public PguiTextCtrl NumText;
 
-			// Token: 0x04006241 RID: 25153
 			public GameObject ItemNeedInfo;
 
-			// Token: 0x04006242 RID: 25154
 			public PguiTextCtrl ItemNeedInfoTitle;
 
-			// Token: 0x04006243 RID: 25155
 			public PguiTextCtrl ItemNeedNum;
 
-			// Token: 0x04006244 RID: 25156
 			public GameObject ItemInfo;
 
-			// Token: 0x04006245 RID: 25157
 			public PguiTextCtrl ItemInfoTitle;
 
-			// Token: 0x04006246 RID: 25158
 			public PguiTextCtrl ItemInfoBefore;
 
-			// Token: 0x04006247 RID: 25159
 			public PguiTextCtrl ItemInfoAfter;
 
-			// Token: 0x04006248 RID: 25160
 			public GameObject GoldInfo;
 
-			// Token: 0x04006249 RID: 25161
 			public PguiTextCtrl GoldInfoTitle;
 
-			// Token: 0x0400624A RID: 25162
 			public PguiTextCtrl GoldInfoBefore;
 
-			// Token: 0x0400624B RID: 25163
 			public PguiTextCtrl GoldInfoAfter;
 
-			// Token: 0x0400624C RID: 25164
 			public Slider SliderBar;
 
-			// Token: 0x0400624D RID: 25165
 			public PguiRawImageCtrl NeedInfoImage;
 
-			// Token: 0x0400624E RID: 25166
 			public PguiRawImageCtrl ItemInfoImage;
 
-			// Token: 0x0400624F RID: 25167
 			public PguiRawImageCtrl GoldImage;
 
-			// Token: 0x04006250 RID: 25168
 			public int IconItemId;
 
-			// Token: 0x04006251 RID: 25169
 			public int inputNum;
 
-			// Token: 0x04006252 RID: 25170
 			public int addGoldNum;
 		}
 
-		// Token: 0x020011EC RID: 4588
 		public class BuyReportData
 		{
-			// Token: 0x06005759 RID: 22361 RVA: 0x00257000 File Offset: 0x00255200
 			public BuyReportData(GameObject obj)
 			{
 				this.baseObj = obj;
@@ -469,7 +397,6 @@ public class CmnItemWindowCtrl : MonoBehaviour
 				this.GoldImage = transform.Find("Parts_ItemUseCoin/Icon_Tex").GetComponent<PguiRawImageCtrl>();
 			}
 
-			// Token: 0x0600575A RID: 22362 RVA: 0x00257130 File Offset: 0x00255330
 			public void SetIconImage(int goldIconId)
 			{
 				this.ItemInfoImage.gameObject.SetActive(false);
@@ -478,79 +405,58 @@ public class CmnItemWindowCtrl : MonoBehaviour
 				this.GoldImage.GetComponent<RectTransform>().sizeDelta = new Vector2(40f, 40f);
 			}
 
-			// Token: 0x04006253 RID: 25171
 			public GameObject baseObj;
 
-			// Token: 0x04006254 RID: 25172
 			public PguiTextCtrl ItemNameText;
 
-			// Token: 0x04006255 RID: 25173
 			public PguiTextCtrl ItemInfoText;
 
-			// Token: 0x04006256 RID: 25174
 			public GameObject ItemInfo;
 
-			// Token: 0x04006257 RID: 25175
 			public PguiTextCtrl ItemInfoTitle;
 
-			// Token: 0x04006258 RID: 25176
 			public PguiTextCtrl ItemInfoBefore;
 
-			// Token: 0x04006259 RID: 25177
 			public PguiTextCtrl ItemInfoAfter;
 
-			// Token: 0x0400625A RID: 25178
 			public GameObject GoldInfo;
 
-			// Token: 0x0400625B RID: 25179
 			public PguiTextCtrl GoldInfoTitle;
 
-			// Token: 0x0400625C RID: 25180
 			public PguiTextCtrl GoldInfoBefore;
 
-			// Token: 0x0400625D RID: 25181
 			public PguiTextCtrl GoldInfoAfter;
 
-			// Token: 0x0400625E RID: 25182
 			public PguiRawImageCtrl ItemInfoImage;
 
-			// Token: 0x0400625F RID: 25183
 			public PguiRawImageCtrl GoldImage;
 		}
 
-		// Token: 0x020011ED RID: 4589
 		public class SetInfoData
 		{
-			// Token: 0x0600575B RID: 22363 RVA: 0x002571AA File Offset: 0x002553AA
 			public SetInfoData(GameObject obj)
 			{
 				this.baseObj = obj;
 				Transform transform = this.baseObj.transform;
 			}
 
-			// Token: 0x04006260 RID: 25184
 			public GameObject baseObj;
 		}
 
-		// Token: 0x020011EE RID: 4590
 		public class ImgInfoData
 		{
-			// Token: 0x0600575C RID: 22364 RVA: 0x002571C5 File Offset: 0x002553C5
 			public ImgInfoData(GameObject obj)
 			{
 				this.baseObj = obj;
 				Transform transform = this.baseObj.transform;
 			}
 
-			// Token: 0x04006261 RID: 25185
 			public GameObject baseObj;
 		}
 	}
 
-	// Token: 0x02000EA9 RID: 3753
 	public class GUI_ItemBankContentWindow
 	{
-		// Token: 0x06004D4A RID: 19786 RVA: 0x00231BB4 File Offset: 0x0022FDB4
 		public GUI_ItemBankContentWindow(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -561,19 +467,14 @@ public class CmnItemWindowCtrl : MonoBehaviour
 			this.ItemRow = transform.Find("ItemRow").gameObject;
 		}
 
-		// Token: 0x04005419 RID: 21529
 		public GameObject baseObj;
 
-		// Token: 0x0400541A RID: 21530
 		public PguiOpenWindowCtrl OpenWindowCtrl;
 
-		// Token: 0x0400541B RID: 21531
 		public PguiTextCtrl Txt01;
 
-		// Token: 0x0400541C RID: 21532
 		public PguiTextCtrl Txt02;
 
-		// Token: 0x0400541D RID: 21533
 		public GameObject ItemRow;
 	}
 }

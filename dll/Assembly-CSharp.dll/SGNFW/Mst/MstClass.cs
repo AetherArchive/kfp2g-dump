@@ -1,12 +1,10 @@
-﻿using System;
+using System;
 using SGNFW.Common.Json;
 
 namespace SGNFW.Mst
 {
-	// Token: 0x0200028B RID: 651
 	public class MstClass
 	{
-		// Token: 0x060027AF RID: 10159 RVA: 0x001A6AB4 File Offset: 0x001A4CB4
 		public static object cnv(MstType type, string json)
 		{
 			object obj = null;

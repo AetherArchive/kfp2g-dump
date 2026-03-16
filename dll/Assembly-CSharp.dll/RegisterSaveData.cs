@@ -1,28 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using SGNFW.Login;
 
-// Token: 0x020000FF RID: 255
 public class RegisterSaveData
 {
-	// Token: 0x1700030F RID: 783
-	// (get) Token: 0x06000C2F RID: 3119 RVA: 0x00048A5B File Offset: 0x00046C5B
-	// (set) Token: 0x06000C30 RID: 3120 RVA: 0x00048A63 File Offset: 0x00046C63
 	public bool SortOrder { get; set; }
 
-	// Token: 0x17000310 RID: 784
-	// (get) Token: 0x06000C31 RID: 3121 RVA: 0x00048A6C File Offset: 0x00046C6C
-	// (set) Token: 0x06000C32 RID: 3122 RVA: 0x00048A74 File Offset: 0x00046C74
 	public SortFilterDefine.RegisterType RegisterType { get; set; }
 
-	// Token: 0x17000311 RID: 785
-	// (get) Token: 0x06000C33 RID: 3123 RVA: 0x00048A7D File Offset: 0x00046C7D
-	// (set) Token: 0x06000C34 RID: 3124 RVA: 0x00048A85 File Offset: 0x00046C85
 	public int EventFilterButtonNum { get; set; }
 
-	// Token: 0x17000312 RID: 786
-	// (get) Token: 0x06000C35 RID: 3125 RVA: 0x00048A8E File Offset: 0x00046C8E
 	public bool IsNeedCharaPackDataSortType
 	{
 		get
@@ -31,7 +19,6 @@ public class RegisterSaveData
 		}
 	}
 
-	// Token: 0x06000C36 RID: 3126 RVA: 0x00048AB4 File Offset: 0x00046CB4
 	public RegisterSaveData(DataManagerGameStatus.UserFlagData userFlagData, SortFilterDefine.RegisterType regType)
 	{
 		this.RegisterType = regType;
@@ -40,7 +27,6 @@ public class RegisterSaveData
 		this.SortOrder = sortTypeData.Order;
 	}
 
-	// Token: 0x06000C37 RID: 3127 RVA: 0x00048C54 File Offset: 0x00046E54
 	private void FilteringPhotoList(ref List<PhotoPackData> targetList, List<PhotoPackData> ignoreList, PhotoPackData basePhoto)
 	{
 		if (0 < this.includePhotoSearchText.Length)
@@ -120,7 +106,6 @@ public class RegisterSaveData
 		this.PhotoFilteringBuffStatus(ref targetList);
 	}
 
-	// Token: 0x06000C38 RID: 3128 RVA: 0x00048F38 File Offset: 0x00047138
 	private void FilteringSortTargetPhotoList(ref List<PhotoPackData> photoPackListwithoutDisable, List<PhotoPackData> ignoreList, List<PhotoPackData> disableListAfter, List<PhotoPackData> disableListbefore, PhotoPackData basePhoto)
 	{
 		this.FilteringPhotoList(ref photoPackListwithoutDisable, ignoreList, basePhoto);
@@ -189,7 +174,6 @@ public class RegisterSaveData
 		}
 	}
 
-	// Token: 0x06000C39 RID: 3129 RVA: 0x00048FD0 File Offset: 0x000471D0
 	private void SortAlbumPhotoList(ref List<PhotoPackData> photoPackList, Dictionary<SortFilterDefine.PhotoAlbumRegistrationStatus, HashSet<int>> registeredPhotoStatusMap)
 	{
 		HashSet<int> includePhotoIdHashSet = new HashSet<int>();
@@ -241,7 +225,6 @@ public class RegisterSaveData
 		}
 	}
 
-	// Token: 0x06000C3A RID: 3130 RVA: 0x000491AC File Offset: 0x000473AC
 	private void SortTargetCharaList(ref List<CharaPackData> charaPackList, List<CharaPackData> ignoreList, List<CharaPackData> disableListAfter, List<CharaPackData> bannedCharaList = null)
 	{
 		if (ignoreList != null)
@@ -339,7 +322,6 @@ public class RegisterSaveData
 		}
 	}
 
-	// Token: 0x06000C3B RID: 3131 RVA: 0x00049558 File Offset: 0x00047758
 	private void SortTargetHelperList(ref List<HelperPackData> helperPackList, List<HelperPackData> ignoreList, List<HelperPackData> disableListAfter)
 	{
 		helperPackList.RemoveAll((HelperPackData item) => item != null && (ignoreList == null || !ignoreList.Contains(item)) && this.includeCharaAttribute.Count > 0);
@@ -391,7 +373,6 @@ public class RegisterSaveData
 		}
 	}
 
-	// Token: 0x06000C3C RID: 3132 RVA: 0x0004976C File Offset: 0x0004796C
 	public List<int> GetBonusCharaIdList()
 	{
 		List<int> list = new List<int>();
@@ -426,7 +407,6 @@ public class RegisterSaveData
 		return list;
 	}
 
-	// Token: 0x06000C3D RID: 3133 RVA: 0x00049884 File Offset: 0x00047A84
 	public void SolutionList(ref SortWindowCtrl.SortTarget target, List<CharaPackData> bannedCharaList = null)
 	{
 		if (target.photoList != null)
@@ -454,7 +434,6 @@ public class RegisterSaveData
 		}
 	}
 
-	// Token: 0x06000C3E RID: 3134 RVA: 0x00049930 File Offset: 0x00047B30
 	private int CalcSortCharaList(CharaPackData a, CharaPackData b, DataManagerKemoBoard.KemoBoardBonusParam kbpA, DataManagerKemoBoard.KemoBoardBonusParam kbpB)
 	{
 		int num = 0;
@@ -505,19 +484,16 @@ public class RegisterSaveData
 		return num;
 	}
 
-	// Token: 0x06000C3F RID: 3135 RVA: 0x00049B3C File Offset: 0x00047D3C
 	private int SortIncludeKemoBoardBonusParamCharaList(CharaPackData a, CharaPackData b)
 	{
 		return this.CalcSortCharaList(a, b, DataManager.DmKemoBoard.KemoBoardBonusParamMap[a.staticData.baseData.attribute], DataManager.DmKemoBoard.KemoBoardBonusParamMap[b.staticData.baseData.attribute]);
 	}
 
-	// Token: 0x06000C40 RID: 3136 RVA: 0x00049B8F File Offset: 0x00047D8F
 	private int SortCharaList(CharaPackData a, CharaPackData b)
 	{
 		return this.CalcSortCharaList(a, b, new DataManagerKemoBoard.KemoBoardBonusParam(a.staticData.baseData.attribute), new DataManagerKemoBoard.KemoBoardBonusParam(b.staticData.baseData.attribute));
 	}
 
-	// Token: 0x06000C41 RID: 3137 RVA: 0x00049BC4 File Offset: 0x00047DC4
 	private int SortPhotoList(PhotoPackData a, PhotoPackData b)
 	{
 		int num = 0;
@@ -550,7 +526,6 @@ public class RegisterSaveData
 		return num;
 	}
 
-	// Token: 0x06000C42 RID: 3138 RVA: 0x00049CC0 File Offset: 0x00047EC0
 	private int SortHelperList(HelperPackData a, HelperPackData b)
 	{
 		int num = 0;
@@ -600,7 +575,6 @@ public class RegisterSaveData
 		return num;
 	}
 
-	// Token: 0x06000C43 RID: 3139 RVA: 0x00049E70 File Offset: 0x00048070
 	private void PhotoFilteringBuffStatus(ref List<PhotoPackData> photoPackList)
 	{
 		this.BuffFilteringCondition(ref photoPackList);
@@ -617,7 +591,6 @@ public class RegisterSaveData
 		this.BuffFilteringAbnormal(ref photoPackList, this.AndORStatusAbnormal);
 	}
 
-	// Token: 0x06000C44 RID: 3140 RVA: 0x00049EC4 File Offset: 0x000480C4
 	private CharaStaticAbility GetPhotoAbilityData(PhotoPackData ppd)
 	{
 		CharaStaticAbility charaStaticAbility;
@@ -632,7 +605,6 @@ public class RegisterSaveData
 		return charaStaticAbility;
 	}
 
-	// Token: 0x06000C45 RID: 3141 RVA: 0x00049EFC File Offset: 0x000480FC
 	private void BuffFilteringCondition(ref List<PhotoPackData> photoPackList)
 	{
 		DateTime now = TimeManager.Now;
@@ -756,7 +728,6 @@ public class RegisterSaveData
 		}
 	}
 
-	// Token: 0x06000C46 RID: 3142 RVA: 0x0004A22C File Offset: 0x0004842C
 	private void BuffFilteringTarget(ref List<PhotoPackData> photoPackList)
 	{
 		DateTime now = TimeManager.Now;
@@ -805,7 +776,6 @@ public class RegisterSaveData
 		}
 	}
 
-	// Token: 0x06000C47 RID: 3143 RVA: 0x0004A3F8 File Offset: 0x000485F8
 	private void BuffFilteringEffectAnd(ref List<PhotoPackData> photoPackList)
 	{
 		DateTime now = TimeManager.Now;
@@ -882,7 +852,6 @@ public class RegisterSaveData
 		}
 	}
 
-	// Token: 0x06000C48 RID: 3144 RVA: 0x0004A648 File Offset: 0x00048848
 	private void BuffFilteringEffectOr(ref List<PhotoPackData> photoPackList)
 	{
 		DateTime now = TimeManager.Now;
@@ -954,7 +923,6 @@ public class RegisterSaveData
 		}
 	}
 
-	// Token: 0x06000C49 RID: 3145 RVA: 0x0004A854 File Offset: 0x00048A54
 	private void BuffFilteringAbnormal(ref List<PhotoPackData> photoPackList, SortFilterDefine.AndOrState AndOrState)
 	{
 		if (this.BuffAbnormalEnablelList.Count <= 0)
@@ -1002,14 +970,12 @@ public class RegisterSaveData
 		photoPackList = list;
 	}
 
-	// Token: 0x06000C4A RID: 3146 RVA: 0x0004A9E4 File Offset: 0x00048BE4
 	public void FriendsFileterMiracle(ref List<CharaPackData> charaPackDataList)
 	{
 		this.FriendsMiracleTarget(ref charaPackDataList);
 		this.FriendsMiracleEffect(ref charaPackDataList);
 	}
 
-	// Token: 0x06000C4B RID: 3147 RVA: 0x0004A9F4 File Offset: 0x00048BF4
 	public void FriendsMiracleTarget(ref List<CharaPackData> charaPackDataList)
 	{
 		List<CharaPackData> list = new List<CharaPackData>();
@@ -1055,7 +1021,6 @@ public class RegisterSaveData
 		}
 	}
 
-	// Token: 0x06000C4C RID: 3148 RVA: 0x0004AB98 File Offset: 0x00048D98
 	public void FriendsMiracleEffect(ref List<CharaPackData> charaPackDataList)
 	{
 		switch (this.miracleEffectAndOrStatus)
@@ -1073,7 +1038,6 @@ public class RegisterSaveData
 		}
 	}
 
-	// Token: 0x06000C4D RID: 3149 RVA: 0x0004ABD0 File Offset: 0x00048DD0
 	private void FriendsMiracleEffectAnd(ref List<CharaPackData> charaPackDataList)
 	{
 		if (this.miracleEffectList.Count <= 0)
@@ -1111,7 +1075,6 @@ public class RegisterSaveData
 		charaPackDataList = list;
 	}
 
-	// Token: 0x06000C4E RID: 3150 RVA: 0x0004AD08 File Offset: 0x00048F08
 	private void FriendsMiracleEffectOr(ref List<CharaPackData> charaPackDataList)
 	{
 		if (this.miracleEffectList.Count <= 0)
@@ -1146,7 +1109,6 @@ public class RegisterSaveData
 		charaPackDataList = list;
 	}
 
-	// Token: 0x06000C4F RID: 3151 RVA: 0x0004AE38 File Offset: 0x00049038
 	private bool isCharaHaveAttack(CharaPackData charaPackData)
 	{
 		bool flag = false;
@@ -1166,7 +1128,6 @@ public class RegisterSaveData
 		return flag && charaPackData.staticData.artsData.damageList.Count != 0;
 	}
 
-	// Token: 0x06000C50 RID: 3152 RVA: 0x0004AEE8 File Offset: 0x000490E8
 	private void FriendsFitlerCharacteristic(ref List<CharaPackData> charaPackDataList)
 	{
 		this.FriendsCharacteristicCondition(ref charaPackDataList);
@@ -1175,7 +1136,6 @@ public class RegisterSaveData
 		this.FriendsCharacteristicResist(ref charaPackDataList);
 	}
 
-	// Token: 0x06000C51 RID: 3153 RVA: 0x0004AF08 File Offset: 0x00049108
 	private void FriendsCharacteristicCondition(ref List<CharaPackData> charaPackDataList)
 	{
 		if (this.characteristicConditionList.Count <= 0)
@@ -1252,7 +1212,6 @@ public class RegisterSaveData
 		charaPackDataList = list2;
 	}
 
-	// Token: 0x06000C52 RID: 3154 RVA: 0x0004B1CC File Offset: 0x000493CC
 	private void FriendsCharacteristicTarget(ref List<CharaPackData> charaPackDataList)
 	{
 		if (this.characteristicTargetList.Count <= 0)
@@ -1288,7 +1247,6 @@ public class RegisterSaveData
 		charaPackDataList = list;
 	}
 
-	// Token: 0x06000C53 RID: 3155 RVA: 0x0004B300 File Offset: 0x00049500
 	private void FriendsCharacteristicEffect(ref List<CharaPackData> charaPackDataList)
 	{
 		if (this.characteristicEffectList.Count <= 0)
@@ -1310,7 +1268,6 @@ public class RegisterSaveData
 		}
 	}
 
-	// Token: 0x06000C54 RID: 3156 RVA: 0x0004B348 File Offset: 0x00049548
 	private void FriendsCharacteristicEffectAnd(ref List<CharaPackData> charaPackDataList)
 	{
 		List<CharaPackData> list = new List<CharaPackData>();
@@ -1340,7 +1297,6 @@ public class RegisterSaveData
 		charaPackDataList = list;
 	}
 
-	// Token: 0x06000C55 RID: 3157 RVA: 0x0004B45C File Offset: 0x0004965C
 	private void FriendsCharacteristicEffectOr(ref List<CharaPackData> charaPackDataList)
 	{
 		List<CharaPackData> list = new List<CharaPackData>();
@@ -1371,7 +1327,6 @@ public class RegisterSaveData
 		charaPackDataList = list;
 	}
 
-	// Token: 0x06000C56 RID: 3158 RVA: 0x0004B568 File Offset: 0x00049768
 	private void FriendsCharacteristicResist(ref List<CharaPackData> charaPackDataList)
 	{
 		if (this.characteristicResistList.Count <= 0)
@@ -1415,7 +1370,6 @@ public class RegisterSaveData
 		charaPackDataList = list;
 	}
 
-	// Token: 0x06000C57 RID: 3159 RVA: 0x0004B6EC File Offset: 0x000498EC
 	private List<CharaBuffParamAbility> GetCharaAbilityList(CharaPackData charaData)
 	{
 		List<CharaBuffParamAbility> list = new List<CharaBuffParamAbility>();
@@ -1462,7 +1416,6 @@ public class RegisterSaveData
 		return list;
 	}
 
-	// Token: 0x06000C58 RID: 3160 RVA: 0x0004B8CC File Offset: 0x00049ACC
 	private List<CharaPackData> GetConditionRegistration(List<DataManagerChara.FilterData> conditionList)
 	{
 		string assetBundleURL = LoginManager.AssetBundleURL;
@@ -1478,7 +1431,6 @@ public class RegisterSaveData
 		return new List<CharaPackData>();
 	}
 
-	// Token: 0x06000C59 RID: 3161 RVA: 0x0004B91F File Offset: 0x00049B1F
 	private void registCondition(List<DataManagerChara.FilterData> conditionList, List<CharaPackData> filterCharaPackdataList)
 	{
 		if (this.conditionRegistMemoData.ContainsKey(conditionList))
@@ -1487,117 +1439,79 @@ public class RegisterSaveData
 		}
 	}
 
-	// Token: 0x04000971 RID: 2417
 	public string includePhotoSearchText = "";
 
-	// Token: 0x04000972 RID: 2418
 	public List<ItemDef.Rarity> includePhotoRarityList = new List<ItemDef.Rarity>();
 
-	// Token: 0x04000973 RID: 2419
 	public List<PhotoDef.Type> includePhotoTypeList = new List<PhotoDef.Type>();
 
-	// Token: 0x04000974 RID: 2420
 	public List<SortFilterDefine.PhotoAlbumRegistrationStatus> includePhotoAlbumRegistrationStatusList = new List<SortFilterDefine.PhotoAlbumRegistrationStatus>();
 
-	// Token: 0x04000975 RID: 2421
 	public bool includePhotoBonus;
 
-	// Token: 0x04000976 RID: 2422
 	public bool includePhotoLimit;
 
-	// Token: 0x04000977 RID: 2423
 	public List<int> includeCharaBonus = new List<int>();
 
-	// Token: 0x04000978 RID: 2424
 	public bool[] isFilterFavoritePhotoList = new bool[2];
 
-	// Token: 0x04000979 RID: 2425
 	public List<DataManagerPhoto.PhotoCharacteristicData> BuffConditionsList = new List<DataManagerPhoto.PhotoCharacteristicData>();
 
-	// Token: 0x0400097A RID: 2426
 	public List<DataManagerPhoto.PhotoCharacteristicData> BuffTargetList = new List<DataManagerPhoto.PhotoCharacteristicData>();
 
-	// Token: 0x0400097B RID: 2427
 	public List<DataManagerPhoto.PhotoCharacteristicData> BuffEffectList = new List<DataManagerPhoto.PhotoCharacteristicData>();
 
-	// Token: 0x0400097C RID: 2428
 	public SortFilterDefine.AndOrState AndORStatusEffect;
 
-	// Token: 0x0400097D RID: 2429
 	public List<DataManagerPhoto.PhotoCharacteristicData> BuffAbnormalEnablelList = new List<DataManagerPhoto.PhotoCharacteristicData>();
 
-	// Token: 0x0400097E RID: 2430
 	public SortFilterDefine.AndOrState AndORStatusAbnormal;
 
-	// Token: 0x0400097F RID: 2431
 	public List<string> enableButtonNameList = new List<string>();
 
-	// Token: 0x04000980 RID: 2432
 	public SortFilterDefine.SortType sortType = SortFilterDefine.SortType.LEVEL;
 
-	// Token: 0x04000981 RID: 2433
 	public string includeFriendsSearchText = "";
 
-	// Token: 0x04000982 RID: 2434
 	public List<CharaDef.AttributeType> includeCharaAttribute = new List<CharaDef.AttributeType>();
 
-	// Token: 0x04000983 RID: 2435
 	public bool[] isFilterHanamaru = new bool[2];
 
-	// Token: 0x04000984 RID: 2436
 	public bool[] isFilterFavoriteList = new bool[2];
 
-	// Token: 0x04000985 RID: 2437
 	public List<DataManagerChara.FilterData> miracleTargetList = new List<DataManagerChara.FilterData>();
 
-	// Token: 0x04000986 RID: 2438
 	public List<DataManagerChara.FilterData> miracleEffectList = new List<DataManagerChara.FilterData>();
 
-	// Token: 0x04000987 RID: 2439
 	public SortFilterDefine.AndOrState miracleEffectAndOrStatus = SortFilterDefine.AndOrState.Or;
 
-	// Token: 0x04000988 RID: 2440
 	public List<DataManagerChara.FilterData> characteristicConditionList = new List<DataManagerChara.FilterData>();
 
-	// Token: 0x04000989 RID: 2441
 	public List<DataManagerChara.FilterData> characteristicTargetList = new List<DataManagerChara.FilterData>();
 
-	// Token: 0x0400098A RID: 2442
 	public List<DataManagerChara.FilterData> characteristicEffectList = new List<DataManagerChara.FilterData>();
 
-	// Token: 0x0400098B RID: 2443
 	public SortFilterDefine.AndOrState characteristicEffectAndOrStatus = SortFilterDefine.AndOrState.Or;
 
-	// Token: 0x0400098C RID: 2444
 	public List<DataManagerChara.FilterData> characteristicResistList = new List<DataManagerChara.FilterData>();
 
-	// Token: 0x0400098D RID: 2445
 	public SortFilterDefine.AndOrState characteristicResistAndOrStatus = SortFilterDefine.AndOrState.Or;
 
-	// Token: 0x0400098E RID: 2446
 	public List<int> miracleTargetButtonIdxList = new List<int>();
 
-	// Token: 0x0400098F RID: 2447
 	public List<int> miracleEffectButtonIdxList = new List<int>();
 
-	// Token: 0x04000990 RID: 2448
 	public List<int> characteristicConditionButtonIdxList = new List<int>();
 
-	// Token: 0x04000991 RID: 2449
 	public List<int> characteristicTargetButtonIdxList = new List<int>();
 
-	// Token: 0x04000992 RID: 2450
 	public List<int> characteristicEffectButtonIdxList = new List<int>();
 
-	// Token: 0x04000993 RID: 2451
 	public List<int> characteristicResistButtonIdxList = new List<int>();
 
-	// Token: 0x04000994 RID: 2452
 	public Dictionary<List<DataManagerChara.FilterData>, List<CharaPackData>> conditionRegistMemoData = new Dictionary<List<DataManagerChara.FilterData>, List<CharaPackData>>();
 
-	// Token: 0x04000995 RID: 2453
 	public string beforeAssetNum;
 
-	// Token: 0x04000996 RID: 2454
 	public Dictionary<int, List<CharaBuffParamAbility>> charaAbilityMemoData = new Dictionary<int, List<CharaBuffParamAbility>>();
 }

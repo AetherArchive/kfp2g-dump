@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +10,8 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityStandardAssets.ImageEffects;
 
-// Token: 0x02000194 RID: 404
 public class CharaWindowCtrl : MonoBehaviour
 {
-	// Token: 0x06001AE1 RID: 6881 RVA: 0x0015987C File Offset: 0x00157A7C
 	public void Init()
 	{
 		if (this.guiData != null)
@@ -51,7 +49,6 @@ public class CharaWindowCtrl : MonoBehaviour
 		this.renderTextureChara = null;
 	}
 
-	// Token: 0x06001AE2 RID: 6882 RVA: 0x00159AC0 File Offset: 0x00157CC0
 	private bool OnSelectDetailTab(int index)
 	{
 		this.guiData.infoPicture.SetActive(index == 3);
@@ -61,7 +58,6 @@ public class CharaWindowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001AE3 RID: 6883 RVA: 0x00159B20 File Offset: 0x00157D20
 	private void OnClickButton(PguiButtonCtrl pbc)
 	{
 		if (!this.FinishedOpen())
@@ -293,7 +289,6 @@ public class CharaWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001AE4 RID: 6884 RVA: 0x0015A078 File Offset: 0x00158278
 	private void UpdateInfoStatusNumPage(Transform tr, int page)
 	{
 		if (tr != null)
@@ -302,7 +297,6 @@ public class CharaWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001AE5 RID: 6885 RVA: 0x0015A0E8 File Offset: 0x001582E8
 	private void OnStartInfoStatus(int index, GameObject go)
 	{
 		for (int i = 0; i < 1; i++)
@@ -311,7 +305,6 @@ public class CharaWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001AE6 RID: 6886 RVA: 0x0015A124 File Offset: 0x00158324
 	private void OnUpdateInfoStatus(int index, GameObject go)
 	{
 		bool flag = this.maxDispChangeChara;
@@ -482,12 +475,10 @@ public class CharaWindowCtrl : MonoBehaviour
 		go.SetActive(false);
 	}
 
-	// Token: 0x06001AE7 RID: 6887 RVA: 0x0015AFFF File Offset: 0x001591FF
 	private void OnStartSkill(int index, GameObject go)
 	{
 	}
 
-	// Token: 0x06001AE8 RID: 6888 RVA: 0x0015B004 File Offset: 0x00159204
 	private void UpdateSkill(int index, GameObject go, bool notOwnedChara)
 	{
 		if (this.currentCharaPackData != null)
@@ -634,7 +625,6 @@ public class CharaWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001AE9 RID: 6889 RVA: 0x0015B478 File Offset: 0x00159678
 	private void Update()
 	{
 		if (Singleton<SceneManager>.Instance.GetCanvasCamera(SceneManager.CanvasType.SYSTEM).GetComponent<Blur>().enabled && this.guiData.Null_BlurSpread != null)
@@ -648,31 +638,26 @@ public class CharaWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001AEA RID: 6890 RVA: 0x0015B50A File Offset: 0x0015970A
 	private int GetScrollCount()
 	{
 		return this.bonusCharaData.list.Count;
 	}
 
-	// Token: 0x06001AEB RID: 6891 RVA: 0x0015B51C File Offset: 0x0015971C
 	private bool IsNormalChara(int index)
 	{
 		return index >= this.GetScrollCount() || (this.IsNormalCharaParam(index) && this.bonusCharaData.list[index].kizunaBonusRatio == 0);
 	}
 
-	// Token: 0x06001AEC RID: 6892 RVA: 0x0015B550 File Offset: 0x00159750
 	private bool IsNormalCharaParam(int index)
 	{
 		return index >= this.GetScrollCount() || (this.bonusCharaData.list[index].hpBonusRatio == 0 && this.bonusCharaData.list[index].strBonusRatio == 0 && this.bonusCharaData.list[index].defBonusRatio == 0 && this.bonusCharaData.list[index].increaseItemId01 == 0 && this.bonusCharaData.list[index].increaseItemId02 == 0);
 	}
 
-	// Token: 0x06001AED RID: 6893 RVA: 0x0015B5E4 File Offset: 0x001597E4
 	private bool IsNormalCharaParamExcludeDropRatio(int index)
 	{
 		return index >= this.GetScrollCount() || (this.bonusCharaData.list[index].hpBonusRatio == 0 && this.bonusCharaData.list[index].strBonusRatio == 0 && this.bonusCharaData.list[index].defBonusRatio == 0);
 	}
 
-	// Token: 0x06001AEE RID: 6894 RVA: 0x0015B648 File Offset: 0x00159848
 	private void ChangeChara(CharaPackData cpd)
 	{
 		this.currentCharaPackData = cpd;
@@ -936,7 +921,6 @@ public class CharaWindowCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06001AEF RID: 6895 RVA: 0x0015C36C File Offset: 0x0015A56C
 	private IEnumerator IEOpen()
 	{
 		this.guiData.TabGroup.Setup(0, new PguiTabGroupCtrl.OnSelectTab(this.OnSelectDetailTab));
@@ -976,7 +960,6 @@ public class CharaWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001AF0 RID: 6896 RVA: 0x0015C37C File Offset: 0x0015A57C
 	private void SetupButton(CharaPackData cpd)
 	{
 		bool flag = new List<CharaPackData>(DataManager.DmChara.GetUserCharaMap().Values).Contains(cpd);
@@ -988,7 +971,6 @@ public class CharaWindowCtrl : MonoBehaviour
 		this.guiData.Btn_DressUp.gameObject.SetActive(this.openParam.DispClothBtn && flag);
 	}
 
-	// Token: 0x06001AF1 RID: 6897 RVA: 0x0015C48C File Offset: 0x0015A68C
 	public void Open(CharaPackData cpd, CharaWindowCtrl.DetailParamSetting param, CharaWindowCtrl.OnClick clickCloseBtnCB = null)
 	{
 		this.openParam = param;
@@ -1010,7 +992,6 @@ public class CharaWindowCtrl : MonoBehaviour
 		this.callback = clickCloseBtnCB;
 	}
 
-	// Token: 0x06001AF2 RID: 6898 RVA: 0x0015C544 File Offset: 0x0015A744
 	public void OpenPrev()
 	{
 		base.gameObject.SetActive(true);
@@ -1023,13 +1004,11 @@ public class CharaWindowCtrl : MonoBehaviour
 		this.iEOpen = this.IEOpen();
 	}
 
-	// Token: 0x06001AF3 RID: 6899 RVA: 0x0015C580 File Offset: 0x0015A780
 	public bool FinishedOpen()
 	{
 		return this.iEOpen == null;
 	}
 
-	// Token: 0x06001AF4 RID: 6900 RVA: 0x0015C58C File Offset: 0x0015A78C
 	private void Close()
 	{
 		this.CharaChangeIcon();
@@ -1049,13 +1028,11 @@ public class CharaWindowCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06001AF5 RID: 6901 RVA: 0x0015C622 File Offset: 0x0015A822
 	public bool IsActive()
 	{
 		return base.gameObject.activeSelf;
 	}
 
-	// Token: 0x06001AF6 RID: 6902 RVA: 0x0015C630 File Offset: 0x0015A830
 	private void CharaChangeIcon()
 	{
 		int num = ((this.selectIconIndex >= 1) ? (this.selectIconIndex + 1) : 0);
@@ -1066,94 +1043,65 @@ public class CharaWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04001464 RID: 5220
 	private static readonly string WILD_RELEASE_MARK_LOCK_STR = PrjUtil.MakeMessage("野生解放１段階目達成");
 
-	// Token: 0x04001465 RID: 5221
 	private static readonly float SPECIALY_ATTACK_DEFAULT_Y = 123f;
 
-	// Token: 0x04001466 RID: 5222
 	private static readonly float KEMONO_MIRACLE_DEFAULT_Y = 123f;
 
-	// Token: 0x04001467 RID: 5223
 	private static readonly float SKILL_UI_TEXT_SIZE = 24f;
 
-	// Token: 0x04001468 RID: 5224
 	private static readonly int SKILL_UI_DEFAULT_LINE_NUM = 3;
 
-	// Token: 0x04001469 RID: 5225
 	private CharaWindowCtrl.OnClick callback;
 
-	// Token: 0x0400146A RID: 5226
 	private CharaWindowCtrl.GUI guiData;
 
-	// Token: 0x0400146B RID: 5227
 	private CharaPackData currentCharaPackData;
 
-	// Token: 0x0400146C RID: 5228
 	private List<CharaPackData> dispCharaPackList;
 
-	// Token: 0x0400146D RID: 5229
 	private List<CharaClothStatic> haveClothes;
 
-	// Token: 0x0400146E RID: 5230
 	private RenderTextureChara renderTextureChara;
 
-	// Token: 0x0400146F RID: 5231
 	private int currenEquipClothId;
 
-	// Token: 0x04001470 RID: 5232
 	private DataManagerGameStatus.UserFlagData userFlagData;
 
-	// Token: 0x04001471 RID: 5233
 	private int selectIconIndex;
 
-	// Token: 0x04001472 RID: 5234
 	private bool maxDispChangeChara;
 
-	// Token: 0x04001473 RID: 5235
 	private bool shopDispChangeChara;
 
-	// Token: 0x04001474 RID: 5236
 	private int BonusCharaDataListIndex;
 
-	// Token: 0x04001475 RID: 5237
 	private CharaWindowCtrl.BonusCharaData bonusCharaData = new CharaWindowCtrl.BonusCharaData();
 
-	// Token: 0x04001476 RID: 5238
 	private static readonly float r1000 = 1000f;
 
-	// Token: 0x04001477 RID: 5239
 	private IEnumerator iEOpen;
 
-	// Token: 0x04001478 RID: 5240
 	private CharaWindowCtrl.DetailParamSetting openParam = new CharaWindowCtrl.DetailParamSetting();
 
-	// Token: 0x02000E95 RID: 3733
-	// (Invoke) Token: 0x06004D16 RID: 19734
 	public delegate void OnClick();
 
-	// Token: 0x02000E96 RID: 3734
 	private class BonusCharaData
 	{
-		// Token: 0x06004D19 RID: 19737 RVA: 0x00230455 File Offset: 0x0022E655
 		public BonusCharaData()
 		{
 			this.list = new List<DataManagerChara.BonusCharaData>();
 			this.isSpecial = false;
 		}
 
-		// Token: 0x0400538A RID: 21386
 		public List<DataManagerChara.BonusCharaData> list;
 
-		// Token: 0x0400538B RID: 21387
 		public bool isSpecial;
 	}
 
-	// Token: 0x02000E97 RID: 3735
 	public class GUI
 	{
-		// Token: 0x06004D1A RID: 19738 RVA: 0x00230470 File Offset: 0x0022E670
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1266,154 +1214,104 @@ public class CharaWindowCtrl : MonoBehaviour
 			this.AEImage_KisekiEff.gameObject.SetActive(false);
 		}
 
-		// Token: 0x0400538C RID: 21388
 		public static readonly int RED_LIST_NUM = 7;
 
-		// Token: 0x0400538D RID: 21389
 		public GameObject baseObj;
 
-		// Token: 0x0400538E RID: 21390
 		public GameObject All;
 
-		// Token: 0x0400538F RID: 21391
 		public PguiButtonCtrl Btn_View;
 
-		// Token: 0x04005390 RID: 21392
 		public PguiButtonCtrl Btn_Yaji_Left;
 
-		// Token: 0x04005391 RID: 21393
 		public PguiButtonCtrl Btn_Yaji_Right;
 
-		// Token: 0x04005392 RID: 21394
 		public PguiButtonCtrl Btn_Close;
 
-		// Token: 0x04005393 RID: 21395
 		public PguiButtonCtrl Btn_Scenario;
 
-		// Token: 0x04005394 RID: 21396
 		public PguiButtonCtrl Btn_DressUp;
 
-		// Token: 0x04005395 RID: 21397
 		public PguiButtonCtrl Btn_Grow;
 
-		// Token: 0x04005396 RID: 21398
 		public List<CharaWindowCtrl.GUI.Name> names;
 
-		// Token: 0x04005397 RID: 21399
 		public PguiRawImageCtrl Texture_Animal;
 
-		// Token: 0x04005398 RID: 21400
 		public PguiTextCtrl Txt_CopyLight;
 
-		// Token: 0x04005399 RID: 21401
 		public PguiTextCtrl Txt_Tabitat;
 
-		// Token: 0x0400539A RID: 21402
 		public PguiTextCtrl Txt_DistributionArea;
 
-		// Token: 0x0400539B RID: 21403
 		public PguiTextCtrl Txt_Current;
 
-		// Token: 0x0400539C RID: 21404
 		public PguiTextCtrl Txt_Info;
 
-		// Token: 0x0400539D RID: 21405
 		public List<PguiColorCtrl> RedListImgColor;
 
-		// Token: 0x0400539E RID: 21406
 		public List<PguiImageCtrl> RedListImg;
 
-		// Token: 0x0400539F RID: 21407
 		public List<PguiColorCtrl> RedListTxtColor;
 
-		// Token: 0x040053A0 RID: 21408
 		public List<PguiTextCtrl> RedListTxt;
 
-		// Token: 0x040053A1 RID: 21409
 		public ScrollRect Rect_FlavorView;
 
-		// Token: 0x040053A2 RID: 21410
 		public PguiTextCtrl Txt_FlavorText;
 
-		// Token: 0x040053A3 RID: 21411
 		public SimpleAnimation GUI_CharaInfo;
 
-		// Token: 0x040053A4 RID: 21412
 		public GameObject ScrollView;
 
-		// Token: 0x040053A5 RID: 21413
 		public PguiTabGroupCtrl TabGroup;
 
-		// Token: 0x040053A6 RID: 21414
 		public PguiAECtrl AEImage_WindowOpen;
 
-		// Token: 0x040053A7 RID: 21415
 		public GameObject infoSkill;
 
-		// Token: 0x040053A8 RID: 21416
 		public GameObject infoProfile;
 
-		// Token: 0x040053A9 RID: 21417
 		public GameObject infoStatus;
 
-		// Token: 0x040053AA RID: 21418
 		public GameObject infoPicture;
 
-		// Token: 0x040053AB RID: 21419
 		public List<PguiTextCtrl> ProfileTextList;
 
-		// Token: 0x040053AC RID: 21420
 		public List<CharaWindowCtrl.GUIIconChara> guiIconCharaList;
 
-		// Token: 0x040053AD RID: 21421
 		public GameObject renderTexture;
 
-		// Token: 0x040053AE RID: 21422
 		public GameObject Null_BlurSpread;
 
-		// Token: 0x040053AF RID: 21423
 		public List<CharaUtil.GUISkillInfo> guiSkillInfoList;
 
-		// Token: 0x040053B0 RID: 21424
 		public PguiTextCtrl Txt_GachaInfo;
 
-		// Token: 0x040053B1 RID: 21425
 		public MarkLockCtrl markLockCtrl;
 
-		// Token: 0x040053B2 RID: 21426
 		public PguiAECtrl AEImage_WindowClose;
 
-		// Token: 0x040053B3 RID: 21427
 		public GameObject Box04;
 
-		// Token: 0x040053B4 RID: 21428
 		public ReuseScroll Info_Status_ScrollView;
 
-		// Token: 0x040053B5 RID: 21429
 		public Dictionary<string, CharaWindowCtrl.GUIInfoStatus> guiInfoStatusMap = new Dictionary<string, CharaWindowCtrl.GUIInfoStatus>();
 
-		// Token: 0x040053B6 RID: 21430
 		public PguiButtonCtrl Info_Status_Btn_Guide_L;
 
-		// Token: 0x040053B7 RID: 21431
 		public PguiButtonCtrl Info_Status_Btn_Guide_R;
 
-		// Token: 0x040053B8 RID: 21432
 		public PguiAECtrl AEImage_KisekiEff;
 
-		// Token: 0x020011E8 RID: 4584
 		public enum NameType
 		{
-			// Token: 0x04006219 RID: 25113
 			Normal,
-			// Token: 0x0400621A RID: 25114
 			NickName
 		}
 
-		// Token: 0x020011E9 RID: 4585
 		public class Name
 		{
-			// Token: 0x06005754 RID: 22356 RVA: 0x0025689C File Offset: 0x00254A9C
 			public Name(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -1442,7 +1340,6 @@ public class CharaWindowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x06005755 RID: 22357 RVA: 0x00256A48 File Offset: 0x00254C48
 			public void Setup(CharaPackData cpd, bool maxDisp)
 			{
 				this.baseObj.SetActive(true);
@@ -1504,48 +1401,34 @@ public class CharaWindowCtrl : MonoBehaviour
 				LayoutRebuilder.ForceRebuildLayoutImmediate(this.Ornament);
 			}
 
-			// Token: 0x0400621B RID: 25115
 			public GameObject baseObj;
 
-			// Token: 0x0400621C RID: 25116
 			public PguiImageCtrl Icon_Atr;
 
-			// Token: 0x0400621D RID: 25117
 			public GameObject Star_All_Obj;
 
-			// Token: 0x0400621E RID: 25118
 			public Vector3 Star_All_Init_Pos;
 
-			// Token: 0x0400621F RID: 25119
 			public PguiImageCtrl Icon_SubAtr;
 
-			// Token: 0x04006220 RID: 25120
 			public PguiTextCtrl Txt_Kind;
 
-			// Token: 0x04006221 RID: 25121
 			public PguiTextCtrl Txt_Name_EG;
 
-			// Token: 0x04006222 RID: 25122
 			public PguiTextCtrl Txt_Name;
 
-			// Token: 0x04006223 RID: 25123
 			public List<GameObject> StarAll;
 
-			// Token: 0x04006224 RID: 25124
 			public GameObject ShopInfo;
 
-			// Token: 0x04006225 RID: 25125
 			public RectTransform Detail;
 
-			// Token: 0x04006226 RID: 25126
 			public RectTransform Ornament;
 		}
 	}
 
-	// Token: 0x02000E98 RID: 3736
 	public class GUIInfoStatus
 	{
-		// Token: 0x06004D1C RID: 19740 RVA: 0x00230C2C File Offset: 0x0022EE2C
 		public GUIInfoStatus(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1608,65 +1491,45 @@ public class CharaWindowCtrl : MonoBehaviour
 			this.InfoPhotoItemEffectCtrl = baseTr.Find("Info_Status/Box01/EventBonus/Info_PhotoItemEffect").GetComponent<InfoPhotoItemEffectCtrl>();
 		}
 
-		// Token: 0x040053B9 RID: 21433
 		public GameObject baseObj;
 
-		// Token: 0x040053BA RID: 21434
 		public List<PguiTextCtrl> StatusTextList;
 
-		// Token: 0x040053BB RID: 21435
 		public PguiTextCtrl StatusTextLv;
 
-		// Token: 0x040053BC RID: 21436
 		public PguiTextCtrl StatusTextLvExp;
 
-		// Token: 0x040053BD RID: 21437
 		public PguiTextCtrl StatusTextKizunaLv;
 
-		// Token: 0x040053BE RID: 21438
 		public PguiTextCtrl StatusTextKizunaLvExp;
 
-		// Token: 0x040053BF RID: 21439
 		public PguiImageCtrl KizunaLvGage;
 
-		// Token: 0x040053C0 RID: 21440
 		public PguiImageCtrl LvGage;
 
-		// Token: 0x040053C1 RID: 21441
 		public GameObject Box02;
 
-		// Token: 0x040053C2 RID: 21442
 		public PguiTextCtrl Info_Flag_Beat;
 
-		// Token: 0x040053C3 RID: 21443
 		public PguiTextCtrl Info_Flag_Try;
 
-		// Token: 0x040053C4 RID: 21444
 		public PguiTextCtrl Info_Flag_Action;
 
-		// Token: 0x040053C5 RID: 21445
 		public List<CharaWindowCtrl.GUIOrderCard> guiOrderCardList = new List<CharaWindowCtrl.GUIOrderCard>();
 
-		// Token: 0x040053C6 RID: 21446
 		public List<PguiTextCtrl> TxtBonusRatioList;
 
-		// Token: 0x040053C7 RID: 21447
 		public GameObject Info_StatusKind_Event;
 
-		// Token: 0x040053C8 RID: 21448
 		public GameObject Info_StatusKind_Normal;
 
-		// Token: 0x040053C9 RID: 21449
 		public List<PguiTextCtrl> TxtBoardPlusList;
 
-		// Token: 0x040053CA RID: 21450
 		public InfoPhotoItemEffectCtrl InfoPhotoItemEffectCtrl;
 	}
 
-	// Token: 0x02000E99 RID: 3737
 	public class GUIOrderCard
 	{
-		// Token: 0x06004D1D RID: 19741 RVA: 0x00230FEC File Offset: 0x0022F1EC
 		public GUIOrderCard(Transform baseTr, int index, bool isSuffixIndex = true)
 		{
 			string text = (isSuffixIndex ? index.ToString() : "");
@@ -1680,7 +1543,6 @@ public class CharaWindowCtrl : MonoBehaviour
 			this.TameruTxtSP = baseTr.Find("CharaInfo_OrderCard_Special" + text + "/Base/Txt").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x06004D1E RID: 19742 RVA: 0x00231108 File Offset: 0x0022F308
 		public void Setup(CharaOrderCard coc, CharaStaticBase baseData)
 		{
 			if (coc == null)
@@ -1719,35 +1581,25 @@ public class CharaWindowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x040053CB RID: 21451
 		public GameObject BaseTameru;
 
-		// Token: 0x040053CC RID: 21452
 		public GameObject BaseTokui;
 
-		// Token: 0x040053CD RID: 21453
 		public GameObject BaseYasei;
 
-		// Token: 0x040053CE RID: 21454
 		public GameObject BaseSpecial;
 
-		// Token: 0x040053CF RID: 21455
 		public PguiImageCtrl YaseiMark;
 
-		// Token: 0x040053D0 RID: 21456
 		public PguiImageCtrl YaseiMarkSP;
 
-		// Token: 0x040053D1 RID: 21457
 		public PguiTextCtrl TameruTxt;
 
-		// Token: 0x040053D2 RID: 21458
 		public PguiTextCtrl TameruTxtSP;
 	}
 
-	// Token: 0x02000E9A RID: 3738
 	public class GUIIconChara
 	{
-		// Token: 0x06004D1F RID: 19743 RVA: 0x00231248 File Offset: 0x0022F448
 		public GUIIconChara(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1765,39 +1617,27 @@ public class CharaWindowCtrl : MonoBehaviour
 			this.Mark_Lock = baseTr.Find("Mark_Lock").GetComponent<MarkLockCtrl>();
 		}
 
-		// Token: 0x040053D3 RID: 21459
 		public GameObject baseObj;
 
-		// Token: 0x040053D4 RID: 21460
 		public IconCharaCtrl Icon_Chara;
 
-		// Token: 0x040053D5 RID: 21461
 		public GameObject Current;
 
-		// Token: 0x040053D6 RID: 21462
 		public PguiImageCtrl Remove;
 
-		// Token: 0x040053D7 RID: 21463
 		public GameObject selected;
 
-		// Token: 0x040053D8 RID: 21464
 		public GameObject disable;
 
-		// Token: 0x040053D9 RID: 21465
 		public PguiTextCtrl Txt_LockInfo;
 
-		// Token: 0x040053DA RID: 21466
 		public PguiAECtrl AEImage_Eff_Change;
 
-		// Token: 0x040053DB RID: 21467
 		public MarkLockCtrl Mark_Lock;
 	}
 
-	// Token: 0x02000E9B RID: 3739
 	public class DetailParamSetting
 	{
-		// Token: 0x17000B37 RID: 2871
-		// (get) Token: 0x06004D20 RID: 19744 RVA: 0x00231358 File Offset: 0x0022F558
 		public bool DispChangeBtn
 		{
 			get
@@ -1812,8 +1652,6 @@ public class CharaWindowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x17000B38 RID: 2872
-		// (get) Token: 0x06004D21 RID: 19745 RVA: 0x00231388 File Offset: 0x0022F588
 		public bool DispClothBtn
 		{
 			get
@@ -1828,8 +1666,6 @@ public class CharaWindowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x17000B39 RID: 2873
-		// (get) Token: 0x06004D22 RID: 19746 RVA: 0x002313B4 File Offset: 0x0022F5B4
 		public bool DispGrowBtn
 		{
 			get
@@ -1844,8 +1680,6 @@ public class CharaWindowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x17000B3A RID: 2874
-		// (get) Token: 0x06004D23 RID: 19747 RVA: 0x002313E0 File Offset: 0x0022F5E0
 		public bool DispScenarioBtn
 		{
 			get
@@ -1860,8 +1694,6 @@ public class CharaWindowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x17000B3B RID: 2875
-		// (get) Token: 0x06004D24 RID: 19748 RVA: 0x0023140C File Offset: 0x0022F60C
 		public bool DispCameraBtn
 		{
 			get
@@ -1876,8 +1708,6 @@ public class CharaWindowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x17000B3C RID: 2876
-		// (get) Token: 0x06004D25 RID: 19749 RVA: 0x0023143C File Offset: 0x0022F63C
 		public bool DispMaxInfo
 		{
 			get
@@ -1891,8 +1721,6 @@ public class CharaWindowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x17000B3D RID: 2877
-		// (get) Token: 0x06004D26 RID: 19750 RVA: 0x00231458 File Offset: 0x0022F658
 		public bool DispKemoBordInfo
 		{
 			get
@@ -1907,72 +1735,47 @@ public class CharaWindowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06004D27 RID: 19751 RVA: 0x00231481 File Offset: 0x0022F681
 		public DetailParamSetting()
 		{
 		}
 
-		// Token: 0x06004D28 RID: 19752 RVA: 0x00231489 File Offset: 0x0022F689
 		public DetailParamSetting(CharaWindowCtrl.DetailParamSetting.Preset preset, List<CharaPackData> dispList = null)
 		{
 			this.UIPreset = preset;
 			this.cpdList = dispList;
 		}
 
-		// Token: 0x040053DC RID: 21468
 		public List<CharaPackData> cpdList;
 
-		// Token: 0x040053DD RID: 21469
 		public UnityAction openCB;
 
-		// Token: 0x040053DE RID: 21470
 		public UnityAction openPrevCB;
 
-		// Token: 0x040053DF RID: 21471
 		public CharaWindowCtrl.DetailParamSetting.Preset UIPreset;
 
-		// Token: 0x040053E0 RID: 21472
 		public int pvpSeasonId;
 
-		// Token: 0x040053E1 RID: 21473
 		public int selectEventId;
 
-		// Token: 0x040053E2 RID: 21474
 		public int selectQuestOneId;
 
-		// Token: 0x040053E3 RID: 21475
 		public UserDeckData.Category deckCategory;
 
-		// Token: 0x020011EA RID: 4586
 		public enum Preset
 		{
-			// Token: 0x04006228 RID: 25128
 			MINE_EASY,
-			// Token: 0x04006229 RID: 25129
 			MINE_DETAIL,
-			// Token: 0x0400622A RID: 25130
 			OTHER,
-			// Token: 0x0400622B RID: 25131
 			DISPLAY,
-			// Token: 0x0400622C RID: 25132
 			HOME,
-			// Token: 0x0400622D RID: 25133
 			HOME_LIST,
-			// Token: 0x0400622E RID: 25134
 			HOME_DRESS,
-			// Token: 0x0400622F RID: 25135
 			MINE_EASY_NO_GROW,
-			// Token: 0x04006230 RID: 25136
 			MINE_EASY_NO_SCENARIO,
-			// Token: 0x04006231 RID: 25137
 			NO_VIEW,
-			// Token: 0x04006232 RID: 25138
 			GACHA_RESULT,
-			// Token: 0x04006233 RID: 25139
 			MINE_EASY_NO_KEMOBOARD,
-			// Token: 0x04006234 RID: 25140
 			OTHER_WITH_KEMOBOARD,
-			// Token: 0x04006235 RID: 25141
 			SHOP_DETAIL
 		}
 	}

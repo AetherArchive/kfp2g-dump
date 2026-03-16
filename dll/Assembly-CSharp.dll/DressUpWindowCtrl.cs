@@ -1,14 +1,12 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
 using SGNFW.uGUI;
 using UnityEngine;
 
-// Token: 0x0200019C RID: 412
 public class DressUpWindowCtrl : MonoBehaviour
 {
-	// Token: 0x06001B62 RID: 7010 RVA: 0x0015ECD4 File Offset: 0x0015CED4
 	public void Init()
 	{
 		if (this.guiData != null)
@@ -32,7 +30,6 @@ public class DressUpWindowCtrl : MonoBehaviour
 		this.renderTextureChara = null;
 	}
 
-	// Token: 0x06001B63 RID: 7011 RVA: 0x0015EE48 File Offset: 0x0015D048
 	public void Open(CharaPackData cpd, DressUpWindowCtrl.OpenParameter param)
 	{
 		this.openParam = param;
@@ -45,14 +42,12 @@ public class DressUpWindowCtrl : MonoBehaviour
 		this.changeChara = this.ChangeChara(this.currentCharaPackData);
 	}
 
-	// Token: 0x06001B64 RID: 7012 RVA: 0x0015EEFA File Offset: 0x0015D0FA
 	public void OpenPrev()
 	{
 		base.gameObject.SetActive(true);
 		this.changeChara = this.ChangeChara(this.currentCharaPackData);
 	}
 
-	// Token: 0x06001B65 RID: 7013 RVA: 0x0015EF1A File Offset: 0x0015D11A
 	public void Close()
 	{
 		base.gameObject.SetActive(false);
@@ -63,13 +58,11 @@ public class DressUpWindowCtrl : MonoBehaviour
 		this.renderTextureChara = null;
 	}
 
-	// Token: 0x06001B66 RID: 7014 RVA: 0x0015EF4D File Offset: 0x0015D14D
 	public bool IsActive()
 	{
 		return base.gameObject.activeSelf;
 	}
 
-	// Token: 0x06001B67 RID: 7015 RVA: 0x0015EF5C File Offset: 0x0015D15C
 	private void Update()
 	{
 		if (this.changeChara != null && !this.changeChara.MoveNext())
@@ -86,7 +79,6 @@ public class DressUpWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001B68 RID: 7016 RVA: 0x0015EFBD File Offset: 0x0015D1BD
 	private IEnumerator ChangeChara(CharaPackData cpd)
 	{
 		this.currentCharaPackData = cpd;
@@ -173,14 +165,12 @@ public class DressUpWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001B69 RID: 7017 RVA: 0x0015EFD3 File Offset: 0x0015D1D3
 	private void ChangeDispButton(bool flag)
 	{
 		this.guiData.Display_On.SetActive(flag);
 		this.guiData.Display_Off.SetActive(!flag);
 	}
 
-	// Token: 0x06001B6A RID: 7018 RVA: 0x0015EFFA File Offset: 0x0015D1FA
 	private IEnumerator ChangeClothes()
 	{
 		this.changingCloth = true;
@@ -233,7 +223,6 @@ public class DressUpWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001B6B RID: 7019 RVA: 0x0015F009 File Offset: 0x0015D209
 	private IEnumerator Wait(float second)
 	{
 		float timeSinceStartup = Time.realtimeSinceStartup;
@@ -244,7 +233,6 @@ public class DressUpWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001B6C RID: 7020 RVA: 0x0015F018 File Offset: 0x0015D218
 	private void OnClickButton(PguiButtonCtrl pbc)
 	{
 		if (CanvasManager.HdlDressUpWipeCtrl.IsActive())
@@ -342,7 +330,6 @@ public class DressUpWindowCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06001B6D RID: 7021 RVA: 0x0015F230 File Offset: 0x0015D430
 	private void OnClickDressButton(PguiButtonCtrl pbc)
 	{
 		if (CanvasManager.HdlDressUpWipeCtrl.IsActive())
@@ -369,7 +356,6 @@ public class DressUpWindowCtrl : MonoBehaviour
 		this.changeClothes = this.ChangeClothes();
 	}
 
-	// Token: 0x06001B6E RID: 7022 RVA: 0x0015F2E2 File Offset: 0x0015D4E2
 	private void OnStartDressup(int index, GameObject go)
 	{
 		go.GetComponent<PguiButtonCtrl>().AddOnClickListener(new PguiButtonCtrl.OnClick(this.OnClickDressButton), PguiButtonCtrl.SoundType.DEFAULT);
@@ -377,7 +363,6 @@ public class DressUpWindowCtrl : MonoBehaviour
 		go.AddComponent<PguiDataHolder>();
 	}
 
-	// Token: 0x06001B6F RID: 7023 RVA: 0x0015F320 File Offset: 0x0015D520
 	private void OnUpdateDressup(int index, GameObject go)
 	{
 		go.SetActive(true);
@@ -425,13 +410,11 @@ public class DressUpWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001B70 RID: 7024 RVA: 0x0015F546 File Offset: 0x0015D746
 	private bool HaveCloth(CharaClothStatic ccs)
 	{
 		return this.HaveCloth(ccs.GetId());
 	}
 
-	// Token: 0x06001B71 RID: 7025 RVA: 0x0015F554 File Offset: 0x0015D754
 	private bool HaveCloth(int id)
 	{
 		bool flag = false;
@@ -453,13 +436,11 @@ public class DressUpWindowCtrl : MonoBehaviour
 		return flag;
 	}
 
-	// Token: 0x06001B72 RID: 7026 RVA: 0x0015F5C4 File Offset: 0x0015D7C4
 	private void OnClickAccessoryButton(PguiButtonCtrl pbc)
 	{
 		CanvasManager.HdlDetachableAccessoryWindowCtrl.Open(this.currentCharaPackData, null);
 	}
 
-	// Token: 0x06001B73 RID: 7027 RVA: 0x0015F5D7 File Offset: 0x0015D7D7
 	private void OnClickDisplayButton(PguiButtonCtrl pbc)
 	{
 		if (this.changeDispEffect == null)
@@ -468,7 +449,6 @@ public class DressUpWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001B74 RID: 7028 RVA: 0x0015F5ED File Offset: 0x0015D7ED
 	private IEnumerator ChangeDispEffect()
 	{
 		bool flag = !this.currentCharaPackData.dynamicData.dispAccessoryEffect;
@@ -481,61 +461,42 @@ public class DressUpWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x04001497 RID: 5271
 	private static readonly int DEFAULT_CLOTH_ID;
 
-	// Token: 0x04001498 RID: 5272
 	private DressUpWindowCtrl.GUI guiData;
 
-	// Token: 0x04001499 RID: 5273
 	private CharaPackData currentCharaPackData;
 
-	// Token: 0x0400149A RID: 5274
 	private List<CharaPackData> dispCharaPackList;
 
-	// Token: 0x0400149B RID: 5275
 	private List<CharaClothStatic> currentHaveClothes;
 
-	// Token: 0x0400149C RID: 5276
 	private List<CharaClothStatic> haveClothes;
 
-	// Token: 0x0400149D RID: 5277
 	private RenderTextureChara renderTextureChara;
 
-	// Token: 0x0400149E RID: 5278
 	private int currenEquipClothId;
 
-	// Token: 0x0400149F RID: 5279
 	private int totalHpBonus;
 
-	// Token: 0x040014A0 RID: 5280
 	private int totalAtkBonus;
 
-	// Token: 0x040014A1 RID: 5281
 	private int totalDefBonus;
 
-	// Token: 0x040014A2 RID: 5282
 	private int countInfoChange;
 
-	// Token: 0x040014A3 RID: 5283
 	private bool changingCloth;
 
-	// Token: 0x040014A4 RID: 5284
 	private DressUpWindowCtrl.OpenParameter openParam;
 
-	// Token: 0x040014A5 RID: 5285
 	private IEnumerator changeChara;
 
-	// Token: 0x040014A6 RID: 5286
 	private IEnumerator changeClothes;
 
-	// Token: 0x040014A7 RID: 5287
 	private IEnumerator changeDispEffect;
 
-	// Token: 0x02000EB9 RID: 3769
 	public class GUI
 	{
-		// Token: 0x06004D87 RID: 19847 RVA: 0x0023300C File Offset: 0x0023120C
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -567,91 +528,63 @@ public class DressUpWindowCtrl : MonoBehaviour
 			this.Display_Off = baseTr.Find("Btn_Display/BaseImage/Off").gameObject;
 		}
 
-		// Token: 0x0400546D RID: 21613
 		public GameObject baseObj;
 
-		// Token: 0x0400546E RID: 21614
 		public PguiButtonCtrl Btn_View;
 
-		// Token: 0x0400546F RID: 21615
 		public PguiButtonCtrl Btn_OK;
 
-		// Token: 0x04005470 RID: 21616
 		public PguiButtonCtrl Btn_Yaji_Right;
 
-		// Token: 0x04005471 RID: 21617
 		public PguiButtonCtrl Btn_Yaji_Left;
 
-		// Token: 0x04005472 RID: 21618
 		public PguiImageCtrl ScrollBg;
 
-		// Token: 0x04005473 RID: 21619
 		public PguiRawImageCtrl Texture_Render;
 
-		// Token: 0x04005474 RID: 21620
 		public PguiTextCtrl Txt_Class;
 
-		// Token: 0x04005475 RID: 21621
 		public PguiTextCtrl Txt_WName;
 
-		// Token: 0x04005476 RID: 21622
 		public PguiTextCtrl Txt_Name;
 
-		// Token: 0x04005477 RID: 21623
 		public PguiTextCtrl Txt_Name_EG;
 
-		// Token: 0x04005478 RID: 21624
 		public PguiTextCtrl Txt_Name_Cloth;
 
-		// Token: 0x04005479 RID: 21625
 		public ReuseScroll ScrollView;
 
-		// Token: 0x0400547A RID: 21626
 		public PguiAECtrl AEImage_Wipe;
 
-		// Token: 0x0400547B RID: 21627
 		public SimpleAnimation AEImage_Cloth_Name;
 
-		// Token: 0x0400547C RID: 21628
 		public GameObject ParamInfo;
 
-		// Token: 0x0400547D RID: 21629
 		public PguiTextCtrl Num_Param01;
 
-		// Token: 0x0400547E RID: 21630
 		public PguiTextCtrl Num_Param02;
 
-		// Token: 0x0400547F RID: 21631
 		public PguiTextCtrl Num_Param03;
 
-		// Token: 0x04005480 RID: 21632
 		public SimpleAnimation DressListAnim;
 
-		// Token: 0x04005481 RID: 21633
 		public PguiButtonCtrl Btn_InfoChange;
 
-		// Token: 0x04005482 RID: 21634
 		public PguiButtonCtrl Btn_Accessory;
 
-		// Token: 0x04005483 RID: 21635
 		public PguiButtonCtrl Btn_Display;
 
-		// Token: 0x04005484 RID: 21636
 		public GameObject Display_On;
 
-		// Token: 0x04005485 RID: 21637
 		public GameObject Display_Off;
 	}
 
-	// Token: 0x02000EBA RID: 3770
 	public class OpenParameter
 	{
-		// Token: 0x06004D88 RID: 19848 RVA: 0x00233258 File Offset: 0x00231458
 		public OpenParameter()
 		{
 		}
 
-		// Token: 0x06004D89 RID: 19849 RVA: 0x00233260 File Offset: 0x00231460
 		public OpenParameter(DressUpWindowCtrl.OpenParameter.Preset type, List<CharaPackData> dispList = null)
 		{
 			this.change = false;
@@ -670,32 +603,21 @@ public class DressUpWindowCtrl : MonoBehaviour
 			this.camera = true;
 		}
 
-		// Token: 0x04005486 RID: 21638
 		public List<CharaPackData> cpdList;
 
-		// Token: 0x04005487 RID: 21639
 		public bool change;
 
-		// Token: 0x04005488 RID: 21640
 		public bool camera;
 
-		// Token: 0x04005489 RID: 21641
 		public DressUpWindowCtrl.OpenParameter.Preset preset;
 
-		// Token: 0x020011F3 RID: 4595
 		public enum Preset
 		{
-			// Token: 0x0400626E RID: 25198
 			INVALID,
-			// Token: 0x0400626F RID: 25199
 			DEFAULT,
-			// Token: 0x04006270 RID: 25200
 			HOME,
-			// Token: 0x04006271 RID: 25201
 			HOME_LIST,
-			// Token: 0x04006272 RID: 25202
 			NO_VIEW,
-			// Token: 0x04006273 RID: 25203
 			MINE_EASY_NO_GROW
 		}
 	}

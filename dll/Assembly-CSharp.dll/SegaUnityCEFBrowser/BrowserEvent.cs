@@ -1,23 +1,18 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
 namespace SegaUnityCEFBrowser
 {
-	// Token: 0x02000207 RID: 519
 	public class BrowserEvent
 	{
-		// Token: 0x17000475 RID: 1141
-		// (get) Token: 0x060021CD RID: 8653 RVA: 0x00191262 File Offset: 0x0018F462
 		public static BrowserEvent Instance { get; } = new BrowserEvent();
 
-		// Token: 0x060021CE RID: 8654 RVA: 0x00191269 File Offset: 0x0018F469
 		private BrowserEvent()
 		{
 		}
 
-		// Token: 0x060021CF RID: 8655 RVA: 0x0019127C File Offset: 0x0018F47C
 		public void setOnCrashedCallback(BrowserNative.OnCrashedDelegate callback)
 		{
 			Dictionary<int, BrowserEvent.BrowserCallback> dictionary = this.mDictCallback;
@@ -28,7 +23,6 @@ namespace SegaUnityCEFBrowser
 			}
 		}
 
-		// Token: 0x060021D0 RID: 8656 RVA: 0x001912E0 File Offset: 0x0018F4E0
 		public void delOnCrashedCallback(BrowserNative.OnCrashedDelegate callback)
 		{
 			Dictionary<int, BrowserEvent.BrowserCallback> dictionary = this.mDictCallback;
@@ -41,7 +35,6 @@ namespace SegaUnityCEFBrowser
 			}
 		}
 
-		// Token: 0x060021D1 RID: 8657 RVA: 0x0019133C File Offset: 0x0018F53C
 		private static int onCrashed()
 		{
 			int num = 0;
@@ -71,7 +64,6 @@ namespace SegaUnityCEFBrowser
 			return num;
 		}
 
-		// Token: 0x060021D2 RID: 8658 RVA: 0x001913CC File Offset: 0x0018F5CC
 		public void setOnBeforeCloseCallback(int id, BrowserNative.OnBeforeCloseDelegate callback)
 		{
 			Dictionary<int, BrowserEvent.BrowserCallback> dictionary = this.mDictCallback;
@@ -88,7 +80,6 @@ namespace SegaUnityCEFBrowser
 			}
 		}
 
-		// Token: 0x060021D3 RID: 8659 RVA: 0x00191444 File Offset: 0x0018F644
 		private static int onBeforeClose(int id)
 		{
 			int num = -1;
@@ -115,7 +106,6 @@ namespace SegaUnityCEFBrowser
 			return num;
 		}
 
-		// Token: 0x060021D4 RID: 8660 RVA: 0x001914CC File Offset: 0x0018F6CC
 		public void setOnLoadingStateChangeCallback(int id, BrowserNative.OnLoadingStateChangeDelegate callback)
 		{
 			Dictionary<int, BrowserEvent.BrowserCallback> dictionary = this.mDictCallback;
@@ -132,7 +122,6 @@ namespace SegaUnityCEFBrowser
 			}
 		}
 
-		// Token: 0x060021D5 RID: 8661 RVA: 0x00191544 File Offset: 0x0018F744
 		public void setOnLoadStartCallback(int id, BrowserNative.OnLoadStartDelegate callback)
 		{
 			Dictionary<int, BrowserEvent.BrowserCallback> dictionary = this.mDictCallback;
@@ -149,7 +138,6 @@ namespace SegaUnityCEFBrowser
 			}
 		}
 
-		// Token: 0x060021D6 RID: 8662 RVA: 0x001915BC File Offset: 0x0018F7BC
 		public void setOnLoadEndCallback(int id, BrowserNative.OnLoadEndDelegate callback)
 		{
 			Dictionary<int, BrowserEvent.BrowserCallback> dictionary = this.mDictCallback;
@@ -166,7 +154,6 @@ namespace SegaUnityCEFBrowser
 			}
 		}
 
-		// Token: 0x060021D7 RID: 8663 RVA: 0x00191634 File Offset: 0x0018F834
 		public void setOnLoadErrorCallback(int id, BrowserNative.OnLoadErrorDelegate callback)
 		{
 			Dictionary<int, BrowserEvent.BrowserCallback> dictionary = this.mDictCallback;
@@ -183,7 +170,6 @@ namespace SegaUnityCEFBrowser
 			}
 		}
 
-		// Token: 0x060021D8 RID: 8664 RVA: 0x001916AC File Offset: 0x0018F8AC
 		private static int onLoadingStateChange(int id, int isLoading)
 		{
 			int num = -1;
@@ -209,7 +195,6 @@ namespace SegaUnityCEFBrowser
 			return num;
 		}
 
-		// Token: 0x060021D9 RID: 8665 RVA: 0x00191728 File Offset: 0x0018F928
 		private static int onLoadStart(int id, int transitionType)
 		{
 			int num = -1;
@@ -235,7 +220,6 @@ namespace SegaUnityCEFBrowser
 			return num;
 		}
 
-		// Token: 0x060021DA RID: 8666 RVA: 0x001917A4 File Offset: 0x0018F9A4
 		private static int onLoadEnd(int id, string url, int httpStatusCode)
 		{
 			int num = -1;
@@ -261,7 +245,6 @@ namespace SegaUnityCEFBrowser
 			return num;
 		}
 
-		// Token: 0x060021DB RID: 8667 RVA: 0x00191824 File Offset: 0x0018FA24
 		private static int onLoadError(int id, int errorCode)
 		{
 			int num = -1;
@@ -287,7 +270,6 @@ namespace SegaUnityCEFBrowser
 			return num;
 		}
 
-		// Token: 0x060021DC RID: 8668 RVA: 0x001918A0 File Offset: 0x0018FAA0
 		public void setOnBeforeBrowseCallback(int id, BrowserNative.OnBeforeBrowseDelegate callback)
 		{
 			Dictionary<int, BrowserEvent.BrowserCallback> dictionary = this.mDictCallback;
@@ -304,7 +286,6 @@ namespace SegaUnityCEFBrowser
 			}
 		}
 
-		// Token: 0x060021DD RID: 8669 RVA: 0x00191918 File Offset: 0x0018FB18
 		public void setOnCertificateErrorCallback(int id, BrowserNative.OnCertificateErrorDelegate callback)
 		{
 			Dictionary<int, BrowserEvent.BrowserCallback> dictionary = this.mDictCallback;
@@ -321,7 +302,6 @@ namespace SegaUnityCEFBrowser
 			}
 		}
 
-		// Token: 0x060021DE RID: 8670 RVA: 0x00191990 File Offset: 0x0018FB90
 		public void setOnRenderProcessTerminatedCallback(int id, BrowserNative.OnRenderProcessTerminatedDelegate callback)
 		{
 			Dictionary<int, BrowserEvent.BrowserCallback> dictionary = this.mDictCallback;
@@ -338,7 +318,6 @@ namespace SegaUnityCEFBrowser
 			}
 		}
 
-		// Token: 0x060021DF RID: 8671 RVA: 0x00191A08 File Offset: 0x0018FC08
 		public void setOnJavaScriptEvaluatedCallback(int id, BrowserNative.OnJavaScriptEvaluatedDelegate callback)
 		{
 			Dictionary<int, BrowserEvent.BrowserCallback> dictionary = this.mDictCallback;
@@ -355,7 +334,6 @@ namespace SegaUnityCEFBrowser
 			}
 		}
 
-		// Token: 0x060021E0 RID: 8672 RVA: 0x00191A80 File Offset: 0x0018FC80
 		private static int onBeforeBrowse(int id, string url)
 		{
 			int num = 0;
@@ -381,7 +359,6 @@ namespace SegaUnityCEFBrowser
 			return num;
 		}
 
-		// Token: 0x060021E1 RID: 8673 RVA: 0x00191AFC File Offset: 0x0018FCFC
 		private static int onCertificateError(int id, int errorCode, uint certStatus)
 		{
 			int num = 0;
@@ -407,7 +384,6 @@ namespace SegaUnityCEFBrowser
 			return num;
 		}
 
-		// Token: 0x060021E2 RID: 8674 RVA: 0x00191B7C File Offset: 0x0018FD7C
 		private static int onRenderProcessTerminated(int id, int status)
 		{
 			int num = -1;
@@ -433,7 +409,6 @@ namespace SegaUnityCEFBrowser
 			return num;
 		}
 
-		// Token: 0x060021E3 RID: 8675 RVA: 0x00191BF8 File Offset: 0x0018FDF8
 		private static int onJavaScriptEvaluated(int id, int funcResult, string evalResult, string funcIdentifier)
 		{
 			int num = 0;
@@ -459,7 +434,6 @@ namespace SegaUnityCEFBrowser
 			return num;
 		}
 
-		// Token: 0x060021E4 RID: 8676 RVA: 0x00191C78 File Offset: 0x0018FE78
 		public void PollEvent()
 		{
 			uint num = 0U;
@@ -664,40 +638,28 @@ namespace SegaUnityCEFBrowser
 			}
 		}
 
-		// Token: 0x04001879 RID: 6265
 		private BrowserNative.OnCrashedDelegate mOnCrashedCallback;
 
-		// Token: 0x0400187A RID: 6266
 		private readonly Dictionary<int, BrowserEvent.BrowserCallback> mDictCallback = new Dictionary<int, BrowserEvent.BrowserCallback>();
 
-		// Token: 0x0200104D RID: 4173
 		private class BrowserCallback
 		{
-			// Token: 0x04005B67 RID: 23399
 			public BrowserNative.OnBeforeCloseDelegate mOnBeforeCloseCallback;
 
-			// Token: 0x04005B68 RID: 23400
 			public BrowserNative.OnLoadingStateChangeDelegate mOnLoadingStateChangeCallback;
 
-			// Token: 0x04005B69 RID: 23401
 			public BrowserNative.OnLoadStartDelegate mOnLoadStartCallback;
 
-			// Token: 0x04005B6A RID: 23402
 			public BrowserNative.OnLoadEndDelegate mOnLoadEndCallback;
 
-			// Token: 0x04005B6B RID: 23403
 			public BrowserNative.OnLoadErrorDelegate mOnLoadErrorCallback;
 
-			// Token: 0x04005B6C RID: 23404
 			public BrowserNative.OnBeforeBrowseDelegate mOnBeforeBrowseCallback;
 
-			// Token: 0x04005B6D RID: 23405
 			public BrowserNative.OnCertificateErrorDelegate mOnCertificateErrorCallback;
 
-			// Token: 0x04005B6E RID: 23406
 			public BrowserNative.OnRenderProcessTerminatedDelegate mOnRenderProcessTerminatedCallback;
 
-			// Token: 0x04005B6F RID: 23407
 			public BrowserNative.OnJavaScriptEvaluatedDelegate mOnJavaScriptEvaluatedCallback;
 		}
 	}

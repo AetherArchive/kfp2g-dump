@@ -1,15 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x020000F3 RID: 243
 [RequireComponent(typeof(Text))]
 public class GradationText : BaseMeshEffect
 {
-	// Token: 0x17000302 RID: 770
-	// (get) Token: 0x06000BAF RID: 2991 RVA: 0x00045136 File Offset: 0x00043336
-	// (set) Token: 0x06000BB0 RID: 2992 RVA: 0x0004513E File Offset: 0x0004333E
 	public GradationText.Blend BlendMode
 	{
 		get
@@ -22,9 +18,6 @@ public class GradationText : BaseMeshEffect
 		}
 	}
 
-	// Token: 0x17000303 RID: 771
-	// (get) Token: 0x06000BB1 RID: 2993 RVA: 0x00045147 File Offset: 0x00043347
-	// (set) Token: 0x06000BB2 RID: 2994 RVA: 0x0004514F File Offset: 0x0004334F
 	public Gradient EffectGradient
 	{
 		get
@@ -37,9 +30,6 @@ public class GradationText : BaseMeshEffect
 		}
 	}
 
-	// Token: 0x17000304 RID: 772
-	// (get) Token: 0x06000BB3 RID: 2995 RVA: 0x00045158 File Offset: 0x00043358
-	// (set) Token: 0x06000BB4 RID: 2996 RVA: 0x00045160 File Offset: 0x00043360
 	public GradationText.Type GradientType
 	{
 		get
@@ -52,9 +42,6 @@ public class GradationText : BaseMeshEffect
 		}
 	}
 
-	// Token: 0x17000305 RID: 773
-	// (get) Token: 0x06000BB5 RID: 2997 RVA: 0x00045169 File Offset: 0x00043369
-	// (set) Token: 0x06000BB6 RID: 2998 RVA: 0x00045171 File Offset: 0x00043371
 	public float Offset
 	{
 		get
@@ -67,7 +54,6 @@ public class GradationText : BaseMeshEffect
 		}
 	}
 
-	// Token: 0x06000BB7 RID: 2999 RVA: 0x0004517C File Offset: 0x0004337C
 	public override void ModifyMesh(VertexHelper helper)
 	{
 		if (!this.IsActive() || helper.currentVertCount == 0)
@@ -132,7 +118,6 @@ public class GradationText : BaseMeshEffect
 		}
 	}
 
-	// Token: 0x06000BB8 RID: 3000 RVA: 0x00045390 File Offset: 0x00043590
 	private Color BlendColor(Color colorA, Color colorB)
 	{
 		GradationText.Blend blendMode = this.BlendMode;
@@ -147,20 +132,16 @@ public class GradationText : BaseMeshEffect
 		return colorA * colorB;
 	}
 
-	// Token: 0x04000925 RID: 2341
 	[SerializeField]
 	private GradationText.Type _gradientType;
 
-	// Token: 0x04000926 RID: 2342
 	[SerializeField]
 	private GradationText.Blend _blendMode = GradationText.Blend.Multiply;
 
-	// Token: 0x04000927 RID: 2343
 	[SerializeField]
 	[Range(-1f, 1f)]
 	private float _offset;
 
-	// Token: 0x04000928 RID: 2344
 	[SerializeField]
 	private Gradient _effectGradient = new Gradient
 	{
@@ -171,23 +152,16 @@ public class GradationText : BaseMeshEffect
 		}
 	};
 
-	// Token: 0x0200080B RID: 2059
 	public enum Type
 	{
-		// Token: 0x04003607 RID: 13831
 		Horizontal,
-		// Token: 0x04003608 RID: 13832
 		Vertical
 	}
 
-	// Token: 0x0200080C RID: 2060
 	public enum Blend
 	{
-		// Token: 0x0400360A RID: 13834
 		Override,
-		// Token: 0x0400360B RID: 13835
 		Add,
-		// Token: 0x0400360C RID: 13836
 		Multiply
 	}
 }

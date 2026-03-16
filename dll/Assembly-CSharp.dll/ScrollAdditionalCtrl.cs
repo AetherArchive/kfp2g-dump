@@ -1,18 +1,15 @@
-﻿using System;
+using System;
 using SGNFW.uGUI;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x02000101 RID: 257
 public class ScrollAdditionalCtrl : MonoBehaviour
 {
-	// Token: 0x06000C68 RID: 3176 RVA: 0x0004C39F File Offset: 0x0004A59F
 	private void Awake()
 	{
 		this.SensitivityCtrl();
 	}
 
-	// Token: 0x06000C69 RID: 3177 RVA: 0x0004C3A8 File Offset: 0x0004A5A8
 	private void SensitivityCtrl()
 	{
 		FixedScrollRect component = base.GetComponent<FixedScrollRect>();

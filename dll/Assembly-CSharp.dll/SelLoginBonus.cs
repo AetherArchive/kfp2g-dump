@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using CriWare;
@@ -8,21 +8,17 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x020001B9 RID: 441
 public class SelLoginBonus : MonoBehaviour
 {
-	// Token: 0x06001E52 RID: 7762 RVA: 0x0017AA61 File Offset: 0x00178C61
 	private void Start()
 	{
 		Singleton<DataManager>.Instance.InitializeByEditor(null);
 	}
 
-	// Token: 0x06001E53 RID: 7763 RVA: 0x0017AA6E File Offset: 0x00178C6E
 	private void Update()
 	{
 	}
 
-	// Token: 0x06001E54 RID: 7764 RVA: 0x0017AA70 File Offset: 0x00178C70
 	public static IEnumerator ExeLoginBonus(Transform parentTr)
 	{
 		SelLoginBonus.rcvDate = TimeManager.Now;
@@ -49,7 +45,6 @@ public class SelLoginBonus : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001E55 RID: 7765 RVA: 0x0017AA7F File Offset: 0x00178C7F
 	private static IEnumerator ExeLoginBonusCampaign(Transform parentTr, HomeCheckResult homeCheckResult)
 	{
 		SelLoginBonus.<>c__DisplayClass12_0 CS$<>8__locals1 = new SelLoginBonus.<>c__DisplayClass12_0();
@@ -236,7 +231,6 @@ public class SelLoginBonus : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001E56 RID: 7766 RVA: 0x0017AA95 File Offset: 0x00178C95
 	private static IEnumerator ExeLoginBonusNormal(Transform parentTr, HomeCheckResult homeCheckResult)
 	{
 		if (SelLoginBonus.allSkip)
@@ -884,22 +878,16 @@ public class SelLoginBonus : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0400162D RID: 5677
 	private static bool allSkip;
 
-	// Token: 0x0400162E RID: 5678
 	public static DateTime rcvDate = DateTime.MinValue;
 
-	// Token: 0x0400162F RID: 5679
 	public bool isDebug;
 
-	// Token: 0x04001630 RID: 5680
 	private IEnumerator debugAction;
 
-	// Token: 0x02000F9A RID: 3994
 	public class GUI
 	{
-		// Token: 0x06005030 RID: 20528 RVA: 0x0023D9B0 File Offset: 0x0023BBB0
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -950,104 +938,71 @@ public class SelLoginBonus : MonoBehaviour
 			this.Touch = baseTr.Find("Txt_Touch").gameObject;
 		}
 
-		// Token: 0x040057DE RID: 22494
 		public GameObject baseObj;
 
-		// Token: 0x040057DF RID: 22495
 		public PguiButtonCtrl Btn_Skip;
 
-		// Token: 0x040057E0 RID: 22496
 		public PguiTextCtrl Txt_Serif;
 
-		// Token: 0x040057E1 RID: 22497
 		public SimpleAnimation Window01;
 
-		// Token: 0x040057E2 RID: 22498
 		public SimpleAnimation Window02;
 
-		// Token: 0x040057E3 RID: 22499
 		public PguiTextCtrl Daily_NowDay;
 
-		// Token: 0x040057E4 RID: 22500
 		public PguiAECtrl AEImage_Txt;
 
-		// Token: 0x040057E5 RID: 22501
 		public PguiAECtrl AEImage_Stamp;
 
-		// Token: 0x040057E6 RID: 22502
 		public PguiAECtrl AEImage_NextEff;
 
-		// Token: 0x040057E7 RID: 22503
 		public PguiAECtrl AEImage_NextEffBack;
 
-		// Token: 0x040057E8 RID: 22504
 		public PguiImageCtrl CharSerif;
 
-		// Token: 0x040057E9 RID: 22505
 		public GameObject BackObj;
 
-		// Token: 0x040057EA RID: 22506
 		public GameObject TopObj;
 
-		// Token: 0x040057EB RID: 22507
 		public Transform FrontBG;
 
-		// Token: 0x040057EC RID: 22508
 		public PguiTextCtrl Txt_CharaName;
 
-		// Token: 0x040057ED RID: 22509
 		public List<SelLoginBonus.GuiFrameOne> BonusObj01;
 
-		// Token: 0x040057EE RID: 22510
 		public PguiAECtrl AEImage_Total;
 
-		// Token: 0x040057EF RID: 22511
 		public IconItemCtrl Normal_ItemIcon;
 
-		// Token: 0x040057F0 RID: 22512
 		public PguiTextCtrl Normal_Num_InfoTxt;
 
-		// Token: 0x040057F1 RID: 22513
 		public PguiTextCtrl Normal_Num_NowDayTxt;
 
-		// Token: 0x040057F2 RID: 22514
 		public PguiAECtrl AEImage_Special;
 
-		// Token: 0x040057F3 RID: 22515
 		public IconItemCtrl Special_ItemIcon;
 
-		// Token: 0x040057F4 RID: 22516
 		public PguiTextCtrl Special_Num_NowDayTxt;
 
-		// Token: 0x040057F5 RID: 22517
 		public PguiTextCtrl Special_Num_InfoTxt;
 
-		// Token: 0x040057F6 RID: 22518
 		public PguiAECtrl TotalGet;
 
-		// Token: 0x040057F7 RID: 22519
 		public Transform TotalGetNull;
 
-		// Token: 0x040057F8 RID: 22520
 		public PguiAECtrl TotalGetStamp;
 
-		// Token: 0x040057F9 RID: 22521
 		public PguiTextCtrl TotalGetNowDay;
 
-		// Token: 0x040057FA RID: 22522
 		public PguiTextCtrl TotalGetItemName;
 
-		// Token: 0x040057FB RID: 22523
 		public GameObject Touch;
 
-		// Token: 0x040057FC RID: 22524
 		public SimpleAnimation currentFrameAnim;
 	}
 
-	// Token: 0x02000F9B RID: 3995
 	public class GuiFrameOne
 	{
-		// Token: 0x06005031 RID: 20529 RVA: 0x0023DD88 File Offset: 0x0023BF88
 		public GuiFrameOne(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1061,38 +1016,27 @@ public class SelLoginBonus : MonoBehaviour
 			this.Txt_Item = baseTr.Find("Login_ItemInfo/Txt_Item").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x040057FD RID: 22525
 		public GameObject baseObj;
 
-		// Token: 0x040057FE RID: 22526
 		public PguiImageCtrl Tex_ItemPlate;
 
-		// Token: 0x040057FF RID: 22527
 		public PguiImageCtrl Tex_Day;
 
-		// Token: 0x04005800 RID: 22528
 		public PguiTextCtrl Num_Txt;
 
-		// Token: 0x04005801 RID: 22529
 		public PguiTextCtrl Txt_Day;
 
-		// Token: 0x04005802 RID: 22530
 		public PguiImageCtrl Stamp;
 
-		// Token: 0x04005803 RID: 22531
 		public IconItemCtrl BonusItem;
 
-		// Token: 0x04005804 RID: 22532
 		public PguiTextCtrl Txt_Item;
 
-		// Token: 0x04005805 RID: 22533
 		public SimpleAnimation anime;
 	}
 
-	// Token: 0x02000F9C RID: 3996
 	public class GuiTotalGet
 	{
-		// Token: 0x06005032 RID: 20530 RVA: 0x0023DE5C File Offset: 0x0023C05C
 		public GuiTotalGet(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1101,23 +1045,17 @@ public class SelLoginBonus : MonoBehaviour
 			this.Num_InfoTxt = baseTr.Find("Num_DayCount").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x04005806 RID: 22534
 		public GameObject baseObj;
 
-		// Token: 0x04005807 RID: 22535
 		public IconItemCtrl ItemIcon;
 
-		// Token: 0x04005808 RID: 22536
 		public PguiTextCtrl Num_InfoTxt;
 
-		// Token: 0x04005809 RID: 22537
 		public PguiTextCtrl Num_NowDayTxt;
 	}
 
-	// Token: 0x02000F9D RID: 3997
 	public class GuiCampaign
 	{
-		// Token: 0x06005033 RID: 20531 RVA: 0x0023DEC0 File Offset: 0x0023C0C0
 		public GuiCampaign(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1128,7 +1066,6 @@ public class SelLoginBonus : MonoBehaviour
 			this.Touch = baseTr.Find("Txt_Touch").gameObject;
 		}
 
-		// Token: 0x06005034 RID: 20532 RVA: 0x0023DF58 File Offset: 0x0023C158
 		public void MakeList(int cnt)
 		{
 			foreach (SelLoginBonus.GuiCampaignFrameOne guiCampaignFrameOne in this.oneList)
@@ -1176,32 +1113,23 @@ public class SelLoginBonus : MonoBehaviour
 			}
 		}
 
-		// Token: 0x0400580A RID: 22538
 		public GameObject baseObj;
 
-		// Token: 0x0400580B RID: 22539
 		public PguiButtonCtrl Btn_Skip;
 
-		// Token: 0x0400580C RID: 22540
 		public PguiImageCtrl Fukidashi;
 
-		// Token: 0x0400580D RID: 22541
 		public PguiRawImageCtrl FrontBG;
 
-		// Token: 0x0400580E RID: 22542
 		public PguiTextCtrl Tex;
 
-		// Token: 0x0400580F RID: 22543
 		public GameObject Touch;
 
-		// Token: 0x04005810 RID: 22544
 		public List<SelLoginBonus.GuiCampaignFrameOne> oneList = new List<SelLoginBonus.GuiCampaignFrameOne>();
 	}
 
-	// Token: 0x02000F9E RID: 3998
 	public class GuiCampaignFrameOne
 	{
-		// Token: 0x06005035 RID: 20533 RVA: 0x0023E16C File Offset: 0x0023C36C
 		public GuiCampaignFrameOne(Transform baseTr, int no)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1216,34 +1144,24 @@ public class SelLoginBonus : MonoBehaviour
 			this.sort = no;
 		}
 
-		// Token: 0x04005811 RID: 22545
 		public GameObject baseObj;
 
-		// Token: 0x04005812 RID: 22546
 		public PguiImageCtrl Tex_ItemPlate;
 
-		// Token: 0x04005813 RID: 22547
 		public PguiImageCtrl Tex_bk;
 
-		// Token: 0x04005814 RID: 22548
 		public PguiImageCtrl Stamp;
 
-		// Token: 0x04005815 RID: 22549
 		public PguiTextCtrl Num_Txt;
 
-		// Token: 0x04005816 RID: 22550
 		public SimpleAnimation Anim;
 
-		// Token: 0x04005817 RID: 22551
 		public IconItemCtrl BonusItem;
 
-		// Token: 0x04005818 RID: 22552
 		public PguiTextCtrl Txt_Day;
 
-		// Token: 0x04005819 RID: 22553
 		public PguiTextCtrl Txt_Item;
 
-		// Token: 0x0400581A RID: 22554
 		public int sort;
 	}
 }

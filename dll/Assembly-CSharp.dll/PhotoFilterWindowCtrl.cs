@@ -1,19 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using SGNFW.Common;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x020001AF RID: 431
 public class PhotoFilterWindowCtrl
 {
-	// Token: 0x17000405 RID: 1029
-	// (get) Token: 0x06001D01 RID: 7425 RVA: 0x0016A994 File Offset: 0x00168B94
-	// (set) Token: 0x06001D02 RID: 7426 RVA: 0x0016A99C File Offset: 0x00168B9C
 	private string SearchText { get; set; }
 
-	// Token: 0x06001D03 RID: 7427 RVA: 0x0016A9A8 File Offset: 0x00168BA8
 	public void Initialize(GameObject go)
 	{
 		this.winGUI = new PhotoFilterWindowCtrl.WindowGUI(go);
@@ -35,7 +30,6 @@ public class PhotoFilterWindowCtrl
 		});
 	}
 
-	// Token: 0x06001D04 RID: 7428 RVA: 0x0016AAF4 File Offset: 0x00168CF4
 	public PhotoFilterWindowCtrl.FrameGUI CreateButtonFrame(string frameName, List<string> buttonNameList)
 	{
 		List<PguiToggleButtonCtrl> list = new List<PguiToggleButtonCtrl>();
@@ -84,13 +78,11 @@ public class PhotoFilterWindowCtrl
 		return new PhotoFilterWindowCtrl.FrameGUI(gameObject, list);
 	}
 
-	// Token: 0x06001D05 RID: 7429 RVA: 0x0016ACEC File Offset: 0x00168EEC
 	private void ExceptionCategoryName(List<DataManagerPhoto.PhotoCharacteristicData> sourceList)
 	{
 		sourceList.Find((DataManagerPhoto.PhotoCharacteristicData item) => item.CategoryName != sourceList[0].CategoryName);
 	}
 
-	// Token: 0x06001D06 RID: 7430 RVA: 0x0016AD20 File Offset: 0x00168F20
 	public PhotoFilterWindowCtrl.BuffFrameGUI CreateBuffButtonFrame(string frameName, List<string> enebleButtonNameList)
 	{
 		PhotoFilterWindowCtrl.<>c__DisplayClass15_0 CS$<>8__locals1 = new PhotoFilterWindowCtrl.<>c__DisplayClass15_0();
@@ -118,7 +110,6 @@ public class PhotoFilterWindowCtrl
 		return new PhotoFilterWindowCtrl.BuffFrameGUI(gameObject, list5, list6, list7, list8);
 	}
 
-	// Token: 0x06001D07 RID: 7431 RVA: 0x0016AE98 File Offset: 0x00169098
 	public GameObject GetAssetObj(string frameName)
 	{
 		GameObject gameObject;
@@ -133,7 +124,6 @@ public class PhotoFilterWindowCtrl
 		return gameObject;
 	}
 
-	// Token: 0x06001D08 RID: 7432 RVA: 0x0016AEEC File Offset: 0x001690EC
 	public List<PguiToggleButtonCtrl> GetFilterButtonList(GameObject buttonObj, string frameName = "")
 	{
 		List<PguiToggleButtonCtrl> list = new List<PguiToggleButtonCtrl>();
@@ -152,7 +142,6 @@ public class PhotoFilterWindowCtrl
 		return list;
 	}
 
-	// Token: 0x06001D09 RID: 7433 RVA: 0x0016AFB4 File Offset: 0x001691B4
 	public void SetupWindow(SortFilterDefine.PhotoFilterType filterType, List<string> enebleButtonNameList, SortFilterDefine.AndOrState andOrState, SortFilterDefine.AndOrState andOrStateAbnormal)
 	{
 		this.winGUI.filterType = filterType;
@@ -209,7 +198,6 @@ public class PhotoFilterWindowCtrl
 		}
 	}
 
-	// Token: 0x06001D0A RID: 7434 RVA: 0x0016B164 File Offset: 0x00169364
 	public void SetupRarity(List<ItemDef.Rarity> rarityList)
 	{
 		for (int i = 0; i < this.winGUI.frameRarity.buttonList.Count; i++)
@@ -221,7 +209,6 @@ public class PhotoFilterWindowCtrl
 		}
 	}
 
-	// Token: 0x06001D0B RID: 7435 RVA: 0x0016B218 File Offset: 0x00169418
 	public void SetUpPhotoType(List<PhotoDef.Type> photoTypeList)
 	{
 		for (int i = 0; i < this.winGUI.framePhotoType.buttonList.Count; i++)
@@ -233,7 +220,6 @@ public class PhotoFilterWindowCtrl
 		}
 	}
 
-	// Token: 0x06001D0C RID: 7436 RVA: 0x0016B2CC File Offset: 0x001694CC
 	public void SetupFavorite(bool[] registButtonList)
 	{
 		for (int i = 0; i < this.winGUI.frameFavorite.buttonList.Count; i++)
@@ -245,7 +231,6 @@ public class PhotoFilterWindowCtrl
 		}
 	}
 
-	// Token: 0x06001D0D RID: 7437 RVA: 0x0016B378 File Offset: 0x00169578
 	public void SetupSpecial(bool invalidBonus, bool inValidLimit)
 	{
 		bool flag = DataManager.DmPhoto.IsBonusActive();
@@ -273,7 +258,6 @@ public class PhotoFilterWindowCtrl
 		}
 	}
 
-	// Token: 0x06001D0E RID: 7438 RVA: 0x0016B51C File Offset: 0x0016971C
 	public void SetupAlbum(List<SortFilterDefine.PhotoAlbumRegistrationStatus> registTypeList)
 	{
 		for (int i = 0; i < this.winGUI.frameAlbum.buttonList.Count; i++)
@@ -285,7 +269,6 @@ public class PhotoFilterWindowCtrl
 		}
 	}
 
-	// Token: 0x06001D0F RID: 7439 RVA: 0x0016B5D0 File Offset: 0x001697D0
 	public void SetAndOrButtonBuff(SortFilterDefine.AndOrState andOrState)
 	{
 		if (andOrState == SortFilterDefine.AndOrState.And)
@@ -302,7 +285,6 @@ public class PhotoFilterWindowCtrl
 		this.winGUI.frameEffectAndBtn.SetToggleIndex(0);
 	}
 
-	// Token: 0x06001D10 RID: 7440 RVA: 0x0016B62C File Offset: 0x0016982C
 	public void SetAndOrButtonBuffAbnormal(SortFilterDefine.AndOrState andOrState)
 	{
 		if (andOrState == SortFilterDefine.AndOrState.And)
@@ -319,7 +301,6 @@ public class PhotoFilterWindowCtrl
 		this.winGUI.frameEffectAbnormalAndBtn.SetToggleIndex(0);
 	}
 
-	// Token: 0x06001D11 RID: 7441 RVA: 0x0016B688 File Offset: 0x00169888
 	public void SetAndOrButtonAbnormal(SortFilterDefine.AndOrState andOrState)
 	{
 		if (andOrState == SortFilterDefine.AndOrState.And)
@@ -336,21 +317,18 @@ public class PhotoFilterWindowCtrl
 		this.winGUI.frameEffectAbnormalAndBtn.SetToggleIndex(0);
 	}
 
-	// Token: 0x06001D12 RID: 7442 RVA: 0x0016B6E3 File Offset: 0x001698E3
 	public bool OnClickRarityButton(int btnIdx, int toggleIdx)
 	{
 		this.winGUI.frameRarity.buttonList[btnIdx].SetToggleIndex(toggleIdx);
 		return true;
 	}
 
-	// Token: 0x06001D13 RID: 7443 RVA: 0x0016B702 File Offset: 0x00169902
 	public bool OnClickPhotoTypeButton(int btnIdx, int toggleIdx)
 	{
 		this.winGUI.framePhotoType.buttonList[btnIdx].SetToggleIndex(toggleIdx);
 		return true;
 	}
 
-	// Token: 0x06001D14 RID: 7444 RVA: 0x0016B724 File Offset: 0x00169924
 	public bool OnClickFavoriteButton(int btnIdx, int toggleIdx)
 	{
 		foreach (PguiToggleButtonCtrl pguiToggleButtonCtrl in this.winGUI.frameFavorite.buttonList)
@@ -361,7 +339,6 @@ public class PhotoFilterWindowCtrl
 		return true;
 	}
 
-	// Token: 0x06001D15 RID: 7445 RVA: 0x0016B79C File Offset: 0x0016999C
 	public bool OnClickSpecialButton(int btnIdx, int toggleIdx)
 	{
 		if (DataManager.DmPhoto.IsBonusActive())
@@ -375,7 +352,6 @@ public class PhotoFilterWindowCtrl
 		return true;
 	}
 
-	// Token: 0x06001D16 RID: 7446 RVA: 0x0016B7F0 File Offset: 0x001699F0
 	public bool OnClickLimitButton(int btnIdx, int toggleIdx)
 	{
 		if (DataManager.DmPhoto.IsBonusActive())
@@ -389,14 +365,12 @@ public class PhotoFilterWindowCtrl
 		return true;
 	}
 
-	// Token: 0x06001D17 RID: 7447 RVA: 0x0016B844 File Offset: 0x00169A44
 	public bool OnClickPhotoAlbumButton(int btnIdx, int toggleIdx)
 	{
 		this.winGUI.frameAlbum.buttonList[btnIdx].SetToggleIndex(toggleIdx);
 		return true;
 	}
 
-	// Token: 0x06001D18 RID: 7448 RVA: 0x0016B863 File Offset: 0x00169A63
 	private void RegistBuff(SortFilterDefine.CharacteristicFilterCategory category, DataManagerPhoto.PhotoCharacteristicData source, int toggleIdx)
 	{
 		if (toggleIdx == 0)
@@ -407,7 +381,6 @@ public class PhotoFilterWindowCtrl
 		this.buffCategoryEnableListMap[category].Remove(source);
 	}
 
-	// Token: 0x06001D19 RID: 7449 RVA: 0x0016B891 File Offset: 0x00169A91
 	public bool OnClickBuffOrAnd(bool isOr, int toggleIdx)
 	{
 		if (1 == toggleIdx)
@@ -425,7 +398,6 @@ public class PhotoFilterWindowCtrl
 		return true;
 	}
 
-	// Token: 0x06001D1A RID: 7450 RVA: 0x0016B8C1 File Offset: 0x00169AC1
 	public bool OnClickAbnormalOrAnd(bool isOr, int toggleIdx)
 	{
 		if (1 == toggleIdx)
@@ -443,42 +415,36 @@ public class PhotoFilterWindowCtrl
 		return true;
 	}
 
-	// Token: 0x06001D1B RID: 7451 RVA: 0x0016B8F1 File Offset: 0x00169AF1
 	public bool OnClickBuffCondition(DataManagerPhoto.PhotoCharacteristicData source, int btnIdx, int toggleIdx)
 	{
 		this.RegistBuff(SortFilterDefine.CharacteristicFilterCategory.Conditions, source, toggleIdx);
 		return true;
 	}
 
-	// Token: 0x06001D1C RID: 7452 RVA: 0x0016B8FD File Offset: 0x00169AFD
 	public bool OnClickBuffTarget(DataManagerPhoto.PhotoCharacteristicData source, int btnIdx, int toggleIdx)
 	{
 		this.RegistBuff(SortFilterDefine.CharacteristicFilterCategory.Target, source, toggleIdx);
 		return true;
 	}
 
-	// Token: 0x06001D1D RID: 7453 RVA: 0x0016B909 File Offset: 0x00169B09
 	public bool OnClickBuffEffect(DataManagerPhoto.PhotoCharacteristicData source, int btnIdx, int toggleIdx)
 	{
 		this.RegistBuff(SortFilterDefine.CharacteristicFilterCategory.Effect, source, toggleIdx);
 		return true;
 	}
 
-	// Token: 0x06001D1E RID: 7454 RVA: 0x0016B915 File Offset: 0x00169B15
 	public bool OnClickAbnormal(DataManagerPhoto.PhotoCharacteristicData source, int btnIdx, int toggleIdx)
 	{
 		this.RegistBuff(SortFilterDefine.CharacteristicFilterCategory.Abnormal, source, toggleIdx);
 		return true;
 	}
 
-	// Token: 0x06001D1F RID: 7455 RVA: 0x0016B924 File Offset: 0x00169B24
 	public void Open()
 	{
 		this.winGUI.baseWindow.Setup(PrjUtil.MakeMessage("フィルターの設定"), PrjUtil.MakeMessage("選択したカテゴリで絞り込みができます"), PguiOpenWindowCtrl.GetButtonPreset(PguiOpenWindowCtrl.PresetType.CANCEL_OK), true, new PguiOpenWindowCtrl.Callback(this.OnClickWindowButton), null, false);
 		this.winGUI.baseWindow.Open();
 	}
 
-	// Token: 0x06001D20 RID: 7456 RVA: 0x0016B97C File Offset: 0x00169B7C
 	public List<ItemDef.Rarity> GetRarityButtonstatus()
 	{
 		List<PguiToggleButtonCtrl> buttonList = this.winGUI.frameRarity.buttonList;
@@ -493,7 +459,6 @@ public class PhotoFilterWindowCtrl
 		return list;
 	}
 
-	// Token: 0x06001D21 RID: 7457 RVA: 0x0016B9CC File Offset: 0x00169BCC
 	public List<PhotoDef.Type> GetPhotoTypeButtonstatus()
 	{
 		List<PguiToggleButtonCtrl> buttonList = this.winGUI.framePhotoType.buttonList;
@@ -508,7 +473,6 @@ public class PhotoFilterWindowCtrl
 		return list;
 	}
 
-	// Token: 0x06001D22 RID: 7458 RVA: 0x0016BA1C File Offset: 0x00169C1C
 	public bool[] GetFavoriteButtonStatus()
 	{
 		List<PguiToggleButtonCtrl> buttonList = this.winGUI.frameFavorite.buttonList;
@@ -523,7 +487,6 @@ public class PhotoFilterWindowCtrl
 		return array;
 	}
 
-	// Token: 0x06001D23 RID: 7459 RVA: 0x0016BA68 File Offset: 0x00169C68
 	public List<SortFilterDefine.PhotoAlbumRegistrationStatus> GetPhotoAlbumButtonstatus()
 	{
 		List<PguiToggleButtonCtrl> buttonList = this.winGUI.frameAlbum.buttonList;
@@ -538,13 +501,11 @@ public class PhotoFilterWindowCtrl
 		return list;
 	}
 
-	// Token: 0x06001D24 RID: 7460 RVA: 0x0016BAB6 File Offset: 0x00169CB6
 	public bool GetInvalidBonus()
 	{
 		return this.winGUI.frameSpecial.buttonList[0].GetToggleIndex() == 1;
 	}
 
-	// Token: 0x06001D25 RID: 7461 RVA: 0x0016BAD8 File Offset: 0x00169CD8
 	public bool GetInvalidLimit()
 	{
 		if (!DataManager.DmPhoto.IsBonusActive())
@@ -554,7 +515,6 @@ public class PhotoFilterWindowCtrl
 		return this.winGUI.frameSpecial.buttonList[1].GetToggleIndex() == 1;
 	}
 
-	// Token: 0x06001D26 RID: 7462 RVA: 0x0016BB30 File Offset: 0x00169D30
 	public SortFilterDefine.AndOrState GetAndORStatus()
 	{
 		if (this.winGUI.frameBuff == null)
@@ -579,7 +539,6 @@ public class PhotoFilterWindowCtrl
 		return andOrState;
 	}
 
-	// Token: 0x06001D27 RID: 7463 RVA: 0x0016BB8C File Offset: 0x00169D8C
 	public SortFilterDefine.AndOrState GetAndORStatusAbnormal()
 	{
 		if (this.winGUI.frameBuff == null)
@@ -604,20 +563,17 @@ public class PhotoFilterWindowCtrl
 		return andOrState;
 	}
 
-	// Token: 0x06001D28 RID: 7464 RVA: 0x0016BBE7 File Offset: 0x00169DE7
 	public string GetSearchText()
 	{
 		return this.windowTextSearchChange.InputField.text;
 	}
 
-	// Token: 0x06001D29 RID: 7465 RVA: 0x0016BBF9 File Offset: 0x00169DF9
 	public void SetupSearchText(string searchText)
 	{
 		this.SearchText = searchText;
 		this.windowTextSearchChange.InputField.text = this.SearchText;
 	}
 
-	// Token: 0x06001D2A RID: 7466 RVA: 0x0016BC18 File Offset: 0x00169E18
 	public List<DataManagerPhoto.PhotoCharacteristicData> GetBuffConditionsDataList()
 	{
 		if (this.buffCategoryEnableListMap == null)
@@ -631,7 +587,6 @@ public class PhotoFilterWindowCtrl
 		return this.buffCategoryEnableListMap[SortFilterDefine.CharacteristicFilterCategory.Conditions];
 	}
 
-	// Token: 0x06001D2B RID: 7467 RVA: 0x0016BC48 File Offset: 0x00169E48
 	public List<DataManagerPhoto.PhotoCharacteristicData> GetBuffTargetDataList()
 	{
 		if (this.buffCategoryEnableListMap == null)
@@ -645,7 +600,6 @@ public class PhotoFilterWindowCtrl
 		return this.buffCategoryEnableListMap[SortFilterDefine.CharacteristicFilterCategory.Target];
 	}
 
-	// Token: 0x06001D2C RID: 7468 RVA: 0x0016BC78 File Offset: 0x00169E78
 	public List<DataManagerPhoto.PhotoCharacteristicData> GetBuffEffectDataList()
 	{
 		if (this.buffCategoryEnableListMap == null)
@@ -659,7 +613,6 @@ public class PhotoFilterWindowCtrl
 		return this.buffCategoryEnableListMap[SortFilterDefine.CharacteristicFilterCategory.Effect];
 	}
 
-	// Token: 0x06001D2D RID: 7469 RVA: 0x0016BCA8 File Offset: 0x00169EA8
 	public List<DataManagerPhoto.PhotoCharacteristicData> GetBuffAbnormalDataList()
 	{
 		if (this.buffCategoryEnableListMap == null)
@@ -673,7 +626,6 @@ public class PhotoFilterWindowCtrl
 		return this.buffCategoryEnableListMap[SortFilterDefine.CharacteristicFilterCategory.Abnormal];
 	}
 
-	// Token: 0x06001D2E RID: 7470 RVA: 0x0016BCD8 File Offset: 0x00169ED8
 	public bool OnClickWindowButton(int index)
 	{
 		switch (index)
@@ -691,7 +643,6 @@ public class PhotoFilterWindowCtrl
 		return true;
 	}
 
-	// Token: 0x06001D2F RID: 7471 RVA: 0x0016BD0C File Offset: 0x00169F0C
 	private void ResetSearchText()
 	{
 		if (this.windowTextSearchChange.InputField.text.Length == 0)
@@ -701,7 +652,6 @@ public class PhotoFilterWindowCtrl
 		this.windowTextSearchChange.InputField.text = this.SearchText;
 	}
 
-	// Token: 0x06001D30 RID: 7472 RVA: 0x0016BD5C File Offset: 0x00169F5C
 	public void SetupSearchTextActive()
 	{
 		if (this.windowTextSearchChange.TextTransform != null)
@@ -710,7 +660,6 @@ public class PhotoFilterWindowCtrl
 		}
 	}
 
-	// Token: 0x06001D31 RID: 7473 RVA: 0x0016BD88 File Offset: 0x00169F88
 	private void OnClickReset(PguiButtonCtrl clickBtn)
 	{
 		PhotoFilterWindowCtrl.<OnClickReset>g__ResetButton|58_0(this.winGUI.frameRarity.buttonList);
@@ -736,7 +685,6 @@ public class PhotoFilterWindowCtrl
 		}
 	}
 
-	// Token: 0x06001D37 RID: 7479 RVA: 0x0016BF4C File Offset: 0x0016A14C
 	[CompilerGenerated]
 	internal static void <OnClickReset>g__ResetButton|58_0(List<PguiToggleButtonCtrl> btnList)
 	{
@@ -746,19 +694,14 @@ public class PhotoFilterWindowCtrl
 		}
 	}
 
-	// Token: 0x0400157E RID: 5502
 	private PhotoFilterWindowCtrl.WindowGUI winGUI;
 
-	// Token: 0x0400157F RID: 5503
 	private Dictionary<SortFilterDefine.CharacteristicFilterCategory, List<DataManagerPhoto.PhotoCharacteristicData>> buffCategoryEnableListMap;
 
-	// Token: 0x04001580 RID: 5504
 	private PhotoFilterWindowCtrl.WindowTextSearchChange windowTextSearchChange;
 
-	// Token: 0x02000F36 RID: 3894
 	public class WindowGUI
 	{
-		// Token: 0x06004EF1 RID: 20209 RVA: 0x00238550 File Offset: 0x00236750
 		public WindowGUI(GameObject go)
 		{
 			this.baseObj = go;
@@ -784,91 +727,64 @@ public class PhotoFilterWindowCtrl
 			verticalLayoutGroup.childForceExpandHeight = true;
 		}
 
-		// Token: 0x04005655 RID: 22101
 		public GameObject baseObj;
 
-		// Token: 0x04005656 RID: 22102
 		public PguiOpenWindowCtrl baseWindow;
 
-		// Token: 0x04005657 RID: 22103
 		public GameObject radioBtns;
 
-		// Token: 0x04005658 RID: 22104
 		public PguiButtonCtrl resetButton;
 
-		// Token: 0x04005659 RID: 22105
 		public ScrollRect scrollRect;
 
-		// Token: 0x0400565A RID: 22106
 		public GameObject scrollContent;
 
-		// Token: 0x0400565B RID: 22107
 		public ContentSizeFitter scrollContentSizeFilter;
 
-		// Token: 0x0400565C RID: 22108
 		public GameObject scrollContentbasePanel;
 
-		// Token: 0x0400565D RID: 22109
 		public PhotoFilterWindowCtrl.FrameGUI frameRarity;
 
-		// Token: 0x0400565E RID: 22110
 		public PhotoFilterWindowCtrl.FrameGUI framePhotoType;
 
-		// Token: 0x0400565F RID: 22111
 		public PhotoFilterWindowCtrl.FrameGUI frameFavorite;
 
-		// Token: 0x04005660 RID: 22112
 		public PhotoFilterWindowCtrl.FrameGUI frameSpecial;
 
-		// Token: 0x04005661 RID: 22113
 		public PhotoFilterWindowCtrl.FrameGUI frameSpecialLimit;
 
-		// Token: 0x04005662 RID: 22114
 		public PhotoFilterWindowCtrl.FrameGUI frameAlbum;
 
-		// Token: 0x04005663 RID: 22115
 		public PhotoFilterWindowCtrl.FrameGUI frameLevel;
 
-		// Token: 0x04005664 RID: 22116
 		public PhotoFilterWindowCtrl.BuffFrameGUI frameBuff;
 
-		// Token: 0x04005665 RID: 22117
 		public PguiToggleButtonCtrl frameEffectOrBtn;
 
-		// Token: 0x04005666 RID: 22118
 		public PguiToggleButtonCtrl frameEffectAndBtn;
 
-		// Token: 0x04005667 RID: 22119
 		public PguiToggleButtonCtrl frameEffectAbnormalOrBtn;
 
-		// Token: 0x04005668 RID: 22120
 		public PguiToggleButtonCtrl frameEffectAbnormalAndBtn;
 
-		// Token: 0x04005669 RID: 22121
 		public SortFilterDefine.PhotoFilterType filterType;
 	}
 
-	// Token: 0x02000F37 RID: 3895
 	public class FrameGUI
 	{
-		// Token: 0x06004EF2 RID: 20210 RVA: 0x002386DA File Offset: 0x002368DA
 		public FrameGUI(GameObject go, List<PguiToggleButtonCtrl> btnList)
 		{
 			this.baseObj = go;
 			this.buttonList = btnList;
 		}
 
-		// Token: 0x0400566A RID: 22122
 		public GameObject baseObj;
 
-		// Token: 0x0400566B RID: 22123
 		public List<PguiToggleButtonCtrl> buttonList;
 	}
 
-	// Token: 0x02000F38 RID: 3896
 	public class BuffFrameGUI
 	{
-		// Token: 0x06004EF3 RID: 20211 RVA: 0x002386F0 File Offset: 0x002368F0
 		public BuffFrameGUI(GameObject go, List<PguiToggleButtonCtrl> conditionsList, List<PguiToggleButtonCtrl> targetList, List<PguiToggleButtonCtrl> effectList, List<PguiToggleButtonCtrl> resistList)
 		{
 			this.baseObj = go;
@@ -879,8 +795,6 @@ public class PhotoFilterWindowCtrl
 			this.resistButtonList = resistList;
 		}
 
-		// Token: 0x17000B69 RID: 2921
-		// (get) Token: 0x06004EF4 RID: 20212 RVA: 0x00238748 File Offset: 0x00236948
 		public List<PguiToggleButtonCtrl> buttonList
 		{
 			get
@@ -894,7 +808,6 @@ public class PhotoFilterWindowCtrl
 			}
 		}
 
-		// Token: 0x06004EF5 RID: 20213 RVA: 0x0023877F File Offset: 0x0023697F
 		public void ObjectDestroy()
 		{
 			Object.Destroy(this.baseObj);
@@ -903,36 +816,26 @@ public class PhotoFilterWindowCtrl
 			this.effectButtonList = null;
 		}
 
-		// Token: 0x0400566C RID: 22124
 		public GameObject baseObj;
 
-		// Token: 0x0400566D RID: 22125
 		public List<PguiToggleButtonCtrl> conditionsButtonList;
 
-		// Token: 0x0400566E RID: 22126
 		public List<PguiToggleButtonCtrl> targetButtonList;
 
-		// Token: 0x0400566F RID: 22127
 		public List<PguiToggleButtonCtrl> effectButtonList;
 
-		// Token: 0x04005670 RID: 22128
 		public List<PguiToggleButtonCtrl> resistButtonList;
 	}
 
-	// Token: 0x02000F39 RID: 3897
 	public class ButtonObject
 	{
-		// Token: 0x04005671 RID: 22129
 		private CharaDef.ActionBuffType buffType;
 
-		// Token: 0x04005672 RID: 22130
 		private string DispName;
 	}
 
-	// Token: 0x02000F3A RID: 3898
 	public class WindowTextSearchChange
 	{
-		// Token: 0x06004EF7 RID: 20215 RVA: 0x002387A9 File Offset: 0x002369A9
 		public WindowTextSearchChange(Transform baseTr)
 		{
 			this.InputField = baseTr.Find("Base/Window/ScrollView/Viewport/Content/Box00/InputField").GetComponent<InputField>();
@@ -940,10 +843,8 @@ public class PhotoFilterWindowCtrl
 			this.InputField.lineType = InputField.LineType.SingleLine;
 		}
 
-		// Token: 0x04005673 RID: 22131
 		public InputField InputField;
 
-		// Token: 0x04005674 RID: 22132
 		public Transform TextTransform;
 	}
 }

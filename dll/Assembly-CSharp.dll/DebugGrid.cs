@@ -1,11 +1,9 @@
-﻿using System;
+using System;
 using UnityEngine;
 
-// Token: 0x0200002D RID: 45
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class DebugGrid : MonoBehaviour
 {
-	// Token: 0x0600009D RID: 157 RVA: 0x00005C30 File Offset: 0x00003E30
 	private void Start()
 	{
 		this.setting = new DebugGrid.Setting();
@@ -14,7 +12,6 @@ public class DebugGrid : MonoBehaviour
 		this.mesh = this.ReGrid(this.mesh);
 	}
 
-	// Token: 0x0600009E RID: 158 RVA: 0x00005C80 File Offset: 0x00003E80
 	private Mesh ReGrid(Mesh mesh)
 	{
 		if (mesh == null)
@@ -81,7 +78,6 @@ public class DebugGrid : MonoBehaviour
 		return mesh;
 	}
 
-	// Token: 0x0600009F RID: 159 RVA: 0x00005F1C File Offset: 0x0000411C
 	private Vector3[] RotationVertices(Vector3[] vertices, Vector3 rotDirection)
 	{
 		Vector3[] array = new Vector3[vertices.Length];
@@ -92,7 +88,6 @@ public class DebugGrid : MonoBehaviour
 		return array;
 	}
 
-	// Token: 0x060000A0 RID: 160 RVA: 0x00005F5C File Offset: 0x0000415C
 	private void OnValidate()
 	{
 		if (this.setting.gridSize <= 0f)
@@ -106,32 +101,23 @@ public class DebugGrid : MonoBehaviour
 		this.ReGrid(this.mesh);
 	}
 
-	// Token: 0x0400011A RID: 282
 	[SerializeField]
 	private DebugGrid.Setting setting;
 
-	// Token: 0x0400011B RID: 283
 	private DebugGrid.Setting preSetting;
 
-	// Token: 0x0400011C RID: 284
 	private Mesh mesh;
 
-	// Token: 0x0200059C RID: 1436
 	public enum Face
 	{
-		// Token: 0x04002981 RID: 10625
 		xy,
-		// Token: 0x04002982 RID: 10626
 		zx,
-		// Token: 0x04002983 RID: 10627
 		yz
 	}
 
-	// Token: 0x0200059D RID: 1437
 	[Serializable]
 	public class Setting
 	{
-		// Token: 0x06002F03 RID: 12035 RVA: 0x001B4879 File Offset: 0x001B2A79
 		public Setting()
 		{
 			this.gridSize = 1f;
@@ -141,22 +127,17 @@ public class DebugGrid : MonoBehaviour
 			this.back = true;
 		}
 
-		// Token: 0x04002984 RID: 10628
 		public float gridSize;
 
-		// Token: 0x04002985 RID: 10629
 		[SerializeField]
 		[Range(1f, 80f)]
 		public int size;
 
-		// Token: 0x04002986 RID: 10630
 		[SerializeField]
 		public Color color;
 
-		// Token: 0x04002987 RID: 10631
 		public DebugGrid.Face face;
 
-		// Token: 0x04002988 RID: 10632
 		public bool back;
 	}
 }

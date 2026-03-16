@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
@@ -9,12 +9,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x02000183 RID: 387
 public class SceneTraining : BaseScene
 {
-	// Token: 0x170003CF RID: 975
-	// (get) Token: 0x060018F7 RID: 6391 RVA: 0x001321F9 File Offset: 0x001303F9
-	// (set) Token: 0x060018F8 RID: 6392 RVA: 0x0013220B File Offset: 0x0013040B
 	private float currentFadeTime
 	{
 		get
@@ -27,7 +23,6 @@ public class SceneTraining : BaseScene
 		}
 	}
 
-	// Token: 0x060018F9 RID: 6393 RVA: 0x00132220 File Offset: 0x00130420
 	public override void OnCreateScene()
 	{
 		this.guiData = new SceneTraining.GUI(AssetManager.InstantiateAssetData("SceneTraining/GUI/Prefab/GUI_Training_Top", null).transform);
@@ -82,7 +77,6 @@ public class SceneTraining : BaseScene
 		this.guiData.BtnAgain.transform.Find("BaseImage/Inbase/Icon_Item").GetComponent<PguiRawImageCtrl>().SetRawImage(DataManager.DmItem.GetItemStaticBase(30100).GetIconName(), true, false, null);
 	}
 
-	// Token: 0x060018FA RID: 6394 RVA: 0x001326FC File Offset: 0x001308FC
 	public override void OnEnableScene(object args)
 	{
 		this.sta = args as SceneTraining.Args;
@@ -166,13 +160,11 @@ public class SceneTraining : BaseScene
 		}
 	}
 
-	// Token: 0x060018FB RID: 6395 RVA: 0x00132AA0 File Offset: 0x00130CA0
 	public static void PlayBGM()
 	{
 		SoundManager.PlayBGM("prd_bgm0063");
 	}
 
-	// Token: 0x060018FC RID: 6396 RVA: 0x00132AAC File Offset: 0x00130CAC
 	public override bool OnEnableSceneWait()
 	{
 		if (!this.guiData.baseObj.activeSelf)
@@ -212,7 +204,6 @@ public class SceneTraining : BaseScene
 		return true;
 	}
 
-	// Token: 0x060018FD RID: 6397 RVA: 0x00132CB8 File Offset: 0x00130EB8
 	private void SetButton()
 	{
 		if (this.dayOfWeekData == null)
@@ -282,7 +273,6 @@ public class SceneTraining : BaseScene
 		this.guiData.BtnStart.transform.Find("BaseImage/Txt").GetComponent<PguiTextCtrl>().text = text2;
 	}
 
-	// Token: 0x060018FE RID: 6398 RVA: 0x00133028 File Offset: 0x00131228
 	public override void OnStartControl()
 	{
 		if (!this.guiData.baseObj.activeSelf)
@@ -302,7 +292,6 @@ public class SceneTraining : BaseScene
 		}
 	}
 
-	// Token: 0x060018FF RID: 6399 RVA: 0x00133084 File Offset: 0x00131284
 	private IEnumerator FirstScenaro()
 	{
 		yield return null;
@@ -321,7 +310,6 @@ public class SceneTraining : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001900 RID: 6400 RVA: 0x0013308C File Offset: 0x0013128C
 	private IEnumerator FirstTutorial()
 	{
 		yield return null;
@@ -345,7 +333,6 @@ public class SceneTraining : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001901 RID: 6401 RVA: 0x0013309C File Offset: 0x0013129C
 	private void SetVoice()
 	{
 		string text = SceneTraining.voiceList[(int)this.dayOfWeek, 0];
@@ -353,7 +340,6 @@ public class SceneTraining : BaseScene
 		this.voiceTime = SoundManager.GetVoiceLength(SceneTraining.voiceSheet, text);
 	}
 
-	// Token: 0x06001902 RID: 6402 RVA: 0x001330D8 File Offset: 0x001312D8
 	public override void Update()
 	{
 		if (CanvasManager.HdlSelCharaDeck.gameObject.activeSelf && CanvasManager.HdlSelCharaDeck.ForceReturnTop())
@@ -388,7 +374,6 @@ public class SceneTraining : BaseScene
 		}
 	}
 
-	// Token: 0x06001903 RID: 6403 RVA: 0x00133258 File Offset: 0x00131458
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		if (this.winPanel.activeSelf)
@@ -464,20 +449,17 @@ public class SceneTraining : BaseScene
 		}
 	}
 
-	// Token: 0x06001904 RID: 6404 RVA: 0x00133449 File Offset: 0x00131649
 	private bool OnClickToggle(PguiToggleButtonCtrl toggle, int index)
 	{
 		this.toggleEvent = this.OnClickPracticeToggleEvent();
 		return true;
 	}
 
-	// Token: 0x06001905 RID: 6405 RVA: 0x00133458 File Offset: 0x00131658
 	private bool OnClickButtonMenu(SceneManager.SceneName sceneName, object sceneArgs)
 	{
 		return this.winPanel.activeSelf || this.ienum != null;
 	}
 
-	// Token: 0x06001906 RID: 6406 RVA: 0x00133474 File Offset: 0x00131674
 	private void OnClickButtonRetrun()
 	{
 		if (this.winPanel.activeSelf || this.ienum != null)
@@ -501,28 +483,24 @@ public class SceneTraining : BaseScene
 		}
 	}
 
-	// Token: 0x06001907 RID: 6407 RVA: 0x001334FF File Offset: 0x001316FF
 	private bool onClickTabSeason(int idx)
 	{
 		this.SeasonListDisp(idx);
 		return true;
 	}
 
-	// Token: 0x06001908 RID: 6408 RVA: 0x00133509 File Offset: 0x00131709
 	private bool onClickTabRank(int idx)
 	{
 		this.RankListDisp(idx);
 		return true;
 	}
 
-	// Token: 0x06001909 RID: 6409 RVA: 0x00133513 File Offset: 0x00131713
 	private bool onClickTabScore(int idx)
 	{
 		this.ScoreDeckDisp(idx);
 		return true;
 	}
 
-	// Token: 0x0600190A RID: 6410 RVA: 0x00133520 File Offset: 0x00131720
 	private void OnClickParty(PguiButtonCtrl button)
 	{
 		if (this.winPanel.activeSelf && this.winRank.win.FinishedOpen())
@@ -571,14 +549,12 @@ public class SceneTraining : BaseScene
 		}
 	}
 
-	// Token: 0x0600190B RID: 6411 RVA: 0x00133851 File Offset: 0x00131A51
 	private void SetupItem(int index, GameObject go)
 	{
 		go.GetComponent<PguiButtonCtrl>().SetActEnable(false, false, true);
 		this.UpdateItem(index, go);
 	}
 
-	// Token: 0x0600190C RID: 6412 RVA: 0x0013386C File Offset: 0x00131A6C
 	private void UpdateItem(int index, GameObject go)
 	{
 		TrainingStaticData.RewardData rewardData = ((index >= 0 && index < this.rewardList.Count) ? this.rewardList[index] : null);
@@ -614,13 +590,11 @@ public class SceneTraining : BaseScene
 		}
 	}
 
-	// Token: 0x0600190D RID: 6413 RVA: 0x001339A3 File Offset: 0x00131BA3
 	private void SetupSeason(int index, GameObject go)
 	{
 		this.UpdateSeason(index, go);
 	}
 
-	// Token: 0x0600190E RID: 6414 RVA: 0x001339B0 File Offset: 0x00131BB0
 	private void UpdateSeason(int index, GameObject go)
 	{
 		SeasonTrainingRankingData.RankingOne rankingOne = ((this.seasonList != null && index >= 0 && index < this.seasonList.Count) ? this.seasonList[index] : null);
@@ -650,7 +624,6 @@ public class SceneTraining : BaseScene
 		iconCharaCtrl.DispRanking();
 	}
 
-	// Token: 0x0600190F RID: 6415 RVA: 0x00133CC0 File Offset: 0x00131EC0
 	private IEnumerator SeasonDisp()
 	{
 		DataManager.DmTraining.RequestGetSeasonTrainingRanking(this.seasonId);
@@ -669,7 +642,6 @@ public class SceneTraining : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001910 RID: 6416 RVA: 0x00133CD0 File Offset: 0x00131ED0
 	private void SeasonListDisp(int idx)
 	{
 		idx = 1 - idx;
@@ -691,7 +663,6 @@ public class SceneTraining : BaseScene
 		this.winSeason.noRank.SetActive(this.seasonList == null || this.seasonList.Count <= 0);
 	}
 
-	// Token: 0x06001911 RID: 6417 RVA: 0x00133EAC File Offset: 0x001320AC
 	private void SetupRank(int index, GameObject go)
 	{
 		go.GetComponent<PguiButtonCtrl>().SetActEnable(false, false, true);
@@ -706,7 +677,6 @@ public class SceneTraining : BaseScene
 		this.UpdateRank(index, go);
 	}
 
-	// Token: 0x06001912 RID: 6418 RVA: 0x00133F1C File Offset: 0x0013211C
 	private void UpdateRank(int index, GameObject go)
 	{
 		TrainingRankingData.RankingOne rankingOne = ((this.dayOfRankList != null && index >= 0 && index < this.dayOfRankList.Count) ? this.dayOfRankList[index] : null);
@@ -734,7 +704,6 @@ public class SceneTraining : BaseScene
 		iconCharaCtrl.DispRanking();
 	}
 
-	// Token: 0x06001913 RID: 6419 RVA: 0x001341C7 File Offset: 0x001323C7
 	private IEnumerator RankDisp()
 	{
 		DataManager.DmTraining.RequestGetTrainingRanking(this.seasonId);
@@ -755,7 +724,6 @@ public class SceneTraining : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001914 RID: 6420 RVA: 0x001341D8 File Offset: 0x001323D8
 	private void RankListDisp(int idx)
 	{
 		if (++idx > 6)
@@ -767,7 +735,6 @@ public class SceneTraining : BaseScene
 		this.winRank.noRank.SetActive(this.dayOfRankList.Count <= 0);
 	}
 
-	// Token: 0x06001915 RID: 6421 RVA: 0x00134269 File Offset: 0x00132469
 	private IEnumerator ScoreDisp()
 	{
 		DataManager.DmTraining.RequestGetTrainingMyScore(this.seasonId);
@@ -786,7 +753,6 @@ public class SceneTraining : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001916 RID: 6422 RVA: 0x00134278 File Offset: 0x00132478
 	private void ScoreDeckDisp(int idx)
 	{
 		if (++idx > 6)
@@ -833,7 +799,6 @@ public class SceneTraining : BaseScene
 		}
 	}
 
-	// Token: 0x06001917 RID: 6423 RVA: 0x00134612 File Offset: 0x00132812
 	private IEnumerator ItemDisp()
 	{
 		if ((this.rewardList = DataManager.DmTraining.GetTrainingPackData().staticData.rewardList) == null)
@@ -847,7 +812,6 @@ public class SceneTraining : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001918 RID: 6424 RVA: 0x00134621 File Offset: 0x00132821
 	private IEnumerator InfoDisp()
 	{
 		SceneTraining.SetupInfo(this.dayOfWeekData, null);
@@ -859,7 +823,6 @@ public class SceneTraining : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001919 RID: 6425 RVA: 0x00134630 File Offset: 0x00132830
 	private IEnumerator PracticeRuleDisp()
 	{
 		CmnFeedPageWindowCtrl hdlCmnFeedPageWindowCtrl = CanvasManager.HdlCmnFeedPageWindowCtrl;
@@ -878,7 +841,6 @@ public class SceneTraining : BaseScene
 		yield break;
 	}
 
-	// Token: 0x0600191A RID: 6426 RVA: 0x00134638 File Offset: 0x00132838
 	public static void SetupInfo(TrainingStaticData.DayOfWeekData dowd, PguiOpenWindowCtrl.Callback cb)
 	{
 		RectTransform windowRectTransform = CanvasManager.HdlOpenWindowTrainingEnemyInfo.WindowRectTransform;
@@ -898,7 +860,6 @@ public class SceneTraining : BaseScene
 		CanvasManager.HdlOpenWindowTrainingEnemyInfo.ForceOpen();
 	}
 
-	// Token: 0x0600191B RID: 6427 RVA: 0x0013471C File Offset: 0x0013291C
 	public static string GetBossAttr(TrainingStaticData.DayOfWeekData dowd)
 	{
 		CharaDef.AttributeType attributeType = CharaDef.AttributeType.ALL;
@@ -950,7 +911,6 @@ public class SceneTraining : BaseScene
 		return text;
 	}
 
-	// Token: 0x0600191C RID: 6428 RVA: 0x0013484C File Offset: 0x00132A4C
 	private IEnumerator MissionDisp()
 	{
 		string text = "\n強敵を" + this.dayOfWeekData.missionConditions.ToString() + "体倒すごとに以下のボーナス効果が発動！\n";
@@ -987,7 +947,6 @@ public class SceneTraining : BaseScene
 		yield break;
 	}
 
-	// Token: 0x0600191D RID: 6429 RVA: 0x0013485B File Offset: 0x00132A5B
 	private IEnumerator DeckOpen()
 	{
 		if (this.guiData.baseObj.activeSelf)
@@ -1036,7 +995,6 @@ public class SceneTraining : BaseScene
 		yield break;
 	}
 
-	// Token: 0x0600191E RID: 6430 RVA: 0x0013486A File Offset: 0x00132A6A
 	private bool OnClickBattleButton()
 	{
 		if (this.winPanel.activeSelf || this.ienum != null)
@@ -1050,7 +1008,6 @@ public class SceneTraining : BaseScene
 		return true;
 	}
 
-	// Token: 0x0600191F RID: 6431 RVA: 0x00134898 File Offset: 0x00132A98
 	private IEnumerator DeckClose()
 	{
 		while (CanvasManager.HdlSelCharaDeck.gameObject.activeSelf)
@@ -1067,7 +1024,6 @@ public class SceneTraining : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001920 RID: 6432 RVA: 0x001348A7 File Offset: 0x00132AA7
 	private IEnumerator PlayRecover()
 	{
 		GameObject winObj = Object.Instantiate<GameObject>((GameObject)Resources.Load("SelCmn/GUI/Prefab/GUI_QuestRevival_Window"));
@@ -1127,7 +1083,6 @@ public class SceneTraining : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001921 RID: 6433 RVA: 0x001348B6 File Offset: 0x00132AB6
 	private IEnumerator PlayOver()
 	{
 		CanvasManager.HdlOpenWindowBasic.Setup(PrjUtil.MakeMessage("確認"), PrjUtil.MakeMessage("本日残り回数が0回となりました"), PguiOpenWindowCtrl.GetButtonPreset(PguiOpenWindowCtrl.PresetType.CLOSE), true, (int index) => true, null, false);
@@ -1140,7 +1095,6 @@ public class SceneTraining : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001922 RID: 6434 RVA: 0x001348BE File Offset: 0x00132ABE
 	private IEnumerator BattleStart()
 	{
 		SelCharaDeckCtrl.EditResultData erd = CanvasManager.HdlSelCharaDeck.GetEditResultData();
@@ -1265,7 +1219,6 @@ public class SceneTraining : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001923 RID: 6435 RVA: 0x001348CD File Offset: 0x00132ACD
 	private IEnumerator OnClickPracticeToggleEvent()
 	{
 		MstTrainingPracticeTrialData trial = DataManager.DmTraining.GetValidPracticeTrialData();
@@ -1336,7 +1289,6 @@ public class SceneTraining : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001924 RID: 6436 RVA: 0x001348DC File Offset: 0x00132ADC
 	private IEnumerator AnimateBg()
 	{
 		do
@@ -1348,7 +1300,6 @@ public class SceneTraining : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001925 RID: 6437 RVA: 0x001348EC File Offset: 0x00132AEC
 	private void UpdatePopupStatus()
 	{
 		if (this.isPractice)
@@ -1361,7 +1312,6 @@ public class SceneTraining : BaseScene
 		this.StopPopup();
 	}
 
-	// Token: 0x06001926 RID: 6438 RVA: 0x0013493C File Offset: 0x00132B3C
 	private void PlayPopup(Queue<SimpleAnimation> animationQueue)
 	{
 		this.StopPopup();
@@ -1378,14 +1328,12 @@ public class SceneTraining : BaseScene
 		});
 	}
 
-	// Token: 0x06001927 RID: 6439 RVA: 0x001349B1 File Offset: 0x00132BB1
 	private void StopPopup()
 	{
 		this.guiData.Popup.Animation.ExStop(true);
 		this.guiData.Popup.baseObj.SetActive(false);
 	}
 
-	// Token: 0x06001928 RID: 6440 RVA: 0x001349E0 File Offset: 0x00132BE0
 	private void CheckMonthlyPurchase()
 	{
 		string text = "練習モードを使用するには\n月間パスポート「すごい!!!ごーじゃす」の購入が必要です\n月間パスポートの購入画面に遷移しますか？";
@@ -1400,7 +1348,6 @@ public class SceneTraining : BaseScene
 		CanvasManager.HdlOpenWindowBasic.ForceOpen();
 	}
 
-	// Token: 0x06001929 RID: 6441 RVA: 0x00134A40 File Offset: 0x00132C40
 	private void OpenTrialWarning()
 	{
 		string text = "練習モードを使用するには\n月間パスポート「すごい!!!ごーじゃす」の購入が必要です\n※他の月間パスポート有効期間中は、使用することはできません";
@@ -1415,7 +1362,6 @@ public class SceneTraining : BaseScene
 		CanvasManager.HdlOpenWindowBasic.ForceOpen();
 	}
 
-	// Token: 0x0600192A RID: 6442 RVA: 0x00134A9F File Offset: 0x00132C9F
 	private IEnumerator CheckTrial(int trialId, int periodDay)
 	{
 		string text = "練習モードのお試しが可能です\nお試しで練習モードを使用しますか\n※期間は<color=red>" + TimeManager.Now.Date.AddDays((double)(periodDay + 1)).AddSeconds(-1.0).ToString("yyyy/MM/dd HH:mm") + "</color>までです";
@@ -1445,7 +1391,6 @@ public class SceneTraining : BaseScene
 		yield break;
 	}
 
-	// Token: 0x0600192B RID: 6443 RVA: 0x00134AB8 File Offset: 0x00132CB8
 	private bool IsEnableMonthlyPurchase()
 	{
 		DateTime dateTime = new DateTime(TimeManager.Now.Year, TimeManager.Now.Month, TimeManager.Now.Day);
@@ -1467,7 +1412,6 @@ public class SceneTraining : BaseScene
 		return num > 0 && num - purchaseMonthlypackMessageData.ReminderDay >= 0;
 	}
 
-	// Token: 0x0600192C RID: 6444 RVA: 0x00134C14 File Offset: 0x00132E14
 	private bool IsInTrial(TrainingTrialInfo info)
 	{
 		if (info == null)
@@ -1479,7 +1423,6 @@ public class SceneTraining : BaseScene
 		return now < dateTime;
 	}
 
-	// Token: 0x0600192D RID: 6445 RVA: 0x00134C43 File Offset: 0x00132E43
 	public override void OnStopControl()
 	{
 		if (this.guiData.baseObj.activeSelf)
@@ -1489,7 +1432,6 @@ public class SceneTraining : BaseScene
 		this.voiceTime = 0f;
 	}
 
-	// Token: 0x0600192E RID: 6446 RVA: 0x00134C74 File Offset: 0x00132E74
 	public override void OnDisableScene()
 	{
 		this.ienum = null;
@@ -1515,13 +1457,11 @@ public class SceneTraining : BaseScene
 		SoundManager.UnloadCueSheet(SceneTraining.voiceSheet);
 	}
 
-	// Token: 0x0600192F RID: 6447 RVA: 0x00134DE4 File Offset: 0x00132FE4
 	public override bool OnDisableSceneWait()
 	{
 		return true;
 	}
 
-	// Token: 0x06001930 RID: 6448 RVA: 0x00134DE8 File Offset: 0x00132FE8
 	public override void OnDestroyScene()
 	{
 		Object.Destroy(this.guiData.baseObj);
@@ -1536,7 +1476,6 @@ public class SceneTraining : BaseScene
 		this.winPanel = null;
 	}
 
-	// Token: 0x06001932 RID: 6450 RVA: 0x00134E60 File Offset: 0x00133060
 	// Note: this type is marked as 'beforefieldinit'.
 	static SceneTraining()
 	{
@@ -1558,107 +1497,73 @@ public class SceneTraining : BaseScene
 		SceneTraining.voiceList = array;
 	}
 
-	// Token: 0x04001319 RID: 4889
 	private SceneTraining.GUI guiData;
 
-	// Token: 0x0400131A RID: 4890
 	private GameObject winPanel;
 
-	// Token: 0x0400131B RID: 4891
 	private SceneTraining.WIN_ITEM winItem;
 
-	// Token: 0x0400131C RID: 4892
 	private SceneTraining.WIN_RANK winRank;
 
-	// Token: 0x0400131D RID: 4893
 	private SceneTraining.WIN_SCORE winScore;
 
-	// Token: 0x0400131E RID: 4894
 	private SceneTraining.WIN_PARTY winParty;
 
-	// Token: 0x0400131F RID: 4895
 	private SceneTraining.WIN_SEASON winSeason;
 
-	// Token: 0x04001320 RID: 4896
 	private DayOfWeek dayOfWeek;
 
-	// Token: 0x04001321 RID: 4897
 	private int seasonId;
 
-	// Token: 0x04001322 RID: 4898
 	private TrainingStaticData.DayOfWeekData dayOfWeekData;
 
-	// Token: 0x04001323 RID: 4899
 	private static readonly List<string> weekList = new List<string> { "日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日" };
 
-	// Token: 0x04001324 RID: 4900
 	private List<TrainingRankingData.RankingOne> dayOfRankList;
 
-	// Token: 0x04001325 RID: 4901
 	private List<TrainingStaticData.RewardData> rewardList;
 
-	// Token: 0x04001326 RID: 4902
 	private List<SeasonTrainingRankingData.RankingOne> seasonList;
 
-	// Token: 0x04001327 RID: 4903
 	private static readonly string voiceSheet = "cv_dojo";
 
-	// Token: 0x04001328 RID: 4904
 	private IEnumerator voiceLoad;
 
-	// Token: 0x04001329 RID: 4905
 	private IEnumerator animateBg;
 
-	// Token: 0x0400132A RID: 4906
 	private TrainingTrialInfo trialInfo;
 
-	// Token: 0x0400132B RID: 4907
 	private bool isPractice;
 
-	// Token: 0x0400132C RID: 4908
 	private Queue<SimpleAnimation> animationQueue;
 
-	// Token: 0x0400132D RID: 4909
 	private static readonly string[,] voiceList;
 
-	// Token: 0x0400132E RID: 4910
 	private float voiceTime;
 
-	// Token: 0x0400132F RID: 4911
 	private IEnumerator ienum;
 
-	// Token: 0x04001330 RID: 4912
 	private IEnumerator toggleEvent;
 
-	// Token: 0x04001331 RID: 4913
 	private SceneTraining.Args sta;
 
-	// Token: 0x04001332 RID: 4914
 	private SelCharaDeckCtrl.SetupParam setupParam = new SelCharaDeckCtrl.SetupParam();
 
-	// Token: 0x02000D90 RID: 3472
 	public class Args
 	{
-		// Token: 0x04004F4F RID: 20303
 		public bool tutorial;
 
-		// Token: 0x04004F50 RID: 20304
 		public bool deck;
 
-		// Token: 0x04004F51 RID: 20305
 		public bool openPhotoWindow;
 
-		// Token: 0x04004F52 RID: 20306
 		public bool openCharaWindow;
 
-		// Token: 0x04004F53 RID: 20307
 		public bool openAccessoryWindow;
 	}
 
-	// Token: 0x02000D91 RID: 3473
 	public class GUI
 	{
-		// Token: 0x06004994 RID: 18836 RVA: 0x0022148C File Offset: 0x0021F68C
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1689,83 +1594,57 @@ public class SceneTraining : BaseScene
 			this.Popup.Animation.ExInit();
 		}
 
-		// Token: 0x04004F54 RID: 20308
 		public GameObject baseObj;
 
-		// Token: 0x04004F55 RID: 20309
 		public SimpleAnimation anime;
 
-		// Token: 0x04004F56 RID: 20310
 		public PguiButtonCtrl BtnStart;
 
-		// Token: 0x04004F57 RID: 20311
 		public PguiButtonCtrl BtnAgain;
 
-		// Token: 0x04004F58 RID: 20312
 		public PguiButtonCtrl BtnInfo;
 
-		// Token: 0x04004F59 RID: 20313
 		public PguiButtonCtrl BtnMission;
 
-		// Token: 0x04004F5A RID: 20314
 		public PguiButtonCtrl BtnShop;
 
-		// Token: 0x04004F5B RID: 20315
 		public PguiButtonCtrl BtnSeason;
 
-		// Token: 0x04004F5C RID: 20316
 		public PguiButtonCtrl BtnRank;
 
-		// Token: 0x04004F5D RID: 20317
 		public PguiButtonCtrl BtnScore;
 
-		// Token: 0x04004F5E RID: 20318
 		public PguiButtonCtrl BtnItem;
 
-		// Token: 0x04004F5F RID: 20319
 		public PguiTextCtrl week;
 
-		// Token: 0x04004F60 RID: 20320
 		public PguiTextCtrl serifL;
 
-		// Token: 0x04004F61 RID: 20321
 		public PguiTextCtrl serifR;
 
-		// Token: 0x04004F62 RID: 20322
 		public PguiRenderTextureCharaCtrl charaL;
 
-		// Token: 0x04004F63 RID: 20323
 		public PguiRenderTextureCharaCtrl charaR;
 
-		// Token: 0x04004F64 RID: 20324
 		public PguiRawImageCtrl icon;
 
-		// Token: 0x04004F65 RID: 20325
 		public PguiImageCtrl attr;
 
-		// Token: 0x04004F66 RID: 20326
 		public PguiTextCtrl coin;
 
-		// Token: 0x04004F67 RID: 20327
 		public RawImage bg;
 
-		// Token: 0x04004F68 RID: 20328
 		public PguiToggleButtonCtrl BtnModeChange;
 
-		// Token: 0x04004F69 RID: 20329
 		public PguiButtonCtrl BtnQuestion;
 
-		// Token: 0x04004F6A RID: 20330
 		public PguiTextCtrl TxtMode;
 
-		// Token: 0x04004F6B RID: 20331
 		public PopUpCtrl Popup;
 	}
 
-	// Token: 0x02000D92 RID: 3474
 	public class WIN_ITEM
 	{
-		// Token: 0x06004995 RID: 18837 RVA: 0x002216C0 File Offset: 0x0021F8C0
 		public WIN_ITEM(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -1773,17 +1652,13 @@ public class SceneTraining : BaseScene
 			this.scroll = baseTr.Find("List/ScrollView").GetComponent<ReuseScroll>();
 		}
 
-		// Token: 0x04004F6C RID: 20332
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x04004F6D RID: 20333
 		public ReuseScroll scroll;
 	}
 
-	// Token: 0x02000D93 RID: 3475
 	public class WIN_RANK
 	{
-		// Token: 0x06004996 RID: 18838 RVA: 0x002216F8 File Offset: 0x0021F8F8
 		public WIN_RANK(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -1794,26 +1669,19 @@ public class SceneTraining : BaseScene
 			this.update = baseTr.Find("Text_Date").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x04004F6E RID: 20334
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x04004F6F RID: 20335
 		public PguiTabGroupCtrl tab;
 
-		// Token: 0x04004F70 RID: 20336
 		public ReuseScroll scroll;
 
-		// Token: 0x04004F71 RID: 20337
 		public GameObject noRank;
 
-		// Token: 0x04004F72 RID: 20338
 		public PguiTextCtrl update;
 	}
 
-	// Token: 0x02000D94 RID: 3476
 	public class WIN_SCORE
 	{
-		// Token: 0x06004997 RID: 18839 RVA: 0x0022177C File Offset: 0x0021F97C
 		public WIN_SCORE(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -1893,32 +1761,23 @@ public class SceneTraining : BaseScene
 			}
 		}
 
-		// Token: 0x04004F73 RID: 20339
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x04004F74 RID: 20340
 		public PguiTabGroupCtrl tab;
 
-		// Token: 0x04004F75 RID: 20341
 		public PguiTextCtrl date;
 
-		// Token: 0x04004F76 RID: 20342
 		public PguiTextCtrl week;
 
-		// Token: 0x04004F77 RID: 20343
 		public PguiTextCtrl score;
 
-		// Token: 0x04004F78 RID: 20344
 		public List<IconCharaCtrl> icon;
 
-		// Token: 0x04004F79 RID: 20345
 		public List<List<IconPhotoCtrl>> photo;
 	}
 
-	// Token: 0x02000D95 RID: 3477
 	public class WIN_PARTY
 	{
-		// Token: 0x06004998 RID: 18840 RVA: 0x002219F0 File Offset: 0x0021FBF0
 		public WIN_PARTY(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -1989,23 +1848,17 @@ public class SceneTraining : BaseScene
 			}
 		}
 
-		// Token: 0x04004F7A RID: 20346
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x04004F7B RID: 20347
 		public PguiTextCtrl name;
 
-		// Token: 0x04004F7C RID: 20348
 		public List<IconCharaCtrl> icon;
 
-		// Token: 0x04004F7D RID: 20349
 		public List<List<PguiReplaceSpriteCtrl>> photo;
 	}
 
-	// Token: 0x02000D96 RID: 3478
 	public class WIN_SEASON
 	{
-		// Token: 0x06004999 RID: 18841 RVA: 0x00221BE8 File Offset: 0x0021FDE8
 		public WIN_SEASON(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -2021,34 +1874,24 @@ public class SceneTraining : BaseScene
 			this.scroll = baseTr.Find("Tab_All/Rank/ScrollView").GetComponent<ReuseScroll>();
 		}
 
-		// Token: 0x04004F7E RID: 20350
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x04004F7F RID: 20351
 		public PguiTabGroupCtrl tab;
 
-		// Token: 0x04004F80 RID: 20352
 		public GameObject resultConfirm;
 
-		// Token: 0x04004F81 RID: 20353
 		public GameObject resultCounting;
 
-		// Token: 0x04004F82 RID: 20354
 		public PguiTextCtrl lastDate;
 
-		// Token: 0x04004F83 RID: 20355
 		public PguiTextCtrl seasonDate;
 
-		// Token: 0x04004F84 RID: 20356
 		public GameObject myRank;
 
-		// Token: 0x04004F85 RID: 20357
 		public PguiTextCtrl myRankNo;
 
-		// Token: 0x04004F86 RID: 20358
 		public GameObject noRank;
 
-		// Token: 0x04004F87 RID: 20359
 		public ReuseScroll scroll;
 	}
 }

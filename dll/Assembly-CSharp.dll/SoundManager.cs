@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -7,15 +7,10 @@ using SGNFW.Ab;
 using SGNFW.Common;
 using UnityEngine;
 
-// Token: 0x02000107 RID: 263
 public class SoundManager : Singleton<SoundManager>
 {
-	// Token: 0x17000322 RID: 802
-	// (get) Token: 0x06000C8E RID: 3214 RVA: 0x0004CF04 File Offset: 0x0004B104
-	// (set) Token: 0x06000C8F RID: 3215 RVA: 0x0004CF0B File Offset: 0x0004B10B
 	public static bool IsFinishInitialize { get; private set; }
 
-	// Token: 0x06000C90 RID: 3216 RVA: 0x0004CF14 File Offset: 0x0004B114
 	public void Initialize()
 	{
 		if (this.isInitialize)
@@ -34,7 +29,6 @@ public class SoundManager : Singleton<SoundManager>
 		SoundManager.LoadCueSheet(SoundManager.secmn);
 	}
 
-	// Token: 0x06000C91 RID: 3217 RVA: 0x0004CF94 File Offset: 0x0004B194
 	protected override void OnSingletonDestroy()
 	{
 		if (this.bgmPlayer != null)
@@ -66,7 +60,6 @@ public class SoundManager : Singleton<SoundManager>
 		CriAtomEx.UnregisterAcf();
 	}
 
-	// Token: 0x06000C92 RID: 3218 RVA: 0x0004D07C File Offset: 0x0004B27C
 	private static string MakeStreamingAssetsPath(string fileName)
 	{
 		string text = Application.streamingAssetsPath;
@@ -77,7 +70,6 @@ public class SoundManager : Singleton<SoundManager>
 		return text + fileName;
 	}
 
-	// Token: 0x06000C93 RID: 3219 RVA: 0x0004D0B3 File Offset: 0x0004B2B3
 	private static string MakeFilePath(string fileName)
 	{
 		if (SoundManager.STREAMING_ASSETS_CUE_LIST.Contains(fileName))
@@ -88,7 +80,6 @@ public class SoundManager : Singleton<SoundManager>
 		return Manager.AssetPath + "assets/" + fileName;
 	}
 
-	// Token: 0x06000C94 RID: 3220 RVA: 0x0004D0E8 File Offset: 0x0004B2E8
 	public static CriAtomExPlayback Play(string name, bool loop = false, bool isFast = false)
 	{
 		if (Singleton<SoundManager>.Instance == null)
@@ -106,7 +97,6 @@ public class SoundManager : Singleton<SoundManager>
 		return SoundManager.PlayInternal(Singleton<SoundManager>.Instance.cueToSheetList[name], name, loop, isFast);
 	}
 
-	// Token: 0x06000C95 RID: 3221 RVA: 0x0004D150 File Offset: 0x0004B350
 	private static CriAtomExPlayback PlayInternal(string sheetName, string name, bool loop, bool isFast)
 	{
 		if (sheetName == null)
@@ -129,7 +119,6 @@ public class SoundManager : Singleton<SoundManager>
 		return obj2.Play(name);
 	}
 
-	// Token: 0x06000C96 RID: 3222 RVA: 0x0004D1D0 File Offset: 0x0004B3D0
 	public static CriAtomExPlayback randPlay(string name, bool loop = false)
 	{
 		if (Singleton<SoundManager>.Instance == null)
@@ -147,7 +136,6 @@ public class SoundManager : Singleton<SoundManager>
 		return SoundManager.randPlayInternal(Singleton<SoundManager>.Instance.cueToSheetList[name], name, loop);
 	}
 
-	// Token: 0x06000C97 RID: 3223 RVA: 0x0004D234 File Offset: 0x0004B434
 	private static CriAtomExPlayback randPlayInternal(string sheetName, string name, bool loop)
 	{
 		if (sheetName == null)
@@ -172,7 +160,6 @@ public class SoundManager : Singleton<SoundManager>
 		return criAtomSource.Play(name);
 	}
 
-	// Token: 0x06000C98 RID: 3224 RVA: 0x0004D2CC File Offset: 0x0004B4CC
 	public static void Stop(string sheetName)
 	{
 		if (!Singleton<SoundManager>.Instance.sourceList.ContainsKey(sheetName))
@@ -186,13 +173,11 @@ public class SoundManager : Singleton<SoundManager>
 		}
 	}
 
-	// Token: 0x06000C99 RID: 3225 RVA: 0x0004D306 File Offset: 0x0004B506
 	public static void SetCategoryVolume(SoundCategory kind, float volume)
 	{
 		CriAtom.SetCategoryVolume(Enum.GetName(typeof(SoundCategory), kind), volume);
 	}
 
-	// Token: 0x06000C9A RID: 3226 RVA: 0x0004D324 File Offset: 0x0004B524
 	public static void SetCategoryVolume(float[] volumeList)
 	{
 		Array values = Enum.GetValues(typeof(SoundCategory));
@@ -207,13 +192,11 @@ public class SoundManager : Singleton<SoundManager>
 		}
 	}
 
-	// Token: 0x06000C9B RID: 3227 RVA: 0x0004D398 File Offset: 0x0004B598
 	public static float GetCategoryVolume(SoundCategory kind)
 	{
 		return CriAtom.GetCategoryVolume(Enum.GetName(typeof(SoundCategory), kind));
 	}
 
-	// Token: 0x06000C9C RID: 3228 RVA: 0x0004D3B4 File Offset: 0x0004B5B4
 	public static void SetTempVolume(float changeValue)
 	{
 		float categoryVolume = SoundManager.GetCategoryVolume(SoundCategory.BGM);
@@ -222,19 +205,16 @@ public class SoundManager : Singleton<SoundManager>
 		Singleton<SoundManager>.Instance.fadeVolume = new SoundManager.FadeVolume(categoryVolume, num);
 	}
 
-	// Token: 0x06000C9D RID: 3229 RVA: 0x0004D3E4 File Offset: 0x0004B5E4
 	public static void ReturnOrgVolume()
 	{
 		SoundManager.SetCategoryVolume(SoundCategory.BGM, Singleton<SoundManager>.Instance.fadeVolume.preVolume);
 	}
 
-	// Token: 0x06000C9E RID: 3230 RVA: 0x0004D3FB File Offset: 0x0004B5FB
 	public static void PlayBGM(string bgmName)
 	{
 		SoundManager.PlayBGM(bgmName, 0, 0, 0);
 	}
 
-	// Token: 0x06000C9F RID: 3231 RVA: 0x0004D408 File Offset: 0x0004B608
 	public static void PlayBGM(string bgmName, int fadeOutTime, int fadeInTime, int startOffset)
 	{
 		if (string.IsNullOrEmpty(bgmName))
@@ -258,7 +238,6 @@ public class SoundManager : Singleton<SoundManager>
 		Singleton<SoundManager>.Instance.nextBGM = new SoundManager.NextBGM(bgmName, fadeOutTime, fadeInTime, startOffset, true);
 	}
 
-	// Token: 0x06000CA0 RID: 3232 RVA: 0x0004D470 File Offset: 0x0004B670
 	private void CheckPlayBGM()
 	{
 		if (this.loadBGM != null)
@@ -304,20 +283,17 @@ public class SoundManager : Singleton<SoundManager>
 		Singleton<SoundManager>.Instance.nextBGM = null;
 	}
 
-	// Token: 0x06000CA1 RID: 3233 RVA: 0x0004D611 File Offset: 0x0004B811
 	private void Update()
 	{
 		this.CheckPlayBGM();
 	}
 
-	// Token: 0x06000CA2 RID: 3234 RVA: 0x0004D61C File Offset: 0x0004B81C
 	public static bool IsExsistCueSheetAssetData(string sheetName)
 	{
 		string text = AssetManager.PREFIX_PATH_SOUND + sheetName;
 		return AssetManager.IsExsistAssetData(text + "_acb_info.xml") || AssetManager.IsExsistAssetData(text + ".awb") || AssetManager.IsExsistAssetData(text + ".acb");
 	}
 
-	// Token: 0x06000CA3 RID: 3235 RVA: 0x0004D66B File Offset: 0x0004B86B
 	public static IEnumerator LoadCueSheetWithDownload(string sheetName)
 	{
 		string loadAssetName = AssetManager.PREFIX_PATH_SOUND + sheetName;
@@ -332,7 +308,6 @@ public class SoundManager : Singleton<SoundManager>
 		yield break;
 	}
 
-	// Token: 0x06000CA4 RID: 3236 RVA: 0x0004D67C File Offset: 0x0004B87C
 	public static string LoadCueSheet(string sheetName)
 	{
 		if (Singleton<SoundManager>.Instance == null)
@@ -409,7 +384,6 @@ public class SoundManager : Singleton<SoundManager>
 		return sheetName;
 	}
 
-	// Token: 0x06000CA5 RID: 3237 RVA: 0x0004D850 File Offset: 0x0004BA50
 	public static void UnloadCueSheet(string sheetName)
 	{
 		if (Singleton<SoundManager>.Instance == null)
@@ -439,7 +413,6 @@ public class SoundManager : Singleton<SoundManager>
 		}
 	}
 
-	// Token: 0x06000CA6 RID: 3238 RVA: 0x0004D954 File Offset: 0x0004BB54
 	public static void UnloadCueSheetAll()
 	{
 		foreach (string text in new List<string>(Singleton<SoundManager>.Instance.sourceList.Keys))
@@ -451,7 +424,6 @@ public class SoundManager : Singleton<SoundManager>
 		}
 	}
 
-	// Token: 0x06000CA7 RID: 3239 RVA: 0x0004D9C4 File Offset: 0x0004BBC4
 	public static void UnloadCVAll(string sheetName = "")
 	{
 		foreach (string text in new List<string>(Singleton<SoundManager>.Instance.sourceList.Keys))
@@ -469,13 +441,11 @@ public class SoundManager : Singleton<SoundManager>
 		}
 	}
 
-	// Token: 0x06000CA8 RID: 3240 RVA: 0x0004DABC File Offset: 0x0004BCBC
 	public static void StopBGM()
 	{
 		SoundManager.StopBGM(0);
 	}
 
-	// Token: 0x06000CA9 RID: 3241 RVA: 0x0004DAC4 File Offset: 0x0004BCC4
 	public static void StopBGM(int fadeOutTime)
 	{
 		Singleton<SoundManager>.Instance.bgmPlayer.SetFadeOutTime(fadeOutTime);
@@ -484,19 +454,16 @@ public class SoundManager : Singleton<SoundManager>
 		Singleton<SoundManager>.Instance.nextBGM = null;
 	}
 
-	// Token: 0x06000CAA RID: 3242 RVA: 0x0004DAFB File Offset: 0x0004BCFB
 	public static CriAtomExPlayback PlayVoice(string sheetName, string name)
 	{
 		return SoundManager.PlayInternal(sheetName, name, false, false);
 	}
 
-	// Token: 0x06000CAB RID: 3243 RVA: 0x0004DB06 File Offset: 0x0004BD06
 	public static CriAtomExPlayback PlayVoiceByTypeName(string sheetName, string typeName)
 	{
 		return SoundManager.PlayVoice(sheetName, SoundManager.CreateVoiceName(sheetName, typeName));
 	}
 
-	// Token: 0x06000CAC RID: 3244 RVA: 0x0004DB15 File Offset: 0x0004BD15
 	public static CriAtomExPlayback PlayVoice(string sheetName, VOICE_TYPE voiceType)
 	{
 		if (voiceType >= VOICE_TYPE.BST01)
@@ -506,7 +473,6 @@ public class SoundManager : Singleton<SoundManager>
 		return new CriAtomExPlayback(0U);
 	}
 
-	// Token: 0x06000CAD RID: 3245 RVA: 0x0004DB38 File Offset: 0x0004BD38
 	public static float GetVoiceLength(string sheetName, string name)
 	{
 		CriAtomExAcb criAtomExAcb = null;
@@ -522,13 +488,11 @@ public class SoundManager : Singleton<SoundManager>
 		return 0f;
 	}
 
-	// Token: 0x06000CAE RID: 3246 RVA: 0x0004DB72 File Offset: 0x0004BD72
 	public static float GetVoiceLengthByTypeName(string sheetName, string typeName)
 	{
 		return SoundManager.GetVoiceLength(sheetName, SoundManager.CreateVoiceName(sheetName, typeName));
 	}
 
-	// Token: 0x06000CAF RID: 3247 RVA: 0x0004DB81 File Offset: 0x0004BD81
 	public static float GetVoiceLength(string sheetName, VOICE_TYPE voiceType)
 	{
 		if (voiceType >= VOICE_TYPE.BST01)
@@ -538,19 +502,16 @@ public class SoundManager : Singleton<SoundManager>
 		return 0f;
 	}
 
-	// Token: 0x06000CB0 RID: 3248 RVA: 0x0004DBA0 File Offset: 0x0004BDA0
 	public static string CharaIdToSheet(int charaId)
 	{
 		return SoundManager.VOICE_PREF_NAME + string.Format("{0:D4}", charaId);
 	}
 
-	// Token: 0x06000CB1 RID: 3249 RVA: 0x0004DBC9 File Offset: 0x0004BDC9
 	private static string CreateVoiceName(string sheetName, string name)
 	{
 		return SoundManager.VOICE_PREF_PRJ + sheetName + "_" + name.ToLower();
 	}
 
-	// Token: 0x06000CB2 RID: 3250 RVA: 0x0004DBE6 File Offset: 0x0004BDE6
 	public static string CreateVoiceNameByType(string sheetName, VOICE_TYPE voiceType)
 	{
 		if (voiceType < VOICE_TYPE.BST01)
@@ -560,13 +521,11 @@ public class SoundManager : Singleton<SoundManager>
 		return SoundManager.CreateVoiceName(sheetName, voiceType.ToString());
 	}
 
-	// Token: 0x06000CB3 RID: 3251 RVA: 0x0004DC01 File Offset: 0x0004BE01
 	public static string CreateVoiceNameByCharaCombi(int charaId, string name)
 	{
 		return SoundManager.VOICE_PREF_PRJ + "cv_" + charaId.ToString("0000") + "_" + name;
 	}
 
-	// Token: 0x06000CB4 RID: 3252 RVA: 0x0004DC29 File Offset: 0x0004BE29
 	public static List<string> GetCueNameList(string sheetName)
 	{
 		if (!Singleton<SoundManager>.Instance.sourceList.ContainsKey(sheetName))
@@ -576,7 +535,6 @@ public class SoundManager : Singleton<SoundManager>
 		return Singleton<SoundManager>.Instance.sourceList[sheetName].cueNameList;
 	}
 
-	// Token: 0x06000CB5 RID: 3253 RVA: 0x0004DC54 File Offset: 0x0004BE54
 	public static void SetPosition(string sheetName, Transform obj, float dist)
 	{
 		if (!Singleton<SoundManager>.Instance.sourceList.ContainsKey(sheetName))
@@ -603,7 +561,6 @@ public class SoundManager : Singleton<SoundManager>
 		}
 	}
 
-	// Token: 0x06000CB6 RID: 3254 RVA: 0x0004DD60 File Offset: 0x0004BF60
 	public static void SetSESpeed(string name, bool isFast)
 	{
 		if (!name.StartsWith("prd_se_act") || name.EndsWith("common"))
@@ -640,65 +597,46 @@ public class SoundManager : Singleton<SoundManager>
 		sourceData.sourceOneShot.player.UpdateAll();
 	}
 
-	// Token: 0x04000A14 RID: 2580
 	private static string VOICE_PREF_NAME = "cv_";
 
-	// Token: 0x04000A15 RID: 2581
 	private static string VOICE_PREF_PRJ = "prd_";
 
-	// Token: 0x04000A16 RID: 2582
 	private static string SE_PREF_PRJ = "se_";
 
-	// Token: 0x04000A17 RID: 2583
 	private static readonly string acf = "ParadeSound.acf";
 
-	// Token: 0x04000A18 RID: 2584
 	private static readonly string secmn = "se_common";
 
-	// Token: 0x04000A19 RID: 2585
 	private static readonly List<string> STREAMING_ASSETS_CUE_LIST = new List<string>
 	{
 		SoundManager.acf,
 		SoundManager.secmn
 	};
 
-	// Token: 0x04000A1A RID: 2586
 	private static int BGM_SEET_LOAD_MAX = 2;
 
-	// Token: 0x04000A1B RID: 2587
 	private static int CV_SEET_LOAD_MAX = 20;
 
-	// Token: 0x04000A1C RID: 2588
 	private Dictionary<string, string> cueToSheetList = new Dictionary<string, string>();
 
-	// Token: 0x04000A1D RID: 2589
 	private Dictionary<string, SoundManager.SourceData> sourceList = new Dictionary<string, SoundManager.SourceData>();
 
-	// Token: 0x04000A1E RID: 2590
 	private string currentBgm;
 
-	// Token: 0x04000A1F RID: 2591
 	private List<string> loadBgmSeetList;
 
-	// Token: 0x04000A20 RID: 2592
 	private CriAtomExPlayer bgmPlayer;
 
-	// Token: 0x04000A21 RID: 2593
 	private bool isInitialize;
 
-	// Token: 0x04000A23 RID: 2595
 	private SoundManager.NextBGM nextBGM;
 
-	// Token: 0x04000A24 RID: 2596
 	private SoundManager.FadeVolume fadeVolume = new SoundManager.FadeVolume(1f, 1f);
 
-	// Token: 0x04000A25 RID: 2597
 	private IEnumerator loadBGM;
 
-	// Token: 0x0200083E RID: 2110
 	private class SourceData
 	{
-		// Token: 0x0600383F RID: 14399 RVA: 0x001CA7A4 File Offset: 0x001C89A4
 		public SourceData(CriAtomSource inSourceOneShot, CriAtomSource inSourceLoop, GameObject inObj, List<string> inCueNameList)
 		{
 			this.sourceOneShot = inSourceOneShot;
@@ -708,7 +646,6 @@ public class SoundManager : Singleton<SoundManager>
 			this.count = 1;
 		}
 
-		// Token: 0x06003840 RID: 14400 RVA: 0x001CA7D0 File Offset: 0x001C89D0
 		public void Stop()
 		{
 			if (this.sourceOneShot != null)
@@ -721,26 +658,19 @@ public class SoundManager : Singleton<SoundManager>
 			}
 		}
 
-		// Token: 0x0400370D RID: 14093
 		public CriAtomSource sourceOneShot;
 
-		// Token: 0x0400370E RID: 14094
 		public CriAtomSource sourceLoop;
 
-		// Token: 0x0400370F RID: 14095
 		public GameObject obj;
 
-		// Token: 0x04003710 RID: 14096
 		public List<string> cueNameList;
 
-		// Token: 0x04003711 RID: 14097
 		public int count;
 	}
 
-	// Token: 0x0200083F RID: 2111
 	private class NextBGM
 	{
-		// Token: 0x06003841 RID: 14401 RVA: 0x001CA804 File Offset: 0x001C8A04
 		public NextBGM(string name, int fadeOut, int fadeIn, int startOffset, bool loop)
 		{
 			this.bgmName = name;
@@ -750,36 +680,27 @@ public class SoundManager : Singleton<SoundManager>
 			this.Loop = loop;
 		}
 
-		// Token: 0x04003712 RID: 14098
 		public string bgmName;
 
-		// Token: 0x04003713 RID: 14099
 		public int fadeOutTime;
 
-		// Token: 0x04003714 RID: 14100
 		public int fadeInTime;
 
-		// Token: 0x04003715 RID: 14101
 		public int fadeInStartOffset;
 
-		// Token: 0x04003716 RID: 14102
 		public bool Loop;
 	}
 
-	// Token: 0x02000840 RID: 2112
 	private class FadeVolume
 	{
-		// Token: 0x06003842 RID: 14402 RVA: 0x001CA831 File Offset: 0x001C8A31
 		public FadeVolume(float preVolume, float curVolume)
 		{
 			this.preVolume = preVolume;
 			this.curVolume = curVolume;
 		}
 
-		// Token: 0x04003717 RID: 14103
 		public float preVolume;
 
-		// Token: 0x04003718 RID: 14104
 		public float curVolume;
 	}
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,16 +8,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x02000148 RID: 328
 public class SelGachaCtrl : MonoBehaviour
 {
-	// Token: 0x17000371 RID: 881
-	// (get) Token: 0x060011F4 RID: 4596 RVA: 0x000D9324 File Offset: 0x000D7524
-	// (set) Token: 0x060011F5 RID: 4597 RVA: 0x000D932C File Offset: 0x000D752C
 	private DateTime GachaPackDataLastUpdateTime { get; set; }
 
-	// Token: 0x17000372 RID: 882
-	// (get) Token: 0x060011F6 RID: 4598 RVA: 0x000D9335 File Offset: 0x000D7535
 	private bool IsTutorial
 	{
 		get
@@ -26,8 +20,6 @@ public class SelGachaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000373 RID: 883
-	// (get) Token: 0x060011F7 RID: 4599 RVA: 0x000D934F File Offset: 0x000D754F
 	public bool RenderCharaLBFinishedSetup
 	{
 		get
@@ -36,8 +28,6 @@ public class SelGachaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000374 RID: 884
-	// (get) Token: 0x060011F8 RID: 4600 RVA: 0x000D935C File Offset: 0x000D755C
 	private bool IsDispGuiResult
 	{
 		get
@@ -46,7 +36,6 @@ public class SelGachaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060011F9 RID: 4601 RVA: 0x000D9378 File Offset: 0x000D7578
 	public void Init()
 	{
 		GameObject gameObject = Object.Instantiate<GameObject>((GameObject)AssetManager.GetAssetData("SceneGacha/GUI/Prefab/GUI_GachaTop"), base.transform);
@@ -86,7 +75,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.OnSelectGachaTab(0);
 	}
 
-	// Token: 0x060011FA RID: 4602 RVA: 0x000D96B4 File Offset: 0x000D78B4
 	public void Setup(SceneGacha.OpenParam args = null)
 	{
 		this.sceneOpenParam = args;
@@ -117,7 +105,6 @@ public class SelGachaCtrl : MonoBehaviour
 		CanvasManager.HdlSelMonthlyPackWindowCtrl.AddOnSuccessPurchaseListener(new UnityAction(this.OnSuccessPurcheseMonthlyPack));
 	}
 
-	// Token: 0x060011FB RID: 4603 RVA: 0x000D98C8 File Offset: 0x000D7AC8
 	public void SetupGachaData()
 	{
 		int num = ((this.sceneOpenParam != null) ? this.sceneOpenParam.gachaId : 0);
@@ -129,7 +116,6 @@ public class SelGachaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060011FC RID: 4604 RVA: 0x000D9924 File Offset: 0x000D7B24
 	public void UpdateSel()
 	{
 		SelGachaCtrl.GachaTopGUI gachaTopGUI = this.guiDataTop;
@@ -200,7 +186,6 @@ public class SelGachaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060011FD RID: 4605 RVA: 0x000D9B08 File Offset: 0x000D7D08
 	public void Disable()
 	{
 		this.guiDataTop.baseObj.SetActive(false);
@@ -233,7 +218,6 @@ public class SelGachaCtrl : MonoBehaviour
 		CanvasManager.HdlSelMonthlyPackWindowCtrl.RemoveOnSuccessPurchaseListener(new UnityAction(this.OnSuccessPurcheseMonthlyPack));
 	}
 
-	// Token: 0x060011FE RID: 4606 RVA: 0x000D9BF4 File Offset: 0x000D7DF4
 	public void Destroy()
 	{
 		if (null != this.gachaWindowInfo)
@@ -243,13 +227,11 @@ public class SelGachaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060011FF RID: 4607 RVA: 0x000D9C1B File Offset: 0x000D7E1B
 	public void OnDisable()
 	{
 		this.Disable();
 	}
 
-	// Token: 0x06001200 RID: 4608 RVA: 0x000D9C24 File Offset: 0x000D7E24
 	private void RefreshGachaPackDataList(int focusGachaId, bool refreshMonthlyPackData = true, bool isSetup = false, int gachaTab = 0)
 	{
 		if (refreshMonthlyPackData)
@@ -297,7 +279,6 @@ public class SelGachaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001201 RID: 4609 RVA: 0x000D9DA4 File Offset: 0x000D7FA4
 	private void UpdateGachaPackDataList(List<DataManagerGacha.GachaPackData> list)
 	{
 		this.GachaPackDataLastUpdateTime = TimeManager.Now;
@@ -305,7 +286,6 @@ public class SelGachaCtrl : MonoBehaviour
 		DataManager.DmGacha.SelectedGachaIdHashSet = new HashSet<int>(DataManager.DmGameStatus.MakeUserFlagData().GachaNewInfoData.DisplayedIDList);
 	}
 
-	// Token: 0x06001202 RID: 4610 RVA: 0x000D9E04 File Offset: 0x000D8004
 	private int GetFocusGachaIndex(int gachaId)
 	{
 		if (gachaId == 0)
@@ -341,7 +321,6 @@ public class SelGachaCtrl : MonoBehaviour
 		return 0;
 	}
 
-	// Token: 0x06001203 RID: 4611 RVA: 0x000D9EC0 File Offset: 0x000D80C0
 	private void RefreshEnableMonthlyPackData()
 	{
 		this.nowPackData = null;
@@ -376,7 +355,6 @@ public class SelGachaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001204 RID: 4612 RVA: 0x000DA024 File Offset: 0x000D8224
 	private void OpenExecuteGachaConfirmWindow(bool isLeftBtn, DataManagerGacha.GachaPackData gpd)
 	{
 		if (gpd == null)
@@ -602,7 +580,6 @@ public class SelGachaCtrl : MonoBehaviour
 		CanvasManager.HdlOpenWindowNoStone.Open();
 	}
 
-	// Token: 0x06001205 RID: 4613 RVA: 0x000DA9A8 File Offset: 0x000D8BA8
 	private bool ChkStepResetTimeIsOver(DateTime stepResetTime)
 	{
 		bool flag = false;
@@ -618,7 +595,6 @@ public class SelGachaCtrl : MonoBehaviour
 		return flag;
 	}
 
-	// Token: 0x06001206 RID: 4614 RVA: 0x000DAA2C File Offset: 0x000D8C2C
 	private bool ChkSwitchEnableSubstitute(DataManagerGacha.GachaStaticTypeData staticTypeData, bool nowPackEnableSubstitute)
 	{
 		bool flag = false;
@@ -658,7 +634,6 @@ public class SelGachaCtrl : MonoBehaviour
 		return flag;
 	}
 
-	// Token: 0x06001207 RID: 4615 RVA: 0x000DAB54 File Offset: 0x000D8D54
 	private void UpdateStoneNum(DataManagerGacha.GachaPackData gachaPackData)
 	{
 		if (gachaPackData == null)
@@ -699,7 +674,6 @@ public class SelGachaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001208 RID: 4616 RVA: 0x000DACD0 File Offset: 0x000D8ED0
 	private void UpdateGachaResultOneMoreBtn(DataManagerGacha.GachaStaticData execGachaStaticData)
 	{
 		bool flag = DataManagerGacha.Category.StepUp == execGachaStaticData.gachaCategory;
@@ -761,19 +735,16 @@ public class SelGachaCtrl : MonoBehaviour
 		this.guiDataResult.Btn_Onemore.SetActEnable(flag11, false, false);
 	}
 
-	// Token: 0x06001209 RID: 4617 RVA: 0x000DAF70 File Offset: 0x000D9170
 	private bool IsDiscountEnable(DataManagerGacha.GachaStaticTypeData staticTypeData, DataManagerGacha.DynamicGachaTypeData dynamicTypeData)
 	{
 		return staticTypeData.discountData != null && staticTypeData.discountData.startDatetime <= TimeManager.Now && TimeManager.Now < staticTypeData.discountData.endDatetime && (staticTypeData.discountData.availableCount == 0 || staticTypeData.discountData.availableCount > dynamicTypeData.discountPlayNum);
 	}
 
-	// Token: 0x0600120A RID: 4618 RVA: 0x000DAFD7 File Offset: 0x000D91D7
 	private bool IsSubstituteEnable(DataManagerGacha.GachaStaticTypeData staticTypeData)
 	{
 		return this.IsMatchingSubItemUseCondition(staticTypeData, true) && staticTypeData.substituteItemId != 0 && DataManager.DmItem.GetUserItemData(staticTypeData.substituteItemId).num >= staticTypeData.substituteItemNumber;
 	}
 
-	// Token: 0x0600120B RID: 4619 RVA: 0x000DB010 File Offset: 0x000D9210
 	private bool IsMatchingSubItemUseCondition(DataManagerGacha.GachaStaticTypeData typeData, bool useNowPackData)
 	{
 		bool flag = false;
@@ -826,7 +797,6 @@ public class SelGachaCtrl : MonoBehaviour
 		return flag;
 	}
 
-	// Token: 0x0600120C RID: 4620 RVA: 0x000DB0A7 File Offset: 0x000D92A7
 	private void CreateDetailWindow(DataManagerGacha.GachaPackData gachaPackData)
 	{
 		this.pauseCenterInfoDispLoop = true;
@@ -836,14 +806,12 @@ public class SelGachaCtrl : MonoBehaviour
 		}));
 	}
 
-	// Token: 0x0600120D RID: 4621 RVA: 0x000DB0D3 File Offset: 0x000D92D3
 	private void OpenUseItemInfoWindow(int itemId)
 	{
 		CanvasManager.HdlOpenWindowItemInfo.SetupItemInfo(itemId);
 		CanvasManager.HdlOpenWindowItemInfo.Open();
 	}
 
-	// Token: 0x0600120E RID: 4622 RVA: 0x000DB0EC File Offset: 0x000D92EC
 	private void ChangeCenterInfo(bool viewBanner)
 	{
 		bool flag = this.CenterInfoDisplayedBanner != viewBanner;
@@ -870,7 +838,6 @@ public class SelGachaCtrl : MonoBehaviour
 		renderCharaCenter.gameObject.SetActive(false);
 	}
 
-	// Token: 0x0600120F RID: 4623 RVA: 0x000DB1A4 File Offset: 0x000D93A4
 	private void SetCurrentBanner(int key)
 	{
 		this.ResetBannerSize();
@@ -891,7 +858,6 @@ public class SelGachaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001210 RID: 4624 RVA: 0x000DB27C File Offset: 0x000D947C
 	private void ResetBannerSize()
 	{
 		foreach (PguiRawImageCtrl pguiRawImageCtrl in this.gachaBannerImgMap.Values)
@@ -905,7 +871,6 @@ public class SelGachaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001211 RID: 4625 RVA: 0x000DB368 File Offset: 0x000D9568
 	private void UpdateGachaTopDispData(DataManagerGacha.GachaPackData gachaPackData)
 	{
 		if (gachaPackData == null)
@@ -950,7 +915,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.guiDataTop.Txt_Term.text = "開催期間\n" + TimeManager.FormattedTime(gachaPackData.staticData.endDatetime, TimeManager.Format.yyyyMMdd_hhmm) + "まで";
 	}
 
-	// Token: 0x06001212 RID: 4626 RVA: 0x000DB674 File Offset: 0x000D9874
 	private void UpdateGachaTopBtnLeft(DataManagerGacha.GachaPackData gachaPackData)
 	{
 		this.guiDataTop.GachaBtnSet_Left.BaseButton.gameObject.SetActive(false);
@@ -1084,7 +1048,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.guiDataTop.GachaBtnSet_Left.PopupInitialize(flag, flag4);
 	}
 
-	// Token: 0x06001213 RID: 4627 RVA: 0x000DBDB8 File Offset: 0x000D9FB8
 	private void UpdateGachaTopBtnRight(DataManagerGacha.GachaPackData gachaPackData)
 	{
 		this.guiDataTop.GachaBtnSet_Right.BaseButton.gameObject.SetActive(false);
@@ -1212,7 +1175,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.guiDataTop.GachaBtnSet_Right.PopupInitialize(flag2, flag4);
 	}
 
-	// Token: 0x06001214 RID: 4628 RVA: 0x000DC4E8 File Offset: 0x000DA6E8
 	private void SetupGachaResult(DataManagerGacha.PlayResult result)
 	{
 		DataManagerGacha.GachaStaticData gachaStaticData = DataManager.DmGacha.GetGachaStaticData(result.gachaId);
@@ -1468,7 +1430,6 @@ public class SelGachaCtrl : MonoBehaviour
 		CanvasManager.HdlMissionProgressCtrl.IsPlayingGachaAuth = false;
 	}
 
-	// Token: 0x06001215 RID: 4629 RVA: 0x000DD270 File Offset: 0x000DB470
 	private void ClearResultIconList()
 	{
 		foreach (GameObject gameObject in this.resultIconObjList)
@@ -1478,14 +1439,12 @@ public class SelGachaCtrl : MonoBehaviour
 		this.resultIconObjList.Clear();
 	}
 
-	// Token: 0x06001216 RID: 4630 RVA: 0x000DD2CC File Offset: 0x000DB4CC
 	public void SetIconAttr(int charaId, ref PguiImageCtrl Icon_Atr)
 	{
 		CharaStaticBase baseData = DataManager.DmChara.GetCharaStaticData(charaId).baseData;
 		Icon_Atr.SetImageByName(IconCharaCtrl.Attribute2IconName(baseData.attribute));
 	}
 
-	// Token: 0x06001217 RID: 4631 RVA: 0x000DD2FC File Offset: 0x000DB4FC
 	public void SetIconSubAttr(int charaId, ref PguiImageCtrl iconAtr, ref RectTransform rankStar, Vector2 initialRankStarPos)
 	{
 		CharaStaticBase baseData = DataManager.DmChara.GetCharaStaticData(charaId).baseData;
@@ -1500,7 +1459,6 @@ public class SelGachaCtrl : MonoBehaviour
 		iconAtr.gameObject.SetActive(true);
 	}
 
-	// Token: 0x06001218 RID: 4632 RVA: 0x000DD378 File Offset: 0x000DB578
 	private void UpdateCenterInfoDispIndex(bool isReset)
 	{
 		if (isReset)
@@ -1522,13 +1480,11 @@ public class SelGachaCtrl : MonoBehaviour
 		this.centerInfoDispTimeElapsed = 0f;
 	}
 
-	// Token: 0x06001219 RID: 4633 RVA: 0x000DD3E0 File Offset: 0x000DB5E0
 	private int GetCenterInfoDispItemId()
 	{
 		return this.centerInfoDispIdList[this.centerInfoDispIndex];
 	}
 
-	// Token: 0x0600121A RID: 4634 RVA: 0x000DD3F4 File Offset: 0x000DB5F4
 	private void UpdateCenterInfoDisp(int dispItemId)
 	{
 		ItemDef.Kind kind = ItemDef.Id2Kind(dispItemId);
@@ -1660,7 +1616,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.guiDataTop.AEImage_Loading.gameObject.SetActive(true);
 	}
 
-	// Token: 0x0600121B RID: 4635 RVA: 0x000DDAE9 File Offset: 0x000DBCE9
 	private void SetDisplayCmnMenu(bool disped)
 	{
 		CanvasManager.HdlCmnMenu.SetupMenu(disped, "しょうたい", delegate
@@ -1676,7 +1631,6 @@ public class SelGachaCtrl : MonoBehaviour
 		}, "", null, null);
 	}
 
-	// Token: 0x0600121C RID: 4636 RVA: 0x000DDB0E File Offset: 0x000DBD0E
 	private IEnumerator RefreshGachaTop(bool getServerdata)
 	{
 		if (getServerdata)
@@ -1692,7 +1646,6 @@ public class SelGachaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600121D RID: 4637 RVA: 0x000DDB24 File Offset: 0x000DBD24
 	private IEnumerator BoxReset(int id)
 	{
 		DataManager.DmGacha.RequestActionGachaReset(id);
@@ -1707,7 +1660,6 @@ public class SelGachaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600121E RID: 4638 RVA: 0x000DDB3A File Offset: 0x000DBD3A
 	private IEnumerator PopupInitialWaitSync()
 	{
 		while (this.guiDataTop.GachaBtnSet_Left.IsPlaying() || this.guiDataTop.GachaBtnSet_Right.IsPlaying())
@@ -1719,7 +1671,6 @@ public class SelGachaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600121F RID: 4639 RVA: 0x000DDB49 File Offset: 0x000DBD49
 	private IEnumerator GachaPlayAction(int gachaId, int gachaType, int useItemId)
 	{
 		this.guiDataTop.baseObj.SetActive(false);
@@ -1804,7 +1755,6 @@ public class SelGachaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001220 RID: 4640 RVA: 0x000DDB6D File Offset: 0x000DBD6D
 	private IEnumerator Tutorial()
 	{
 		CanvasManager.HdlTutorialMaskCtrl.SetEnable(true);
@@ -1921,7 +1871,6 @@ public class SelGachaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001221 RID: 4641 RVA: 0x000DDB7C File Offset: 0x000DBD7C
 	private void OnClickGachaBannerImg(int index)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -1936,7 +1885,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.guiDataTop.GachaBannerScroll.ChangeFocusItem(index, false);
 	}
 
-	// Token: 0x06001222 RID: 4642 RVA: 0x000DDBAE File Offset: 0x000DBDAE
 	private void OnClickGachaTopBtnLeft(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -1955,7 +1903,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.OpenExecuteGachaConfirmWindow(true, this.currentGachaPackData);
 	}
 
-	// Token: 0x06001223 RID: 4643 RVA: 0x000DDBEE File Offset: 0x000DBDEE
 	private void OnClickGachaTopBtnRight(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -1974,7 +1921,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.OpenExecuteGachaConfirmWindow(false, this.currentGachaPackData);
 	}
 
-	// Token: 0x06001224 RID: 4644 RVA: 0x000DDC2E File Offset: 0x000DBE2E
 	private void OnClickGachaTopTouchPanel(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -1991,7 +1937,6 @@ public class SelGachaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001225 RID: 4645 RVA: 0x000DDC60 File Offset: 0x000DBE60
 	private void OnClickGachaTopReloadBtn(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -2010,7 +1955,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.ChangeCenterInfo(!this.CenterInfoDisplayedBanner);
 	}
 
-	// Token: 0x06001226 RID: 4646 RVA: 0x000DDCB0 File Offset: 0x000DBEB0
 	private void OnClickGachaTopGachaDetailInfoBtn(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -2030,7 +1974,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.CreateDetailWindow(this.currentGachaPackData);
 	}
 
-	// Token: 0x06001227 RID: 4647 RVA: 0x000DDD10 File Offset: 0x000DBF10
 	private void OnClickGachaTopCharaInfoBtn(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -2050,7 +1993,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.pauseCenterInfoDispLoop = true;
 	}
 
-	// Token: 0x06001228 RID: 4648 RVA: 0x000DDD80 File Offset: 0x000DBF80
 	private void OnClickGachaTopPhotoInfoBtn(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -2075,7 +2017,6 @@ public class SelGachaCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06001229 RID: 4649 RVA: 0x000DDE04 File Offset: 0x000DC004
 	private void OnClickGachaTopFurnitureInfoBtn(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -2098,7 +2039,6 @@ public class SelGachaCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x0600122A RID: 4650 RVA: 0x000DDE74 File Offset: 0x000DC074
 	private void OnClickGachaTopUseItemBtnTop(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -2117,7 +2057,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.OpenUseItemInfoWindow(this.guiDataTop.GachaUseItemBtnList[0].itemId);
 	}
 
-	// Token: 0x0600122B RID: 4651 RVA: 0x000DDED0 File Offset: 0x000DC0D0
 	private void OnClickGachaTopUseItemBtnMiddle(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -2136,7 +2075,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.OpenUseItemInfoWindow(this.guiDataTop.GachaUseItemBtnList[1].itemId);
 	}
 
-	// Token: 0x0600122C RID: 4652 RVA: 0x000DDF2C File Offset: 0x000DC12C
 	private void OnClickGachaTopUseItemBtnBottom(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -2155,7 +2093,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.OpenUseItemInfoWindow(this.guiDataTop.GachaUseItemBtnList[2].itemId);
 	}
 
-	// Token: 0x0600122D RID: 4653 RVA: 0x000DDF88 File Offset: 0x000DC188
 	private void OnClickGachaResultOnemoreBtn(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -2179,7 +2116,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.OpenExecuteGachaConfirmWindow(this.lastSelectGacha.isLeftBtn, gachaPackData);
 	}
 
-	// Token: 0x0600122E RID: 4654 RVA: 0x000DE013 File Offset: 0x000DC213
 	private void OnClickGachaResultFriendsBtn(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -2198,7 +2134,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.requestNextSceneCb(SceneManager.SceneName.SceneCharaEdit, null);
 	}
 
-	// Token: 0x0600122F RID: 4655 RVA: 0x000DE050 File Offset: 0x000DC250
 	private void OnClickGachaResultPartyBtn(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -2221,7 +2156,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.requestNextSceneCb(SceneManager.SceneName.SceneCharaEdit, args);
 	}
 
-	// Token: 0x06001230 RID: 4656 RVA: 0x000DE0A4 File Offset: 0x000DC2A4
 	private void OnClickGachaResultNextBtn(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -2240,7 +2174,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.ChangeModeResultToTop();
 	}
 
-	// Token: 0x06001231 RID: 4657 RVA: 0x000DE0D8 File Offset: 0x000DC2D8
 	private void ChangeModeResultToTop()
 	{
 		this.SetDisplayCmnMenu(true);
@@ -2250,7 +2183,6 @@ public class SelGachaCtrl : MonoBehaviour
 		DataManager.DmGacha.LatestGreetingVoice.Stop();
 	}
 
-	// Token: 0x06001232 RID: 4658 RVA: 0x000DE12C File Offset: 0x000DC32C
 	private void OnClickBoxResetButton(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -2284,7 +2216,6 @@ public class SelGachaCtrl : MonoBehaviour
 		CanvasManager.HdlOpenWindowBasic.Open();
 	}
 
-	// Token: 0x06001233 RID: 4659 RVA: 0x000DE1D4 File Offset: 0x000DC3D4
 	private void OnClickBoxCheckButtonTop(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -2307,7 +2238,6 @@ public class SelGachaCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06001234 RID: 4660 RVA: 0x000DE254 File Offset: 0x000DC454
 	private void OnClickBoxCheckButtonResult(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -2331,7 +2261,6 @@ public class SelGachaCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06001235 RID: 4661 RVA: 0x000DE2DC File Offset: 0x000DC4DC
 	private void OnClickStepCheckButton(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -2358,7 +2287,6 @@ public class SelGachaCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06001236 RID: 4662 RVA: 0x000DE36E File Offset: 0x000DC56E
 	private void OnClickTreeHouseButton(PguiButtonCtrl button)
 	{
 		if (this.isRequestingNextSceneCb())
@@ -2372,7 +2300,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.requestNextSceneCb(SceneManager.SceneName.SceneTreeHouse, null);
 	}
 
-	// Token: 0x06001237 RID: 4663 RVA: 0x000DE39C File Offset: 0x000DC59C
 	private bool OnChoiceOpenWindow(int index)
 	{
 		if (index != 0 && index == 1)
@@ -2431,19 +2358,16 @@ public class SelGachaCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001238 RID: 4664 RVA: 0x000DE52A File Offset: 0x000DC72A
 	private void OnSuccessPurcheseStone()
 	{
 		this.UpdateStoneNum(this.currentGachaPackData);
 	}
 
-	// Token: 0x06001239 RID: 4665 RVA: 0x000DE538 File Offset: 0x000DC738
 	private void OnSuccessPurcheseMonthlyPack()
 	{
 		this.RefreshGachaPackDataList(this.currentGachaPackData.gachaId, true, false, this.currentGachaTab);
 	}
 
-	// Token: 0x0600123A RID: 4666 RVA: 0x000DE554 File Offset: 0x000DC754
 	private void OnStartItem(int index, GameObject go)
 	{
 		PguiRawImageCtrl component = go.transform.GetComponent<PguiRawImageCtrl>();
@@ -2455,7 +2379,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.gachaBannerImgMap.Add(index, component);
 	}
 
-	// Token: 0x0600123B RID: 4667 RVA: 0x000DE598 File Offset: 0x000DC798
 	private void OnUpdateItem(int index, GameObject go)
 	{
 		if (index < 0 || this.gachaPackDataList.Count <= index)
@@ -2557,7 +2480,6 @@ public class SelGachaCtrl : MonoBehaviour
 		gachaBanner.LimitTimeText.text = TimeManager.MakeTimeResidueText(this.GachaPackDataLastUpdateTime, gachaPackData.staticData.endDatetime, false, false);
 	}
 
-	// Token: 0x0600123C RID: 4668 RVA: 0x000DE9C8 File Offset: 0x000DCBC8
 	private void OnChangeFocusItem(int index, GameObject go)
 	{
 		if (index < 0)
@@ -2589,7 +2511,6 @@ public class SelGachaCtrl : MonoBehaviour
 		this.ChangeCenterInfo(flag);
 	}
 
-	// Token: 0x0600123D RID: 4669 RVA: 0x000DEA98 File Offset: 0x000DCC98
 	private bool OnSelectGachaTab(int index)
 	{
 		this.currentGachaTab = index;
@@ -2597,118 +2518,80 @@ public class SelGachaCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x04000EF9 RID: 3833
 	private static readonly int GACHA_VIEW_LIMIT_DAY = 100;
 
-	// Token: 0x04000EFA RID: 3834
 	private static readonly float INFO_DISP_UPDATE_TIME = 7f;
 
-	// Token: 0x04000EFB RID: 3835
 	private static readonly float ICON_SIZE = 38f;
 
-	// Token: 0x04000EFC RID: 3836
 	private readonly float CLONE_CHARA_MOVIE_TIME = 13f;
 
-	// Token: 0x04000EFD RID: 3837
 	private readonly int RENDER_TEXTURE_CHARA_TRANSFORM_INDEX = 3;
 
-	// Token: 0x04000EFE RID: 3838
 	private SelGachaCtrl.GachaTopGUI guiDataTop;
 
-	// Token: 0x04000EFF RID: 3839
 	private SelGachaCtrl.GUIResult guiDataResult;
 
-	// Token: 0x04000F00 RID: 3840
 	private GachaWindowInfoCtrl gachaWindowInfo;
 
-	// Token: 0x04000F01 RID: 3841
 	private GachaAuthCtrl gachaAuth;
 
-	// Token: 0x04000F02 RID: 3842
 	private Coroutine GachaPlayActionCoroutine;
 
-	// Token: 0x04000F03 RID: 3843
 	private RenderTextureChara RenderCharaCenter;
 
-	// Token: 0x04000F04 RID: 3844
 	private RenderTextureChara RenderCharaLB;
 
-	// Token: 0x04000F05 RID: 3845
 	private List<DataManagerGacha.GachaPackData> gachaPackDataList;
 
-	// Token: 0x04000F06 RID: 3846
 	private Dictionary<int, PguiRawImageCtrl> gachaBannerImgMap;
 
-	// Token: 0x04000F07 RID: 3847
 	private int currentBannerBtnIndex;
 
-	// Token: 0x04000F08 RID: 3848
 	private DataManagerGacha.GachaPackData currentGachaPackData;
 
-	// Token: 0x04000F09 RID: 3849
 	private bool CenterInfoDisplayedBanner;
 
-	// Token: 0x04000F0A RID: 3850
 	private bool pauseCenterInfoDispLoop;
 
-	// Token: 0x04000F0B RID: 3851
 	private List<int> centerInfoDispIdList;
 
-	// Token: 0x04000F0C RID: 3852
 	private int centerInfoDispIndex;
 
-	// Token: 0x04000F0D RID: 3853
 	private float centerInfoDispTimeElapsed;
 
-	// Token: 0x04000F0F RID: 3855
 	private SelGachaCtrl.LastSelectGacha lastSelectGacha;
 
-	// Token: 0x04000F10 RID: 3856
 	private bool focusForceChanged;
 
-	// Token: 0x04000F11 RID: 3857
 	private bool gachaIdChanged;
 
-	// Token: 0x04000F12 RID: 3858
 	private List<GameObject> resultIconObjList;
 
-	// Token: 0x04000F13 RID: 3859
 	private bool gotoNextStepByTutorial;
 
-	// Token: 0x04000F14 RID: 3860
 	private SceneGacha.OpenParam sceneOpenParam;
 
-	// Token: 0x04000F15 RID: 3861
 	public Action<SceneManager.SceneName, object> requestNextSceneCb;
 
-	// Token: 0x04000F16 RID: 3862
 	public Func<bool> isRequestingNextSceneCb;
 
-	// Token: 0x04000F17 RID: 3863
 	private DataManagerMonthlyPack.PurchaseMonthlypackData nowPackData;
 
-	// Token: 0x04000F18 RID: 3864
 	private DateTime nowPackDataEndDateTime;
 
-	// Token: 0x04000F19 RID: 3865
 	private DataManagerMonthlyPack.PurchaseMonthlypackData nextPackData;
 
-	// Token: 0x04000F1A RID: 3866
 	private DateTime nextPackDataEndDateTime;
 
-	// Token: 0x04000F1B RID: 3867
 	private int currentGachaTab;
 
-	// Token: 0x04000F1C RID: 3868
 	private GameObject cloneCharaMovieObject;
 
-	// Token: 0x04000F1D RID: 3869
 	private float movieTime;
 
-	// Token: 0x02000AC5 RID: 2757
 	public class GachaTopGUI
 	{
-		// Token: 0x06004061 RID: 16481 RVA: 0x001F53C4 File Offset: 0x001F35C4
 		public GachaTopGUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -2784,182 +2667,123 @@ public class SelGachaCtrl : MonoBehaviour
 			this.FurnitureName_Text = baseTr.Find("CenterInfo/InteriorInfoAll/All/InteriorName/Txt_InteriorName").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x04004465 RID: 17509
 		public GameObject baseObj;
 
-		// Token: 0x04004466 RID: 17510
 		public PguiTextCtrl Txt_GachaName;
 
-		// Token: 0x04004467 RID: 17511
 		public PguiTextCtrl Txt_Term;
 
-		// Token: 0x04004468 RID: 17512
 		public PguiButtonCtrl Btn_Reload;
 
-		// Token: 0x04004469 RID: 17513
 		public PguiButtonCtrl TouchPanel;
 
-		// Token: 0x0400446A RID: 17514
 		public GameObject RenderTexture_LB;
 
-		// Token: 0x0400446B RID: 17515
 		public PguiAECtrl AEImage_Loading;
 
-		// Token: 0x0400446C RID: 17516
 		public PguiButtonCtrl Btn_GachaDetailInfo;
 
-		// Token: 0x0400446D RID: 17517
 		public List<SelGachaCtrl.ItemBoardBase> GachaUseItemBtnList;
 
-		// Token: 0x0400446E RID: 17518
 		public SelGachaCtrl.GachaButtonSet GachaBtnSet_Left;
 
-		// Token: 0x0400446F RID: 17519
 		public SelGachaCtrl.GachaButtonSet GachaBtnSet_Right;
 
-		// Token: 0x04004470 RID: 17520
 		public CustomScrollRect GachaBannerScroll;
 
-		// Token: 0x04004471 RID: 17521
 		public PguiImageCtrl CeilingCountImageCtrl;
 
-		// Token: 0x04004472 RID: 17522
 		public PguiTextCtrl CeilingCountText;
 
-		// Token: 0x04004473 RID: 17523
 		public GameObject BannerAll;
 
-		// Token: 0x04004474 RID: 17524
 		public PguiRawImageCtrl BannerTexture;
 
-		// Token: 0x04004475 RID: 17525
 		public GameObject CharaInfoAll;
 
-		// Token: 0x04004476 RID: 17526
 		public PguiButtonCtrl Btn_CharaInfo;
 
-		// Token: 0x04004477 RID: 17527
 		public List<PguiImageCtrl> Chara_IconStar;
 
-		// Token: 0x04004478 RID: 17528
 		public PguiRawImageCtrl Chara_MovieImage;
 
-		// Token: 0x04004479 RID: 17529
 		public PguiAECtrl Chara_TextAEImage;
 
-		// Token: 0x0400447A RID: 17530
 		public PguiAECtrl Chara_RankStar_AE;
 
-		// Token: 0x0400447B RID: 17531
 		public RectTransform CharaRankStarRectTransform;
 
-		// Token: 0x0400447C RID: 17532
 		public Vector2 CharaRankStarInitialPosition;
 
-		// Token: 0x0400447D RID: 17533
 		public Text InfoDispCharaName;
 
-		// Token: 0x0400447E RID: 17534
 		public Text InfoDispWName;
 
-		// Token: 0x0400447F RID: 17535
 		public PguiImageCtrl InfoDispCharaAttrIcon;
 
-		// Token: 0x04004480 RID: 17536
 		public PguiImageCtrl InfoDispCharaSubAttrIcon;
 
-		// Token: 0x04004481 RID: 17537
 		public Text InfoDispCharaMiracleName;
 
-		// Token: 0x04004482 RID: 17538
 		public GameObject BoxBtns;
 
-		// Token: 0x04004483 RID: 17539
 		public PguiButtonCtrl Btn_BoxReset;
 
-		// Token: 0x04004484 RID: 17540
 		public GameObject ResetCountInfo;
 
-		// Token: 0x04004485 RID: 17541
 		public PguiTextCtrl ResetCountText;
 
-		// Token: 0x04004486 RID: 17542
 		public PguiButtonCtrl BoxCheckBtn;
 
-		// Token: 0x04004487 RID: 17543
 		public GameObject PhotoInfoAll;
 
-		// Token: 0x04004488 RID: 17544
 		public PguiAECtrl PhotoInfo_AEImage;
 
-		// Token: 0x04004489 RID: 17545
 		public PguiButtonCtrl Btn_PhotoInfo;
 
-		// Token: 0x0400448A RID: 17546
 		public List<PguiImageCtrl> Photo_IconStar;
 
-		// Token: 0x0400448B RID: 17547
 		public PguiImageCtrl PhotoEventInfo;
 
-		// Token: 0x0400448C RID: 17548
 		public GameObject DispPhotoInfo;
 
-		// Token: 0x0400448D RID: 17549
 		public PguiImageCtrl PhotoDropPopUp;
 
-		// Token: 0x0400448E RID: 17550
 		public IconPhotoCtrl PhotoCard;
 
-		// Token: 0x0400448F RID: 17551
 		public PguiReplaceSpriteCtrl Icon_PhotoKind;
 
-		// Token: 0x04004490 RID: 17552
 		public PguiTextCtrl PhotoName_Text;
 
-		// Token: 0x04004491 RID: 17553
 		public PguiTextCtrl PhotoInfo_Text;
 
-		// Token: 0x04004492 RID: 17554
 		public PguiTextCtrl PhotoHpTextCtrl;
 
-		// Token: 0x04004493 RID: 17555
 		public PguiTextCtrl PhotoAtkTextCtrl;
 
-		// Token: 0x04004494 RID: 17556
 		public PguiTextCtrl PhotoDefTextCtrl;
 
-		// Token: 0x04004495 RID: 17557
 		public GameObject FurnitureInfoAll;
 
-		// Token: 0x04004496 RID: 17558
 		public PguiAECtrl FurnitureInfo_AEImage;
 
-		// Token: 0x04004497 RID: 17559
 		public PguiButtonCtrl Btn_FurnitureInfo;
 
-		// Token: 0x04004498 RID: 17560
 		public PguiRawImageCtrl Furniture_MovieImage;
 
-		// Token: 0x04004499 RID: 17561
 		public PguiTextCtrl FurnitureRarity_Text;
 
-		// Token: 0x0400449A RID: 17562
 		public PguiTextCtrl FurnitureName_Text;
 
-		// Token: 0x0400449B RID: 17563
 		public PguiTabGroupCtrl TabGroup;
 
-		// Token: 0x0400449C RID: 17564
 		public IEnumerator StartPopupPlay;
 
-		// Token: 0x0400449D RID: 17565
 		public IEnumerator RefreshGachaTop;
 	}
 
-	// Token: 0x02000AC6 RID: 2758
 	public class GachaBanner
 	{
-		// Token: 0x06004062 RID: 16482 RVA: 0x001F59B8 File Offset: 0x001F3BB8
 		public GachaBanner(GameObject go)
 		{
 			this.BannerImg = go.transform.GetComponent<PguiRawImageCtrl>();
@@ -2971,32 +2795,23 @@ public class SelGachaCtrl : MonoBehaviour
 			this.LimitTimeText = go.transform.Find("Txt_Time").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x0400449E RID: 17566
 		public PguiRawImageCtrl BannerImg;
 
-		// Token: 0x0400449F RID: 17567
 		public PguiImageCtrl MarkFree;
 
-		// Token: 0x040044A0 RID: 17568
 		public PguiImageCtrl Sale;
 
-		// Token: 0x040044A1 RID: 17569
 		public PguiImageCtrl PickUp;
 
-		// Token: 0x040044A2 RID: 17570
 		public PguiImageCtrl Omake;
 
-		// Token: 0x040044A3 RID: 17571
 		public GameObject New;
 
-		// Token: 0x040044A4 RID: 17572
 		public PguiTextCtrl LimitTimeText;
 	}
 
-	// Token: 0x02000AC7 RID: 2759
 	public class GachaButtonSet
 	{
-		// Token: 0x06004063 RID: 16483 RVA: 0x001F5A80 File Offset: 0x001F3C80
 		public GachaButtonSet(PguiButtonCtrl btn)
 		{
 			this.BaseButton = btn;
@@ -3023,7 +2838,6 @@ public class SelGachaCtrl : MonoBehaviour
 			this.StepUpInfoText = btn.transform.Find("Stepup_Info/Txt").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x06004064 RID: 16484 RVA: 0x001F5D0B File Offset: 0x001F3F0B
 		public void PopupInitialize(bool PlaySale, bool PlayAnother)
 		{
 			this.PlayPopupQueue = new Queue<PopUpCtrl>();
@@ -3037,7 +2851,6 @@ public class SelGachaCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06004065 RID: 16485 RVA: 0x001F5D40 File Offset: 0x001F3F40
 		public void StartPlayPopup()
 		{
 			if (this.PlayPopupQueue != null)
@@ -3046,7 +2859,6 @@ public class SelGachaCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06004066 RID: 16486 RVA: 0x001F5D58 File Offset: 0x001F3F58
 		private void PlayPopup(Queue<PopUpCtrl> popupQueue)
 		{
 			this.PopupSale.Animation.ExStop(true);
@@ -3065,73 +2877,54 @@ public class SelGachaCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06004067 RID: 16487 RVA: 0x001F5E0A File Offset: 0x001F400A
 		public void StopPopup()
 		{
 			this.PopupSale.Animation.ExStop(true);
 			this.PopupAnother.Animation.ExStop(true);
 		}
 
-		// Token: 0x06004068 RID: 16488 RVA: 0x001F5E2E File Offset: 0x001F402E
 		public void HidePopup()
 		{
 			this.PopupSale.baseObj.SetActive(false);
 			this.PopupAnother.baseObj.SetActive(false);
 		}
 
-		// Token: 0x06004069 RID: 16489 RVA: 0x001F5E52 File Offset: 0x001F4052
 		public bool IsPlaying()
 		{
 			return this.PopupSale.Animation.ExIsPlaying() || this.PopupAnother.Animation.ExIsPlaying();
 		}
 
-		// Token: 0x040044A5 RID: 17573
 		public PguiButtonCtrl BaseButton;
 
-		// Token: 0x040044A6 RID: 17574
 		public PguiImageCtrl CountInfo;
 
-		// Token: 0x040044A7 RID: 17575
 		public GameObject BaseImgObj;
 
-		// Token: 0x040044A8 RID: 17576
 		public PguiTextCtrl UseNumText;
 
-		// Token: 0x040044A9 RID: 17577
 		public PguiRawImageCtrl StoneIcon;
 
-		// Token: 0x040044AA RID: 17578
 		public PguiTextCtrl TimesText;
 
-		// Token: 0x040044AB RID: 17579
 		public PguiTextCtrl FreeText;
 
-		// Token: 0x040044AC RID: 17580
 		public PguiTextCtrl FreeCampaignText;
 
-		// Token: 0x040044AD RID: 17581
 		private PguiTextCtrl StoneKind;
 
-		// Token: 0x040044AE RID: 17582
 		public PopUpCtrl PopupSale;
 
-		// Token: 0x040044AF RID: 17583
 		public PopUpCtrl PopupAnother;
 
-		// Token: 0x040044B0 RID: 17584
 		private Queue<PopUpCtrl> PlayPopupQueue;
 
-		// Token: 0x040044B1 RID: 17585
 		public GameObject StepUpInfo;
 
-		// Token: 0x040044B2 RID: 17586
 		public PguiTextCtrl StepUpInfoText;
 	}
 
-	// Token: 0x02000AC8 RID: 2760
 	public class ItemBoardBase
 	{
-		// Token: 0x0600406A RID: 16490 RVA: 0x001F5E78 File Offset: 0x001F4078
 		public ItemBoardBase(PguiButtonCtrl button)
 		{
 			this.button = button;
@@ -3141,7 +2934,6 @@ public class SelGachaCtrl : MonoBehaviour
 			this.itemId = 0;
 		}
 
-		// Token: 0x0600406B RID: 16491 RVA: 0x001F5EDC File Offset: 0x001F40DC
 		public void Setup(int id)
 		{
 			ItemData userItemData = DataManager.DmItem.GetUserItemData(id);
@@ -3151,31 +2943,21 @@ public class SelGachaCtrl : MonoBehaviour
 			this.ItemIcon.GetComponent<RectTransform>().sizeDelta = new Vector2(SelGachaCtrl.ICON_SIZE, SelGachaCtrl.ICON_SIZE);
 		}
 
-		// Token: 0x040044B3 RID: 17587
 		public GameObject Base;
 
-		// Token: 0x040044B4 RID: 17588
 		public PguiButtonCtrl button;
 
-		// Token: 0x040044B5 RID: 17589
 		public PguiRawImageCtrl ItemIcon;
 
-		// Token: 0x040044B6 RID: 17590
 		public PguiTextCtrl ItemNumText;
 
-		// Token: 0x040044B7 RID: 17591
 		public int itemId;
 	}
 
-	// Token: 0x02000AC9 RID: 2761
 	public class GUIResult
 	{
-		// Token: 0x1700096E RID: 2414
-		// (get) Token: 0x0600406C RID: 16492 RVA: 0x001F5F4D File Offset: 0x001F414D
-		// (set) Token: 0x0600406D RID: 16493 RVA: 0x001F5F55 File Offset: 0x001F4155
 		public bool IsOpenBonusItemWindow { get; set; }
 
-		// Token: 0x0600406E RID: 16494 RVA: 0x001F5F60 File Offset: 0x001F4160
 		public GUIResult(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -3199,46 +2981,32 @@ public class SelGachaCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x040044B8 RID: 17592
 		public GameObject baseObj;
 
-		// Token: 0x040044B9 RID: 17593
 		public PguiButtonCtrl Btn_Next;
 
-		// Token: 0x040044BA RID: 17594
 		public PguiButtonCtrl Btn_Party;
 
-		// Token: 0x040044BB RID: 17595
 		public PguiButtonCtrl Btn_Friends;
 
-		// Token: 0x040044BC RID: 17596
 		public PguiButtonCtrl Btn_Onemore;
 
-		// Token: 0x040044BD RID: 17597
 		public PguiTextCtrl Btn_OnemoreText;
 
-		// Token: 0x040044BE RID: 17598
 		public PguiButtonCtrl Btn_BoxInfo;
 
-		// Token: 0x040044BF RID: 17599
 		public PguiButtonCtrl Btn_StepInfo;
 
-		// Token: 0x040044C0 RID: 17600
 		public PguiButtonCtrl Btn_TreeHouse;
 
-		// Token: 0x040044C1 RID: 17601
 		public GameObject ResultEffect;
 
-		// Token: 0x040044C2 RID: 17602
 		public GameObject ResultAllObj;
 
-		// Token: 0x040044C3 RID: 17603
 		public List<SelGachaCtrl.GUIResult.ResultIconBase> ResultIconBaseList;
 
-		// Token: 0x02001174 RID: 4468
 		public class ResultIconBase
 		{
-			// Token: 0x06005628 RID: 22056 RVA: 0x0025101C File Offset: 0x0024F21C
 			public ResultIconBase(GameObject obj)
 			{
 				this.baseObj = obj;
@@ -3249,30 +3017,22 @@ public class SelGachaCtrl : MonoBehaviour
 				this.IconReplaceTr = this.baseObj.transform.Find("Icon_Replace");
 			}
 
-			// Token: 0x04005FD1 RID: 24529
 			public GameObject baseObj;
 
-			// Token: 0x04005FD2 RID: 24530
 			public Transform MarkNew;
 
-			// Token: 0x04005FD3 RID: 24531
 			public Transform Base;
 
-			// Token: 0x04005FD4 RID: 24532
 			public Transform BaseExchange;
 
-			// Token: 0x04005FD5 RID: 24533
 			public Transform IconBaseTr;
 
-			// Token: 0x04005FD6 RID: 24534
 			public Transform IconReplaceTr;
 		}
 	}
 
-	// Token: 0x02000ACA RID: 2762
 	private class LastSelectGacha
 	{
-		// Token: 0x0600406F RID: 16495 RVA: 0x001F60C2 File Offset: 0x001F42C2
 		public LastSelectGacha()
 		{
 			this.id = 0;
@@ -3282,19 +3042,14 @@ public class SelGachaCtrl : MonoBehaviour
 			this.stepNextNum = 0;
 		}
 
-		// Token: 0x040044C5 RID: 17605
 		public int id;
 
-		// Token: 0x040044C6 RID: 17606
 		public bool isLeftBtn;
 
-		// Token: 0x040044C7 RID: 17607
 		public bool isStepUp;
 
-		// Token: 0x040044C8 RID: 17608
 		public int stepNextGachaId;
 
-		// Token: 0x040044C9 RID: 17609
 		public int stepNextNum;
 	}
 }

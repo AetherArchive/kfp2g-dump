@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SGNFW.Common;
 using UnityEngine;
@@ -6,13 +6,9 @@ using UnityEngine.UI;
 
 namespace SGNFW.uGUI
 {
-	// Token: 0x02000231 RID: 561
 	[RequireComponent(typeof(ScrollRect))]
 	public class ReuseScroll : MonoBehaviour
 	{
-		// Token: 0x1700052F RID: 1327
-		// (get) Token: 0x06002356 RID: 9046 RVA: 0x001977A4 File Offset: 0x001959A4
-		// (set) Token: 0x06002355 RID: 9045 RVA: 0x00197758 File Offset: 0x00195958
 		public float Size
 		{
 			get
@@ -27,8 +23,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x17000530 RID: 1328
-		// (get) Token: 0x06002357 RID: 9047 RVA: 0x001977AC File Offset: 0x001959AC
 		public int ItemNum
 		{
 			get
@@ -37,8 +31,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x17000531 RID: 1329
-		// (get) Token: 0x06002358 RID: 9048 RVA: 0x001977B4 File Offset: 0x001959B4
 		public RectTransform ContentRoot
 		{
 			get
@@ -47,8 +39,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x17000532 RID: 1330
-		// (get) Token: 0x06002359 RID: 9049 RVA: 0x001977BC File Offset: 0x001959BC
 		public int CurrentItemIdx
 		{
 			get
@@ -57,9 +47,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x17000533 RID: 1331
-		// (get) Token: 0x0600235B RID: 9051 RVA: 0x001977CD File Offset: 0x001959CD
-		// (set) Token: 0x0600235A RID: 9050 RVA: 0x001977C4 File Offset: 0x001959C4
 		public int ReuseItemNum
 		{
 			get
@@ -72,8 +59,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x17000534 RID: 1332
-		// (get) Token: 0x0600235C RID: 9052 RVA: 0x001977D5 File Offset: 0x001959D5
 		public bool IsScroll
 		{
 			get
@@ -82,8 +67,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x17000535 RID: 1333
-		// (get) Token: 0x0600235D RID: 9053 RVA: 0x001977DD File Offset: 0x001959DD
 		public bool IsLoop
 		{
 			get
@@ -92,8 +75,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x17000536 RID: 1334
-		// (get) Token: 0x0600235E RID: 9054 RVA: 0x001977E5 File Offset: 0x001959E5
 		public ScrollRect RefScrollRect
 		{
 			get
@@ -102,9 +83,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x17000537 RID: 1335
-		// (get) Token: 0x0600235F RID: 9055 RVA: 0x001977ED File Offset: 0x001959ED
-		// (set) Token: 0x06002360 RID: 9056 RVA: 0x00197828 File Offset: 0x00195A28
 		public float AnchoredPosition
 		{
 			get
@@ -130,7 +108,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x06002361 RID: 9057 RVA: 0x00197878 File Offset: 0x00195A78
 		public void ScrollReset()
 		{
 			this.trsRoot.localPosition = Vector3.zero;
@@ -153,7 +130,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x06002362 RID: 9058 RVA: 0x00197938 File Offset: 0x00195B38
 		public void Setup(int itemNum, int focusIndex = 0)
 		{
 			GameObject[] array = new GameObject[this.reuseItemNum];
@@ -164,7 +140,6 @@ namespace SGNFW.uGUI
 			this.Setup(itemNum, array, focusIndex);
 		}
 
-		// Token: 0x06002363 RID: 9059 RVA: 0x00197984 File Offset: 0x00195B84
 		public void Setup(int itemNum, GameObject go, int focusIndex = 0)
 		{
 			GameObject[] array = new GameObject[this.reuseItemNum];
@@ -175,7 +150,6 @@ namespace SGNFW.uGUI
 			this.Setup(itemNum, array, focusIndex);
 		}
 
-		// Token: 0x06002364 RID: 9060 RVA: 0x001979CC File Offset: 0x00195BCC
 		public void Setup(int itemNum, GameObject[] goArray, int focusIndex = 0)
 		{
 			if (goArray == null || goArray.Length == 0)
@@ -220,7 +194,6 @@ namespace SGNFW.uGUI
 			this.Focus(focusIndex);
 		}
 
-		// Token: 0x06002365 RID: 9061 RVA: 0x00197B74 File Offset: 0x00195D74
 		public void Resize(int itemNum, int focusIndex = 0)
 		{
 			this.itemNum = itemNum;
@@ -236,7 +209,6 @@ namespace SGNFW.uGUI
 			this.Refresh();
 		}
 
-		// Token: 0x06002366 RID: 9062 RVA: 0x00197BEC File Offset: 0x00195DEC
 		public void ResizeFocesNoMove(int itemNum)
 		{
 			this.itemNum = itemNum;
@@ -251,7 +223,6 @@ namespace SGNFW.uGUI
 			this.Refresh();
 		}
 
-		// Token: 0x06002367 RID: 9063 RVA: 0x00197C5C File Offset: 0x00195E5C
 		public void Refresh()
 		{
 			this.Update();
@@ -275,7 +246,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x06002368 RID: 9064 RVA: 0x00197CEC File Offset: 0x00195EEC
 		public void Clear()
 		{
 			if (this.itemList == null)
@@ -292,7 +262,6 @@ namespace SGNFW.uGUI
 			this.ScrollReset();
 		}
 
-		// Token: 0x06002369 RID: 9065 RVA: 0x00197D64 File Offset: 0x00195F64
 		private void UpdateItem(int idx, GameObject go)
 		{
 			if (this.loop)
@@ -319,7 +288,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x0600236A RID: 9066 RVA: 0x00197DC8 File Offset: 0x00195FC8
 		private void Setup()
 		{
 			Vector2 sizeDelta = this.scrollRect.content.sizeDelta;
@@ -348,7 +316,6 @@ namespace SGNFW.uGUI
 			this.trsRoot.localPosition = localPosition;
 		}
 
-		// Token: 0x0600236B RID: 9067 RVA: 0x00197F18 File Offset: 0x00196118
 		public void ForceSetScrollRect(float sizeDelta)
 		{
 			Vector2 sizeDelta2 = this.scrollRect.content.sizeDelta;
@@ -363,7 +330,6 @@ namespace SGNFW.uGUI
 			this.scrollRect.content.sizeDelta = sizeDelta2;
 		}
 
-		// Token: 0x0600236C RID: 9068 RVA: 0x00197F70 File Offset: 0x00196170
 		private void Focus(int focusIndex)
 		{
 			int num = this.itemNum - 1;
@@ -378,13 +344,11 @@ namespace SGNFW.uGUI
 			this.scrollRect.horizontalNormalizedPosition = num3;
 		}
 
-		// Token: 0x0600236D RID: 9069 RVA: 0x00197FEB File Offset: 0x001961EB
 		public void ForceFocus(int focusIndex)
 		{
 			this.Focus(focusIndex);
 		}
 
-		// Token: 0x0600236E RID: 9070 RVA: 0x00197FF4 File Offset: 0x001961F4
 		public int CalcCurrentFocusIndex()
 		{
 			int num = this.itemNum - 1;
@@ -408,7 +372,6 @@ namespace SGNFW.uGUI
 			return i;
 		}
 
-		// Token: 0x0600236F RID: 9071 RVA: 0x0019806C File Offset: 0x0019626C
 		public void NextFocusIndex(float moveTime)
 		{
 			int num = this.itemNum - 1;
@@ -425,13 +388,11 @@ namespace SGNFW.uGUI
 			this.autoTime = moveTime;
 		}
 
-		// Token: 0x06002370 RID: 9072 RVA: 0x001980C4 File Offset: 0x001962C4
 		public void InitForce()
 		{
 			this.Awake();
 		}
 
-		// Token: 0x06002371 RID: 9073 RVA: 0x001980CC File Offset: 0x001962CC
 		private void Awake()
 		{
 			if (this.isInit)
@@ -474,7 +435,6 @@ namespace SGNFW.uGUI
 			this.SetupScrollHandle();
 		}
 
-		// Token: 0x06002372 RID: 9074 RVA: 0x001981FC File Offset: 0x001963FC
 		private void Update()
 		{
 			FixedScrollRect fixedScrollRect = this.scrollRect as FixedScrollRect;
@@ -577,7 +537,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x06002373 RID: 9075 RVA: 0x0019862C File Offset: 0x0019682C
 		public void SetupScrollHandle()
 		{
 			if (this.scrollRect.verticalScrollbar != null)
@@ -598,7 +557,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x06002374 RID: 9076 RVA: 0x00198720 File Offset: 0x00196920
 		public void SetParameterByPgui(GameObject targetPrefab, float itemSize, float paddingStart, float paddingEnd, bool isVertical)
 		{
 			this.prefab = targetPrefab;
@@ -610,102 +568,72 @@ namespace SGNFW.uGUI
 			this.scrollRect.scrollSensitivity = (this.scrollRect.vertical ? itemSize : (itemSize * -1f));
 		}
 
-		// Token: 0x06002375 RID: 9077 RVA: 0x00198790 File Offset: 0x00196990
 		public void SetPrefab(GameObject _prefab)
 		{
 			this.prefab = _prefab;
 		}
 
-		// Token: 0x04001AB2 RID: 6834
 		public Action<int, GameObject> onStartItem;
 
-		// Token: 0x04001AB3 RID: 6835
 		public Action<int, GameObject> onUpdateItem;
 
-		// Token: 0x04001AB4 RID: 6836
 		public Action<int> onChangeIndex;
 
-		// Token: 0x04001AB5 RID: 6837
 		[SerializeField]
 		protected GameObject prefab;
 
-		// Token: 0x04001AB6 RID: 6838
 		[SerializeField]
 		protected ReuseScroll.Direction direction;
 
-		// Token: 0x04001AB7 RID: 6839
 		[SerializeField]
 		protected int reuseItemNum;
 
-		// Token: 0x04001AB8 RID: 6840
 		[SerializeField]
 		protected float size;
 
-		// Token: 0x04001AB9 RID: 6841
 		[SerializeField]
 		protected ReuseScroll.Padding padding;
 
-		// Token: 0x04001ABA RID: 6842
 		[SerializeField]
 		protected bool loop;
 
-		// Token: 0x04001ABB RID: 6843
 		protected ScrollRect scrollRect;
 
-		// Token: 0x04001ABC RID: 6844
 		protected RectTransform trsRoot;
 
-		// Token: 0x04001ABD RID: 6845
 		protected List<RectTransform> itemList = new List<RectTransform>();
 
-		// Token: 0x04001ABE RID: 6846
 		protected float diffPreFramePosition;
 
-		// Token: 0x04001ABF RID: 6847
 		protected int currentItem;
 
-		// Token: 0x04001AC0 RID: 6848
 		protected int itemNum;
 
-		// Token: 0x04001AC1 RID: 6849
 		protected bool autoScroll;
 
-		// Token: 0x04001AC2 RID: 6850
 		protected int autoScrollIndex;
 
-		// Token: 0x04001AC3 RID: 6851
 		protected int prevScrollIndex;
 
-		// Token: 0x04001AC4 RID: 6852
 		protected float autoTimer;
 
-		// Token: 0x04001AC5 RID: 6853
 		protected float autoTime;
 
-		// Token: 0x04001AC6 RID: 6854
 		protected bool isScroll;
 
-		// Token: 0x04001AC7 RID: 6855
 		private int nowIndex = -1;
 
-		// Token: 0x04001AC8 RID: 6856
 		private bool isInit;
 
-		// Token: 0x02001068 RID: 4200
 		protected enum Direction
 		{
-			// Token: 0x04005BB9 RID: 23481
 			Vertical,
-			// Token: 0x04005BBA RID: 23482
 			Horizontal
 		}
 
-		// Token: 0x02001069 RID: 4201
 		[Serializable]
 		protected class Padding
 		{
-			// Token: 0x17000BED RID: 3053
-			// (get) Token: 0x060052E6 RID: 21222 RVA: 0x002496FE File Offset: 0x002478FE
 			public float total
 			{
 				get
@@ -714,10 +642,8 @@ namespace SGNFW.uGUI
 				}
 			}
 
-			// Token: 0x04005BBB RID: 23483
 			public float start;
 
-			// Token: 0x04005BBC RID: 23484
 			public float end;
 		}
 	}

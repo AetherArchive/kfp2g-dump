@@ -1,30 +1,17 @@
-﻿using System;
+using System;
 
-// Token: 0x020000DD RID: 221
 public enum BattleMissionType
 {
-	// Token: 0x040007F6 RID: 2038
 	INVALID,
-	// Token: 0x040007F7 RID: 2039
 	CLEAR_DEAD_NUM,
-	// Token: 0x040007F8 RID: 2040
 	TURN_NUM,
-	// Token: 0x040007F9 RID: 2041
 	CHAIN_NUM,
-	// Token: 0x040007FA RID: 2042
 	CHAIN_ACTION_NUM,
-	// Token: 0x040007FB RID: 2043
 	CHAIN_TRY_NUM,
-	// Token: 0x040007FC RID: 2044
 	CHAIN_BEAT_NUM,
-	// Token: 0x040007FD RID: 2045
 	CHARA_LIMITED,
-	// Token: 0x040007FE RID: 2046
 	HP_RATIO,
-	// Token: 0x040007FF RID: 2047
 	STATUS_ERROR,
-	// Token: 0x04000800 RID: 2048
 	OKAWARI,
-	// Token: 0x04000801 RID: 2049
 	ARTS
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +13,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x0200012E RID: 302
 public class SelCharaGrowCtrl : MonoBehaviour
 {
-	// Token: 0x17000344 RID: 836
-	// (get) Token: 0x06000FA7 RID: 4007 RVA: 0x000BACE1 File Offset: 0x000B8EE1
-	// (set) Token: 0x06000FA8 RID: 4008 RVA: 0x000BACF0 File Offset: 0x000B8EF0
 	public bool TouchRect
 	{
 		get
@@ -33,8 +29,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000345 RID: 837
-	// (get) Token: 0x06000FA9 RID: 4009 RVA: 0x000BACF9 File Offset: 0x000B8EF9
 	public bool IsTutorial
 	{
 		get
@@ -43,8 +37,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000346 RID: 838
-	// (get) Token: 0x06000FAA RID: 4010 RVA: 0x000BAD01 File Offset: 0x000B8F01
 	public List<CharaPackData> DispCharaPackList
 	{
 		get
@@ -53,44 +45,37 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FAB RID: 4011 RVA: 0x000BAD09 File Offset: 0x000B8F09
 	public void SetIsTutorial(bool isTutorial)
 	{
 		this._isTutorial = isTutorial;
 	}
 
-	// Token: 0x06000FAC RID: 4012 RVA: 0x000BAD14 File Offset: 0x000B8F14
 	public RectTransform GetCharaTopRectTransform(int id)
 	{
 		return new List<IconCharaCtrl>(this._guiData.CharacterGrowTop.ScrollView.GetComponentsInChildren<IconCharaCtrl>()).Find((IconCharaCtrl item) => item.charaPackData.id == id).transform.Find("BaseImage") as RectTransform;
 	}
 
-	// Token: 0x06000FAD RID: 4013 RVA: 0x000BAD6D File Offset: 0x000B8F6D
 	public bool IsPlayingAnimCharaSelect()
 	{
 		return this._guiData.CharacterGrowTop.SelCmnAllInOut.ExIsPlaying();
 	}
 
-	// Token: 0x06000FAE RID: 4014 RVA: 0x000BAD84 File Offset: 0x000B8F84
 	public RectTransform GetTabRectTransform(SelCharaGrowCtrl.TabType tab)
 	{
 		this._tutorialClickTabIndex = (int)tab;
 		return this._guiData.CharacterGrowMain.Cmn.TabGuiList[(int)tab].TabCtrl.transform as RectTransform;
 	}
 
-	// Token: 0x06000FAF RID: 4015 RVA: 0x000BADB7 File Offset: 0x000B8FB7
 	public RectTransform GetWildReleaseBtnRectTransform()
 	{
 		return this._charaGrowWild.GrowWildGUI.wildReleaseTab.Btn_OpenComp.transform as RectTransform;
 	}
 
-	// Token: 0x06000FB0 RID: 4016 RVA: 0x000BADD8 File Offset: 0x000B8FD8
 	public bool FinishedOpenConfirmationWindow()
 	{
 		return this._charaGrowWild.GrowWildGUI.wildGrowWindow.owCtrl.FinishedOpen();
 	}
 
-	// Token: 0x06000FB1 RID: 4017 RVA: 0x000BADF4 File Offset: 0x000B8FF4
 	public RectTransform GetWindowButtonRectTransform(int btnIndex)
 	{
 		if (btnIndex < 0)
@@ -100,7 +85,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return this._charaGrowWild.GrowWildGUI.wildGrowWindow.owCtrl.GetButtonRectTransform(btnIndex);
 	}
 
-	// Token: 0x06000FB2 RID: 4018 RVA: 0x000BAE34 File Offset: 0x000B9034
 	public void Init()
 	{
 		this._mainCharaGrowObj = Object.Instantiate<GameObject>((GameObject)Resources.Load("SceneCharaEdit/GUI/Prefab/GUI_CharaGrow"), base.transform);
@@ -366,7 +350,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		this.Setup();
 	}
 
-	// Token: 0x06000FB3 RID: 4019 RVA: 0x000BC4C0 File Offset: 0x000BA6C0
 	public void Setup()
 	{
 		this._haveCharaPackList = new List<CharaPackData>(DataManager.DmChara.GetUserCharaMap().Values);
@@ -400,7 +383,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		this._tutorialClickTabIndex = Enum.GetValues(typeof(SelCharaGrowCtrl.TabType)).Length;
 	}
 
-	// Token: 0x06000FB4 RID: 4020 RVA: 0x000BC660 File Offset: 0x000BA860
 	private void CharaGrowSetup(int charaId, bool resetTab)
 	{
 		this._guiData.CharacterGrowMain.BtnYajiRight.gameObject.SetActive(this._enableLeftRightButton);
@@ -447,14 +429,12 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		this._guiData.CharacterGrowMain.BtnFavorite.SetToggleIndex(0);
 	}
 
-	// Token: 0x06000FB5 RID: 4021 RVA: 0x000BC9A4 File Offset: 0x000BABA4
 	public void SetupParam(bool enableLeftRightButton, bool enableMoreButton)
 	{
 		this._enableLeftRightButton = enableLeftRightButton;
 		this._enableMoreButton = enableMoreButton;
 	}
 
-	// Token: 0x06000FB6 RID: 4022 RVA: 0x000BC9B4 File Offset: 0x000BABB4
 	public void SetupBySceneForce(int charaId, int selectTab, bool itemWindow)
 	{
 		if (this.lastOpenItemWindowParam == null || this.lastOpenItemWindowParam.itemList.Count <= this.lastOpenItemWindowParam.index)
@@ -476,7 +456,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FB7 RID: 4023 RVA: 0x000BCA68 File Offset: 0x000BAC68
 	public void SetDisable()
 	{
 		base.gameObject.SetActive(false);
@@ -489,7 +468,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		this._guiData.SingleItemInfoWindow.owCtrl.gameObject.SetActive(false);
 	}
 
-	// Token: 0x06000FB8 RID: 4024 RVA: 0x000BCADC File Offset: 0x000BACDC
 	private void OnDestroy()
 	{
 		if (this._guiData != null)
@@ -504,7 +482,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FB9 RID: 4025 RVA: 0x000BCB28 File Offset: 0x000BAD28
 	private void Update()
 	{
 		if (this._growMultiCoroutine != null && !this._growMultiCoroutine.MoveNext())
@@ -606,7 +583,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		this._charaGrowMulti.UpdateGrowMulti(this);
 	}
 
-	// Token: 0x06000FBA RID: 4026 RVA: 0x000BCE9C File Offset: 0x000BB09C
 	private void SwitchCurrentTab(int index, bool isGrowMulti = false)
 	{
 		foreach (GameObject gameObject in this._guiData.CharacterGrowMain.TabObjectMap.Values)
@@ -725,7 +701,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		this.SetMaxInfo(index, isGrowMulti, false);
 	}
 
-	// Token: 0x06000FBB RID: 4027 RVA: 0x000BD4B8 File Offset: 0x000BB6B8
 	private void SelectLvUp()
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(this._currentCharaId);
@@ -806,7 +781,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FBC RID: 4028 RVA: 0x000BDA70 File Offset: 0x000BBC70
 	private bool CheckLvUp(int addItemId)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(this._currentCharaId);
@@ -826,7 +800,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return DataManager.DmChara.SimulateAddExp(DataManager.DmChara.GetUserCharaData(this._currentCharaId), list).level <= userCharaData.dynamicData.limitLevel;
 	}
 
-	// Token: 0x06000FBD RID: 4029 RVA: 0x000BDB58 File Offset: 0x000BBD58
 	private bool CheckKizunaLvUp(int addItemId)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(this._currentCharaId);
@@ -846,7 +819,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return DataManager.DmChara.SimulateAddKizunaExp(DataManager.DmChara.GetUserCharaData(this._currentCharaId), list).level <= userCharaData.dynamicData.KizunaLimitLevel;
 	}
 
-	// Token: 0x06000FBE RID: 4030 RVA: 0x000BDC40 File Offset: 0x000BBE40
 	private void SelectKizunaLvUp()
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(this._currentCharaId);
@@ -937,7 +909,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FBF RID: 4031 RVA: 0x000BE0B0 File Offset: 0x000BC2B0
 	private void SetOwnCoin(int tabIndex)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(this._currentCharaId);
@@ -972,7 +943,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		this._guiData.CharacterGrowMain.Cmn.HaveGoldText.m_Text.color = ((userItemData.num < num) ? Color.red : Color.white);
 	}
 
-	// Token: 0x06000FC0 RID: 4032 RVA: 0x000BE208 File Offset: 0x000BC408
 	private void RefParam(out string title, out string rateInfo, out int rate, out ItemData leftItem, out ItemData rightItem, out ItemStaticBase leftItemStaticBase, out ItemStaticBase rightItemStaticData, int index, int holdStone)
 	{
 		CharaPackData charaPackData = DataManager.DmChara.GetUserCharaData(this._currentCharaId);
@@ -1012,7 +982,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		rightItemStaticData = rightItem.staticData;
 	}
 
-	// Token: 0x06000FC1 RID: 4033 RVA: 0x000BE390 File Offset: 0x000BC590
 	private void SetMaxInfo(int tabIdx, bool notDispMax = false, bool forceLevelLimitOver = false)
 	{
 		Action<ItemData, ItemData, int, int, string> action = delegate(ItemData leftItem, ItemData rightItem, int rate, int holdStone, string rateInfo)
@@ -1237,7 +1206,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FC2 RID: 4034 RVA: 0x000BEE4C File Offset: 0x000BD04C
 	private void SetActStrengthButton(int index, bool isGrowMulti = false)
 	{
 		this._guiData.CharacterGrowMain.Cmn.ButtonL.gameObject.SetActive(true);
@@ -1354,7 +1322,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FC3 RID: 4035 RVA: 0x000BF540 File Offset: 0x000BD740
 	private bool OnSelectTab(int index)
 	{
 		if (this._isTutorial && this._tutorialClickTabIndex != index)
@@ -1367,7 +1334,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000FC4 RID: 4036 RVA: 0x000BF574 File Offset: 0x000BD774
 	private void OnClickSetReleaseButton(PguiButtonCtrl pguibtn)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(this._currentCharaId);
@@ -1401,7 +1367,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		this._charaGrowWild.GrowWildGUI.wildGrowWindow.owCtrl.Open();
 	}
 
-	// Token: 0x06000FC5 RID: 4037 RVA: 0x000BF7F0 File Offset: 0x000BD9F0
 	private void OnClickWildReleaseButton(PguiButtonCtrl pguibtn)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(this._currentCharaId);
@@ -1456,7 +1421,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		this._charaGrowWild.GrowWildGUI.wildGrowWindow.owCtrl.Open();
 	}
 
-	// Token: 0x06000FC6 RID: 4038 RVA: 0x000BFB70 File Offset: 0x000BDD70
 	private IEnumerator ExpGageEffectRequest(List<ItemInput> itemList, bool isKizuna = false)
 	{
 		List<ItemData> expAddItemList = DataManager.DmItem.GetUserItemListByKind(ItemDef.Kind.EXP_ADD);
@@ -1523,7 +1487,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FC7 RID: 4039 RVA: 0x000BFB8D File Offset: 0x000BDD8D
 	private IEnumerator ExpGageEffectAfterRequest(List<ItemInput> itemList)
 	{
 		CanvasManager.SetEnableCmnTouchMask(true);
@@ -1765,7 +1728,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		goto IL_09B0;
 	}
 
-	// Token: 0x06000FC8 RID: 4040 RVA: 0x000BFBA3 File Offset: 0x000BDDA3
 	private IEnumerator KizunaExpGageEffectAfterRequest(List<ItemInput> itemList)
 	{
 		CanvasManager.SetEnableCmnTouchMask(true);
@@ -1934,7 +1896,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FC9 RID: 4041 RVA: 0x000BFBB2 File Offset: 0x000BDDB2
 	private IEnumerator ExpGageEffect(bool isKizuna = false)
 	{
 		List<ItemInput> itemList = new List<ItemInput>();
@@ -1951,7 +1912,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FCA RID: 4042 RVA: 0x000BFBC8 File Offset: 0x000BDDC8
 	private IEnumerator LevelLimitOverEffectRequest(int afterLevelLimitId)
 	{
 		DataManager.DmChara.RequestActoinCharaLimitLevelUp(this._currentCharaId, afterLevelLimitId);
@@ -1964,7 +1924,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FCB RID: 4043 RVA: 0x000BFBDE File Offset: 0x000BDDDE
 	private IEnumerator LevelLimitOverEffectAfterRequest()
 	{
 		CanvasManager.SetEnableCmnTouchMask(true);
@@ -1998,7 +1957,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FCC RID: 4044 RVA: 0x000BFBED File Offset: 0x000BDDED
 	private IEnumerator LevelLimitOverEffect()
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(this._currentCharaId);
@@ -2015,7 +1973,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FCD RID: 4045 RVA: 0x000BFBFC File Offset: 0x000BDDFC
 	private IEnumerator WildReleaseEffectRequest(bool isPromoteStepUp, bool isSingle, List<WildResult> promoteRequest = null)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(this._currentCharaId);
@@ -2097,7 +2054,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FCE RID: 4046 RVA: 0x000BFC20 File Offset: 0x000BDE20
 	private IEnumerator WildReleaseEffectAfterRequest(bool isPromoteStepUp, PrjUtil.ParamPreset beforeParam, int beforePromoteNum)
 	{
 		CanvasManager.SetEnableCmnTouchMask(true);
@@ -2266,7 +2222,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FCF RID: 4047 RVA: 0x000BFC44 File Offset: 0x000BDE44
 	private IEnumerator WildReleaseEffect(bool isPromoteStepUp, bool isSingle)
 	{
 		CharaDynamicData dynamicData = DataManager.DmChara.GetUserCharaData(this._currentCharaId).dynamicData;
@@ -2287,7 +2242,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FD0 RID: 4048 RVA: 0x000BFC61 File Offset: 0x000BDE61
 	private IEnumerator RankUpGageEffectRequest(int afterRank)
 	{
 		DataManager.DmChara.RequestActionCharaRankup(this._currentCharaId, afterRank);
@@ -2300,7 +2254,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FD1 RID: 4049 RVA: 0x000BFC77 File Offset: 0x000BDE77
 	private IEnumerator RankUpGageEffectAfterRequest(int beforedRank)
 	{
 		CanvasManager.SetEnableCmnTouchMask(true);
@@ -2422,7 +2375,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		goto IL_028E;
 	}
 
-	// Token: 0x06000FD2 RID: 4050 RVA: 0x000BFC8D File Offset: 0x000BDE8D
 	private IEnumerator RankUpGageEffect()
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(this._currentCharaId);
@@ -2440,13 +2392,11 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FD3 RID: 4051 RVA: 0x000BFC9C File Offset: 0x000BDE9C
 	private void OnTouchMask(Transform tr)
 	{
 		this._touchScreenAuth = true;
 	}
 
-	// Token: 0x06000FD4 RID: 4052 RVA: 0x000BFCA5 File Offset: 0x000BDEA5
 	private IEnumerator MiracleEffectRequest(int afterArtsLv)
 	{
 		CanvasManager.HdlMissionProgressCtrl.IsMiracleUp = true;
@@ -2460,7 +2410,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FD5 RID: 4053 RVA: 0x000BFCBB File Offset: 0x000BDEBB
 	private IEnumerator MiracleEffectAfterRequest(int beforeArtsLv)
 	{
 		CanvasManager.SetEnableCmnTouchMask(true);
@@ -2511,7 +2460,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FD6 RID: 4054 RVA: 0x000BFCD1 File Offset: 0x000BDED1
 	private IEnumerator MiracleEffect()
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(this._currentCharaId);
@@ -2529,7 +2477,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FD7 RID: 4055 RVA: 0x000BFCE0 File Offset: 0x000BDEE0
 	private IEnumerator NanairoReleaseEffectRequest()
 	{
 		DataManager.DmChara.RequestActionCharaNanairo(this._currentCharaId);
@@ -2542,7 +2489,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FD8 RID: 4056 RVA: 0x000BFCEF File Offset: 0x000BDEEF
 	private IEnumerator NanairoReleaseEffectAfterRequest()
 	{
 		CanvasManager.SetEnableCmnTouchMask(true);
@@ -2599,7 +2545,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FD9 RID: 4057 RVA: 0x000BFCFE File Offset: 0x000BDEFE
 	private IEnumerator NanairoReleaseEffect()
 	{
 		IEnumerator ienum = this.NanairoReleaseEffectRequest();
@@ -2615,7 +2560,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FDA RID: 4058 RVA: 0x000BFD0D File Offset: 0x000BDF0D
 	private IEnumerator PhotoPocketEffect()
 	{
 		CharaPackData charaData = DataManager.DmChara.GetUserCharaData(this._currentCharaId);
@@ -2677,7 +2621,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FDB RID: 4059 RVA: 0x000BFD1C File Offset: 0x000BDF1C
 	private IEnumerator IEKizunaLimitOverRequest()
 	{
 		DataManager.DmChara.RequestActoinCharaKizunaLimitLevelUp(this._currentCharaId);
@@ -2690,7 +2633,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FDC RID: 4060 RVA: 0x000BFD2B File Offset: 0x000BDF2B
 	private IEnumerator IEKizunaLimitOverAfterRequest()
 	{
 		CanvasManager.SetEnableCmnTouchMask(true);
@@ -2725,7 +2667,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FDD RID: 4061 RVA: 0x000BFD3A File Offset: 0x000BDF3A
 	private IEnumerator IEKizunaLimitOver()
 	{
 		IEnumerator ienum = this.IEKizunaLimitOverRequest();
@@ -2741,7 +2682,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FDE RID: 4062 RVA: 0x000BFD49 File Offset: 0x000BDF49
 	private IEnumerator ItemExchangeEffect()
 	{
 		CharaPackData charaData = DataManager.DmChara.GetUserCharaData(this._currentCharaId);
@@ -2786,7 +2726,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FDF RID: 4063 RVA: 0x000BFD58 File Offset: 0x000BDF58
 	private IEnumerator GrowthAchievementRewardEffect(DataManagerCharaMission.DynamicCharaMission.MissionOne dmo, DataManagerCharaMission.StaticMission sbd)
 	{
 		this._GettingAchievement = true;
@@ -2818,7 +2757,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FE0 RID: 4064 RVA: 0x000BFD75 File Offset: 0x000BDF75
 	private IEnumerator IEReleaseAccessory()
 	{
 		DataManager.DmChara.RequestActoinCharaAccessoryOpen(this._currentCharaId);
@@ -2844,7 +2782,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FE1 RID: 4065 RVA: 0x000BFD84 File Offset: 0x000BDF84
 	private IEnumerator ConnectFlowBase(UnityAction connectBef, UnityAction connectAft)
 	{
 		connectBef();
@@ -2856,7 +2793,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06000FE2 RID: 4066 RVA: 0x000BFD9C File Offset: 0x000BDF9C
 	private void SetupLvUpItem(ItemStaticBase expAddItem, int attr, int index)
 	{
 		SelCharaGrowLevel.LvUpTab lvUpTab = this._charaGrowLevelUp.LevelUpGUI.lvUpTab;
@@ -2884,7 +2820,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06000FE3 RID: 4067 RVA: 0x000BFF24 File Offset: 0x000BE124
 	private void SetupKizunaLvUpItem(ItemStaticBase expAddItem, int attr, int index)
 	{
 		SelCharaGrowKizuna.KizunaLvUpTab kizunaLvUpTab = this._charaGrowKizuna.GrowKizunaGUI.KizunaLvUpTab;
@@ -2900,7 +2835,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06000FE4 RID: 4068 RVA: 0x000BFFBC File Offset: 0x000BE1BC
 	private int GetAttributeFromIndex(int index)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(this._currentCharaId);
@@ -2930,7 +2864,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return num;
 	}
 
-	// Token: 0x06000FE5 RID: 4069 RVA: 0x000C005C File Offset: 0x000BE25C
 	private SelCharaGrowCtrl.CommonGUI.ItemListBar SetupAttrBar(GameObject go, int attr)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(this._currentCharaId);
@@ -2977,7 +2910,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return itemListBar;
 	}
 
-	// Token: 0x06000FE6 RID: 4070 RVA: 0x000C0190 File Offset: 0x000BE390
 	private void OnStartItemLvUp(int index, GameObject go)
 	{
 		SelCharaGrowLevel.LvUpTab lvUpTab = this._charaGrowLevelUp.LevelUpGUI.lvUpTab;
@@ -2995,7 +2927,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FE7 RID: 4071 RVA: 0x000C0234 File Offset: 0x000BE434
 	private void OnStartItemKizunaLvUp(int index, GameObject go)
 	{
 		SelCharaGrowKizuna.KizunaLvUpTab kizunaLvUpTab = this._charaGrowKizuna.GrowKizunaGUI.KizunaLvUpTab;
@@ -3017,7 +2948,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FE8 RID: 4072 RVA: 0x000C02D8 File Offset: 0x000BE4D8
 	private void OnUpdateItemLvUp(int index, GameObject go)
 	{
 		int attributeFromIndex = this.GetAttributeFromIndex(index);
@@ -3032,7 +2962,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FE9 RID: 4073 RVA: 0x000C0338 File Offset: 0x000BE538
 	private void OnUpdateItemKizunaLvUp(int index, GameObject go)
 	{
 		int num = 0;
@@ -3047,7 +2976,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FEA RID: 4074 RVA: 0x000C0394 File Offset: 0x000BE594
 	private void OnStartCharaTop(int index, GameObject go)
 	{
 		GameObject gameObject = (GameObject)Resources.Load("SceneCharaEdit/GUI/Prefab/CharaGrow_Btn_CharaSelect");
@@ -3063,7 +2991,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FEB RID: 4075 RVA: 0x000C0408 File Offset: 0x000BE608
 	private void OnUpdateCharaTop(int index, GameObject go)
 	{
 		for (int i = 0; i < 3; i++)
@@ -3086,7 +3013,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FEC RID: 4076 RVA: 0x000C0490 File Offset: 0x000BE690
 	private void OnTouchLvUpIcon(int itemId, bool isKizuna = false)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(this._currentCharaId);
@@ -3144,7 +3070,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		SoundManager.Play("prd_se_click", false, false);
 	}
 
-	// Token: 0x06000FED RID: 4077 RVA: 0x000C0664 File Offset: 0x000BE864
 	private void OnLongTouchlvUpIcon(int itemId)
 	{
 		ItemData userItemData = DataManager.DmItem.GetUserItemData(itemId);
@@ -3164,7 +3089,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		this.SelectLvUpForWindow(count);
 	}
 
-	// Token: 0x06000FEE RID: 4078 RVA: 0x000C0790 File Offset: 0x000BE990
 	private void OnLongTouchKizunalvUpIcon(int itemId)
 	{
 		ItemData userItemData = DataManager.DmItem.GetUserItemData(itemId);
@@ -3184,7 +3108,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		this.SelectKizunaLvUpForWindow(count);
 	}
 
-	// Token: 0x06000FEF RID: 4079 RVA: 0x000C08BC File Offset: 0x000BEABC
 	private bool OnItemUseWindowCallback(int index)
 	{
 		SelCharaGrowLevel.WindowItemUse itemUseWindow = this._charaGrowLevelUp.LevelUpGUI.itemUseWindow;
@@ -3215,7 +3138,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000FF0 RID: 4080 RVA: 0x000C09AC File Offset: 0x000BEBAC
 	private bool OnKizunaItemUseWindowCallback(int index)
 	{
 		SelCharaGrowKizuna.WindowItemUse itemUseWindow = this._charaGrowKizuna.LevelUpGUI.ItemUseWindow;
@@ -3246,21 +3168,18 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06000FF1 RID: 4081 RVA: 0x000C0A9C File Offset: 0x000BEC9C
 	private void OnValueChanged(float val)
 	{
 		int num = Mathf.FloorToInt(val);
 		this.SelectLvUpForWindow(num);
 	}
 
-	// Token: 0x06000FF2 RID: 4082 RVA: 0x000C0AB8 File Offset: 0x000BECB8
 	private void OnValueChangedKizuna(float val)
 	{
 		int num = Mathf.FloorToInt(val);
 		this.SelectKizunaLvUpForWindow(num);
 	}
 
-	// Token: 0x06000FF3 RID: 4083 RVA: 0x000C0AD4 File Offset: 0x000BECD4
 	private void SelectLvUpForWindow(int value)
 	{
 		CharaDynamicData dynamicData = DataManager.DmChara.GetUserCharaData(this._currentCharaId).dynamicData;
@@ -3328,7 +3247,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FF4 RID: 4084 RVA: 0x000C0F6C File Offset: 0x000BF16C
 	private void SelectKizunaLvUpForWindow(int value)
 	{
 		CharaDynamicData dynamicData = DataManager.DmChara.GetUserCharaData(this._currentCharaId).dynamicData;
@@ -3390,7 +3308,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FF5 RID: 4085 RVA: 0x000C1320 File Offset: 0x000BF520
 	private void OnClickButtonForItemUse(PguiButtonCtrl button)
 	{
 		SelCharaGrowLevel.WindowItemUse itemUseWindow = this._charaGrowLevelUp.LevelUpGUI.itemUseWindow;
@@ -3411,7 +3328,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		this.SelectLvUpForWindow(num);
 	}
 
-	// Token: 0x06000FF6 RID: 4086 RVA: 0x000C13A4 File Offset: 0x000BF5A4
 	private void OnClickButtonForKizunaItemUse(PguiButtonCtrl button)
 	{
 		SelCharaGrowKizuna.WindowItemUse itemUseWindow = this._charaGrowKizuna.LevelUpGUI.ItemUseWindow;
@@ -3432,7 +3348,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		this.SelectKizunaLvUpForWindow(num);
 	}
 
-	// Token: 0x06000FF7 RID: 4087 RVA: 0x000C1428 File Offset: 0x000BF628
 	private void OnTouchWildIcon(int index)
 	{
 		this.ChangeCurrentWildIcon(index);
@@ -3443,7 +3358,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		SoundManager.Play("prd_se_click", false, false);
 	}
 
-	// Token: 0x06000FF8 RID: 4088 RVA: 0x000C14C0 File Offset: 0x000BF6C0
 	private void ChangeCurrentWildIcon(int index)
 	{
 		SelCharaGrowWild.WildReleaseTab wildReleaseTab = this._charaGrowWild.GrowWildGUI.wildReleaseTab;
@@ -3452,7 +3366,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		wildReleaseTab.iconItemList[this._charaGrowWild.currentIndexWild].current.SetActive(true);
 	}
 
-	// Token: 0x06000FF9 RID: 4089 RVA: 0x000C152C File Offset: 0x000BF72C
 	private void ClearSelectLvUpItem(bool isKizuna = false)
 	{
 		this._selectLvUpItemIdList.Clear();
@@ -3468,7 +3381,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FFA RID: 4090 RVA: 0x000C1628 File Offset: 0x000BF828
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		CharaPackData charaData = DataManager.DmChara.GetUserCharaData(this._currentCharaId);
@@ -3799,14 +3711,12 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06000FFB RID: 4091 RVA: 0x000C2BA0 File Offset: 0x000C0DA0
 	private void OnClickExchangeCheckButton(PguiButtonCtrl btn)
 	{
 		this._charaGrowPhotoPocket.ConversionCheckConfirmed = !this._charaGrowPhotoPocket.ConversionCheckConfirmed;
 		CanvasManager.HdlExchangeWarningWindow.CheckBoxButton.transform.Find("BaseImage/Img_Check").gameObject.SetActive(this._charaGrowPhotoPocket.ConversionCheckConfirmed);
 	}
 
-	// Token: 0x06000FFC RID: 4092 RVA: 0x000C2BF4 File Offset: 0x000C0DF4
 	private void OnClickArrowButton(PguiButtonCtrl button)
 	{
 		int num = this._dispCharaPackList.FindIndex((CharaPackData item) => item.id == this._currentCharaId);
@@ -3815,7 +3725,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		this.CharaGrowSetup(this._dispCharaPackList[num].id, false);
 	}
 
-	// Token: 0x06000FFD RID: 4093 RVA: 0x000C2C6C File Offset: 0x000C0E6C
 	private int CalcItemMaxValue(int itemId, bool isKizuna = false)
 	{
 		long num = (isKizuna ? DataManager.DmChara.GetNeedExpByKizunaLimitLevel(this._currentCharaId) : DataManager.DmChara.GetNeedExpByLimitLevel(this._currentCharaId));
@@ -3847,7 +3756,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return num4;
 	}
 
-	// Token: 0x06000FFE RID: 4094 RVA: 0x000C2D8C File Offset: 0x000C0F8C
 	private PguiReplaceAECtrl SetPguiReplaceAECtrl(DataManagerChara.CharaLevelupResult result, bool isKizuna = false)
 	{
 		PguiReplaceAECtrl pguiReplaceAECtrl = (isKizuna ? this._charaGrowKizuna.GrowKizunaGUI.KizunaLvUpTab.ImageResult.GetComponent<PguiReplaceAECtrl>() : this._charaGrowLevelUp.LevelUpGUI.lvUpTab.AEImage_result.GetComponent<PguiReplaceAECtrl>());
@@ -3872,7 +3780,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return pguiReplaceAECtrl;
 	}
 
-	// Token: 0x06000FFF RID: 4095 RVA: 0x000C2E48 File Offset: 0x000C1048
 	public void OnClickCharaDetailButton(PguiButtonCtrl btn)
 	{
 		int num = this._dispCharaPackList.FindIndex((CharaPackData item) => item.id == this._currentCharaId);
@@ -3895,12 +3802,8 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x17000347 RID: 839
-	// (get) Token: 0x06001000 RID: 4096 RVA: 0x000C2EAD File Offset: 0x000C10AD
-	// (set) Token: 0x06001001 RID: 4097 RVA: 0x000C2EB5 File Offset: 0x000C10B5
 	public bool _isFinishedAnimCharaTopButton { get; private set; }
 
-	// Token: 0x06001002 RID: 4098 RVA: 0x000C2EBE File Offset: 0x000C10BE
 	private void OnClickCharaTopButton(int charaId)
 	{
 		this._isFinishedAnimCharaTopButton = false;
@@ -3917,7 +3820,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		this.CharaGrowSetup(charaId, true);
 	}
 
-	// Token: 0x06001003 RID: 4099 RVA: 0x000C2EF8 File Offset: 0x000C10F8
 	private bool OnSelectLvUpWindowButtonCallback(int index)
 	{
 		if (index == 1)
@@ -3928,7 +3830,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001004 RID: 4100 RVA: 0x000C2F13 File Offset: 0x000C1113
 	private bool OnSelectKizunaLvUpWindowButtonCallback(int index)
 	{
 		if (index == 1)
@@ -3939,7 +3840,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001005 RID: 4101 RVA: 0x000C2F30 File Offset: 0x000C1130
 	private bool OnSelectOpenAllWindowButtonCallback(int index)
 	{
 		if (index == 1)
@@ -3983,7 +3883,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001006 RID: 4102 RVA: 0x000C30AC File Offset: 0x000C12AC
 	private bool OnSelectWildWindowButtonCallback(int index)
 	{
 		if (index == 1)
@@ -3998,7 +3897,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001007 RID: 4103 RVA: 0x000C30E8 File Offset: 0x000C12E8
 	private bool OnResultWildWindowButtonCallback(int index)
 	{
 		this._effectStatus = SelCharaGrowCtrl.EffectStatus.ResultEnd;
@@ -4006,7 +3904,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001008 RID: 4104 RVA: 0x000C30F9 File Offset: 0x000C12F9
 	private bool OnSelectRankupWindowButtonCallback(int index)
 	{
 		if (index == 1)
@@ -4016,13 +3913,11 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001009 RID: 4105 RVA: 0x000C310C File Offset: 0x000C130C
 	private bool OnSelectItemInfoWindowButtonCallback(int index)
 	{
 		return true;
 	}
 
-	// Token: 0x0600100A RID: 4106 RVA: 0x000C310F File Offset: 0x000C130F
 	private bool OnSelectArtsWindowButtonCallback(int index)
 	{
 		if (index == 1)
@@ -4032,7 +3927,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x0600100B RID: 4107 RVA: 0x000C3122 File Offset: 0x000C1322
 	private bool OnSelectNanairoWindowButtonCallback(int index)
 	{
 		if (index == 1)
@@ -4042,7 +3936,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x0600100C RID: 4108 RVA: 0x000C3135 File Offset: 0x000C1335
 	private bool OnSelectPhotoPocketWindowButtonCallback(int index)
 	{
 		if (index == 1)
@@ -4052,7 +3945,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x0600100D RID: 4109 RVA: 0x000C3148 File Offset: 0x000C1348
 	private bool OnItemExchangeWindowButtonCallback(int index)
 	{
 		if (index == 1)
@@ -4062,7 +3954,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x0600100E RID: 4110 RVA: 0x000C315C File Offset: 0x000C135C
 	private bool OnSelectGrowMultiSelectWindowButtonCallback(int index)
 	{
 		if (index == 1)
@@ -4076,7 +3967,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x0600100F RID: 4111 RVA: 0x000C31E8 File Offset: 0x000C13E8
 	private void UpdateGrowMultiContent(CharaPackData charaPackData)
 	{
 		SelCharaGrowMulti.WindowGrowMultiCheck growMultiCheckWindow = this._charaGrowMulti.GrowMultiGUI.growMultiCheckWindow;
@@ -4126,7 +4016,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		growMultiCheckWindow.SetNotExecMessage();
 	}
 
-	// Token: 0x06001010 RID: 4112 RVA: 0x000C33E8 File Offset: 0x000C15E8
 	private bool OnSelectGrowMultiCheckWindowButtonCallback(int index)
 	{
 		if (index == 0 || index == PguiOpenWindowCtrl.CLOSE_BUTTON_INDEX)
@@ -4150,7 +4039,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001011 RID: 4113 RVA: 0x000C34C6 File Offset: 0x000C16C6
 	private IEnumerator GrowMultiCoroutine()
 	{
 		CanvasManager.SetEnableCmnTouchMask(true);
@@ -4312,7 +4200,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001012 RID: 4114 RVA: 0x000C34D5 File Offset: 0x000C16D5
 	private IEnumerator WaitVoice()
 	{
 		CanvasManager.SetEnableCmnTouchMask(true);
@@ -4326,14 +4213,12 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001013 RID: 4115 RVA: 0x000C34E4 File Offset: 0x000C16E4
 	private bool OnResultRankupWindowButtonCallback(int index)
 	{
 		this._effectStatus = SelCharaGrowCtrl.EffectStatus.ResultEnd;
 		return true;
 	}
 
-	// Token: 0x06001014 RID: 4116 RVA: 0x000C34F0 File Offset: 0x000C16F0
 	private void OpenRankUpClothesWindow(int rank)
 	{
 		CharaClothStatic charaClothStatic = DataManager.DmChara.GetClothListByChara(this._currentCharaId).Find((CharaClothStatic x) => x.GetRank == rank);
@@ -4363,14 +4248,12 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		this._effectStatus = SelCharaGrowCtrl.EffectStatus.ResultEnd;
 	}
 
-	// Token: 0x06001015 RID: 4117 RVA: 0x000C3594 File Offset: 0x000C1794
 	private bool OnResultRankupClothesWindowButtonCallback(int index)
 	{
 		this._effectStatus = SelCharaGrowCtrl.EffectStatus.ResultEnd;
 		return true;
 	}
 
-	// Token: 0x06001016 RID: 4118 RVA: 0x000C35A0 File Offset: 0x000C17A0
 	private bool OnResultArtsWindowButtonCallback(int index)
 	{
 		CharaPackData userCharaData = DataManager.DmChara.GetUserCharaData(this._currentCharaId);
@@ -4411,7 +4294,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001017 RID: 4119 RVA: 0x000C3744 File Offset: 0x000C1944
 	private bool OnResultPhotoPocketWindowButtonCallback(int index)
 	{
 		this._charaGrowPhotoPocket.UpdateItemPhotoPocket(this._currentCharaId);
@@ -4419,7 +4301,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001018 RID: 4120 RVA: 0x000C377C File Offset: 0x000C197C
 	public bool OnClickMenuReturn(UnityAction callback = null)
 	{
 		if (this._currentMode == SelCharaGrowCtrl.Mode.Main)
@@ -4446,13 +4327,11 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06001019 RID: 4121 RVA: 0x000C37F4 File Offset: 0x000C19F4
 	private void OnAchievementRewardStart(int index, GameObject go)
 	{
 		go.GetComponent<MissionBarCtrl>().Init();
 	}
 
-	// Token: 0x0600101A RID: 4122 RVA: 0x000C3804 File Offset: 0x000C1A04
 	private void OnAchievementRewardUpdate(int index, GameObject go)
 	{
 		if (-1 >= index)
@@ -4508,33 +4387,28 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		go.SetActive(false);
 	}
 
-	// Token: 0x0600101B RID: 4123 RVA: 0x000C3A2C File Offset: 0x000C1C2C
 	private void OnStartWindowLvUpItem(int index, GameObject go)
 	{
 		int num = 5;
 		this.SetStartWindowLvUpItem(go, num);
 	}
 
-	// Token: 0x0600101C RID: 4124 RVA: 0x000C3A44 File Offset: 0x000C1C44
 	private void OnStartWindowKizunaLvUpItem(int index, GameObject go)
 	{
 		int num = 5;
 		this.SetStartWindowLvUpItem(go, num);
 	}
 
-	// Token: 0x0600101D RID: 4125 RVA: 0x000C3A5B File Offset: 0x000C1C5B
 	private void OnUpdateWindowLvUpItem(int index, GameObject go)
 	{
 		this.SetUpdateWindowLvUpItem(index, go, false);
 	}
 
-	// Token: 0x0600101E RID: 4126 RVA: 0x000C3A66 File Offset: 0x000C1C66
 	private void OnUpdateWindowKizunaLvUpItem(int index, GameObject go)
 	{
 		this.SetUpdateWindowLvUpItem(index, go, true);
 	}
 
-	// Token: 0x0600101F RID: 4127 RVA: 0x000C3A74 File Offset: 0x000C1C74
 	private void SetStartWindowLvUpItem(GameObject go, int count)
 	{
 		for (int i = 0; i < count; i++)
@@ -4547,7 +4421,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001020 RID: 4128 RVA: 0x000C3AEC File Offset: 0x000C1CEC
 	private void SetUpdateWindowLvUpItem(int index, GameObject go, bool isKizuna = false)
 	{
 		int num = (isKizuna ? 5 : 5);
@@ -4578,7 +4451,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001021 RID: 4129 RVA: 0x000C3CD5 File Offset: 0x000C1ED5
 	private void ExecuteKizunaLimitOver(int index)
 	{
 		if (index == 1)
@@ -4587,7 +4459,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001022 RID: 4130 RVA: 0x000C3CE8 File Offset: 0x000C1EE8
 	public void StartItemWild(int charaId)
 	{
 		SelCharaGrowWild.WildReleaseTab wildReleaseTab = this._charaGrowWild.GrowWildGUI.wildReleaseTab;
@@ -4622,7 +4493,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001023 RID: 4131 RVA: 0x000C3F58 File Offset: 0x000C2158
 	public void SetupNextTab(int tabIdx)
 	{
 		Vector2 vector = this._guiData.CharacterGrowMain.Cmn.TabRectTransformList[this._lastTabIndex].sizeDelta;
@@ -4641,7 +4511,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		this._lastTabIndex = tabIdx;
 	}
 
-	// Token: 0x06001024 RID: 4132 RVA: 0x000C40D8 File Offset: 0x000C22D8
 	private void InitializeItemWindow()
 	{
 		this._guiData.SingleItemInfoWindow.ScrollView_QuestAll.InitForce();
@@ -4678,7 +4547,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		}, PguiButtonCtrl.SoundType.DEFAULT);
 	}
 
-	// Token: 0x06001025 RID: 4133 RVA: 0x000C42B0 File Offset: 0x000C24B0
 	private void OpenItemWindow(List<ItemData> itemList, bool isMulti, int index)
 	{
 		SelCharaGrowCtrl.<>c__DisplayClass260_0 CS$<>8__locals1 = new SelCharaGrowCtrl.<>c__DisplayClass260_0();
@@ -4851,7 +4719,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		Singleton<SceneManager>.Instance.StartCoroutine(this.RequestExecuteCountInfo(isMulti));
 	}
 
-	// Token: 0x06001026 RID: 4134 RVA: 0x000C4EE8 File Offset: 0x000C30E8
 	private void OnClickWindowItemIcon(int index)
 	{
 		int i;
@@ -4911,7 +4778,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		SoundManager.Play("prd_se_click", false, false);
 	}
 
-	// Token: 0x06001027 RID: 4135 RVA: 0x000C5354 File Offset: 0x000C3554
 	private void OnClickWindowItemButton(PguiButtonCtrl button)
 	{
 		string str = button.gameObject.GetComponent<PguiDataHolder>().str;
@@ -4992,14 +4858,12 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06001028 RID: 4136 RVA: 0x000C55FE File Offset: 0x000C37FE
 	private void OnStartWindowItemInfo(int index, GameObject go)
 	{
 		go.AddComponent<PguiDataHolder>();
 		new SelCharaGrowCtrl.GuiCharaGrowListBar(go.transform).AddOnClickListener(new PguiButtonCtrl.OnClick(this.OnClickWindowItemButton));
 	}
 
-	// Token: 0x06001029 RID: 4137 RVA: 0x000C5624 File Offset: 0x000C3824
 	private void OnUpdateWindowItemInfo(int index, GameObject go)
 	{
 		int num = 0;
@@ -5033,14 +4897,12 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		go.SetActive(false);
 	}
 
-	// Token: 0x0600102A RID: 4138 RVA: 0x000C573A File Offset: 0x000C393A
 	private void OnStartWindowItemInfoAll(int index, GameObject go)
 	{
 		go.AddComponent<PguiDataHolder>();
 		new SelCharaGrowCtrl.GuiCharaGrowListBar(go.transform).AddOnClickListener(new PguiButtonCtrl.OnClick(this.OnClickWindowItemButton));
 	}
 
-	// Token: 0x0600102B RID: 4139 RVA: 0x000C5760 File Offset: 0x000C3960
 	private void OnUpdateWindowItemInfoAll(int index, GameObject go)
 	{
 		int num = int.Parse(go.transform.parent.parent.parent.name);
@@ -5074,7 +4936,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		go.SetActive(false);
 	}
 
-	// Token: 0x0600102C RID: 4140 RVA: 0x000C589A File Offset: 0x000C3A9A
 	private IEnumerator ItemExchange(bool isMulti)
 	{
 		List<DataManagerItem.ExchangeRatesData> exchageRatesList = DataManager.DmItem.GetExchageRatesList();
@@ -5173,7 +5034,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600102D RID: 4141 RVA: 0x000C58B0 File Offset: 0x000C3AB0
 	private IEnumerator RequestExecuteCountInfo(bool isMulti)
 	{
 		bool executeCountInfos = DataManager.DmItem.GetExecuteCountInfos() != null;
@@ -5216,7 +5076,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600103C RID: 4156 RVA: 0x000C5EC4 File Offset: 0x000C40C4
 	[CompilerGenerated]
 	private int <CharaGrowSetup>g__GetCanReceiveGrowthAchievementRewardCount|117_0()
 	{
@@ -5235,398 +5094,263 @@ public class SelCharaGrowCtrl : MonoBehaviour
 		return num;
 	}
 
-	// Token: 0x04000DD3 RID: 3539
 	private readonly string ALL_CANCEL_TEXT = "全解除";
 
-	// Token: 0x04000DD4 RID: 3540
 	private readonly string ENHANCEMENT_TEXT = "強化";
 
-	// Token: 0x04000DD5 RID: 3541
 	private static readonly int LEVEL_TEXT_SIZE = 22;
 
-	// Token: 0x04000DD6 RID: 3542
 	private readonly string DEFAULT_LEVEL_TEXT = string.Format("<size={0}>Lv.</size>", SelCharaGrowCtrl.LEVEL_TEXT_SIZE);
 
-	// Token: 0x04000DD7 RID: 3543
 	private readonly string KIZUNA_LEVEL_TEXT = string.Format("<size={0}>なかよしLv.</size>", SelCharaGrowCtrl.LEVEL_TEXT_SIZE);
 
-	// Token: 0x04000DD8 RID: 3544
 	private readonly string NEXT_KIZUNA_LEVEL_DESCRIPTION_TEXT = "次のなかよしLvまで";
 
-	// Token: 0x04000DD9 RID: 3545
 	private readonly string USING_ITEM_NUM_SELECTION_TITLE_TEXT = "使用アイテム個数選択";
 
-	// Token: 0x04000DDA RID: 3546
 	private readonly string TAB_INFO_WILD_RELEASE_TEXT = "野生解放素材を使ってフレンズのステータスを強化します";
 
-	// Token: 0x04000DDB RID: 3547
 	private readonly string TAB_INFO_RANK_UP_TEXT = "小さな輝石を使ってフレンズのけも級(★)を上げます";
 
-	// Token: 0x04000DDC RID: 3548
 	private readonly string TAB_INFO_MIRACLE_UP_TEXT = "ミラクル強化素材を使ってけものミラクルを強化します";
 
-	// Token: 0x04000DDD RID: 3549
 	private readonly string TAB_INFO_NANAIRO_TEXT = "素材を使ってなないろとくせいを解放します";
 
-	// Token: 0x04000DDE RID: 3550
 	private readonly string TAB_INFO_PHOTO_POCKET_TEXT = "輝石を使ってフォトポケランクを強化します";
 
-	// Token: 0x04000DDF RID: 3551
 	private readonly string HOW_TO_GET_TEXT = "入手方法";
 
-	// Token: 0x04000DE0 RID: 3552
 	private readonly string RELEASE_TEXT = "解放";
 
-	// Token: 0x04000DE1 RID: 3553
 	private readonly string HP_UP_TEXT = "たいりょく +";
 
-	// Token: 0x04000DE2 RID: 3554
 	private readonly string ATTACK_UP_TEXT = "こうげき +";
 
-	// Token: 0x04000DE3 RID: 3555
 	private readonly string DEFENSE_UP_TEXT = "まもり +";
 
-	// Token: 0x04000DE4 RID: 3556
 	private readonly string AVOID_UP_TEXT = "かいひ +";
 
-	// Token: 0x04000DE5 RID: 3557
 	private readonly string WILD_RELEASE_BEAT_DAMAGE_UP_TEXT = "Beat!!!ダメージアップ +";
 
-	// Token: 0x04000DE6 RID: 3558
 	private readonly string WILD_RELEASE_TRY_DAMAGE_UP_TEXT = "Try!!ダメージアップ +";
 
-	// Token: 0x04000DE7 RID: 3559
 	private readonly string WILD_RELEASE_ACTION_DAMAGE_UP_TEXT = "Action!ダメージアップ +";
 
-	// Token: 0x04000DE8 RID: 3560
 	private readonly string WILD_RELEASE_RESULT_TITLE_TEXT = "野生解放結果";
 
-	// Token: 0x04000DE9 RID: 3561
 	private readonly string WILD_RELEASE_RESULT_MESSAGE_TEXT = "";
 
-	// Token: 0x04000DEA RID: 3562
 	private readonly string WILD_RELEASE_ABILITY_OPEN_TITLE_TEXT = "とくせい解放！";
 
-	// Token: 0x04000DEB RID: 3563
 	private readonly string WILD_RELEASE_ABILITY_OPEN_MESSAGE_TEXT = "とくせい解放！";
 
-	// Token: 0x04000DEC RID: 3564
 	private readonly string WILD_RELEASE_ICON_OPEN_TITLE_TEXT = "アイコン解放！";
 
-	// Token: 0x04000DED RID: 3565
 	private readonly string WILD_RELEASE_ICON_OPEN_MESSAGE_TEXT = "アイコン解放！";
 
-	// Token: 0x04000DEE RID: 3566
 	private readonly string PHOTO_POCKET_EXCHANGE_TITLE_TEXT = "輝石の変換";
 
-	// Token: 0x04000DEF RID: 3567
 	private readonly string OTHER_PHOTO_POCKET_EXCHANGE_TITLE_TEXT = "小さな輝石の変換";
 
-	// Token: 0x04000DF0 RID: 3568
 	private readonly string EXCHANGE_CONFIRM_TEXT = "変換確認";
 
-	// Token: 0x04000DF1 RID: 3569
 	private readonly string POSSESSION_NUMBER_TEXT = "所持数";
 
-	// Token: 0x04000DF2 RID: 3570
 	private readonly string POSSIBLE_EXCHANGE_NUMBER_TEXT = "変換可能数";
 
-	// Token: 0x04000DF3 RID: 3571
 	private readonly string GEMSTONE_TEXT = "輝石";
 
-	// Token: 0x04000DF4 RID: 3572
 	private readonly string SMALL_GEMSTONE_TEXT = "小さな輝石";
 
-	// Token: 0x04000DF5 RID: 3573
 	private readonly string LEVEL_UP_MAX_INFO_MESSAGE_TEXT = "レベルは最大まで強化されています";
 
-	// Token: 0x04000DF6 RID: 3574
 	private readonly string WILD_RELEASE_MAX_INFO_MESSAGE_TEXT = "野生解放は最大まで強化されています";
 
-	// Token: 0x04000DF7 RID: 3575
 	private readonly string RANK_UP_MAX_INFO_MESSAGE_TEXT = "けも級は最大まで強化されています";
 
-	// Token: 0x04000DF8 RID: 3576
 	private readonly string MIRACLEUP_MAX_INFO_MESSAGE_TEXT = "けものミラクルは最大まで強化されています";
 
-	// Token: 0x04000DF9 RID: 3577
 	private readonly string PHOTO_POCKET_MAX_INFO_MESSAGE_TEXT = "フォトポケランクは最大まで強化されています";
 
-	// Token: 0x04000DFA RID: 3578
 	private readonly string KIZUNA_UP_MAX_INFO_MESSAGE_TEXT = "なかよしレベル上限は最大まで強化されています";
 
-	// Token: 0x04000DFB RID: 3579
 	private readonly string NANAIRO_UP_MAX_INFO_MESSAGE_TEXT = "なないろとくせいは解放されています";
 
-	// Token: 0x04000DFC RID: 3580
 	private readonly string EXCHANGE_NUMBER_TEXT = "変換数";
 
-	// Token: 0x04000DFD RID: 3581
 	private readonly string CANCEL_TEXT = "キャンセル";
 
-	// Token: 0x04000DFE RID: 3582
 	private readonly string ENHANCE_TEXT = "強化する";
 
-	// Token: 0x04000DFF RID: 3583
 	private readonly string ALL_RELEASE_TITLE_TEXT = "まとめて解放";
 
-	// Token: 0x04000E00 RID: 3584
 	private readonly string ALL_RELEASE_MESSAGE_TEXT = "まとめて解放しますか？";
 
-	// Token: 0x04000E01 RID: 3585
 	private readonly string RELEASE_DISABLE_MESSAGE_TEXT = "ゴールドが足りません";
 
-	// Token: 0x04000E02 RID: 3586
 	private readonly string WILD_RELEASE_TITLE_TEXT = "野生解放確認";
 
-	// Token: 0x04000E03 RID: 3587
 	private readonly string WILD_RELEASE_MESSAGE_TEXT = "野生解放しますか？";
 
-	// Token: 0x04000E04 RID: 3588
 	private readonly string RETURN_ITEM_TITLE_TEXT = "確認";
 
-	// Token: 0x04000E05 RID: 3589
 	private readonly string RETURN_ITEM_MESSAGE_TEXT = "EXPの上限を超えた分の\nジャパまんとゴールドは使用を取り消しました！";
 
-	// Token: 0x04000E06 RID: 3590
 	private readonly string RETURN_KIZUNA_ITEM_MESSAGE_TEXT = "EXPの上限を超えた分の\nマジカルキャンディとゴールドは使用を取り消しました！";
 
-	// Token: 0x04000E07 RID: 3591
 	private readonly string NUM_EXP_NEXT_TEXT = "次のLvまで";
 
-	// Token: 0x04000E08 RID: 3592
 	private readonly string PHOTO_POCKET_GEMSTONE_EXCHANGE_WARNING_TITLE_TEXT = "輝石変換時の注意";
 
-	// Token: 0x04000E09 RID: 3593
 	private readonly string PHOTO_POCKET_GEMSTONE_EXCHANGE_WARNING_MESSAGE_TEXT = "変換後は元の輝石に戻すことができません";
 
-	// Token: 0x04000E0A RID: 3594
 	private readonly string TO_RELEASE_TEXT = "解放する";
 
-	// Token: 0x04000E0B RID: 3595
 	private readonly string NANAIRO_RELEASE_TITLE_TEXT = "解放確認";
 
-	// Token: 0x04000E0C RID: 3596
 	private readonly string FRENDS_STORY_EX_RELEASE_TITLE_TEXT = "";
 
-	// Token: 0x04000E0D RID: 3597
 	private readonly string FRENDS_STORY_EX_RELEASE_MESSAGE_TEXT = "フレンズストーリーのEXが解放されました";
 
-	// Token: 0x04000E0E RID: 3598
 	public static readonly string ARTS_HIGHLIGHT_COLOR_CODE = "#6B510AFF";
 
-	// Token: 0x04000E0F RID: 3599
 	public static readonly int ARTS_TEXT_SIZE = 24;
 
-	// Token: 0x04000E10 RID: 3600
 	private GameObject _mainCharaGrowObj;
 
-	// Token: 0x04000E11 RID: 3601
 	private SelCharaGrowCtrl.CommonGUI _guiData;
 
-	// Token: 0x04000E12 RID: 3602
 	private SelCharaGrowLevel _charaGrowLevelUp;
 
-	// Token: 0x04000E13 RID: 3603
 	private SelCharaGrowWild _charaGrowWild;
 
-	// Token: 0x04000E14 RID: 3604
 	private SelCharaGrowRank _charaGrowRank;
 
-	// Token: 0x04000E15 RID: 3605
 	private SelCharaGrowMiracle _charaGrowMiracle;
 
-	// Token: 0x04000E16 RID: 3606
 	private SelCharaGrowPhotoPocket _charaGrowPhotoPocket;
 
-	// Token: 0x04000E17 RID: 3607
 	private SelCharaGrowKizuna _charaGrowKizuna;
 
-	// Token: 0x04000E18 RID: 3608
 	private SelCharaGrowNanairo _charaGrowNanairo;
 
-	// Token: 0x04000E19 RID: 3609
 	private SelCharaGrowMulti _charaGrowMulti;
 
-	// Token: 0x04000E1A RID: 3610
 	private GameObject _charaGrowWindow;
 
-	// Token: 0x04000E1B RID: 3611
 	private SelCharaGrowCtrl.Mode _currentMode;
 
-	// Token: 0x04000E1C RID: 3612
 	private int _currentCharaId;
 
-	// Token: 0x04000E1D RID: 3613
 	private SortFilterDefine.SortType _sortType = SortFilterDefine.SortType.LEVEL;
 
-	// Token: 0x04000E1E RID: 3614
 	private List<bool> _enhanceList;
 
-	// Token: 0x04000E1F RID: 3615
 	private int _lastTabIndex;
 
-	// Token: 0x04000E20 RID: 3616
 	private List<int> _selectLvUpItemIdList;
 
-	// Token: 0x04000E21 RID: 3617
 	private List<int> _selectKizunaLvUpItemIdList;
 
-	// Token: 0x04000E22 RID: 3618
 	private int _lvUpCostCoin;
 
-	// Token: 0x04000E23 RID: 3619
 	private SelCharaGrowCtrl.EffectStatus _effectStatus;
 
-	// Token: 0x04000E24 RID: 3620
 	private RenderTextureChara _renderTextureChara;
 
-	// Token: 0x04000E25 RID: 3621
 	private DataManagerChara.SimulateAddExpResult _saExpResult;
 
-	// Token: 0x04000E26 RID: 3622
 	private List<CharaPackData> _haveCharaPackList;
 
-	// Token: 0x04000E27 RID: 3623
 	private int _nextOpenPhotoIndex;
 
-	// Token: 0x04000E28 RID: 3624
 	private DataManagerCampaign.CampaignGrowData _currentCampaign;
 
-	// Token: 0x04000E29 RID: 3625
 	private float _voiceLength;
 
-	// Token: 0x04000E2A RID: 3626
 	private float _voiceStartTime;
 
-	// Token: 0x04000E2B RID: 3627
 	private bool _touchRect;
 
-	// Token: 0x04000E2C RID: 3628
 	private bool _touchScreenAuth;
 
-	// Token: 0x04000E2D RID: 3629
 	private bool _wildReleaseEffectPlaying;
 
-	// Token: 0x04000E2E RID: 3630
 	private IEnumerator _itemExchange;
 
-	// Token: 0x04000E2F RID: 3631
 	private bool _isTutorial;
 
-	// Token: 0x04000E30 RID: 3632
 	private List<CharaPackData> _dispCharaPackList;
 
-	// Token: 0x04000E31 RID: 3633
 	private int _tutorialClickTabIndex;
 
-	// Token: 0x04000E32 RID: 3634
 	private bool _enableLeftRightButton;
 
-	// Token: 0x04000E33 RID: 3635
 	private bool _enableMoreButton;
 
-	// Token: 0x04000E34 RID: 3636
 	private IEnumerator _expGageEffect;
 
-	// Token: 0x04000E35 RID: 3637
 	private IEnumerator levelLimitOverEffect;
 
-	// Token: 0x04000E36 RID: 3638
 	private bool _pressedButtonRWildRelease;
 
-	// Token: 0x04000E37 RID: 3639
 	private IEnumerator _wildReleaseEffect;
 
-	// Token: 0x04000E38 RID: 3640
 	private IEnumerator _rankUpGageEffect;
 
-	// Token: 0x04000E39 RID: 3641
 	private IEnumerator _miracleEffect;
 
-	// Token: 0x04000E3A RID: 3642
 	private IEnumerator _nanairoReleaseEffect;
 
-	// Token: 0x04000E3B RID: 3643
 	private IEnumerator _photoPocketEffect;
 
-	// Token: 0x04000E3C RID: 3644
 	private IEnumerator _ieKizunaLimitOver;
 
-	// Token: 0x04000E3D RID: 3645
 	private IEnumerator _itemExchangeEffect;
 
-	// Token: 0x04000E3E RID: 3646
 	private bool _GettingAchievement;
 
-	// Token: 0x04000E3F RID: 3647
 	private IEnumerator _growthAchievementRewardEffect;
 
-	// Token: 0x04000E40 RID: 3648
 	private IEnumerator _ieReleaseAccessory;
 
-	// Token: 0x04000E41 RID: 3649
 	private IEnumerator _connectFlowBase;
 
-	// Token: 0x04000E43 RID: 3651
 	private IEnumerator _growMultiCoroutine;
 
-	// Token: 0x04000E44 RID: 3652
 	private List<List<SelCharaGrowCtrl.ListBarKind>> itemWindowEnableOneList;
 
-	// Token: 0x04000E45 RID: 3653
 	private SelCharaGrowCtrl.OpenItemWindowParam lastOpenItemWindowParam = new SelCharaGrowCtrl.OpenItemWindowParam();
 
-	// Token: 0x02000995 RID: 2453
 	public enum Mode
 	{
-		// Token: 0x04003DB6 RID: 15798
 		Top,
-		// Token: 0x04003DB7 RID: 15799
 		Main
 	}
 
-	// Token: 0x02000996 RID: 2454
 	public enum TabType
 	{
-		// Token: 0x04003DB9 RID: 15801
 		LevelUp,
-		// Token: 0x04003DBA RID: 15802
 		WildRelease,
-		// Token: 0x04003DBB RID: 15803
 		RankUp,
-		// Token: 0x04003DBC RID: 15804
 		MiracleUp,
-		// Token: 0x04003DBD RID: 15805
 		Nanairo,
-		// Token: 0x04003DBE RID: 15806
 		PhotoPocket,
-		// Token: 0x04003DBF RID: 15807
 		Kizuna
 	}
 
-	// Token: 0x02000997 RID: 2455
 	public enum EffectStatus
 	{
-		// Token: 0x04003DC1 RID: 15809
 		None,
-		// Token: 0x04003DC2 RID: 15810
 		ReqServer,
-		// Token: 0x04003DC3 RID: 15811
 		Execute,
-		// Token: 0x04003DC4 RID: 15812
 		Result,
-		// Token: 0x04003DC5 RID: 15813
 		ResultEnd,
-		// Token: 0x04003DC6 RID: 15814
 		Finished
 	}
 
-	// Token: 0x02000998 RID: 2456
 	public class PhotoPocketIcon
 	{
-		// Token: 0x1700089E RID: 2206
-		// (get) Token: 0x06003C3E RID: 15422 RVA: 0x001DA442 File Offset: 0x001D8642
 		public PguiImageCtrl IconPhoto
 		{
 			get
@@ -5635,8 +5359,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x1700089F RID: 2207
-		// (get) Token: 0x06003C3F RID: 15423 RVA: 0x001DA44A File Offset: 0x001D864A
 		public PguiReplaceSpriteCtrl ReplaceIconPhoto
 		{
 			get
@@ -5645,8 +5367,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x170008A0 RID: 2208
-		// (get) Token: 0x06003C40 RID: 15424 RVA: 0x001DA452 File Offset: 0x001D8652
 		public PguiReplaceSpriteCtrl MarkKiseki
 		{
 			get
@@ -5655,8 +5375,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x170008A1 RID: 2209
-		// (get) Token: 0x06003C41 RID: 15425 RVA: 0x001DA45A File Offset: 0x001D865A
 		public GameObject Current
 		{
 			get
@@ -5665,8 +5383,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x170008A2 RID: 2210
-		// (get) Token: 0x06003C42 RID: 15426 RVA: 0x001DA462 File Offset: 0x001D8662
 		public PguiTextCtrl NumLv
 		{
 			get
@@ -5675,7 +5391,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06003C43 RID: 15427 RVA: 0x001DA46C File Offset: 0x001D866C
 		public PhotoPocketIcon(Transform baseTr)
 		{
 			this._baseObj = baseTr.gameObject;
@@ -5689,7 +5404,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			this._numLv = baseTr.Find("Num_Lv").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x06003C44 RID: 15428 RVA: 0x001DA4F8 File Offset: 0x001D86F8
 		public void AddTouchEventTrigger(UnityAction<Transform> cb)
 		{
 			if (this.Current != null)
@@ -5698,7 +5412,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06003C45 RID: 15429 RVA: 0x001DA514 File Offset: 0x001D8714
 		public void SetActiveCurrent(bool sw)
 		{
 			if (this.Current != null)
@@ -5707,30 +5420,21 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x04003DC7 RID: 15815
 		private GameObject _baseObj;
 
-		// Token: 0x04003DC8 RID: 15816
 		private PguiImageCtrl _iconPhoto;
 
-		// Token: 0x04003DC9 RID: 15817
 		private PguiReplaceSpriteCtrl _replaceIconPhoto;
 
-		// Token: 0x04003DCA RID: 15818
 		private PguiReplaceSpriteCtrl _markKiseki;
 
-		// Token: 0x04003DCB RID: 15819
 		private GameObject _current;
 
-		// Token: 0x04003DCC RID: 15820
 		private PguiTextCtrl _numLv;
 	}
 
-	// Token: 0x02000999 RID: 2457
 	public class WindowGrowthAchievementReward
 	{
-		// Token: 0x170008A3 RID: 2211
-		// (get) Token: 0x06003C46 RID: 15430 RVA: 0x001DA530 File Offset: 0x001D8730
 		public GameObject BaseObj
 		{
 			get
@@ -5739,8 +5443,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x170008A4 RID: 2212
-		// (get) Token: 0x06003C47 RID: 15431 RVA: 0x001DA538 File Offset: 0x001D8738
 		public ReuseScroll ScrollView
 		{
 			get
@@ -5749,8 +5451,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x170008A5 RID: 2213
-		// (get) Token: 0x06003C48 RID: 15432 RVA: 0x001DA540 File Offset: 0x001D8740
 		public PguiOpenWindowCtrl OpenWindowCtrl
 		{
 			get
@@ -5759,7 +5459,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06003C49 RID: 15433 RVA: 0x001DA548 File Offset: 0x001D8748
 		public WindowGrowthAchievementReward(Transform baseTr)
 		{
 			this._baseObj = baseTr.gameObject;
@@ -5769,7 +5468,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			this._openWindowCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
 		}
 
-		// Token: 0x06003C4A RID: 15434 RVA: 0x001DA5B8 File Offset: 0x001D87B8
 		public void Refresh(int chId)
 		{
 			List<DataManagerCharaMission.DynamicCharaMission.MissionOne> list = DataManager.DmChMission.GetDynamicCharaMissionData(chId).MissionMap.Values.ToList<DataManagerCharaMission.DynamicCharaMission.MissionOne>().FindAll((DataManagerCharaMission.DynamicCharaMission.MissionOne match) => !match.Received);
@@ -5780,27 +5478,19 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			this._cautionText.gameObject.SetActive(count == 0);
 		}
 
-		// Token: 0x04003DCD RID: 15821
 		private PguiTextCtrl _numList;
 
-		// Token: 0x04003DCE RID: 15822
 		private PguiTextCtrl _cautionText;
 
-		// Token: 0x04003DCF RID: 15823
 		private GameObject _baseObj;
 
-		// Token: 0x04003DD0 RID: 15824
 		private ReuseScroll _scrollView;
 
-		// Token: 0x04003DD1 RID: 15825
 		private PguiOpenWindowCtrl _openWindowCtrl;
 	}
 
-	// Token: 0x0200099A RID: 2458
 	public class CommonGUI
 	{
-		// Token: 0x170008A6 RID: 2214
-		// (get) Token: 0x06003C4B RID: 15435 RVA: 0x001DA67F File Offset: 0x001D887F
 		public GameObject BaseObj
 		{
 			get
@@ -5809,8 +5499,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x170008A7 RID: 2215
-		// (get) Token: 0x06003C4C RID: 15436 RVA: 0x001DA687 File Offset: 0x001D8887
 		public SelCharaGrowCtrl.CommonGUI.CharaGrowTop CharacterGrowTop
 		{
 			get
@@ -5819,8 +5507,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x170008A8 RID: 2216
-		// (get) Token: 0x06003C4D RID: 15437 RVA: 0x001DA68F File Offset: 0x001D888F
 		public SelCharaGrowCtrl.CommonGUI.CharaGrowMain CharacterGrowMain
 		{
 			get
@@ -5829,8 +5515,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x170008A9 RID: 2217
-		// (get) Token: 0x06003C4E RID: 15438 RVA: 0x001DA697 File Offset: 0x001D8897
 		public SelCharaGrowPhotoPocket.WindowItemExchange ItemExchangeWindow
 		{
 			get
@@ -5839,8 +5523,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x170008AA RID: 2218
-		// (get) Token: 0x06003C4F RID: 15439 RVA: 0x001DA69F File Offset: 0x001D889F
 		public SelCharaGrowCtrl.SingleItemInfoWindow SingleItemInfoWindow
 		{
 			get
@@ -5849,8 +5531,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x170008AB RID: 2219
-		// (get) Token: 0x06003C50 RID: 15440 RVA: 0x001DA6A7 File Offset: 0x001D88A7
 		public SelCharaGrowCtrl.MultipleItemInfoWindow MultiItemInfoWindow
 		{
 			get
@@ -5859,8 +5539,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x170008AC RID: 2220
-		// (get) Token: 0x06003C51 RID: 15441 RVA: 0x001DA6AF File Offset: 0x001D88AF
 		public SelShopCtrl.WindowBuyEnd WindowBuyEnd
 		{
 			get
@@ -5869,8 +5547,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x170008AD RID: 2221
-		// (get) Token: 0x06003C52 RID: 15442 RVA: 0x001DA6B7 File Offset: 0x001D88B7
 		public SelCharaGrowCtrl.WindowGrowthAchievementReward GrowthAchievementRewardWindow
 		{
 			get
@@ -5879,7 +5555,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06003C53 RID: 15443 RVA: 0x001DA6C0 File Offset: 0x001D88C0
 		public CommonGUI(Transform baseTr)
 		{
 			this._baseObj = baseTr.gameObject;
@@ -5897,35 +5572,24 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			this._growthAchievementRewardWindow = new SelCharaGrowCtrl.WindowGrowthAchievementReward(Object.Instantiate<Transform>(gameObject4.transform.Find("Window_GrowPresent"), baseTr).transform);
 		}
 
-		// Token: 0x04003DD2 RID: 15826
 		private GameObject _baseObj;
 
-		// Token: 0x04003DD3 RID: 15827
 		private SelCharaGrowCtrl.CommonGUI.CharaGrowTop _charaGrowTop;
 
-		// Token: 0x04003DD4 RID: 15828
 		private SelCharaGrowCtrl.CommonGUI.CharaGrowMain _charaGrowMain;
 
-		// Token: 0x04003DD5 RID: 15829
 		private SelCharaGrowPhotoPocket.WindowItemExchange _itemExchangeWindow;
 
-		// Token: 0x04003DD6 RID: 15830
 		private SelCharaGrowCtrl.SingleItemInfoWindow _singleItemInfoWindow;
 
-		// Token: 0x04003DD7 RID: 15831
 		private SelCharaGrowCtrl.MultipleItemInfoWindow _multiItemInfoWindow;
 
-		// Token: 0x04003DD8 RID: 15832
 		private SelShopCtrl.WindowBuyEnd _windowBuyEnd;
 
-		// Token: 0x04003DD9 RID: 15833
 		private SelCharaGrowCtrl.WindowGrowthAchievementReward _growthAchievementRewardWindow;
 
-		// Token: 0x02001155 RID: 4437
 		public class CharaGrowTop
 		{
-			// Token: 0x17000C9A RID: 3226
-			// (get) Token: 0x060055AF RID: 21935 RVA: 0x0024F97D File Offset: 0x0024DB7D
 			public GameObject BaseObj
 			{
 				get
@@ -5934,8 +5598,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000C9B RID: 3227
-			// (get) Token: 0x060055B0 RID: 21936 RVA: 0x0024F985 File Offset: 0x0024DB85
 			public PguiButtonCtrl BtnFilterOnOff
 			{
 				get
@@ -5944,8 +5606,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000C9C RID: 3228
-			// (get) Token: 0x060055B1 RID: 21937 RVA: 0x0024F98D File Offset: 0x0024DB8D
 			public PguiButtonCtrl BtnSort
 			{
 				get
@@ -5954,8 +5614,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000C9D RID: 3229
-			// (get) Token: 0x060055B2 RID: 21938 RVA: 0x0024F995 File Offset: 0x0024DB95
 			public PguiButtonCtrl BtnSortUpDown
 			{
 				get
@@ -5964,8 +5622,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000C9E RID: 3230
-			// (get) Token: 0x060055B3 RID: 21939 RVA: 0x0024F99D File Offset: 0x0024DB9D
 			public ReuseScroll ScrollView
 			{
 				get
@@ -5974,8 +5630,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000C9F RID: 3231
-			// (get) Token: 0x060055B4 RID: 21940 RVA: 0x0024F9A5 File Offset: 0x0024DBA5
 			public PguiImageCtrl CampaignInfo
 			{
 				get
@@ -5984,8 +5638,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CA0 RID: 3232
-			// (get) Token: 0x060055B5 RID: 21941 RVA: 0x0024F9AD File Offset: 0x0024DBAD
 			public PguiTextCtrl CampaignTimeInfo
 			{
 				get
@@ -5994,8 +5646,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CA1 RID: 3233
-			// (get) Token: 0x060055B6 RID: 21942 RVA: 0x0024F9B5 File Offset: 0x0024DBB5
 			public SimpleAnimation SelCmnAllInOut
 			{
 				get
@@ -6004,8 +5654,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CA2 RID: 3234
-			// (get) Token: 0x060055B7 RID: 21943 RVA: 0x0024F9BD File Offset: 0x0024DBBD
 			public GameObject TxtNone
 			{
 				get
@@ -6014,7 +5662,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x060055B8 RID: 21944 RVA: 0x0024F9C8 File Offset: 0x0024DBC8
 			public CharaGrowTop(Transform baseTr)
 			{
 				this._baseObj = baseTr.gameObject;
@@ -6029,39 +5676,27 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				this._selCmnAllInOut = baseTr.GetComponent<SimpleAnimation>();
 			}
 
-			// Token: 0x04005F2D RID: 24365
 			private GameObject _baseObj;
 
-			// Token: 0x04005F2E RID: 24366
 			private PguiButtonCtrl _btnFilterOnOff;
 
-			// Token: 0x04005F2F RID: 24367
 			private PguiButtonCtrl _btnSort;
 
-			// Token: 0x04005F30 RID: 24368
 			private PguiButtonCtrl _btnSortUpDown;
 
-			// Token: 0x04005F31 RID: 24369
 			private ReuseScroll _scrollView;
 
-			// Token: 0x04005F32 RID: 24370
 			private PguiImageCtrl _campaignInfo;
 
-			// Token: 0x04005F33 RID: 24371
 			private PguiTextCtrl _campaignTimeInfo;
 
-			// Token: 0x04005F34 RID: 24372
 			private SimpleAnimation _selCmnAllInOut;
 
-			// Token: 0x04005F35 RID: 24373
 			private GameObject _txtNone;
 		}
 
-		// Token: 0x02001156 RID: 4438
 		public class CharaGrowMain
 		{
-			// Token: 0x17000CA3 RID: 3235
-			// (get) Token: 0x060055B9 RID: 21945 RVA: 0x0024FA99 File Offset: 0x0024DC99
 			public GameObject BaseObj
 			{
 				get
@@ -6070,8 +5705,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CA4 RID: 3236
-			// (get) Token: 0x060055BA RID: 21946 RVA: 0x0024FAA1 File Offset: 0x0024DCA1
 			public SelCharaGrowCtrl.CommonGUI.CmnTabGUI Cmn
 			{
 				get
@@ -6080,8 +5713,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CA5 RID: 3237
-			// (get) Token: 0x060055BB RID: 21947 RVA: 0x0024FAA9 File Offset: 0x0024DCA9
 			public SelCharaGrowCtrl.CommonGUI.CharaGrowMain.StatusInfo StatusInfomation
 			{
 				get
@@ -6090,8 +5721,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CA6 RID: 3238
-			// (get) Token: 0x060055BC RID: 21948 RVA: 0x0024FAB1 File Offset: 0x0024DCB1
 			public SelCharaGrowCtrl.CommonGUI.PhotoMax PhotoMax
 			{
 				get
@@ -6100,8 +5729,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CA7 RID: 3239
-			// (get) Token: 0x060055BD RID: 21949 RVA: 0x0024FAB9 File Offset: 0x0024DCB9
 			public SelCharaGrowCtrl.CommonGUI.PhotoPocketConversionStrengthen PhotoPocketConversionStrengthen
 			{
 				get
@@ -6110,8 +5737,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CA8 RID: 3240
-			// (get) Token: 0x060055BE RID: 21950 RVA: 0x0024FAC1 File Offset: 0x0024DCC1
 			public SelCharaGrowLevel.LvLimitOpen LvLimitOpen
 			{
 				get
@@ -6120,8 +5745,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CA9 RID: 3241
-			// (get) Token: 0x060055BF RID: 21951 RVA: 0x0024FAC9 File Offset: 0x0024DCC9
 			public PguiButtonCtrl BtnYajiLeft
 			{
 				get
@@ -6130,8 +5753,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CAA RID: 3242
-			// (get) Token: 0x060055C0 RID: 21952 RVA: 0x0024FAD1 File Offset: 0x0024DCD1
 			public PguiButtonCtrl BtnYajiRight
 			{
 				get
@@ -6140,8 +5761,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CAB RID: 3243
-			// (get) Token: 0x060055C1 RID: 21953 RVA: 0x0024FAD9 File Offset: 0x0024DCD9
 			public PguiButtonCtrl BtnMoreInfo
 			{
 				get
@@ -6150,8 +5769,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CAC RID: 3244
-			// (get) Token: 0x060055C2 RID: 21954 RVA: 0x0024FAE1 File Offset: 0x0024DCE1
 			public PguiButtonCtrl BtnPresent
 			{
 				get
@@ -6160,8 +5777,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CAD RID: 3245
-			// (get) Token: 0x060055C3 RID: 21955 RVA: 0x0024FAE9 File Offset: 0x0024DCE9
 			public PguiTextCtrl TxtPresentNum
 			{
 				get
@@ -6170,8 +5785,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CAE RID: 3246
-			// (get) Token: 0x060055C4 RID: 21956 RVA: 0x0024FAF1 File Offset: 0x0024DCF1
 			public PguiToggleButtonCtrl BtnFavorite
 			{
 				get
@@ -6180,8 +5793,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CAF RID: 3247
-			// (get) Token: 0x060055C5 RID: 21957 RVA: 0x0024FAF9 File Offset: 0x0024DCF9
 			public PguiButtonCtrl BtnGrowMulti
 			{
 				get
@@ -6190,8 +5801,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CB0 RID: 3248
-			// (get) Token: 0x060055C6 RID: 21958 RVA: 0x0024FB01 File Offset: 0x0024DD01
 			public PguiImageCtrl MarkMax
 			{
 				get
@@ -6200,8 +5809,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CB1 RID: 3249
-			// (get) Token: 0x060055C7 RID: 21959 RVA: 0x0024FB09 File Offset: 0x0024DD09
 			public PguiTextCtrl TxtMaxInfo
 			{
 				get
@@ -6210,8 +5817,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CB2 RID: 3250
-			// (get) Token: 0x060055C8 RID: 21960 RVA: 0x0024FB11 File Offset: 0x0024DD11
 			public PguiImageCtrl CampaignInfo
 			{
 				get
@@ -6220,8 +5825,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CB3 RID: 3251
-			// (get) Token: 0x060055C9 RID: 21961 RVA: 0x0024FB19 File Offset: 0x0024DD19
 			public PguiTextCtrl CampaignTimeInfo
 			{
 				get
@@ -6230,8 +5833,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CB4 RID: 3252
-			// (get) Token: 0x060055CA RID: 21962 RVA: 0x0024FB21 File Offset: 0x0024DD21
 			public PguiAECtrl ImageCharaEffect
 			{
 				get
@@ -6240,8 +5841,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CB5 RID: 3253
-			// (get) Token: 0x060055CB RID: 21963 RVA: 0x0024FB29 File Offset: 0x0024DD29
 			public SimpleAnimation CharaEditCharaGrowSE
 			{
 				get
@@ -6250,8 +5849,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CB6 RID: 3254
-			// (get) Token: 0x060055CC RID: 21964 RVA: 0x0024FB31 File Offset: 0x0024DD31
 			public Dictionary<SelCharaGrowCtrl.TabType, GameObject> TabObjectMap
 			{
 				get
@@ -6260,8 +5857,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CB7 RID: 3255
-			// (get) Token: 0x060055CD RID: 21965 RVA: 0x0024FB39 File Offset: 0x0024DD39
 			public PguiButtonCtrl BtnAccessory
 			{
 				get
@@ -6270,8 +5865,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CB8 RID: 3256
-			// (get) Token: 0x060055CE RID: 21966 RVA: 0x0024FB41 File Offset: 0x0024DD41
 			public AEImage BtnAccessoryImageOpenOK
 			{
 				get
@@ -6280,8 +5873,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CB9 RID: 3257
-			// (get) Token: 0x060055CF RID: 21967 RVA: 0x0024FB49 File Offset: 0x0024DD49
 			public AEImage BtnAccessoryImageOpen
 			{
 				get
@@ -6290,7 +5881,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x060055D0 RID: 21968 RVA: 0x0024FB54 File Offset: 0x0024DD54
 			public CharaGrowMain(Transform baseTr)
 			{
 				this._baseObj = baseTr.gameObject;
@@ -6328,7 +5918,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				this._btnAccessoryImageOpen.gameObject.SetActive(false);
 			}
 
-			// Token: 0x060055D1 RID: 21969 RVA: 0x0024FE20 File Offset: 0x0024E020
 			public void SetCharaInfo(CharaPackData charaPackData)
 			{
 				this._txtCharaName.ReplaceTextByDefault(new string[] { "Param01", "Param02" }, new string[]
@@ -6349,7 +5938,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				this._iconSubAtr.gameObject.SetActive(true);
 			}
 
-			// Token: 0x060055D2 RID: 21970 RVA: 0x0024FF48 File Offset: 0x0024E148
 			public void UpdateCharaParameter(CharaPackData charaPackData)
 			{
 				CharaDynamicData dynamicData = charaPackData.dynamicData;
@@ -6395,98 +5983,66 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x04005F36 RID: 24374
 			private GameObject _baseObj;
 
-			// Token: 0x04005F37 RID: 24375
 			private SelCharaGrowCtrl.CommonGUI.CmnTabGUI _cmn;
 
-			// Token: 0x04005F38 RID: 24376
 			private SelCharaGrowCtrl.CommonGUI.CharaGrowMain.StatusInfo _statusInfo;
 
-			// Token: 0x04005F39 RID: 24377
 			private SelCharaGrowCtrl.CommonGUI.PhotoMax _photoMax;
 
-			// Token: 0x04005F3A RID: 24378
 			private SelCharaGrowCtrl.CommonGUI.PhotoPocketConversionStrengthen _photoPocketConversionStrengthen;
 
-			// Token: 0x04005F3B RID: 24379
 			private SelCharaGrowLevel.LvLimitOpen _lvLimitOpen;
 
-			// Token: 0x04005F3C RID: 24380
 			private PguiTextCtrl _txtCharaName;
 
-			// Token: 0x04005F3D RID: 24381
 			private RectTransform _txtCharaNameRectTransform;
 
-			// Token: 0x04005F3E RID: 24382
 			private Vector2 _txtCharaNameInitialPos;
 
-			// Token: 0x04005F3F RID: 24383
 			private Vector2 _txtCharaNameInitialSize;
 
-			// Token: 0x04005F40 RID: 24384
 			private PguiImageCtrl _iconAtr;
 
-			// Token: 0x04005F41 RID: 24385
 			private PguiImageCtrl _iconSubAtr;
 
-			// Token: 0x04005F42 RID: 24386
 			private PguiButtonCtrl _btnYajiLeft;
 
-			// Token: 0x04005F43 RID: 24387
 			private PguiButtonCtrl _btnYajiRight;
 
-			// Token: 0x04005F44 RID: 24388
 			private PguiButtonCtrl _btnMoreInfo;
 
-			// Token: 0x04005F45 RID: 24389
 			private PguiButtonCtrl _btnPresent;
 
-			// Token: 0x04005F46 RID: 24390
 			private PguiTextCtrl _txtPresentNum;
 
-			// Token: 0x04005F47 RID: 24391
 			private PguiToggleButtonCtrl _btnFavorite;
 
-			// Token: 0x04005F48 RID: 24392
 			private PguiButtonCtrl _btnGrowMulti;
 
-			// Token: 0x04005F49 RID: 24393
 			private PguiImageCtrl _markMax;
 
-			// Token: 0x04005F4A RID: 24394
 			private PguiTextCtrl _txtMaxInfo;
 
-			// Token: 0x04005F4B RID: 24395
 			private PguiImageCtrl _campaignInfo;
 
-			// Token: 0x04005F4C RID: 24396
 			private PguiTextCtrl _campaignTimeInfo;
 
-			// Token: 0x04005F4D RID: 24397
 			private PguiAECtrl _imageCharaEffect;
 
-			// Token: 0x04005F4E RID: 24398
 			private SimpleAnimation _charaEditCharaGrowSE;
 
-			// Token: 0x04005F4F RID: 24399
 			private Dictionary<SelCharaGrowCtrl.TabType, GameObject> _tabObjectMap;
 
-			// Token: 0x04005F50 RID: 24400
 			private PguiButtonCtrl _btnAccessory;
 
-			// Token: 0x04005F51 RID: 24401
 			private AEImage _btnAccessoryImageOpenOK;
 
-			// Token: 0x04005F52 RID: 24402
 			private AEImage _btnAccessoryImageOpen;
 
-			// Token: 0x02001236 RID: 4662
 			public class StatusInfo
 			{
-				// Token: 0x17000D10 RID: 3344
-				// (get) Token: 0x0600581D RID: 22557 RVA: 0x0025A3DA File Offset: 0x002585DA
 				public PguiTextCtrl NumLv
 				{
 					get
@@ -6495,8 +6051,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 					}
 				}
 
-				// Token: 0x17000D11 RID: 3345
-				// (get) Token: 0x0600581E RID: 22558 RVA: 0x0025A3E2 File Offset: 0x002585E2
 				public List<PguiImageCtrl> StarAll
 				{
 					get
@@ -6505,8 +6059,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 					}
 				}
 
-				// Token: 0x17000D12 RID: 3346
-				// (get) Token: 0x0600581F RID: 22559 RVA: 0x0025A3EA File Offset: 0x002585EA
 				public PguiTextCtrl NumWild
 				{
 					get
@@ -6515,8 +6067,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 					}
 				}
 
-				// Token: 0x17000D13 RID: 3347
-				// (get) Token: 0x06005820 RID: 22560 RVA: 0x0025A3F2 File Offset: 0x002585F2
 				public PguiTextCtrl NumArts
 				{
 					get
@@ -6525,8 +6075,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 					}
 				}
 
-				// Token: 0x17000D14 RID: 3348
-				// (get) Token: 0x06005821 RID: 22561 RVA: 0x0025A3FA File Offset: 0x002585FA
 				public PguiTextCtrl NumStatus
 				{
 					get
@@ -6535,8 +6083,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 					}
 				}
 
-				// Token: 0x17000D15 RID: 3349
-				// (get) Token: 0x06005822 RID: 22562 RVA: 0x0025A402 File Offset: 0x00258602
 				public List<SelCharaGrowCtrl.PhotoPocketIcon> PhotoPocketIcons
 				{
 					get
@@ -6545,8 +6091,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 					}
 				}
 
-				// Token: 0x17000D16 RID: 3350
-				// (get) Token: 0x06005823 RID: 22563 RVA: 0x0025A40A File Offset: 0x0025860A
 				public PguiButtonCtrl BtnInfo
 				{
 					get
@@ -6555,8 +6099,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 					}
 				}
 
-				// Token: 0x17000D17 RID: 3351
-				// (get) Token: 0x06005824 RID: 22564 RVA: 0x0025A412 File Offset: 0x00258612
 				public PhotoPocketLevelCtrl PhotoPocketLevelCtrl
 				{
 					get
@@ -6565,7 +6107,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 					}
 				}
 
-				// Token: 0x06005825 RID: 22565 RVA: 0x0025A41C File Offset: 0x0025861C
 				public StatusInfo(Transform baseTr)
 				{
 					this._numLv = baseTr.Find("Num_Lv").GetComponent<PguiTextCtrl>();
@@ -6588,37 +6129,26 @@ public class SelCharaGrowCtrl : MonoBehaviour
 					this._photoPocketLevelCtrl = baseTr.Find("Contents03/Mark_PhotoPocketLevel").GetComponent<PhotoPocketLevelCtrl>();
 				}
 
-				// Token: 0x040063B2 RID: 25522
 				private PguiTextCtrl _numLv;
 
-				// Token: 0x040063B3 RID: 25523
 				private List<PguiImageCtrl> _starAll;
 
-				// Token: 0x040063B4 RID: 25524
 				private PguiTextCtrl _numWild;
 
-				// Token: 0x040063B5 RID: 25525
 				private PguiTextCtrl _numArts;
 
-				// Token: 0x040063B6 RID: 25526
 				private PguiTextCtrl _numStatus;
 
-				// Token: 0x040063B7 RID: 25527
 				private List<SelCharaGrowCtrl.PhotoPocketIcon> _photoPocketIcons;
 
-				// Token: 0x040063B8 RID: 25528
 				private PguiButtonCtrl _btnInfo;
 
-				// Token: 0x040063B9 RID: 25529
 				private PhotoPocketLevelCtrl _photoPocketLevelCtrl;
 			}
 		}
 
-		// Token: 0x02001157 RID: 4439
 		public class CmnTabGUI
 		{
-			// Token: 0x17000CBA RID: 3258
-			// (get) Token: 0x060055D3 RID: 21971 RVA: 0x0025021D File Offset: 0x0024E41D
 			public PguiTabGroupCtrl TabGroup
 			{
 				get
@@ -6627,8 +6157,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CBB RID: 3259
-			// (get) Token: 0x060055D4 RID: 21972 RVA: 0x00250225 File Offset: 0x0024E425
 			public List<SelCharaGrowCtrl.CommonGUI.CmnTabGUI.TabGui> TabGuiList
 			{
 				get
@@ -6637,8 +6165,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CBC RID: 3260
-			// (get) Token: 0x060055D5 RID: 21973 RVA: 0x0025022D File Offset: 0x0024E42D
 			public List<RectTransform> TabRectTransformList
 			{
 				get
@@ -6647,8 +6173,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CBD RID: 3261
-			// (get) Token: 0x060055D6 RID: 21974 RVA: 0x00250235 File Offset: 0x0024E435
 			public PguiTextCtrl TxtTabInfo
 			{
 				get
@@ -6657,8 +6181,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CBE RID: 3262
-			// (get) Token: 0x060055D7 RID: 21975 RVA: 0x0025023D File Offset: 0x0024E43D
 			public PguiButtonCtrl ButtonL
 			{
 				get
@@ -6667,8 +6189,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CBF RID: 3263
-			// (get) Token: 0x060055D8 RID: 21976 RVA: 0x00250245 File Offset: 0x0024E445
 			public PguiTextCtrl ButtonLText
 			{
 				get
@@ -6677,8 +6197,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CC0 RID: 3264
-			// (get) Token: 0x060055D9 RID: 21977 RVA: 0x0025024D File Offset: 0x0024E44D
 			public PguiButtonCtrl ButtonR
 			{
 				get
@@ -6687,8 +6205,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CC1 RID: 3265
-			// (get) Token: 0x060055DA RID: 21978 RVA: 0x00250255 File Offset: 0x0024E455
 			public PguiTextCtrl ButtonRText
 			{
 				get
@@ -6697,8 +6213,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CC2 RID: 3266
-			// (get) Token: 0x060055DB RID: 21979 RVA: 0x0025025D File Offset: 0x0024E45D
 			public PguiButtonCtrl ButtonRExchange
 			{
 				get
@@ -6707,8 +6221,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CC3 RID: 3267
-			// (get) Token: 0x060055DC RID: 21980 RVA: 0x00250265 File Offset: 0x0024E465
 			public PguiRawImageCtrl ButtonRExchangeIconItem
 			{
 				get
@@ -6717,8 +6229,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CC4 RID: 3268
-			// (get) Token: 0x060055DD RID: 21981 RVA: 0x0025026D File Offset: 0x0024E46D
 			public PguiTextCtrl ButtonRExchangeNumUse
 			{
 				get
@@ -6727,8 +6237,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CC5 RID: 3269
-			// (get) Token: 0x060055DE RID: 21982 RVA: 0x00250275 File Offset: 0x0024E475
 			public PguiTextCtrl NeedGoldText
 			{
 				get
@@ -6737,8 +6245,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CC6 RID: 3270
-			// (get) Token: 0x060055DF RID: 21983 RVA: 0x0025027D File Offset: 0x0024E47D
 			public PguiTextCtrl HaveGoldText
 			{
 				get
@@ -6747,7 +6253,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x060055E0 RID: 21984 RVA: 0x00250288 File Offset: 0x0024E488
 			public CmnTabGUI(Transform baseTr)
 			{
 				this._tabGroup = baseTr.Find("TabGroup").GetComponent<PguiTabGroupCtrl>();
@@ -6772,7 +6277,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				this._needGoldText = baseTr.Find("ItemUse/Num").GetComponent<PguiTextCtrl>();
 			}
 
-			// Token: 0x060055E1 RID: 21985 RVA: 0x00250438 File Offset: 0x0024E638
 			private string GetItemName(int idx)
 			{
 				string text = "Texture2D/Icon_Item/icon_item_{0}";
@@ -6804,50 +6308,34 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				return text2;
 			}
 
-			// Token: 0x04005F53 RID: 24403
 			private PguiTabGroupCtrl _tabGroup;
 
-			// Token: 0x04005F54 RID: 24404
 			private List<SelCharaGrowCtrl.CommonGUI.CmnTabGUI.TabGui> _tabGuiList;
 
-			// Token: 0x04005F55 RID: 24405
 			private List<RectTransform> _tabRectTransformList;
 
-			// Token: 0x04005F56 RID: 24406
 			private PguiTextCtrl _txtTabInfo;
 
-			// Token: 0x04005F57 RID: 24407
 			private PguiButtonCtrl _buttonL;
 
-			// Token: 0x04005F58 RID: 24408
 			private PguiTextCtrl _buttonLText;
 
-			// Token: 0x04005F59 RID: 24409
 			private PguiButtonCtrl _buttonR;
 
-			// Token: 0x04005F5A RID: 24410
 			private PguiTextCtrl _buttonRText;
 
-			// Token: 0x04005F5B RID: 24411
 			private PguiButtonCtrl _buttonRExchange;
 
-			// Token: 0x04005F5C RID: 24412
 			private PguiRawImageCtrl _buttonRExchangeIconItem;
 
-			// Token: 0x04005F5D RID: 24413
 			private PguiTextCtrl _buttonRExchangeNumUse;
 
-			// Token: 0x04005F5E RID: 24414
 			private PguiTextCtrl _needGoldText;
 
-			// Token: 0x04005F5F RID: 24415
 			private PguiTextCtrl _haveGoldText;
 
-			// Token: 0x02001237 RID: 4663
 			public class TabGui
 			{
-				// Token: 0x17000D18 RID: 3352
-				// (get) Token: 0x06005826 RID: 22566 RVA: 0x0025A55D File Offset: 0x0025875D
 				public PguiTabCtrl TabCtrl
 				{
 					get
@@ -6856,8 +6344,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 					}
 				}
 
-				// Token: 0x17000D19 RID: 3353
-				// (get) Token: 0x06005827 RID: 22567 RVA: 0x0025A565 File Offset: 0x00258765
 				public GameObject YellowBadge
 				{
 					get
@@ -6866,8 +6352,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 					}
 				}
 
-				// Token: 0x17000D1A RID: 3354
-				// (get) Token: 0x06005828 RID: 22568 RVA: 0x0025A56D File Offset: 0x0025876D
 				public PguiAECtrl YellowBadgeAnim
 				{
 					get
@@ -6876,8 +6360,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 					}
 				}
 
-				// Token: 0x17000D1B RID: 3355
-				// (get) Token: 0x06005829 RID: 22569 RVA: 0x0025A575 File Offset: 0x00258775
 				public PguiRawImageCtrl IconItem
 				{
 					get
@@ -6886,8 +6368,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 					}
 				}
 
-				// Token: 0x17000D1C RID: 3356
-				// (get) Token: 0x0600582A RID: 22570 RVA: 0x0025A57D File Offset: 0x0025877D
 				public GameObject Text
 				{
 					get
@@ -6896,7 +6376,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 					}
 				}
 
-				// Token: 0x0600582B RID: 22571 RVA: 0x0025A588 File Offset: 0x00258788
 				public TabGui(Transform baseTr, int i, string itemName)
 				{
 					this._tabCtrl = baseTr.Find("TabGroup/Tab" + (i + 1).ToString("D2")).GetComponent<PguiTabCtrl>();
@@ -6907,28 +6386,20 @@ public class SelCharaGrowCtrl : MonoBehaviour
 					this._text = this._tabCtrl.transform.Find("BaseImage/Txt").gameObject;
 				}
 
-				// Token: 0x040063BA RID: 25530
 				private PguiTabCtrl _tabCtrl;
 
-				// Token: 0x040063BB RID: 25531
 				private GameObject _yellowBadge;
 
-				// Token: 0x040063BC RID: 25532
 				private PguiAECtrl _yellowBadgeAnim;
 
-				// Token: 0x040063BD RID: 25533
 				private PguiRawImageCtrl _iconItem;
 
-				// Token: 0x040063BE RID: 25534
 				private GameObject _text;
 			}
 		}
 
-		// Token: 0x02001158 RID: 4440
 		public class ItemListBar
 		{
-			// Token: 0x17000CC7 RID: 3271
-			// (get) Token: 0x060055E2 RID: 21986 RVA: 0x002504FE File Offset: 0x0024E6FE
 			public GameObject BaseObj
 			{
 				get
@@ -6937,8 +6408,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CC8 RID: 3272
-			// (get) Token: 0x060055E3 RID: 21987 RVA: 0x00250506 File Offset: 0x0024E706
 			public PguiImageCtrl ImgAtr
 			{
 				get
@@ -6947,8 +6416,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CC9 RID: 3273
-			// (get) Token: 0x060055E4 RID: 21988 RVA: 0x0025050E File Offset: 0x0024E70E
 			public PguiTextCtrl TxtExpBonus
 			{
 				get
@@ -6957,8 +6424,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CCA RID: 3274
-			// (get) Token: 0x060055E5 RID: 21989 RVA: 0x00250516 File Offset: 0x0024E716
 			public PguiTextCtrl TxtAll
 			{
 				get
@@ -6967,8 +6432,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CCB RID: 3275
-			// (get) Token: 0x060055E6 RID: 21990 RVA: 0x0025051E File Offset: 0x0024E71E
 			public GridLayoutGroup Grid
 			{
 				get
@@ -6977,8 +6440,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CCC RID: 3276
-			// (get) Token: 0x060055E7 RID: 21991 RVA: 0x00250526 File Offset: 0x0024E726
 			public List<SelCharaGrowLevel.LvUpItem> IconItemList
 			{
 				get
@@ -6987,8 +6448,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CCD RID: 3277
-			// (get) Token: 0x060055E8 RID: 21992 RVA: 0x0025052E File Offset: 0x0024E72E
 			public List<SelCharaGrowKizuna.KizunaLvUpItem> IconItemListKizuna
 			{
 				get
@@ -6997,7 +6456,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x060055E9 RID: 21993 RVA: 0x00250538 File Offset: 0x0024E738
 			public ItemListBar(Transform baseTr)
 			{
 				this._baseObj = baseTr.gameObject;
@@ -7009,33 +6467,23 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				this._iconItemListKizuna = new List<SelCharaGrowKizuna.KizunaLvUpItem>();
 			}
 
-			// Token: 0x04005F60 RID: 24416
 			private GameObject _baseObj;
 
-			// Token: 0x04005F61 RID: 24417
 			private PguiImageCtrl _imgAtr;
 
-			// Token: 0x04005F62 RID: 24418
 			private PguiTextCtrl _txtExpBonus;
 
-			// Token: 0x04005F63 RID: 24419
 			private PguiTextCtrl _txtAll;
 
-			// Token: 0x04005F64 RID: 24420
 			private GridLayoutGroup _grid;
 
-			// Token: 0x04005F65 RID: 24421
 			private List<SelCharaGrowLevel.LvUpItem> _iconItemList;
 
-			// Token: 0x04005F66 RID: 24422
 			private List<SelCharaGrowKizuna.KizunaLvUpItem> _iconItemListKizuna;
 		}
 
-		// Token: 0x02001159 RID: 4441
 		public class ItemConversion
 		{
-			// Token: 0x17000CCE RID: 3278
-			// (get) Token: 0x060055EA RID: 21994 RVA: 0x002505C5 File Offset: 0x0024E7C5
 			public PguiTextCtrl Title
 			{
 				get
@@ -7044,8 +6492,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CCF RID: 3279
-			// (get) Token: 0x060055EB RID: 21995 RVA: 0x002505CD File Offset: 0x0024E7CD
 			public Dictionary<SelCharaGrowCtrl.CommonGUI.ItemConversion.ItemPosition, SelCharaGrowCtrl.CommonGUI.ItemConversion.ItemBox> ItemBoxeMap
 			{
 				get
@@ -7054,8 +6500,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CD0 RID: 3280
-			// (get) Token: 0x060055EC RID: 21996 RVA: 0x002505D5 File Offset: 0x0024E7D5
 			public PguiButtonCtrl ButtonC
 			{
 				get
@@ -7064,8 +6508,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CD1 RID: 3281
-			// (get) Token: 0x060055ED RID: 21997 RVA: 0x002505DD File Offset: 0x0024E7DD
 			public PguiTextCtrl TxtRateInfo
 			{
 				get
@@ -7074,7 +6516,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x060055EE RID: 21998 RVA: 0x002505E8 File Offset: 0x0024E7E8
 			public ItemConversion(Transform baseTr)
 			{
 				this._title = baseTr.Find("Title").GetComponent<PguiTextCtrl>();
@@ -7093,31 +6534,22 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				};
 			}
 
-			// Token: 0x04005F67 RID: 24423
 			private PguiTextCtrl _title;
 
-			// Token: 0x04005F68 RID: 24424
 			private Dictionary<SelCharaGrowCtrl.CommonGUI.ItemConversion.ItemPosition, SelCharaGrowCtrl.CommonGUI.ItemConversion.ItemBox> _itemBoxeMap;
 
-			// Token: 0x04005F69 RID: 24425
 			private PguiButtonCtrl _buttonC;
 
-			// Token: 0x04005F6A RID: 24426
 			private PguiTextCtrl _txtRateInfo;
 
-			// Token: 0x02001238 RID: 4664
 			public enum ItemPosition
 			{
-				// Token: 0x040063C0 RID: 25536
 				Left,
-				// Token: 0x040063C1 RID: 25537
 				Right
 			}
 
-			// Token: 0x02001239 RID: 4665
 			public class ItemBox
 			{
-				// Token: 0x0600582C RID: 22572 RVA: 0x0025A64C File Offset: 0x0025884C
 				public ItemBox(Transform baseTr)
 				{
 					this._name = baseTr.Find("Txt_ItemBox").GetComponent<PguiTextCtrl>();
@@ -7131,7 +6563,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 					}
 				}
 
-				// Token: 0x0600582D RID: 22573 RVA: 0x0025A71C File Offset: 0x0025891C
 				public void Setup(SelCharaGrowCtrl.CommonGUI.ItemConversion.ItemBox.SetupParam param)
 				{
 					this._itemIconCtrl.Setup(param.ItemStaticBase);
@@ -7140,26 +6571,18 @@ public class SelCharaGrowCtrl : MonoBehaviour
 					this._txt.text = param.InfoText;
 				}
 
-				// Token: 0x040063C2 RID: 25538
 				private GameObject _icon;
 
-				// Token: 0x040063C3 RID: 25539
 				private IconItemCtrl _itemIconCtrl;
 
-				// Token: 0x040063C4 RID: 25540
 				private PguiTextCtrl _name;
 
-				// Token: 0x040063C5 RID: 25541
 				private PguiTextCtrl _num;
 
-				// Token: 0x040063C6 RID: 25542
 				private PguiTextCtrl _txt;
 
-				// Token: 0x02001250 RID: 4688
 				public class SetupParam
 				{
-					// Token: 0x17000D23 RID: 3363
-					// (get) Token: 0x06005870 RID: 22640 RVA: 0x0025D082 File Offset: 0x0025B282
 					public ItemData ItemData
 					{
 						get
@@ -7168,8 +6591,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 						}
 					}
 
-					// Token: 0x17000D24 RID: 3364
-					// (get) Token: 0x06005871 RID: 22641 RVA: 0x0025D08A File Offset: 0x0025B28A
 					public string InfoText
 					{
 						get
@@ -7178,8 +6599,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 						}
 					}
 
-					// Token: 0x17000D25 RID: 3365
-					// (get) Token: 0x06005872 RID: 22642 RVA: 0x0025D092 File Offset: 0x0025B292
 					public int Num
 					{
 						get
@@ -7188,8 +6607,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 						}
 					}
 
-					// Token: 0x17000D26 RID: 3366
-					// (get) Token: 0x06005873 RID: 22643 RVA: 0x0025D09A File Offset: 0x0025B29A
 					public ItemStaticBase ItemStaticBase
 					{
 						get
@@ -7198,7 +6615,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 						}
 					}
 
-					// Token: 0x06005874 RID: 22644 RVA: 0x0025D0A2 File Offset: 0x0025B2A2
 					public SetupParam(ItemData itemData, string infoText, int num, ItemStaticBase itemStaticBase)
 					{
 						this._itemData = itemData;
@@ -7207,26 +6623,19 @@ public class SelCharaGrowCtrl : MonoBehaviour
 						this._itemStaticBase = itemStaticBase;
 					}
 
-					// Token: 0x04006451 RID: 25681
 					private ItemData _itemData;
 
-					// Token: 0x04006452 RID: 25682
 					private string _infoText;
 
-					// Token: 0x04006453 RID: 25683
 					private int _num;
 
-					// Token: 0x04006454 RID: 25684
 					private ItemStaticBase _itemStaticBase;
 				}
 			}
 		}
 
-		// Token: 0x0200115A RID: 4442
 		public class PhotoMax
 		{
-			// Token: 0x17000CD2 RID: 3282
-			// (get) Token: 0x060055EF RID: 21999 RVA: 0x00250676 File Offset: 0x0024E876
 			public GameObject BaseObj
 			{
 				get
@@ -7235,8 +6644,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CD3 RID: 3283
-			// (get) Token: 0x060055F0 RID: 22000 RVA: 0x0025067E File Offset: 0x0024E87E
 			public PguiTextCtrl TxtMaxInfo
 			{
 				get
@@ -7245,8 +6652,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CD4 RID: 3284
-			// (get) Token: 0x060055F1 RID: 22001 RVA: 0x00250686 File Offset: 0x0024E886
 			public SelCharaGrowCtrl.CommonGUI.ItemConversion ItemConversion
 			{
 				get
@@ -7255,7 +6660,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x060055F2 RID: 22002 RVA: 0x0025068E File Offset: 0x0024E88E
 			public PhotoMax(Transform baseTr)
 			{
 				this._baseObj = baseTr.gameObject;
@@ -7263,21 +6667,15 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				this._txtMaxInfo = baseTr.Find("Txt_MaxInfo_Photo").GetComponent<PguiTextCtrl>();
 			}
 
-			// Token: 0x04005F6B RID: 24427
 			private GameObject _baseObj;
 
-			// Token: 0x04005F6C RID: 24428
 			private PguiTextCtrl _txtMaxInfo;
 
-			// Token: 0x04005F6D RID: 24429
 			private SelCharaGrowCtrl.CommonGUI.ItemConversion _itemConversion;
 		}
 
-		// Token: 0x0200115B RID: 4443
 		public class PhotoPocketConversionStrengthen
 		{
-			// Token: 0x17000CD5 RID: 3285
-			// (get) Token: 0x060055F3 RID: 22003 RVA: 0x002506CE File Offset: 0x0024E8CE
 			public GameObject BaseObj
 			{
 				get
@@ -7286,8 +6684,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x17000CD6 RID: 3286
-			// (get) Token: 0x060055F4 RID: 22004 RVA: 0x002506D6 File Offset: 0x0024E8D6
 			public SelCharaGrowCtrl.CommonGUI.ItemConversion ItemConversion
 			{
 				get
@@ -7296,51 +6692,39 @@ public class SelCharaGrowCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x060055F5 RID: 22005 RVA: 0x002506DE File Offset: 0x0024E8DE
 			public PhotoPocketConversionStrengthen(Transform baseTr)
 			{
 				this._baseObj = baseTr.gameObject;
 				this._itemConversion = new SelCharaGrowCtrl.CommonGUI.ItemConversion(baseTr.Find("Box"));
 			}
 
-			// Token: 0x04005F6E RID: 24430
 			private GameObject _baseObj;
 
-			// Token: 0x04005F6F RID: 24431
 			private SelCharaGrowCtrl.CommonGUI.ItemConversion _itemConversion;
 		}
 	}
 
-	// Token: 0x0200099B RID: 2459
 	private enum ListKind
 	{
-		// Token: 0x04003DDB RID: 15835
 		Quest,
-		// Token: 0x04003DDC RID: 15836
 		Shop
 	}
 
-	// Token: 0x0200099C RID: 2460
 	private struct ListBarKind
 	{
-		// Token: 0x06003C54 RID: 15444 RVA: 0x001DA82D File Offset: 0x001D8A2D
 		public ListBarKind(SelCharaGrowCtrl.ListKind kind, int id)
 		{
 			this.kind = kind;
 			this.id = id;
 		}
 
-		// Token: 0x04003DDD RID: 15837
 		public SelCharaGrowCtrl.ListKind kind;
 
-		// Token: 0x04003DDE RID: 15838
 		public int id;
 	}
 
-	// Token: 0x0200099D RID: 2461
 	public class IconItemPack
 	{
-		// Token: 0x06003C55 RID: 15445 RVA: 0x001DA83D File Offset: 0x001D8A3D
 		public void Clear()
 		{
 			if (this.iconItemCtrl != null)
@@ -7353,17 +6737,13 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x04003DDF RID: 15839
 		public IconItemCtrl iconItemCtrl;
 
-		// Token: 0x04003DE0 RID: 15840
 		public PguiTextCtrl Txt_Num;
 	}
 
-	// Token: 0x0200099E RID: 2462
 	public class SingleItemInfoWindow
 	{
-		// Token: 0x06003C57 RID: 15447 RVA: 0x001DA880 File Offset: 0x001D8A80
 		public SingleItemInfoWindow(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -7388,41 +6768,29 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			this.questInfo = baseTr.Find("Base/Window/Right/QuestInfo").GetComponent<RectTransform>();
 		}
 
-		// Token: 0x04003DE1 RID: 15841
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x04003DE2 RID: 15842
 		public ReuseScroll ScrollView_QuestAll;
 
-		// Token: 0x04003DE3 RID: 15843
 		public PguiTextCtrl Txt_NoneInfo;
 
-		// Token: 0x04003DE4 RID: 15844
 		public SelCharaGrowCtrl.IconItemPack iconItemPack = new SelCharaGrowCtrl.IconItemPack();
 
-		// Token: 0x04003DE5 RID: 15845
 		public SelCharaGrowCtrl.IconItemPack sourceIconItemPack = new SelCharaGrowCtrl.IconItemPack();
 
-		// Token: 0x04003DE6 RID: 15846
 		public SelCharaGrowCtrl.IconItemPack targetIconItemPack = new SelCharaGrowCtrl.IconItemPack();
 
-		// Token: 0x04003DE7 RID: 15847
 		public GameObject exchangeBase;
 
-		// Token: 0x04003DE8 RID: 15848
 		public RectTransform questInfo;
 
-		// Token: 0x04003DE9 RID: 15849
 		public PguiButtonCtrl exchangeButton;
 
-		// Token: 0x04003DEA RID: 15850
 		public PguiTextCtrl remainExecuteText;
 	}
 
-	// Token: 0x0200099F RID: 2463
 	public class MultipleItemInfoWindow
 	{
-		// Token: 0x06003C58 RID: 15448 RVA: 0x001DAA28 File Offset: 0x001D8C28
 		public MultipleItemInfoWindow(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -7457,53 +6825,37 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			this.questInfo = baseTr.Find("Base/Window/Right/QuestInfo").GetComponent<RectTransform>();
 		}
 
-		// Token: 0x04003DEB RID: 15851
 		public static readonly int COUNT = 8;
 
-		// Token: 0x04003DEC RID: 15852
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x04003DED RID: 15853
 		public List<SelCharaGrowCtrl.IconItemPack> IconItemCtrlList = new List<SelCharaGrowCtrl.IconItemPack>();
 
-		// Token: 0x04003DEE RID: 15854
 		public List<ReuseScroll> ScrollViewAllList = new List<ReuseScroll>();
 
-		// Token: 0x04003DEF RID: 15855
 		public List<Transform> ScrollViewList = new List<Transform>();
 
-		// Token: 0x04003DF0 RID: 15856
 		public PguiTextCtrl Current_Txt_ItemName;
 
-		// Token: 0x04003DF1 RID: 15857
 		public PguiTextCtrl Txt_NoneInfo;
 
-		// Token: 0x04003DF2 RID: 15858
 		public GameObject Current_Frame;
 
-		// Token: 0x04003DF3 RID: 15859
 		public SelCharaGrowCtrl.IconItemPack sourceIconItemPack = new SelCharaGrowCtrl.IconItemPack();
 
-		// Token: 0x04003DF4 RID: 15860
 		public SelCharaGrowCtrl.IconItemPack targetIconItemPack = new SelCharaGrowCtrl.IconItemPack();
 
-		// Token: 0x04003DF5 RID: 15861
 		public GameObject exchangeBase;
 
-		// Token: 0x04003DF6 RID: 15862
 		public RectTransform questInfo;
 
-		// Token: 0x04003DF7 RID: 15863
 		public PguiButtonCtrl exchangeButton;
 
-		// Token: 0x04003DF8 RID: 15864
 		public PguiTextCtrl remainExecuteText;
 	}
 
-	// Token: 0x020009A0 RID: 2464
 	public class GuiCharaGrowListBar
 	{
-		// Token: 0x06003C5A RID: 15450 RVA: 0x001DACA4 File Offset: 0x001D8EA4
 		public GuiCharaGrowListBar(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -7513,7 +6865,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			this.listBarShop.CharaGrow_ListBar_Shop.gameObject.AddComponent<PguiDataHolder>();
 		}
 
-		// Token: 0x06003C5B RID: 15451 RVA: 0x001DAD2F File Offset: 0x001D8F2F
 		public void Setup(QuestOnePackData questOnePack)
 		{
 			this.listBarQuest.CharaGrow_ListBar_Quest.gameObject.SetActive(true);
@@ -7521,7 +6872,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			this.listBarShop.CharaGrow_ListBar_Shop.gameObject.SetActive(false);
 		}
 
-		// Token: 0x06003C5C RID: 15452 RVA: 0x001DAD69 File Offset: 0x001D8F69
 		public void Setup(ShopData shopData, int itemId)
 		{
 			this.listBarShop.CharaGrow_ListBar_Shop.gameObject.SetActive(true);
@@ -7529,7 +6879,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			this.listBarQuest.CharaGrow_ListBar_Quest.gameObject.SetActive(false);
 		}
 
-		// Token: 0x06003C5D RID: 15453 RVA: 0x001DADA4 File Offset: 0x001D8FA4
 		public void AddParam(int id, string str)
 		{
 			this.listBarQuest.CharaGrow_ListBar_Quest.GetComponent<PguiDataHolder>().id = id;
@@ -7538,27 +6887,21 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			this.listBarShop.CharaGrow_ListBar_Shop.GetComponent<PguiDataHolder>().str = str;
 		}
 
-		// Token: 0x06003C5E RID: 15454 RVA: 0x001DAE09 File Offset: 0x001D9009
 		public void AddOnClickListener(PguiButtonCtrl.OnClick button)
 		{
 			this.listBarQuest.CharaGrow_ListBar_Quest.AddOnClickListener(button, PguiButtonCtrl.SoundType.DEFAULT);
 			this.listBarShop.CharaGrow_ListBar_Shop.AddOnClickListener(button, PguiButtonCtrl.SoundType.DEFAULT);
 		}
 
-		// Token: 0x04003DF9 RID: 15865
 		public GameObject baseObj;
 
-		// Token: 0x04003DFA RID: 15866
 		private SelCharaGrowCtrl.GuiCharaGrowListBarQuest listBarQuest;
 
-		// Token: 0x04003DFB RID: 15867
 		private SelCharaGrowCtrl.GuiCharaGrowListBarShop listBarShop;
 	}
 
-	// Token: 0x020009A1 RID: 2465
 	public class GuiCharaGrowListBarQuest
 	{
-		// Token: 0x06003C5F RID: 15455 RVA: 0x001DAE30 File Offset: 0x001D9030
 		public GuiCharaGrowListBarQuest(Transform baseTr)
 		{
 			this.CharaGrow_ListBar_Quest = baseTr.GetComponent<PguiButtonCtrl>();
@@ -7572,7 +6915,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			this.questListBarCmnInfo = new QuestUtil.QuestListBarCmnInfo(baseTr.Find("BaseImage/QuestListBar_CmnInfo"));
 		}
 
-		// Token: 0x06003C60 RID: 15456 RVA: 0x001DAF00 File Offset: 0x001D9100
 		public void Setup(QuestOnePackData questOnePack)
 		{
 			bool flag = DataManager.DmQuest.QuestDynamicData.oneDataMap.ContainsKey(questOnePack.questOne.questId);
@@ -7695,38 +7037,27 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			this.CharaGrow_ListBar_Quest.SetActEnable(flag2 && !flag3, true, false);
 		}
 
-		// Token: 0x04003DFC RID: 15868
 		public PguiButtonCtrl CharaGrow_ListBar_Quest;
 
-		// Token: 0x04003DFD RID: 15869
 		public PguiImageCtrl QuestKind;
 
-		// Token: 0x04003DFE RID: 15870
 		public PguiTextCtrl Txt_QuestKind;
 
-		// Token: 0x04003DFF RID: 15871
 		public PguiImageCtrl QuestKind_Event;
 
-		// Token: 0x04003E00 RID: 15872
 		public PguiTextCtrl Txt_QuestKind_Event;
 
-		// Token: 0x04003E01 RID: 15873
 		public PguiImageCtrl ModeKind;
 
-		// Token: 0x04003E02 RID: 15874
 		public PguiTextCtrl Txt_ModeKind;
 
-		// Token: 0x04003E03 RID: 15875
 		public PguiTextCtrl Txt_QuestNameSub;
 
-		// Token: 0x04003E04 RID: 15876
 		private QuestUtil.QuestListBarCmnInfo questListBarCmnInfo;
 	}
 
-	// Token: 0x020009A2 RID: 2466
 	public class GuiCharaGrowListBarShop
 	{
-		// Token: 0x06003C61 RID: 15457 RVA: 0x001DB428 File Offset: 0x001D9628
 		public GuiCharaGrowListBarShop(Transform baseTr)
 		{
 			this.CharaGrow_ListBar_Shop = baseTr.GetComponent<PguiButtonCtrl>();
@@ -7738,7 +7069,6 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			this.repSprite = baseTr.Find("BaseImage").GetComponent<PguiReplaceSpriteCtrl>();
 		}
 
-		// Token: 0x06003C62 RID: 15458 RVA: 0x001DB4CC File Offset: 0x001D96CC
 		public void Setup(ShopData shopData, int itemId)
 		{
 			this.Txt_QuestName.text = shopData.shopName;
@@ -7752,38 +7082,27 @@ public class SelCharaGrowCtrl : MonoBehaviour
 			this.repSprite.Replace((shopData.category == ShopData.Category.OTHER_NOITEM_HIDE) ? 1 : 0);
 		}
 
-		// Token: 0x04003E05 RID: 15877
 		public PguiButtonCtrl CharaGrow_ListBar_Shop;
 
-		// Token: 0x04003E06 RID: 15878
 		public PguiTextCtrl Txt_QuestName;
 
-		// Token: 0x04003E07 RID: 15879
 		public PguiTextCtrl Txt_EventName;
 
-		// Token: 0x04003E08 RID: 15880
 		public PguiRawImageCtrl Icon_Tex;
 
-		// Token: 0x04003E09 RID: 15881
 		public PguiTextCtrl Item_Num;
 
-		// Token: 0x04003E0A RID: 15882
 		public GameObject Disable;
 
-		// Token: 0x04003E0B RID: 15883
 		public PguiReplaceSpriteCtrl repSprite;
 	}
 
-	// Token: 0x020009A3 RID: 2467
 	private class OpenItemWindowParam
 	{
-		// Token: 0x04003E0C RID: 15884
 		public List<ItemData> itemList = new List<ItemData>();
 
-		// Token: 0x04003E0D RID: 15885
 		public bool isMulti;
 
-		// Token: 0x04003E0E RID: 15886
 		public int index;
 	}
 }

@@ -1,39 +1,22 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
 using UnityEngine;
 using UnityEngine.Events;
 
-// Token: 0x02000176 RID: 374
 public class SelEventTowerCtrl : MonoBehaviour
 {
-	// Token: 0x170003B4 RID: 948
-	// (get) Token: 0x060017CD RID: 6093 RVA: 0x00126E3A File Offset: 0x0012503A
-	// (set) Token: 0x060017CE RID: 6094 RVA: 0x00126E42 File Offset: 0x00125042
 	public SelEventTowerCtrl.GUI GuiData { get; private set; }
 
-	// Token: 0x170003B5 RID: 949
-	// (get) Token: 0x060017CF RID: 6095 RVA: 0x00126E4B File Offset: 0x0012504B
-	// (set) Token: 0x060017D0 RID: 6096 RVA: 0x00126E53 File Offset: 0x00125053
 	private int UIType { get; set; }
 
-	// Token: 0x170003B6 RID: 950
-	// (get) Token: 0x060017D1 RID: 6097 RVA: 0x00126E5C File Offset: 0x0012505C
-	// (set) Token: 0x060017D2 RID: 6098 RVA: 0x00126E64 File Offset: 0x00125064
 	private int EventId { get; set; }
 
-	// Token: 0x170003B7 RID: 951
-	// (get) Token: 0x060017D3 RID: 6099 RVA: 0x00126E6D File Offset: 0x0012506D
-	// (set) Token: 0x060017D4 RID: 6100 RVA: 0x00126E75 File Offset: 0x00125075
 	private string LoadAssetPath { get; set; }
 
-	// Token: 0x170003B8 RID: 952
-	// (get) Token: 0x060017D5 RID: 6101 RVA: 0x00126E7E File Offset: 0x0012507E
-	// (set) Token: 0x060017D6 RID: 6102 RVA: 0x00126E86 File Offset: 0x00125086
 	public int MapId { get; set; }
 
-	// Token: 0x060017D7 RID: 6103 RVA: 0x00126E8F File Offset: 0x0012508F
 	public void Init(SelEventTowerCtrl.InitParam _initParam, SelEventTowerCtrl.SetupParam _setupParam)
 	{
 		this.UIType = -1;
@@ -43,7 +26,6 @@ public class SelEventTowerCtrl : MonoBehaviour
 		this.Setup(_setupParam);
 	}
 
-	// Token: 0x060017D8 RID: 6104 RVA: 0x00126EB4 File Offset: 0x001250B4
 	public void Setup(SelEventTowerCtrl.SetupParam _setupParam)
 	{
 		this.setupParam = _setupParam;
@@ -54,7 +36,6 @@ public class SelEventTowerCtrl : MonoBehaviour
 		this.createGui = Singleton<SceneManager>.Instance.StartCoroutine(this.CreateGUI());
 	}
 
-	// Token: 0x060017D9 RID: 6105 RVA: 0x00126EDC File Offset: 0x001250DC
 	public void UpdateDecoration()
 	{
 		CanvasManager.HdlHelpWindowCtrl.SetCurrentOpenHelpByTower(true);
@@ -92,7 +73,6 @@ public class SelEventTowerCtrl : MonoBehaviour
 		CanvasManager.SetScenarioBgInQuestBgTexture(this.setupParam.eventData.bgFilename);
 	}
 
-	// Token: 0x060017DA RID: 6106 RVA: 0x00127224 File Offset: 0x00125424
 	public void Dest()
 	{
 		if (this.GuiData == null)
@@ -107,7 +87,6 @@ public class SelEventTowerCtrl : MonoBehaviour
 		this.GuiData.eventSelect.renderTextureChara = null;
 	}
 
-	// Token: 0x060017DB RID: 6107 RVA: 0x00127293 File Offset: 0x00125493
 	public void Destroy()
 	{
 		if (this.prefabObj != null)
@@ -117,19 +96,16 @@ public class SelEventTowerCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060017DC RID: 6108 RVA: 0x001272B7 File Offset: 0x001254B7
 	public static void PlayBGM()
 	{
 		SoundManager.PlayBGM("prd_bgm0032");
 	}
 
-	// Token: 0x060017DD RID: 6109 RVA: 0x001272C3 File Offset: 0x001254C3
 	public static void OpenHelpWindow()
 	{
 		CanvasManager.HdlCmnFeedPageWindowCtrl.Open(CmnFeedPageWindowCtrl.Type.PAGE_FEED, "イベントの遊びかた", new List<string> { "Texture2D/Tutorial_Window/HardEvent/tutorial_hardevent_01", "Texture2D/Tutorial_Window/HardEvent/tutorial_hardevent_02" }, null);
 	}
 
-	// Token: 0x060017DE RID: 6110 RVA: 0x001272F1 File Offset: 0x001254F1
 	private IEnumerator LoadAssetObject(string path)
 	{
 		AssetManager.LoadAssetData(path, AssetManager.OWNER.QuestSelector, 0, null);
@@ -140,7 +116,6 @@ public class SelEventTowerCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060017DF RID: 6111 RVA: 0x00127300 File Offset: 0x00125500
 	private IEnumerator CreateGUI()
 	{
 		if (this.prefabObj == null || this.setupParam.eventData.modeUIType != this.UIType || this.setupParam.eventData.eventId != this.EventId)
@@ -259,17 +234,14 @@ public class SelEventTowerCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060017E0 RID: 6112 RVA: 0x0012730F File Offset: 0x0012550F
 	private void Start()
 	{
 	}
 
-	// Token: 0x060017E1 RID: 6113 RVA: 0x00127311 File Offset: 0x00125511
 	private void Update()
 	{
 	}
 
-	// Token: 0x060017E2 RID: 6114 RVA: 0x00127314 File Offset: 0x00125514
 	private void OnClickButtonQuestEvent(PguiButtonCtrl button)
 	{
 		DataManagerEvent.EventData eventData = DataManager.DmEvent.GetEventData(this.setupParam.eventData.eventId);
@@ -403,63 +375,45 @@ public class SelEventTowerCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060017E3 RID: 6115 RVA: 0x001278BA File Offset: 0x00125ABA
 	private void OnClickEventInfoBanner(Transform tf)
 	{
 		QuestUtil.OpenBannerWebViewWindow(this.setupParam.eventData.eventId);
 	}
 
-	// Token: 0x04001289 RID: 4745
 	private static readonly int NormalIndex = 0;
 
-	// Token: 0x0400128A RID: 4746
 	private static readonly int HardIndex = 1;
 
-	// Token: 0x0400128B RID: 4747
 	private static readonly int ExtraIndex = 2;
 
-	// Token: 0x0400128D RID: 4749
 	private SelEventTowerCtrl.InitParam initParam = new SelEventTowerCtrl.InitParam();
 
-	// Token: 0x0400128E RID: 4750
 	private SelEventTowerCtrl.SetupParam setupParam = new SelEventTowerCtrl.SetupParam();
 
-	// Token: 0x0400128F RID: 4751
 	private GameObject prefabObj;
 
-	// Token: 0x04001293 RID: 4755
 	private Coroutine createGui;
 
-	// Token: 0x02000D14 RID: 3348
 	public class InitParam
 	{
-		// Token: 0x04004D60 RID: 19808
 		public UnityAction reqNextSequenceCB;
 
-		// Token: 0x04004D61 RID: 19809
 		public UnityAction reqBackSequenceCB;
 
-		// Token: 0x04004D62 RID: 19810
 		public UnityAction reqGachaSequenceCB;
 
-		// Token: 0x04004D63 RID: 19811
 		public UnityAction selectObjsCB;
 	}
 
-	// Token: 0x02000D15 RID: 3349
 	public class SetupParam
 	{
-		// Token: 0x04004D64 RID: 19812
 		public DataManagerEvent.EventData eventData;
 
-		// Token: 0x04004D65 RID: 19813
 		public UnityAction reqNextSequenceCB;
 	}
 
-	// Token: 0x02000D16 RID: 3350
 	public class GUI
 	{
-		// Token: 0x06004823 RID: 18467 RVA: 0x0021AF10 File Offset: 0x00219110
 		public GUI(Transform baseTr)
 		{
 			this.eventSelect = new SelEventTowerCtrl.GUI.EventSelect(baseTr.transform);
@@ -471,16 +425,12 @@ public class SelEventTowerCtrl : MonoBehaviour
 			};
 		}
 
-		// Token: 0x04004D66 RID: 19814
 		public SelEventTowerCtrl.GUI.EventSelect eventSelect;
 
-		// Token: 0x04004D67 RID: 19815
 		public List<SelEventTowerCtrl.GUI.EventInfo> eventInfo;
 
-		// Token: 0x020011C1 RID: 4545
 		public class EventSelect
 		{
-			// Token: 0x06005708 RID: 22280 RVA: 0x00255784 File Offset: 0x00253984
 			public EventSelect(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -498,7 +448,6 @@ public class SelEventTowerCtrl : MonoBehaviour
 				this.Txt_Mission_Num = this.Btn_Mission.transform.Find("BaseImage/Cmn_Badge/Num").GetComponent<PguiTextCtrl>();
 			}
 
-			// Token: 0x06005709 RID: 22281 RVA: 0x002558CC File Offset: 0x00253ACC
 			public void CreateRTC()
 			{
 				if (this.renderTextureChara != null)
@@ -514,53 +463,37 @@ public class SelEventTowerCtrl : MonoBehaviour
 				this.renderTextureChara = component;
 			}
 
-			// Token: 0x0400616A RID: 24938
 			public GameObject baseObj;
 
-			// Token: 0x0400616B RID: 24939
 			public PguiButtonCtrl Btn_Main;
 
-			// Token: 0x0400616C RID: 24940
 			public PguiButtonCtrl Btn_Hard;
 
-			// Token: 0x0400616D RID: 24941
 			public MarkLockCtrl Btn_HardMarkLockCtrl;
 
-			// Token: 0x0400616E RID: 24942
 			public PguiButtonCtrl Btn_Extra;
 
-			// Token: 0x0400616F RID: 24943
 			public MarkLockCtrl Btn_ExtraMarkLockCtrl;
 
-			// Token: 0x04006170 RID: 24944
 			public PguiRawImageCtrl Tex_Event_Banner;
 
-			// Token: 0x04006171 RID: 24945
 			public PguiImageCtrl Tex_EventDay;
 
-			// Token: 0x04006172 RID: 24946
 			public PguiRawImageCtrl Tex_Photo;
 
-			// Token: 0x04006173 RID: 24947
 			public PguiTextCtrl Num_Txt_Day;
 
-			// Token: 0x04006174 RID: 24948
 			public RenderTextureChara renderTextureChara;
 
-			// Token: 0x04006175 RID: 24949
 			public PguiButtonCtrl Btn_Gacha;
 
-			// Token: 0x04006176 RID: 24950
 			public PguiButtonCtrl Btn_Mission;
 
-			// Token: 0x04006177 RID: 24951
 			public PguiTextCtrl Txt_Mission_Num;
 		}
 
-		// Token: 0x020011C2 RID: 4546
 		public class EventInfo
 		{
-			// Token: 0x0600570A RID: 22282 RVA: 0x00255962 File Offset: 0x00253B62
 			public EventInfo(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -568,13 +501,10 @@ public class SelEventTowerCtrl : MonoBehaviour
 				this.Txt_ItemNum = baseTr.Find("Num_Txt").GetComponent<PguiTextCtrl>();
 			}
 
-			// Token: 0x04006178 RID: 24952
 			public GameObject baseObj;
 
-			// Token: 0x04006179 RID: 24953
 			public PguiRawImageCtrl Img_ItemIcon;
 
-			// Token: 0x0400617A RID: 24954
 			public PguiTextCtrl Txt_ItemNum;
 		}
 	}

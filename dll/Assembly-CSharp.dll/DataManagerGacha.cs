@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using CriWare;
@@ -7,26 +7,17 @@ using SGNFW.Http;
 using SGNFW.HttpRequest.Protocol;
 using SGNFW.Mst;
 
-// Token: 0x0200007A RID: 122
 public class DataManagerGacha
 {
-	// Token: 0x0600046F RID: 1135 RVA: 0x0001E8D3 File Offset: 0x0001CAD3
 	public DataManagerGacha(DataManager p)
 	{
 		this.parentData = p;
 	}
 
-	// Token: 0x170000E3 RID: 227
-	// (get) Token: 0x06000470 RID: 1136 RVA: 0x0001E8E2 File Offset: 0x0001CAE2
-	// (set) Token: 0x06000471 RID: 1137 RVA: 0x0001E8EA File Offset: 0x0001CAEA
 	public HashSet<int> SelectedGachaIdHashSet { get; set; }
 
-	// Token: 0x170000E4 RID: 228
-	// (get) Token: 0x06000472 RID: 1138 RVA: 0x0001E8F3 File Offset: 0x0001CAF3
-	// (set) Token: 0x06000473 RID: 1139 RVA: 0x0001E8FB File Offset: 0x0001CAFB
 	public CriAtomExPlayback LatestGreetingVoice { get; set; }
 
-	// Token: 0x06000474 RID: 1140 RVA: 0x0001E904 File Offset: 0x0001CB04
 	private void AddToGachaResultRank4PuCharaList(int itemId)
 	{
 		if (DataManagerGacha.GachaResultRank4PuCharaList == null || DataManagerGacha.GachaResultRank4PuCharaList.Contains(itemId))
@@ -36,13 +27,11 @@ public class DataManagerGacha
 		DataManagerGacha.GachaResultRank4PuCharaList.Add(itemId);
 	}
 
-	// Token: 0x06000475 RID: 1141 RVA: 0x0001E926 File Offset: 0x0001CB26
 	public static bool IsExistResultPuChara()
 	{
 		return DataManagerGacha.GachaResultRank4PuCharaList != null && DataManagerGacha.GachaResultRank4PuCharaList.Any<int>();
 	}
 
-	// Token: 0x06000476 RID: 1142 RVA: 0x0001E93C File Offset: 0x0001CB3C
 	public static int GetGachaResultRank4PuRandomItemId()
 	{
 		if (DataManagerGacha.GachaResultRank4PuCharaList == null || DataManagerGacha.GachaResultRank4PuCharaList.Count == 0)
@@ -52,7 +41,6 @@ public class DataManagerGacha
 		return DataManagerGacha.GachaResultRank4PuCharaList.OrderBy<int, Guid>((int x) => Guid.NewGuid()).First<int>();
 	}
 
-	// Token: 0x06000477 RID: 1143 RVA: 0x0001E98C File Offset: 0x0001CB8C
 	public static void ReleasePuCharaList()
 	{
 		if (DataManagerGacha.GachaResultRank4PuCharaList == null)
@@ -63,7 +51,6 @@ public class DataManagerGacha
 		DataManagerGacha.GachaResultRank4PuCharaList = null;
 	}
 
-	// Token: 0x06000478 RID: 1144 RVA: 0x0001E9A6 File Offset: 0x0001CBA6
 	public List<DataManagerGacha.GachaPackData> CopyGachaPackDataList()
 	{
 		if (this.usableGachaPackDataList == null)
@@ -73,13 +60,11 @@ public class DataManagerGacha
 		return new List<DataManagerGacha.GachaPackData>(this.usableGachaPackDataList);
 	}
 
-	// Token: 0x06000479 RID: 1145 RVA: 0x0001E9BD File Offset: 0x0001CBBD
 	public List<DataManagerGacha.GachaPackData> GetGachaPackDataList()
 	{
 		return this.usableGachaPackDataList;
 	}
 
-	// Token: 0x0600047A RID: 1146 RVA: 0x0001E9C8 File Offset: 0x0001CBC8
 	public DataManagerGacha.GachaStaticData GetGachaStaticData(int gachaId)
 	{
 		DataManagerGacha.GachaStaticData gachaStaticData = (this.gachaStaticDataMap.ContainsKey(gachaId) ? this.gachaStaticDataMap[gachaId] : null);
@@ -90,19 +75,16 @@ public class DataManagerGacha
 		return gachaStaticData;
 	}
 
-	// Token: 0x0600047B RID: 1147 RVA: 0x0001EA02 File Offset: 0x0001CC02
 	public DataManagerGacha.PlayResult GetLastPlayGachaResult()
 	{
 		return this.gachaPlayResult;
 	}
 
-	// Token: 0x0600047C RID: 1148 RVA: 0x0001EA0A File Offset: 0x0001CC0A
 	public DataManagerGacha.ProbabilityData GetLastRequestRateViewData()
 	{
 		return this.probabilityDataList.Find((DataManagerGacha.ProbabilityData x) => x.gachaId == this.lastRequestRateViewGachaId);
 	}
 
-	// Token: 0x0600047D RID: 1149 RVA: 0x0001EA24 File Offset: 0x0001CC24
 	public int GetCeilingCountNow(int gachaId)
 	{
 		DataManagerGacha.GachaStaticData gachaStatic = (this.gachaStaticDataMap.ContainsKey(gachaId) ? this.gachaStaticDataMap[gachaId] : null);
@@ -118,13 +100,11 @@ public class DataManagerGacha
 		return dynamicGachaGroup.ceilingCountNow;
 	}
 
-	// Token: 0x0600047E RID: 1150 RVA: 0x0001EA87 File Offset: 0x0001CC87
 	public void SetLastPlayGachaResultByTutorial(DataManagerGacha.PlayResult gpr)
 	{
 		this.gachaPlayResult = gpr;
 	}
 
-	// Token: 0x0600047F RID: 1151 RVA: 0x0001EA90 File Offset: 0x0001CC90
 	public void RequestGetGachaList()
 	{
 		if (!Singleton<DataManager>.Instance.DisableServerRequestByTutorial)
@@ -134,7 +114,6 @@ public class DataManagerGacha
 		this.parentData.ServerRequest(GachaCmd.Create(), new Action<Command>(this.CbGachaCmd));
 	}
 
-	// Token: 0x06000480 RID: 1152 RVA: 0x0001EAC8 File Offset: 0x0001CCC8
 	public void RequestActionPlayGacha(int id, int type, int useItemId)
 	{
 		if (this.gachaStaticDataMap.ContainsKey(id) && DataManagerGacha.Category.Box == this.gachaStaticDataMap[id].gachaCategory)
@@ -146,7 +125,6 @@ public class DataManagerGacha
 		this.parentData.ServerRequest(GachaExecCmd.Create(id, type, useItemId), new Action<Command>(this.CbGachaExecCmd));
 	}
 
-	// Token: 0x06000481 RID: 1153 RVA: 0x0001EB68 File Offset: 0x0001CD68
 	public void RequestActionRateView(int id)
 	{
 		this.lastRequestRateViewGachaId = id;
@@ -156,13 +134,11 @@ public class DataManagerGacha
 		}
 	}
 
-	// Token: 0x06000482 RID: 1154 RVA: 0x0001EBCB File Offset: 0x0001CDCB
 	public void RequestActionGachaReset(int id)
 	{
 		this.parentData.ServerRequest(GachaResetCmd.Create(id), new Action<Command>(this.CbGachaResetCmd));
 	}
 
-	// Token: 0x06000483 RID: 1155 RVA: 0x0001EBEC File Offset: 0x0001CDEC
 	private void CbGachaCmd(Command cmd)
 	{
 		GachaResponse gachaResponse = cmd.response as GachaResponse;
@@ -319,7 +295,6 @@ public class DataManagerGacha
 		this.SortPlayableGachaList();
 	}
 
-	// Token: 0x06000484 RID: 1156 RVA: 0x0001F318 File Offset: 0x0001D518
 	private void CbGachaExecCmd(Command cmd)
 	{
 		GachaExecResponse res = cmd.response as GachaExecResponse;
@@ -566,7 +541,6 @@ public class DataManagerGacha
 		}
 	}
 
-	// Token: 0x06000485 RID: 1157 RVA: 0x0001FE64 File Offset: 0x0001E064
 	private void CbGachaRateViewCmd(Command cmd)
 	{
 		GachaRateViewResponse gachaRateViewResponse = cmd.response as GachaRateViewResponse;
@@ -744,7 +718,6 @@ public class DataManagerGacha
 		this.probabilityDataList.Add(probabilityData);
 	}
 
-	// Token: 0x06000486 RID: 1158 RVA: 0x00020A80 File Offset: 0x0001EC80
 	private void CbGachaResetCmd(Command cmd)
 	{
 		Response response = cmd.response;
@@ -756,7 +729,6 @@ public class DataManagerGacha
 		}
 	}
 
-	// Token: 0x06000487 RID: 1159 RVA: 0x00020AFC File Offset: 0x0001ECFC
 	public void InitializeMstData(MstManager mstManager)
 	{
 		this.gachaStaticDataMap = new Dictionary<int, DataManagerGacha.GachaStaticData>();
@@ -886,7 +858,6 @@ public class DataManagerGacha
 		}
 	}
 
-	// Token: 0x06000488 RID: 1160 RVA: 0x000211E0 File Offset: 0x0001F3E0
 	public void SortPlayableGachaList()
 	{
 		this.usableGachaPackDataList.Sort((DataManagerGacha.GachaPackData a, DataManagerGacha.GachaPackData b) => a.staticData.gachaId - b.staticData.gachaId);
@@ -928,14 +899,12 @@ public class DataManagerGacha
 		}
 	}
 
-	// Token: 0x06000489 RID: 1161 RVA: 0x00021480 File Offset: 0x0001F680
 	public void SetGachaPackDataByDirect(DataManagerGacha.GachaPackData _gachaPackData)
 	{
 		this.gachaPackDataList = new List<DataManagerGacha.GachaPackData> { _gachaPackData };
 		this.usableGachaPackDataList = this.gachaPackDataList;
 	}
 
-	// Token: 0x0600048A RID: 1162 RVA: 0x000214A0 File Offset: 0x0001F6A0
 	private List<DataManagerGacha.GachaItemdata> PickCharaList(int search_gacha_id)
 	{
 		List<DataManagerGacha.GachaItemdata> list = new List<DataManagerGacha.GachaItemdata>();
@@ -946,40 +915,28 @@ public class DataManagerGacha
 		return list;
 	}
 
-	// Token: 0x04000507 RID: 1287
 	private DataManager parentData;
 
-	// Token: 0x04000508 RID: 1288
 	private Dictionary<int, DataManagerGacha.GachaStaticData> gachaStaticDataMap;
 
-	// Token: 0x04000509 RID: 1289
 	private List<DataManagerGacha.GachaPackData> gachaPackDataList;
 
-	// Token: 0x0400050A RID: 1290
 	private List<DataManagerGacha.GachaPackData> usableGachaPackDataList;
 
-	// Token: 0x0400050B RID: 1291
 	private List<DataManagerGacha.DynamicGachaGroup> gachaDynamicGachaGroupList;
 
-	// Token: 0x0400050C RID: 1292
 	private DataManagerGacha.PlayResult gachaPlayResult;
 
-	// Token: 0x0400050D RID: 1293
 	private List<DataManagerGacha.ProbabilityData> probabilityDataList;
 
-	// Token: 0x0400050E RID: 1294
 	private int lastRequestRateViewGachaId;
 
-	// Token: 0x0400050F RID: 1295
 	private List<DataManagerGacha.GachaItemdata> puResultList;
 
-	// Token: 0x04000512 RID: 1298
 	private static List<int> GachaResultRank4PuCharaList;
 
-	// Token: 0x02000684 RID: 1668
 	public class GachaPackData
 	{
-		// Token: 0x0600321C RID: 12828 RVA: 0x001BE8E4 File Offset: 0x001BCAE4
 		public int GetUseItemId(int typeId)
 		{
 			DataManagerGacha.GachaStaticTypeData gachaStaticTypeData = this.staticData.typeDataList.Find((DataManagerGacha.GachaStaticTypeData item) => item.gachaType == typeId);
@@ -998,65 +955,35 @@ public class DataManagerGacha
 			return gachaStaticTypeData.substituteItemId;
 		}
 
-		// Token: 0x04002F69 RID: 12137
 		public int gachaId;
 
-		// Token: 0x04002F6A RID: 12138
 		public DataManagerGacha.GachaStaticData staticData = new DataManagerGacha.GachaStaticData(new MstGachaData());
 
-		// Token: 0x04002F6B RID: 12139
 		public DataManagerGacha.DynamicGachaData dynamicData = new DataManagerGacha.DynamicGachaData();
 	}
 
-	// Token: 0x02000685 RID: 1669
 	public class GachaStaticData
 	{
-		// Token: 0x1700070B RID: 1803
-		// (get) Token: 0x0600321E RID: 12830 RVA: 0x001BE977 File Offset: 0x001BCB77
-		// (set) Token: 0x0600321F RID: 12831 RVA: 0x001BE97F File Offset: 0x001BCB7F
 		public DateTime StepResetTime { get; private set; }
 
-		// Token: 0x1700070C RID: 1804
-		// (get) Token: 0x06003220 RID: 12832 RVA: 0x001BE988 File Offset: 0x001BCB88
-		// (set) Token: 0x06003221 RID: 12833 RVA: 0x001BE990 File Offset: 0x001BCB90
 		public bool RateHideFlg { get; private set; }
 
-		// Token: 0x1700070D RID: 1805
-		// (get) Token: 0x06003222 RID: 12834 RVA: 0x001BE999 File Offset: 0x001BCB99
-		// (set) Token: 0x06003223 RID: 12835 RVA: 0x001BE9A1 File Offset: 0x001BCBA1
 		public List<int> InfoDispIdList { get; set; }
 
-		// Token: 0x1700070E RID: 1806
-		// (get) Token: 0x06003224 RID: 12836 RVA: 0x001BE9AA File Offset: 0x001BCBAA
-		// (set) Token: 0x06003225 RID: 12837 RVA: 0x001BE9B2 File Offset: 0x001BCBB2
 		public DateTime startDatetime { get; set; }
 
-		// Token: 0x1700070F RID: 1807
-		// (get) Token: 0x06003226 RID: 12838 RVA: 0x001BE9BB File Offset: 0x001BCBBB
-		// (set) Token: 0x06003227 RID: 12839 RVA: 0x001BE9C3 File Offset: 0x001BCBC3
 		public DateTime endDatetime { get; set; }
 
-		// Token: 0x17000710 RID: 1808
-		// (get) Token: 0x06003228 RID: 12840 RVA: 0x001BE9CC File Offset: 0x001BCBCC
-		// (set) Token: 0x06003229 RID: 12841 RVA: 0x001BE9D4 File Offset: 0x001BCBD4
 		public bool dayOfWeekFlg { get; set; }
 
-		// Token: 0x17000711 RID: 1809
-		// (get) Token: 0x0600322A RID: 12842 RVA: 0x001BE9DD File Offset: 0x001BCBDD
-		// (set) Token: 0x0600322B RID: 12843 RVA: 0x001BE9E5 File Offset: 0x001BCBE5
 		public bool IsResultTreeHouseFurnitureInfo { get; private set; }
 
-		// Token: 0x17000712 RID: 1810
-		// (get) Token: 0x0600322C RID: 12844 RVA: 0x001BE9EE File Offset: 0x001BCBEE
-		// (set) Token: 0x0600322D RID: 12845 RVA: 0x001BE9F6 File Offset: 0x001BCBF6
 		public int ReplaceGroupId { get; private set; }
 
-		// Token: 0x0600322E RID: 12846 RVA: 0x001BE9FF File Offset: 0x001BCBFF
 		public GachaStaticData()
 		{
 		}
 
-		// Token: 0x0600322F RID: 12847 RVA: 0x001BEA40 File Offset: 0x001BCC40
 		public GachaStaticData(MstGachaData mstGachaData)
 		{
 			this.gachaId = mstGachaData.gachaId;
@@ -1117,7 +1044,6 @@ public class DataManagerGacha
 			this.IsResultTreeHouseFurnitureInfo = mstGachaData.resultInfoType == 1;
 		}
 
-		// Token: 0x06003230 RID: 12848 RVA: 0x001BECBC File Offset: 0x001BCEBC
 		public DateTime EndTimeOfDayOfWeek(DateTime nowTime)
 		{
 			DateTime dateTime = this.endDatetime;
@@ -1139,106 +1065,70 @@ public class DataManagerGacha
 			return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, 23, 59, 59);
 		}
 
-		// Token: 0x04002F6C RID: 12140
 		public int gachaId;
 
-		// Token: 0x04002F6D RID: 12141
 		public DataManagerGacha.Category gachaCategory;
 
-		// Token: 0x04002F6E RID: 12142
 		public string gachaName;
 
-		// Token: 0x04002F6F RID: 12143
 		public int gachaGroupId;
 
-		// Token: 0x04002F70 RID: 12144
 		public string labelTextureName;
 
-		// Token: 0x04002F71 RID: 12145
 		public string banner;
 
-		// Token: 0x04002F72 RID: 12146
 		public int sortIndex;
 
-		// Token: 0x04002F73 RID: 12147
 		public int highLimit;
 
-		// Token: 0x04002F74 RID: 12148
 		public bool highLimitCountFlag;
 
-		// Token: 0x04002F75 RID: 12149
 		public string detailDispText;
 
-		// Token: 0x04002F76 RID: 12150
 		public int availableCount;
 
-		// Token: 0x04002F77 RID: 12151
 		public bool recommendFlg;
 
-		// Token: 0x04002F78 RID: 12152
 		public int stepPreviousGachaId;
 
-		// Token: 0x04002F79 RID: 12153
 		public int stepNextGachaId;
 
-		// Token: 0x04002F7B RID: 12155
 		public string stepupBtnText;
 
-		// Token: 0x04002F7D RID: 12157
 		public List<DataManagerGacha.GachaStaticTypeData> typeDataList = new List<DataManagerGacha.GachaStaticTypeData>();
 
-		// Token: 0x04002F7E RID: 12158
 		public List<DataManagerGacha.GachaItemdata> gachaItemData = new List<DataManagerGacha.GachaItemdata>();
 
-		// Token: 0x04002F80 RID: 12160
 		public List<int> enableBonusItemIdList = new List<int>();
 
-		// Token: 0x04002F81 RID: 12161
 		public List<int> bonusIdList = new List<int>();
 
-		// Token: 0x04002F85 RID: 12165
 		public bool[] dayOfWeek = new bool[7];
 
-		// Token: 0x04002F86 RID: 12166
 		public DataManagerGacha.TabCategory tabCategory;
 	}
 
-	// Token: 0x02000686 RID: 1670
 	public enum Category
 	{
-		// Token: 0x04002F8A RID: 12170
 		INVALID,
-		// Token: 0x04002F8B RID: 12171
 		KiraKira,
-		// Token: 0x04002F8C RID: 12172
 		Active,
-		// Token: 0x04002F8D RID: 12173
 		SPECIAL,
-		// Token: 0x04002F8E RID: 12174
 		MonthlyPack,
-		// Token: 0x04002F8F RID: 12175
 		StepUp,
-		// Token: 0x04002F90 RID: 12176
 		Box,
-		// Token: 0x04002F91 RID: 12177
 		Roulette
 	}
 
-	// Token: 0x02000687 RID: 1671
 	public enum TabCategory
 	{
-		// Token: 0x04002F93 RID: 12179
 		All,
-		// Token: 0x04002F94 RID: 12180
 		Limited,
-		// Token: 0x04002F95 RID: 12181
 		LimitedReprint
 	}
 
-	// Token: 0x02000688 RID: 1672
 	public class GachaStaticTypeData
 	{
-		// Token: 0x06003231 RID: 12849 RVA: 0x001BED5C File Offset: 0x001BCF5C
 		public GachaStaticTypeData(MstGachaTypeData typeData)
 		{
 			this.gachaType = typeData.gachaType;
@@ -1259,7 +1149,6 @@ public class DataManagerGacha
 			this.lastTimeBenefitRarity4 = typeData.lastTimeBenefitRarity4;
 		}
 
-		// Token: 0x06003232 RID: 12850 RVA: 0x001BEE2F File Offset: 0x001BD02F
 		public GachaStaticTypeData(int lot, int itemId, int itemNum)
 		{
 			this.lotTime = lot;
@@ -1267,99 +1156,67 @@ public class DataManagerGacha
 			this.useItemNumber = itemNum;
 		}
 
-		// Token: 0x04002F96 RID: 12182
 		public int gachaType;
 
-		// Token: 0x04002F97 RID: 12183
 		public DataManagerGacha.DiscountData discountData;
 
-		// Token: 0x04002F98 RID: 12184
 		public int lotTime;
 
-		// Token: 0x04002F99 RID: 12185
 		public string balloonText;
 
-		// Token: 0x04002F9A RID: 12186
 		public int useItemId;
 
-		// Token: 0x04002F9B RID: 12187
 		public int useItemNumber;
 
-		// Token: 0x04002F9C RID: 12188
 		public int substituteItemId;
 
-		// Token: 0x04002F9D RID: 12189
 		public int substituteItemNumber;
 
-		// Token: 0x04002F9E RID: 12190
 		public int subItemUseCondition;
 
-		// Token: 0x04002F9F RID: 12191
 		public string bonusItemDispMessage;
 
-		// Token: 0x04002FA0 RID: 12192
 		public int bonusItemOneId;
 
-		// Token: 0x04002FA1 RID: 12193
 		public int bonusItemSetId;
 
-		// Token: 0x04002FA2 RID: 12194
 		public int bonusItemNumber;
 
-		// Token: 0x04002FA3 RID: 12195
 		public int bonusItemLimit;
 
-		// Token: 0x04002FA4 RID: 12196
 		public int lastTimeBenefitFriends;
 
-		// Token: 0x04002FA5 RID: 12197
 		public int lastTimeBenefitRarity;
 
-		// Token: 0x04002FA6 RID: 12198
 		public int lastTimeBenefitRarity4;
 	}
 
-	// Token: 0x02000689 RID: 1673
 	public class DiscountData
 	{
-		// Token: 0x04002FA7 RID: 12199
 		public int discountId;
 
-		// Token: 0x04002FA8 RID: 12200
 		public string discountName;
 
-		// Token: 0x04002FA9 RID: 12201
 		public DataManagerGacha.DiscountType discountType;
 
-		// Token: 0x04002FAA RID: 12202
 		public int discountNum;
 
-		// Token: 0x04002FAB RID: 12203
 		public DateTime startDatetime;
 
-		// Token: 0x04002FAC RID: 12204
 		public DateTime endDatetime;
 
-		// Token: 0x04002FAD RID: 12205
 		public int availableCount;
 	}
 
-	// Token: 0x0200068A RID: 1674
 	public enum DiscountType
 	{
-		// Token: 0x04002FAF RID: 12207
 		Undefined,
-		// Token: 0x04002FB0 RID: 12208
 		NoneReset,
-		// Token: 0x04002FB1 RID: 12209
 		OnceADay
 	}
 
-	// Token: 0x0200068B RID: 1675
 	public class GachaItemdata
 	{
-		// Token: 0x17000713 RID: 1811
-		// (get) Token: 0x06003234 RID: 12852 RVA: 0x001BEE54 File Offset: 0x001BD054
 		public bool EnableBonusItem01
 		{
 			get
@@ -1368,8 +1225,6 @@ public class DataManagerGacha
 			}
 		}
 
-		// Token: 0x17000714 RID: 1812
-		// (get) Token: 0x06003235 RID: 12853 RVA: 0x001BEE69 File Offset: 0x001BD069
 		public bool EnableBonusItem02
 		{
 			get
@@ -1378,8 +1233,6 @@ public class DataManagerGacha
 			}
 		}
 
-		// Token: 0x17000715 RID: 1813
-		// (get) Token: 0x06003236 RID: 12854 RVA: 0x001BEE7E File Offset: 0x001BD07E
 		public bool EnableBonusItem03
 		{
 			get
@@ -1388,90 +1241,67 @@ public class DataManagerGacha
 			}
 		}
 
-		// Token: 0x04002FB2 RID: 12210
 		public int itemId;
 
-		// Token: 0x04002FB3 RID: 12211
 		public int itemNum;
 
-		// Token: 0x04002FB4 RID: 12212
 		public int stackNum;
 
-		// Token: 0x04002FB5 RID: 12213
 		public int sortNum;
 
-		// Token: 0x04002FB6 RID: 12214
 		public bool pickUpFlg;
 
-		// Token: 0x04002FB7 RID: 12215
 		public int dispClientTypeLimit;
 
-		// Token: 0x04002FB8 RID: 12216
 		public int dispClientTypeNew;
 
-		// Token: 0x04002FB9 RID: 12217
 		public int bonusItemId01;
 
-		// Token: 0x04002FBA RID: 12218
 		public int bonusItemNum01;
 
-		// Token: 0x04002FBB RID: 12219
 		public int bonusItemId02;
 
-		// Token: 0x04002FBC RID: 12220
 		public int bonusItemNum02;
 
-		// Token: 0x04002FBD RID: 12221
 		public int bonusItemId03;
 
-		// Token: 0x04002FBE RID: 12222
 		public int bonusItemNum03;
 	}
 
-	// Token: 0x0200068C RID: 1676
 	public class ProbabilityData
 	{
-		// Token: 0x06003238 RID: 12856 RVA: 0x001BEE9C File Offset: 0x001BD09C
 		public List<DataManagerGacha.ProbabilityData.Element> GetElements(DataManagerGacha.ProbabilityData.Type type)
 		{
 			return this.elements.FindAll((DataManagerGacha.ProbabilityData.Element e) => e.type == type);
 		}
 
-		// Token: 0x06003239 RID: 12857 RVA: 0x001BEED0 File Offset: 0x001BD0D0
 		public List<DataManagerGacha.ProbabilityData.Element> GetElements(DataManagerGacha.ProbabilityData.Category category)
 		{
 			return this.elements.FindAll((DataManagerGacha.ProbabilityData.Element e) => e.category == category);
 		}
 
-		// Token: 0x0600323A RID: 12858 RVA: 0x001BEF04 File Offset: 0x001BD104
 		public List<DataManagerGacha.ProbabilityData.Element> GetElements(DataManagerGacha.ProbabilityData.Type type, DataManagerGacha.ProbabilityData.Category category)
 		{
 			return this.elements.FindAll((DataManagerGacha.ProbabilityData.Element e) => e.type == type).FindAll((DataManagerGacha.ProbabilityData.Element e) => e.category == category);
 		}
 
-		// Token: 0x04002FBF RID: 12223
 		public int gachaId;
 
-		// Token: 0x04002FC0 RID: 12224
 		public List<DataManagerGacha.ProbabilityData.Element> elements;
 
-		// Token: 0x02001121 RID: 4385
 		public class ItemOne
 		{
-			// Token: 0x060054C9 RID: 21705 RVA: 0x0024E3DC File Offset: 0x0024C5DC
 			public ItemOne(double n, double d, double d3, double d4, double dc)
 			{
 				int num = 0;
 				this.Initialize(num, n, d, d3, d4, dc);
 			}
 
-			// Token: 0x060054CA RID: 21706 RVA: 0x0024E3FF File Offset: 0x0024C5FF
 			public ItemOne(int r, double n, double d, double d3, double d4, double dc)
 			{
 				this.Initialize(r, n, d, d3, d4, dc);
 			}
 
-			// Token: 0x060054CB RID: 21707 RVA: 0x0024E416 File Offset: 0x0024C616
 			private void Initialize(int r, double n, double d, double d3, double d4, double dc)
 			{
 				this.rarity = r;
@@ -1482,29 +1312,21 @@ public class DataManagerGacha
 				this.decidedCeiling = dc;
 			}
 
-			// Token: 0x04005E2E RID: 24110
 			public int rarity;
 
-			// Token: 0x04005E2F RID: 24111
 			public double normal;
 
-			// Token: 0x04005E30 RID: 24112
 			public double decided;
 
-			// Token: 0x04005E31 RID: 24113
 			public double decided3;
 
-			// Token: 0x04005E32 RID: 24114
 			public double decided4;
 
-			// Token: 0x04005E33 RID: 24115
 			public double decidedCeiling;
 		}
 
-		// Token: 0x02001122 RID: 4386
 		public class Element
 		{
-			// Token: 0x060054CC RID: 21708 RVA: 0x0024E445 File Offset: 0x0024C645
 			public Element(DataManagerGacha.ProbabilityData.Type t, DataManagerGacha.ProbabilityData.Category c)
 			{
 				this.type = t;
@@ -1513,7 +1335,6 @@ public class DataManagerGacha
 				this.sortNum = 0;
 			}
 
-			// Token: 0x060054CD RID: 21709 RVA: 0x0024E46C File Offset: 0x0024C66C
 			public Element(DataManagerGacha.ProbabilityData.Type t, DataManagerGacha.ProbabilityData.Category c, DataManagerGacha.GachaItemdata item, int remineNum)
 			{
 				this.type = t;
@@ -1525,202 +1346,131 @@ public class DataManagerGacha
 				this.denominator = item.stackNum;
 			}
 
-			// Token: 0x04005E34 RID: 24116
 			public DataManagerGacha.ProbabilityData.Type type;
 
-			// Token: 0x04005E35 RID: 24117
 			public DataManagerGacha.ProbabilityData.Category category;
 
-			// Token: 0x04005E36 RID: 24118
 			public List<DataManagerGacha.ProbabilityData.ItemOne> rate;
 
-			// Token: 0x04005E37 RID: 24119
 			public int item_id;
 
-			// Token: 0x04005E38 RID: 24120
 			public int item_num;
 
-			// Token: 0x04005E39 RID: 24121
 			public int sortNum;
 
-			// Token: 0x04005E3A RID: 24122
 			public int numerator;
 
-			// Token: 0x04005E3B RID: 24123
 			public int denominator;
 		}
 
-		// Token: 0x02001123 RID: 4387
 		public enum Type
 		{
-			// Token: 0x04005E3D RID: 24125
 			Undefined,
-			// Token: 0x04005E3E RID: 24126
 			Chara,
-			// Token: 0x04005E3F RID: 24127
 			Photo,
-			// Token: 0x04005E40 RID: 24128
 			Item,
-			// Token: 0x04005E41 RID: 24129
 			TreeHouseFurniture
 		}
 
-		// Token: 0x02001124 RID: 4388
 		public enum Category
 		{
-			// Token: 0x04005E43 RID: 24131
 			Rarity,
-			// Token: 0x04005E44 RID: 24132
 			PickUp,
-			// Token: 0x04005E45 RID: 24133
 			Other
 		}
 	}
 
-	// Token: 0x0200068D RID: 1677
 	public class DynamicGachaData
 	{
-		// Token: 0x04002FC1 RID: 12225
 		public int gachaId;
 
-		// Token: 0x04002FC2 RID: 12226
 		public List<DataManagerGacha.DynamicGachaTypeData> gachaTypeData;
 	}
 
-	// Token: 0x0200068E RID: 1678
 	public class DynamicGachaTypeData
 	{
-		// Token: 0x04002FC3 RID: 12227
 		public int gachaType;
 
-		// Token: 0x04002FC4 RID: 12228
 		public int totalSubPlayNum;
 
-		// Token: 0x04002FC5 RID: 12229
 		public int continuePlayNum;
 
-		// Token: 0x04002FC6 RID: 12230
 		public int boxRemainNum;
 
-		// Token: 0x04002FC7 RID: 12231
 		public int resetNum;
 
-		// Token: 0x04002FC8 RID: 12232
 		public int discountPlayNum;
 
-		// Token: 0x04002FC9 RID: 12233
 		public DateTime lastPlayDateTime;
 
-		// Token: 0x04002FCA RID: 12234
 		public DateTime lastPlayTodayDateTime;
 	}
 
-	// Token: 0x0200068F RID: 1679
 	public class DynamicGachaGroup
 	{
-		// Token: 0x17000716 RID: 1814
-		// (get) Token: 0x0600323E RID: 12862 RVA: 0x001BEF65 File Offset: 0x001BD165
-		// (set) Token: 0x0600323F RID: 12863 RVA: 0x001BEF6D File Offset: 0x001BD16D
 		public int GachaGroupId { get; private set; }
 
-		// Token: 0x06003240 RID: 12864 RVA: 0x001BEF76 File Offset: 0x001BD176
 		public DynamicGachaGroup(int id)
 		{
 			this.GachaGroupId = id;
 		}
 
-		// Token: 0x04002FCC RID: 12236
 		public int ceilingCountNow;
 	}
 
-	// Token: 0x02000690 RID: 1680
 	public class PlayResult
 	{
-		// Token: 0x17000717 RID: 1815
-		// (get) Token: 0x06003241 RID: 12865 RVA: 0x001BEF85 File Offset: 0x001BD185
-		// (set) Token: 0x06003242 RID: 12866 RVA: 0x001BEF8D File Offset: 0x001BD18D
 		public bool GetBonusOne { get; set; }
 
-		// Token: 0x17000718 RID: 1816
-		// (get) Token: 0x06003243 RID: 12867 RVA: 0x001BEF96 File Offset: 0x001BD196
-		// (set) Token: 0x06003244 RID: 12868 RVA: 0x001BEF9E File Offset: 0x001BD19E
 		public bool GetBonusSet { get; set; }
 
-		// Token: 0x17000719 RID: 1817
-		// (get) Token: 0x06003245 RID: 12869 RVA: 0x001BEFA7 File Offset: 0x001BD1A7
-		// (set) Token: 0x06003246 RID: 12870 RVA: 0x001BEFAF File Offset: 0x001BD1AF
 		public bool GetPrizeBonus { get; set; }
 
-		// Token: 0x1700071A RID: 1818
-		// (get) Token: 0x06003247 RID: 12871 RVA: 0x001BEFB8 File Offset: 0x001BD1B8
-		// (set) Token: 0x06003248 RID: 12872 RVA: 0x001BEFC0 File Offset: 0x001BD1C0
 		public int highestRarity { get; set; }
 
-		// Token: 0x04002FCD RID: 12237
 		public int gachaId;
 
-		// Token: 0x04002FCE RID: 12238
 		public int gachaType;
 
-		// Token: 0x04002FCF RID: 12239
 		public List<DataManagerGacha.PlayResult.OneData> gachaResult = new List<DataManagerGacha.PlayResult.OneData>();
 
-		// Token: 0x04002FD4 RID: 12244
 		public DataManagerGacha.PlayResult.BonusOneData bonusOne;
 
-		// Token: 0x04002FD5 RID: 12245
 		public List<DataManagerGacha.PlayResult.BonusOneData> bonusSet = new List<DataManagerGacha.PlayResult.BonusOneData>();
 
-		// Token: 0x04002FD6 RID: 12246
 		public List<DataManagerGacha.PlayResult.BonusOneData> prizeBonusList = new List<DataManagerGacha.PlayResult.BonusOneData>();
 
-		// Token: 0x02001128 RID: 4392
 		public class OneData
 		{
-			// Token: 0x04005E4A RID: 24138
 			public int charaId;
 
-			// Token: 0x04005E4B RID: 24139
 			public int itemId;
 
-			// Token: 0x04005E4C RID: 24140
 			public int itemNum;
 
-			// Token: 0x04005E4D RID: 24141
 			public bool isNew;
 
-			// Token: 0x04005E4E RID: 24142
 			public bool replaced;
 
-			// Token: 0x04005E4F RID: 24143
 			public ItemData replaceItem;
 
-			// Token: 0x04005E50 RID: 24144
 			public ItemData replaceItemEx;
 
-			// Token: 0x04005E51 RID: 24145
 			public bool isPresent;
 
-			// Token: 0x04005E52 RID: 24146
 			public bool replaceItemIsNew;
 
-			// Token: 0x04005E53 RID: 24147
 			public bool replaceItemExIsNew;
 		}
 
-		// Token: 0x02001129 RID: 4393
 		public class BonusOneData
 		{
-			// Token: 0x04005E54 RID: 24148
 			public bool replaced;
 
-			// Token: 0x04005E55 RID: 24149
 			public bool isNew;
 
-			// Token: 0x04005E56 RID: 24150
 			public bool isPresentBox;
 
-			// Token: 0x04005E57 RID: 24151
 			public ItemData itemData;
 		}
 	}

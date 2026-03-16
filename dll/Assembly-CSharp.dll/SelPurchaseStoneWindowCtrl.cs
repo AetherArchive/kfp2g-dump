@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.HttpRequest.Protocol;
@@ -7,10 +7,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x020001BE RID: 446
 public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 {
-	// Token: 0x06001EBF RID: 7871 RVA: 0x0017EA24 File Offset: 0x0017CC24
 	public void Init()
 	{
 		GameObject gameObject = Object.Instantiate<GameObject>((GameObject)Resources.Load("Cmn/GUI/Prefab/GUI_Cmn_BillingWindow"), base.transform);
@@ -59,7 +57,6 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 		this.clearReleaseProductIdList = true;
 	}
 
-	// Token: 0x06001EC0 RID: 7872 RVA: 0x0017EC60 File Offset: 0x0017CE60
 	public void Setup(PurchaseProductOne.TabType requestOpenTabType = PurchaseProductOne.TabType.Invalid)
 	{
 		this.isActiveWindow = true;
@@ -81,7 +78,6 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001EC1 RID: 7873 RVA: 0x0017ECF0 File Offset: 0x0017CEF0
 	private int GetTabIndex(PurchaseProductOne.TabType tabType)
 	{
 		int num = 0;
@@ -103,25 +99,21 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 		return num;
 	}
 
-	// Token: 0x06001EC2 RID: 7874 RVA: 0x0017ED28 File Offset: 0x0017CF28
 	public bool IsActiveWindow()
 	{
 		return this.isActiveWindow;
 	}
 
-	// Token: 0x06001EC3 RID: 7875 RVA: 0x0017ED30 File Offset: 0x0017CF30
 	public void AddOnSuccessPurchaseListener(UnityAction cb)
 	{
 		this.onSuccessPurchaseList.Add(cb);
 	}
 
-	// Token: 0x06001EC4 RID: 7876 RVA: 0x0017ED3E File Offset: 0x0017CF3E
 	public void RemoveOnSuccessPurchaseListener(UnityAction cb)
 	{
 		this.onSuccessPurchaseList.Remove(cb);
 	}
 
-	// Token: 0x06001EC5 RID: 7877 RVA: 0x0017ED50 File Offset: 0x0017CF50
 	private void Update()
 	{
 		if (this.requestStatus != this.currentStatus)
@@ -162,7 +154,6 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001EC6 RID: 7878 RVA: 0x0017EE5C File Offset: 0x0017D05C
 	private IEnumerator SetupSequence(bool isOpen)
 	{
 		this.window.ScrollView.Clear();
@@ -239,7 +230,6 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001EC7 RID: 7879 RVA: 0x0017EE74 File Offset: 0x0017D074
 	private void SortReleaseProduct()
 	{
 		if (0 < this.releaseProductIdList.Count)
@@ -278,7 +268,6 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001EC8 RID: 7880 RVA: 0x0017F01C File Offset: 0x0017D21C
 	private IEnumerator PurchaseSequence()
 	{
 		DataManager.DmPurchase.SolutionPurchase(this.purchaseProductOne.productId, this.purchaseProductOne.productIdString);
@@ -465,7 +454,6 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001EC9 RID: 7881 RVA: 0x0017F02B File Offset: 0x0017D22B
 	private IEnumerator NotifyNewProduct(List<PurchaseProductStatic> productList)
 	{
 		this.isNotifyNewProduct = true;
@@ -513,7 +501,6 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001ECA RID: 7882 RVA: 0x0017F041 File Offset: 0x0017D241
 	private IEnumerator AgeAuthenticationSequence()
 	{
 		IEnumerator func = DataManager.DmPurchase.RequestSolutionAgeAuthentic();
@@ -525,7 +512,6 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001ECB RID: 7883 RVA: 0x0017F050 File Offset: 0x0017D250
 	private void OnStartWindow(int index, GameObject go)
 	{
 		GameObject gameObject = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Item, go.transform.Find("BaseImage/Info_Pack/Buy_Img_PackItem_Single"));
@@ -538,7 +524,6 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 		buyStonePlate.Info_Btn.AddOnClickListener(new PguiButtonCtrl.OnClick(this.OnClickPresetInfoButton), PguiButtonCtrl.SoundType.DEFAULT);
 	}
 
-	// Token: 0x06001ECC RID: 7884 RVA: 0x0017F0F0 File Offset: 0x0017D2F0
 	private void OnUpdateWindow(int index, GameObject go)
 	{
 		SelPurchaseStoneWindowCtrl.BuyStonePlate buyStonePlate = new SelPurchaseStoneWindowCtrl.BuyStonePlate(go.transform);
@@ -723,19 +708,16 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 		buyStonePlate.baseObj.SetActive(false);
 	}
 
-	// Token: 0x06001ECD RID: 7885 RVA: 0x0017F9C4 File Offset: 0x0017DBC4
 	private bool ChkDispItemSetting(PurchaseProductOne ppo)
 	{
 		return ppo.chargeNum == 0 && ppo.freeNum == 0 && ppo.bonusItem == null && ppo.MainItem != null && 0 < ppo.MainItem.num && "Texture2D/Shop_BuyImg_Pack/" != ppo.MainItemIconOptionPath;
 	}
 
-	// Token: 0x06001ECE RID: 7886 RVA: 0x0017FA11 File Offset: 0x0017DC11
 	private bool ChkUseDefaultItemIconSetting(PurchaseProductOne ppo)
 	{
 		return "Texture2D/Shop_BuyImg_Pack/0" == ppo.MainItemIconOptionPath;
 	}
 
-	// Token: 0x06001ECF RID: 7887 RVA: 0x0017FA24 File Offset: 0x0017DC24
 	private void OnClickPresetInfoButton(PguiButtonCtrl button)
 	{
 		if (this.isNotifyNewProduct)
@@ -745,7 +727,6 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 		this.purchaseProductOne = this.currentPurchaseProductOneList.Find((PurchaseProductOne item) => item.productId == button.gameObject.GetComponent<PguiDataHolder>().id);
 	}
 
-	// Token: 0x06001ED0 RID: 7888 RVA: 0x0017FA64 File Offset: 0x0017DC64
 	private void OnClickPresetInfoButton(PurchaseProductOne purchaseProductOne, Action ok_callback = null, Action cancel_callback = null, bool isApppayExists = false)
 	{
 		if (this.isNotifyNewProduct)
@@ -755,7 +736,6 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 		CanvasManager.HdlItemPresetWindowCtrl.OpenByPurchase(purchaseProductOne, ok_callback, cancel_callback, isApppayExists);
 	}
 
-	// Token: 0x06001ED1 RID: 7889 RVA: 0x0017FA80 File Offset: 0x0017DC80
 	private void OnClickProductButton(PguiButtonCtrl button)
 	{
 		if (this.isNotifyNewProduct)
@@ -767,7 +747,6 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 		this.OnClickProductButton(this.purchaseProductOne, flag);
 	}
 
-	// Token: 0x06001ED2 RID: 7890 RVA: 0x0017FB14 File Offset: 0x0017DD14
 	private void OnClickProductButton(PurchaseProductOne purchaseProductOne, bool isApppayExists)
 	{
 		if (this.isNotifyNewProduct)
@@ -808,7 +787,6 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001ED3 RID: 7891 RVA: 0x0017FC0F File Offset: 0x0017DE0F
 	private bool OnClickOwButton(int index)
 	{
 		if (this.isNotifyNewProduct)
@@ -820,7 +798,6 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001ED4 RID: 7892 RVA: 0x0017FC2C File Offset: 0x0017DE2C
 	private bool OnSelectTab(int index)
 	{
 		if (this.isNotifyNewProduct)
@@ -839,91 +816,61 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x0400166A RID: 5738
 	private const int DUMMY_MONTHLYPACK_PRODUCT_ID = -1;
 
-	// Token: 0x0400166B RID: 5739
 	private const int ALL_TAB_INDEX = 0;
 
-	// Token: 0x0400166C RID: 5740
 	private SelPurchaseStoneWindowCtrl.Window window;
 
-	// Token: 0x0400166D RID: 5741
 	private GetItemWindowCtrl.GUI resultWindow;
 
-	// Token: 0x0400166E RID: 5742
 	private PguiAECtrl resultAECtrl;
 
-	// Token: 0x0400166F RID: 5743
 	private IconItemCtrl resultIconItemCtrl;
 
-	// Token: 0x04001670 RID: 5744
 	private IEnumerator setupSequence;
 
-	// Token: 0x04001671 RID: 5745
 	private IEnumerator purchaseSequence;
 
-	// Token: 0x04001672 RID: 5746
 	private IEnumerator ageAuthenticationSequence;
 
-	// Token: 0x04001673 RID: 5747
 	private List<PurchaseProductOne> currentPurchaseProductOneList = new List<PurchaseProductOne>();
 
-	// Token: 0x04001674 RID: 5748
 	private List<List<PurchaseProductOne>> tabPurchaseProductOneListList;
 
-	// Token: 0x04001675 RID: 5749
 	private PurchaseProductOne purchaseProductOne;
 
-	// Token: 0x04001676 RID: 5750
 	private List<int> releaseProductIdList;
 
-	// Token: 0x04001677 RID: 5751
 	private bool clearReleaseProductIdList;
 
-	// Token: 0x04001678 RID: 5752
 	private List<UnityAction> onSuccessPurchaseList = new List<UnityAction>();
 
-	// Token: 0x04001679 RID: 5753
 	private SelPurchaseStoneWindowCtrl.Status requestStatus;
 
-	// Token: 0x0400167A RID: 5754
 	private SelPurchaseStoneWindowCtrl.Status currentStatus;
 
-	// Token: 0x0400167B RID: 5755
 	private int requestTabIndex;
 
-	// Token: 0x0400167C RID: 5756
 	private bool isActiveWindow;
 
-	// Token: 0x0400167D RID: 5757
 	private bool isEnableMonthlyPack;
 
-	// Token: 0x0400167E RID: 5758
 	private bool isAllTab;
 
-	// Token: 0x0400167F RID: 5759
 	private bool isNotifyNewProduct;
 
-	// Token: 0x02000FD6 RID: 4054
 	public enum Status
 	{
-		// Token: 0x04005908 RID: 22792
 		NONE,
-		// Token: 0x04005909 RID: 22793
 		ERROR,
-		// Token: 0x0400590A RID: 22794
 		SETUP,
-		// Token: 0x0400590B RID: 22795
 		AGE_AUTHENTICATION,
-		// Token: 0x0400590C RID: 22796
 		PURCHASE
 	}
 
-	// Token: 0x02000FD7 RID: 4055
 	public class Window
 	{
-		// Token: 0x0600512C RID: 20780 RVA: 0x002443B8 File Offset: 0x002425B8
 		public Window(Transform baseTr)
 		{
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -937,41 +884,29 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 			this.tabGroupCtrl = baseTr.Find("Base/Window/InBase/TabGroup").GetComponent<PguiTabGroupCtrl>();
 		}
 
-		// Token: 0x0400590D RID: 22797
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x0400590E RID: 22798
 		public PguiButtonCtrl Btn_Law;
 
-		// Token: 0x0400590F RID: 22799
 		public PguiButtonCtrl Btn_Offer;
 
-		// Token: 0x04005910 RID: 22800
 		public PguiTextCtrl Txt;
 
-		// Token: 0x04005911 RID: 22801
 		public ReuseScroll ScrollView;
 
-		// Token: 0x04005912 RID: 22802
 		public PguiTextCtrl Num_Own;
 
-		// Token: 0x04005913 RID: 22803
 		public GameObject Txt_None;
 
-		// Token: 0x04005914 RID: 22804
 		public PguiTabGroupCtrl tabGroupCtrl;
 
-		// Token: 0x04005915 RID: 22805
 		public GameObject banner;
 
-		// Token: 0x04005916 RID: 22806
 		public static readonly string BANNER_TEXTURE = "Texture2D/AdvertiseBanner/XXXZeWoMxaxlIQ";
 	}
 
-	// Token: 0x02000FD8 RID: 4056
 	public class BuyStonePlate
 	{
-		// Token: 0x0600512E RID: 20782 RVA: 0x00244494 File Offset: 0x00242694
 		public BuyStonePlate(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -998,61 +933,42 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 			};
 		}
 
-		// Token: 0x04005917 RID: 22807
 		public GameObject baseObj;
 
-		// Token: 0x04005918 RID: 22808
 		public PguiButtonCtrl CmnShop_BuyStone;
 
-		// Token: 0x04005919 RID: 22809
 		public PguiReplaceSpriteCtrl iconImage;
 
-		// Token: 0x0400591A RID: 22810
 		public PguiTextCtrl Txt_PackName;
 
-		// Token: 0x0400591B RID: 22811
 		public PguiButtonCtrl Info_Btn;
 
-		// Token: 0x0400591C RID: 22812
 		public PguiTextCtrl Num_Txt;
 
-		// Token: 0x0400591D RID: 22813
 		public PguiTextCtrl Txt_Times;
 
-		// Token: 0x0400591E RID: 22814
 		public PguiImageCtrl Mark_Own;
 
-		// Token: 0x0400591F RID: 22815
 		public PguiImageCtrl Mark_Reasonable;
 
-		// Token: 0x04005920 RID: 22816
 		public List<SelPurchaseStoneWindowCtrl.BuyStonePlate.BaseInfo> infoList = new List<SelPurchaseStoneWindowCtrl.BuyStonePlate.BaseInfo>();
 
-		// Token: 0x04005921 RID: 22817
 		public PguiImageCtrl baseImage;
 
-		// Token: 0x04005922 RID: 22818
 		public PguiImageCtrl Base_Rainbow;
 
-		// Token: 0x04005923 RID: 22819
 		public PguiImageCtrl Base_Pattern;
 
-		// Token: 0x04005924 RID: 22820
 		public PguiImageCtrl TitleBase;
 
-		// Token: 0x04005925 RID: 22821
 		public PguiGradientCtrl Txt_PackNameGradient;
 
-		// Token: 0x04005926 RID: 22822
 		public GradationText Txt_PackNameGradationText;
 
-		// Token: 0x04005927 RID: 22823
 		public PguiOutline Txt_PackNameGradationOutline;
 
-		// Token: 0x02001224 RID: 4644
 		public class BaseInfo
 		{
-			// Token: 0x060057ED RID: 22509 RVA: 0x00259D14 File Offset: 0x00257F14
 			public BaseInfo(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -1084,57 +1000,39 @@ public class SelPurchaseStoneWindowCtrl : MonoBehaviour
 				this.Txt_MainItem = ((transform13 != null) ? transform13.GetComponent<PguiTextCtrl>() : null);
 			}
 
-			// Token: 0x0400635A RID: 25434
 			public GameObject baseObj;
 
-			// Token: 0x0400635B RID: 25435
 			public PguiImageCtrl Base_Pattern;
 
-			// Token: 0x0400635C RID: 25436
 			public PguiImageCtrl TitleBase;
 
-			// Token: 0x0400635D RID: 25437
 			public PguiImageCtrl ItemInfo;
 
-			// Token: 0x0400635E RID: 25438
 			public PguiImageCtrl Img_Plus;
 
-			// Token: 0x0400635F RID: 25439
 			public PguiRawImageCtrl Buy_Img_Stone;
 
-			// Token: 0x04006360 RID: 25440
 			public PguiRawImageCtrl Buy_Img_PackItem;
 
-			// Token: 0x04006361 RID: 25441
 			public IconItemCtrl MainItemIcon;
 
-			// Token: 0x04006362 RID: 25442
 			public PguiRawImageCtrl MainItemOptionIcon;
 
-			// Token: 0x04006363 RID: 25443
 			public PguiTextCtrl Txt_PackName;
 
-			// Token: 0x04006364 RID: 25444
 			public PguiTextCtrl Txt_Stone;
 
-			// Token: 0x04006365 RID: 25445
 			public PguiTextCtrl Txt_Option;
 
-			// Token: 0x04006366 RID: 25446
 			public PguiTextCtrl Txt_MainItem;
 
-			// Token: 0x04006367 RID: 25447
 			public PguiTextCtrl Txt_MainItem_Num;
 		}
 
-		// Token: 0x02001225 RID: 4645
 		public enum InfoListType
 		{
-			// Token: 0x04006369 RID: 25449
 			Normal,
-			// Token: 0x0400636A RID: 25450
 			Pack,
-			// Token: 0x0400636B RID: 25451
 			Pass
 		}
 	}

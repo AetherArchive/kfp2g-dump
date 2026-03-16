@@ -1,16 +1,13 @@
-﻿using System;
+using System;
 using UnityEngine;
 
-// Token: 0x0200002C RID: 44
 public class DebugDispSafeArea : MonoBehaviour
 {
-	// Token: 0x06000099 RID: 153 RVA: 0x00005A48 File Offset: 0x00003C48
 	private void Awake()
 	{
 		this.ApplySafeArea();
 	}
 
-	// Token: 0x0600009A RID: 154 RVA: 0x00005A50 File Offset: 0x00003C50
 	private void Update()
 	{
 		if (this.width != Screen.width || this.height != Screen.height)
@@ -19,7 +16,6 @@ public class DebugDispSafeArea : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600009B RID: 155 RVA: 0x00005A74 File Offset: 0x00003C74
 	private void ApplySafeArea()
 	{
 		this.width = Screen.width;
@@ -57,9 +53,7 @@ public class DebugDispSafeArea : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000118 RID: 280
 	private int width;
 
-	// Token: 0x04000119 RID: 281
 	private int height;
 }

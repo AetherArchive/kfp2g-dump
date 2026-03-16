@@ -1,21 +1,18 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x0200019A RID: 410
 public class CmnReleaseConditionWindowCtrl : MonoBehaviour
 {
-	// Token: 0x06001B2A RID: 6954 RVA: 0x0015D99C File Offset: 0x0015BB9C
 	public void Init()
 	{
 		this.guiData = new CmnReleaseConditionWindowCtrl.GUI(base.transform);
 		this.guiData.baseObj.SetActive(false);
 	}
 
-	// Token: 0x06001B2B RID: 6955 RVA: 0x0015D9C0 File Offset: 0x0015BBC0
 	public void Open(string title, List<CmnReleaseConditionWindowCtrl.SetupParam> setupParam)
 	{
 		base.gameObject.SetActive(true);
@@ -39,7 +36,6 @@ public class CmnReleaseConditionWindowCtrl : MonoBehaviour
 		this.guiData.window.Open();
 	}
 
-	// Token: 0x06001B2C RID: 6956 RVA: 0x0015DB04 File Offset: 0x0015BD04
 	private IEnumerator UpdateGrid()
 	{
 		yield return new WaitForEndOfFrame();
@@ -48,7 +44,6 @@ public class CmnReleaseConditionWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001B2D RID: 6957 RVA: 0x0015DB13 File Offset: 0x0015BD13
 	private void Update()
 	{
 		if (this.guiData.window.StartOpenAnim() && this.requestSequence == null)
@@ -57,7 +52,6 @@ public class CmnReleaseConditionWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001B2E RID: 6958 RVA: 0x0015DB45 File Offset: 0x0015BD45
 	private void OnDestroy()
 	{
 		if (this.requestSequence != null && Singleton<SceneManager>.Instance != null)
@@ -67,26 +61,19 @@ public class CmnReleaseConditionWindowCtrl : MonoBehaviour
 		this.requestSequence = null;
 	}
 
-	// Token: 0x04001485 RID: 5253
 	private CmnReleaseConditionWindowCtrl.GUI guiData;
 
-	// Token: 0x04001486 RID: 5254
 	private Coroutine requestSequence;
 
-	// Token: 0x02000EAD RID: 3757
 	public class SetupParam
 	{
-		// Token: 0x04005438 RID: 21560
 		public string text;
 
-		// Token: 0x04005439 RID: 21561
 		public bool enableClear;
 	}
 
-	// Token: 0x02000EAE RID: 3758
 	public class GUI
 	{
-		// Token: 0x06004D5C RID: 19804 RVA: 0x002327E4 File Offset: 0x002309E4
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -102,19 +89,14 @@ public class CmnReleaseConditionWindowCtrl : MonoBehaviour
 			this.window = baseTr.GetComponent<PguiOpenWindowCtrl>();
 		}
 
-		// Token: 0x0400543A RID: 21562
 		public GameObject baseObj;
 
-		// Token: 0x0400543B RID: 21563
 		public List<GameObject> OpenInfo;
 
-		// Token: 0x0400543C RID: 21564
 		public PguiTextCtrl Text;
 
-		// Token: 0x0400543D RID: 21565
 		public PguiOpenWindowCtrl window;
 
-		// Token: 0x0400543E RID: 21566
 		public GameObject grid;
 	}
 }

@@ -1,15 +1,11 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-// Token: 0x02000149 RID: 329
 public class HomeAuthCtrl
 {
-	// Token: 0x17000375 RID: 885
-	// (get) Token: 0x06001257 RID: 4695 RVA: 0x000DEC8B File Offset: 0x000DCE8B
-	// (set) Token: 0x06001258 RID: 4696 RVA: 0x000DEC93 File Offset: 0x000DCE93
 	public GameObject BaseObj
 	{
 		get
@@ -21,7 +17,6 @@ public class HomeAuthCtrl
 		}
 	}
 
-	// Token: 0x06001259 RID: 4697 RVA: 0x000DEC98 File Offset: 0x000DCE98
 	private void Init(List<int> charaIds)
 	{
 		this._baseObj = new GameObject();
@@ -32,7 +27,6 @@ public class HomeAuthCtrl
 		this._skipFlg = false;
 	}
 
-	// Token: 0x0600125A RID: 4698 RVA: 0x000DED00 File Offset: 0x000DCF00
 	public IEnumerator IntroductionFriends(bool isCharacterMovie, List<int> charaIds, UnityAction onInitialized, UnityAction onComplete)
 	{
 		int answer = 0;
@@ -109,7 +103,6 @@ public class HomeAuthCtrl
 		yield break;
 	}
 
-	// Token: 0x0600125B RID: 4699 RVA: 0x000DED2C File Offset: 0x000DCF2C
 	private IEnumerator PlayGacha(List<int> charaIds)
 	{
 		int num;
@@ -200,7 +193,6 @@ public class HomeAuthCtrl
 		yield break;
 	}
 
-	// Token: 0x0600125C RID: 4700 RVA: 0x000DED42 File Offset: 0x000DCF42
 	private IEnumerator SetupIntroduction(List<int> charaIds)
 	{
 		CanvasManager.HdlLoadAndTipsCtrl.SetDispLoading(true);
@@ -250,7 +242,6 @@ public class HomeAuthCtrl
 		yield break;
 	}
 
-	// Token: 0x0600125D RID: 4701 RVA: 0x000DED58 File Offset: 0x000DCF58
 	private void OnClickButtonSkip(PguiButtonCtrl button)
 	{
 		if (this._homeAuthUICtrl.ButtonSkip == null)
@@ -263,7 +254,6 @@ public class HomeAuthCtrl
 		}
 	}
 
-	// Token: 0x0600125E RID: 4702 RVA: 0x000DED88 File Offset: 0x000DCF88
 	private void DestroyAll()
 	{
 		this._homeAuthParts.Destroy();
@@ -278,7 +268,6 @@ public class HomeAuthCtrl
 		PrjUtil.ReleaseMemory(PrjUtil.Garbagecollection);
 	}
 
-	// Token: 0x0600125F RID: 4703 RVA: 0x000DEDF9 File Offset: 0x000DCFF9
 	private IEnumerator AskPermission(Action<int> answerAction)
 	{
 		bool isWindowFinish = false;
@@ -298,7 +287,6 @@ public class HomeAuthCtrl
 		yield break;
 	}
 
-	// Token: 0x06001260 RID: 4704 RVA: 0x000DEE08 File Offset: 0x000DD008
 	public IEnumerator PlayGreeting(int charaId)
 	{
 		CanvasManager.SetBgTexture("selbg_Gacha");
@@ -331,15 +319,11 @@ public class HomeAuthCtrl
 		yield break;
 	}
 
-	// Token: 0x04000F1E RID: 3870
 	private HomeAuthPartsCtrl _homeAuthParts;
 
-	// Token: 0x04000F1F RID: 3871
 	private HomeAuthUICtrl _homeAuthUICtrl;
 
-	// Token: 0x04000F20 RID: 3872
 	private GameObject _baseObj;
 
-	// Token: 0x04000F21 RID: 3873
 	private bool _skipFlg;
 }

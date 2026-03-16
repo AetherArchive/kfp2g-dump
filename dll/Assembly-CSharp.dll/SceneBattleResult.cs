@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +12,8 @@ using SGNFW.Mst;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x0200011E RID: 286
 public class SceneBattleResult : BaseScene
 {
-	// Token: 0x06000E84 RID: 3716 RVA: 0x000ABF20 File Offset: 0x000AA120
 	public override void OnCreateScene()
 	{
 		this.basePanel = Object.Instantiate<GameObject>((GameObject)Resources.Load("SceneBattleResult/GUI/Prefab/GUI_BattleResult"));
@@ -81,7 +79,6 @@ public class SceneBattleResult : BaseScene
 		this.expSE = false;
 	}
 
-	// Token: 0x06000E85 RID: 3717 RVA: 0x000AC36C File Offset: 0x000AA56C
 	private void CheckRematch(PguiButtonCtrl btn)
 	{
 		if (this.requestRematch != null || this.requestNextScene)
@@ -115,7 +112,6 @@ public class SceneBattleResult : BaseScene
 		}, this.resultArgs.battleArgs.questOneId, list, 1, null, 0, 0, false);
 	}
 
-	// Token: 0x06000E86 RID: 3718 RVA: 0x000AC464 File Offset: 0x000AA664
 	private IEnumerator Rematch()
 	{
 		SceneManager.SceneName scene = SceneManager.SceneName.SceneBattle;
@@ -290,7 +286,6 @@ public class SceneBattleResult : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06000E87 RID: 3719 RVA: 0x000AC474 File Offset: 0x000AA674
 	private List<int> GetConvertDrawId()
 	{
 		QuestOnePackData questOnePackData = DataManager.DmQuest.GetQuestOnePackData(this.resultArgs.battleArgs.questOneId);
@@ -311,7 +306,6 @@ public class SceneBattleResult : BaseScene
 		return list;
 	}
 
-	// Token: 0x06000E88 RID: 3720 RVA: 0x000AC5D0 File Offset: 0x000AA7D0
 	public override bool OnCreateSceneWait()
 	{
 		bool flag = true;
@@ -322,7 +316,6 @@ public class SceneBattleResult : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06000E89 RID: 3721 RVA: 0x000AC5F0 File Offset: 0x000AA7F0
 	public override void OnEnableScene(object args)
 	{
 		string text = "次のLvまで";
@@ -1036,7 +1029,6 @@ public class SceneBattleResult : BaseScene
 		goto IL_2003;
 	}
 
-	// Token: 0x06000E8A RID: 3722 RVA: 0x000AF13C File Offset: 0x000AD33C
 	private int SortDropItem(DataManagerQuest.QuestDropData a, DataManagerQuest.QuestDropData b)
 	{
 		int num = (int)a.Type;
@@ -1057,7 +1049,6 @@ public class SceneBattleResult : BaseScene
 		return num3;
 	}
 
-	// Token: 0x06000E8B RID: 3723 RVA: 0x000AF17D File Offset: 0x000AD37D
 	public override bool OnEnableSceneWait()
 	{
 		if (!this.basePanel.activeSelf)
@@ -1069,12 +1060,10 @@ public class SceneBattleResult : BaseScene
 		return true;
 	}
 
-	// Token: 0x06000E8C RID: 3724 RVA: 0x000AF1A7 File Offset: 0x000AD3A7
 	public override void OnStartControl()
 	{
 	}
 
-	// Token: 0x06000E8D RID: 3725 RVA: 0x000AF1AC File Offset: 0x000AD3AC
 	public override void Update()
 	{
 		if (!this.chara.IsPlaying())
@@ -1238,7 +1227,6 @@ public class SceneBattleResult : BaseScene
 		}
 	}
 
-	// Token: 0x06000E8E RID: 3726 RVA: 0x000AF740 File Offset: 0x000AD940
 	private IEnumerator waitSequenceTransition()
 	{
 		DataManager.DmEvent.RequestGetCoopInfo(DataManager.DmEvent.LastCoopInfo.EventId, 0);
@@ -1258,7 +1246,6 @@ public class SceneBattleResult : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06000E8F RID: 3727 RVA: 0x000AF748 File Offset: 0x000AD948
 	private SceneQuest.Args CreateSceneQuestArgs()
 	{
 		SceneQuest.Args.JustBeforeBattle justBeforeBattle = new SceneQuest.Args.JustBeforeBattle();
@@ -1302,7 +1289,6 @@ public class SceneBattleResult : BaseScene
 		};
 	}
 
-	// Token: 0x06000E90 RID: 3728 RVA: 0x000AF9B4 File Offset: 0x000ADBB4
 	private bool SkipChara(SceneBattleResult.GUIChara gc)
 	{
 		bool flag = true;
@@ -1380,7 +1366,6 @@ public class SceneBattleResult : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06000E91 RID: 3729 RVA: 0x000AFE34 File Offset: 0x000AE034
 	private bool UpdateChara(SceneBattleResult.GUIChara gc)
 	{
 		bool flag = true;
@@ -1484,7 +1469,6 @@ public class SceneBattleResult : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06000E92 RID: 3730 RVA: 0x000B0454 File Offset: 0x000AE654
 	private bool LevelupChara(SceneBattleResult.GUIChara gc)
 	{
 		bool flag = true;
@@ -1568,7 +1552,6 @@ public class SceneBattleResult : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06000E93 RID: 3731 RVA: 0x000B06FC File Offset: 0x000AE8FC
 	private void StartKizunaUp()
 	{
 		while (this.kizunaId.Count > this.kizunaUp)
@@ -1664,7 +1647,6 @@ public class SceneBattleResult : BaseScene
 		}
 	}
 
-	// Token: 0x06000E94 RID: 3732 RVA: 0x000B0B54 File Offset: 0x000AED54
 	private void UpdateKizunaUp()
 	{
 		if (this.kizunaWinWhite.GetAnimeType() == PguiAECtrl.AmimeType.START && !this.kizunaWinWhite.IsPlaying())
@@ -1717,7 +1699,6 @@ public class SceneBattleResult : BaseScene
 		}
 	}
 
-	// Token: 0x06000E95 RID: 3733 RVA: 0x000B0D3C File Offset: 0x000AEF3C
 	private void SkipKizunaUp()
 	{
 		if (this.kizunaWinInfo.gameObject.activeSelf)
@@ -1779,7 +1760,6 @@ public class SceneBattleResult : BaseScene
 		}
 	}
 
-	// Token: 0x06000E96 RID: 3734 RVA: 0x000B0E78 File Offset: 0x000AF078
 	private void CbKizunaUpChara()
 	{
 		this.kizunaWinChrY = this.kizunaWinChara.GetNodePos("j_neck").y + 0.005f;
@@ -1790,7 +1770,6 @@ public class SceneBattleResult : BaseScene
 		}
 	}
 
-	// Token: 0x06000E97 RID: 3735 RVA: 0x000B0ECC File Offset: 0x000AF0CC
 	private void ActivateLeftExps(SceneBattleResult.GUIChara gc, int index)
 	{
 		CharaPackData charaPackData = this.resultArgs.deck.deckData[index];
@@ -1802,7 +1781,6 @@ public class SceneBattleResult : BaseScene
 		gc.LeftKizunaExp[index].gameObject.SetActive(kizunaLevel != kizunaLimitLevel);
 	}
 
-	// Token: 0x06000E98 RID: 3736 RVA: 0x000B0F58 File Offset: 0x000AF158
 	private void UpdateNorm()
 	{
 		if (this.page < 1)
@@ -2310,7 +2288,6 @@ public class SceneBattleResult : BaseScene
 		}
 	}
 
-	// Token: 0x06000E99 RID: 3737 RVA: 0x000B1F60 File Offset: 0x000B0160
 	public void SetQuestSkipPopup(QuestUtil.UsrQuestSkipInfo skipInfo)
 	{
 		this.guiData.QuestSkipPopup.SetActive(true);
@@ -2318,7 +2295,6 @@ public class SceneBattleResult : BaseScene
 		this.guiData.QuestSkipPopup.transform.Find("Txt_Campaign").GetComponent<PguiTextCtrl>().text = skipInfo.popupMessage;
 	}
 
-	// Token: 0x06000E9A RID: 3738 RVA: 0x000B1FC0 File Offset: 0x000B01C0
 	private void UpdatePvp()
 	{
 		if (this.page >= 1)
@@ -2444,7 +2420,6 @@ public class SceneBattleResult : BaseScene
 		this.guiData.BoardPvp.ExPlayAnimation("START", null);
 	}
 
-	// Token: 0x06000E9B RID: 3739 RVA: 0x000B2354 File Offset: 0x000B0554
 	private void UpdateTraining()
 	{
 		if (this.page < 1)
@@ -2571,7 +2546,6 @@ public class SceneBattleResult : BaseScene
 		}
 	}
 
-	// Token: 0x06000E9C RID: 3740 RVA: 0x000B2682 File Offset: 0x000B0882
 	private IEnumerator CheckPracticeConfirm()
 	{
 		string text = "練習モードのため\n";
@@ -2600,7 +2574,6 @@ public class SceneBattleResult : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06000E9D RID: 3741 RVA: 0x000B268A File Offset: 0x000B088A
 	private bool ClickRankup(int index)
 	{
 		if (this.rankup > 0)
@@ -2610,7 +2583,6 @@ public class SceneBattleResult : BaseScene
 		return true;
 	}
 
-	// Token: 0x06000E9E RID: 3742 RVA: 0x000B26A0 File Offset: 0x000B08A0
 	private void StopResultVoice()
 	{
 		if (!string.IsNullOrEmpty(this.resultArgs.resultVoiceFirstSheet))
@@ -2629,7 +2601,6 @@ public class SceneBattleResult : BaseScene
 		this.resultArgs.resultVoiceSecondSheet = "";
 	}
 
-	// Token: 0x06000E9F RID: 3743 RVA: 0x000B2754 File Offset: 0x000B0954
 	private bool IsChangeTerm()
 	{
 		if (!DataManager.DmEvent.isRaidByQuestOneId(this.resultArgs.battleArgs.questOneId))
@@ -2641,7 +2612,6 @@ public class SceneBattleResult : BaseScene
 		return nowTermData == null || !nowTermData.IsOverStartTime(battleStartTime) || battleStartTime.Day != TimeManager.Now.Day;
 	}
 
-	// Token: 0x06000EA0 RID: 3744 RVA: 0x000B27CC File Offset: 0x000B09CC
 	public override void OnDisableScene()
 	{
 		this.StopResultVoice();
@@ -2680,7 +2650,6 @@ public class SceneBattleResult : BaseScene
 		this.waitSequence = null;
 	}
 
-	// Token: 0x06000EA1 RID: 3745 RVA: 0x000B28FC File Offset: 0x000B0AFC
 	public override void OnDestroyScene()
 	{
 		SoundManager.UnloadCueSheet("se_cb");
@@ -2728,256 +2697,172 @@ public class SceneBattleResult : BaseScene
 		this.backPanel = null;
 	}
 
-	// Token: 0x04000CE8 RID: 3304
 	private GameObject filed;
 
-	// Token: 0x04000CE9 RID: 3305
 	private CharaModelHandle chara;
 
-	// Token: 0x04000CEA RID: 3306
 	private IEnumerator seLoad;
 
-	// Token: 0x04000CEB RID: 3307
 	private GameObject basePanel;
 
-	// Token: 0x04000CEC RID: 3308
 	private GameObject backPanel;
 
-	// Token: 0x04000CED RID: 3309
 	private GameObject windowPanel;
 
-	// Token: 0x04000CEE RID: 3310
 	private PguiOpenWindowCtrl rankupWindow;
 
-	// Token: 0x04000CEF RID: 3311
 	private PguiTextCtrl rankWinBefore;
 
-	// Token: 0x04000CF0 RID: 3312
 	private PguiTextCtrl rankWinAfter;
 
-	// Token: 0x04000CF1 RID: 3313
 	private GameObject kizunaWindow;
 
-	// Token: 0x04000CF2 RID: 3314
 	private PguiAECtrl kizunaWinWhite;
 
-	// Token: 0x04000CF3 RID: 3315
 	private PguiAECtrl kizunaWinBack;
 
-	// Token: 0x04000CF4 RID: 3316
 	private PguiAECtrl kizunaWinFront;
 
-	// Token: 0x04000CF5 RID: 3317
 	private PguiAECtrl kizunaWinInfo;
 
-	// Token: 0x04000CF6 RID: 3318
 	private int kizunaWinId;
 
-	// Token: 0x04000CF7 RID: 3319
 	private int kizunaWinCloth;
 
-	// Token: 0x04000CF8 RID: 3320
 	private bool kizunaWinLongSkirt;
 
-	// Token: 0x04000CF9 RID: 3321
 	private RenderTextureChara kizunaWinChara;
 
-	// Token: 0x04000CFA RID: 3322
 	private bool kizunaWinCharaVoice;
 
-	// Token: 0x04000CFB RID: 3323
 	private float kizunaWinTime;
 
-	// Token: 0x04000CFC RID: 3324
 	private float kizunaWinChrY;
 
-	// Token: 0x04000CFD RID: 3325
 	private List<ItemData> kizunaWinItem;
 
-	// Token: 0x04000CFE RID: 3326
 	private Dictionary<int, int> afterItemIdToSourceItemId;
 
-	// Token: 0x04000CFF RID: 3327
 	private DataManagerPvp.PvPEndResult pvpResult;
 
-	// Token: 0x04000D00 RID: 3328
 	private IEnumerator pvpRankUp;
 
-	// Token: 0x04000D01 RID: 3329
 	private SceneBattleResult.GUI guiData;
 
-	// Token: 0x04000D02 RID: 3330
 	private SceneBattleResult.GUIChara charaNorm;
 
-	// Token: 0x04000D03 RID: 3331
 	private SceneBattleResult.GUIChara charaPvp;
 
-	// Token: 0x04000D04 RID: 3332
 	private SceneBattleResult.GUIChara charaPvpTraining;
 
-	// Token: 0x04000D05 RID: 3333
 	private SceneBattleResult.GUIChara charaTraining;
 
-	// Token: 0x04000D06 RID: 3334
 	private int page;
 
-	// Token: 0x04000D07 RID: 3335
 	private bool touch;
 
-	// Token: 0x04000D08 RID: 3336
 	private int rankup;
 
-	// Token: 0x04000D09 RID: 3337
 	private int levelup;
 
-	// Token: 0x04000D0A RID: 3338
 	private bool expSE;
 
-	// Token: 0x04000D0B RID: 3339
 	private CriAtomExPlayback expSEHdl;
 
-	// Token: 0x04000D0C RID: 3340
 	private List<bool> StampAEnd;
 
-	// Token: 0x04000D0D RID: 3341
 	private bool StampCompAEnd;
 
-	// Token: 0x04000D0E RID: 3342
 	private bool MissionItemAEnd;
 
-	// Token: 0x04000D0F RID: 3343
 	private IEnumerator friendFollow;
 
-	// Token: 0x04000D10 RID: 3344
 	private IEnumerator waitSequence;
 
-	// Token: 0x04000D11 RID: 3345
 	private IconItemCtrl missionIcon;
 
-	// Token: 0x04000D12 RID: 3346
 	private List<IconItemCtrl> dropIcon;
 
-	// Token: 0x04000D13 RID: 3347
 	private List<IconItemCtrl> rewardIcon;
 
-	// Token: 0x04000D14 RID: 3348
 	private SceneBattleResultArgs resultArgs;
 
-	// Token: 0x04000D15 RID: 3349
 	private int rankBefore;
 
-	// Token: 0x04000D16 RID: 3350
 	private int rankAfter;
 
-	// Token: 0x04000D17 RID: 3351
 	private long expBefore;
 
-	// Token: 0x04000D18 RID: 3352
 	private long expAfter;
 
-	// Token: 0x04000D19 RID: 3353
 	private long expBase;
 
-	// Token: 0x04000D1A RID: 3354
 	private List<CharaPackData> charaId;
 
-	// Token: 0x04000D1B RID: 3355
 	private List<int> levelBefore;
 
-	// Token: 0x04000D1C RID: 3356
 	private List<int> levelAfter;
 
-	// Token: 0x04000D1D RID: 3357
 	private List<int> levelMax;
 
-	// Token: 0x04000D1E RID: 3358
 	private List<long> lvexpBefore;
 
-	// Token: 0x04000D1F RID: 3359
 	private List<long> lvexpAfter;
 
-	// Token: 0x04000D20 RID: 3360
 	private List<long> lvexpBase;
 
-	// Token: 0x04000D21 RID: 3361
 	private List<CharaPackData> kizunaId;
 
-	// Token: 0x04000D22 RID: 3362
 	private List<int> kizunaBefore;
 
-	// Token: 0x04000D23 RID: 3363
 	private List<int> kizunaAfter;
 
-	// Token: 0x04000D24 RID: 3364
 	private List<int> kizunaMax;
 
-	// Token: 0x04000D25 RID: 3365
 	private List<long> kizunaExpBefore;
 
-	// Token: 0x04000D26 RID: 3366
 	private List<long> kizunaExpAfter;
 
-	// Token: 0x04000D27 RID: 3367
 	private List<long> kizunaExpBase;
 
-	// Token: 0x04000D28 RID: 3368
 	private int kizunaUp;
 
-	// Token: 0x04000D29 RID: 3369
 	private int goldBefore;
 
-	// Token: 0x04000D2A RID: 3370
 	private int goldAfter;
 
-	// Token: 0x04000D2B RID: 3371
 	private int gold;
 
-	// Token: 0x04000D2C RID: 3372
 	private List<bool> missionStatus;
 
-	// Token: 0x04000D2D RID: 3373
 	private List<bool> missionOld;
 
-	// Token: 0x04000D2E RID: 3374
 	private List<bool> missionNew;
 
-	// Token: 0x04000D2F RID: 3375
 	private bool requestNextScene;
 
-	// Token: 0x04000D30 RID: 3376
 	private IEnumerator requestRematch;
 
-	// Token: 0x04000D31 RID: 3377
 	private int rematch;
 
-	// Token: 0x04000D32 RID: 3378
 	private int rematchOwn;
 
-	// Token: 0x04000D33 RID: 3379
 	private int rematchNeed;
 
-	// Token: 0x04000D34 RID: 3380
 	private string rematchItem;
 
-	// Token: 0x04000D35 RID: 3381
 	private bool lucky;
 
-	// Token: 0x04000D36 RID: 3382
 	private int skipCount = -1;
 
-	// Token: 0x04000D37 RID: 3383
 	private IEnumerator checkKizunaLimitReached;
 
-	// Token: 0x04000D38 RID: 3384
 	private IEnumerator checkPracticeConfirm;
 
-	// Token: 0x04000D39 RID: 3385
 	private QuestUtil.UsrQuestSkipInfo skipInfo;
 
-	// Token: 0x02000908 RID: 2312
 	public class GUI
 	{
-		// Token: 0x06003A79 RID: 14969 RVA: 0x001CEAC4 File Offset: 0x001CCCC4
 		public GUI(Transform baseTr)
 		{
 			this.Touch = baseTr.Find("TouchCollision");
@@ -3073,136 +2958,92 @@ public class SceneBattleResult : BaseScene
 			this.QuestSkipPopup = this.SkipBtn.transform.Find("PopupParent/Popup_Campaign_CmnRed").gameObject;
 		}
 
-		// Token: 0x04003AFB RID: 15099
 		public Transform Touch;
 
-		// Token: 0x04003AFC RID: 15100
 		public SimpleAnimation BoardNorm;
 
-		// Token: 0x04003AFD RID: 15101
 		public PguiTextCtrl Quest;
 
-		// Token: 0x04003AFE RID: 15102
 		public PguiTextCtrl QuestNum;
 
-		// Token: 0x04003AFF RID: 15103
 		public PguiTextCtrl Turn;
 
-		// Token: 0x04003B00 RID: 15104
 		public PguiReplaceSpriteCtrl UserIcon;
 
-		// Token: 0x04003B01 RID: 15105
 		public PguiTextCtrl Rank;
 
-		// Token: 0x04003B02 RID: 15106
 		public PguiAECtrl RankAE;
 
-		// Token: 0x04003B03 RID: 15107
 		public Transform Exp;
 
-		// Token: 0x04003B04 RID: 15108
 		public Image ExpGage;
 
-		// Token: 0x04003B05 RID: 15109
 		public AEImage StampCompAE;
 
-		// Token: 0x04003B06 RID: 15110
 		public List<AEImage> StampAE;
 
-		// Token: 0x04003B07 RID: 15111
 		public Transform MissionItem;
 
-		// Token: 0x04003B08 RID: 15112
 		public PguiAECtrl MissionItemAE;
 
-		// Token: 0x04003B09 RID: 15113
 		public List<GameObject> DropItem;
 
-		// Token: 0x04003B0A RID: 15114
 		public List<PguiTextCtrl> DropItemBonus;
 
-		// Token: 0x04003B0B RID: 15115
 		public List<PguiReplaceSpriteCtrl> DropItemBox;
 
-		// Token: 0x04003B0C RID: 15116
 		public List<PguiAECtrl> DropItemAE;
 
-		// Token: 0x04003B0D RID: 15117
 		public PguiTextCtrl ownCoin;
 
-		// Token: 0x04003B0E RID: 15118
 		public PguiTextCtrl getCoin;
 
-		// Token: 0x04003B0F RID: 15119
 		public SimpleAnimation BoardPvp;
 
-		// Token: 0x04003B10 RID: 15120
 		public SceneBattleResult.GUI.PvpExp pvpExp;
 
-		// Token: 0x04003B11 RID: 15121
 		public GameObject pvpPoint3x;
 
-		// Token: 0x04003B12 RID: 15122
 		public PguiTextCtrl pvpCoin;
 
-		// Token: 0x04003B13 RID: 15123
 		public GameObject pvpCoin3x;
 
-		// Token: 0x04003B14 RID: 15124
 		public GameObject pvpCoinChamp;
 
-		// Token: 0x04003B15 RID: 15125
 		public SimpleAnimation BoardPvpTraining;
 
-		// Token: 0x04003B16 RID: 15126
 		public SceneBattleResult.GUI.PvpExp pvpExpTraining;
 
-		// Token: 0x04003B17 RID: 15127
 		public GameObject pvpPoint3xTraining;
 
-		// Token: 0x04003B18 RID: 15128
 		public PguiTextCtrl pvpCoinTraining;
 
-		// Token: 0x04003B19 RID: 15129
 		public GameObject pvpCoin3xTraining;
 
-		// Token: 0x04003B1A RID: 15130
 		public SimpleAnimation BoardTraining;
 
-		// Token: 0x04003B1B RID: 15131
 		public HorizontalLayoutGroup TrainingScore;
 
-		// Token: 0x04003B1C RID: 15132
 		public PguiAECtrl TrainingNewRecord;
 
-		// Token: 0x04003B1D RID: 15133
 		public List<GameObject> RewardItem;
 
-		// Token: 0x04003B1E RID: 15134
 		public SimpleAnimation Rematch;
 
-		// Token: 0x04003B1F RID: 15135
 		public PguiButtonCtrl RematchBtn;
 
-		// Token: 0x04003B20 RID: 15136
 		public SimpleAnimation SkipGroup;
 
-		// Token: 0x04003B21 RID: 15137
 		public PguiButtonCtrl SkipBtn;
 
-		// Token: 0x04003B22 RID: 15138
 		public GameObject QuestSkipPopup;
 
-		// Token: 0x04003B23 RID: 15139
 		public RectTransform ScrollContent;
 
-		// Token: 0x04003B24 RID: 15140
 		public Transform ScrollBar;
 
-		// Token: 0x0200114B RID: 4427
 		public class PvpExp
 		{
-			// Token: 0x06005590 RID: 21904 RVA: 0x0024F354 File Offset: 0x0024D554
 			public PvpExp(Transform baseTr)
 			{
 				this.pvpRank = baseTr.Find("Img_PvPBadge/Txt_PvPRank").GetComponent<PguiTextCtrl>();
@@ -3214,33 +3055,24 @@ public class SceneBattleResult : BaseScene
 				this.pvpPointVs = baseTr.Find("PointInfo04/Num_Point").GetComponent<PguiTextCtrl>();
 			}
 
-			// Token: 0x04005F04 RID: 24324
 			public PguiTextCtrl pvpRank;
 
-			// Token: 0x04005F05 RID: 24325
 			public PguiTextCtrl pvpPoint;
 
-			// Token: 0x04005F06 RID: 24326
 			public PguiTextCtrl pvpPointNext;
 
-			// Token: 0x04005F07 RID: 24327
 			public PguiTextCtrl pvpPointBase;
 
-			// Token: 0x04005F08 RID: 24328
 			public PguiTextCtrl pvpPointBonus;
 
-			// Token: 0x04005F09 RID: 24329
 			public PguiTextCtrl pvpPointTurn;
 
-			// Token: 0x04005F0A RID: 24330
 			public PguiTextCtrl pvpPointVs;
 		}
 	}
 
-	// Token: 0x02000909 RID: 2313
 	public class GUIChara
 	{
-		// Token: 0x06003A7A RID: 14970 RVA: 0x001CF110 File Offset: 0x001CD310
 		public GUIChara(Transform baseTr, bool isTraining = false)
 		{
 			this.Blank = new List<GameObject>();
@@ -3301,52 +3133,36 @@ public class SceneBattleResult : BaseScene
 			}
 		}
 
-		// Token: 0x04003B25 RID: 15141
 		public List<GameObject> Blank;
 
-		// Token: 0x04003B26 RID: 15142
 		public List<GameObject> Chara;
 
-		// Token: 0x04003B27 RID: 15143
 		public List<Transform> Helper;
 
-		// Token: 0x04003B28 RID: 15144
 		public List<PguiTextCtrl> CharaExp;
 
-		// Token: 0x04003B29 RID: 15145
 		public List<PguiTextCtrl> CharaLv;
 
-		// Token: 0x04003B2A RID: 15146
 		public List<Image> CharaExpGage;
 
-		// Token: 0x04003B2B RID: 15147
 		public List<PguiTextCtrl> LeftExp;
 
-		// Token: 0x04003B2C RID: 15148
 		public List<PguiTextCtrl> LeftKizunaExp;
 
-		// Token: 0x04003B2D RID: 15149
 		public List<PguiTextCtrl> CharaHrt;
 
-		// Token: 0x04003B2E RID: 15150
 		public List<PguiTextCtrl> CharaKz;
 
-		// Token: 0x04003B2F RID: 15151
 		public List<Image> CharaHrtGage;
 
-		// Token: 0x04003B30 RID: 15152
 		public List<PguiAECtrl> CharaAE;
 
-		// Token: 0x04003B31 RID: 15153
 		public List<PguiAECtrl> KizunaAE;
 
-		// Token: 0x04003B32 RID: 15154
 		public List<IconCharaCtrl> CharaIcon;
 
-		// Token: 0x04003B33 RID: 15155
 		public List<AEImage> LevelMax;
 
-		// Token: 0x04003B34 RID: 15156
 		public List<AEImage> KizunaMax;
 	}
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DMMHelper;
@@ -11,10 +11,8 @@ using SGNFW.Mst;
 using SGNFW.Touch;
 using UnityEngine;
 
-// Token: 0x02000125 RID: 293
 public class DataInitializeResolver
 {
-	// Token: 0x06000EF6 RID: 3830 RVA: 0x000B52ED File Offset: 0x000B34ED
 	public static IEnumerator InitializeActionDataManager()
 	{
 		Singleton<DataManager>.Instance.Initialize();
@@ -34,7 +32,6 @@ public class DataInitializeResolver
 		yield break;
 	}
 
-	// Token: 0x06000EF7 RID: 3831 RVA: 0x000B52F5 File Offset: 0x000B34F5
 	public static IEnumerator InitializeActionDataManagerForDebug()
 	{
 		IEnumerator ienum = Singleton<DataManager>.Instance.ReInitializeMstData();
@@ -46,7 +43,6 @@ public class DataInitializeResolver
 		yield break;
 	}
 
-	// Token: 0x06000EF8 RID: 3832 RVA: 0x000B52FD File Offset: 0x000B34FD
 	public static IEnumerator InitializeActionBeforeMst()
 	{
 		DataInitializeResolver.isFinishedInitializeActionBeforeMst = false;
@@ -126,7 +122,6 @@ public class DataInitializeResolver
 		yield break;
 	}
 
-	// Token: 0x06000EF9 RID: 3833 RVA: 0x000B5305 File Offset: 0x000B3505
 	public static IEnumerator InitializeActionBeforeTitle()
 	{
 		IEnumerator ienum = DataInitializeResolver.InitializeActionBeforeMst();
@@ -177,8 +172,6 @@ public class DataInitializeResolver
 		yield break;
 	}
 
-	// Token: 0x1700033A RID: 826
-	// (get) Token: 0x06000EFA RID: 3834 RVA: 0x000B5310 File Offset: 0x000B3510
 	private static string Consumer_key
 	{
 		get
@@ -196,8 +189,6 @@ public class DataInitializeResolver
 		}
 	}
 
-	// Token: 0x1700033B RID: 827
-	// (get) Token: 0x06000EFB RID: 3835 RVA: 0x000B5340 File Offset: 0x000B3540
 	private static string Secret_key
 	{
 		get
@@ -215,8 +206,6 @@ public class DataInitializeResolver
 		}
 	}
 
-	// Token: 0x1700033C RID: 828
-	// (get) Token: 0x06000EFC RID: 3836 RVA: 0x000B5370 File Offset: 0x000B3570
 	private static string Action_id
 	{
 		get
@@ -234,7 +223,6 @@ public class DataInitializeResolver
 		}
 	}
 
-	// Token: 0x06000EFD RID: 3837 RVA: 0x000B539F File Offset: 0x000B359F
 	public static IEnumerator InitializeActionAfterTitle(bool isGPGConnect = false)
 	{
 		IEnumerator ienum = AssetDownloadResolver.ResolveActionNeedOndly();
@@ -296,7 +284,6 @@ public class DataInitializeResolver
 		yield break;
 	}
 
-	// Token: 0x06000EFE RID: 3838 RVA: 0x000B53AE File Offset: 0x000B35AE
 	private static IEnumerator UpdateUserData(bool isGPGConnect = false)
 	{
 		int[] opt = SceneManager.GetOption();
@@ -389,7 +376,6 @@ public class DataInitializeResolver
 		yield break;
 	}
 
-	// Token: 0x06000EFF RID: 3839 RVA: 0x000B53BD File Offset: 0x000B35BD
 	private static IEnumerator LoginStatusCheck()
 	{
 		bool isFinish = false;
@@ -505,7 +491,6 @@ public class DataInitializeResolver
 		yield break;
 	}
 
-	// Token: 0x04000D8D RID: 3469
 	public static readonly DataInitializeResolver.SEVER_ENV_INFO[] ServerEnvInfo = new DataInitializeResolver.SEVER_ENV_INFO[]
 	{
 		new DataInitializeResolver.SEVER_ENV_INFO
@@ -566,46 +551,32 @@ public class DataInitializeResolver
 		}
 	};
 
-	// Token: 0x04000D8E RID: 3470
 	private const int DEFAULT_SERVER = 5;
 
-	// Token: 0x04000D8F RID: 3471
 	public static DataInitializeResolver.SEVER_ENV_INFO ServerEnv = DataInitializeResolver.SEVER_ENV_INFO.DeepCopy(DataInitializeResolver.ServerEnvInfo[5]);
 
-	// Token: 0x04000D90 RID: 3472
 	public static string titleLogo;
 
-	// Token: 0x04000D91 RID: 3473
 	public static bool isRunningInitializeActionBeforeMst = false;
 
-	// Token: 0x04000D92 RID: 3474
 	public static bool isFinishedInitializeActionBeforeMst = false;
 
-	// Token: 0x04000D93 RID: 3475
 	public static bool isDispInfoBeforeMst = false;
 
-	// Token: 0x04000D94 RID: 3476
 	private static readonly string NOAH_IOS_CONSUMER_KEY = "APP_0585be92eb1b7822";
 
-	// Token: 0x04000D95 RID: 3477
 	private static readonly string NOAH_IOS_SECRET_KEY = "KEY_8935be92eb1b7884";
 
-	// Token: 0x04000D96 RID: 3478
 	private static readonly string NOAH_IOS_ACTION_ID = "OFF_4435be92ee9855bb";
 
-	// Token: 0x04000D97 RID: 3479
 	private static readonly string NOAH_ANDROID_CONSUMER_KEY = "APP_4225be9302807325";
 
-	// Token: 0x04000D98 RID: 3480
 	private static readonly string NOAH_ANDROID_SECRET_KEY = "KEY_6265be9302807373";
 
-	// Token: 0x04000D99 RID: 3481
 	private static readonly string NOAH_ANDROID_ACTION_ID = "OFF_8275be9305da08eb";
 
-	// Token: 0x0200095A RID: 2394
 	public class SEVER_ENV_INFO
 	{
-		// Token: 0x06003B8E RID: 15246 RVA: 0x001D5F6D File Offset: 0x001D416D
 		public static DataInitializeResolver.SEVER_ENV_INFO DeepCopy(DataInitializeResolver.SEVER_ENV_INFO src)
 		{
 			return new DataInitializeResolver.SEVER_ENV_INFO
@@ -617,37 +588,24 @@ public class DataInitializeResolver
 			};
 		}
 
-		// Token: 0x04003CA4 RID: 15524
 		public DataInitializeResolver.SEVER_ENV env;
 
-		// Token: 0x04003CA5 RID: 15525
 		public string url;
 
-		// Token: 0x04003CA6 RID: 15526
 		public string ver;
 
-		// Token: 0x04003CA7 RID: 15527
 		public string proxy;
 	}
 
-	// Token: 0x0200095B RID: 2395
 	public enum SEVER_ENV
 	{
-		// Token: 0x04003CA9 RID: 15529
 		LOCAL,
-		// Token: 0x04003CAA RID: 15530
 		DEVELOP01,
-		// Token: 0x04003CAB RID: 15531
 		DEVELOP02,
-		// Token: 0x04003CAC RID: 15532
 		DEVELOP03,
-		// Token: 0x04003CAD RID: 15533
 		STAGE,
-		// Token: 0x04003CAE RID: 15534
 		PROD,
-		// Token: 0x04003CAF RID: 15535
 		DEVELOP04,
-		// Token: 0x04003CB0 RID: 15536
 		QA
 	}
 }

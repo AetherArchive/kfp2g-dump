@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
@@ -7,15 +7,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x02000179 RID: 377
 public class SelSideStoryCtrl : MonoBehaviour
 {
-	// Token: 0x170003BF RID: 959
-	// (get) Token: 0x06001825 RID: 6181 RVA: 0x00129750 File Offset: 0x00127950
-	// (set) Token: 0x06001826 RID: 6182 RVA: 0x00129758 File Offset: 0x00127958
 	public SelSideStoryCtrl.GUI GuiData { get; private set; }
 
-	// Token: 0x06001827 RID: 6183 RVA: 0x00129761 File Offset: 0x00127961
 	public void Init(SelSideStoryCtrl.InitParam _initParam, SelSideStoryCtrl.SetupParam _setupParam)
 	{
 		this.initParam = _initParam;
@@ -23,7 +18,6 @@ public class SelSideStoryCtrl : MonoBehaviour
 		this.Setup(_setupParam);
 	}
 
-	// Token: 0x06001828 RID: 6184 RVA: 0x00129777 File Offset: 0x00127977
 	public void Setup(SelSideStoryCtrl.SetupParam _setupParam)
 	{
 		this.setupParam = _setupParam;
@@ -35,7 +29,6 @@ public class SelSideStoryCtrl : MonoBehaviour
 		reqNextSequenceCB();
 	}
 
-	// Token: 0x06001829 RID: 6185 RVA: 0x00129798 File Offset: 0x00127998
 	public void UpdateDecoration()
 	{
 		this.GuiData.mapSelect.baseObj.SetActive(true);
@@ -58,7 +51,6 @@ public class SelSideStoryCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600182A RID: 6186 RVA: 0x00129910 File Offset: 0x00127B10
 	public void Dest()
 	{
 		if (this.GuiData == null)
@@ -68,12 +60,10 @@ public class SelSideStoryCtrl : MonoBehaviour
 		this.GuiData.mapSelect.baseObj.SetActive(false);
 	}
 
-	// Token: 0x0600182B RID: 6187 RVA: 0x00129931 File Offset: 0x00127B31
 	public void Destroy()
 	{
 	}
 
-	// Token: 0x0600182C RID: 6188 RVA: 0x00129934 File Offset: 0x00127B34
 	private void CreateGUI()
 	{
 		this.GuiData = new SelSideStoryCtrl.GUI(this.initParam.prefabPath);
@@ -92,17 +82,14 @@ public class SelSideStoryCtrl : MonoBehaviour
 		selectObjsCB();
 	}
 
-	// Token: 0x0600182D RID: 6189 RVA: 0x00129A2A File Offset: 0x00127C2A
 	private void Start()
 	{
 	}
 
-	// Token: 0x0600182E RID: 6190 RVA: 0x00129A2C File Offset: 0x00127C2C
 	private void Update()
 	{
 	}
 
-	// Token: 0x0600182F RID: 6191 RVA: 0x00129A30 File Offset: 0x00127C30
 	private void UpdateMapButtonLR(int chapterId)
 	{
 		List<int> playableMapIdList = DataManager.DmQuest.GetPlayableMapIdList(chapterId - 1);
@@ -111,7 +98,6 @@ public class SelSideStoryCtrl : MonoBehaviour
 		this.GuiData.mapSelect.Btn_Yaji_Right.gameObject.SetActive(playableMapIdList2.Count > 0);
 	}
 
-	// Token: 0x06001830 RID: 6192 RVA: 0x00129A9F File Offset: 0x00127C9F
 	private IEnumerator UpdateGrid()
 	{
 		yield return new WaitForEndOfFrame();
@@ -128,7 +114,6 @@ public class SelSideStoryCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001831 RID: 6193 RVA: 0x00129AB0 File Offset: 0x00127CB0
 	private void OnClickMapButtonLR(PguiButtonCtrl button)
 	{
 		if (this.GuiData.mapSelect.AraiQuest_ChapterChange.ExIsPlaying())
@@ -167,7 +152,6 @@ public class SelSideStoryCtrl : MonoBehaviour
 		setupParam.reqNextSequenceCB();
 	}
 
-	// Token: 0x06001832 RID: 6194 RVA: 0x00129BEC File Offset: 0x00127DEC
 	private void OnStartMapSelect(int index, GameObject go)
 	{
 		GameObject gameObject = (GameObject)Resources.Load("SceneQuest/GUI/Prefab/AraiQuest_ListBar_ChapterChange");
@@ -198,7 +182,6 @@ public class SelSideStoryCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001833 RID: 6195 RVA: 0x00129C54 File Offset: 0x00127E54
 	private void OnUpdateMapSelect(int index, GameObject go)
 	{
 		int chapterId = this.setupParam.selectData.chapterId;
@@ -265,57 +248,41 @@ public class SelSideStoryCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x040012A6 RID: 4774
 	private SelSideStoryCtrl.InitParam initParam = new SelSideStoryCtrl.InitParam();
 
-	// Token: 0x040012A7 RID: 4775
 	private SelSideStoryCtrl.SetupParam setupParam = new SelSideStoryCtrl.SetupParam();
 
-	// Token: 0x040012A8 RID: 4776
 	private List<SelSideStoryCtrl.GUI.MapSelectParts> mapSelectPartsList = new List<SelSideStoryCtrl.GUI.MapSelectParts>();
 
-	// Token: 0x02000D33 RID: 3379
 	public class InitParam
 	{
-		// Token: 0x04004DB1 RID: 19889
 		public UnityAction reqNextSequenceCB;
 
-		// Token: 0x04004DB2 RID: 19890
 		public UnityAction reqBackSequenceCB;
 
-		// Token: 0x04004DB3 RID: 19891
 		public UnityAction selectObjsCB;
 
-		// Token: 0x04004DB4 RID: 19892
 		public Transform prefabPath;
 	}
 
-	// Token: 0x02000D34 RID: 3380
 	public class SetupParam
 	{
-		// Token: 0x04004DB5 RID: 19893
 		public UnityAction reqNextSequenceCB;
 
-		// Token: 0x04004DB6 RID: 19894
 		public QuestUtil.SelectData selectData;
 	}
 
-	// Token: 0x02000D35 RID: 3381
 	public class GUI
 	{
-		// Token: 0x0600487B RID: 18555 RVA: 0x0021C26F File Offset: 0x0021A46F
 		public GUI(Transform baseTr)
 		{
 			this.mapSelect = new SelSideStoryCtrl.GUI.MapSelect(baseTr.transform);
 		}
 
-		// Token: 0x04004DB7 RID: 19895
 		public SelSideStoryCtrl.GUI.MapSelect mapSelect;
 
-		// Token: 0x020011C9 RID: 4553
 		public class MapSelect
 		{
-			// Token: 0x0600571B RID: 22299 RVA: 0x00255F74 File Offset: 0x00254174
 			public MapSelect(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -329,7 +296,6 @@ public class SelSideStoryCtrl : MonoBehaviour
 				this.campaignInfo = new QuestUtil.CampaignInfo(baseTr.Find("Campaign"));
 			}
 
-			// Token: 0x0600571C RID: 22300 RVA: 0x0025603C File Offset: 0x0025423C
 			public void UpdateCampaignInfoCategory(int chapterId)
 			{
 				List<string> list = new List<string>(QuestUtil.GetCampaignMessageList(QuestStaticChapter.Category.SIDE_STORY, chapterId));
@@ -337,47 +303,34 @@ public class SelSideStoryCtrl : MonoBehaviour
 				this.campaignInfo.DispCampaign(list, list2);
 			}
 
-			// Token: 0x0600571D RID: 22301 RVA: 0x00256070 File Offset: 0x00254270
 			public void ResetCampaignInfoCategory()
 			{
 				this.campaignInfo.ResetCampaign();
 			}
 
-			// Token: 0x04006199 RID: 24985
 			public static readonly int SCROLL_ITEM_COLUMN_MAX = 2;
 
-			// Token: 0x0400619A RID: 24986
 			public GameObject baseObj;
 
-			// Token: 0x0400619B RID: 24987
 			public PguiButtonCtrl Btn_Yaji_Left;
 
-			// Token: 0x0400619C RID: 24988
 			public PguiButtonCtrl Btn_Yaji_Right;
 
-			// Token: 0x0400619D RID: 24989
 			public PguiColorCtrl Bg_Img_All;
 
-			// Token: 0x0400619E RID: 24990
 			public List<PguiImageCtrl> Bg_Img_All_List;
 
-			// Token: 0x0400619F RID: 24991
 			public PguiTextCtrl Chapter;
 
-			// Token: 0x040061A0 RID: 24992
 			public SimpleAnimation AraiQuest_ChapterChange;
 
-			// Token: 0x040061A1 RID: 24993
 			public ReuseScroll ScrollView;
 
-			// Token: 0x040061A2 RID: 24994
 			public QuestUtil.CampaignInfo campaignInfo;
 		}
 
-		// Token: 0x020011CA RID: 4554
 		public class MapSelectParts
 		{
-			// Token: 0x0600571F RID: 22303 RVA: 0x00256088 File Offset: 0x00254288
 			public MapSelectParts(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -391,31 +344,22 @@ public class SelSideStoryCtrl : MonoBehaviour
 				this.MissionInfo = baseTr.Find("BaseImage/MissionInfo").gameObject;
 			}
 
-			// Token: 0x040061A3 RID: 24995
 			public GameObject baseObj;
 
-			// Token: 0x040061A4 RID: 24996
 			public PguiButtonCtrl button;
 
-			// Token: 0x040061A5 RID: 24997
 			public PguiImageCtrl Mark_NowChapter;
 
-			// Token: 0x040061A6 RID: 24998
 			public SimpleAnimation BaseImage;
 
-			// Token: 0x040061A7 RID: 24999
 			public MarkLockCtrl Mark_Lock;
 
-			// Token: 0x040061A8 RID: 25000
 			public PguiTextCtrl Num_Chapter;
 
-			// Token: 0x040061A9 RID: 25001
 			public PguiTextCtrl Txt_ChapterName;
 
-			// Token: 0x040061AA RID: 25002
 			public GameObject Mark_New;
 
-			// Token: 0x040061AB RID: 25003
 			public GameObject MissionInfo;
 		}
 	}

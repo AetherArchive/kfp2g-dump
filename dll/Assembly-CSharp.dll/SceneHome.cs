@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -10,11 +10,8 @@ using SGNFW.uGUI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-// Token: 0x02000150 RID: 336
 public class SceneHome : BaseScene
 {
-	// Token: 0x1700037B RID: 891
-	// (get) Token: 0x060012E0 RID: 4832 RVA: 0x000E56D4 File Offset: 0x000E38D4
 	private bool IsNight
 	{
 		get
@@ -23,7 +20,6 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x060012E1 RID: 4833 RVA: 0x000E56DF File Offset: 0x000E38DF
 	public static void StartNotice()
 	{
 		SceneHome.notice = 0;
@@ -31,7 +27,6 @@ public class SceneHome : BaseScene
 		SceneHome.purchaseNotice = 0;
 	}
 
-	// Token: 0x060012E2 RID: 4834 RVA: 0x000E56F4 File Offset: 0x000E38F4
 	public override void OnCreateScene()
 	{
 		this.basePanel = AssetManager.InstantiateAssetData("SceneHome/GUI/Prefab/GUI_Home", null);
@@ -283,13 +278,11 @@ public class SceneHome : BaseScene
 		this.bgmEff = null;
 	}
 
-	// Token: 0x060012E3 RID: 4835 RVA: 0x000E66A0 File Offset: 0x000E48A0
 	private bool CheckButton()
 	{
 		return this.questNotice == 0 && this.growRewardInfo == 0 && this.firstDownload == 0 && SceneHome.notice < 0 && SceneHome.monthlyNotice < 0 && SceneHome.purchaseNotice < 0 && this.monthly == 0 && this.onClick == 0 && this.appEnd <= 0 && !this.appEndObj.activeSelf && this.viewChara == null && this.quest_guide == 0 && this.chgBgm == 0 && !this.modeBgm.gameObject.activeSelf && this.closet == 0 && !this.modeCloset.gameObject.activeSelf && this.characome == 0 && !this.furnitureCtrl.isActive && this.friendsId == 0 && !this.friendsMenu.gameObject.activeSelf;
 	}
 
-	// Token: 0x060012E4 RID: 4836 RVA: 0x000E6781 File Offset: 0x000E4981
 	private void OnClickFurniture(PguiButtonCtrl button)
 	{
 		if (this.CheckButton())
@@ -298,7 +291,6 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x060012E5 RID: 4837 RVA: 0x000E6792 File Offset: 0x000E4992
 	private void OnClickCloset(PguiButtonCtrl button)
 	{
 		if (this.CheckButton())
@@ -307,7 +299,6 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x060012E6 RID: 4838 RVA: 0x000E67A4 File Offset: 0x000E49A4
 	private bool CloseCloset()
 	{
 		if ((this.closet > 0 || this.characome == 1) && this.modeCloset.gameObject.activeSelf)
@@ -320,13 +311,11 @@ public class SceneHome : BaseScene
 		return false;
 	}
 
-	// Token: 0x060012E7 RID: 4839 RVA: 0x000E67F3 File Offset: 0x000E49F3
 	private void OnClickClosetReturn(PguiButtonCtrl button)
 	{
 		this.CloseCloset();
 	}
 
-	// Token: 0x060012E8 RID: 4840 RVA: 0x000E67FC File Offset: 0x000E49FC
 	private void OnClickClosetCharaShort(GameObject go)
 	{
 		int id = int.Parse(go.name);
@@ -355,7 +344,6 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x060012E9 RID: 4841 RVA: 0x000E6922 File Offset: 0x000E4B22
 	private bool CharaComeWindow(int index)
 	{
 		if (this.characome == 2)
@@ -373,7 +361,6 @@ public class SceneHome : BaseScene
 		return true;
 	}
 
-	// Token: 0x060012EA RID: 4842 RVA: 0x000E6958 File Offset: 0x000E4B58
 	private void OnClickClosetCharaLong(GameObject go)
 	{
 		int id = int.Parse(go.name);
@@ -387,7 +374,6 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x060012EB RID: 4843 RVA: 0x000E69CC File Offset: 0x000E4BCC
 	private void SetupClosetChara(int index, GameObject go)
 	{
 		List<Transform> list = new List<Transform>();
@@ -427,13 +413,11 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x060012EC RID: 4844 RVA: 0x000E6B70 File Offset: 0x000E4D70
 	private void OnClickFunitureCamera(PguiButtonCtrl button)
 	{
 		this.clickCamera = true;
 	}
 
-	// Token: 0x060012ED RID: 4845 RVA: 0x000E6B79 File Offset: 0x000E4D79
 	private void OnClickCharaCome(PguiButtonCtrl button)
 	{
 		if (this.CheckButton())
@@ -442,7 +426,6 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x060012EE RID: 4846 RVA: 0x000E6B8B File Offset: 0x000E4D8B
 	private void OnClickTreeHouse(PguiButtonCtrl button)
 	{
 		if (this.CheckButton())
@@ -451,7 +434,6 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x060012EF RID: 4847 RVA: 0x000E6BA2 File Offset: 0x000E4DA2
 	private bool CloseFriendsMenu()
 	{
 		if (this.friendsMenu.gameObject.activeSelf && this.friendsId > 0)
@@ -463,7 +445,6 @@ public class SceneHome : BaseScene
 		return false;
 	}
 
-	// Token: 0x060012F0 RID: 4848 RVA: 0x000E6BD8 File Offset: 0x000E4DD8
 	private void OnClickFriendsCloset(PguiButtonCtrl button)
 	{
 		if (this.friendsData != null && !CanvasManager.HdlCharaWindowCtrl.IsActive() && !CanvasManager.HdlDressUpWipeCtrl.IsActive() && !CanvasManager.HdlDressUpWindowCtrl.IsActive())
@@ -478,7 +459,6 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x060012F1 RID: 4849 RVA: 0x000E6C28 File Offset: 0x000E4E28
 	private void OnClickFriendsFriends(PguiButtonCtrl button)
 	{
 		if (this.friendsData != null && !CanvasManager.HdlCharaWindowCtrl.IsActive() && !CanvasManager.HdlDressUpWipeCtrl.IsActive() && !CanvasManager.HdlDressUpWindowCtrl.IsActive())
@@ -496,7 +476,6 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x060012F2 RID: 4850 RVA: 0x000E6C9C File Offset: 0x000E4E9C
 	private void OnClickFriendsDetail(PguiButtonCtrl button)
 	{
 		if (this.friendsData != null && !CanvasManager.HdlCharaWindowCtrl.IsActive() && !CanvasManager.HdlDressUpWipeCtrl.IsActive() && !CanvasManager.HdlDressUpWindowCtrl.IsActive())
@@ -505,7 +484,6 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x060012F3 RID: 4851 RVA: 0x000E6CF0 File Offset: 0x000E4EF0
 	private void OnClickFriendsGlow(PguiButtonCtrl button)
 	{
 		if (this.friendsData != null && !CanvasManager.HdlCharaWindowCtrl.IsActive() && !CanvasManager.HdlDressUpWipeCtrl.IsActive() && !CanvasManager.HdlDressUpWindowCtrl.IsActive())
@@ -522,7 +500,6 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x060012F4 RID: 4852 RVA: 0x000E6D64 File Offset: 0x000E4F64
 	private bool OnClickBack(PguiToggleButtonCtrl toggle, int index)
 	{
 		if (!this.viewEnd && this.viewChara != null && !this.hideView && !this.motListWinH.gameObject.activeSelf && !this.motListWinV.gameObject.activeSelf)
@@ -535,13 +512,11 @@ public class SceneHome : BaseScene
 		return false;
 	}
 
-	// Token: 0x060012F5 RID: 4853 RVA: 0x000E6DCF File Offset: 0x000E4FCF
 	private bool OnClickScreen(PguiToggleButtonCtrl toggle, int index)
 	{
 		return false;
 	}
 
-	// Token: 0x060012F6 RID: 4854 RVA: 0x000E6DD4 File Offset: 0x000E4FD4
 	private bool OnClickOn(PguiToggleButtonCtrl toggle, int index)
 	{
 		if (!this.viewEnd && this.viewChara != null && !this.hideView && !this.motListWinH.gameObject.activeSelf && !this.motListWinV.gameObject.activeSelf)
@@ -554,7 +529,6 @@ public class SceneHome : BaseScene
 		return false;
 	}
 
-	// Token: 0x060012F7 RID: 4855 RVA: 0x000E6E4C File Offset: 0x000E504C
 	private bool OnClickPosition(PguiToggleButtonCtrl toggle, int index)
 	{
 		if (!this.viewEnd && this.viewChara != null && !this.hideView && !this.motListWinH.gameObject.activeSelf && !this.motListWinV.gameObject.activeSelf)
@@ -566,7 +540,6 @@ public class SceneHome : BaseScene
 		return false;
 	}
 
-	// Token: 0x060012F8 RID: 4856 RVA: 0x000E6EB8 File Offset: 0x000E50B8
 	private bool OnClickList(PguiToggleButtonCtrl toggle, int index)
 	{
 		if (!this.viewEnd && this.viewChara != null && !this.hideView && !this.motListWinH.gameObject.activeSelf && !this.motListWinV.gameObject.activeSelf && this.contactSituationList.Count > 0)
@@ -582,7 +555,6 @@ public class SceneHome : BaseScene
 		return false;
 	}
 
-	// Token: 0x060012F9 RID: 4857 RVA: 0x000E6F70 File Offset: 0x000E5170
 	private void MakeMotList()
 	{
 		this.dispContactPackList = new List<CharaContactStatic>();
@@ -595,7 +567,6 @@ public class SceneHome : BaseScene
 		this.motListWinV.WindowRectTransform.Find("ActionInfo/Txt_Info").GetComponent<PguiTextCtrl>().text = text;
 	}
 
-	// Token: 0x060012FA RID: 4858 RVA: 0x000E7080 File Offset: 0x000E5280
 	private void SetupBgmLineup(int index, GameObject go)
 	{
 		List<Transform> list = new List<Transform>();
@@ -630,7 +601,6 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x060012FB RID: 4859 RVA: 0x000E71BC File Offset: 0x000E53BC
 	private void OnClickBgmLineup(GameObject go)
 	{
 		int id = (go.transform.Find("BaseImage/Disable").gameObject.activeSelf ? 0 : int.Parse(go.name));
@@ -655,7 +625,6 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x060012FC RID: 4860 RVA: 0x000E72D6 File Offset: 0x000E54D6
 	private bool CloseBgmLineup()
 	{
 		if (this.chgBgm > 0 && this.modeBgm.gameObject.activeSelf)
@@ -667,13 +636,11 @@ public class SceneHome : BaseScene
 		return false;
 	}
 
-	// Token: 0x060012FD RID: 4861 RVA: 0x000E730A File Offset: 0x000E550A
 	private void OnClickBgmLineupReturn(PguiButtonCtrl button)
 	{
 		this.CloseBgmLineup();
 	}
 
-	// Token: 0x060012FE RID: 4862 RVA: 0x000E7313 File Offset: 0x000E5513
 	private void OnClickMonthlyPack(PguiButtonCtrl button)
 	{
 		if (this.CheckButton())
@@ -683,14 +650,12 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x060012FF RID: 4863 RVA: 0x000E732E File Offset: 0x000E552E
 	private void SetupMotListH(int index, GameObject go)
 	{
 		this.SetupMotList(index * 2, go.transform.GetChild(0));
 		this.SetupMotList(index * 2 + 1, go.transform.GetChild(1));
 	}
 
-	// Token: 0x06001300 RID: 4864 RVA: 0x000E735C File Offset: 0x000E555C
 	private void UpdateMotListH(int index, GameObject go)
 	{
 		int num = index * 2;
@@ -715,13 +680,11 @@ public class SceneHome : BaseScene
 		transform.gameObject.SetActive(false);
 	}
 
-	// Token: 0x06001301 RID: 4865 RVA: 0x000E73F2 File Offset: 0x000E55F2
 	private void SetupMotListV(int index, GameObject go)
 	{
 		this.SetupMotList(index, go.transform);
 	}
 
-	// Token: 0x06001302 RID: 4866 RVA: 0x000E7401 File Offset: 0x000E5601
 	private void UpdateMotListV(int index, GameObject go)
 	{
 		if (index >= 0 && index < this.dispContactPackList.Count)
@@ -730,13 +693,11 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x06001303 RID: 4867 RVA: 0x000E7422 File Offset: 0x000E5622
 	private void SetupMotList(int index, Transform trs)
 	{
 		trs.Find("Cmn_Mark_New").gameObject.SetActive(false);
 	}
 
-	// Token: 0x06001304 RID: 4868 RVA: 0x000E743C File Offset: 0x000E563C
 	private void UpdateMotList(int index, Transform trs)
 	{
 		CharaContactStatic charaContactStatic = this.dispContactPackList[index];
@@ -751,7 +712,6 @@ public class SceneHome : BaseScene
 		trs.Find("Disable").gameObject.SetActive(!flag);
 	}
 
-	// Token: 0x06001305 RID: 4869 RVA: 0x000E74F0 File Offset: 0x000E56F0
 	private void SetupActList(int index, GameObject go)
 	{
 		go.GetComponent<PguiToggleButtonCtrl>().AddOnClickListener(new PguiToggleButtonCtrl.OnClick(this.OnClickActList));
@@ -759,7 +719,6 @@ public class SceneHome : BaseScene
 		go.transform.Find("BaseImage/Badge").gameObject.SetActive(false);
 	}
 
-	// Token: 0x06001306 RID: 4870 RVA: 0x000E752C File Offset: 0x000E572C
 	private void UpdateActList(int index, GameObject go)
 	{
 		if (index >= 0 && index < this.contactSituationList.Count)
@@ -770,7 +729,6 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x06001307 RID: 4871 RVA: 0x000E75D4 File Offset: 0x000E57D4
 	private bool OnClickActList(PguiToggleButtonCtrl toggle, int index)
 	{
 		int id = toggle.GetComponent<PguiDataHolder>().id;
@@ -789,7 +747,6 @@ public class SceneHome : BaseScene
 		return false;
 	}
 
-	// Token: 0x06001308 RID: 4872 RVA: 0x000E7674 File Offset: 0x000E5874
 	public override bool OnCreateSceneWait()
 	{
 		if (!AssetManager.IsLoadFinishAssetData(SceneHome.STAGE_ROOM_LOCATOR))
@@ -924,7 +881,6 @@ public class SceneHome : BaseScene
 		return true;
 	}
 
-	// Token: 0x06001309 RID: 4873 RVA: 0x000E7BC4 File Offset: 0x000E5DC4
 	public override void OnEnableScene(object args)
 	{
 		this.args = args as SceneHome.Args;
@@ -1240,7 +1196,6 @@ public class SceneHome : BaseScene
 		this.voiceSheet = null;
 	}
 
-	// Token: 0x0600130A RID: 4874 RVA: 0x000E8D14 File Offset: 0x000E6F14
 	private bool DispRoom()
 	{
 		if (this.stageLoad == null)
@@ -1259,7 +1214,6 @@ public class SceneHome : BaseScene
 		return this.stageLoad == null;
 	}
 
-	// Token: 0x0600130B RID: 4875 RVA: 0x000E8D6A File Offset: 0x000E6F6A
 	private IEnumerator StageLoad()
 	{
 		if (this.camBCG != null)
@@ -1346,7 +1300,6 @@ public class SceneHome : BaseScene
 		yield break;
 	}
 
-	// Token: 0x0600130C RID: 4876 RVA: 0x000E8D7C File Offset: 0x000E6F7C
 	public static SceneHome.StageType GetStageType()
 	{
 		int num = (TimeManager.Now.Hour * 3600 + TimeManager.Now.Minute * 60 + TimeManager.Now.Second) / 3600;
@@ -1367,14 +1320,12 @@ public class SceneHome : BaseScene
 		return stageType;
 	}
 
-	// Token: 0x0600130D RID: 4877 RVA: 0x000E8E1C File Offset: 0x000E701C
 	public static int GetStageTime()
 	{
 		DateTime dateTime = TimeManager.Now.AddHours(-(double)SceneHome.STAGE_TIME[0]);
 		return dateTime.Year * 1000 + dateTime.DayOfYear;
 	}
 
-	// Token: 0x0600130E RID: 4878 RVA: 0x000E8E5C File Offset: 0x000E705C
 	private void ChangeStageLight()
 	{
 		if (this.stageLight != null)
@@ -1392,7 +1343,6 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x0600130F RID: 4879 RVA: 0x000E8F5C File Offset: 0x000E715C
 	private void ChkMonthly()
 	{
 		if ((this.monthlyPack = DataManager.DmMonthlyPack.nowPackData.MonthlypackData) == null)
@@ -1443,13 +1393,11 @@ public class SceneHome : BaseScene
 		this.monthlyMission = -1;
 	}
 
-	// Token: 0x06001310 RID: 4880 RVA: 0x000E9200 File Offset: 0x000E7400
 	public override bool OnEnableSceneWait()
 	{
 		return !DataManager.IsServerRequesting() && this.DispRoom() && this.charaCtrl.isSetup;
 	}
 
-	// Token: 0x06001311 RID: 4881 RVA: 0x000E9220 File Offset: 0x000E7420
 	public override void OnStartSceneFade()
 	{
 		if (this.viewChara == null && this.quest_guide == 0)
@@ -1488,14 +1436,12 @@ public class SceneHome : BaseScene
 		this.treehouseBadge.SetActive(DataManager.DmGameStatus.MakeUserFlagData().TutorialFinishFlag.TreeHouseFirst != DataManagerGameStatus.UserFlagData.TREE_HOUSE_TUTORIAL.LATEST || (homeCheckResult != null && (homeCheckResult.treeHouseBadgeFlag || homeCheckResult.IsTreeHouseCharge())));
 	}
 
-	// Token: 0x06001312 RID: 4882 RVA: 0x000E943C File Offset: 0x000E763C
 	public override void OnStartSceneFadeWait()
 	{
 		this.LoginBonus();
 		this.DispRoom();
 	}
 
-	// Token: 0x06001313 RID: 4883 RVA: 0x000E944C File Offset: 0x000E764C
 	public override void OnStartControl()
 	{
 		this.clickCamera = false;
@@ -1509,7 +1455,6 @@ public class SceneHome : BaseScene
 		this.DispRoom();
 	}
 
-	// Token: 0x06001314 RID: 4884 RVA: 0x000E949C File Offset: 0x000E769C
 	private void OnPlayAnimationLB(SimpleAnimation.ExPguiStatus uiType)
 	{
 		if (this.onClick < 0)
@@ -1535,7 +1480,6 @@ public class SceneHome : BaseScene
 		SoundManager.Play("prd_se_menu_slide", false, false);
 	}
 
-	// Token: 0x06001315 RID: 4885 RVA: 0x000E9520 File Offset: 0x000E7720
 	private bool AppEndWindow(int index)
 	{
 		if (this.appEnd == 1)
@@ -1545,7 +1489,6 @@ public class SceneHome : BaseScene
 		return true;
 	}
 
-	// Token: 0x06001316 RID: 4886 RVA: 0x000E953C File Offset: 0x000E773C
 	public override void Update()
 	{
 		if (this.onClick > 0)
@@ -2429,12 +2372,10 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x06001317 RID: 4887 RVA: 0x000EBBDC File Offset: 0x000E9DDC
 	private void OnClickButtonMenuRetrun()
 	{
 	}
 
-	// Token: 0x06001318 RID: 4888 RVA: 0x000EBBE0 File Offset: 0x000E9DE0
 	private bool OnClickMoveSequenceButton(SceneManager.SceneName sceneName, object sceneArgs)
 	{
 		if (!this.CheckButton())
@@ -2456,7 +2397,6 @@ public class SceneHome : BaseScene
 		return true;
 	}
 
-	// Token: 0x06001319 RID: 4889 RVA: 0x000EBC2C File Offset: 0x000E9E2C
 	private void SetupMenu()
 	{
 		this.bannerCtrl.BannerRefresh();
@@ -2470,7 +2410,6 @@ public class SceneHome : BaseScene
 		CanvasManager.SetBgEnable(false);
 	}
 
-	// Token: 0x0600131A RID: 4890 RVA: 0x000EBCE8 File Offset: 0x000E9EE8
 	private bool LoginBonus()
 	{
 		if (this.bonus != null)
@@ -2493,7 +2432,6 @@ public class SceneHome : BaseScene
 		return false;
 	}
 
-	// Token: 0x0600131B RID: 4891 RVA: 0x000EBD38 File Offset: 0x000E9F38
 	private void OnTouchStart(Info info)
 	{
 		if (this.OnUiTap(info.CurrentPosition))
@@ -2504,7 +2442,6 @@ public class SceneHome : BaseScene
 		this.stroke = this.charaCtrl.OnTouchStart(info);
 	}
 
-	// Token: 0x0600131C RID: 4892 RVA: 0x000EBD62 File Offset: 0x000E9F62
 	private void OnTouchEnd(Info info)
 	{
 		this.touchView = false;
@@ -2512,7 +2449,6 @@ public class SceneHome : BaseScene
 		this.stroke = false;
 	}
 
-	// Token: 0x0600131D RID: 4893 RVA: 0x000EBD7F File Offset: 0x000E9F7F
 	private void OnTouchMove(Info info)
 	{
 		if (!this.touchView)
@@ -2526,7 +2462,6 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x0600131E RID: 4894 RVA: 0x000EBDB8 File Offset: 0x000E9FB8
 	private void OnPinch(Info fingerA, Info fingerB, float distance, float rotation)
 	{
 		if (!this.touchView || this.stroke)
@@ -2551,7 +2486,6 @@ public class SceneHome : BaseScene
 		this.pinchView = distance * Mathf.Sqrt(1280f / num * (720f / num2)) / 10f;
 	}
 
-	// Token: 0x0600131F RID: 4895 RVA: 0x000EBE3E File Offset: 0x000EA03E
 	private void OnWheel(Info info, float distance)
 	{
 		if (this.touchView || this.stroke)
@@ -2569,7 +2503,6 @@ public class SceneHome : BaseScene
 		this.wheelView = distance * 10f;
 	}
 
-	// Token: 0x06001320 RID: 4896 RVA: 0x000EBE7C File Offset: 0x000EA07C
 	private void OnTap(Info info)
 	{
 		if (this.OnUiTap(info.CurrentPosition))
@@ -2655,7 +2588,6 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x06001321 RID: 4897 RVA: 0x000EC280 File Offset: 0x000EA480
 	private bool OnUiTap(Vector2 pos)
 	{
 		if (this.questNotice != 0 || this.growRewardInfo != 0 || this.firstDownload != 0 || this.onClick != 0 || this.chgBgm != 0 || this.modeBgm.gameObject.activeSelf || this.closet != 0 || this.modeCloset.gameObject.activeSelf || this.characome != 0 || this.monthly != 0)
@@ -2669,7 +2601,6 @@ public class SceneHome : BaseScene
 		return list.Count > 0;
 	}
 
-	// Token: 0x06001322 RID: 4898 RVA: 0x000EC320 File Offset: 0x000EA520
 	public override void OnStopControl()
 	{
 		if (this.friendPoint.activeSelf)
@@ -2678,7 +2609,6 @@ public class SceneHome : BaseScene
 		}
 	}
 
-	// Token: 0x06001323 RID: 4899 RVA: 0x000EC33C File Offset: 0x000EA53C
 	public override void OnDisableScene()
 	{
 		this.CloseBgmLineup();
@@ -2782,7 +2712,6 @@ public class SceneHome : BaseScene
 		this.bgmEff = null;
 	}
 
-	// Token: 0x06001324 RID: 4900 RVA: 0x000EC794 File Offset: 0x000EA994
 	public override bool OnDisableSceneWait()
 	{
 		bool flag = !DataManager.IsServerRequesting();
@@ -2807,7 +2736,6 @@ public class SceneHome : BaseScene
 		return flag;
 	}
 
-	// Token: 0x06001325 RID: 4901 RVA: 0x000EC7FC File Offset: 0x000EA9FC
 	public override void OnDestroyScene()
 	{
 		this.furnitureCtrl = null;
@@ -2853,7 +2781,6 @@ public class SceneHome : BaseScene
 		EffectManager.UnloadEffect(SceneHome.bgmEffName, AssetManager.OWNER.HomeStage);
 	}
 
-	// Token: 0x06001326 RID: 4902 RVA: 0x000EC960 File Offset: 0x000EAB60
 	private void PlayLoginScenario()
 	{
 		if (DataManager.DmScenario.IsPlayed())
@@ -2880,7 +2807,6 @@ public class SceneHome : BaseScene
 		Singleton<SceneManager>.Instance.SetNextScene(SceneManager.SceneName.SceneScenario, args);
 	}
 
-	// Token: 0x06001327 RID: 4903 RVA: 0x000ECA19 File Offset: 0x000EAC19
 	private void PlayIntroductions()
 	{
 		if (this._introduction == null)
@@ -2890,7 +2816,6 @@ public class SceneHome : BaseScene
 		this._introduction.MoveNext();
 	}
 
-	// Token: 0x06001328 RID: 4904 RVA: 0x000ECA30 File Offset: 0x000EAC30
 	private void CreateNextArgs(int idx, ref SceneScenario.Args args)
 	{
 		SceneScenario.Args args2 = new SceneScenario.Args();
@@ -2916,304 +2841,204 @@ public class SceneHome : BaseScene
 		this.CreateNextArgs(idx, ref args2);
 	}
 
-	// Token: 0x04000F87 RID: 3975
 	private CharaPackData viewChara;
 
-	// Token: 0x04000F88 RID: 3976
 	private GameObject basePanel;
 
-	// Token: 0x04000F89 RID: 3977
 	private GameObject viewPanel;
 
-	// Token: 0x04000F8A RID: 3978
 	private GameObject windowPanel;
 
-	// Token: 0x04000F8B RID: 3979
 	private GameObject homeField;
 
-	// Token: 0x04000F8C RID: 3980
 	private GameObject charaPanel;
 
-	// Token: 0x04000F8D RID: 3981
 	private GameObject bgmPanel;
 
-	// Token: 0x04000F8E RID: 3982
 	private GameObject rankUpPanel;
 
-	// Token: 0x04000F8F RID: 3983
 	private Transform hidePanel;
 
-	// Token: 0x04000F90 RID: 3984
 	private GameObject listPanelH;
 
-	// Token: 0x04000F91 RID: 3985
 	private GameObject listPanelV;
 
-	// Token: 0x04000F92 RID: 3986
 	private FieldCameraScaler camera;
 
-	// Token: 0x04000F93 RID: 3987
 	private CC_BrightnessContrastGamma camBCG;
 
-	// Token: 0x04000F94 RID: 3988
 	private int camNo;
 
-	// Token: 0x04000F95 RID: 3989
 	private int camPlace;
 
-	// Token: 0x04000F96 RID: 3990
 	private List<Vector3> camPos;
 
-	// Token: 0x04000F97 RID: 3991
 	private List<Vector3> camRot;
 
-	// Token: 0x04000F98 RID: 3992
 	private List<Vector3> camMin;
 
-	// Token: 0x04000F99 RID: 3993
 	private List<Vector3> camMax;
 
-	// Token: 0x04000F9A RID: 3994
 	private HomeCharaCtrl charaCtrl;
 
-	// Token: 0x04000F9B RID: 3995
 	private int stayFriends;
 
-	// Token: 0x04000F9C RID: 3996
 	private HomeBannerCtrl bannerCtrl;
 
-	// Token: 0x04000F9D RID: 3997
 	private PguiButtonCtrl btnMonthlyPack;
 
-	// Token: 0x04000F9E RID: 3998
 	private DataManagerMonthlyPack.PurchaseMonthlypackData monthlyPack;
 
-	// Token: 0x04000F9F RID: 3999
 	private int monthlyDays;
 
-	// Token: 0x04000FA0 RID: 4000
 	private int monthly;
 
-	// Token: 0x04000FA1 RID: 4001
 	private int monthlyMission;
 
-	// Token: 0x04000FA2 RID: 4002
 	private HomeBigBannerCtrl bigBannerCtrl;
 
-	// Token: 0x04000FA3 RID: 4003
 	private SimpleAnimation leftButton;
 
-	// Token: 0x04000FA4 RID: 4004
 	private GameObject furnitureBadge;
 
-	// Token: 0x04000FA5 RID: 4005
 	private GameObject treehouseBadge;
 
-	// Token: 0x04000FA6 RID: 4006
 	private int onClick;
 
-	// Token: 0x04000FA7 RID: 4007
 	private int appEnd;
 
-	// Token: 0x04000FA8 RID: 4008
 	private GameObject appEndObj;
 
-	// Token: 0x04000FA9 RID: 4009
 	private HomeFurnitureCtrl furnitureCtrl;
 
-	// Token: 0x04000FAA RID: 4010
 	private HomeAuthCtrl _homeAuthCtrl;
 
-	// Token: 0x04000FAB RID: 4011
 	private static readonly string STAGE_ROOM_LOCATOR = "Stage/Stage/st_room_locator_a";
 
-	// Token: 0x04000FAC RID: 4012
 	private static readonly List<string> STAGE_NAME = new List<string> { "SD_room_timezone_a_morning", "SD_room_timezone_b_noon", "SD_room_timezone_c_evening", "SD_room_timezone_d_night" };
 
-	// Token: 0x04000FAD RID: 4013
 	private static readonly List<int> STAGE_TIME = new List<int> { 5, 8, 17, 19 };
 
-	// Token: 0x04000FAE RID: 4014
 	private GameObject stageLocator;
 
-	// Token: 0x04000FAF RID: 4015
 	private StagePresetCtrl stageCtrl;
 
-	// Token: 0x04000FB0 RID: 4016
 	private List<Light> stageLight;
 
-	// Token: 0x04000FB1 RID: 4017
 	private IEnumerator stageLoad;
 
-	// Token: 0x04000FB2 RID: 4018
 	private SceneHome.StageType stageType;
 
-	// Token: 0x04000FB3 RID: 4019
 	private static int stageDark = 0;
 
-	// Token: 0x04000FB4 RID: 4020
 	private GameObject friendPoint;
 
-	// Token: 0x04000FB5 RID: 4021
 	private List<HomeFurnitureMapping> furnitureMap;
 
-	// Token: 0x04000FB6 RID: 4022
 	private List<int> furnitureNew;
 
-	// Token: 0x04000FB7 RID: 4023
 	private SimpleAnimation friendsMenu;
 
-	// Token: 0x04000FB8 RID: 4024
 	private int friendsId;
 
-	// Token: 0x04000FB9 RID: 4025
 	private int friendsTouch;
 
-	// Token: 0x04000FBA RID: 4026
 	private CharaPackData friendsData;
 
-	// Token: 0x04000FBB RID: 4027
 	private float friendsMenuTime;
 
-	// Token: 0x04000FBC RID: 4028
 	private SimpleAnimation modeCloset;
 
-	// Token: 0x04000FBD RID: 4029
 	private PguiButtonCtrl modeClosetBack;
 
-	// Token: 0x04000FBE RID: 4030
 	private int closet;
 
-	// Token: 0x04000FBF RID: 4031
 	private List<CharaPackData> haveCharaPackList;
 
-	// Token: 0x04000FC0 RID: 4032
 	private List<CharaPackData> dispCharaPackList;
 
-	// Token: 0x04000FC1 RID: 4033
 	private SortFilterDefine.SortType sortType = SortFilterDefine.SortType.LEVEL;
 
-	// Token: 0x04000FC2 RID: 4034
 	private ReuseScroll closetScroll;
 
-	// Token: 0x04000FC3 RID: 4035
 	private List<Transform> closetChara;
 
-	// Token: 0x04000FC4 RID: 4036
 	private int characome;
 
-	// Token: 0x04000FC5 RID: 4037
 	private bool touchView;
 
-	// Token: 0x04000FC6 RID: 4038
 	private Vector2 moveView;
 
-	// Token: 0x04000FC7 RID: 4039
 	private bool stroke;
 
-	// Token: 0x04000FC8 RID: 4040
 	private float pinchView;
 
-	// Token: 0x04000FC9 RID: 4041
 	private float pinchFov;
 
-	// Token: 0x04000FCA RID: 4042
 	private float wheelView;
 
-	// Token: 0x04000FCB RID: 4043
 	private bool vertView;
 
-	// Token: 0x04000FCC RID: 4044
 	public static bool nowVertView;
 
-	// Token: 0x04000FCD RID: 4045
 	private float vertViewChg;
 
-	// Token: 0x04000FCE RID: 4046
 	private bool hideView;
 
-	// Token: 0x04000FCF RID: 4047
 	private int viewNo;
 
-	// Token: 0x04000FD0 RID: 4048
 	private bool viewChg;
 
-	// Token: 0x04000FD1 RID: 4049
 	private bool viewEnd;
 
-	// Token: 0x04000FD2 RID: 4050
 	private List<List<Transform>> viewPos;
 
-	// Token: 0x04000FD3 RID: 4051
 	private Vector3 viewCam;
 
-	// Token: 0x04000FD4 RID: 4052
 	private Vector3 viewItr;
 
-	// Token: 0x04000FD5 RID: 4053
 	private float viewHeight;
 
-	// Token: 0x04000FD6 RID: 4054
 	private float viewLen;
 
-	// Token: 0x04000FD7 RID: 4055
 	private Vector2 viewBas;
 
-	// Token: 0x04000FD8 RID: 4056
 	private Vector2 viewRot;
 
-	// Token: 0x04000FD9 RID: 4057
 	private Vector3 viewMin;
 
-	// Token: 0x04000FDA RID: 4058
 	private Vector3 viewMax;
 
-	// Token: 0x04000FDB RID: 4059
 	private SimpleAnimation viewAnm;
 
-	// Token: 0x04000FDC RID: 4060
 	private GameObject viewName;
 
-	// Token: 0x04000FDD RID: 4061
 	private float viewNameTim;
 
-	// Token: 0x04000FDE RID: 4062
 	private PguiRawImageCtrl viewFade;
 
-	// Token: 0x04000FDF RID: 4063
 	private List<CharaContactStatic> haveContactPackList;
 
-	// Token: 0x04000FE0 RID: 4064
 	private List<CharaContactStatic> notContactPackList;
 
-	// Token: 0x04000FE1 RID: 4065
 	private List<CharaContactStatic> dispContactPackList;
 
-	// Token: 0x04000FE2 RID: 4066
 	private List<CharaContactStatic.Situation> contactSituationList;
 
-	// Token: 0x04000FE3 RID: 4067
 	private int contactSituation;
 
-	// Token: 0x04000FE4 RID: 4068
 	private PguiOpenWindowCtrl motListWinH;
 
-	// Token: 0x04000FE5 RID: 4069
 	private PguiOpenWindowCtrl motListWinV;
 
-	// Token: 0x04000FE6 RID: 4070
 	private ReuseScroll motListScrollH;
 
-	// Token: 0x04000FE7 RID: 4071
 	private ReuseScroll motListScrollV;
 
-	// Token: 0x04000FE8 RID: 4072
 	private ReuseScroll actListScrollH;
 
-	// Token: 0x04000FE9 RID: 4073
 	private ReuseScroll actListScrollV;
 
-	// Token: 0x04000FEA RID: 4074
 	private static readonly Dictionary<CharaContactStatic.Situation, string> situationName = new Dictionary<CharaContactStatic.Situation, string>
 	{
 		{
@@ -3242,106 +3067,72 @@ public class SceneHome : BaseScene
 		}
 	};
 
-	// Token: 0x04000FEB RID: 4075
 	private EffectData tvEff;
 
-	// Token: 0x04000FEC RID: 4076
 	private static readonly string tvEffName = "Ef_stage_surface_television";
 
-	// Token: 0x04000FED RID: 4077
 	private EffectData bgmEff;
 
-	// Token: 0x04000FEE RID: 4078
 	private static readonly string bgmEffName = "Ef_info_home_note";
 
-	// Token: 0x04000FEF RID: 4079
 	private List<DataManagerHome.HomeBgmPlaybackData> bgmList;
 
-	// Token: 0x04000FF0 RID: 4080
 	private int bgmId;
 
-	// Token: 0x04000FF1 RID: 4081
 	private List<Transform> bgmLineup;
 
-	// Token: 0x04000FF2 RID: 4082
 	private SimpleAnimation modeBgm;
 
-	// Token: 0x04000FF3 RID: 4083
 	private PguiButtonCtrl modeBgmBack;
 
-	// Token: 0x04000FF4 RID: 4084
 	private int chgBgm;
 
-	// Token: 0x04000FF5 RID: 4085
 	private ReuseScroll bgmScroll;
 
-	// Token: 0x04000FF6 RID: 4086
 	private static readonly string homeBgm = "prd_bgm0013";
 
-	// Token: 0x04000FF7 RID: 4087
 	private IEnumerator bonus;
 
-	// Token: 0x04000FF8 RID: 4088
 	private IEnumerator rouletteProcess;
 
-	// Token: 0x04000FF9 RID: 4089
 	public static int notice = -1;
 
-	// Token: 0x04000FFA RID: 4090
 	private List<HomeBannerData> noticeList;
 
-	// Token: 0x04000FFB RID: 4091
 	public static int monthlyNotice = -1;
 
-	// Token: 0x04000FFC RID: 4092
 	public static int monthlyNoticeWait = -1;
 
-	// Token: 0x04000FFD RID: 4093
 	private float monthlyNoticeWaitTime;
 
-	// Token: 0x04000FFE RID: 4094
 	private PguiOpenWindowCtrl monthlyNoticeWindow;
 
-	// Token: 0x04000FFF RID: 4095
 	private GameObject monthlyNoticeMark;
 
-	// Token: 0x04001000 RID: 4096
 	private int questNotice;
 
-	// Token: 0x04001001 RID: 4097
 	private bool questNoClear;
 
-	// Token: 0x04001002 RID: 4098
 	private GameObject questNoClearIcon;
 
-	// Token: 0x04001003 RID: 4099
 	private int growRewardInfo;
 
-	// Token: 0x04001004 RID: 4100
 	public static int purchaseNotice = -1;
 
-	// Token: 0x04001005 RID: 4101
 	private List<PurchaseProductOne> purchaseNoticeList;
 
-	// Token: 0x04001006 RID: 4102
 	private PurchaseProductOne purchaseNoticeData;
 
-	// Token: 0x04001007 RID: 4103
 	private bool purchaseNoticeShop;
 
-	// Token: 0x04001008 RID: 4104
 	private int quest_guide;
 
-	// Token: 0x04001009 RID: 4105
 	private int firstDownload;
 
-	// Token: 0x0400100A RID: 4106
 	private IEnumerator downloadResolver;
 
-	// Token: 0x0400100B RID: 4107
 	private IEnumerator _introduction;
 
-	// Token: 0x0400100C RID: 4108
 	private static readonly List<VOICE_TYPE> standVoice = new List<VOICE_TYPE>
 	{
 		VOICE_TYPE.HOM01,
@@ -3350,7 +3141,6 @@ public class SceneHome : BaseScene
 		VOICE_TYPE.HOM04
 	};
 
-	// Token: 0x0400100D RID: 4109
 	private static readonly List<VOICE_TYPE> walkVoice = new List<VOICE_TYPE>
 	{
 		VOICE_TYPE.MOV01,
@@ -3360,7 +3150,6 @@ public class SceneHome : BaseScene
 		VOICE_TYPE.MOV05
 	};
 
-	// Token: 0x0400100E RID: 4110
 	private static readonly List<VOICE_TYPE> sleepVoice = new List<VOICE_TYPE>
 	{
 		VOICE_TYPE.SLP01,
@@ -3368,74 +3157,49 @@ public class SceneHome : BaseScene
 		VOICE_TYPE.SLP03
 	};
 
-	// Token: 0x0400100F RID: 4111
 	private string voiceSheet;
 
-	// Token: 0x04001010 RID: 4112
 	private int rankBefore;
 
-	// Token: 0x04001011 RID: 4113
 	private SceneHome.ProgressStatus playerRankUpStatus;
 
-	// Token: 0x04001012 RID: 4114
 	private PguiOpenWindowCtrl rankupWindow;
 
-	// Token: 0x04001013 RID: 4115
 	private PguiTextCtrl rankWinBefore;
 
-	// Token: 0x04001014 RID: 4116
 	private PguiTextCtrl rankWinAfter;
 
-	// Token: 0x04001015 RID: 4117
 	private bool clickCamera;
 
-	// Token: 0x04001016 RID: 4118
 	private SceneHome.Args args = new SceneHome.Args();
 
-	// Token: 0x02000B10 RID: 2832
 	public class Args
 	{
-		// Token: 0x040045E0 RID: 17888
 		public TutorialUtil.Sequence tutorialSequence;
 
-		// Token: 0x040045E1 RID: 17889
 		public CharaPackData charaPackData;
 
-		// Token: 0x040045E2 RID: 17890
 		public SceneManager.SceneName sceneName;
 
-		// Token: 0x040045E3 RID: 17891
 		public object menuBackSceneArgs;
 
-		// Token: 0x040045E4 RID: 17892
 		public int questOneId;
 	}
 
-	// Token: 0x02000B11 RID: 2833
 	private enum ProgressStatus
 	{
-		// Token: 0x040045E6 RID: 17894
 		Wait,
-		// Token: 0x040045E7 RID: 17895
 		Requesting,
-		// Token: 0x040045E8 RID: 17896
 		Result,
-		// Token: 0x040045E9 RID: 17897
 		End
 	}
 
-	// Token: 0x02000B12 RID: 2834
 	public enum StageType
 	{
-		// Token: 0x040045EB RID: 17899
 		INVALID,
-		// Token: 0x040045EC RID: 17900
 		MORNING,
-		// Token: 0x040045ED RID: 17901
 		NOON,
-		// Token: 0x040045EE RID: 17902
 		EVENING,
-		// Token: 0x040045EF RID: 17903
 		NIGHT
 	}
 }

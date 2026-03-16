@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
@@ -6,15 +6,12 @@ using SGNFW.Mst;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x020001A3 RID: 419
 public class HelpWindowCtrl : MonoBehaviour
 {
-	// Token: 0x06001BE3 RID: 7139 RVA: 0x00162A9F File Offset: 0x00160C9F
 	public void DebugInit()
 	{
 	}
 
-	// Token: 0x06001BE4 RID: 7140 RVA: 0x00162AA4 File Offset: 0x00160CA4
 	public void Init(List<MstHelpData> helpData)
 	{
 		this.guiData = new HelpWindowCtrl.GUI(base.transform);
@@ -93,7 +90,6 @@ public class HelpWindowCtrl : MonoBehaviour
 		this.guiData.BtnClose.AddOnClickListener(new PguiButtonCtrl.OnClick(this.OnClickButton), PguiButtonCtrl.SoundType.DEFAULT);
 	}
 
-	// Token: 0x06001BE5 RID: 7141 RVA: 0x00162EC0 File Offset: 0x001610C0
 	private void SetupInternal()
 	{
 		this.guiData.TextGroup.gameObject.SetActive(false);
@@ -156,7 +152,6 @@ public class HelpWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001BE6 RID: 7142 RVA: 0x00163148 File Offset: 0x00161348
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		if (button == this.guiData.BtnClose)
@@ -182,7 +177,6 @@ public class HelpWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001BE7 RID: 7143 RVA: 0x001631EF File Offset: 0x001613EF
 	private IEnumerator LabelEffect(bool isBig, int index)
 	{
 		if (isBig)
@@ -251,7 +245,6 @@ public class HelpWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001BE8 RID: 7144 RVA: 0x0016320C File Offset: 0x0016140C
 	private IEnumerator LabelEffectOpenBig(int targetBigIndex, bool isQuick)
 	{
 		this.guiData.labelBList[targetBigIndex].BaseImage.SetImageByName("btn_yaji_act");
@@ -298,7 +291,6 @@ public class HelpWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001BE9 RID: 7145 RVA: 0x00163229 File Offset: 0x00161429
 	private IEnumerator LabelEffectOpenSmall(int targetSmallIndex, bool isQuick)
 	{
 		this.guiData.labelSList[targetSmallIndex].BaseImage.SetImageByName("btn_yaji_act");
@@ -382,7 +374,6 @@ public class HelpWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001BEA RID: 7146 RVA: 0x00163248 File Offset: 0x00161448
 	private Vector2 ImagePath2Size(string imagePath)
 	{
 		Vector2 vector = new Vector2(100f, 100f);
@@ -401,7 +392,6 @@ public class HelpWindowCtrl : MonoBehaviour
 		return vector;
 	}
 
-	// Token: 0x06001BEB RID: 7147 RVA: 0x001632EC File Offset: 0x001614EC
 	private IEnumerator LabelEffectCloseBig()
 	{
 		this.guiData.labelBList[this.selectBigIndex].BaseImage.SetImageByName("btn_yaji_nor");
@@ -439,7 +429,6 @@ public class HelpWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001BEC RID: 7148 RVA: 0x001632FB File Offset: 0x001614FB
 	private IEnumerator LabelEffectCloseSmall()
 	{
 		this.guiData.labelSList[this.selectSmallndex].BaseImage.SetImageByName("btn_yaji_nor");
@@ -479,7 +468,6 @@ public class HelpWindowCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001BED RID: 7149 RVA: 0x0016330C File Offset: 0x0016150C
 	private void ResizeContent()
 	{
 		float num = (float)this.guiData.labelBList.Count * this.bigHeight;
@@ -493,7 +481,6 @@ public class HelpWindowCtrl : MonoBehaviour
 		this.guiData.ContentRect.offsetMin = new Vector2(0f, -num);
 	}
 
-	// Token: 0x06001BEE RID: 7150 RVA: 0x001633E4 File Offset: 0x001615E4
 	public void Open(bool isApppay = false)
 	{
 		if (isApppay)
@@ -583,7 +570,6 @@ public class HelpWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001BEF RID: 7151 RVA: 0x0016371F File Offset: 0x0016191F
 	public void Close()
 	{
 		if (this.m_Sequence == HelpWindowCtrl.Sequence.ACTIVE)
@@ -592,7 +578,6 @@ public class HelpWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001BF0 RID: 7152 RVA: 0x00163731 File Offset: 0x00161931
 	public void SetCurrentOpenHelpId(int helpId)
 	{
 		this.openCurrentHelplId = helpId;
@@ -600,45 +585,38 @@ public class HelpWindowCtrl : MonoBehaviour
 		this.dmEventEventId = 0;
 	}
 
-	// Token: 0x06001BF1 RID: 7153 RVA: 0x00163748 File Offset: 0x00161948
 	public void SetCurrentOpenHelpByTower(bool enable)
 	{
 		this.dmEventCategory = (enable ? DataManagerEvent.Category.Tower : DataManagerEvent.Category.INVARID);
 	}
 
-	// Token: 0x06001BF2 RID: 7154 RVA: 0x00163757 File Offset: 0x00161957
 	public void SetCurrentOpenHelpByCoop(bool enable, int eventId)
 	{
 		this.dmEventCategory = (enable ? DataManagerEvent.Category.Coop : DataManagerEvent.Category.INVARID);
 		this.dmEventEventId = eventId;
 	}
 
-	// Token: 0x06001BF3 RID: 7155 RVA: 0x0016376D File Offset: 0x0016196D
 	public void SetCurrentOpenHelpByLarge(bool enable, int eventId)
 	{
 		this.dmEventCategory = (enable ? DataManagerEvent.Category.Large : DataManagerEvent.Category.INVARID);
 		this.dmEventEventId = eventId;
 	}
 
-	// Token: 0x06001BF4 RID: 7156 RVA: 0x00163783 File Offset: 0x00161983
 	public void SetCurrentOpenHelpByCharaGrow(bool enable)
 	{
 		this.dmEventCategory = (enable ? DataManagerEvent.Category.Growth : DataManagerEvent.Category.INVARID);
 	}
 
-	// Token: 0x06001BF5 RID: 7157 RVA: 0x00163792 File Offset: 0x00161992
 	public void SetCurrentOpenHelpByWildRelease(bool enable)
 	{
 		this.dmEventCategory = (enable ? DataManagerEvent.Category.WildRelease : DataManagerEvent.Category.INVARID);
 	}
 
-	// Token: 0x06001BF6 RID: 7158 RVA: 0x001637A1 File Offset: 0x001619A1
 	public void SetDisplaySpecialPvpHelp(bool isSpecial)
 	{
 		this.isDispSpecialPvp = isSpecial;
 	}
 
-	// Token: 0x06001BF7 RID: 7159 RVA: 0x001637AC File Offset: 0x001619AC
 	private void Update()
 	{
 		switch (this.m_Sequence)
@@ -695,61 +673,42 @@ public class HelpWindowCtrl : MonoBehaviour
 		this.m_ReqSequence = HelpWindowCtrl.Sequence.NONE;
 	}
 
-	// Token: 0x040014C5 RID: 5317
 	private HelpWindowCtrl.GUI guiData;
 
-	// Token: 0x040014C6 RID: 5318
 	private HelpWindowCtrl.Sequence m_ReqSequence;
 
-	// Token: 0x040014C7 RID: 5319
 	private HelpWindowCtrl.Sequence m_Sequence = HelpWindowCtrl.Sequence.INACTIVE;
 
-	// Token: 0x040014C8 RID: 5320
 	private float smallHeight;
 
-	// Token: 0x040014C9 RID: 5321
 	private float bigHeight;
 
-	// Token: 0x040014CA RID: 5322
 	private const float OPEN_TIME = 4f;
 
-	// Token: 0x040014CB RID: 5323
 	private const float CLOSE_TIME = 4f;
 
-	// Token: 0x040014CC RID: 5324
 	public float SPACE_SIZE_B = 15f;
 
-	// Token: 0x040014CD RID: 5325
 	public float SPACE_SIZE_S = 8f;
 
-	// Token: 0x040014CE RID: 5326
 	private int selectBigIndex = -1;
 
-	// Token: 0x040014CF RID: 5327
 	private int selectSmallndex = -1;
 
-	// Token: 0x040014D0 RID: 5328
 	private DataManagerEvent.Category dmEventCategory;
 
-	// Token: 0x040014D1 RID: 5329
 	private int dmEventEventId;
 
-	// Token: 0x040014D2 RID: 5330
 	private int openCurrentHelplId = -1;
 
-	// Token: 0x040014D3 RID: 5331
 	private bool isDispSpecialPvp;
 
-	// Token: 0x040014D4 RID: 5332
 	private List<HelpWindowCtrl.HelpBigLabelData> helpBigLabelList = new List<HelpWindowCtrl.HelpBigLabelData>();
 
-	// Token: 0x040014D5 RID: 5333
 	private IEnumerator labelEffect;
 
-	// Token: 0x02000EEB RID: 3819
 	public class GUI
 	{
-		// Token: 0x06004E18 RID: 19992 RVA: 0x00235294 File Offset: 0x00233494
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -764,43 +723,30 @@ public class HelpWindowCtrl : MonoBehaviour
 			baseTr.Find("Base/Window/Scroll View").GetComponent<ScrollRect>().scrollSensitivity = ScrollParamDefine.HelpWindow;
 		}
 
-		// Token: 0x04005537 RID: 21815
 		public GameObject baseObj;
 
-		// Token: 0x04005538 RID: 21816
 		public PguiButtonCtrl BtnClose;
 
-		// Token: 0x04005539 RID: 21817
 		public GameObject InBase;
 
-		// Token: 0x0400553A RID: 21818
 		public SimpleAnimation BaseAnim;
 
-		// Token: 0x0400553B RID: 21819
 		public RectTransform ContentRect;
 
-		// Token: 0x0400553C RID: 21820
 		public RectTransform BigGroup;
 
-		// Token: 0x0400553D RID: 21821
 		public RectTransform SamllGroup;
 
-		// Token: 0x0400553E RID: 21822
 		public RectTransform TextGroup;
 
-		// Token: 0x0400553F RID: 21823
 		public List<HelpWindowCtrl.GUI.GuiLabel> labelBList = new List<HelpWindowCtrl.GUI.GuiLabel>();
 
-		// Token: 0x04005540 RID: 21824
 		public List<HelpWindowCtrl.GUI.GuiLabel> labelSList = new List<HelpWindowCtrl.GUI.GuiLabel>();
 
-		// Token: 0x04005541 RID: 21825
 		public HelpWindowCtrl.GUI.GuiText guiText;
 
-		// Token: 0x020011F4 RID: 4596
 		public class GuiText
 		{
-			// Token: 0x06005766 RID: 22374 RVA: 0x002574E8 File Offset: 0x002556E8
 			public GuiText(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -818,26 +764,19 @@ public class HelpWindowCtrl : MonoBehaviour
 				};
 			}
 
-			// Token: 0x04006274 RID: 25204
 			public RectTransform baseRt;
 
-			// Token: 0x04006275 RID: 25205
 			public GameObject baseObj;
 
-			// Token: 0x04006276 RID: 25206
 			public PguiImageCtrl Base_Image;
 
-			// Token: 0x04006277 RID: 25207
 			public List<PguiRawImageCtrl> Image;
 
-			// Token: 0x04006278 RID: 25208
 			public List<PguiTextCtrl> Text;
 		}
 
-		// Token: 0x020011F5 RID: 4597
 		public class GuiLabel
 		{
-			// Token: 0x06005767 RID: 22375 RVA: 0x00257598 File Offset: 0x00255798
 			public GuiLabel(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -849,76 +788,51 @@ public class HelpWindowCtrl : MonoBehaviour
 				this.anchor = baseTr.Find("Anchor").transform;
 			}
 
-			// Token: 0x04006279 RID: 25209
 			public RectTransform baseRt;
 
-			// Token: 0x0400627A RID: 25210
 			public GameObject baseObj;
 
-			// Token: 0x0400627B RID: 25211
 			public PguiButtonCtrl button;
 
-			// Token: 0x0400627C RID: 25212
 			public PguiImageCtrl BaseImage;
 
-			// Token: 0x0400627D RID: 25213
 			public PguiTextCtrl Txt;
 
-			// Token: 0x0400627E RID: 25214
 			public Transform anchor;
 		}
 	}
 
-	// Token: 0x02000EEC RID: 3820
 	private enum Sequence
 	{
-		// Token: 0x04005543 RID: 21827
 		NONE,
-		// Token: 0x04005544 RID: 21828
 		INACTIVE,
-		// Token: 0x04005545 RID: 21829
 		OPEN_START,
-		// Token: 0x04005546 RID: 21830
 		OPEN_WAIT,
-		// Token: 0x04005547 RID: 21831
 		ACTIVE,
-		// Token: 0x04005548 RID: 21832
 		CALLBACK_ACTION,
-		// Token: 0x04005549 RID: 21833
 		CLOSE_START,
-		// Token: 0x0400554A RID: 21834
 		CLOSE_WAIT
 	}
 
-	// Token: 0x02000EED RID: 3821
 	private class HelpBigLabelData
 	{
-		// Token: 0x0400554B RID: 21835
 		public int id;
 
-		// Token: 0x0400554C RID: 21836
 		public string title;
 
-		// Token: 0x0400554D RID: 21837
 		public List<HelpWindowCtrl.HelpSmallLabelData> smallLabelList = new List<HelpWindowCtrl.HelpSmallLabelData>();
 	}
 
-	// Token: 0x02000EEE RID: 3822
 	private class HelpSmallLabelData
 	{
-		// Token: 0x0400554E RID: 21838
 		public int id;
 
-		// Token: 0x0400554F RID: 21839
 		public const int ARRAY_SIZE = 2;
 
-		// Token: 0x04005550 RID: 21840
 		public string title;
 
-		// Token: 0x04005551 RID: 21841
 		public List<string> text = new List<string>();
 
-		// Token: 0x04005552 RID: 21842
 		public List<string> image = new List<string>();
 	}
 }

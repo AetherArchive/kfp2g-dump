@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -6,13 +6,9 @@ using UnityEngine.UI;
 
 namespace SGNFW.uGUI
 {
-	// Token: 0x02000239 RID: 569
 	[ExecuteInEditMode]
 	public class TextWithIcon : Text
 	{
-		// Token: 0x1700054D RID: 1357
-		// (get) Token: 0x060023D6 RID: 9174 RVA: 0x0019A4CB File Offset: 0x001986CB
-		// (set) Token: 0x060023D7 RID: 9175 RVA: 0x0019A4D4 File Offset: 0x001986D4
 		public float IconScale
 		{
 			get
@@ -32,9 +28,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x1700054E RID: 1358
-		// (get) Token: 0x060023D8 RID: 9176 RVA: 0x0019A538 File Offset: 0x00198738
-		// (set) Token: 0x060023D9 RID: 9177 RVA: 0x0019A540 File Offset: 0x00198740
 		public override string text
 		{
 			get
@@ -55,8 +48,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x1700054F RID: 1359
-		// (get) Token: 0x060023DA RID: 9178 RVA: 0x0019A574 File Offset: 0x00198774
 		public TextHyphenation CachedHyphenText
 		{
 			get
@@ -70,7 +61,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x060023DB RID: 9179 RVA: 0x0019A59C File Offset: 0x0019879C
 		public void Clear()
 		{
 			foreach (TextWithIcon.Icon icon in this.iconList)
@@ -84,7 +74,6 @@ namespace SGNFW.uGUI
 			this.iconList.Clear();
 		}
 
-		// Token: 0x060023DC RID: 9180 RVA: 0x0019A618 File Offset: 0x00198818
 		public void AddTexts(string texts)
 		{
 			base.text += texts;
@@ -94,7 +83,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x060023DD RID: 9181 RVA: 0x0019A640 File Offset: 0x00198840
 		protected override void OnPopulateMesh(VertexHelper toFill)
 		{
 			base.OnPopulateMesh(toFill);
@@ -148,7 +136,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x060023DE RID: 9182 RVA: 0x0019A7B0 File Offset: 0x001989B0
 		private Vector3 CalcCenter(Vector3[] verts)
 		{
 			Vector3 vector = Vector3.zero;
@@ -163,13 +150,11 @@ namespace SGNFW.uGUI
 			return vector / (float)verts.Length;
 		}
 
-		// Token: 0x060023DF RID: 9183 RVA: 0x0019A7F6 File Offset: 0x001989F6
 		private float CalcWidth(Vector3[] verts)
 		{
 			return Vector3.Distance(verts[0], verts[1]);
 		}
 
-		// Token: 0x060023E0 RID: 9184 RVA: 0x0019A80C File Offset: 0x00198A0C
 		private int[] GetIndexes(Text text)
 		{
 			List<int> list = new List<int>();
@@ -183,7 +168,6 @@ namespace SGNFW.uGUI
 			return list.ToArray();
 		}
 
-		// Token: 0x060023E1 RID: 9185 RVA: 0x0019A89C File Offset: 0x00198A9C
 		private void Update()
 		{
 			if (this.iconList == null || this.iconList.Count <= 0)
@@ -215,26 +199,19 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x04001AF5 RID: 6901
 		public Action<TextWithIcon> onChange;
 
-		// Token: 0x04001AF6 RID: 6902
 		public Action<TextWithIcon, Image> onUpdate;
 
-		// Token: 0x04001AF7 RID: 6903
 		[SerializeField]
 		private float iconScale = 1f;
 
-		// Token: 0x04001AF8 RID: 6904
 		private List<TextWithIcon.Icon> iconList = new List<TextWithIcon.Icon>();
 
-		// Token: 0x04001AF9 RID: 6905
 		private TextHyphenation cachedHyphenText;
 
-		// Token: 0x02001077 RID: 4215
 		private class Icon
 		{
-			// Token: 0x06005308 RID: 21256 RVA: 0x00249B8B File Offset: 0x00247D8B
 			public Icon(Image img, Vector3 pos, float w)
 			{
 				this.img = img;
@@ -243,16 +220,12 @@ namespace SGNFW.uGUI
 				this.recalculate = true;
 			}
 
-			// Token: 0x04005BD7 RID: 23511
 			public Image img;
 
-			// Token: 0x04005BD8 RID: 23512
 			public Vector3 pos;
 
-			// Token: 0x04005BD9 RID: 23513
 			public float w;
 
-			// Token: 0x04005BDA RID: 23514
 			public bool recalculate;
 		}
 	}

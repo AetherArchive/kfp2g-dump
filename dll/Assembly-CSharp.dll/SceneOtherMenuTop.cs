@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +8,8 @@ using SGNFW.HttpRequest.Protocol;
 using SGNFW.Login;
 using UnityEngine;
 
-// Token: 0x0200015B RID: 347
 public class SceneOtherMenuTop : BaseScene
 {
-	// Token: 0x060013E2 RID: 5090 RVA: 0x000F2CEC File Offset: 0x000F0EEC
 	public override void OnCreateScene()
 	{
 		this.basePanel = Object.Instantiate<GameObject>((GameObject)Resources.Load("SceneMenu/GUI/Prefab/GUI_Menu"));
@@ -42,7 +40,6 @@ public class SceneOtherMenuTop : BaseScene
 		this.guiSubData.Btn_Privacy.AddOnClickListener(new PguiButtonCtrl.OnClick(this.OnClickButtonSub), PguiButtonCtrl.SoundType.DEFAULT);
 	}
 
-	// Token: 0x060013E3 RID: 5091 RVA: 0x000F2FF4 File Offset: 0x000F11F4
 	public override void OnEnableScene(object args)
 	{
 		this.basePanel.gameObject.SetActive(true);
@@ -57,13 +54,11 @@ public class SceneOtherMenuTop : BaseScene
 		this.requestNextScene = SceneManager.SceneName.None;
 	}
 
-	// Token: 0x060013E4 RID: 5092 RVA: 0x000F307F File Offset: 0x000F127F
 	public override void OnStartControl()
 	{
 		this.guiData.baseAnim.ExPlayAnimation(SimpleAnimation.ExPguiStatus.START, null);
 	}
 
-	// Token: 0x060013E5 RID: 5093 RVA: 0x000F3094 File Offset: 0x000F1294
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -153,7 +148,6 @@ public class SceneOtherMenuTop : BaseScene
 		CanvasManager.HdlOpenWindowBasic.Open();
 	}
 
-	// Token: 0x060013E6 RID: 5094 RVA: 0x000F32CD File Offset: 0x000F14CD
 	private void OnClickRankingButton(PguiButtonCtrl buttuon)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -167,7 +161,6 @@ public class SceneOtherMenuTop : BaseScene
 		};
 	}
 
-	// Token: 0x060013E7 RID: 5095 RVA: 0x000F32F3 File Offset: 0x000F14F3
 	private IEnumerator AccountTransferMove()
 	{
 		if (!LoginManager.IsDmmLink)
@@ -187,7 +180,6 @@ public class SceneOtherMenuTop : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060013E8 RID: 5096 RVA: 0x000F3302 File Offset: 0x000F1502
 	private IEnumerator GoogleSetting()
 	{
 		GPGLoginResponse response = null;
@@ -213,7 +205,6 @@ public class SceneOtherMenuTop : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060013E9 RID: 5097 RVA: 0x000F3311 File Offset: 0x000F1511
 	private IEnumerator GoogleAccountLink()
 	{
 		GPGLoginResponse response = null;
@@ -375,7 +366,6 @@ public class SceneOtherMenuTop : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060013EA RID: 5098 RVA: 0x000F3320 File Offset: 0x000F1520
 	private IEnumerator GoogleAccountRelease()
 	{
 		GPGLoginResponse response = null;
@@ -467,7 +457,6 @@ public class SceneOtherMenuTop : BaseScene
 		yield break;
 	}
 
-	// Token: 0x060013EB RID: 5099 RVA: 0x000F3330 File Offset: 0x000F1530
 	private void OnClickButtonSub(PguiButtonCtrl buttuon)
 	{
 		if (buttuon == this.guiSubData.Btn_Credit)
@@ -501,7 +490,6 @@ public class SceneOtherMenuTop : BaseScene
 		}
 	}
 
-	// Token: 0x060013EC RID: 5100 RVA: 0x000F3410 File Offset: 0x000F1610
 	private string GetHyphen(string str1, string str2)
 	{
 		string text = string.Empty;
@@ -514,7 +502,6 @@ public class SceneOtherMenuTop : BaseScene
 		return text;
 	}
 
-	// Token: 0x060013ED RID: 5101 RVA: 0x000F3460 File Offset: 0x000F1660
 	public override void Update()
 	{
 		if (this.enumerator != null && !this.enumerator.MoveNext())
@@ -558,13 +545,11 @@ public class SceneOtherMenuTop : BaseScene
 		}
 	}
 
-	// Token: 0x060013EE RID: 5102 RVA: 0x000F3548 File Offset: 0x000F1748
 	public override void OnDisableScene()
 	{
 		this.basePanel.gameObject.SetActive(false);
 	}
 
-	// Token: 0x060013EF RID: 5103 RVA: 0x000F355B File Offset: 0x000F175B
 	public override void OnDestroyScene()
 	{
 		Object.Destroy(this.basePanel);
@@ -573,40 +558,28 @@ public class SceneOtherMenuTop : BaseScene
 		this.guiSubData = null;
 	}
 
-	// Token: 0x04001063 RID: 4195
 	private IEnumerator enumerator;
 
-	// Token: 0x04001064 RID: 4196
 	private GameObject basePanel;
 
-	// Token: 0x04001065 RID: 4197
 	private SceneOtherMenuTop.GUI guiData;
 
-	// Token: 0x04001066 RID: 4198
 	private SceneOtherMenuTop.GUISub guiSubData;
 
-	// Token: 0x04001067 RID: 4199
 	private SceneOtherMenuTop.GuiGoogleAccountWindow guiGoogleAccountWindow;
 
-	// Token: 0x04001068 RID: 4200
 	private SceneManager.SceneName requestNextScene;
 
-	// Token: 0x04001069 RID: 4201
 	private object requestNextSceneArgs;
 
-	// Token: 0x0400106A RID: 4202
 	private bool isEnableMenu = true;
 
-	// Token: 0x0400106B RID: 4203
 	private SceneOtherMenuTop.PHASE setting;
 
-	// Token: 0x0400106C RID: 4204
 	private string requestOpenUrl = "";
 
-	// Token: 0x02000B49 RID: 2889
 	public class GUI
 	{
-		// Token: 0x06004262 RID: 16994 RVA: 0x001FF7C8 File Offset: 0x001FD9C8
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -625,53 +598,37 @@ public class SceneOtherMenuTop : BaseScene
 			this.Achievement_Btn = baseTr.Find("All/Achievement_Btn").GetComponent<PguiButtonCtrl>();
 		}
 
-		// Token: 0x040046C9 RID: 18121
 		public GameObject baseObj;
 
-		// Token: 0x040046CA RID: 18122
 		public SimpleAnimation baseAnim;
 
-		// Token: 0x040046CB RID: 18123
 		public PguiButtonCtrl Profile_Btn;
 
-		// Token: 0x040046CC RID: 18124
 		public PguiButtonCtrl Item_Btn;
 
-		// Token: 0x040046CD RID: 18125
 		public PguiButtonCtrl Story_Btn;
 
-		// Token: 0x040046CE RID: 18126
 		public PguiButtonCtrl Option_Btn;
 
-		// Token: 0x040046CF RID: 18127
 		public PguiButtonCtrl Help_Btn;
 
-		// Token: 0x040046D0 RID: 18128
 		public PguiButtonCtrl Download_Btn;
 
-		// Token: 0x040046D1 RID: 18129
 		public PguiButtonCtrl Dataid_Btn;
 
-		// Token: 0x040046D2 RID: 18130
 		public PguiButtonCtrl Birthday_Btn;
 
-		// Token: 0x040046D3 RID: 18131
 		public PguiButtonCtrl Mail_Btn;
 
-		// Token: 0x040046D4 RID: 18132
 		public PguiButtonCtrl Termsofuse_Btn;
 
-		// Token: 0x040046D5 RID: 18133
 		public PguiButtonCtrl Ranking_Btn;
 
-		// Token: 0x040046D6 RID: 18134
 		public PguiButtonCtrl Achievement_Btn;
 	}
 
-	// Token: 0x02000B4A RID: 2890
 	public class GUISub
 	{
-		// Token: 0x06004263 RID: 16995 RVA: 0x001FF8FC File Offset: 0x001FDAFC
 		public GUISub(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -684,35 +641,25 @@ public class SceneOtherMenuTop : BaseScene
 			this.Window = baseTr.Find("Window").GetComponent<PguiOpenWindowCtrl>();
 		}
 
-		// Token: 0x040046D7 RID: 18135
 		public GameObject baseObj;
 
-		// Token: 0x040046D8 RID: 18136
 		public PguiButtonCtrl Btn_Credit;
 
-		// Token: 0x040046D9 RID: 18137
 		public PguiButtonCtrl Btn_Terms;
 
-		// Token: 0x040046DA RID: 18138
 		public PguiButtonCtrl Btn_Law01;
 
-		// Token: 0x040046DB RID: 18139
 		public PguiButtonCtrl Btn_Law02;
 
-		// Token: 0x040046DC RID: 18140
 		public PguiButtonCtrl Btn_CopyLight;
 
-		// Token: 0x040046DD RID: 18141
 		public PguiButtonCtrl Btn_Privacy;
 
-		// Token: 0x040046DE RID: 18142
 		public PguiOpenWindowCtrl Window;
 	}
 
-	// Token: 0x02000B4B RID: 2891
 	public class GuiGoogleAccountWindow
 	{
-		// Token: 0x06004264 RID: 16996 RVA: 0x001FF9B8 File Offset: 0x001FDBB8
 		public GuiGoogleAccountWindow(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -724,42 +671,28 @@ public class SceneOtherMenuTop : BaseScene
 			this.linkedText = this.setting.transform.Find("Base/Window/Layout/Btn_Link/Linked").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x040046DF RID: 18143
 		public GameObject baseObj;
 
-		// Token: 0x040046E0 RID: 18144
 		public PguiOpenWindowCtrl setting;
 
-		// Token: 0x040046E1 RID: 18145
 		public PguiOpenWindowCtrl idPassLink;
 
-		// Token: 0x040046E2 RID: 18146
 		public PguiButtonCtrl Btn_idPassLink;
 
-		// Token: 0x040046E3 RID: 18147
 		public PguiButtonCtrl Btn_accountLink;
 
-		// Token: 0x040046E4 RID: 18148
 		public PguiButtonCtrl Btn_release;
 
-		// Token: 0x040046E5 RID: 18149
 		public PguiTextCtrl linkedText;
 	}
 
-	// Token: 0x02000B4C RID: 2892
 	private enum PHASE
 	{
-		// Token: 0x040046E7 RID: 18151
 		NONE,
-		// Token: 0x040046E8 RID: 18152
 		SETTING,
-		// Token: 0x040046E9 RID: 18153
 		IDPASS,
-		// Token: 0x040046EA RID: 18154
 		GPCONNECT,
-		// Token: 0x040046EB RID: 18155
 		GPDISCONNECT,
-		// Token: 0x040046EC RID: 18156
 		TEMP
 	}
 }

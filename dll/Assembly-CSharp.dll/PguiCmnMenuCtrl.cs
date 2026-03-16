@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
@@ -6,25 +6,14 @@ using SGNFW.HttpRequest.Protocol;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Token: 0x020001CD RID: 461
 public class PguiCmnMenuCtrl : MonoBehaviour
 {
-	// Token: 0x17000436 RID: 1078
-	// (get) Token: 0x06001F78 RID: 8056 RVA: 0x001843D1 File Offset: 0x001825D1
-	// (set) Token: 0x06001F79 RID: 8057 RVA: 0x001843D9 File Offset: 0x001825D9
 	public bool IsSceneManagerMoving { get; set; }
 
-	// Token: 0x17000437 RID: 1079
-	// (get) Token: 0x06001F7A RID: 8058 RVA: 0x001843E2 File Offset: 0x001825E2
-	// (set) Token: 0x06001F7B RID: 8059 RVA: 0x001843EA File Offset: 0x001825EA
 	public PguiCmnMenuCtrl.OnClickMoveSequenceButton moveSequenceCallback { get; set; }
 
-	// Token: 0x17000438 RID: 1080
-	// (get) Token: 0x06001F7C RID: 8060 RVA: 0x001843F3 File Offset: 0x001825F3
-	// (set) Token: 0x06001F7D RID: 8061 RVA: 0x001843FB File Offset: 0x001825FB
 	public List<PguiCmnMenuCtrl.OnPlayAnimation> playAnimation { get; set; }
 
-	// Token: 0x06001F7E RID: 8062 RVA: 0x00184404 File Offset: 0x00182604
 	private void Awake()
 	{
 		this.guiData = new PguiCmnMenuCtrl.GUI(base.transform);
@@ -51,7 +40,6 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06001F7F RID: 8063 RVA: 0x0018451D File Offset: 0x0018271D
 	private void Update()
 	{
 		if (this.windowCoroutine != null && !this.windowCoroutine.MoveNext())
@@ -60,7 +48,6 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001F80 RID: 8064 RVA: 0x0018453B File Offset: 0x0018273B
 	private void OnTouchPanel()
 	{
 		if (this.guiData.Btn_Menu.gameObject.activeSelf)
@@ -69,7 +56,6 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001F81 RID: 8065 RVA: 0x0018455C File Offset: 0x0018275C
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		if (!this.guiData.Btn_Menu.gameObject.activeSelf)
@@ -219,19 +205,16 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001F82 RID: 8066 RVA: 0x00184989 File Offset: 0x00182B89
 	public void SetupMenu(bool isDisp, string title = "", PguiCmnMenuCtrl.OnClickReturnButton cb = null, string subInfo = "", PguiCmnMenuCtrl.OnClickMoveSequenceButton cbMs = null, List<PguiCmnMenuCtrl.OnPlayAnimation> cbAnim = null)
 	{
 		this.SetupMenuInternal(isDisp, title, cb, false, subInfo, cbMs, cbAnim);
 	}
 
-	// Token: 0x06001F83 RID: 8067 RVA: 0x0018499B File Offset: 0x00182B9B
 	public void SetupMenuByHome(PguiCmnMenuCtrl.OnClickReturnButton cb = null, PguiCmnMenuCtrl.OnClickMoveSequenceButton cbMs = null, List<PguiCmnMenuCtrl.OnPlayAnimation> cbAnim = null)
 	{
 		this.SetupMenuInternal(true, "", cb, true, "", cbMs, cbAnim);
 	}
 
-	// Token: 0x06001F84 RID: 8068 RVA: 0x001849B4 File Offset: 0x00182BB4
 	public bool SetActiveMenu(bool sw)
 	{
 		if (!(this.guiData.Btn_Menu.gameObject.activeSelf ^ sw))
@@ -262,13 +245,11 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		return this.isRequestSwitch;
 	}
 
-	// Token: 0x06001F85 RID: 8069 RVA: 0x00184B20 File Offset: 0x00182D20
 	public bool IsActiveMenu()
 	{
 		return this.guiData.Btn_Menu.gameObject.activeSelf;
 	}
 
-	// Token: 0x06001F86 RID: 8070 RVA: 0x00184B38 File Offset: 0x00182D38
 	public void UpdateSubInfo(string subInfo)
 	{
 		if (subInfo != string.Empty)
@@ -280,7 +261,6 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		this.guiData.Txt_SubInfo.transform.parent.gameObject.SetActive(false);
 	}
 
-	// Token: 0x06001F87 RID: 8071 RVA: 0x00184BA4 File Offset: 0x00182DA4
 	private void SetupMenuInternal(bool isDisp, string title, PguiCmnMenuCtrl.OnClickReturnButton cb, bool home, string subInfo, PguiCmnMenuCtrl.OnClickMoveSequenceButton cbMs, List<PguiCmnMenuCtrl.OnPlayAnimation> cbAnim)
 	{
 		this.isHome = home;
@@ -403,7 +383,6 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001F88 RID: 8072 RVA: 0x001851E0 File Offset: 0x001833E0
 	public void UpdateMenu(bool isEnable, bool backKey = true)
 	{
 		DateTime now = TimeManager.Now;
@@ -556,7 +535,6 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001F89 RID: 8073 RVA: 0x0018586C File Offset: 0x00183A6C
 	protected virtual void OnDisable()
 	{
 		if (this.guiData != null)
@@ -566,7 +544,6 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001F8A RID: 8074 RVA: 0x001858A4 File Offset: 0x00183AA4
 	public void MoveSceneByMenu(SceneManager.SceneName nextScene, object args = null)
 	{
 		if (this.isOpen)
@@ -587,7 +564,6 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		Singleton<SceneManager>.Instance.SetNextScene(nextScene, args);
 	}
 
-	// Token: 0x06001F8B RID: 8075 RVA: 0x0018595C File Offset: 0x00183B5C
 	public void AnimEndTitleBase()
 	{
 		if (!this.isHome || this.isOpen)
@@ -596,7 +572,6 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001F8C RID: 8076 RVA: 0x00185980 File Offset: 0x00183B80
 	private void UpdateUserInfo()
 	{
 		this.guiData.Num_Rank.text = DataManager.DmUserInfo.level.ToString();
@@ -635,7 +610,6 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		this.guiData.Win_Stamina.SetActive(this.isWinStamina);
 	}
 
-	// Token: 0x06001F8D RID: 8077 RVA: 0x00185D00 File Offset: 0x00183F00
 	private void UpdateCampaign()
 	{
 		DateTime dt = TimeManager.Now;
@@ -937,7 +911,6 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		this.guiData.TreeHouse_Badge.SetActive((this.userFlag != null && this.userFlag.TutorialFinishFlag.TreeHouseFirst != DataManagerGameStatus.UserFlagData.TREE_HOUSE_TUTORIAL.LATEST) || (homeCheckResult2 != null && (homeCheckResult2.treeHouseBadgeFlag || homeCheckResult2.IsTreeHouseCharge())));
 	}
 
-	// Token: 0x06001F8E RID: 8078 RVA: 0x00186A18 File Offset: 0x00184C18
 	public static string Ratio2String(int ratio)
 	{
 		string text = (ratio / 10000 + 1).ToString();
@@ -953,7 +926,6 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		return text;
 	}
 
-	// Token: 0x06001F8F RID: 8079 RVA: 0x00186A78 File Offset: 0x00184C78
 	private bool DispCampaign(GameObject obj, List<string> msg, ref int cnt, ref float frm)
 	{
 		bool activeSelf = obj.activeSelf;
@@ -985,7 +957,6 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		return obj.activeSelf;
 	}
 
-	// Token: 0x06001F90 RID: 8080 RVA: 0x00186B08 File Offset: 0x00184D08
 	private void UpdateMission()
 	{
 		if (!this.isOpen)
@@ -1068,7 +1039,6 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		goto IL_03AE;
 	}
 
-	// Token: 0x06001F91 RID: 8081 RVA: 0x00186F20 File Offset: 0x00185120
 	private string pvpOpenMsg(bool isMark)
 	{
 		string text = SceneQuest.GetMainStoryName(this.pvpLock.questChapter.category, isMark);
@@ -1080,7 +1050,6 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		return "クエスト情報がありません";
 	}
 
-	// Token: 0x06001F92 RID: 8082 RVA: 0x00186F94 File Offset: 0x00185194
 	private string picnicOpenMsg(bool isMark)
 	{
 		string text = SceneQuest.GetMainStoryName(this.picnicLock.questChapter.category, isMark);
@@ -1092,25 +1061,21 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		return "クエスト情報がありません";
 	}
 
-	// Token: 0x06001F93 RID: 8083 RVA: 0x00187007 File Offset: 0x00185207
 	private void OnTouchRectIconStone(Transform rect)
 	{
 		CanvasManager.HdlSelPurchaseStoneWindowCtrl.Setup(PurchaseProductOne.TabType.Invalid);
 	}
 
-	// Token: 0x06001F94 RID: 8084 RVA: 0x00187014 File Offset: 0x00185214
 	public GameObject GetQuestBtn()
 	{
 		return this.guiData.Btn_Quest.gameObject;
 	}
 
-	// Token: 0x06001F95 RID: 8085 RVA: 0x00187026 File Offset: 0x00185226
 	public GameObject GetConfigBtn()
 	{
 		return this.guiData.Btn_Config.gameObject;
 	}
 
-	// Token: 0x06001F96 RID: 8086 RVA: 0x00187038 File Offset: 0x00185238
 	private IEnumerator OpenBuffInfoWindow()
 	{
 		CanvasManager.HdlKizunaKizunaBuffWindowCtrl.SetupBuffInfo();
@@ -1124,127 +1089,84 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x040016DE RID: 5854
 	private IEnumerator windowCoroutine;
 
-	// Token: 0x040016DF RID: 5855
 	private PguiCmnMenuCtrl.GUI guiData;
 
-	// Token: 0x040016E0 RID: 5856
 	private bool isHome;
 
-	// Token: 0x040016E1 RID: 5857
 	private bool isOpen;
 
-	// Token: 0x040016E2 RID: 5858
 	private bool isRequestSwitch;
 
-	// Token: 0x040016E3 RID: 5859
 	private bool isRequestRetrun;
 
-	// Token: 0x040016E4 RID: 5860
 	private bool isEnableEvent;
 
-	// Token: 0x040016E5 RID: 5861
 	private bool isWinStamina;
 
-	// Token: 0x040016E6 RID: 5862
 	private PguiCmnMenuCtrl.OnClickReturnButton returnCallback;
 
-	// Token: 0x040016E9 RID: 5865
 	private SceneManager.SceneName requestNextScene;
 
-	// Token: 0x040016EA RID: 5866
 	private object nextSceneArgs;
 
-	// Token: 0x040016EB RID: 5867
 	private int Quest_Campaign;
 
-	// Token: 0x040016EC RID: 5868
 	private int CharaEdit_Campaign;
 
-	// Token: 0x040016ED RID: 5869
 	private int Gacha_Campaign;
 
-	// Token: 0x040016EE RID: 5870
 	private int Shop_Campaign;
 
-	// Token: 0x040016EF RID: 5871
 	private int Pvp_Campaign;
 
-	// Token: 0x040016F0 RID: 5872
 	private int Picnic_Campaign;
 
-	// Token: 0x040016F1 RID: 5873
 	private float Quest_Campaign_anm;
 
-	// Token: 0x040016F2 RID: 5874
 	private float CharaEdit_Campaign_anm;
 
-	// Token: 0x040016F3 RID: 5875
 	private float Gacha_Campaign_anm;
 
-	// Token: 0x040016F4 RID: 5876
 	private float Shop_Campaign_anm;
 
-	// Token: 0x040016F5 RID: 5877
 	private float Pvp_Campaign_anm;
 
-	// Token: 0x040016F6 RID: 5878
 	private float Picnic_Campaign_anm;
 
-	// Token: 0x040016F7 RID: 5879
 	private QuestOnePackData pvpLock;
 
-	// Token: 0x040016F8 RID: 5880
 	private QuestOnePackData picnicLock;
 
-	// Token: 0x040016F9 RID: 5881
 	private int pvpLck;
 
-	// Token: 0x040016FA RID: 5882
 	private int picnicLck;
 
-	// Token: 0x040016FB RID: 5883
 	private int missionCnt;
 
-	// Token: 0x040016FC RID: 5884
 	private int missionEventId1;
 
-	// Token: 0x040016FD RID: 5885
 	private int missionEventId2;
 
-	// Token: 0x040016FE RID: 5886
 	private DataManagerGameStatus.UserFlagData userFlag;
 
-	// Token: 0x040016FF RID: 5887
 	private HashSet<int> newGacha;
 
-	// Token: 0x04001700 RID: 5888
 	private List<DataManagerQuest.DrawItemData> questDrawList;
 
-	// Token: 0x04001701 RID: 5889
 	private List<DataManagerEvent.EventData> eventList;
 
-	// Token: 0x04001702 RID: 5890
 	private int pvpEvent;
 
-	// Token: 0x0200100D RID: 4109
-	// (Invoke) Token: 0x060051BF RID: 20927
 	public delegate void OnClickReturnButton();
 
-	// Token: 0x0200100E RID: 4110
-	// (Invoke) Token: 0x060051C3 RID: 20931
 	public delegate bool OnClickMoveSequenceButton(SceneManager.SceneName sceneName, object nextSceneArgs);
 
-	// Token: 0x0200100F RID: 4111
-	// (Invoke) Token: 0x060051C7 RID: 20935
 	public delegate void OnPlayAnimation(SimpleAnimation.ExPguiStatus uiType);
 
-	// Token: 0x02001010 RID: 4112
 	public class GUI
 	{
-		// Token: 0x060051CA RID: 20938 RVA: 0x0024760C File Offset: 0x0024580C
 		public GUI(Transform baseTr)
 		{
 			this.Btn_Back = baseTr.Find("TitleBase/Btn_Back").GetComponent<PguiButtonCtrl>();
@@ -1328,199 +1250,134 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 			this.TreeHouse_Badge.SetActive(false);
 		}
 
-		// Token: 0x04005A0D RID: 23053
 		public PguiButtonCtrl Btn_Back;
 
-		// Token: 0x04005A0E RID: 23054
 		public PguiButtonCtrl Btn_Question;
 
-		// Token: 0x04005A0F RID: 23055
 		public PguiButtonCtrl Btn_Menu;
 
-		// Token: 0x04005A10 RID: 23056
 		public PguiButtonCtrl Btn_Quest;
 
-		// Token: 0x04005A11 RID: 23057
 		public PguiButtonCtrl Btn_CharaEdit;
 
-		// Token: 0x04005A12 RID: 23058
 		public PguiButtonCtrl Btn_Gacha;
 
-		// Token: 0x04005A13 RID: 23059
 		public PguiButtonCtrl Btn_Shop;
 
-		// Token: 0x04005A14 RID: 23060
 		public PguiButtonCtrl Btn_Pvp;
 
-		// Token: 0x04005A15 RID: 23061
 		public PguiButtonCtrl Btn_Picnic;
 
-		// Token: 0x04005A16 RID: 23062
 		public PguiButtonCtrl Btn_News;
 
-		// Token: 0x04005A17 RID: 23063
 		public PguiButtonCtrl Btn_Present;
 
-		// Token: 0x04005A18 RID: 23064
 		public PguiButtonCtrl Btn_Config;
 
-		// Token: 0x04005A19 RID: 23065
 		public PguiButtonCtrl Btn_Follow;
 
-		// Token: 0x04005A1A RID: 23066
 		public PguiButtonCtrl Btn_Mission;
 
-		// Token: 0x04005A1B RID: 23067
 		public PguiButtonCtrl Btn_MissionEvent1;
 
-		// Token: 0x04005A1C RID: 23068
 		public PguiButtonCtrl Btn_MissionEvent2;
 
-		// Token: 0x04005A1D RID: 23069
 		public PguiButtonCtrl Btn_Home;
 
-		// Token: 0x04005A1E RID: 23070
 		public PguiButtonCtrl Btn_Profile;
 
-		// Token: 0x04005A1F RID: 23071
 		public PguiButtonCtrl Btn_Movie;
 
-		// Token: 0x04005A20 RID: 23072
 		public PguiButtonCtrl Btn_TreeHouse;
 
-		// Token: 0x04005A21 RID: 23073
 		public PguiButtonCtrl Btn_KizunaBuff;
 
-		// Token: 0x04005A22 RID: 23074
 		public PguiImageCtrl RankGage_Gage;
 
-		// Token: 0x04005A23 RID: 23075
 		public PguiTextCtrl Txt_Rank;
 
-		// Token: 0x04005A24 RID: 23076
 		public PguiTextCtrl Num_Rank;
 
-		// Token: 0x04005A25 RID: 23077
 		public PguiImageCtrl StaminaGage_Gage;
 
-		// Token: 0x04005A26 RID: 23078
 		public PguiTextCtrl Num_Stamina;
 
-		// Token: 0x04005A27 RID: 23079
 		public PguiTextCtrl Nxt_Stamina;
 
-		// Token: 0x04005A28 RID: 23080
 		public PguiTextCtrl Num_Stone;
 
-		// Token: 0x04005A29 RID: 23081
 		public GameObject BuyStone;
 
-		// Token: 0x04005A2A RID: 23082
 		public SimpleAnimation GUI_CmnMenu;
 
-		// Token: 0x04005A2B RID: 23083
 		public SimpleAnimation TitleBase;
 
-		// Token: 0x04005A2C RID: 23084
 		public GameObject TouchMask;
 
-		// Token: 0x04005A2D RID: 23085
 		public PguiTextCtrl Txt_Title;
 
-		// Token: 0x04005A2E RID: 23086
 		public PguiTextCtrl Txt_SubInfo;
 
-		// Token: 0x04005A2F RID: 23087
 		public List<PguiButtonCtrl> buttonList;
 
-		// Token: 0x04005A30 RID: 23088
 		public List<PguiCollider> colliList = new List<PguiCollider>();
 
-		// Token: 0x04005A31 RID: 23089
 		public GameObject Mission_New;
 
-		// Token: 0x04005A32 RID: 23090
 		public GameObject Mission_Badge;
 
-		// Token: 0x04005A33 RID: 23091
 		public PguiTextCtrl Mission_Badge_Num;
 
-		// Token: 0x04005A34 RID: 23092
 		public GameObject Present_Badge;
 
-		// Token: 0x04005A35 RID: 23093
 		public PguiTextCtrl Present_Badge_Num;
 
-		// Token: 0x04005A36 RID: 23094
 		public GameObject GroupObjTitle;
 
-		// Token: 0x04005A37 RID: 23095
 		public GameObject GroupObjHome;
 
-		// Token: 0x04005A38 RID: 23096
 		public GameObject GroupObjOther;
 
-		// Token: 0x04005A39 RID: 23097
 		public GameObject GroupObjInfoAll;
 
-		// Token: 0x04005A3A RID: 23098
 		public GameObject Btn_Stamina;
 
-		// Token: 0x04005A3B RID: 23099
 		public GameObject Win_Stamina;
 
-		// Token: 0x04005A3C RID: 23100
 		public GameObject Quest_Campaign;
 
-		// Token: 0x04005A3D RID: 23101
 		public GameObject CharaEdit_Campaign;
 
-		// Token: 0x04005A3E RID: 23102
 		public GameObject Gacha_Campaign;
 
-		// Token: 0x04005A3F RID: 23103
 		public GameObject Shop_Campaign;
 
-		// Token: 0x04005A40 RID: 23104
 		public GameObject Pvp_Campaign;
 
-		// Token: 0x04005A41 RID: 23105
 		public GameObject Picnic_Campaign;
 
-		// Token: 0x04005A42 RID: 23106
 		public MarkLockCtrl Pvp_Lock;
 
-		// Token: 0x04005A43 RID: 23107
 		public MarkLockCtrl Picnic_Lock;
 
-		// Token: 0x04005A44 RID: 23108
 		public SimpleAnimation ImgViewMode;
 
-		// Token: 0x04005A45 RID: 23109
 		public SimpleAnimation Popup_Limited;
 
-		// Token: 0x04005A46 RID: 23110
 		public SimpleAnimation Popup_StaminaRecovery_Campaign;
 
-		// Token: 0x04005A47 RID: 23111
 		public PguiTextCtrl Txt_StaminaRecovery_Campaign;
 
-		// Token: 0x04005A48 RID: 23112
 		public GameObject Quest_Event;
 
-		// Token: 0x04005A49 RID: 23113
 		public GameObject Gacha_New;
 
-		// Token: 0x04005A4A RID: 23114
 		public GameObject Picnic_Badge;
 
-		// Token: 0x04005A4B RID: 23115
 		public GameObject Home_Badge;
 
-		// Token: 0x04005A4C RID: 23116
 		public GameObject Pvp_Event;
 
-		// Token: 0x04005A4D RID: 23117
 		public GameObject TreeHouse_Badge;
 	}
 }

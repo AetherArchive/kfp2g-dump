@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Common;
@@ -6,10 +6,8 @@ using SGNFW.Touch;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-// Token: 0x02000151 RID: 337
 public class SceneKemoBoard : BaseScene
 {
-	// Token: 0x0600133C RID: 4924 RVA: 0x000ECE58 File Offset: 0x000EB058
 	public override void OnCreateScene()
 	{
 		this.guiData = new SceneKemoBoard.GUI(AssetManager.InstantiateAssetData("SceneCharaEdit/GUI/Prefab/GUI_KemoBoard", null).transform);
@@ -175,7 +173,6 @@ public class SceneKemoBoard : BaseScene
 		this.winPanel.SetActive(false);
 	}
 
-	// Token: 0x0600133D RID: 4925 RVA: 0x000ED8B8 File Offset: 0x000EBAB8
 	private int GetBonusIcon(DataManagerKemoBoard.KemoBoardPanelData kd)
 	{
 		int num = kd.bonusTypeNum;
@@ -206,7 +203,6 @@ public class SceneKemoBoard : BaseScene
 		return num;
 	}
 
-	// Token: 0x0600133E RID: 4926 RVA: 0x000ED918 File Offset: 0x000EBB18
 	public override void OnEnableScene(object args)
 	{
 		this.guiData.baseObj.SetActive(true);
@@ -240,7 +236,6 @@ public class SceneKemoBoard : BaseScene
 		DataManager.DmKemoBoard.RequestGetKemoBoard();
 	}
 
-	// Token: 0x0600133F RID: 4927 RVA: 0x000EDB0C File Offset: 0x000EBD0C
 	public override bool OnEnableSceneWait()
 	{
 		if (DataManager.IsServerRequesting())
@@ -262,7 +257,6 @@ public class SceneKemoBoard : BaseScene
 		return true;
 	}
 
-	// Token: 0x06001340 RID: 4928 RVA: 0x000EDC1C File Offset: 0x000EBE1C
 	private void DispKemoData(CharaDef.AttributeType attr)
 	{
 		HashSet<int> hashSet = (DataManager.DmKemoBoard.ReleaseKamoPanelMap.ContainsKey(attr) ? DataManager.DmKemoBoard.ReleaseKamoPanelMap[attr] : new HashSet<int>());
@@ -331,7 +325,6 @@ public class SceneKemoBoard : BaseScene
 		}
 	}
 
-	// Token: 0x06001341 RID: 4929 RVA: 0x000EE050 File Offset: 0x000EC250
 	private IEnumerator FirstTutorial()
 	{
 		yield return null;
@@ -354,7 +347,6 @@ public class SceneKemoBoard : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001342 RID: 4930 RVA: 0x000EE058 File Offset: 0x000EC258
 	public override void Update()
 	{
 		if (this.winPanel.activeSelf && this.winReset.win.FinishedClose() && this.winCheck.win.FinishedClose())
@@ -385,7 +377,6 @@ public class SceneKemoBoard : BaseScene
 		CanvasManager.HdlCmnMenu.UpdateMenu(true, true);
 	}
 
-	// Token: 0x06001343 RID: 4931 RVA: 0x000EE2AC File Offset: 0x000EC4AC
 	private void SetWinOpen(DataManagerKemoBoard.KemoBoardPanelData kd)
 	{
 		this.selPoint = kd;
@@ -532,7 +523,6 @@ public class SceneKemoBoard : BaseScene
 		}
 	}
 
-	// Token: 0x06001344 RID: 4932 RVA: 0x000EEA83 File Offset: 0x000ECC83
 	private IEnumerator PointOpen()
 	{
 		while (this.guiData.WinOpen.gameObject.activeSelf)
@@ -577,7 +567,6 @@ public class SceneKemoBoard : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001345 RID: 4933 RVA: 0x000EEA92 File Offset: 0x000ECC92
 	private IEnumerator PointReset(DataManagerKemoBoard.KemoBoardAreaData area, bool stone)
 	{
 		while (this.winPanel.activeSelf || this.useItem.baseObj.activeSelf)
@@ -603,7 +592,6 @@ public class SceneKemoBoard : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001346 RID: 4934 RVA: 0x000EEAB0 File Offset: 0x000ECCB0
 	private void OnClickPoint(DataManagerKemoBoard.KemoBoardPanelData kd)
 	{
 		if (this.winPanel.activeSelf || this.useItem.baseObj.activeSelf || this.ienum != null)
@@ -618,7 +606,6 @@ public class SceneKemoBoard : BaseScene
 		SoundManager.Play("prd_se_click", false, false);
 	}
 
-	// Token: 0x06001347 RID: 4935 RVA: 0x000EEB3C File Offset: 0x000ECD3C
 	private void OnClickPoint(bool sw)
 	{
 		if (this.winPanel.activeSelf || this.useItem.baseObj.activeSelf || this.ienum != null)
@@ -628,7 +615,6 @@ public class SceneKemoBoard : BaseScene
 		this.boardScroll = sw;
 	}
 
-	// Token: 0x06001348 RID: 4936 RVA: 0x000EEB70 File Offset: 0x000ECD70
 	private void OnClickOpen(PguiButtonCtrl button)
 	{
 		if (this.winPanel.activeSelf || this.useItem.baseObj.activeSelf || this.ienum != null)
@@ -653,7 +639,6 @@ public class SceneKemoBoard : BaseScene
 		this.ienum = this.PointOpen();
 	}
 
-	// Token: 0x06001349 RID: 4937 RVA: 0x000EEC40 File Offset: 0x000ECE40
 	private void OnClickCancel(PguiButtonCtrl button)
 	{
 		if (this.winPanel.activeSelf || this.useItem.baseObj.activeSelf || this.ienum != null)
@@ -673,7 +658,6 @@ public class SceneKemoBoard : BaseScene
 		this.guiData.BtnShop.gameObject.SetActive(true);
 	}
 
-	// Token: 0x0600134A RID: 4938 RVA: 0x000EECF0 File Offset: 0x000ECEF0
 	private void OnClickReset(PguiButtonCtrl button)
 	{
 		if (!this.winPanel.activeSelf || !this.winReset.win.FinishedOpen() || !this.winCheck.win.FinishedClose() || this.useItem.baseObj.activeSelf || !button.ActEnable)
@@ -718,7 +702,6 @@ public class SceneKemoBoard : BaseScene
 		this.resetType = 0;
 	}
 
-	// Token: 0x0600134B RID: 4939 RVA: 0x000EF0D0 File Offset: 0x000ED2D0
 	private bool OnClickResetCheck(int idx)
 	{
 		if (!this.winReset.win.FinishedClose() || this.useItem.baseObj.activeSelf)
@@ -802,7 +785,6 @@ public class SceneKemoBoard : BaseScene
 		return true;
 	}
 
-	// Token: 0x0600134C RID: 4940 RVA: 0x000EF360 File Offset: 0x000ED560
 	private bool OnClickResetOk(int idx)
 	{
 		if (this.winPanel.activeSelf && !this.winCheck.win.FinishedClose())
@@ -835,7 +817,6 @@ public class SceneKemoBoard : BaseScene
 		return true;
 	}
 
-	// Token: 0x0600134D RID: 4941 RVA: 0x000EF3FC File Offset: 0x000ED5FC
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		if (this.winPanel.activeSelf || this.useItem.baseObj.activeSelf || this.ienum != null)
@@ -857,7 +838,6 @@ public class SceneKemoBoard : BaseScene
 		}
 	}
 
-	// Token: 0x0600134E RID: 4942 RVA: 0x000EF488 File Offset: 0x000ED688
 	private IEnumerator InitReset()
 	{
 		this.winPanel.SetActive(true);
@@ -872,7 +852,6 @@ public class SceneKemoBoard : BaseScene
 		yield break;
 	}
 
-	// Token: 0x0600134F RID: 4943 RVA: 0x000EF498 File Offset: 0x000ED698
 	private void SetKemoBoardParam(CharaDef.AttributeType attr, Transform tmp)
 	{
 		DataManagerKemoBoard.KemoBoardBonusParam kemoBoardBonusParam;
@@ -889,7 +868,6 @@ public class SceneKemoBoard : BaseScene
 		tmp.Find("Num_Try").GetComponent<PguiTextCtrl>().text = "+" + ((float)kemoBoardBonusParam.TryDamage / 10f).ToString("F1") + "%";
 	}
 
-	// Token: 0x06001350 RID: 4944 RVA: 0x000EF63F File Offset: 0x000ED83F
 	private IEnumerator GoShop()
 	{
 		SceneShopArgs sceneShopArgs = new SceneShopArgs();
@@ -901,13 +879,11 @@ public class SceneKemoBoard : BaseScene
 		yield break;
 	}
 
-	// Token: 0x06001351 RID: 4945 RVA: 0x000EF647 File Offset: 0x000ED847
 	private bool OnClickButtonMenu(SceneManager.SceneName sceneName, object sceneArgs)
 	{
 		return this.winPanel.activeSelf || this.useItem.baseObj.activeSelf || this.ienum != null;
 	}
 
-	// Token: 0x06001352 RID: 4946 RVA: 0x000EF673 File Offset: 0x000ED873
 	private void OnClickButtonRetrun()
 	{
 		if (!this.winPanel.activeSelf && !this.useItem.baseObj.activeSelf && this.ienum == null)
@@ -916,7 +892,6 @@ public class SceneKemoBoard : BaseScene
 		}
 	}
 
-	// Token: 0x06001353 RID: 4947 RVA: 0x000EF6A9 File Offset: 0x000ED8A9
 	private void OnTouchStart(Info info)
 	{
 		if (this.OnUiTap(info.CurrentPosition))
@@ -926,13 +901,11 @@ public class SceneKemoBoard : BaseScene
 		this.boardScroll = true;
 	}
 
-	// Token: 0x06001354 RID: 4948 RVA: 0x000EF6C1 File Offset: 0x000ED8C1
 	private void OnTouchEnd(Info info)
 	{
 		this.boardScroll = false;
 	}
 
-	// Token: 0x06001355 RID: 4949 RVA: 0x000EF6CA File Offset: 0x000ED8CA
 	private void OnTouchMove(Info info)
 	{
 		if (!this.boardScroll)
@@ -946,7 +919,6 @@ public class SceneKemoBoard : BaseScene
 		this.moveBoard = info.DeltaPosition;
 	}
 
-	// Token: 0x06001356 RID: 4950 RVA: 0x000EF70C File Offset: 0x000ED90C
 	private void OnPinch(Info fingerA, Info fingerB, float distance, float rotation)
 	{
 		if (!this.boardScroll)
@@ -964,7 +936,6 @@ public class SceneKemoBoard : BaseScene
 		this.pinchBoard = distance * Mathf.Sqrt(1280f / (float)Screen.width * (720f / (float)Screen.height)) / 300f;
 	}
 
-	// Token: 0x06001357 RID: 4951 RVA: 0x000EF76C File Offset: 0x000ED96C
 	private void OnWheel(Info info, float distance)
 	{
 		if (this.boardScroll)
@@ -982,7 +953,6 @@ public class SceneKemoBoard : BaseScene
 		this.wheelBoard = distance;
 	}
 
-	// Token: 0x06001358 RID: 4952 RVA: 0x000EF79C File Offset: 0x000ED99C
 	private bool OnUiTap(Vector2 pos)
 	{
 		if (this.winPanel.activeSelf || this.useItem.baseObj.activeSelf || this.ienum != null)
@@ -996,7 +966,6 @@ public class SceneKemoBoard : BaseScene
 		return list.FindAll((RaycastResult itm) => itm.gameObject.name != "None").Count > 0;
 	}
 
-	// Token: 0x06001359 RID: 4953 RVA: 0x000EF824 File Offset: 0x000EDA24
 	public override void OnDisableScene()
 	{
 		Manager.UnRegisterStart(new Manager.SingleAction(this.OnTouchStart));
@@ -1012,7 +981,6 @@ public class SceneKemoBoard : BaseScene
 		this.useItem = null;
 	}
 
-	// Token: 0x0600135A RID: 4954 RVA: 0x000EF8E0 File Offset: 0x000EDAE0
 	public override void OnDestroyScene()
 	{
 		Object.Destroy(this.iconStart);
@@ -1039,79 +1007,54 @@ public class SceneKemoBoard : BaseScene
 		this.winPanel = null;
 	}
 
-	// Token: 0x04001017 RID: 4119
 	private SceneKemoBoard.GUI guiData;
 
-	// Token: 0x04001018 RID: 4120
 	private GameObject winPanel;
 
-	// Token: 0x04001019 RID: 4121
 	private SceneKemoBoard.WIN_RESET winReset;
 
-	// Token: 0x0400101A RID: 4122
 	private SceneKemoBoard.WIN_CHECK winCheck;
 
-	// Token: 0x0400101B RID: 4123
 	private StaminaRecoveryWindowCtrl.GUI_StaminaRecoveryExecuteWindow useItem;
 
-	// Token: 0x0400101C RID: 4124
 	private GameObject iconStart;
 
-	// Token: 0x0400101D RID: 4125
 	private GameObject iconResult;
 
-	// Token: 0x0400101E RID: 4126
 	private GameObject iconYaji;
 
-	// Token: 0x0400101F RID: 4127
 	private Vector2 scrMin;
 
-	// Token: 0x04001020 RID: 4128
 	private Vector2 scrMax;
 
-	// Token: 0x04001021 RID: 4129
 	private bool boardScroll;
 
-	// Token: 0x04001022 RID: 4130
 	private Vector2 moveBoard;
 
-	// Token: 0x04001023 RID: 4131
 	private float pinchBoard;
 
-	// Token: 0x04001024 RID: 4132
 	private float pinchScl;
 
-	// Token: 0x04001025 RID: 4133
 	private float wheelBoard;
 
-	// Token: 0x04001026 RID: 4134
 	private DataManagerKemoBoard.KemoBoardPanelData selPoint;
 
-	// Token: 0x04001027 RID: 4135
 	private DataManagerKemoBoard.KemoBoardAreaData reset;
 
-	// Token: 0x04001028 RID: 4136
 	private ItemData resetStone;
 
-	// Token: 0x04001029 RID: 4137
 	private ItemData resetItem;
 
-	// Token: 0x0400102A RID: 4138
 	private int resetType;
 
-	// Token: 0x0400102B RID: 4139
 	private string resetMsg;
 
-	// Token: 0x0400102C RID: 4140
 	private IEnumerator ienum;
 
-	// Token: 0x0400102D RID: 4141
 	private Dictionary<CharaDef.AttributeType, Dictionary<int, KeyValuePair<DataManagerKemoBoard.KemoBoardPanelData, KeyValuePair<Transform, RectTransform>>>> kemoData;
 
-	// Token: 0x02000B1F RID: 2847
 	public class GUI
 	{
-		// Token: 0x060041B3 RID: 16819 RVA: 0x001FD288 File Offset: 0x001FB488
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -1123,32 +1066,23 @@ public class SceneKemoBoard : BaseScene
 			this.Board = baseTr.Find("BG");
 		}
 
-		// Token: 0x04004615 RID: 17941
 		public GameObject baseObj;
 
-		// Token: 0x04004616 RID: 17942
 		public PguiButtonCtrl BtnReset;
 
-		// Token: 0x04004617 RID: 17943
 		public PguiButtonCtrl BtnShop;
 
-		// Token: 0x04004618 RID: 17944
 		public SimpleAnimation WinOpen;
 
-		// Token: 0x04004619 RID: 17945
 		public PguiButtonCtrl BtnOpen;
 
-		// Token: 0x0400461A RID: 17946
 		public PguiButtonCtrl BtnCancel;
 
-		// Token: 0x0400461B RID: 17947
 		public Transform Board;
 	}
 
-	// Token: 0x02000B20 RID: 2848
 	public class WIN_RESET
 	{
-		// Token: 0x060041B4 RID: 16820 RVA: 0x001FD33C File Offset: 0x001FB53C
 		public WIN_RESET(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -1173,20 +1107,15 @@ public class SceneKemoBoard : BaseScene
 			};
 		}
 
-		// Token: 0x0400461C RID: 17948
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x0400461D RID: 17949
 		public List<PguiButtonCtrl> BtnReset;
 
-		// Token: 0x0400461E RID: 17950
 		public List<Transform> param;
 	}
 
-	// Token: 0x02000B21 RID: 2849
 	public class WIN_CHECK
 	{
-		// Token: 0x060041B5 RID: 16821 RVA: 0x001FD468 File Offset: 0x001FB668
 		public WIN_CHECK(Transform baseTr)
 		{
 			this.win = baseTr.GetComponent<PguiOpenWindowCtrl>();
@@ -1196,16 +1125,12 @@ public class SceneKemoBoard : BaseScene
 			this.stone = baseTr.Find("ButtonUseStone").GetComponent<PguiButtonCtrl>();
 		}
 
-		// Token: 0x0400461F RID: 17951
 		public PguiOpenWindowCtrl win;
 
-		// Token: 0x04004620 RID: 17952
 		public PguiReplaceSpriteCtrl attr;
 
-		// Token: 0x04004621 RID: 17953
 		public PguiButtonCtrl item;
 
-		// Token: 0x04004622 RID: 17954
 		public PguiButtonCtrl stone;
 	}
 }

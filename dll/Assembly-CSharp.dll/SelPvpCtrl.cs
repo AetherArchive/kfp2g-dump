@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -12,12 +12,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-// Token: 0x0200016C RID: 364
 public class SelPvpCtrl : MonoBehaviour
 {
-	// Token: 0x1700038E RID: 910
-	// (get) Token: 0x0600158C RID: 5516 RVA: 0x0010DC40 File Offset: 0x0010BE40
-	// (set) Token: 0x0600158B RID: 5515 RVA: 0x0010DC2C File Offset: 0x0010BE2C
 	private IEnumerator currentEnumerator
 	{
 		get
@@ -33,23 +29,15 @@ public class SelPvpCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600158D RID: 5517 RVA: 0x0010DC48 File Offset: 0x0010BE48
 	public bool IsBusy()
 	{
 		return this.currentEnumerator != null;
 	}
 
-	// Token: 0x1700038F RID: 911
-	// (get) Token: 0x0600158E RID: 5518 RVA: 0x0010DC53 File Offset: 0x0010BE53
-	// (set) Token: 0x0600158F RID: 5519 RVA: 0x0010DC5B File Offset: 0x0010BE5B
 	public SceneManager.SceneName requestNextScene { get; private set; }
 
-	// Token: 0x17000390 RID: 912
-	// (get) Token: 0x06001590 RID: 5520 RVA: 0x0010DC64 File Offset: 0x0010BE64
-	// (set) Token: 0x06001591 RID: 5521 RVA: 0x0010DC6C File Offset: 0x0010BE6C
 	public object requestNextArgs { get; private set; }
 
-	// Token: 0x06001592 RID: 5522 RVA: 0x0010DC78 File Offset: 0x0010BE78
 	public void Init()
 	{
 		this.guiTopData = new SelPvpCtrl.GUITop(AssetManager.InstantiateAssetData("ScenePvp/GUI/Prefab/GUI_Pvp_Top", base.transform).transform);
@@ -110,7 +98,6 @@ public class SelPvpCtrl : MonoBehaviour
 		this.cloneUserOptionData = DataManager.DmUserInfo.optionData.Clone();
 	}
 
-	// Token: 0x06001593 RID: 5523 RVA: 0x0010E2AC File Offset: 0x0010C4AC
 	public void Setup(int fastPvpSeasonId, bool isStartTutorial, bool isStartSpecialPvpTutorial, bool isReturnFromBattle, bool isReturnFromPvpDeck)
 	{
 		this.requestNextScene = SceneManager.SceneName.None;
@@ -138,13 +125,11 @@ public class SelPvpCtrl : MonoBehaviour
 		this.ChangeSetting(pvpStaticData);
 	}
 
-	// Token: 0x06001594 RID: 5524 RVA: 0x0010E36F File Offset: 0x0010C56F
 	public void Setup()
 	{
 		this.Setup(0, false, false, false, false);
 	}
 
-	// Token: 0x06001595 RID: 5525 RVA: 0x0010E37C File Offset: 0x0010C57C
 	public void Disable()
 	{
 		base.gameObject.SetActive(false);
@@ -167,7 +152,6 @@ public class SelPvpCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001596 RID: 5526 RVA: 0x0010E464 File Offset: 0x0010C664
 	private void Update()
 	{
 		if (this.currentEnumerator != null && !this.currentEnumerator.MoveNext())
@@ -211,7 +195,6 @@ public class SelPvpCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001597 RID: 5527 RVA: 0x0010E694 File Offset: 0x0010C894
 	public void Destroy()
 	{
 		if (this.guiEnemyWindow != null)
@@ -231,7 +214,6 @@ public class SelPvpCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001598 RID: 5528 RVA: 0x0010E6FE File Offset: 0x0010C8FE
 	private IEnumerator SetupTopGui()
 	{
 		PvpStaticData pvpStaticNormal = this.GetPvpStaticDataNormalForGuiTop(this.currentNormalSeasonId);
@@ -328,7 +310,6 @@ public class SelPvpCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001599 RID: 5529 RVA: 0x0010E70D File Offset: 0x0010C90D
 	private IEnumerator SetupMainGui(PvpPackData info, bool isSubAnim, bool isConnectReset, bool isStartSpecialPvpTutorial, bool isReturnFromBattle, bool isReturnFromPvpDeck)
 	{
 		this.guiData.baseAnime.ExPauseAnimationLastFrame(SimpleAnimation.ExPguiStatus.END);
@@ -736,7 +717,6 @@ public class SelPvpCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x0600159A RID: 5530 RVA: 0x0010E74C File Offset: 0x0010C94C
 	private void UpdateSelectorEffectTemporary(int tgtSeasonId)
 	{
 		PvpPackData pvpPackDataBySeasonID = DataManager.DmPvp.GetPvpPackDataBySeasonID(tgtSeasonId);
@@ -765,19 +745,16 @@ public class SelPvpCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x0600159B RID: 5531 RVA: 0x0010E7FD File Offset: 0x0010C9FD
 	private bool ChkPvpSeasonIsEnableByTime(DateTime now, PvpStaticData staticData)
 	{
 		return staticData != null && staticData.seasonStartTime <= now && now <= staticData.seasonEndTime;
 	}
 
-	// Token: 0x0600159C RID: 5532 RVA: 0x0010E820 File Offset: 0x0010CA20
 	private void SetupCommonMenu(bool isSpecial)
 	{
 		CanvasManager.HdlCmnMenu.SetupMenu(true, isSpecial ? "とくべつくんれん" : "ちからくらべ", new PguiCmnMenuCtrl.OnClickReturnButton(this.OnClickBackButton), "", null, null);
 	}
 
-	// Token: 0x0600159D RID: 5533 RVA: 0x0010E850 File Offset: 0x0010CA50
 	private void ChangeSetting(PvpStaticData psd)
 	{
 		bool flag = psd != null && PvpStaticData.Type.SPECIAL == psd.type;
@@ -787,7 +764,6 @@ public class SelPvpCtrl : MonoBehaviour
 		CanvasManager.HdlHelpWindowCtrl.SetDisplaySpecialPvpHelp(flag);
 	}
 
-	// Token: 0x0600159E RID: 5534 RVA: 0x0010E89C File Offset: 0x0010CA9C
 	public void ChangeBGSetting(PvpStaticData psd)
 	{
 		string text = ((psd == null) ? "" : psd.baseData.bgFile);
@@ -798,7 +774,6 @@ public class SelPvpCtrl : MonoBehaviour
 		CanvasManager.SetBgObj(text);
 	}
 
-	// Token: 0x0600159F RID: 5535 RVA: 0x0010E8D4 File Offset: 0x0010CAD4
 	public PvpStaticData GetPvpStaticDataNormalForGuiTop(int currentSeasonId)
 	{
 		PvpStaticData pvpStaticData = DataManager.DmPvp.GetPvpStaticDataBySeasonID(currentSeasonId);
@@ -814,7 +789,6 @@ public class SelPvpCtrl : MonoBehaviour
 		return pvpStaticData;
 	}
 
-	// Token: 0x060015A0 RID: 5536 RVA: 0x0010E911 File Offset: 0x0010CB11
 	private IEnumerator SetupInternal(bool isStartTutorial)
 	{
 		DateTime now = TimeManager.Now;
@@ -866,7 +840,6 @@ public class SelPvpCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060015A1 RID: 5537 RVA: 0x0010E927 File Offset: 0x0010CB27
 	private IEnumerator NotifyInfo()
 	{
 		DataManagerPvp.InformationPvpSpecialEffect effectInfo = DataManager.DmPvp.GetInformationPvpSpecialEffect(true);
@@ -931,7 +904,6 @@ public class SelPvpCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060015A2 RID: 5538 RVA: 0x0010E92F File Offset: 0x0010CB2F
 	private IEnumerator CheckAndSolutionEventInfo()
 	{
 		DateTime now = TimeManager.Now;
@@ -1008,7 +980,6 @@ public class SelPvpCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060015A3 RID: 5539 RVA: 0x0010E93E File Offset: 0x0010CB3E
 	public static IEnumerator RankUpEvent(int pvpSeasonId, int befPvpPoint, int nowPvpPoint)
 	{
 		PvpStaticData pvpStaticDataBySeasonID = DataManager.DmPvp.GetPvpStaticDataBySeasonID(pvpSeasonId);
@@ -1097,7 +1068,6 @@ public class SelPvpCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060015A4 RID: 5540 RVA: 0x0010E95C File Offset: 0x0010CB5C
 	private static void OnUpdateSVRankUp(int index, GameObject go, List<ItemData> itemList)
 	{
 		for (int i = 0; i < 6; i++)
@@ -1116,7 +1086,6 @@ public class SelPvpCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060015A5 RID: 5541 RVA: 0x0010E9DE File Offset: 0x0010CBDE
 	private IEnumerator ChangeNormal3x()
 	{
 		UserOptionData userOptionData = DataManager.DmUserInfo.optionData.Clone();
@@ -1130,14 +1099,12 @@ public class SelPvpCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060015A6 RID: 5542 RVA: 0x0010E9F0 File Offset: 0x0010CBF0
 	private void DispNormal3x()
 	{
 		this.guiData.guiNormalData.Btn_ModeChange.transform.Find("BaseImage/Mode_Normal").gameObject.SetActive(!DataManager.DmUserInfo.optionData.Pvp3x);
 		this.guiData.guiNormalData.Btn_ModeChange.transform.Find("BaseImage/Mode_x3").gameObject.SetActive(DataManager.DmUserInfo.optionData.Pvp3x);
 	}
 
-	// Token: 0x060015A7 RID: 5543 RVA: 0x0010EA70 File Offset: 0x0010CC70
 	private IEnumerator ChangeSpecial3x()
 	{
 		UserOptionData userOptionData = DataManager.DmUserInfo.optionData.Clone();
@@ -1151,14 +1118,12 @@ public class SelPvpCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060015A8 RID: 5544 RVA: 0x0010EA80 File Offset: 0x0010CC80
 	private void DispSpecial3x()
 	{
 		this.guiData.guiSpecialData.Btn_ModeChange.transform.Find("BaseImage/Mode_Normal").gameObject.SetActive(!DataManager.DmUserInfo.optionData.SpPvp3x);
 		this.guiData.guiSpecialData.Btn_ModeChange.transform.Find("BaseImage/Mode_x3").gameObject.SetActive(DataManager.DmUserInfo.optionData.SpPvp3x);
 	}
 
-	// Token: 0x060015A9 RID: 5545 RVA: 0x0010EB00 File Offset: 0x0010CD00
 	private IEnumerator RefreshEnemyList()
 	{
 		int pvpSeasonId = this.currentPvpPackData.seasonId;
@@ -1210,7 +1175,6 @@ public class SelPvpCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060015AA RID: 5546 RVA: 0x0010EB0F File Offset: 0x0010CD0F
 	private IEnumerator RecoveryPvpStamina()
 	{
 		int pvpSeasonId = this.currentPvpPackData.seasonId;
@@ -1274,7 +1238,6 @@ public class SelPvpCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060015AB RID: 5547 RVA: 0x0010EB1E File Offset: 0x0010CD1E
 	private IEnumerator DecideEnemy(PvpDynamicData.EnemyInfo enemy)
 	{
 		DateTime now = TimeManager.Now;
@@ -1506,7 +1469,6 @@ public class SelPvpCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060015AC RID: 5548 RVA: 0x0010EB34 File Offset: 0x0010CD34
 	private SelPvpCtrl.DisAdvantageType GetDisAdvantageType(PvpDynamicData.EnemyInfo enemy)
 	{
 		UserDeckData userDeckById = DataManager.DmDeck.GetUserDeckById(this.currentPvpPackData.dynamicData.userInfo.currentDeckId);
@@ -1635,7 +1597,6 @@ public class SelPvpCtrl : MonoBehaviour
 		return disAdvantageType;
 	}
 
-	// Token: 0x060015AD RID: 5549 RVA: 0x0010EF44 File Offset: 0x0010D144
 	private void OnClickGUITopNormalButton(PguiButtonCtrl button)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -1645,7 +1606,6 @@ public class SelPvpCtrl : MonoBehaviour
 		this.currentEnumerator = this.SetupMainGui(DataManager.DmPvp.GetPvpPackDataBySeasonID(this.currentNormalSeasonId), false, true, false, false, false);
 	}
 
-	// Token: 0x060015AE RID: 5550 RVA: 0x0010EF70 File Offset: 0x0010D170
 	private void OnClickGUITopSpecialButton(PguiButtonCtrl button)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -1655,7 +1615,6 @@ public class SelPvpCtrl : MonoBehaviour
 		this.currentEnumerator = this.SetupMainGui(DataManager.DmPvp.GetPvpPackDataBySeasonID(this.currentSpecialSeasonId), false, true, false, false, false);
 	}
 
-	// Token: 0x060015AF RID: 5551 RVA: 0x0010EF9C File Offset: 0x0010D19C
 	private void OnClickGUICommonCharaDeckButton(PguiButtonCtrl button)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -1669,7 +1628,6 @@ public class SelPvpCtrl : MonoBehaviour
 		};
 	}
 
-	// Token: 0x060015B0 RID: 5552 RVA: 0x0010EFCB File Offset: 0x0010D1CB
 	private void OnClickGUICommonPlusButton(PguiButtonCtrl button)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -1679,7 +1637,6 @@ public class SelPvpCtrl : MonoBehaviour
 		this.currentEnumerator = this.RecoveryPvpStamina();
 	}
 
-	// Token: 0x060015B1 RID: 5553 RVA: 0x0010EFE4 File Offset: 0x0010D1E4
 	private void OnClickGUINormalShopButton(PguiButtonCtrl button)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -1700,7 +1657,6 @@ public class SelPvpCtrl : MonoBehaviour
 		Singleton<SceneManager>.Instance.SetNextScene(SceneManager.SceneName.SceneShop, sceneShopArgs);
 	}
 
-	// Token: 0x060015B2 RID: 5554 RVA: 0x0010F07D File Offset: 0x0010D27D
 	private void OnClickGUINormalModeChangeButton(PguiButtonCtrl button)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -1710,7 +1666,6 @@ public class SelPvpCtrl : MonoBehaviour
 		this.currentEnumerator = this.ChangeNormal3x();
 	}
 
-	// Token: 0x060015B3 RID: 5555 RVA: 0x0010F094 File Offset: 0x0010D294
 	private void OnClickGUISpecialModeChangeButton(PguiButtonCtrl button)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -1720,7 +1675,6 @@ public class SelPvpCtrl : MonoBehaviour
 		this.currentEnumerator = this.ChangeSpecial3x();
 	}
 
-	// Token: 0x060015B4 RID: 5556 RVA: 0x0010F0AC File Offset: 0x0010D2AC
 	private void OnClickGUISpecialMissionButton(PguiButtonCtrl button)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -1740,7 +1694,6 @@ public class SelPvpCtrl : MonoBehaviour
 		this.requestNextArgs = missionOpenParam;
 	}
 
-	// Token: 0x060015B5 RID: 5557 RVA: 0x0010F110 File Offset: 0x0010D310
 	private void OnClickGUISpecialGachaButton(PguiButtonCtrl button)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -1764,7 +1717,6 @@ public class SelPvpCtrl : MonoBehaviour
 		Singleton<SceneManager>.Instance.SetNextScene(SceneManager.SceneName.SceneGacha, openParam);
 	}
 
-	// Token: 0x060015B6 RID: 5558 RVA: 0x0010F194 File Offset: 0x0010D394
 	private void OnClickGUISpecialShopButton(PguiButtonCtrl button)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -1788,7 +1740,6 @@ public class SelPvpCtrl : MonoBehaviour
 		Singleton<SceneManager>.Instance.SetNextScene(SceneManager.SceneName.SceneShop, sceneShopArgs);
 	}
 
-	// Token: 0x060015B7 RID: 5559 RVA: 0x0010F234 File Offset: 0x0010D434
 	private void OnClickGUISpecialTipsButton(PguiButtonCtrl button)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -1798,7 +1749,6 @@ public class SelPvpCtrl : MonoBehaviour
 		CanvasManager.HdlCmnFeedPageWindowCtrl.Open(CmnFeedPageWindowCtrl.Type.PAGE_FEED, "", new List<string> { "Texture2D/Tutorial_Window/PvP_special_Tips/tutorial_pvpspecial_tips_01", "Texture2D/Tutorial_Window/PvP_special_Tips/tutorial_pvpspecial_tips_02", "Texture2D/Tutorial_Window/PvP_special_Tips/tutorial_pvpspecial_tips_03", "Texture2D/Tutorial_Window/PvP_special_Tips/tutorial_pvpspecial_tips_04" }, null);
 	}
 
-	// Token: 0x060015B8 RID: 5560 RVA: 0x0010F28C File Offset: 0x0010D48C
 	private void OnClickGUISpecialSenarioButton(PguiButtonCtrl button)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -1817,7 +1767,6 @@ public class SelPvpCtrl : MonoBehaviour
 		Singleton<SceneManager>.Instance.SetNextScene(SceneManager.SceneName.SceneStoryView, args);
 	}
 
-	// Token: 0x060015B9 RID: 5561 RVA: 0x0010F2E0 File Offset: 0x0010D4E0
 	private void OnClickGUICommonMoreInfoButton(PguiButtonCtrl button)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -1828,7 +1777,6 @@ public class SelPvpCtrl : MonoBehaviour
 		this.guiRewardWindow.window.Open();
 	}
 
-	// Token: 0x060015BA RID: 5562 RVA: 0x0010F31A File Offset: 0x0010D51A
 	private void OnClickUpdateButton(PguiButtonCtrl button)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -1838,7 +1786,6 @@ public class SelPvpCtrl : MonoBehaviour
 		this.currentEnumerator = this.RefreshEnemyList();
 	}
 
-	// Token: 0x060015BB RID: 5563 RVA: 0x0010F334 File Offset: 0x0010D534
 	private void OnClickEnemyButtonNormal(PguiButtonCtrl button)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -1850,7 +1797,6 @@ public class SelPvpCtrl : MonoBehaviour
 		this.currentEnumerator = this.DecideEnemy(enemyInfo);
 	}
 
-	// Token: 0x060015BC RID: 5564 RVA: 0x0010F380 File Offset: 0x0010D580
 	private void OnClickEnemyButtonSpecial_Hard(PguiButtonCtrl button)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -1862,7 +1808,6 @@ public class SelPvpCtrl : MonoBehaviour
 		this.currentEnumerator = this.DecideEnemy(enemyInfo);
 	}
 
-	// Token: 0x060015BD RID: 5565 RVA: 0x0010F3CC File Offset: 0x0010D5CC
 	private void OnClickEnemyButtonSpecial_Normal(PguiButtonCtrl button)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -1874,7 +1819,6 @@ public class SelPvpCtrl : MonoBehaviour
 		this.currentEnumerator = this.DecideEnemy(enemyInfo);
 	}
 
-	// Token: 0x060015BE RID: 5566 RVA: 0x0010F418 File Offset: 0x0010D618
 	private void OnClickEnemyButtonSpecial_Easy(PguiButtonCtrl button)
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -1886,7 +1830,6 @@ public class SelPvpCtrl : MonoBehaviour
 		this.currentEnumerator = this.DecideEnemy(enemyInfo);
 	}
 
-	// Token: 0x060015BF RID: 5567 RVA: 0x0010F463 File Offset: 0x0010D663
 	private bool OnSelectRewardWindowTab(int index)
 	{
 		this.guiRewardWindow.ScrollView_RankUp.gameObject.SetActive(index == 0);
@@ -1894,7 +1837,6 @@ public class SelPvpCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x060015C0 RID: 5568 RVA: 0x0010F498 File Offset: 0x0010D698
 	private void OnStartItemNormalScroll(int index, GameObject go)
 	{
 		SelPvpCtrl.GUIEnemy guienemy = new SelPvpCtrl.GUIEnemy(go.transform);
@@ -1904,7 +1846,6 @@ public class SelPvpCtrl : MonoBehaviour
 		guienemy.Pvp_ListBar_Friend.gameObject.AddComponent<PguiDataHolder>();
 	}
 
-	// Token: 0x060015C1 RID: 5569 RVA: 0x0010F4FC File Offset: 0x0010D6FC
 	private void OnUpdateItemNormalScroll(int index, GameObject go)
 	{
 		if (index < this.guiData.guiNormalEnemyScrollData.enemyInfoList.Count)
@@ -1919,7 +1860,6 @@ public class SelPvpCtrl : MonoBehaviour
 		go.SetActive(false);
 	}
 
-	// Token: 0x060015C2 RID: 5570 RVA: 0x0010F59C File Offset: 0x0010D79C
 	private void UpdateGUIEnemy(SelPvpCtrl.GUIEnemy guiEnemy, PvpDynamicData.EnemyInfo enemy)
 	{
 		int num = 0;
@@ -1961,7 +1901,6 @@ public class SelPvpCtrl : MonoBehaviour
 		guiEnemy.BaseChamp.SetActive(enemy.difficulty == PvpDynamicData.EnemyInfo.Difficulty.CHAMPION);
 	}
 
-	// Token: 0x060015C3 RID: 5571 RVA: 0x0010F868 File Offset: 0x0010DA68
 	private void OnStartItemSpecialScroll_Hard(int index, GameObject go)
 	{
 		SelPvpCtrl.GUIEnemy guienemy = new SelPvpCtrl.GUIEnemy(go.transform);
@@ -1971,7 +1910,6 @@ public class SelPvpCtrl : MonoBehaviour
 		guienemy.Pvp_ListBar_Friend.gameObject.AddComponent<PguiDataHolder>();
 	}
 
-	// Token: 0x060015C4 RID: 5572 RVA: 0x0010F8CC File Offset: 0x0010DACC
 	private void OnUpdateItemSpecialScroll_Hard(int index, GameObject go)
 	{
 		if (index < this.guiData.guiSpecialEnemyScrollData.enemyInfoList_Hard.Count)
@@ -1986,7 +1924,6 @@ public class SelPvpCtrl : MonoBehaviour
 		go.SetActive(false);
 	}
 
-	// Token: 0x060015C5 RID: 5573 RVA: 0x0010F96C File Offset: 0x0010DB6C
 	private void OnStartItemSpecialScroll_Normal(int index, GameObject go)
 	{
 		SelPvpCtrl.GUIEnemy guienemy = new SelPvpCtrl.GUIEnemy(go.transform);
@@ -1996,7 +1933,6 @@ public class SelPvpCtrl : MonoBehaviour
 		guienemy.Pvp_ListBar_Friend.gameObject.AddComponent<PguiDataHolder>();
 	}
 
-	// Token: 0x060015C6 RID: 5574 RVA: 0x0010F9D0 File Offset: 0x0010DBD0
 	private void OnUpdateItemSpecialScroll_Normal(int index, GameObject go)
 	{
 		if (index < this.guiData.guiSpecialEnemyScrollData.enemyInfoList_Normal.Count)
@@ -2011,7 +1947,6 @@ public class SelPvpCtrl : MonoBehaviour
 		go.SetActive(false);
 	}
 
-	// Token: 0x060015C7 RID: 5575 RVA: 0x0010FA70 File Offset: 0x0010DC70
 	private void OnStartItemSpecialScroll_Easy(int index, GameObject go)
 	{
 		SelPvpCtrl.GUIEnemy guienemy = new SelPvpCtrl.GUIEnemy(go.transform);
@@ -2021,7 +1956,6 @@ public class SelPvpCtrl : MonoBehaviour
 		guienemy.Pvp_ListBar_Friend.gameObject.AddComponent<PguiDataHolder>();
 	}
 
-	// Token: 0x060015C8 RID: 5576 RVA: 0x0010FAD4 File Offset: 0x0010DCD4
 	private void OnUpdateItemSpecialScroll_Easy(int index, GameObject go)
 	{
 		if (index < this.guiData.guiSpecialEnemyScrollData.enemyInfoList_Easy.Count)
@@ -2036,7 +1970,6 @@ public class SelPvpCtrl : MonoBehaviour
 		go.SetActive(false);
 	}
 
-	// Token: 0x060015C9 RID: 5577 RVA: 0x0010FB74 File Offset: 0x0010DD74
 	private bool OnSelectGUISpecialTab(int index)
 	{
 		this.guiData.guiSpecialEnemyScrollData.ScrollView_Hard.gameObject.SetActive(index == 0);
@@ -2046,13 +1979,11 @@ public class SelPvpCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x060015CA RID: 5578 RVA: 0x0010FBE8 File Offset: 0x0010DDE8
 	private void OnStartItemOwDR(int index, GameObject go)
 	{
 		this.guiDefenseResultWindow.plateList.Add(new SelPvpCtrl.GUIDefenseResultWindow.Plate(go.transform));
 	}
 
-	// Token: 0x060015CB RID: 5579 RVA: 0x0010FC08 File Offset: 0x0010DE08
 	private void OnUpdateItemOwDR(int index, GameObject go)
 	{
 		if (this.selectorEffectTemporary != null && index < this.selectorEffectTemporary.defenseResultList.Count)
@@ -2071,13 +2002,11 @@ public class SelPvpCtrl : MonoBehaviour
 		go.SetActive(false);
 	}
 
-	// Token: 0x060015CC RID: 5580 RVA: 0x0010FD1F File Offset: 0x0010DF1F
 	private void OnStartItemOwRW01(int index, GameObject go)
 	{
 		this.guiRewardWindow.plateListRank.Add(new SelPvpCtrl.GUIRewardWindow.Plate(go.transform));
 	}
 
-	// Token: 0x060015CD RID: 5581 RVA: 0x0010FD3C File Offset: 0x0010DF3C
 	private void OnUpdateItemOwRW01(int index, GameObject go)
 	{
 		if (index < this.currentPvpPackData.staticData.rankMstList.Count)
@@ -2105,13 +2034,11 @@ public class SelPvpCtrl : MonoBehaviour
 		go.SetActive(false);
 	}
 
-	// Token: 0x060015CE RID: 5582 RVA: 0x0010FEBC File Offset: 0x0010E0BC
 	private void OnStartItemOwRW02(int index, GameObject go)
 	{
 		this.guiRewardWindow.plateListDefense.Add(new SelPvpCtrl.GUIRewardWindow.Plate(go.transform));
 	}
 
-	// Token: 0x060015CF RID: 5583 RVA: 0x0010FEDC File Offset: 0x0010E0DC
 	private void OnUpdateItemOwRW02(int index, GameObject go)
 	{
 		if (index < this.currentPvpPackData.staticData.pvpDefenseList.Count)
@@ -2147,7 +2074,6 @@ public class SelPvpCtrl : MonoBehaviour
 		go.SetActive(false);
 	}
 
-	// Token: 0x060015D0 RID: 5584 RVA: 0x001100AC File Offset: 0x0010E2AC
 	private void OnClickBackButton()
 	{
 		if (this.requestNextScene != SceneManager.SceneName.None)
@@ -2163,7 +2089,6 @@ public class SelPvpCtrl : MonoBehaviour
 		this.requestNextArgs = null;
 	}
 
-	// Token: 0x060015D1 RID: 5585 RVA: 0x001100E8 File Offset: 0x0010E2E8
 	private void OnTouchCharaModel()
 	{
 		if (this.guiData.guiSpecialData.renderTexture.IsCurrentAnimation(CharaMotionDefine.ActKey.SPECIAL) && this.playingVoice.GetStatus() != CriAtomExPlayback.Status.Playing)
@@ -2176,87 +2101,59 @@ public class SelPvpCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x040011C9 RID: 4553
 	private SelPvpCtrl.GUI guiData;
 
-	// Token: 0x040011CA RID: 4554
 	private SelPvpCtrl.GUITop guiTopData;
 
-	// Token: 0x040011CB RID: 4555
 	private SelPvpCtrl.GUIEnemyWindow guiEnemyWindow;
 
-	// Token: 0x040011CC RID: 4556
 	private SelPvpCtrl.GUIRewardWindow guiRewardWindow;
 
-	// Token: 0x040011CD RID: 4557
 	private SelPvpCtrl.GUIDefenseResultWindow guiDefenseResultWindow;
 
-	// Token: 0x040011CE RID: 4558
 	private PvpPackData currentPvpPackData;
 
-	// Token: 0x040011CF RID: 4559
 	private List<DataManagerChara.BonusCharaData> currentBonusCharaList;
 
-	// Token: 0x040011D0 RID: 4560
 	private DateTime currentCampaignEndTime;
 
-	// Token: 0x040011D1 RID: 4561
 	private IEnumerator _currentEnumerator;
 
-	// Token: 0x040011D2 RID: 4562
 	public int currentNormalSeasonId;
 
-	// Token: 0x040011D3 RID: 4563
 	public int currentSpecialSeasonId;
 
-	// Token: 0x040011D4 RID: 4564
 	private CriAtomExPlayback playingVoice;
 
-	// Token: 0x040011D7 RID: 4567
 	private SelPvpCtrl.SelectorEffect selectorEffectTemporary;
 
-	// Token: 0x040011D8 RID: 4568
 	private UserOptionData cloneUserOptionData;
 
-	// Token: 0x02000C05 RID: 3077
 	private enum DisAdvantageType
 	{
-		// Token: 0x04004966 RID: 18790
 		None,
-		// Token: 0x04004967 RID: 18791
 		LittleDisadvantage,
-		// Token: 0x04004968 RID: 18792
 		Disadvantage,
-		// Token: 0x04004969 RID: 18793
 		GreatDisadvantage
 	}
 
-	// Token: 0x02000C06 RID: 3078
 	public class SelectorEffect
 	{
-		// Token: 0x0400496A RID: 18794
 		public int seasonId;
 
-		// Token: 0x0400496B RID: 18795
 		public bool isHappenReset;
 
-		// Token: 0x0400496C RID: 18796
 		public int pvpRankBeforReset;
 
-		// Token: 0x0400496D RID: 18797
 		public int pvpSeasonIdBeforReset;
 
-		// Token: 0x0400496E RID: 18798
 		public bool isHappenDefenseBonus;
 
-		// Token: 0x0400496F RID: 18799
 		public List<PvpDynamicData.DefenseResult> defenseResultList;
 	}
 
-	// Token: 0x02000C07 RID: 3079
 	public class GUITop
 	{
-		// Token: 0x06004493 RID: 17555 RVA: 0x00208A34 File Offset: 0x00206C34
 		public GUITop(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -2284,56 +2181,39 @@ public class SelPvpCtrl : MonoBehaviour
 			this.Txt_Campaign = baseTr.Find("Right/Null_Normal/Btn_Nomal/BaseImage/Popup_Campaign_Cmn/Txt_Campaign").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x04004970 RID: 18800
 		public GameObject baseObj;
 
-		// Token: 0x04004971 RID: 18801
 		public SimpleAnimation baseAnime;
 
-		// Token: 0x04004972 RID: 18802
 		public PguiButtonCtrl Btn_Nomal;
 
-		// Token: 0x04004973 RID: 18803
 		public GameObject Btn_Nomal_Disable_Info;
 
-		// Token: 0x04004974 RID: 18804
 		public PguiButtonCtrl Btn_Event;
 
-		// Token: 0x04004975 RID: 18805
 		public List<PguiImageCtrl> LuckyImageList;
 
-		// Token: 0x04004976 RID: 18806
 		public PguiRenderTextureCharaCtrl renderTexture;
 
-		// Token: 0x04004977 RID: 18807
 		public PguiRawImageCtrl Texture_EventOpen;
 
-		// Token: 0x04004978 RID: 18808
 		public PguiRawImageCtrl Texture_Banner;
 
-		// Token: 0x04004979 RID: 18809
 		public PguiTextCtrl Txt_Term;
 
-		// Token: 0x0400497A RID: 18810
 		public PguiTextCtrl Txt_Stage;
 
-		// Token: 0x0400497B RID: 18811
 		public PguiTextCtrl Txt_Term_Event;
 
-		// Token: 0x0400497C RID: 18812
 		public PguiTextCtrl Txt_Stage_Event;
 
-		// Token: 0x0400497D RID: 18813
 		public GameObject CampaignObj;
 
-		// Token: 0x0400497E RID: 18814
 		public PguiTextCtrl Txt_Campaign;
 	}
 
-	// Token: 0x02000C08 RID: 3080
 	public class GUIEnemy
 	{
-		// Token: 0x06004494 RID: 17556 RVA: 0x00208BF0 File Offset: 0x00206DF0
 		public GUIEnemy(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -2356,44 +2236,31 @@ public class SelPvpCtrl : MonoBehaviour
 			this.NpcObj = baseTr.Find("BaseImage/Mark_NPC").gameObject;
 		}
 
-		// Token: 0x0400497F RID: 18815
 		public GameObject baseObj;
 
-		// Token: 0x04004980 RID: 18816
 		public PguiButtonCtrl Pvp_ListBar_Friend;
 
-		// Token: 0x04004981 RID: 18817
 		public PguiTextCtrl Txt_FriendName;
 
-		// Token: 0x04004982 RID: 18818
 		public PguiTextCtrl Num_Rank;
 
-		// Token: 0x04004983 RID: 18819
 		public PguiTextCtrl Mark_TotalAttack;
 
-		// Token: 0x04004984 RID: 18820
 		public PguiTextCtrl Mark_TotalPlasm;
 
-		// Token: 0x04004985 RID: 18821
 		public SelPvpCtrl.GUIEnemyDifficulty Difficulty;
 
-		// Token: 0x04004986 RID: 18822
 		public GameObject BaseChamp;
 
-		// Token: 0x04004987 RID: 18823
 		public PguiTextCtrl Num_Pvppt;
 
-		// Token: 0x04004988 RID: 18824
 		public List<IconCharaCtrl> iconCharaList = new List<IconCharaCtrl>();
 
-		// Token: 0x04004989 RID: 18825
 		public GameObject NpcObj;
 	}
 
-	// Token: 0x02000C09 RID: 3081
 	public class GUIEnemyWindow
 	{
-		// Token: 0x06004495 RID: 17557 RVA: 0x00208D50 File Offset: 0x00206F50
 		public GUIEnemyWindow(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -2473,80 +2340,55 @@ public class SelPvpCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x0400498A RID: 18826
 		public GameObject baseObj;
 
-		// Token: 0x0400498B RID: 18827
 		public PguiOpenWindowCtrl window;
 
-		// Token: 0x0400498C RID: 18828
 		public GameObject UnfavorableObj;
 
-		// Token: 0x0400498D RID: 18829
 		public PguiTextCtrl Txt_Unfavorable;
 
-		// Token: 0x0400498E RID: 18830
 		public GameObject AtrInfo01Obj;
 
-		// Token: 0x0400498F RID: 18831
 		public GameObject AtrInfo02Obj;
 
-		// Token: 0x04004990 RID: 18832
 		public List<SelBattleHelperCtrl.GUI.EnemyInfo> enemyInfoList = new List<SelBattleHelperCtrl.GUI.EnemyInfo>();
 
-		// Token: 0x04004991 RID: 18833
 		public GameObject NpcObj;
 
-		// Token: 0x04004992 RID: 18834
 		public PguiTextCtrl Num_Player;
 
-		// Token: 0x04004993 RID: 18835
 		public PguiTextCtrl Num_TotalAttack;
 
-		// Token: 0x04004994 RID: 18836
 		public GameObject Num_EventObj;
 
-		// Token: 0x04004995 RID: 18837
 		public PguiTextCtrl Num_TotalAttack_Event;
 
-		// Token: 0x04004996 RID: 18838
 		public PguiTextCtrl Num_TotalPlasm_Event;
 
-		// Token: 0x04004997 RID: 18839
 		public PguiTextCtrl Num_Pvppt;
 
-		// Token: 0x04004998 RID: 18840
 		public SelPvpCtrl.GUIEnemyDifficulty Difficulty;
 
-		// Token: 0x04004999 RID: 18841
 		public GameObject BaseChamp;
 
-		// Token: 0x0400499A RID: 18842
 		public PguiTextCtrl Num_Atk;
 
-		// Token: 0x0400499B RID: 18843
 		public PguiTextCtrl Num_Def;
 
-		// Token: 0x0400499C RID: 18844
 		public PguiTextCtrl Num_Hp;
 
-		// Token: 0x0400499D RID: 18845
 		public List<IconCharaCtrl> iconCharaList = new List<IconCharaCtrl>();
 
-		// Token: 0x0400499E RID: 18846
 		public List<List<PguiReplaceSpriteCtrl>> iconPhotoList = new List<List<PguiReplaceSpriteCtrl>>();
 
-		// Token: 0x0400499F RID: 18847
 		public List<List<PguiReplaceSpriteCtrl>> iconPhotoBlankList = new List<List<PguiReplaceSpriteCtrl>>();
 
-		// Token: 0x040049A0 RID: 18848
 		public List<List<PguiTextCtrl>> iconPhotoStepList = new List<List<PguiTextCtrl>>();
 	}
 
-	// Token: 0x02000C0A RID: 3082
 	public class GUIEnemyDifficulty
 	{
-		// Token: 0x06004496 RID: 17558 RVA: 0x0020918C File Offset: 0x0020738C
 		public GUIEnemyDifficulty(Transform baseTr)
 		{
 			this.HardGo = baseTr.Find("Pvp_Level_Tegowai").gameObject;
@@ -2560,7 +2402,6 @@ public class SelPvpCtrl : MonoBehaviour
 			this.Num_TopRank = baseTr.Find("Pvp_Level_2nd/Num_Txt").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x06004497 RID: 17559 RVA: 0x00209268 File Offset: 0x00207468
 		public void ChangeDifficultyName(SelPvpCtrl.GUIEnemyDifficulty.NameType type)
 		{
 			if (type != SelPvpCtrl.GUIEnemyDifficulty.NameType.Normal && type == SelPvpCtrl.GUIEnemyDifficulty.NameType.Special)
@@ -2575,7 +2416,6 @@ public class SelPvpCtrl : MonoBehaviour
 			this.Txt_Easy.text = SelPvpCtrl.GUIEnemyDifficulty.DIFFICULTY_NAME_STR_NORMAL_EASY;
 		}
 
-		// Token: 0x06004498 RID: 17560 RVA: 0x002092E0 File Offset: 0x002074E0
 		public void Setup(PvpDynamicData.EnemyInfo enemy)
 		{
 			this.HardGo.SetActive(PvpDynamicData.EnemyInfo.Difficulty.HARD == enemy.difficulty);
@@ -2590,65 +2430,45 @@ public class SelPvpCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x040049A1 RID: 18849
 		private static readonly string DIFFICULTY_NAME_STR_NORMAL_HARD = "てごわい";
 
-		// Token: 0x040049A2 RID: 18850
 		private static readonly string DIFFICULTY_NAME_STR_NORMAL_NORMAL = "とんとん";
 
-		// Token: 0x040049A3 RID: 18851
 		private static readonly string DIFFICULTY_NAME_STR_NORMAL_EASY = "やさしい";
 
-		// Token: 0x040049A4 RID: 18852
 		private static readonly string DIFFICULTY_NAME_STR_SPECIAL_HARD = "げきせん";
 
-		// Token: 0x040049A5 RID: 18853
 		private static readonly string DIFFICULTY_NAME_STR_SPECIAL_NORMAL = "はくねつ";
 
-		// Token: 0x040049A6 RID: 18854
 		private static readonly string DIFFICULTY_NAME_STR_SPECIAL_EASY = "てあわせ";
 
-		// Token: 0x040049A7 RID: 18855
 		public GameObject HardGo;
 
-		// Token: 0x040049A8 RID: 18856
 		public PguiTextCtrl Txt_Hard;
 
-		// Token: 0x040049A9 RID: 18857
 		public GameObject NormalGo;
 
-		// Token: 0x040049AA RID: 18858
 		public PguiTextCtrl Txt_Normal;
 
-		// Token: 0x040049AB RID: 18859
 		public GameObject EasyGo;
 
-		// Token: 0x040049AC RID: 18860
 		public PguiTextCtrl Txt_Easy;
 
-		// Token: 0x040049AD RID: 18861
 		public GameObject ChampGo;
 
-		// Token: 0x040049AE RID: 18862
 		public GameObject RankerGo;
 
-		// Token: 0x040049AF RID: 18863
 		public PguiTextCtrl Num_TopRank;
 
-		// Token: 0x02001194 RID: 4500
 		public enum NameType
 		{
-			// Token: 0x04006040 RID: 24640
 			Normal,
-			// Token: 0x04006041 RID: 24641
 			Special
 		}
 	}
 
-	// Token: 0x02000C0B RID: 3083
 	public class GUIRewardWindow
 	{
-		// Token: 0x0600449A RID: 17562 RVA: 0x002093D4 File Offset: 0x002075D4
 		public GUIRewardWindow(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -2660,37 +2480,26 @@ public class SelPvpCtrl : MonoBehaviour
 			this.TabGroup = baseTr.Find("Base/Window/Base_Reward/TabGroup").GetComponent<PguiTabGroupCtrl>();
 		}
 
-		// Token: 0x040049B0 RID: 18864
 		public GameObject baseObj;
 
-		// Token: 0x040049B1 RID: 18865
 		public PguiOpenWindowCtrl window;
 
-		// Token: 0x040049B2 RID: 18866
 		public PguiTextCtrl Num_Txt_PvpRank;
 
-		// Token: 0x040049B3 RID: 18867
 		public PguiTextCtrl Num_Txt_ResetDate;
 
-		// Token: 0x040049B4 RID: 18868
 		public ReuseScroll ScrollView_RankUp;
 
-		// Token: 0x040049B5 RID: 18869
 		public ReuseScroll ScrollView_Bonus;
 
-		// Token: 0x040049B6 RID: 18870
 		public PguiTabGroupCtrl TabGroup;
 
-		// Token: 0x040049B7 RID: 18871
 		public List<SelPvpCtrl.GUIRewardWindow.Plate> plateListRank = new List<SelPvpCtrl.GUIRewardWindow.Plate>();
 
-		// Token: 0x040049B8 RID: 18872
 		public List<SelPvpCtrl.GUIRewardWindow.Plate> plateListDefense = new List<SelPvpCtrl.GUIRewardWindow.Plate>();
 
-		// Token: 0x02001195 RID: 4501
 		public class Plate
 		{
-			// Token: 0x0600569D RID: 22173 RVA: 0x00252DAC File Offset: 0x00250FAC
 			public Plate(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -2710,30 +2519,22 @@ public class SelPvpCtrl : MonoBehaviour
 				}
 			}
 
-			// Token: 0x04006042 RID: 24642
 			public GameObject baseObj;
 
-			// Token: 0x04006043 RID: 24643
 			public PguiTextCtrl Num_Txt;
 
-			// Token: 0x04006044 RID: 24644
 			public List<IconItemCtrl> iconItemList;
 
-			// Token: 0x04006045 RID: 24645
 			public GameObject pointNameObjNormal;
 
-			// Token: 0x04006046 RID: 24646
 			public GameObject pointNameObjSpecial;
 
-			// Token: 0x04006047 RID: 24647
 			public PguiTextCtrl point;
 		}
 	}
 
-	// Token: 0x02000C0C RID: 3084
 	public class GUIDefenseResultWindow
 	{
-		// Token: 0x0600449B RID: 17563 RVA: 0x00209484 File Offset: 0x00207684
 		public GUIDefenseResultWindow(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -2741,22 +2542,16 @@ public class SelPvpCtrl : MonoBehaviour
 			this.ScrollView = baseTr.Find("Base/Window/Base_Day_Item/InBase/ScrollView").GetComponent<ReuseScroll>();
 		}
 
-		// Token: 0x040049B9 RID: 18873
 		public GameObject baseObj;
 
-		// Token: 0x040049BA RID: 18874
 		public PguiOpenWindowCtrl window;
 
-		// Token: 0x040049BB RID: 18875
 		public ReuseScroll ScrollView;
 
-		// Token: 0x040049BC RID: 18876
 		public List<SelPvpCtrl.GUIDefenseResultWindow.Plate> plateList = new List<SelPvpCtrl.GUIDefenseResultWindow.Plate>();
 
-		// Token: 0x02001196 RID: 4502
 		public class Plate
 		{
-			// Token: 0x0600569E RID: 22174 RVA: 0x00252EB4 File Offset: 0x002510B4
 			public Plate(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -2770,24 +2565,18 @@ public class SelPvpCtrl : MonoBehaviour
 				};
 			}
 
-			// Token: 0x04006048 RID: 24648
 			public GameObject baseObj;
 
-			// Token: 0x04006049 RID: 24649
 			public PguiTextCtrl Num_Txt;
 
-			// Token: 0x0400604A RID: 24650
 			public PguiTextCtrl Num_Results;
 
-			// Token: 0x0400604B RID: 24651
 			public List<IconItemCtrl> iconItemList;
 		}
 	}
 
-	// Token: 0x02000C0D RID: 3085
 	public class GUI
 	{
-		// Token: 0x0600449C RID: 17564 RVA: 0x002094D0 File Offset: 0x002076D0
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -2807,56 +2596,39 @@ public class SelPvpCtrl : MonoBehaviour
 			this.guiSpecialEnemyScrollData = new SelPvpCtrl.GUISpecialEnemyScroll(baseTr.Find("All/Right_Event"));
 		}
 
-		// Token: 0x040049BD RID: 18877
 		public GameObject baseObj;
 
-		// Token: 0x040049BE RID: 18878
 		public SimpleAnimation baseAnime;
 
-		// Token: 0x040049BF RID: 18879
 		public PguiButtonCtrl Btn_MoreInfo_Special;
 
-		// Token: 0x040049C0 RID: 18880
 		public GameObject MoreInfoEvent;
 
-		// Token: 0x040049C1 RID: 18881
 		public SimpleAnimation EventAnime;
 
-		// Token: 0x040049C2 RID: 18882
 		public PguiImageCtrl Tex_Mark_Night_Special;
 
-		// Token: 0x040049C3 RID: 18883
 		public PguiTextCtrl Num_Txt_Traits_Special;
 
-		// Token: 0x040049C4 RID: 18884
 		public PguiButtonCtrl Btn_MoreInfo_Normal;
 
-		// Token: 0x040049C5 RID: 18885
 		public GameObject LocationInfoNormal;
 
-		// Token: 0x040049C6 RID: 18886
 		public PguiImageCtrl Tex_Mark_Night_Normal;
 
-		// Token: 0x040049C7 RID: 18887
 		public PguiTextCtrl Num_Txt_Traits_Normal;
 
-		// Token: 0x040049C8 RID: 18888
 		public SelPvpCtrl.GUINormal guiNormalData;
 
-		// Token: 0x040049C9 RID: 18889
 		public SelPvpCtrl.GUINormalEnemyScroll guiNormalEnemyScrollData;
 
-		// Token: 0x040049CA RID: 18890
 		public SelPvpCtrl.GUISpecial guiSpecialData;
 
-		// Token: 0x040049CB RID: 18891
 		public SelPvpCtrl.GUISpecialEnemyScroll guiSpecialEnemyScrollData;
 	}
 
-	// Token: 0x02000C0E RID: 3086
 	public class GUINormal
 	{
-		// Token: 0x0600449D RID: 17565 RVA: 0x0020961C File Offset: 0x0020781C
 		public GUINormal(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -2889,71 +2661,49 @@ public class SelPvpCtrl : MonoBehaviour
 			this.Num_Txt_Event.transform.parent.gameObject.SetActive(false);
 		}
 
-		// Token: 0x040049CC RID: 18892
 		public GameObject baseObj;
 
-		// Token: 0x040049CD RID: 18893
 		public PguiButtonCtrl Btn_Plus;
 
-		// Token: 0x040049CE RID: 18894
 		public PguiButtonCtrl Btn_Shop;
 
-		// Token: 0x040049CF RID: 18895
 		public PguiButtonCtrl Btn_CharaDeck;
 
-		// Token: 0x040049D0 RID: 18896
 		public PguiButtonCtrl Btn_ModeChange;
 
-		// Token: 0x040049D1 RID: 18897
 		public PguiTextCtrl Txt_Stamina;
 
-		// Token: 0x040049D2 RID: 18898
 		public PguiTextCtrl Num_Rank;
 
-		// Token: 0x040049D3 RID: 18899
 		public PguiTextCtrl Txt_UserName;
 
-		// Token: 0x040049D4 RID: 18900
 		public PguiTextCtrl Txt_PartyName;
 
-		// Token: 0x040049D5 RID: 18901
 		public List<IconCharaCtrl> iconCharaList;
 
-		// Token: 0x040049D6 RID: 18902
 		public PguiTextCtrl Num_TotalAttack;
 
-		// Token: 0x040049D7 RID: 18903
 		public PguiTextCtrl Num_Txt_BattleRank;
 
-		// Token: 0x040049D8 RID: 18904
 		public PguiTextCtrl Num_Txt_BattlePoint;
 
-		// Token: 0x040049D9 RID: 18905
 		public PguiTextCtrl Num_Txt_NextBattlePoint;
 
-		// Token: 0x040049DA RID: 18906
 		public PguiTextCtrl Num_Txt_Event;
 
-		// Token: 0x040049DB RID: 18907
 		public PguiTextCtrl Num_Txt_StaminaRecovery;
 
-		// Token: 0x040049DC RID: 18908
 		public PguiTextCtrl Num_Txt_ItemNum;
 
-		// Token: 0x040049DD RID: 18909
 		public GameObject CampaignObj;
 
-		// Token: 0x040049DE RID: 18910
 		public PguiTextCtrl Txt_Campaign;
 
-		// Token: 0x040049DF RID: 18911
 		public PguiTextCtrl Txt_CampaignTime;
 	}
 
-	// Token: 0x02000C0F RID: 3087
 	public class GUINormalEnemyScroll
 	{
-		// Token: 0x0600449E RID: 17566 RVA: 0x0020985C File Offset: 0x00207A5C
 		public GUINormalEnemyScroll(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -2961,26 +2711,19 @@ public class SelPvpCtrl : MonoBehaviour
 			this.ScrollView = baseTr.Find("RivalList/ScrollView").GetComponent<ReuseScroll>();
 		}
 
-		// Token: 0x040049E0 RID: 18912
 		public GameObject baseObj;
 
-		// Token: 0x040049E1 RID: 18913
 		public PguiButtonCtrl Btn_Update;
 
-		// Token: 0x040049E2 RID: 18914
 		public ReuseScroll ScrollView;
 
-		// Token: 0x040049E3 RID: 18915
 		public List<SelPvpCtrl.GUIEnemy> enemyList = new List<SelPvpCtrl.GUIEnemy>();
 
-		// Token: 0x040049E4 RID: 18916
 		public List<PvpDynamicData.EnemyInfo> enemyInfoList = new List<PvpDynamicData.EnemyInfo>();
 	}
 
-	// Token: 0x02000C10 RID: 3088
 	public class GUISpecial
 	{
-		// Token: 0x0600449F RID: 17567 RVA: 0x002098C0 File Offset: 0x00207AC0
 		public GUISpecial(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -3021,89 +2764,61 @@ public class SelPvpCtrl : MonoBehaviour
 			this.baseObj.SetActive(false);
 		}
 
-		// Token: 0x040049E5 RID: 18917
 		public GameObject baseObj;
 
-		// Token: 0x040049E6 RID: 18918
 		public RenderTextureChara renderTexture;
 
-		// Token: 0x040049E7 RID: 18919
 		public GameObject renderTextureBase;
 
-		// Token: 0x040049E8 RID: 18920
 		public PguiButtonCtrl Btn_Tips;
 
-		// Token: 0x040049E9 RID: 18921
 		public PguiTextCtrl Num_Txt_BattleRank;
 
-		// Token: 0x040049EA RID: 18922
 		public PguiTextCtrl Num_Txt_NextBattlePoint;
 
-		// Token: 0x040049EB RID: 18923
 		public GameObject Obj_NextClass;
 
-		// Token: 0x040049EC RID: 18924
 		public PguiButtonCtrl Btn_Plus;
 
-		// Token: 0x040049ED RID: 18925
 		public PguiTextCtrl Txt_Stamina;
 
-		// Token: 0x040049EE RID: 18926
 		public PguiButtonCtrl Btn_ModeChange;
 
-		// Token: 0x040049EF RID: 18927
 		public PguiTextCtrl Num_Txt_StaminaRecovery;
 
-		// Token: 0x040049F0 RID: 18928
 		public PguiRawImageCtrl Img_Item;
 
-		// Token: 0x040049F1 RID: 18929
 		public PguiTextCtrl Num_Txt_ItemNum;
 
-		// Token: 0x040049F2 RID: 18930
 		public PguiButtonCtrl Btn_Mission;
 
-		// Token: 0x040049F3 RID: 18931
 		public GameObject Mission_New;
 
-		// Token: 0x040049F4 RID: 18932
 		public PguiTextCtrl Txt_Mission_Num;
 
-		// Token: 0x040049F5 RID: 18933
 		public PguiButtonCtrl Btn_Gacha;
 
-		// Token: 0x040049F6 RID: 18934
 		public PguiButtonCtrl Btn_Shop;
 
-		// Token: 0x040049F7 RID: 18935
 		public InfoPhotoItemEffectCtrl Info_PhotoItemEffect;
 
-		// Token: 0x040049F8 RID: 18936
 		public PguiTextCtrl Num_Rank;
 
-		// Token: 0x040049F9 RID: 18937
 		public PguiTextCtrl Txt_UserName;
 
-		// Token: 0x040049FA RID: 18938
 		public PguiTextCtrl Txt_PartyName;
 
-		// Token: 0x040049FB RID: 18939
 		public List<IconCharaCtrl> iconCharaList;
 
-		// Token: 0x040049FC RID: 18940
 		public PguiButtonCtrl Btn_CharaDeck;
 
-		// Token: 0x040049FD RID: 18941
 		public PguiTextCtrl Num_TotalAttack;
 
-		// Token: 0x040049FE RID: 18942
 		public PguiTextCtrl Num_TotalPlasm;
 	}
 
-	// Token: 0x02000C11 RID: 3089
 	public class GUISpecialEnemyScroll
 	{
-		// Token: 0x060044A0 RID: 17568 RVA: 0x00209BA4 File Offset: 0x00207DA4
 		public GUISpecialEnemyScroll(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -3115,43 +2830,30 @@ public class SelPvpCtrl : MonoBehaviour
 			this.ScrollView_Easy = baseTr.Find("RivalList/ScrollView_Easy").GetComponent<ReuseScroll>();
 		}
 
-		// Token: 0x040049FF RID: 18943
 		public GameObject baseObj;
 
-		// Token: 0x04004A00 RID: 18944
 		public PguiTabGroupCtrl tabGroup;
 
-		// Token: 0x04004A01 RID: 18945
 		public PguiButtonCtrl Btn_Update;
 
-		// Token: 0x04004A02 RID: 18946
 		public PguiButtonCtrl Btn_Scenerio;
 
-		// Token: 0x04004A03 RID: 18947
 		public ReuseScroll ScrollView_Hard;
 
-		// Token: 0x04004A04 RID: 18948
 		public ReuseScroll ScrollView_Normal;
 
-		// Token: 0x04004A05 RID: 18949
 		public ReuseScroll ScrollView_Easy;
 
-		// Token: 0x04004A06 RID: 18950
 		public List<SelPvpCtrl.GUIEnemy> guiEnemyList_Hard = new List<SelPvpCtrl.GUIEnemy>();
 
-		// Token: 0x04004A07 RID: 18951
 		public List<SelPvpCtrl.GUIEnemy> guiEnemyList_Normal = new List<SelPvpCtrl.GUIEnemy>();
 
-		// Token: 0x04004A08 RID: 18952
 		public List<SelPvpCtrl.GUIEnemy> guiEnemyList_Easy = new List<SelPvpCtrl.GUIEnemy>();
 
-		// Token: 0x04004A09 RID: 18953
 		public List<PvpDynamicData.EnemyInfo> enemyInfoList_Hard = new List<PvpDynamicData.EnemyInfo>();
 
-		// Token: 0x04004A0A RID: 18954
 		public List<PvpDynamicData.EnemyInfo> enemyInfoList_Normal = new List<PvpDynamicData.EnemyInfo>();
 
-		// Token: 0x04004A0B RID: 18955
 		public List<PvpDynamicData.EnemyInfo> enemyInfoList_Easy = new List<PvpDynamicData.EnemyInfo>();
 	}
 }

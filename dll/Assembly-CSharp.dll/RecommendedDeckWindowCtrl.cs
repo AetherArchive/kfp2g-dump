@@ -1,11 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Token: 0x020001B4 RID: 436
 public class RecommendedDeckWindowCtrl : MonoBehaviour
 {
-	// Token: 0x06001D6E RID: 7534 RVA: 0x0016DC48 File Offset: 0x0016BE48
 	public void Init(GameObject baseWindow)
 	{
 		this.guiData = new RecommendedDeckWindowCtrl.GUI(baseWindow.transform);
@@ -35,7 +33,6 @@ public class RecommendedDeckWindowCtrl : MonoBehaviour
 		this.registerSaveData = new RecommendedDeckWindowCtrl.RegisterSaveData();
 	}
 
-	// Token: 0x06001D6F RID: 7535 RVA: 0x0016DE1C File Offset: 0x0016C01C
 	public void Register(RecommendedDeckWindowCtrl.RegisterData data)
 	{
 		this.registerData = data;
@@ -50,17 +47,14 @@ public class RecommendedDeckWindowCtrl : MonoBehaviour
 		RecommendedDeckWindowCtrl.RegisterSaveData registerSaveData = this.registerSaveData;
 	}
 
-	// Token: 0x06001D70 RID: 7536 RVA: 0x0016DE59 File Offset: 0x0016C059
 	private void DecorationRegisterButton(RecommendedDeckWindowCtrl.RegisterData data)
 	{
 	}
 
-	// Token: 0x06001D71 RID: 7537 RVA: 0x0016DE5B File Offset: 0x0016C05B
 	private void Update()
 	{
 	}
 
-	// Token: 0x06001D72 RID: 7538 RVA: 0x0016DE60 File Offset: 0x0016C060
 	private void Open()
 	{
 		RecommendedDeckWindowCtrl.RegisterSaveData registerSaveData = this.registerSaveData;
@@ -113,7 +107,6 @@ public class RecommendedDeckWindowCtrl : MonoBehaviour
 		this.guiData.baseWindow.Open();
 	}
 
-	// Token: 0x06001D73 RID: 7539 RVA: 0x0016E298 File Offset: 0x0016C498
 	private void OnClickRegisterButton(PguiButtonCtrl button)
 	{
 		RecommendedDeckWindowCtrl.RegisterData registerData = this.registerData;
@@ -128,7 +121,6 @@ public class RecommendedDeckWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001D74 RID: 7540 RVA: 0x0016E2DC File Offset: 0x0016C4DC
 	private bool OnClickWindowButton(int index)
 	{
 		RecommendedDeckWindowCtrl.RegisterData registerData = this.registerData;
@@ -159,7 +151,6 @@ public class RecommendedDeckWindowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001D75 RID: 7541 RVA: 0x0016E398 File Offset: 0x0016C598
 	private bool OnClickAttrButton(PguiToggleButtonCtrl button, int index)
 	{
 		RecommendedDeckWindowCtrl.RegisterSaveData registerSaveData = this.registerSaveData;
@@ -197,7 +188,6 @@ public class RecommendedDeckWindowCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06001D76 RID: 7542 RVA: 0x0016E4B4 File Offset: 0x0016C6B4
 	private bool OnClickStatButton(PguiToggleButtonCtrl button, int index)
 	{
 		this.registerSaveData.sortType = (RecommendedDeckWindowCtrl.SortType)int.Parse(button.name);
@@ -215,7 +205,6 @@ public class RecommendedDeckWindowCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06001D77 RID: 7543 RVA: 0x0016E534 File Offset: 0x0016C734
 	private bool OnClickTypeButton(PguiToggleButtonCtrl button, int index)
 	{
 		this.registerSaveData.photoType = (PhotoDef.Type)int.Parse(button.name);
@@ -233,7 +222,6 @@ public class RecommendedDeckWindowCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06001D78 RID: 7544 RVA: 0x0016E5B4 File Offset: 0x0016C7B4
 	private bool OnClickStat2Button(PguiToggleButtonCtrl button, int index)
 	{
 		this.registerSaveData.sort2Type = (RecommendedDeckWindowCtrl.SortType)int.Parse(button.name);
@@ -251,7 +239,6 @@ public class RecommendedDeckWindowCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06001D79 RID: 7545 RVA: 0x0016E634 File Offset: 0x0016C834
 	private bool OnClickFriendsButton(PguiToggleButtonCtrl button, int index)
 	{
 		RecommendedDeckWindowCtrl.RegisterSaveData registerSaveData = this.registerSaveData;
@@ -260,7 +247,6 @@ public class RecommendedDeckWindowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x06001D7A RID: 7546 RVA: 0x0016E684 File Offset: 0x0016C884
 	private bool OnClickPhotoButton(PguiToggleButtonCtrl button, int index)
 	{
 		RecommendedDeckWindowCtrl.RegisterSaveData registerSaveData = this.registerSaveData;
@@ -269,35 +255,24 @@ public class RecommendedDeckWindowCtrl : MonoBehaviour
 		return true;
 	}
 
-	// Token: 0x040015A7 RID: 5543
 	private RecommendedDeckWindowCtrl.GUI guiData;
 
-	// Token: 0x040015A8 RID: 5544
 	private RecommendedDeckWindowCtrl.RegisterData registerData;
 
-	// Token: 0x040015A9 RID: 5545
 	private RecommendedDeckWindowCtrl.RegisterSaveData registerSaveData;
 
-	// Token: 0x040015AA RID: 5546
 	private RecommendedDeckWindowCtrl.SortTarget currentTarget;
 
-	// Token: 0x02000F51 RID: 3921
 	public enum SortType
 	{
-		// Token: 0x040056D0 RID: 22224
 		TOTAL,
-		// Token: 0x040056D1 RID: 22225
 		HP,
-		// Token: 0x040056D2 RID: 22226
 		ATK,
-		// Token: 0x040056D3 RID: 22227
 		DEF
 	}
 
-	// Token: 0x02000F52 RID: 3922
 	public class GUI
 	{
-		// Token: 0x06004F36 RID: 20278 RVA: 0x002399B8 File Offset: 0x00237BB8
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -346,46 +321,33 @@ public class RecommendedDeckWindowCtrl : MonoBehaviour
 			this.CatPhoto = baseTr.Find("Window_AutoDeck/Base/Window/Contents/Category_Photo/Btn_Radio02").GetComponent<PguiToggleButtonCtrl>();
 		}
 
-		// Token: 0x040056D4 RID: 22228
 		public GameObject baseObj;
 
-		// Token: 0x040056D5 RID: 22229
 		public GameObject EnemyInfo;
 
-		// Token: 0x040056D6 RID: 22230
 		public List<SelBattleHelperCtrl.GUI.EnemyInfo> enemyInfoList = new List<SelBattleHelperCtrl.GUI.EnemyInfo>();
 
-		// Token: 0x040056D7 RID: 22231
 		public List<PguiToggleButtonCtrl> AttrBtn;
 
-		// Token: 0x040056D8 RID: 22232
 		public List<PguiToggleButtonCtrl> StatBtn;
 
-		// Token: 0x040056D9 RID: 22233
 		public List<PguiToggleButtonCtrl> TypeBtn;
 
-		// Token: 0x040056DA RID: 22234
 		public List<PguiToggleButtonCtrl> Stat2Btn;
 
-		// Token: 0x040056DB RID: 22235
 		public PguiOpenWindowCtrl baseWindow;
 
-		// Token: 0x040056DC RID: 22236
 		public PguiToggleButtonCtrl CatFriends;
 
-		// Token: 0x040056DD RID: 22237
 		public PguiToggleButtonCtrl CatPhoto;
 	}
 
-	// Token: 0x02000F53 RID: 3923
 	public class SortTarget
 	{
-		// Token: 0x06004F37 RID: 20279 RVA: 0x00239C81 File Offset: 0x00237E81
 		public SortTarget()
 		{
 		}
 
-		// Token: 0x06004F38 RID: 20280 RVA: 0x00239C8C File Offset: 0x00237E8C
 		public SortTarget(RecommendedDeckWindowCtrl.SortTarget st)
 		{
 			this.charaList = ((st == null || st.charaList == null) ? new List<CharaPackData>() : new List<CharaPackData>(st.charaList));
@@ -401,51 +363,34 @@ public class RecommendedDeckWindowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x040056DE RID: 22238
 		public List<CharaPackData> charaList;
 
-		// Token: 0x040056DF RID: 22239
 		public List<int> deckCharaList;
 
-		// Token: 0x040056E0 RID: 22240
 		public List<PhotoPackData> photoList;
 
-		// Token: 0x040056E1 RID: 22241
 		public List<List<long>> deckPhotoList;
 	}
 
-	// Token: 0x02000F54 RID: 3924
-	// (Invoke) Token: 0x06004F3A RID: 20282
 	public delegate RecommendedDeckWindowCtrl.SortTarget FuncGetTarget();
 
-	// Token: 0x02000F55 RID: 3925
-	// (Invoke) Token: 0x06004F3E RID: 20286
 	public delegate void FuncDisideTarget(RecommendedDeckWindowCtrl.SortTarget result);
 
-	// Token: 0x02000F56 RID: 3926
-	// (Invoke) Token: 0x06004F42 RID: 20290
 	public delegate int FuncGetQuest();
 
-	// Token: 0x02000F57 RID: 3927
 	public class RegisterData
 	{
-		// Token: 0x040056E2 RID: 22242
 		public PguiButtonCtrl filterButton;
 
-		// Token: 0x040056E3 RID: 22243
 		public RecommendedDeckWindowCtrl.FuncGetTarget funcGetTargetBaseList;
 
-		// Token: 0x040056E4 RID: 22244
 		public RecommendedDeckWindowCtrl.FuncDisideTarget funcDisideTarget;
 
-		// Token: 0x040056E5 RID: 22245
 		public RecommendedDeckWindowCtrl.FuncGetQuest questOneId;
 	}
 
-	// Token: 0x02000F58 RID: 3928
 	public class RegisterSaveData
 	{
-		// Token: 0x06004F46 RID: 20294 RVA: 0x00239D80 File Offset: 0x00237F80
 		public void SolutionList(ref RecommendedDeckWindowCtrl.SortTarget target)
 		{
 			if (this.isFriends)
@@ -639,7 +584,6 @@ public class RecommendedDeckWindowCtrl : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06004F47 RID: 20295 RVA: 0x0023A560 File Offset: 0x00238760
 		private int SortList(CharaPackData a, CharaPackData b)
 		{
 			int num = 0;
@@ -681,7 +625,6 @@ public class RecommendedDeckWindowCtrl : MonoBehaviour
 			return num;
 		}
 
-		// Token: 0x06004F48 RID: 20296 RVA: 0x0023A6D0 File Offset: 0x002388D0
 		private int SortList(PhotoPackData a, PhotoPackData b)
 		{
 			int num = 0;
@@ -709,22 +652,16 @@ public class RecommendedDeckWindowCtrl : MonoBehaviour
 			return num;
 		}
 
-		// Token: 0x040056E6 RID: 22246
 		public RecommendedDeckWindowCtrl.SortType sortType;
 
-		// Token: 0x040056E7 RID: 22247
 		public CharaDef.AttributeMask attrMask;
 
-		// Token: 0x040056E8 RID: 22248
 		public RecommendedDeckWindowCtrl.SortType sort2Type;
 
-		// Token: 0x040056E9 RID: 22249
 		public PhotoDef.Type photoType;
 
-		// Token: 0x040056EA RID: 22250
 		public bool isFriends = true;
 
-		// Token: 0x040056EB RID: 22251
 		public bool isPhoto = true;
 	}
 }

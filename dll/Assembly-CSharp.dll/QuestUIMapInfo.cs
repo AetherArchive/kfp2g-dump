@@ -1,9 +1,7 @@
-﻿using System;
+using System;
 
-// Token: 0x020000C2 RID: 194
 public class QuestUIMapInfo
 {
-	// Token: 0x060008CA RID: 2250 RVA: 0x00038230 File Offset: 0x00036430
 	public static QuestUIMapInfo GetQuestUIMapInfo(int mapId, DateTime now, int eventId)
 	{
 		QuestUIMapInfo questUIMapInfo = new QuestUIMapInfo
@@ -47,27 +45,19 @@ public class QuestUIMapInfo
 		return questUIMapInfo;
 	}
 
-	// Token: 0x04000748 RID: 1864
 	public int mapId;
 
-	// Token: 0x04000749 RID: 1865
 	public bool isLockByTime;
 
-	// Token: 0x0400074A RID: 1866
 	public DateTime openTime;
 
-	// Token: 0x0400074B RID: 1867
 	public bool isLockByItem;
 
-	// Token: 0x0400074C RID: 1868
 	public ItemData openItemData;
 
-	// Token: 0x0400074D RID: 1869
 	public bool isPaidOpenItem;
 
-	// Token: 0x0400074E RID: 1870
 	public ItemData pickupRewardItem;
 
-	// Token: 0x0400074F RID: 1871
 	public bool isGetPickupRewardItem;
 }

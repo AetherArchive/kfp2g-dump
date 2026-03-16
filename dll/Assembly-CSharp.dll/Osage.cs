@@ -1,10 +1,8 @@
-﻿using System;
+using System;
 using UnityEngine;
 
-// Token: 0x0200006A RID: 106
 public class Osage : MonoBehaviour
 {
-	// Token: 0x060002B8 RID: 696 RVA: 0x0001604C File Offset: 0x0001424C
 	private void Initialize()
 	{
 		if (this.trs != null)
@@ -23,7 +21,6 @@ public class Osage : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002B9 RID: 697 RVA: 0x000160E4 File Offset: 0x000142E4
 	private void Awake()
 	{
 		this.Initialize();
@@ -41,7 +38,6 @@ public class Osage : MonoBehaviour
 		this.reset = 0;
 	}
 
-	// Token: 0x060002BA RID: 698 RVA: 0x000161A4 File Offset: 0x000143A4
 	private void Start()
 	{
 		if (this.trs == null)
@@ -62,7 +58,6 @@ public class Osage : MonoBehaviour
 		this.oldPos = new Vector3(0f, -9999f, 0f);
 	}
 
-	// Token: 0x060002BB RID: 699 RVA: 0x00016258 File Offset: 0x00014458
 	private void UpdateSpring(bool rst, Transform thighL, Transform thighR, bool mov)
 	{
 		if (mov)
@@ -132,7 +127,6 @@ public class Osage : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002BC RID: 700 RVA: 0x000165B0 File Offset: 0x000147B0
 	public void UpdateOsage()
 	{
 		if (this.trs == null)
@@ -150,7 +144,6 @@ public class Osage : MonoBehaviour
 		this.trs.localRotation = Quaternion.identity * this.localRotation;
 	}
 
-	// Token: 0x060002BD RID: 701 RVA: 0x00016600 File Offset: 0x00014800
 	public void LateUpdateOsage(Transform thighL, Transform thighR)
 	{
 		if (this.trs == null)
@@ -187,7 +180,6 @@ public class Osage : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002BE RID: 702 RVA: 0x000166DC File Offset: 0x000148DC
 	public void Reset()
 	{
 		if (this.reset < 3)
@@ -196,8 +188,6 @@ public class Osage : MonoBehaviour
 		}
 	}
 
-	// Token: 0x1700007E RID: 126
-	// (get) Token: 0x060002BF RID: 703 RVA: 0x000166EE File Offset: 0x000148EE
 	public Vector3 InitialLocalPos
 	{
 		get
@@ -206,8 +196,6 @@ public class Osage : MonoBehaviour
 		}
 	}
 
-	// Token: 0x1700007F RID: 127
-	// (get) Token: 0x060002C0 RID: 704 RVA: 0x000166F6 File Offset: 0x000148F6
 	public Quaternion LocalRotation
 	{
 		get
@@ -216,7 +204,6 @@ public class Osage : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060002C1 RID: 705 RVA: 0x00016700 File Offset: 0x00014900
 	public void ResetForce(Osage inSrc = null)
 	{
 		this.Initialize();
@@ -230,48 +217,33 @@ public class Osage : MonoBehaviour
 		this.trs.localRotation = this.localRotation;
 	}
 
-	// Token: 0x04000453 RID: 1107
 	public Vector3 boneAxis = new Vector3(0f, 0f, -1f);
 
-	// Token: 0x04000454 RID: 1108
 	public float stiffnessForce = 0.1f;
 
-	// Token: 0x04000455 RID: 1109
 	public float dragForce = 0.01f;
 
-	// Token: 0x04000456 RID: 1110
 	public Vector3 springForce = new Vector3(0f, -0.001f, 0f);
 
-	// Token: 0x04000457 RID: 1111
 	private Transform childBone;
 
-	// Token: 0x04000458 RID: 1112
 	private Transform parentBone;
 
-	// Token: 0x04000459 RID: 1113
 	private float springLength;
 
-	// Token: 0x0400045A RID: 1114
 	private Quaternion localRotation;
 
-	// Token: 0x0400045B RID: 1115
 	private Transform trs;
 
-	// Token: 0x0400045C RID: 1116
 	private Vector3 crntPos;
 
-	// Token: 0x0400045D RID: 1117
 	private Vector3 prevPos;
 
-	// Token: 0x0400045E RID: 1118
 	private Vector3 oldPos;
 
-	// Token: 0x0400045F RID: 1119
 	private int reset;
 
-	// Token: 0x04000460 RID: 1120
 	private Vector3 initialLocalPos;
 
-	// Token: 0x04000461 RID: 1121
 	private float scale;
 }

@@ -1,28 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using SGNFW.Mst;
 
-// Token: 0x02000049 RID: 73
 public class CharaPackData
 {
-	// Token: 0x17000034 RID: 52
-	// (get) Token: 0x060001E3 RID: 483 RVA: 0x00011EFA File Offset: 0x000100FA
-	// (set) Token: 0x060001E4 RID: 484 RVA: 0x00011F02 File Offset: 0x00010102
 	public int id { get; private set; }
 
-	// Token: 0x17000035 RID: 53
-	// (get) Token: 0x060001E5 RID: 485 RVA: 0x00011F0B File Offset: 0x0001010B
-	// (set) Token: 0x060001E6 RID: 486 RVA: 0x00011F13 File Offset: 0x00010113
 	public CharaDynamicData dynamicData { get; private set; }
 
-	// Token: 0x17000036 RID: 54
-	// (get) Token: 0x060001E7 RID: 487 RVA: 0x00011F1C File Offset: 0x0001011C
-	// (set) Token: 0x060001E8 RID: 488 RVA: 0x00011F24 File Offset: 0x00010124
 	public CharaStaticData staticData { get; private set; }
 
-	// Token: 0x17000037 RID: 55
-	// (get) Token: 0x060001E9 RID: 489 RVA: 0x00011F2D File Offset: 0x0001012D
 	public int equipClothImageId
 	{
 		get
@@ -31,8 +19,6 @@ public class CharaPackData
 		}
 	}
 
-	// Token: 0x17000038 RID: 56
-	// (get) Token: 0x060001EA RID: 490 RVA: 0x00011F44 File Offset: 0x00010144
 	public bool equipLongSkirt
 	{
 		get
@@ -41,8 +27,6 @@ public class CharaPackData
 		}
 	}
 
-	// Token: 0x17000039 RID: 57
-	// (get) Token: 0x060001EB RID: 491 RVA: 0x00011F5B File Offset: 0x0001015B
 	public CharaClothStatic.PlayMotionType equipPlayMotion
 	{
 		get
@@ -51,12 +35,10 @@ public class CharaPackData
 		}
 	}
 
-	// Token: 0x060001EC RID: 492 RVA: 0x00011F72 File Offset: 0x00010172
 	public CharaPackData()
 	{
 	}
 
-	// Token: 0x060001ED RID: 493 RVA: 0x00011F7A File Offset: 0x0001017A
 	public CharaPackData(CharaDynamicData chDynamicData)
 	{
 		this.id = chDynamicData.id;
@@ -64,7 +46,6 @@ public class CharaPackData
 		this.staticData = DataManager.DmChara.GetCharaStaticData(this.id);
 	}
 
-	// Token: 0x060001EE RID: 494 RVA: 0x00011FAC File Offset: 0x000101AC
 	public static int CalcLimitLevel(int charaId, int levelRank, int lvLimId)
 	{
 		if (charaId == 0)
@@ -89,13 +70,11 @@ public class CharaPackData
 		return num;
 	}
 
-	// Token: 0x060001EF RID: 495 RVA: 0x00012026 File Offset: 0x00010226
 	public bool IsInvalid()
 	{
 		return this.id == 0;
 	}
 
-	// Token: 0x060001F0 RID: 496 RVA: 0x00012034 File Offset: 0x00010234
 	public static CharaPackData MakeDummy(int charaId)
 	{
 		CharaDynamicData charaDynamicData = new CharaDynamicData
@@ -116,7 +95,6 @@ public class CharaPackData
 		return new CharaPackData(charaDynamicData);
 	}
 
-	// Token: 0x060001F1 RID: 497 RVA: 0x000120FF File Offset: 0x000102FF
 	public static CharaPackData MakeInvalid()
 	{
 		return new CharaPackData
@@ -125,7 +103,6 @@ public class CharaPackData
 		};
 	}
 
-	// Token: 0x060001F2 RID: 498 RVA: 0x00012110 File Offset: 0x00010310
 	public static CharaPackData MakeInitial(int charaId)
 	{
 		CharaStaticData charaStaticData = DataManager.DmChara.GetCharaStaticData(charaId);
@@ -147,7 +124,6 @@ public class CharaPackData
 		return new CharaPackData(charaDynamicData);
 	}
 
-	// Token: 0x060001F3 RID: 499 RVA: 0x000121E0 File Offset: 0x000103E0
 	public static CharaPackData MakeShopCharaData(int charaId, int charaStatusId)
 	{
 		ShopData.ItemOne.CharaStatusData charaStatusData = new ShopData.ItemOne.CharaStatusData(DataManager.DmShop.GetCharaStatusData(charaStatusId));
@@ -175,7 +151,6 @@ public class CharaPackData
 		return new CharaPackData(charaDynamicData);
 	}
 
-	// Token: 0x060001F4 RID: 500 RVA: 0x0001231C File Offset: 0x0001051C
 	public static CharaPackData MakeUpgradeUserCharaFromShopData(int charaId, int friendsStatusId)
 	{
 		if (DataManager.DmChara.GetUserCharaData(charaId) == null)
@@ -223,7 +198,6 @@ public class CharaPackData
 		return new CharaPackData(charaDynamicData2);
 	}
 
-	// Token: 0x060001F5 RID: 501 RVA: 0x00012564 File Offset: 0x00010764
 	public GrowItemData GetNextItemByRankup(int nowRank = 0)
 	{
 		if (nowRank == 0)
@@ -247,7 +221,6 @@ public class CharaPackData
 		};
 	}
 
-	// Token: 0x060001F6 RID: 502 RVA: 0x00012604 File Offset: 0x00010804
 	public GrowItemData GetNextItemByReleasePhotoFrame()
 	{
 		int nextStep = this.dynamicData.PhotoFrameTotalStep;
@@ -263,7 +236,6 @@ public class CharaPackData
 		};
 	}
 
-	// Token: 0x060001F7 RID: 503 RVA: 0x00012690 File Offset: 0x00010890
 	public GrowItemList GetNextItemByArtsUp(int nowArtsLv = 0)
 	{
 		if (nowArtsLv == 0)
@@ -299,14 +271,12 @@ public class CharaPackData
 		return growItemList;
 	}
 
-	// Token: 0x060001F8 RID: 504 RVA: 0x0001281C File Offset: 0x00010A1C
 	public bool IsReleaseNanairoAbility()
 	{
 		MstCharaNanairoAbilityReleaseData mstCharaNanairoAbilityReleaseData = DataManager.DmServerMst.mstNanairoReleaseData.Find((MstCharaNanairoAbilityReleaseData item) => item.charaId == this.staticData.baseData.id);
 		return mstCharaNanairoAbilityReleaseData != null && TimeManager.Now >= new DateTime(PrjUtil.ConvertTimeToTicks(mstCharaNanairoAbilityReleaseData.startTime));
 	}
 
-	// Token: 0x060001F9 RID: 505 RVA: 0x00012864 File Offset: 0x00010A64
 	public GrowItemList GetReleaseItemByNanairoAbilityRelease()
 	{
 		if (this.dynamicData.nanairoAbilityReleaseFlag)
@@ -338,7 +308,6 @@ public class CharaPackData
 		return growItemList;
 	}
 
-	// Token: 0x060001FA RID: 506 RVA: 0x00012970 File Offset: 0x00010B70
 	public List<DataManagerServerMst.CharaLevelItem> LevelItemUseOrderList(bool isKizuna = false)
 	{
 		CharaDef.AttributeType charaAttribute = this.staticData.baseData.attribute;
@@ -383,7 +352,6 @@ public class CharaPackData
 		return list3;
 	}
 
-	// Token: 0x060001FB RID: 507 RVA: 0x00012BE0 File Offset: 0x00010DE0
 	public List<int> CalcEatLevelItem(int afterLv = 0, int haveCoin = 0, bool isKizuna = false)
 	{
 		List<int> list = new List<int>();
@@ -454,8 +422,6 @@ public class CharaPackData
 		return list;
 	}
 
-	// Token: 0x1700003A RID: 58
-	// (get) Token: 0x060001FC RID: 508 RVA: 0x00012DB4 File Offset: 0x00010FB4
 	public bool EnhanceInfoLv
 	{
 		get
@@ -477,8 +443,6 @@ public class CharaPackData
 		}
 	}
 
-	// Token: 0x1700003B RID: 59
-	// (get) Token: 0x060001FD RID: 509 RVA: 0x00012E8C File Offset: 0x0001108C
 	public bool EnhanceInfoPromote
 	{
 		get
@@ -515,8 +479,6 @@ public class CharaPackData
 		}
 	}
 
-	// Token: 0x1700003C RID: 60
-	// (get) Token: 0x060001FE RID: 510 RVA: 0x00012F74 File Offset: 0x00011174
 	public bool EnhanceInfoRank
 	{
 		get
@@ -547,8 +509,6 @@ public class CharaPackData
 		}
 	}
 
-	// Token: 0x1700003D RID: 61
-	// (get) Token: 0x060001FF RID: 511 RVA: 0x0001302C File Offset: 0x0001122C
 	public bool EnhanceInfoMiracle
 	{
 		get
@@ -569,8 +529,6 @@ public class CharaPackData
 		}
 	}
 
-	// Token: 0x1700003E RID: 62
-	// (get) Token: 0x06000200 RID: 512 RVA: 0x000130DC File Offset: 0x000112DC
 	public bool EnhanceInfoPhotoPocket
 	{
 		get
@@ -594,8 +552,6 @@ public class CharaPackData
 		}
 	}
 
-	// Token: 0x1700003F RID: 63
-	// (get) Token: 0x06000201 RID: 513 RVA: 0x000131AC File Offset: 0x000113AC
 	public bool CanBeEnhancedPhotoPocket
 	{
 		get
@@ -604,8 +560,6 @@ public class CharaPackData
 		}
 	}
 
-	// Token: 0x17000040 RID: 64
-	// (get) Token: 0x06000202 RID: 514 RVA: 0x00013244 File Offset: 0x00011444
 	public bool EnhanceInfoKizunaLimit
 	{
 		get
@@ -628,8 +582,6 @@ public class CharaPackData
 		}
 	}
 
-	// Token: 0x17000041 RID: 65
-	// (get) Token: 0x06000203 RID: 515 RVA: 0x0001331C File Offset: 0x0001151C
 	public bool EnhanceInfoNanairo
 	{
 		get
@@ -658,8 +610,6 @@ public class CharaPackData
 		}
 	}
 
-	// Token: 0x17000042 RID: 66
-	// (get) Token: 0x06000204 RID: 516 RVA: 0x000133E0 File Offset: 0x000115E0
 	public bool IsEnableSpAbility
 	{
 		get
@@ -668,8 +618,6 @@ public class CharaPackData
 		}
 	}
 
-	// Token: 0x17000043 RID: 67
-	// (get) Token: 0x06000205 RID: 517 RVA: 0x0001340C File Offset: 0x0001160C
 	public bool IsHaveSpAbility
 	{
 		get
@@ -678,8 +626,6 @@ public class CharaPackData
 		}
 	}
 
-	// Token: 0x17000044 RID: 68
-	// (get) Token: 0x06000206 RID: 518 RVA: 0x00013436 File Offset: 0x00011636
 	public bool IsEnableNanairoAbility
 	{
 		get
@@ -688,8 +634,6 @@ public class CharaPackData
 		}
 	}
 
-	// Token: 0x17000045 RID: 69
-	// (get) Token: 0x06000207 RID: 519 RVA: 0x0001344D File Offset: 0x0001164D
 	public bool IsHaveNanairoAbility
 	{
 		get
@@ -698,8 +642,6 @@ public class CharaPackData
 		}
 	}
 
-	// Token: 0x17000046 RID: 70
-	// (get) Token: 0x06000208 RID: 520 RVA: 0x0001346A File Offset: 0x0001166A
 	public bool IsNanairoAbilityReleaseAvailable
 	{
 		get
@@ -708,36 +650,29 @@ public class CharaPackData
 		}
 	}
 
-	// Token: 0x06000209 RID: 521 RVA: 0x0001348C File Offset: 0x0001168C
 	public bool IsNanairoConditionLevelOk()
 	{
 		return this.dynamicData.level >= 90;
 	}
 
-	// Token: 0x0600020A RID: 522 RVA: 0x000134A0 File Offset: 0x000116A0
 	public bool IsNanairoConditionPromoteOk()
 	{
 		return this.dynamicData.promoteNum >= 4;
 	}
 
-	// Token: 0x0600020B RID: 523 RVA: 0x000134B3 File Offset: 0x000116B3
 	public bool IsNanairoConditionPPOk()
 	{
 		return this.dynamicData.PhotoPocket.Count<CharaDynamicData.PPParam>((CharaDynamicData.PPParam v) => v.Flag) >= 2;
 	}
 
-	// Token: 0x0600020C RID: 524 RVA: 0x000134EA File Offset: 0x000116EA
 	public bool IsNanairoConditionArtsOk()
 	{
 		return this.dynamicData.artsLevel >= 3;
 	}
 
-	// Token: 0x0400026A RID: 618
 	public const int NanairoConditionLevel = 90;
 
-	// Token: 0x0400026B RID: 619
 	public const int NanairoConditionPromoteNum = 4;
 
-	// Token: 0x0400026C RID: 620
 	public const int NanairoConditionArtsLv = 3;
 }

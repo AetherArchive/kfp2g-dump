@@ -1,37 +1,20 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SGNFW.uGUI;
 using UnityEngine;
 
-// Token: 0x020001B6 RID: 438
 public class RewardListWindowCtrl : MonoBehaviour
 {
-	// Token: 0x17000418 RID: 1048
-	// (get) Token: 0x06001DCB RID: 7627 RVA: 0x0017297D File Offset: 0x00170B7D
-	// (set) Token: 0x06001DCC RID: 7628 RVA: 0x00172985 File Offset: 0x00170B85
 	private RewardListWindowCtrl.GUI GuiData { get; set; }
 
-	// Token: 0x17000419 RID: 1049
-	// (get) Token: 0x06001DCD RID: 7629 RVA: 0x0017298E File Offset: 0x00170B8E
-	// (set) Token: 0x06001DCE RID: 7630 RVA: 0x00172996 File Offset: 0x00170B96
 	private RewardListWindowCtrl.SuccessGUI SuccessGuiData { get; set; }
 
-	// Token: 0x1700041A RID: 1050
-	// (get) Token: 0x06001DCF RID: 7631 RVA: 0x0017299F File Offset: 0x00170B9F
-	// (set) Token: 0x06001DD0 RID: 7632 RVA: 0x001729A7 File Offset: 0x00170BA7
 	private RewardListWindowCtrl.OtherTeamSuccessGUI OtherTeamSuccessGuiData { get; set; }
 
-	// Token: 0x1700041B RID: 1051
-	// (get) Token: 0x06001DD1 RID: 7633 RVA: 0x001729B0 File Offset: 0x00170BB0
-	// (set) Token: 0x06001DD2 RID: 7634 RVA: 0x001729B8 File Offset: 0x00170BB8
 	private RewardListWindowCtrl.TimeOutGUI TimeOutGuiData { get; set; }
 
-	// Token: 0x1700041C RID: 1052
-	// (get) Token: 0x06001DD3 RID: 7635 RVA: 0x001729C1 File Offset: 0x00170BC1
-	// (set) Token: 0x06001DD4 RID: 7636 RVA: 0x001729C9 File Offset: 0x00170BC9
 	private int MapId { get; set; }
 
-	// Token: 0x06001DD5 RID: 7637 RVA: 0x001729D4 File Offset: 0x00170BD4
 	public void Init()
 	{
 		Transform transform = Object.Instantiate<GameObject>((GameObject)Resources.Load("SceneEvent/GUI/Prefab/GUI_Event_Multi_Window"), base.transform).transform;
@@ -74,7 +57,6 @@ public class RewardListWindowCtrl : MonoBehaviour
 		this.GuiData.ScrollView.Setup(10, 0);
 	}
 
-	// Token: 0x06001DD6 RID: 7638 RVA: 0x00172B28 File Offset: 0x00170D28
 	public void Open(int mapId)
 	{
 		this.MapId = mapId;
@@ -84,14 +66,12 @@ public class RewardListWindowCtrl : MonoBehaviour
 		this.GuiData.owCtrl.Open();
 	}
 
-	// Token: 0x06001DD7 RID: 7639 RVA: 0x00172BEC File Offset: 0x00170DEC
 	public void OpenAchievement()
 	{
 		this.OtherTeamSuccessGuiData.owCtrl.Setup(null, null, PguiOpenWindowCtrl.GetButtonPreset(PguiOpenWindowCtrl.PresetType.CLOSE), true, (int index) => true, null, false);
 		this.OtherTeamSuccessGuiData.owCtrl.Open();
 	}
 
-	// Token: 0x06001DD8 RID: 7640 RVA: 0x00172C44 File Offset: 0x00170E44
 	public void OpenAchievementAndClear()
 	{
 		if (this.SuccessGuiData.baseObj.activeSelf)
@@ -107,14 +87,12 @@ public class RewardListWindowCtrl : MonoBehaviour
 		});
 	}
 
-	// Token: 0x06001DD9 RID: 7641 RVA: 0x00172CB0 File Offset: 0x00170EB0
 	public void OpenTimeout()
 	{
 		this.TimeOutGuiData.owCtrl.Setup(null, null, PguiOpenWindowCtrl.GetButtonPreset(PguiOpenWindowCtrl.PresetType.CLOSE), true, (int index) => true, null, false);
 		this.TimeOutGuiData.owCtrl.Open();
 	}
 
-	// Token: 0x06001DDA RID: 7642 RVA: 0x00172D08 File Offset: 0x00170F08
 	private void OnClickButton(PguiButtonCtrl button)
 	{
 		if (button == this.SuccessGuiData.BtnClose || button == this.SuccessGuiData.ButtonC)
@@ -126,10 +104,8 @@ public class RewardListWindowCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x02000F63 RID: 3939
 	public class GUI
 	{
-		// Token: 0x06004F71 RID: 20337 RVA: 0x0023B216 File Offset: 0x00239416
 		public GUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -137,19 +113,14 @@ public class RewardListWindowCtrl : MonoBehaviour
 			this.owCtrl = baseTr.Find("Window_GetItem").GetComponent<PguiOpenWindowCtrl>();
 		}
 
-		// Token: 0x0400571C RID: 22300
 		public GameObject baseObj;
 
-		// Token: 0x0400571D RID: 22301
 		public ReuseScroll ScrollView;
 
-		// Token: 0x0400571E RID: 22302
 		public PguiOpenWindowCtrl owCtrl;
 
-		// Token: 0x02001209 RID: 4617
 		public class ListBar
 		{
-			// Token: 0x0600579D RID: 22429 RVA: 0x00257AA8 File Offset: 0x00255CA8
 			public ListBar(Transform baseTr)
 			{
 				this.baseObj = baseTr.gameObject;
@@ -158,24 +129,18 @@ public class RewardListWindowCtrl : MonoBehaviour
 				this.Mark_Clear = baseTr.Find("BaseImage/Mark_Clear").GetComponent<PguiImageCtrl>();
 			}
 
-			// Token: 0x040062AC RID: 25260
 			public GameObject baseObj;
 
-			// Token: 0x040062AD RID: 25261
 			public PguiTextCtrl Txt_Num;
 
-			// Token: 0x040062AE RID: 25262
 			public IconItemCtrl Icon_Item;
 
-			// Token: 0x040062AF RID: 25263
 			public PguiImageCtrl Mark_Clear;
 		}
 	}
 
-	// Token: 0x02000F64 RID: 3940
 	public class SuccessGUI
 	{
-		// Token: 0x06004F72 RID: 20338 RVA: 0x0023B258 File Offset: 0x00239458
 		public SuccessGUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -185,53 +150,40 @@ public class RewardListWindowCtrl : MonoBehaviour
 			this.ButtonC = baseTr.Find("Window/ButtonC").GetComponent<PguiButtonCtrl>();
 		}
 
-		// Token: 0x0400571F RID: 22303
 		public GameObject baseObj;
 
-		// Token: 0x04005720 RID: 22304
 		public GameObject Bg;
 
-		// Token: 0x04005721 RID: 22305
 		public PguiAECtrl AEImage;
 
-		// Token: 0x04005722 RID: 22306
 		public PguiButtonCtrl BtnClose;
 
-		// Token: 0x04005723 RID: 22307
 		public PguiButtonCtrl ButtonC;
 	}
 
-	// Token: 0x02000F65 RID: 3941
 	public class OtherTeamSuccessGUI
 	{
-		// Token: 0x06004F73 RID: 20339 RVA: 0x0023B2CF File Offset: 0x002394CF
 		public OtherTeamSuccessGUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
 		}
 
-		// Token: 0x04005724 RID: 22308
 		public GameObject baseObj;
 
-		// Token: 0x04005725 RID: 22309
 		public PguiOpenWindowCtrl owCtrl;
 	}
 
-	// Token: 0x02000F66 RID: 3942
 	public class TimeOutGUI
 	{
-		// Token: 0x06004F74 RID: 20340 RVA: 0x0023B2EF File Offset: 0x002394EF
 		public TimeOutGUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
 			this.owCtrl = baseTr.GetComponent<PguiOpenWindowCtrl>();
 		}
 
-		// Token: 0x04005726 RID: 22310
 		public GameObject baseObj;
 
-		// Token: 0x04005727 RID: 22311
 		public PguiOpenWindowCtrl owCtrl;
 	}
 }

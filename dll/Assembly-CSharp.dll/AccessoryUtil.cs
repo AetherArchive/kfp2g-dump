@@ -1,44 +1,37 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using SGNFW.uGUI;
 using UnityEngine;
 using UnityEngine.Events;
 
-// Token: 0x0200018C RID: 396
 public class AccessoryUtil : MonoBehaviour
 {
-	// Token: 0x06001A66 RID: 6758 RVA: 0x001567E1 File Offset: 0x001549E1
 	public static ItemData GetReleaseAccessoryItemData()
 	{
 		return DataManager.DmItem.GetUserItemData(AccessoryUtil.ReleaseAccessoryItemId);
 	}
 
-	// Token: 0x06001A67 RID: 6759 RVA: 0x001567F2 File Offset: 0x001549F2
 	public static bool CanReleasedAccessory()
 	{
 		return DataManager.DmItem.GetUserItemData(AccessoryUtil.ReleaseAccessoryItemId).num >= AccessoryUtil.GetNeedReleaseAccessoryItemNum();
 	}
 
-	// Token: 0x06001A68 RID: 6760 RVA: 0x00156812 File Offset: 0x00154A12
 	public static int GetNeedReleaseAccessoryItemNum()
 	{
 		return 1;
 	}
 
-	// Token: 0x06001A69 RID: 6761 RVA: 0x00156815 File Offset: 0x00154A15
 	public static bool IsInvalid(DataManagerCharaAccessory.Accessory data)
 	{
 		return data == null;
 	}
 
-	// Token: 0x06001A6A RID: 6762 RVA: 0x0015681B File Offset: 0x00154A1B
 	public static DataManagerCharaAccessory.Accessory MakeDummy()
 	{
 		return null;
 	}
 
-	// Token: 0x06001A6B RID: 6763 RVA: 0x00156820 File Offset: 0x00154A20
 	public static string MakeLevelString(DataManagerCharaAccessory.Accessory acce, bool isNeedLv)
 	{
 		if (acce == null)
@@ -49,7 +42,6 @@ public class AccessoryUtil : MonoBehaviour
 		return string.Format("{0}{1}/{2}", text, acce.Level, acce.AccessoryData.Rarity.LevelLimit);
 	}
 
-	// Token: 0x06001A6C RID: 6764 RVA: 0x00156871 File Offset: 0x00154A71
 	public static string MakeLevelMaxString(DataManagerCharaAccessory.AccessoryData acceData)
 	{
 		if (acceData == null)
@@ -59,7 +51,6 @@ public class AccessoryUtil : MonoBehaviour
 		return string.Format("Lv.{0}/{1}", acceData.Rarity.LevelLimit, acceData.Rarity.LevelLimit);
 	}
 
-	// Token: 0x06001A6D RID: 6765 RVA: 0x001568A8 File Offset: 0x00154AA8
 	public static string GetLevelString(DataManagerCharaAccessory.Accessory acce, bool denominator)
 	{
 		if (acce == null)
@@ -73,7 +64,6 @@ public class AccessoryUtil : MonoBehaviour
 		return string.Format("{0}", acce.AccessoryData.Rarity.LevelLimit);
 	}
 
-	// Token: 0x06001A6E RID: 6766 RVA: 0x001568F6 File Offset: 0x00154AF6
 	public static string GetColorString(bool normal)
 	{
 		if (!normal)
@@ -83,7 +73,6 @@ public class AccessoryUtil : MonoBehaviour
 		return AccessoryUtil.NORMAL_PARAM_COLOR_CODE;
 	}
 
-	// Token: 0x06001A6F RID: 6767 RVA: 0x00156906 File Offset: 0x00154B06
 	public static Color GetColorValue(bool normal)
 	{
 		if (!normal)
@@ -93,7 +82,6 @@ public class AccessoryUtil : MonoBehaviour
 		return AccessoryUtil.NORMAL_PARAM_COLOR;
 	}
 
-	// Token: 0x06001A70 RID: 6768 RVA: 0x00156916 File Offset: 0x00154B16
 	public static string MakeDispTypeString(DataManagerCharaAccessory.Accessory acce)
 	{
 		if (acce == null)
@@ -103,7 +91,6 @@ public class AccessoryUtil : MonoBehaviour
 		return AccessoryUtil.MakeDispTypeStringByAccessoryData(acce.AccessoryData);
 	}
 
-	// Token: 0x06001A71 RID: 6769 RVA: 0x0015692C File Offset: 0x00154B2C
 	public static string MakeDispTypeStringByAccessoryData(DataManagerCharaAccessory.AccessoryData acceData)
 	{
 		if (acceData == null)
@@ -122,19 +109,16 @@ public class AccessoryUtil : MonoBehaviour
 		return text;
 	}
 
-	// Token: 0x06001A72 RID: 6770 RVA: 0x00156969 File Offset: 0x00154B69
 	public static bool CanEquipped(DataManagerCharaAccessory.Accessory acce)
 	{
 		return acce != null && acce.AccessoryData.LevelupNum == 0;
 	}
 
-	// Token: 0x06001A73 RID: 6771 RVA: 0x0015697E File Offset: 0x00154B7E
 	public static bool IsDecidedOwner(DataManagerCharaAccessory.Accessory acce)
 	{
 		return !AccessoryUtil.IsInvalid(acce) && acce.CharaId != 0;
 	}
 
-	// Token: 0x06001A74 RID: 6772 RVA: 0x00156994 File Offset: 0x00154B94
 	public static bool IsEquipped(DataManagerCharaAccessory.Accessory acce)
 	{
 		if (AccessoryUtil.IsDecidedOwner(acce))
@@ -148,13 +132,11 @@ public class AccessoryUtil : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x06001A75 RID: 6773 RVA: 0x001569EC File Offset: 0x00154BEC
 	public static bool CanStrengthened(DataManagerCharaAccessory.Accessory baseAcce, DataManagerCharaAccessory.Accessory acce)
 	{
 		return !AccessoryUtil.IsInvalid(baseAcce) && !AccessoryUtil.IsInvalid(acce) && (baseAcce.ItemId == acce.ItemId || (!AccessoryUtil.CanEquipped(acce) && baseAcce.AccessoryData.Rarity.Rarity <= acce.AccessoryData.Rarity.Rarity));
 	}
 
-	// Token: 0x06001A76 RID: 6774 RVA: 0x00156A4C File Offset: 0x00154C4C
 	public static void OpenTutorialWindow()
 	{
 		DataManagerGameStatus.UserFlagData userFlagData = DataManager.DmGameStatus.MakeUserFlagData();
@@ -166,7 +148,6 @@ public class AccessoryUtil : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001A77 RID: 6775 RVA: 0x00156AB4 File Offset: 0x00154CB4
 	public static string GetPermillageText(int value)
 	{
 		StringBuilder stringBuilder = new StringBuilder();
@@ -179,7 +160,6 @@ public class AccessoryUtil : MonoBehaviour
 		return stringBuilder.ToString();
 	}
 
-	// Token: 0x06001A78 RID: 6776 RVA: 0x00156B00 File Offset: 0x00154D00
 	public static bool IsNeedPermillage(AccessoryUtil.ParamType type)
 	{
 		bool flag = true;
@@ -190,45 +170,30 @@ public class AccessoryUtil : MonoBehaviour
 		return flag;
 	}
 
-	// Token: 0x04001430 RID: 5168
 	private static readonly int ReleaseAccessoryItemId = 17201;
 
-	// Token: 0x04001431 RID: 5169
 	public static readonly string NoSelectedText = "選択不可";
 
-	// Token: 0x04001432 RID: 5170
 	private static readonly string UP_PARAM_COLOR_CODE = "#FF7C17FF";
 
-	// Token: 0x04001433 RID: 5171
 	private static readonly Color UP_PARAM_COLOR = new Color32(byte.MaxValue, 124, 23, byte.MaxValue);
 
-	// Token: 0x04001434 RID: 5172
 	private static readonly string NORMAL_PARAM_COLOR_CODE = "#533C06FF";
 
-	// Token: 0x04001435 RID: 5173
 	private static readonly Color NORMAL_PARAM_COLOR = new Color32(83, 60, 6, byte.MaxValue);
 
-	// Token: 0x02000E72 RID: 3698
 	public enum ParamType
 	{
-		// Token: 0x0400531B RID: 21275
 		None,
-		// Token: 0x0400531C RID: 21276
 		Normal,
-		// Token: 0x0400531D RID: 21277
 		Beat,
-		// Token: 0x0400531E RID: 21278
 		Action,
-		// Token: 0x0400531F RID: 21279
 		Try,
-		// Token: 0x04005320 RID: 21280
 		Avoid
 	}
 
-	// Token: 0x02000E73 RID: 3699
 	public class ParamPackData
 	{
-		// Token: 0x06004CB5 RID: 19637 RVA: 0x0022E4A0 File Offset: 0x0022C6A0
 		public static void CreateDispList<T>(ref List<T> list, AccessoryUtil.ParamPackData.AccessoryPackData dispAccessory)
 		{
 			if (dispAccessory == null)
@@ -390,7 +355,6 @@ public class AccessoryUtil : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06004CB6 RID: 19638 RVA: 0x0022EAD4 File Offset: 0x0022CCD4
 		public static List<AccessoryUtil.ParamPackData.BaseParam> CreateDispListForLvMax(DataManagerCharaAccessory.AccessoryData acceData)
 		{
 			List<AccessoryUtil.ParamPackData.BaseParam> list = new List<AccessoryUtil.ParamPackData.BaseParam>();
@@ -465,31 +429,22 @@ public class AccessoryUtil : MonoBehaviour
 			return list;
 		}
 
-		// Token: 0x04005321 RID: 21281
 		private static readonly string PARAM_NAME_HP = "たいりょく";
 
-		// Token: 0x04005322 RID: 21282
 		private static readonly string PARAM_NAME_ATK = "こうげき";
 
-		// Token: 0x04005323 RID: 21283
 		private static readonly string PARAM_NAME_DEF = "まもり";
 
-		// Token: 0x04005324 RID: 21284
 		private static readonly string PARAM_NAME_AVOID = "かいひ";
 
-		// Token: 0x04005325 RID: 21285
 		private static readonly string PARAM_NAME_BEAT = "Beat!!!";
 
-		// Token: 0x04005326 RID: 21286
 		private static readonly string PARAM_NAME_ACTION = "Action!";
 
-		// Token: 0x04005327 RID: 21287
 		private static readonly string PARAM_NAME_TRY = "Try!!";
 
-		// Token: 0x020011DA RID: 4570
 		public class BaseParam
 		{
-			// Token: 0x06005746 RID: 22342 RVA: 0x0025678E File Offset: 0x0025498E
 			public BaseParam()
 			{
 				this.name = "";
@@ -497,20 +452,15 @@ public class AccessoryUtil : MonoBehaviour
 				this.value = 0;
 			}
 
-			// Token: 0x040061E6 RID: 25062
 			public string name;
 
-			// Token: 0x040061E7 RID: 25063
 			public AccessoryUtil.ParamType type;
 
-			// Token: 0x040061E8 RID: 25064
 			public int value;
 		}
 
-		// Token: 0x020011DB RID: 4571
 		public class GrowthParam
 		{
-			// Token: 0x06005747 RID: 22343 RVA: 0x002567AF File Offset: 0x002549AF
 			public GrowthParam()
 			{
 				this.value = 0;
@@ -518,38 +468,29 @@ public class AccessoryUtil : MonoBehaviour
 				this.type = AccessoryUtil.ParamType.None;
 			}
 
-			// Token: 0x040061E9 RID: 25065
 			public int value;
 
-			// Token: 0x040061EA RID: 25066
 			public Color color;
 
-			// Token: 0x040061EB RID: 25067
 			public AccessoryUtil.ParamType type;
 		}
 
-		// Token: 0x020011DC RID: 4572
 		public class AccessoryPackData
 		{
-			// Token: 0x06005748 RID: 22344 RVA: 0x002567D0 File Offset: 0x002549D0
 			public AccessoryPackData()
 			{
 				this.accessory = null;
 				this.levelParam = null;
 			}
 
-			// Token: 0x040061EC RID: 25068
 			public DataManagerCharaAccessory.Accessory accessory;
 
-			// Token: 0x040061ED RID: 25069
 			public DataManagerCharaAccessory.LevelParam levelParam;
 		}
 	}
 
-	// Token: 0x02000E74 RID: 3700
 	public class IconAccessorySet
 	{
-		// Token: 0x06004CB9 RID: 19641 RVA: 0x0022ECBC File Offset: 0x0022CEBC
 		public IconAccessorySet(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -562,7 +503,6 @@ public class AccessoryUtil : MonoBehaviour
 			this.textCount.transform.parent.gameObject.SetActive(false);
 		}
 
-		// Token: 0x06004CBA RID: 19642 RVA: 0x0022ED6B File Offset: 0x0022CF6B
 		public void DispCount(bool flag, string str = null)
 		{
 			if (this.textCount != null)
@@ -575,33 +515,25 @@ public class AccessoryUtil : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06004CBB RID: 19643 RVA: 0x0022EDA5 File Offset: 0x0022CFA5
 		public void SetScale(Vector3 scaleCurrent, Vector3 scaleCount)
 		{
 			this.currentFrame.transform.Find("Current").localScale = scaleCurrent;
 			this.textCount.transform.parent.localScale = scaleCount;
 		}
 
-		// Token: 0x04005328 RID: 21288
 		public GameObject baseObj;
 
-		// Token: 0x04005329 RID: 21289
 		public RectTransform iconBase;
 
-		// Token: 0x0400532A RID: 21290
 		public IconAccessoryCtrl iconAccessoryCtrl;
 
-		// Token: 0x0400532B RID: 21291
 		public GameObject currentFrame;
 
-		// Token: 0x0400532C RID: 21292
 		public PguiTextCtrl textCount;
 	}
 
-	// Token: 0x02000E75 RID: 3701
 	public class SizeChangeBtnGUI
 	{
-		// Token: 0x06004CBC RID: 19644 RVA: 0x0022EDD8 File Offset: 0x0022CFD8
 		public static AccessoryUtil.SizeChangeBtnGUI.DataPack[] GetDataPacks(AccessoryUtil.SizeChangeBtnGUI.DataPackType type)
 		{
 			if (type == AccessoryUtil.SizeChangeBtnGUI.DataPackType.Set)
@@ -615,7 +547,6 @@ public class AccessoryUtil : MonoBehaviour
 			return AccessoryUtil.SizeChangeBtnGUI.allDataPacks;
 		}
 
-		// Token: 0x06004CBD RID: 19645 RVA: 0x0022EDF4 File Offset: 0x0022CFF4
 		public SizeChangeBtnGUI(Transform baseTr)
 		{
 			this.baseObj = baseTr.gameObject;
@@ -623,7 +554,6 @@ public class AccessoryUtil : MonoBehaviour
 			this.Txt = baseTr.Find("BaseImage/On/Txt").GetComponent<PguiTextCtrl>();
 		}
 
-		// Token: 0x06004CBE RID: 19646 RVA: 0x0022EE40 File Offset: 0x0022D040
 		public void Setup(AccessoryUtil.SizeChangeBtnGUI.SetupParam param)
 		{
 			this.setupParam = param;
@@ -643,7 +573,6 @@ public class AccessoryUtil : MonoBehaviour
 			}, PguiButtonCtrl.SoundType.DEFAULT);
 		}
 
-		// Token: 0x06004CBF RID: 19647 RVA: 0x0022EE78 File Offset: 0x0022D078
 		private void UpdateText(int index)
 		{
 			switch (index)
@@ -666,7 +595,6 @@ public class AccessoryUtil : MonoBehaviour
 			}
 		}
 
-		// Token: 0x06004CC0 RID: 19648 RVA: 0x0022EF0C File Offset: 0x0022D10C
 		public void ResetScrollView()
 		{
 			this.UpdateText(this.setupParam.sizeIndex);
@@ -697,8 +625,6 @@ public class AccessoryUtil : MonoBehaviour
 			this.setupParam.refScrollView.Refresh();
 		}
 
-		// Token: 0x17000B31 RID: 2865
-		// (get) Token: 0x06004CC1 RID: 19649 RVA: 0x0022F0F3 File Offset: 0x0022D2F3
 		public List<AccessoryUtil.SizeChangeBtnGUI.IconAccessoryParam> IconAccessoryParamList
 		{
 			get
@@ -707,8 +633,6 @@ public class AccessoryUtil : MonoBehaviour
 			}
 		}
 
-		// Token: 0x17000B32 RID: 2866
-		// (get) Token: 0x06004CC2 RID: 19650 RVA: 0x0022F100 File Offset: 0x0022D300
 		public int SizeIndex
 		{
 			get
@@ -717,7 +641,6 @@ public class AccessoryUtil : MonoBehaviour
 			}
 		}
 
-		// Token: 0x0400532D RID: 21293
 		private static readonly AccessoryUtil.SizeChangeBtnGUI.DataPack[] setDataPacks = new AccessoryUtil.SizeChangeBtnGUI.DataPack[]
 		{
 			new AccessoryUtil.SizeChangeBtnGUI.DataPack
@@ -742,7 +665,6 @@ public class AccessoryUtil : MonoBehaviour
 			}
 		};
 
-		// Token: 0x0400532E RID: 21294
 		private static readonly AccessoryUtil.SizeChangeBtnGUI.DataPack[] allDataPacks = new AccessoryUtil.SizeChangeBtnGUI.DataPack[]
 		{
 			new AccessoryUtil.SizeChangeBtnGUI.DataPack
@@ -767,108 +689,73 @@ public class AccessoryUtil : MonoBehaviour
 			}
 		};
 
-		// Token: 0x0400532F RID: 21295
 		public GameObject baseObj;
 
-		// Token: 0x04005330 RID: 21296
 		public PguiButtonCtrl Btn_SizeChange;
 
-		// Token: 0x04005331 RID: 21297
 		public PguiTextCtrl Txt;
 
-		// Token: 0x04005332 RID: 21298
 		private float scrollSize;
 
-		// Token: 0x04005333 RID: 21299
 		private AccessoryUtil.SizeChangeBtnGUI.SetupParam setupParam = new AccessoryUtil.SizeChangeBtnGUI.SetupParam();
 
-		// Token: 0x020011DD RID: 4573
-		// (Invoke) Token: 0x0600574A RID: 22346
 		public delegate void FuncResult(AccessoryUtil.SizeChangeBtnGUI.ResultParam result);
 
-		// Token: 0x020011DE RID: 4574
 		public enum DataPackType
 		{
-			// Token: 0x040061EF RID: 25071
 			Set,
-			// Token: 0x040061F0 RID: 25072
 			All
 		}
 
-		// Token: 0x020011DF RID: 4575
 		public enum SizeType
 		{
-			// Token: 0x040061F2 RID: 25074
 			S,
-			// Token: 0x040061F3 RID: 25075
 			M,
-			// Token: 0x040061F4 RID: 25076
 			L,
-			// Token: 0x040061F5 RID: 25077
 			XL
 		}
 
-		// Token: 0x020011E0 RID: 4576
 		public class DataPack
 		{
-			// Token: 0x040061F6 RID: 25078
 			public int num;
 
-			// Token: 0x040061F7 RID: 25079
 			public string prefabName;
 		}
 
-		// Token: 0x020011E1 RID: 4577
 		public class IconAccessoryParam
 		{
-			// Token: 0x040061F8 RID: 25080
 			public Vector3 scale;
 
-			// Token: 0x040061F9 RID: 25081
 			public Vector3 scaleCurrent;
 
-			// Token: 0x040061FA RID: 25082
 			public Vector3 scaleCount;
 
-			// Token: 0x040061FB RID: 25083
 			public int num;
 
-			// Token: 0x040061FC RID: 25084
 			public GameObject prefab;
 		}
 
-		// Token: 0x020011E2 RID: 4578
 		public class SetupParam
 		{
-			// Token: 0x040061FD RID: 25085
 			public int sizeIndex;
 
-			// Token: 0x040061FE RID: 25086
 			public List<AccessoryUtil.SizeChangeBtnGUI.IconAccessoryParam> iconAccessoryParamList;
 
-			// Token: 0x040061FF RID: 25087
 			public ReuseScroll refScrollView;
 
-			// Token: 0x04006200 RID: 25088
 			public AccessoryUtil.SizeChangeBtnGUI.FuncResult funcResult;
 
-			// Token: 0x04006201 RID: 25089
 			public Action<int, GameObject> onStartItem;
 
-			// Token: 0x04006202 RID: 25090
 			public Action<int, GameObject> onUpdateItem;
 
-			// Token: 0x04006203 RID: 25091
 			public UnityAction resetCallback;
 
-			// Token: 0x04006204 RID: 25092
 			public Func<int> dispIconAccessoryCountCallback;
 		}
 
-		// Token: 0x020011E3 RID: 4579
 		public class ResultParam
 		{
-			// Token: 0x04006205 RID: 25093
 			public int sizeIndex;
 		}
 	}

@@ -1,18 +1,13 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGNFW.Touch;
 using UnityEngine;
 
-// Token: 0x0200014E RID: 334
 public class HomeCharaCtrl : MonoBehaviour
 {
-	// Token: 0x17000377 RID: 887
-	// (get) Token: 0x06001295 RID: 4757 RVA: 0x000E0547 File Offset: 0x000DE747
-	// (set) Token: 0x06001296 RID: 4758 RVA: 0x000E054F File Offset: 0x000DE74F
 	public bool isSetup { get; private set; }
 
-	// Token: 0x06001297 RID: 4759 RVA: 0x000E0558 File Offset: 0x000DE758
 	public void Init(GameObject stage, Camera camera, HomeFurnitureCtrl hfc)
 	{
 		this.fieldStage = stage;
@@ -47,7 +42,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		this.isSetup = false;
 	}
 
-	// Token: 0x06001298 RID: 4760 RVA: 0x000E06A4 File Offset: 0x000DE8A4
 	public void Setup(List<HomeFurnitureMapping> hfm, CharaPackData vc, bool night, int sf)
 	{
 		this.isSetup = false;
@@ -202,13 +196,11 @@ public class HomeCharaCtrl : MonoBehaviour
 		this.Update();
 	}
 
-	// Token: 0x06001299 RID: 4761 RVA: 0x000E0C4C File Offset: 0x000DEE4C
 	public void SetNight(bool night)
 	{
 		this.nightTime = night;
 	}
 
-	// Token: 0x0600129A RID: 4762 RVA: 0x000E0C58 File Offset: 0x000DEE58
 	public void TearDown()
 	{
 		this.isSetup = false;
@@ -244,7 +236,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		EffectManager.UnloadEffect(HomeCharaCtrl.strokeEffName, AssetManager.OWNER.HomeChara);
 	}
 
-	// Token: 0x0600129B RID: 4763 RVA: 0x000E0DB0 File Offset: 0x000DEFB0
 	public int OnTap(Vector2 tap, float dist, bool outchk)
 	{
 		Dictionary<int, HomeCharaCtrl.CharaCtrl> dictionary = new Dictionary<int, HomeCharaCtrl.CharaCtrl>();
@@ -280,7 +271,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		return this.touchId;
 	}
 
-	// Token: 0x0600129C RID: 4764 RVA: 0x000E0FD8 File Offset: 0x000DF1D8
 	public bool OnTouchStart(Info info)
 	{
 		if (this.viewChara != null && this.charaList.ContainsKey(this.viewChara.id) && this.viewChara.chara != null && this.viewChara.chara.IsFinishInitialize() && this.strokeEff < 0f && this.viewPos != null && !this.viewPos.name.StartsWith("pos_bed") && !this.viewPos.name.StartsWith("pos_chair") && this.CheckChara(this.viewChara.chara, info.CurrentPosition).z > 0f)
@@ -295,7 +285,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x0600129D RID: 4765 RVA: 0x000E10F1 File Offset: 0x000DF2F1
 	public bool OnTouchEnd(Info info)
 	{
 		this.strokeAmount = -1f;
@@ -303,7 +292,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		return false;
 	}
 
-	// Token: 0x0600129E RID: 4766 RVA: 0x000E110C File Offset: 0x000DF30C
 	public bool OnTouchMove(Info info)
 	{
 		if (this.strokeAmount >= 0f)
@@ -319,7 +307,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		return this.strokeEff >= 0f;
 	}
 
-	// Token: 0x0600129F RID: 4767 RVA: 0x000E1194 File Offset: 0x000DF394
 	public static Vector2 deltaPosition(Vector2 dp)
 	{
 		float num = (float)Screen.width;
@@ -332,7 +319,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		return dp * ((num / 16f < num2 / 9f) ? (1280f / num) : (720f / num2));
 	}
 
-	// Token: 0x060012A0 RID: 4768 RVA: 0x000E11F0 File Offset: 0x000DF3F0
 	private Vector3 CheckChara(CharaModelHandle cmh, Vector2 tap)
 	{
 		Vector3 vector = new Vector3(0f, 0f, -1f);
@@ -395,7 +381,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		return vector;
 	}
 
-	// Token: 0x060012A1 RID: 4769 RVA: 0x000E143C File Offset: 0x000DF63C
 	public int GetCharaStat(int id)
 	{
 		if (this.viewChara == null || this.viewChara.id != id)
@@ -427,13 +412,11 @@ public class HomeCharaCtrl : MonoBehaviour
 		return 3;
 	}
 
-	// Token: 0x060012A2 RID: 4770 RVA: 0x000E1598 File Offset: 0x000DF798
 	private bool IsViewChara(CharaModelHandle cmh)
 	{
 		return this.fieldCamera.WorldToViewportPoint(cmh.transform.position).z > 0.3f;
 	}
 
-	// Token: 0x060012A3 RID: 4771 RVA: 0x000E15BC File Offset: 0x000DF7BC
 	public void SetViewPos(Transform vp)
 	{
 		this.viewPos = vp;
@@ -481,19 +464,16 @@ public class HomeCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060012A4 RID: 4772 RVA: 0x000E1928 File Offset: 0x000DFB28
 	public void SetOpe()
 	{
 		this.noOpeTim = 0f;
 	}
 
-	// Token: 0x060012A5 RID: 4773 RVA: 0x000E1935 File Offset: 0x000DFB35
 	public void CancelContact()
 	{
 		this.contactId = 0;
 	}
 
-	// Token: 0x060012A6 RID: 4774 RVA: 0x000E1940 File Offset: 0x000DFB40
 	private void Update()
 	{
 		if (this.isSetup)
@@ -860,7 +840,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060012A7 RID: 4775 RVA: 0x000E2B14 File Offset: 0x000E0D14
 	private IEnumerator ViewChara(HomeCharaCtrl.CharaCtrl cc)
 	{
 		cc.busy = -1;
@@ -987,7 +966,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060012A8 RID: 4776 RVA: 0x000E2B2C File Offset: 0x000E0D2C
 	private CharaContactStatic GetViewContact(CharaContactStatic.Situation st)
 	{
 		List<CharaContactStatic> list = this.contactList.FindAll((CharaContactStatic itm) => itm.SituationType == st);
@@ -1004,7 +982,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		return charaContactStatic;
 	}
 
-	// Token: 0x060012A9 RID: 4777 RVA: 0x000E2BE3 File Offset: 0x000E0DE3
 	private IEnumerator ViewCharaVoice(HomeCharaCtrl.CharaCtrl cc, VOICE_TYPE vt)
 	{
 		float tim = this.PlayVoice(cc, vt);
@@ -1015,7 +992,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060012AA RID: 4778 RVA: 0x000E2C00 File Offset: 0x000E0E00
 	private IEnumerator ViewCharaSleep(HomeCharaCtrl.CharaCtrl cc)
 	{
 		CharaContactStatic charaContactStatic = this.GetViewContact(CharaContactStatic.Situation.SLEEP_TAP);
@@ -1042,7 +1018,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060012AB RID: 4779 RVA: 0x000E2C16 File Offset: 0x000E0E16
 	private IEnumerator ViewCharaSitdown(HomeCharaCtrl.CharaCtrl cc)
 	{
 		CharaContactStatic charaContactStatic = this.GetViewContact(CharaContactStatic.Situation.SITDOWN_TAP);
@@ -1069,7 +1044,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060012AC RID: 4780 RVA: 0x000E2C2C File Offset: 0x000E0E2C
 	private IEnumerator ViewCharaTouch(HomeCharaCtrl.CharaCtrl cc)
 	{
 		CharaContactStatic charaContactStatic = this.GetViewContact(CharaContactStatic.Situation.STAND_TAP);
@@ -1096,7 +1070,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060012AD RID: 4781 RVA: 0x000E2C42 File Offset: 0x000E0E42
 	private IEnumerator ViewCharaOut(HomeCharaCtrl.CharaCtrl cc)
 	{
 		CharaContactStatic charaContactStatic = this.GetViewContact(CharaContactStatic.Situation.STAND_OUT_TAP);
@@ -1123,7 +1096,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060012AE RID: 4782 RVA: 0x000E2C58 File Offset: 0x000E0E58
 	private IEnumerator ViewCharaStroke(HomeCharaCtrl.CharaCtrl cc)
 	{
 		CharaContactStatic charaContactStatic = this.GetViewContact(CharaContactStatic.Situation.STAND_STROKING);
@@ -1150,7 +1122,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060012AF RID: 4783 RVA: 0x000E2C6E File Offset: 0x000E0E6E
 	private IEnumerator ViewCharaTurn(HomeCharaCtrl.CharaCtrl cc)
 	{
 		CharaContactStatic ccs = this.GetViewContact(CharaContactStatic.Situation.STAND_NEGLECT);
@@ -1270,7 +1241,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060012B0 RID: 4784 RVA: 0x000E2C84 File Offset: 0x000E0E84
 	private IEnumerator StayChara(HomeCharaCtrl.CharaCtrl cc)
 	{
 		cc.busy = -1;
@@ -1466,7 +1436,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060012B1 RID: 4785 RVA: 0x000E2C9A File Offset: 0x000E0E9A
 	private IEnumerator MoveChara(HomeCharaCtrl.CharaCtrl cc)
 	{
 		cc.busy = -1;
@@ -1629,7 +1598,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060012B2 RID: 4786 RVA: 0x000E2CB0 File Offset: 0x000E0EB0
 	private IEnumerator CharaMove(HomeCharaCtrl.CharaCtrl cc, int place)
 	{
 		Vector3 cp;
@@ -1774,7 +1742,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060012B3 RID: 4787 RVA: 0x000E2CD0 File Offset: 0x000E0ED0
 	private void SetAlpha(CharaModelHandle cmh)
 	{
 		if (cmh != null)
@@ -1785,7 +1752,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060012B4 RID: 4788 RVA: 0x000E2D58 File Offset: 0x000E0F58
 	private IEnumerator CharaTouch(HomeCharaCtrl.CharaCtrl cc, bool mov)
 	{
 		float yb = cc.chara.transform.eulerAngles.y;
@@ -1948,7 +1914,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060012B5 RID: 4789 RVA: 0x000E2D75 File Offset: 0x000E0F75
 	private IEnumerator FlyChara(HomeCharaCtrl.CharaCtrl cc)
 	{
 		cc.busy = -1;
@@ -2045,7 +2010,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060012B6 RID: 4790 RVA: 0x000E2D8B File Offset: 0x000E0F8B
 	private IEnumerator FlyCharaTouch(HomeCharaCtrl.CharaCtrl cc)
 	{
 		float yb = cc.chara.transform.eulerAngles.y;
@@ -2135,7 +2099,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060012B7 RID: 4791 RVA: 0x000E2DA4 File Offset: 0x000E0FA4
 	private CharaModelHandle MakeChara(int id, int dress, bool longSkirt, DataManagerCharaAccessory.Accessory accessory)
 	{
 		CharaModelHandle component = new GameObject("Chara" + id.ToString(), new Type[] { typeof(CharaModelHandle) }).GetComponent<CharaModelHandle>();
@@ -2151,7 +2114,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		return component;
 	}
 
-	// Token: 0x060012B8 RID: 4792 RVA: 0x000E2E54 File Offset: 0x000E1054
 	private void SetVoiceSheet(HomeCharaCtrl.CharaCtrl cc)
 	{
 		cc.voiceSheet.Add(new HomeCharaCtrl.CharaCtrl.VoiceSheet
@@ -2185,13 +2147,11 @@ public class HomeCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060012B9 RID: 4793 RVA: 0x000E2F9C File Offset: 0x000E119C
 	private float PlayVoice(HomeCharaCtrl.CharaCtrl cc, VOICE_TYPE vt)
 	{
 		return this.PlayVoice(cc, vt.ToString());
 	}
 
-	// Token: 0x060012BA RID: 4794 RVA: 0x000E2FB4 File Offset: 0x000E11B4
 	private float PlayVoice(HomeCharaCtrl.CharaCtrl cc, string vts)
 	{
 		List<string> list = new List<string>();
@@ -2212,7 +2172,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		return num;
 	}
 
-	// Token: 0x060012BB RID: 4795 RVA: 0x000E304C File Offset: 0x000E124C
 	private void DestChara(HomeCharaCtrl.CharaCtrl cc)
 	{
 		foreach (HomeCharaCtrl.CharaCtrl.VoiceSheet voiceSheet in cc.voiceSheet)
@@ -2229,7 +2188,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		cc.chara = null;
 	}
 
-	// Token: 0x060012BC RID: 4796 RVA: 0x000E30E0 File Offset: 0x000E12E0
 	private float GetPlacePos(int place, out Vector3 cp, out Vector3 tp)
 	{
 		tp = (cp = this.fieldStage.transform.position);
@@ -2291,7 +2249,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		return num;
 	}
 
-	// Token: 0x060012BD RID: 4797 RVA: 0x000E3388 File Offset: 0x000E1588
 	private int ChangePlace(int place, List<int> plc)
 	{
 		HomeFurnitureStatic.Category category = (this.categoryData.ContainsKey(place) ? this.categoryData[place] : HomeFurnitureStatic.Category.INVALID);
@@ -2311,7 +2268,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		return list2[Random.Range(0, list2.Count)];
 	}
 
-	// Token: 0x060012BE RID: 4798 RVA: 0x000E3460 File Offset: 0x000E1660
 	private void CheckDressUp(HomeCharaCtrl.CharaCtrl cc)
 	{
 		if (cc.dressup == null)
@@ -2336,7 +2292,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x060012BF RID: 4799 RVA: 0x000E354F File Offset: 0x000E174F
 	private IEnumerator DressUp(HomeCharaCtrl.CharaCtrl cc)
 	{
 		CharaModelHandle cmh = this.MakeChara(cc.id, cc.dress, cc.longSkirt, cc.accessory);
@@ -2361,7 +2316,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x060012C0 RID: 4800 RVA: 0x000E3568 File Offset: 0x000E1768
 	public void ReplayAnimation()
 	{
 		foreach (HomeCharaCtrl.CharaCtrl charaCtrl in this.moveChara)
@@ -2378,112 +2332,76 @@ public class HomeCharaCtrl : MonoBehaviour
 		}
 	}
 
-	// Token: 0x04000F42 RID: 3906
 	private GameObject fieldStage;
 
-	// Token: 0x04000F43 RID: 3907
 	private Camera fieldCamera;
 
-	// Token: 0x04000F44 RID: 3908
 	private List<HomeFurnitureMapping> furnitureMap;
 
-	// Token: 0x04000F45 RID: 3909
 	private Dictionary<int, CharaPackData> charaList;
 
-	// Token: 0x04000F46 RID: 3910
 	private List<CharaContactStatic> contactList;
 
-	// Token: 0x04000F47 RID: 3911
 	private List<HomeCharaCtrl.CharaCtrl> stayChara;
 
-	// Token: 0x04000F48 RID: 3912
 	private List<HomeCharaCtrl.CharaCtrl> moveChara;
 
-	// Token: 0x04000F49 RID: 3913
 	private HomeCharaCtrl.CharaCtrl viewChara;
 
-	// Token: 0x04000F4A RID: 3914
 	private Dictionary<CharaContactStatic.Situation, int> viewContact;
 
-	// Token: 0x04000F4B RID: 3915
 	private Transform viewPos;
 
-	// Token: 0x04000F4C RID: 3916
 	private bool viewChg;
 
-	// Token: 0x04000F4D RID: 3917
 	private float moveInterval;
 
-	// Token: 0x04000F4E RID: 3918
 	private int stayFriends;
 
-	// Token: 0x04000F4F RID: 3919
 	private float stayTime;
 
-	// Token: 0x04000F50 RID: 3920
 	private HomeFurnitureCtrl furnitureCtrl;
 
-	// Token: 0x04000F51 RID: 3921
 	private List<Transform> stayData;
 
-	// Token: 0x04000F52 RID: 3922
 	private List<Transform> doubleData;
 
-	// Token: 0x04000F53 RID: 3923
 	private List<List<Transform>> flyData;
 
-	// Token: 0x04000F54 RID: 3924
 	private Dictionary<int, List<Transform>> rootData;
 
-	// Token: 0x04000F55 RID: 3925
 	private Dictionary<int, HomeFurnitureStatic.Category> categoryData;
 
-	// Token: 0x04000F56 RID: 3926
 	private Transform posBed;
 
-	// Token: 0x04000F57 RID: 3927
 	private Transform posChr;
 
-	// Token: 0x04000F58 RID: 3928
 	private int touchId;
 
-	// Token: 0x04000F59 RID: 3929
 	private bool touchOut;
 
-	// Token: 0x04000F5A RID: 3930
 	private float noOpeTim;
 
-	// Token: 0x04000F5B RID: 3931
 	private float strokeAmount;
 
-	// Token: 0x04000F5C RID: 3932
 	private float strokeEff;
 
-	// Token: 0x04000F5D RID: 3933
 	private Vector2 strokePos;
 
-	// Token: 0x04000F5E RID: 3934
 	private bool strokeOk;
 
-	// Token: 0x04000F5F RID: 3935
 	private int contactId;
 
-	// Token: 0x04000F60 RID: 3936
 	private bool nightTime;
 
-	// Token: 0x04000F61 RID: 3937
 	private static readonly string charaLayer = "FieldPlayer";
 
-	// Token: 0x04000F62 RID: 3938
 	private static readonly string charaShadowLayer = "FieldPlayerShadow";
 
-	// Token: 0x04000F63 RID: 3939
 	private static readonly string[] emotionIcon = new string[] { "Ef_info_home_happy", "Ef_info_home_supprise", "Ef_info_home_question", "Ef_info_home_inspiration" };
 
-	// Token: 0x04000F64 RID: 3940
 	private bool isIcon;
 
-	// Token: 0x04000F65 RID: 3941
 	private static readonly CharaMotionDefine.ActKey[] emotionAct = new CharaMotionDefine.ActKey[]
 	{
 		CharaMotionDefine.ActKey.JOY,
@@ -2492,10 +2410,8 @@ public class HomeCharaCtrl : MonoBehaviour
 		CharaMotionDefine.ActKey.POSITIVE
 	};
 
-	// Token: 0x04000F66 RID: 3942
 	private static readonly string strokeEffName = "Ef_info_home_stroke";
 
-	// Token: 0x04000F68 RID: 3944
 	private static readonly List<VOICE_TYPE> ViewTouchSlp = new List<VOICE_TYPE>
 	{
 		VOICE_TYPE.SLP01,
@@ -2503,7 +2419,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		VOICE_TYPE.SLP03
 	};
 
-	// Token: 0x04000F69 RID: 3945
 	private static readonly List<VOICE_TYPE> ViewTouchsit = new List<VOICE_TYPE>
 	{
 		VOICE_TYPE.HOM02,
@@ -2511,7 +2426,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		VOICE_TYPE.HOM04
 	};
 
-	// Token: 0x04000F6A RID: 3946
 	private static readonly List<CharaMotionDefine.ActKey> ViewTouchMot = new List<CharaMotionDefine.ActKey>
 	{
 		CharaMotionDefine.ActKey.POSITIVE,
@@ -2519,7 +2433,6 @@ public class HomeCharaCtrl : MonoBehaviour
 		CharaMotionDefine.ActKey.SURPRISE
 	};
 
-	// Token: 0x04000F6B RID: 3947
 	private static readonly Dictionary<HomeFurnitureStatic.Category, List<HomeFurnitureStatic.Category>> ChangeCategory = new Dictionary<HomeFurnitureStatic.Category, List<HomeFurnitureStatic.Category>>
 	{
 		{
@@ -2604,64 +2517,44 @@ public class HomeCharaCtrl : MonoBehaviour
 		}
 	};
 
-	// Token: 0x02000AF1 RID: 2801
 	private class CharaCtrl
 	{
-		// Token: 0x0400454C RID: 17740
 		public int id;
 
-		// Token: 0x0400454D RID: 17741
 		public int typ;
 
-		// Token: 0x0400454E RID: 17742
 		public CharaModelHandle chara;
 
-		// Token: 0x0400454F RID: 17743
 		public int place;
 
-		// Token: 0x04004550 RID: 17744
 		public int root;
 
-		// Token: 0x04004551 RID: 17745
 		public IEnumerator ctrl;
 
-		// Token: 0x04004552 RID: 17746
 		public int busy;
 
-		// Token: 0x04004553 RID: 17747
 		public int dress;
 
-		// Token: 0x04004554 RID: 17748
 		public bool longSkirt;
 
-		// Token: 0x04004555 RID: 17749
 		public DataManagerCharaAccessory.Accessory accessory;
 
-		// Token: 0x04004556 RID: 17750
 		public IEnumerator dressup;
 
-		// Token: 0x04004557 RID: 17751
 		public bool slp;
 
-		// Token: 0x04004558 RID: 17752
 		public bool sit;
 
-		// Token: 0x04004559 RID: 17753
 		public float colli;
 
-		// Token: 0x0400455A RID: 17754
 		public bool direct;
 
-		// Token: 0x0400455B RID: 17755
 		public List<HomeCharaCtrl.CharaCtrl.VoiceSheet> voiceSheet;
 
-		// Token: 0x02001175 RID: 4469
 		public class VoiceSheet
 		{
-			// Token: 0x04005FD7 RID: 24535
 			public string sheet;
 
-			// Token: 0x04005FD8 RID: 24536
 			public IEnumerator loader;
 		}
 	}

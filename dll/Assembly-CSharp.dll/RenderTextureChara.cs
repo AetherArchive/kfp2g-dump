@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +12,8 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-// Token: 0x020001B5 RID: 437
 public class RenderTextureChara : MonoBehaviour
 {
-	// Token: 0x06001D7D RID: 7549 RVA: 0x0016E6E4 File Offset: 0x0016C8E4
 	public static CharaMotionDefine.ActKey StrBodyMotionId2CharaModionDefineActKey(string bodyMotionId)
 	{
 		Type typeFromHandle = typeof(CharaMotionDefine.ActKey);
@@ -26,7 +24,6 @@ public class RenderTextureChara : MonoBehaviour
 		return (CharaMotionDefine.ActKey)Enum.Parse(typeFromHandle, bodyMotionId, true);
 	}
 
-	// Token: 0x06001D7E RID: 7550 RVA: 0x0016E714 File Offset: 0x0016C914
 	public void SetupInterruptMotion(RenderTextureChara.InterruptMotion im, bool enableOverwrite = true)
 	{
 		if (this.interruptMotionList == null)
@@ -48,8 +45,6 @@ public class RenderTextureChara : MonoBehaviour
 		this.interruptMotionList.Add(im);
 	}
 
-	// Token: 0x17000409 RID: 1033
-	// (get) Token: 0x06001D7F RID: 7551 RVA: 0x0016E77C File Offset: 0x0016C97C
 	public int DispCharaId
 	{
 		get
@@ -58,8 +53,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x1700040A RID: 1034
-	// (get) Token: 0x06001D80 RID: 7552 RVA: 0x0016E784 File Offset: 0x0016C984
 	public int DispClothImageId
 	{
 		get
@@ -68,25 +61,16 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x1700040B RID: 1035
-	// (get) Token: 0x06001D81 RID: 7553 RVA: 0x0016E78C File Offset: 0x0016C98C
-	// (set) Token: 0x06001D82 RID: 7554 RVA: 0x0016E794 File Offset: 0x0016C994
 	public int TapCount { get; private set; }
 
-	// Token: 0x06001D83 RID: 7555 RVA: 0x0016E79D File Offset: 0x0016C99D
 	public Vector3 GetCharaScale()
 	{
 		return this.charaMH.GetCharaScale();
 	}
 
-	// Token: 0x1700040C RID: 1036
-	// (get) Token: 0x06001D84 RID: 7556 RVA: 0x0016E7AA File Offset: 0x0016C9AA
-	// (set) Token: 0x06001D85 RID: 7557 RVA: 0x0016E7B2 File Offset: 0x0016C9B2
 	[HideInInspector]
 	public bool FinishedSetup { get; private set; }
 
-	// Token: 0x1700040D RID: 1037
-	// (get) Token: 0x06001D86 RID: 7558 RVA: 0x0016E7BB File Offset: 0x0016C9BB
 	protected Material renderCharaMaterial
 	{
 		get
@@ -100,8 +84,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x1700040E RID: 1038
-	// (get) Token: 0x06001D87 RID: 7559 RVA: 0x0016E7F0 File Offset: 0x0016C9F0
 	private Camera dispCamera
 	{
 		get
@@ -123,8 +105,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x1700040F RID: 1039
-	// (get) Token: 0x06001D88 RID: 7560 RVA: 0x0016E858 File Offset: 0x0016CA58
 	private Camera dispCameraDirect
 	{
 		get
@@ -146,8 +126,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000410 RID: 1040
-	// (get) Token: 0x06001D89 RID: 7561 RVA: 0x0016E8C0 File Offset: 0x0016CAC0
 	private GameObject dispChara
 	{
 		get
@@ -169,8 +147,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000411 RID: 1041
-	// (get) Token: 0x06001D8A RID: 7562 RVA: 0x0016E928 File Offset: 0x0016CB28
 	private RawImage dispTexture
 	{
 		get
@@ -187,8 +163,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000412 RID: 1042
-	// (get) Token: 0x06001D8B RID: 7563 RVA: 0x0016E970 File Offset: 0x0016CB70
 	private RenderTexture renderTexture
 	{
 		get
@@ -207,8 +181,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000413 RID: 1043
-	// (get) Token: 0x06001D8C RID: 7564 RVA: 0x0016E9F4 File Offset: 0x0016CBF4
 	private GameObject dispLight
 	{
 		get
@@ -230,8 +202,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000414 RID: 1044
-	// (get) Token: 0x06001D8D RID: 7565 RVA: 0x0016EAEC File Offset: 0x0016CCEC
 	private GameObject dispLight2
 	{
 		get
@@ -253,8 +223,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000415 RID: 1045
-	// (get) Token: 0x06001D8E RID: 7566 RVA: 0x0016EBAD File Offset: 0x0016CDAD
 	private Transform renderTextureBase
 	{
 		get
@@ -267,8 +235,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000416 RID: 1046
-	// (get) Token: 0x06001D8F RID: 7567 RVA: 0x0016EBD8 File Offset: 0x0016CDD8
 	private Canvas tmpBgCanvas
 	{
 		get
@@ -286,8 +252,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x17000417 RID: 1047
-	// (get) Token: 0x06001D90 RID: 7568 RVA: 0x0016EC68 File Offset: 0x0016CE68
 	private Texture2D transparentTex
 	{
 		get
@@ -302,7 +266,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001D91 RID: 7569 RVA: 0x0016ECC4 File Offset: 0x0016CEC4
 	public void SetupRenderTexture(int w, int h)
 	{
 		this.dispTexture.material = this.renderCharaMaterial;
@@ -321,13 +284,11 @@ public class RenderTextureChara : MonoBehaviour
 		this.dispTexture.SetNativeSize();
 	}
 
-	// Token: 0x06001D92 RID: 7570 RVA: 0x0016ED60 File Offset: 0x0016CF60
 	private void Awake()
 	{
 		this.isAwake = true;
 	}
 
-	// Token: 0x06001D93 RID: 7571 RVA: 0x0016ED6C File Offset: 0x0016CF6C
 	private void Start()
 	{
 		this.canvasCamera = base.GetComponentInParent<Canvas>().worldCamera;
@@ -341,7 +302,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001D94 RID: 7572 RVA: 0x0016EDEC File Offset: 0x0016CFEC
 	private void Update()
 	{
 		if (this.interruptMotionList != null && this.interruptMotionList.Count > 0 && this.interruptMotionCtrl == null)
@@ -608,7 +568,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001D95 RID: 7573 RVA: 0x0016F8F8 File Offset: 0x0016DAF8
 	private void OnEnable()
 	{
 		this.dispCamera.gameObject.SetActive(true);
@@ -639,7 +598,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001D96 RID: 7574 RVA: 0x0016FA18 File Offset: 0x0016DC18
 	private void OnDisable()
 	{
 		if (this.m_dispCamera != null)
@@ -675,7 +633,6 @@ public class RenderTextureChara : MonoBehaviour
 		this.DisableTmpBgCanvas(false);
 	}
 
-	// Token: 0x06001D97 RID: 7575 RVA: 0x0016FB34 File Offset: 0x0016DD34
 	private void OnDestroy()
 	{
 		this.ResetTmpBgObjects();
@@ -724,7 +681,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001D98 RID: 7576 RVA: 0x0016FC84 File Offset: 0x0016DE84
 	private IEnumerator SetupInternal(bool updateModel, bool updateMotion, bool updateFace, bool loop, bool enableTouch, FacePackData fpd, float startMotion, UnityAction setupAfterCb, bool forceSetupCollision, bool isDisableVoice)
 	{
 		if (this.charaId == 0)
@@ -863,7 +819,6 @@ public class RenderTextureChara : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001D99 RID: 7577 RVA: 0x0016FCEC File Offset: 0x0016DEEC
 	private void UpdateCharaPosition(bool useDirectCamera)
 	{
 		if (this.isFirstUpdateCharaPosition)
@@ -908,7 +863,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001D9A RID: 7578 RVA: 0x0016FFA0 File Offset: 0x0016E1A0
 	private void CalcDirectCameraFov()
 	{
 		this.canvasSize = base.transform.root.GetComponent<RectTransform>().sizeDelta;
@@ -956,7 +910,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001D9B RID: 7579 RVA: 0x00170278 File Offset: 0x0016E478
 	private IEnumerator LeaveAloneReactionInternal(RenderTextureChara.CharaActType firstAction)
 	{
 		string cueName = RenderTextureChara.CharaId2CueName(this.charaId);
@@ -996,7 +949,6 @@ public class RenderTextureChara : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001D9C RID: 7580 RVA: 0x0017028E File Offset: 0x0016E48E
 	private IEnumerator InterruptMotionCtrl()
 	{
 		this.nextStepinterruptMotion = false;
@@ -1014,7 +966,6 @@ public class RenderTextureChara : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001D9D RID: 7581 RVA: 0x001702A0 File Offset: 0x0016E4A0
 	private void SetupCollision()
 	{
 		if (DataManager.DmChara != null)
@@ -1066,7 +1017,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001D9E RID: 7582 RVA: 0x0017051C File Offset: 0x0016E71C
 	private void SetupLeaveAloneReaction(RenderTextureChara.CharaActType firstAction)
 	{
 		SGNFW.Touch.Manager.UnRegisterTap(new SGNFW.Touch.Manager.SingleAction(this.OnTouchTap));
@@ -1076,7 +1026,6 @@ public class RenderTextureChara : MonoBehaviour
 		this.isTouchedFace = (this.isTouchedBody = false);
 	}
 
-	// Token: 0x06001D9F RID: 7583 RVA: 0x0017057C File Offset: 0x0016E77C
 	public void SetupEnableTouch(int charaId, int layer, bool isShop = false, int equipClothImageId = 0, bool equipLongSkirt = false)
 	{
 		this.currentActKeyList = new List<CharaMotionDefine.ActKey>(isShop ? RenderTextureChara.ActKeyListShop : RenderTextureChara.ActKeyListDefault);
@@ -1084,13 +1033,11 @@ public class RenderTextureChara : MonoBehaviour
 		this.Setup(charaId, layer, CharaMotionDefine.ActKey.INVALID, equipClothImageId, equipLongSkirt, true, null, true, null, 0f, null, false, false, false);
 	}
 
-	// Token: 0x06001DA0 RID: 7584 RVA: 0x001705D8 File Offset: 0x0016E7D8
 	public void SetupFace(int charaId, int layer, CharaMotionDefine.ActKey actKey = CharaMotionDefine.ActKey.INVALID, FacePackData fpd = null, int equipClothImageId = 0, bool equipLongSkirt = false, bool loop = true, RenderTextureChara.FinishCallback cb = null, bool enableTouch = false)
 	{
 		this.Setup(charaId, layer, actKey, equipClothImageId, equipLongSkirt, loop, cb, enableTouch, fpd, 0f, null, false, false, false);
 	}
 
-	// Token: 0x06001DA1 RID: 7585 RVA: 0x00170604 File Offset: 0x0016E804
 	public void Setup(CharaPackData cpd, int layer, CharaMotionDefine.ActKey actKey = CharaMotionDefine.ActKey.INVALID, bool loop = true, RenderTextureChara.FinishCallback cb = null, bool enableTouch = false, FacePackData fpd = null, float startMotion = 0f, UnityAction setupAfterCb = null, bool isDisableVoice = false)
 	{
 		int num = 0;
@@ -1103,7 +1050,6 @@ public class RenderTextureChara : MonoBehaviour
 		this.Setup(cpd.id, layer, actKey, num, flag, loop, cb, enableTouch, fpd, startMotion, setupAfterCb, isDisableVoice, false, false);
 	}
 
-	// Token: 0x06001DA2 RID: 7586 RVA: 0x00170664 File Offset: 0x0016E864
 	public void Setup(int _charaId, int layer, CharaMotionDefine.ActKey actKey = CharaMotionDefine.ActKey.INVALID, int equipClothImageId = 0, bool equipLongSkirt = false, bool loop = true, RenderTextureChara.FinishCallback cb = null, bool enableTouch = false, FacePackData fpd = null, float startMotion = 0f, UnityAction setupAfterCb = null, bool forceUpdate = false, bool forceSetupCollision = false, bool isDisableVoice = false)
 	{
 		this.dispChara.layer = this.dispLight.layer + layer;
@@ -1174,7 +1120,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001DA3 RID: 7587 RVA: 0x0017097C File Offset: 0x0016EB7C
 	public void SetAnimation(CharaMotionDefine.ActKey key, bool loop = true)
 	{
 		if (this.isSetupInternal)
@@ -1189,7 +1134,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001DA4 RID: 7588 RVA: 0x001709EA File Offset: 0x0016EBEA
 	public void SetAnimation(CharaMotionDefine.ActKey key, bool loop, RenderTextureChara.FinishCallback cb = null)
 	{
 		this.SetAnimation(key, loop);
@@ -1199,7 +1143,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001DA5 RID: 7589 RVA: 0x00170A03 File Offset: 0x0016EC03
 	public void SetAnimation(CharaMotionDefine.ActKey key, bool loop, float startTime, RenderTextureChara.FinishCallback cb = null)
 	{
 		if (this.isSetupInternal)
@@ -1213,7 +1156,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001DA6 RID: 7590 RVA: 0x00170A43 File Offset: 0x0016EC43
 	public void SetAnimation(string key, bool loop, float startTime, RenderTextureChara.FinishCallback cb = null)
 	{
 		if (this.isSetupInternal)
@@ -1226,7 +1168,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001DA7 RID: 7591 RVA: 0x00170A70 File Offset: 0x0016EC70
 	public void StopAnimation()
 	{
 		if (this.isSetupInternal)
@@ -1235,7 +1176,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001DA8 RID: 7592 RVA: 0x00170A8A File Offset: 0x0016EC8A
 	public void RestartAnimation()
 	{
 		if (this.isSetupInternal)
@@ -1244,13 +1184,11 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001DA9 RID: 7593 RVA: 0x00170AA4 File Offset: 0x0016ECA4
 	public bool IsCurrentAnimation(CharaMotionDefine.ActKey key)
 	{
 		return this.isSetupInternal && this.charaMH.IsCurrentAnimation(key);
 	}
 
-	// Token: 0x06001DAA RID: 7594 RVA: 0x00170ABC File Offset: 0x0016ECBC
 	public float AnimationLength()
 	{
 		if (!this.isSetupInternal)
@@ -1260,7 +1198,6 @@ public class RenderTextureChara : MonoBehaviour
 		return this.charaMH.GetAnimationLength(this.charaMH.GetCurrentAnimation().ToString());
 	}
 
-	// Token: 0x06001DAB RID: 7595 RVA: 0x00170AFC File Offset: 0x0016ECFC
 	public float AnimationTime()
 	{
 		if (!this.isSetupInternal)
@@ -1270,7 +1207,6 @@ public class RenderTextureChara : MonoBehaviour
 		return this.charaMH.GetAnimationTime(this.charaMH.GetCurrentAnimation().ToString());
 	}
 
-	// Token: 0x06001DAC RID: 7596 RVA: 0x00170B3B File Offset: 0x0016ED3B
 	public Vector3 GetNodePos(string node)
 	{
 		if (!this.isSetupInternal)
@@ -1280,7 +1216,6 @@ public class RenderTextureChara : MonoBehaviour
 		return this.charaMH.GetNodePos(node) - this.charaMH.transform.position;
 	}
 
-	// Token: 0x06001DAD RID: 7597 RVA: 0x00170B6C File Offset: 0x0016ED6C
 	public void PlayVoice(VOICE_TYPE vt)
 	{
 		if (this.isSetupInternal)
@@ -1289,7 +1224,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001DAE RID: 7598 RVA: 0x00170B88 File Offset: 0x0016ED88
 	public void StopVoice()
 	{
 		if (this.isSetupInternal)
@@ -1298,7 +1232,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001DAF RID: 7599 RVA: 0x00170BA2 File Offset: 0x0016EDA2
 	public void SetFacePack(FacePackData packData)
 	{
 		if (this.isSetupInternal && packData != null)
@@ -1308,20 +1241,17 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001DB0 RID: 7600 RVA: 0x00170BCF File Offset: 0x0016EDCF
 	public void SetCameraPosition(Vector3 pos)
 	{
 		this.dispCamera.transform.localPosition = pos;
 		this.dispCameraDirect.transform.localPosition = pos;
 	}
 
-	// Token: 0x06001DB1 RID: 7601 RVA: 0x00170BF3 File Offset: 0x0016EDF3
 	public Transform GetChara()
 	{
 		return this.dispChara.transform;
 	}
 
-	// Token: 0x06001DB2 RID: 7602 RVA: 0x00170C00 File Offset: 0x0016EE00
 	public void DispLuckyEyeEffect(bool isDisp, int colorIndex)
 	{
 		if (isDisp && this.dispLuckyEyeEffect == null)
@@ -1334,7 +1264,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001DB3 RID: 7603 RVA: 0x00170C34 File Offset: 0x0016EE34
 	private IEnumerator DispLuckyEyeEffectInternal(int colorIndex)
 	{
 		if (this.luckyEyeEffect != null)
@@ -1378,7 +1307,6 @@ public class RenderTextureChara : MonoBehaviour
 		yield break;
 	}
 
-	// Token: 0x06001DB4 RID: 7604 RVA: 0x00170C4C File Offset: 0x0016EE4C
 	public void AddOnTouchCharaModelListener(UnityAction touchedFaceCb, UnityAction touchedBodyCb)
 	{
 		SGNFW.Touch.Manager.UnRegisterTap(new SGNFW.Touch.Manager.SingleAction(this.OnTouchTap));
@@ -1389,7 +1317,6 @@ public class RenderTextureChara : MonoBehaviour
 		this.enableTuouchCharaModel = true;
 	}
 
-	// Token: 0x06001DB5 RID: 7605 RVA: 0x00170CA0 File Offset: 0x0016EEA0
 	public void OnValidate()
 	{
 		if (this.charaMH != null && this.charaMH.IsFinishInitialize())
@@ -1405,7 +1332,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001DB6 RID: 7606 RVA: 0x00170D14 File Offset: 0x0016EF14
 	private void OnTouchTap(Info info)
 	{
 		this.dispTexture.raycastTarget = true;
@@ -1454,19 +1380,16 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001DB7 RID: 7607 RVA: 0x00170F60 File Offset: 0x0016F160
 	public static string CharaId2CueName(int charaId)
 	{
 		return "cv_" + charaId.ToString("0000");
 	}
 
-	// Token: 0x06001DB8 RID: 7608 RVA: 0x00170F78 File Offset: 0x0016F178
 	public GameObject GetCloneCharaMovieObject()
 	{
 		return this.charaMovieObject;
 	}
 
-	// Token: 0x06001DB9 RID: 7609 RVA: 0x00170F80 File Offset: 0x0016F180
 	private void SetupTmpBgCanvas()
 	{
 		this.beforeAlpha = this.IsAlpha();
@@ -1479,7 +1402,6 @@ public class RenderTextureChara : MonoBehaviour
 		this.tmpBgCanvas.worldCamera.depth = this.dispCameraDirect.depth - 1f;
 	}
 
-	// Token: 0x06001DBA RID: 7610 RVA: 0x00170FE8 File Offset: 0x0016F1E8
 	private void GetParentInfo()
 	{
 		if (this.parentMask != null && this.parentAlpha != null)
@@ -1507,7 +1429,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001DBB RID: 7611 RVA: 0x001710DC File Offset: 0x0016F2DC
 	private void CloneBgObjects()
 	{
 		Vector3[] array = new Vector3[4];
@@ -1555,7 +1476,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001DBC RID: 7612 RVA: 0x0017122C File Offset: 0x0016F42C
 	private void CloneBgObjectsSub(Transform parent, int myselfIdx, Vector3[] targetRectScPos)
 	{
 		foreach (Transform transform in from Transform t in parent
@@ -1802,7 +1722,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001DBD RID: 7613 RVA: 0x00171B88 File Offset: 0x0016FD88
 	private void SetTransparentGraphic(MaskableGraphic originMg, MaskableGraphic cloneMg, List<MaskableGraphic> originTransparentList)
 	{
 		if (cloneMg.GetComponentInParent<ReuseScroll>() != null)
@@ -1862,7 +1781,6 @@ public class RenderTextureChara : MonoBehaviour
 		this.SyncRectSize(originMg, cloneMg);
 	}
 
-	// Token: 0x06001DBE RID: 7614 RVA: 0x00171D20 File Offset: 0x0016FF20
 	private void SyncRectSize(MaskableGraphic originMg, MaskableGraphic cloneMg)
 	{
 		RectTransform component = originMg.GetComponent<RectTransform>();
@@ -1884,7 +1802,6 @@ public class RenderTextureChara : MonoBehaviour
 		component2.sizeDelta = sizeDelta;
 	}
 
-	// Token: 0x06001DBF RID: 7615 RVA: 0x00171E50 File Offset: 0x00170050
 	private void RestoreTransparentGraphic(MaskableGraphic originMg, MaskableGraphic cloneMg)
 	{
 		if (originMg == null || cloneMg == null)
@@ -1904,7 +1821,6 @@ public class RenderTextureChara : MonoBehaviour
 		originMg.color = cloneMg.color;
 	}
 
-	// Token: 0x06001DC0 RID: 7616 RVA: 0x00171EC4 File Offset: 0x001700C4
 	private bool HasBgObjectsRecursively(Transform parent, Vector3[] targetRectScPos)
 	{
 		bool flag = false;
@@ -1930,7 +1846,6 @@ public class RenderTextureChara : MonoBehaviour
 		return flag;
 	}
 
-	// Token: 0x06001DC1 RID: 7617 RVA: 0x00171F90 File Offset: 0x00170190
 	private bool IsIntersect(RectTransform rect, Vector3[] targetRectScPos)
 	{
 		if (rect == null)
@@ -2020,7 +1935,6 @@ public class RenderTextureChara : MonoBehaviour
 		return flag && flag2;
 	}
 
-	// Token: 0x06001DC2 RID: 7618 RVA: 0x001722DC File Offset: 0x001704DC
 	private void DisableTmpBgCanvas(bool isCanvasDestroy)
 	{
 		if (this.m_tmpBgCanvas != null)
@@ -2049,7 +1963,6 @@ public class RenderTextureChara : MonoBehaviour
 		}
 	}
 
-	// Token: 0x06001DC3 RID: 7619 RVA: 0x00172390 File Offset: 0x00170590
 	private void ResetTmpBgObjects()
 	{
 		if (this.originCloneScrolls != null)
@@ -2114,7 +2027,6 @@ public class RenderTextureChara : MonoBehaviour
 		this.originCloneAELayerConsts = null;
 	}
 
-	// Token: 0x06001DC4 RID: 7620 RVA: 0x0017263C File Offset: 0x0017083C
 	public bool IsBloom()
 	{
 		if (this.m_dispChara == null)
@@ -2125,19 +2037,16 @@ public class RenderTextureChara : MonoBehaviour
 		return charaEffect != null && charaEffect.Count > 0 && charaEffect[0] != null;
 	}
 
-	// Token: 0x06001DC5 RID: 7621 RVA: 0x00172682 File Offset: 0x00170882
 	private bool IsAlpha()
 	{
 		return this.parentAlpha != null && this.parentAlpha.alpha < 1f;
 	}
 
-	// Token: 0x06001DC6 RID: 7622 RVA: 0x001726A8 File Offset: 0x001708A8
 	private bool IsMaskInvisible()
 	{
 		return this.parentMask != null && (this.parentMask.GetComponent<RectTransform>().rect.width == 0f || this.parentMask.GetComponent<RectTransform>().rect.height == 0f);
 	}
 
-	// Token: 0x06001DC7 RID: 7623 RVA: 0x00172708 File Offset: 0x00170908
 	private string GetRelativePath(Transform target, Transform parent)
 	{
 		string text = "";
@@ -2154,11 +2063,9 @@ public class RenderTextureChara : MonoBehaviour
 		return text;
 	}
 
-	// Token: 0x040015AB RID: 5547
 	[HideInInspector]
 	public Shader renderCharaShader;
 
-	// Token: 0x040015AC RID: 5548
 	private static readonly List<CharaMotionDefine.ActKey> ActKeyListDefault = new List<CharaMotionDefine.ActKey>
 	{
 		CharaMotionDefine.ActKey.INVALID,
@@ -2172,7 +2079,6 @@ public class RenderTextureChara : MonoBehaviour
 		CharaMotionDefine.ActKey.S_WAKEUP
 	};
 
-	// Token: 0x040015AD RID: 5549
 	private static readonly List<VOICE_TYPE> VoiceTypeListDefault = new List<VOICE_TYPE>
 	{
 		VOICE_TYPE.NONE,
@@ -2186,7 +2092,6 @@ public class RenderTextureChara : MonoBehaviour
 		VOICE_TYPE.SWA01
 	};
 
-	// Token: 0x040015AE RID: 5550
 	private static readonly List<CharaMotionDefine.ActKey> ActKeyListShop = new List<CharaMotionDefine.ActKey>
 	{
 		CharaMotionDefine.ActKey.INVALID,
@@ -2200,7 +2105,6 @@ public class RenderTextureChara : MonoBehaviour
 		CharaMotionDefine.ActKey.S_WAKEUP
 	};
 
-	// Token: 0x040015AF RID: 5551
 	private static readonly List<VOICE_TYPE> VoiceTypeListShop = new List<VOICE_TYPE>
 	{
 		VOICE_TYPE.NONE,
@@ -2214,238 +2118,157 @@ public class RenderTextureChara : MonoBehaviour
 		VOICE_TYPE.SWA01
 	};
 
-	// Token: 0x040015B0 RID: 5552
 	private List<RenderTextureChara.InterruptMotion> interruptMotionList = new List<RenderTextureChara.InterruptMotion>();
 
-	// Token: 0x040015B1 RID: 5553
 	private int charaId;
 
-	// Token: 0x040015B2 RID: 5554
 	private int clothImageId;
 
-	// Token: 0x040015B3 RID: 5555
 	private bool longSkirt;
 
-	// Token: 0x040015B4 RID: 5556
 	private string facePackDataId = "";
 
-	// Token: 0x040015B6 RID: 5558
 	public Vector2 postion;
 
-	// Token: 0x040015B7 RID: 5559
 	public Vector3 rotation;
 
-	// Token: 0x040015B8 RID: 5560
 	public float fieldOfView = 20f;
 
-	// Token: 0x040015B9 RID: 5561
 	public SafeAreaScaler safeAreaScaler;
 
-	// Token: 0x040015BA RID: 5562
 	private CharaModelHandle charaMH;
 
-	// Token: 0x040015BC RID: 5564
 	private bool isSetupInternal;
 
-	// Token: 0x040015BD RID: 5565
 	private bool isUpdateModel;
 
-	// Token: 0x040015BE RID: 5566
 	private CharaMotionDefine.ActKey currentMotion;
 
-	// Token: 0x040015BF RID: 5567
 	private CharaMotionDefine.ActKey resetMotion;
 
-	// Token: 0x040015C0 RID: 5568
 	private List<CharaMotionDefine.ActKey> currentActKeyList = new List<CharaMotionDefine.ActKey>(RenderTextureChara.ActKeyListDefault);
 
-	// Token: 0x040015C1 RID: 5569
 	private List<VOICE_TYPE> currentVoiceList = new List<VOICE_TYPE>(RenderTextureChara.VoiceTypeListDefault);
 
-	// Token: 0x040015C2 RID: 5570
 	private RenderTextureChara.FinishCallback currentFinishCallback;
 
-	// Token: 0x040015C3 RID: 5571
 	private bool currentLoop;
 
-	// Token: 0x040015C4 RID: 5572
 	private IEnumerator setupInternal;
 
-	// Token: 0x040015C5 RID: 5573
 	private Coroutine leaveAloneReactionInternal;
 
-	// Token: 0x040015C6 RID: 5574
 	private IEnumerator interruptMotionCtrl;
 
-	// Token: 0x040015C7 RID: 5575
 	private bool isSleep;
 
-	// Token: 0x040015C8 RID: 5576
 	private bool isTouchedFace;
 
-	// Token: 0x040015C9 RID: 5577
 	private bool isTouchedBody;
 
-	// Token: 0x040015CA RID: 5578
 	private bool enableTuouchCharaModel;
 
-	// Token: 0x040015CB RID: 5579
 	private UnityAction TouchedFaceCb;
 
-	// Token: 0x040015CC RID: 5580
 	private UnityAction TouchedBodyCb;
 
-	// Token: 0x040015CD RID: 5581
 	private Material m_renderCharaMaterial;
 
-	// Token: 0x040015CE RID: 5582
 	private Camera m_dispCamera;
 
-	// Token: 0x040015CF RID: 5583
 	private Camera m_dispCameraDirect;
 
-	// Token: 0x040015D0 RID: 5584
 	private GameObject m_dispChara;
 
-	// Token: 0x040015D1 RID: 5585
 	private RawImage m_dispTexture;
 
-	// Token: 0x040015D2 RID: 5586
 	private int width = 1024;
 
-	// Token: 0x040015D3 RID: 5587
 	private int height = 1024;
 
-	// Token: 0x040015D4 RID: 5588
 	private RenderTexture m_renderTexture;
 
-	// Token: 0x040015D5 RID: 5589
 	private CriAtomExPlayback checkPlayVoiceSceneIn;
 
-	// Token: 0x040015D6 RID: 5590
 	private CriAtomExPlayback checkPlayVoice1stAction;
 
-	// Token: 0x040015D7 RID: 5591
 	private static GameObject m_dispLight = null;
 
-	// Token: 0x040015D8 RID: 5592
 	private static GameObject m_dispLight2 = null;
 
-	// Token: 0x040015D9 RID: 5593
 	private Camera canvasCamera;
 
-	// Token: 0x040015DA RID: 5594
 	private EffectData luckyEyeEffect;
 
-	// Token: 0x040015DB RID: 5595
 	private Coroutine dispLuckyEyeEffect;
 
-	// Token: 0x040015DC RID: 5596
 	private static Transform m_renderTextureBase = null;
 
-	// Token: 0x040015DD RID: 5597
 	private int bloomLayer;
 
-	// Token: 0x040015DE RID: 5598
 	private Canvas m_tmpBgCanvas;
 
-	// Token: 0x040015DF RID: 5599
 	private Dictionary<GameObject, GameObject> originCloneBgObjs;
 
-	// Token: 0x040015E0 RID: 5600
 	private Dictionary<MaskableGraphic, MaskableGraphic> originCloneGraphics;
 
-	// Token: 0x040015E1 RID: 5601
 	private Dictionary<PguiAECtrl, PguiAECtrl> originCloneAECtrls;
 
-	// Token: 0x040015E2 RID: 5602
 	private Dictionary<ReuseScroll, ReuseScroll> originCloneScrolls;
 
-	// Token: 0x040015E3 RID: 5603
 	private Dictionary<PguiScrollbar, PguiScrollbar> originCloneScrollbars;
 
-	// Token: 0x040015E4 RID: 5604
 	private Dictionary<SimpleAnimation, SimpleAnimation> originCloneAnims;
 
-	// Token: 0x040015E5 RID: 5605
 	private Dictionary<AELayerConstraint, AELayerConstraint> originCloneAELayerConsts;
 
-	// Token: 0x040015E6 RID: 5606
 	private RectMask2D parentMask;
 
-	// Token: 0x040015E7 RID: 5607
 	private CanvasGroup parentAlpha;
 
-	// Token: 0x040015E8 RID: 5608
 	private static Texture2D m_trasnsparentTex = null;
 
-	// Token: 0x040015E9 RID: 5609
 	private Vector3 defaultCharaLocalPos = Vector3.zero;
 
-	// Token: 0x040015EA RID: 5610
 	private bool isFirstUpdateCharaPosition = true;
 
-	// Token: 0x040015EB RID: 5611
 	private bool isAwake;
 
-	// Token: 0x040015EC RID: 5612
 	private Vector2 parentMaskSize = Vector2.zero;
 
-	// Token: 0x040015ED RID: 5613
 	private Vector3 parentMaskPos = Vector3.zero;
 
-	// Token: 0x040015EE RID: 5614
 	private Vector2 canvasSize = Vector2.zero;
 
-	// Token: 0x040015EF RID: 5615
 	private Vector3 textureScale = Vector3.one;
 
-	// Token: 0x040015F0 RID: 5616
 	private bool beforeAlpha;
 
-	// Token: 0x040015F1 RID: 5617
 	private bool isOutOfCameraDirect;
 
-	// Token: 0x040015F2 RID: 5618
 	private GameObject charaMovieObject;
 
-	// Token: 0x040015F3 RID: 5619
 	private bool nextStepinterruptMotion;
 
-	// Token: 0x02000F5A RID: 3930
 	private enum CharaActType
 	{
-		// Token: 0x040056EF RID: 22255
 		INVALID,
-		// Token: 0x040056F0 RID: 22256
 		SCENE_IN,
-		// Token: 0x040056F1 RID: 22257
 		NEUTRAL,
-		// Token: 0x040056F2 RID: 22258
 		WAIT1,
-		// Token: 0x040056F3 RID: 22259
 		WAIT2,
-		// Token: 0x040056F4 RID: 22260
 		WAIT3,
-		// Token: 0x040056F5 RID: 22261
 		FACETOUCH,
-		// Token: 0x040056F6 RID: 22262
 		BODYTOUCH,
-		// Token: 0x040056F7 RID: 22263
 		WAITTOUCH
 	}
 
-	// Token: 0x02000F5B RID: 3931
 	public class InterruptMotion
 	{
-		// Token: 0x040056F8 RID: 22264
 		public CharaMotionDefine.ActKey key;
 
-		// Token: 0x040056F9 RID: 22265
 		public string faceId;
 	}
 
-	// Token: 0x02000F5C RID: 3932
-	// (Invoke) Token: 0x06004F4E RID: 20302
 	public delegate void FinishCallback();
 }

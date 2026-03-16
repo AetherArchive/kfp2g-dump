@@ -1,19 +1,16 @@
-﻿using System;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace SGNFW.uGUI
 {
-	// Token: 0x02000230 RID: 560
 	public class PageView : MonoBehaviour, IBeginDragHandler, IEventSystemHandler, IEndDragHandler, IDragHandler
 	{
-		// Token: 0x0600234B RID: 9035 RVA: 0x00196F6F File Offset: 0x0019516F
 		public void Setup(int count)
 		{
 			this.Setup(count, this.prefab);
 		}
 
-		// Token: 0x0600234C RID: 9036 RVA: 0x00196F80 File Offset: 0x00195180
 		public void Setup(int count, Object obj)
 		{
 			this.Setup(count, new GameObject[]
@@ -23,7 +20,6 @@ namespace SGNFW.uGUI
 			});
 		}
 
-		// Token: 0x0600234D RID: 9037 RVA: 0x00196FC8 File Offset: 0x001951C8
 		public void Setup(int count, GameObject[] gos)
 		{
 			this.count = count;
@@ -63,7 +59,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x0600234E RID: 9038 RVA: 0x001970FC File Offset: 0x001952FC
 		public void Play(bool forward)
 		{
 			if (this.move != PageView.Move.None)
@@ -81,7 +76,6 @@ namespace SGNFW.uGUI
 			this.Exec();
 		}
 
-		// Token: 0x0600234F RID: 9039 RVA: 0x00197120 File Offset: 0x00195320
 		public virtual void OnBeginDrag(PointerEventData data)
 		{
 			if (this.move != PageView.Move.None && !this.down)
@@ -93,7 +87,6 @@ namespace SGNFW.uGUI
 			this.down = true;
 		}
 
-		// Token: 0x06002350 RID: 9040 RVA: 0x00197154 File Offset: 0x00195354
 		public virtual void OnEndDrag(PointerEventData data)
 		{
 			if (this.move != PageView.Move.None && this.down)
@@ -133,12 +126,10 @@ namespace SGNFW.uGUI
 			this.time = 0f;
 		}
 
-		// Token: 0x06002351 RID: 9041 RVA: 0x00197231 File Offset: 0x00195431
 		public virtual void OnDrag(PointerEventData data)
 		{
 		}
 
-		// Token: 0x06002352 RID: 9042 RVA: 0x00197234 File Offset: 0x00195434
 		protected void Exec()
 		{
 			if (this.move == PageView.Move.None)
@@ -222,7 +213,6 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x06002353 RID: 9043 RVA: 0x001975CC File Offset: 0x001957CC
 		private void Update()
 		{
 			if (this.move != PageView.Move.None)
@@ -253,81 +243,57 @@ namespace SGNFW.uGUI
 			}
 		}
 
-		// Token: 0x04001AA1 RID: 6817
 		public Action<int, GameObject> onStart;
 
-		// Token: 0x04001AA2 RID: 6818
 		public Action<int, GameObject> onChange;
 
-		// Token: 0x04001AA3 RID: 6819
 		[SerializeField]
 		protected GameObject prefab;
 
-		// Token: 0x04001AA4 RID: 6820
 		[SerializeField]
 		protected PageView.Direction direction;
 
-		// Token: 0x04001AA5 RID: 6821
 		[SerializeField]
 		protected RectTransform viewport;
 
-		// Token: 0x04001AA6 RID: 6822
 		[SerializeField]
 		protected RectTransform contentRoot;
 
-		// Token: 0x04001AA7 RID: 6823
 		[SerializeField]
 		protected float scrollDistance = 100f;
 
-		// Token: 0x04001AA8 RID: 6824
 		[SerializeField]
 		[Range(0f, 1f)]
 		protected float scrollSpeed = 0.3f;
 
-		// Token: 0x04001AA9 RID: 6825
 		private PageView.Move move;
 
-		// Token: 0x04001AAA RID: 6826
 		private int active;
 
-		// Token: 0x04001AAB RID: 6827
 		private int current;
 
-		// Token: 0x04001AAC RID: 6828
 		private int count;
 
-		// Token: 0x04001AAD RID: 6829
 		private RectTransform[] contents = new RectTransform[2];
 
-		// Token: 0x04001AAE RID: 6830
 		private Vector2[] moveTo = new Vector2[2];
 
-		// Token: 0x04001AAF RID: 6831
 		private float time;
 
-		// Token: 0x04001AB0 RID: 6832
 		private bool down;
 
-		// Token: 0x04001AB1 RID: 6833
 		private Vector2 downPos;
 
-		// Token: 0x02001066 RID: 4198
 		protected enum Direction
 		{
-			// Token: 0x04005BB2 RID: 23474
 			Horizontal,
-			// Token: 0x04005BB3 RID: 23475
 			Vertical
 		}
 
-		// Token: 0x02001067 RID: 4199
 		protected enum Move
 		{
-			// Token: 0x04005BB5 RID: 23477
 			None,
-			// Token: 0x04005BB6 RID: 23478
 			Next,
-			// Token: 0x04005BB7 RID: 23479
 			Back
 		}
 	}
