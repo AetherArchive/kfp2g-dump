@@ -532,7 +532,7 @@ public class DataInitializeResolver
 		{
 			env = DataInitializeResolver.SEVER_ENV.PROD,
 			url = "https://parade-mobile-prod-app.kemono-friends-3.jp/paradesv/",
-			ver = "2.37.1",
+			ver = "2.38.0",
 			proxy = null
 		},
 		new DataInitializeResolver.SEVER_ENV_INFO

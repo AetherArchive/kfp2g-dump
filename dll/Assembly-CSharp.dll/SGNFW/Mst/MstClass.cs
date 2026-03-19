@@ -445,6 +445,12 @@ namespace SGNFW.Mst
 			case MstType.QUEST_RULE_DATA:
 				obj = PrjJson.FromJsonList<MstQuestRuleData>(json);
 				break;
+			case MstType.STICKER_DATA:
+				obj = PrjJson.FromJsonList<MstStickerData>(json);
+				break;
+			case MstType.STICKER_PLAYER_EXP_BONUS:
+				obj = PrjJson.FromJsonList<MstStickerPlayerExpBonus>(json);
+				break;
 			}
 			return obj;
 		}

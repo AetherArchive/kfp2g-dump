@@ -133,37 +133,22 @@ public class SelGachaCtrl : MonoBehaviour
 			this.centerInfoDispTimeElapsed += Time.deltaTime;
 			this.movieTime += Time.deltaTime;
 			ItemDef.Kind kind = ItemDef.Id2Kind(this.GetCenterInfoDispItemId());
-			if (kind != ItemDef.Kind.CHARA)
+			if (kind <= ItemDef.Kind.PHOTO)
 			{
-				if (kind != ItemDef.Kind.PHOTO)
+				if (kind != ItemDef.Kind.CHARA)
 				{
-					if (kind != ItemDef.Kind.TREEHOUSE_FURNITURE)
+					if (kind != ItemDef.Kind.PHOTO)
 					{
 						return;
 					}
-					if (this.guiDataTop.Furniture_MovieImage.gameObject.activeSelf)
+				}
+				else
+				{
+					GameObject gameObject = ((this.cloneCharaMovieObject == null) ? this.guiDataTop.Chara_MovieImage.gameObject : this.cloneCharaMovieObject);
+					if (!gameObject.activeSelf)
 					{
-						if (this.guiDataTop.Furniture_MovieImage.m_RawImage.raycastTarget)
-						{
-							this.guiDataTop.Furniture_MovieImage.SetRaycastTarget(false);
-						}
-						if (!MoviePlayer.Playing(this.guiDataTop.Furniture_MovieImage.gameObject))
-						{
-							this.ChangeCenterInfo(false);
-						}
+						return;
 					}
-				}
-				else if (SelGachaCtrl.INFO_DISP_UPDATE_TIME <= this.centerInfoDispTimeElapsed)
-				{
-					this.ChangeCenterInfo(false);
-					return;
-				}
-			}
-			else
-			{
-				GameObject gameObject = ((this.cloneCharaMovieObject == null) ? this.guiDataTop.Chara_MovieImage.gameObject : this.cloneCharaMovieObject);
-				if (gameObject.activeSelf)
-				{
 					if (this.guiDataTop.Chara_MovieImage.m_RawImage.raycastTarget)
 					{
 						this.guiDataTop.Chara_MovieImage.SetRaycastTarget(false);
@@ -175,13 +160,47 @@ public class SelGachaCtrl : MonoBehaviour
 							this.ChangeCenterInfo(false);
 							return;
 						}
+						return;
 					}
-					else if (!MoviePlayer.Playing(gameObject) && this.CLONE_CHARA_MOVIE_TIME <= this.movieTime)
+					else
 					{
-						this.ChangeCenterInfo(false);
+						if (!MoviePlayer.Playing(gameObject) && this.CLONE_CHARA_MOVIE_TIME <= this.movieTime)
+						{
+							this.ChangeCenterInfo(false);
+							return;
+						}
 						return;
 					}
 				}
+			}
+			else if (kind != ItemDef.Kind.TREEHOUSE_FURNITURE)
+			{
+				if (kind != ItemDef.Kind.STICKER)
+				{
+					return;
+				}
+			}
+			else
+			{
+				if (!this.guiDataTop.Furniture_MovieImage.gameObject.activeSelf)
+				{
+					return;
+				}
+				if (this.guiDataTop.Furniture_MovieImage.m_RawImage.raycastTarget)
+				{
+					this.guiDataTop.Furniture_MovieImage.SetRaycastTarget(false);
+				}
+				if (!MoviePlayer.Playing(this.guiDataTop.Furniture_MovieImage.gameObject))
+				{
+					this.ChangeCenterInfo(false);
+					return;
+				}
+				return;
+			}
+			if (SelGachaCtrl.INFO_DISP_UPDATE_TIME <= this.centerInfoDispTimeElapsed)
+			{
+				this.ChangeCenterInfo(false);
+				return;
 			}
 		}
 	}
@@ -1193,6 +1212,7 @@ public class SelGachaCtrl : MonoBehaviour
 			this.guiDataResult.Btn_BoxInfo.AddOnClickListener(new PguiButtonCtrl.OnClick(this.OnClickBoxCheckButtonResult), PguiButtonCtrl.SoundType.DEFAULT);
 			this.guiDataResult.Btn_StepInfo.AddOnClickListener(new PguiButtonCtrl.OnClick(this.OnClickStepCheckButton), PguiButtonCtrl.SoundType.DEFAULT);
 			this.guiDataResult.Btn_TreeHouse.AddOnClickListener(new PguiButtonCtrl.OnClick(this.OnClickTreeHouseButton), PguiButtonCtrl.SoundType.DEFAULT);
+			this.guiDataResult.Btn_Sticker.AddOnClickListener(new PguiButtonCtrl.OnClick(this.OnClickStickerButton), PguiButtonCtrl.SoundType.DEFAULT);
 		}
 		foreach (SelGachaCtrl.GUIResult.ResultIconBase resultIconBase in this.guiDataResult.ResultIconBaseList)
 		{
@@ -1212,132 +1232,160 @@ public class SelGachaCtrl : MonoBehaviour
 				SimpleAnimation component = resultIconBase2.baseObj.GetComponent<SimpleAnimation>();
 				component.ExPauseAnimation(SimpleAnimation.ExPguiStatus.LOOP, null);
 				ItemDef.Kind kind = ItemDef.Id2Kind(gachaResult.itemId);
-				if (kind != ItemDef.Kind.CHARA)
+				if (kind <= ItemDef.Kind.PHOTO)
 				{
-					if (kind != ItemDef.Kind.PHOTO)
+					if (kind != ItemDef.Kind.CHARA)
 					{
-						if (kind != ItemDef.Kind.TREEHOUSE_FURNITURE)
+						if (kind != ItemDef.Kind.PHOTO)
 						{
-							GameObject gameObject2 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Item, resultIconBase2.IconBaseTr);
-							resultIconBase2.IconBaseTr.GetComponent<CanvasGroup>().blocksRaycasts = !gachaResult.replaced;
-							this.resultIconObjList.Add(gameObject2);
-							gameObject2.GetComponent<IconItemCtrl>().Setup(DataManager.DmItem.GetItemStaticBase(gachaResult.itemId), gachaResult.replaced ? 0 : gachaResult.itemNum, new IconItemCtrl.SetupParam
-							{
-								useInfo = true,
-								viewItemCount = false
-							});
-							resultIconBase2.Base.gameObject.SetActive(true);
-							resultIconBase2.Base.SetSiblingIndex(0);
-							if (gachaResult.replaced)
-							{
-								GameObject gameObject3 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Item, resultIconBase2.IconReplaceTr);
-								this.resultIconObjList.Add(gameObject3);
-								IconItemCtrl component2 = gameObject3.GetComponent<IconItemCtrl>();
-								component2.Setup(DataManager.DmItem.GetItemStaticBase(gachaResult.replaceItem.id), gachaResult.replaceItem.num, new IconItemCtrl.SetupParam
-								{
-									useInfo = true,
-									viewItemCount = false
-								});
-								component2.DispNew(gachaResult.replaceItemIsNew);
-								resultIconBase2.BaseExchange.gameObject.SetActive(true);
-								resultIconBase2.BaseExchange.SetSiblingIndex(0);
-								component.ExPlayAnimation(SimpleAnimation.ExPguiStatus.LOOP, null);
-							}
+							goto IL_0796;
 						}
-						else
-						{
-							GameObject gameObject4 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Item, resultIconBase2.IconBaseTr);
-							resultIconBase2.IconBaseTr.GetComponent<CanvasGroup>().blocksRaycasts = !gachaResult.replaced;
-							this.resultIconObjList.Add(gameObject4);
-							IconItemCtrl component3 = gameObject4.GetComponent<IconItemCtrl>();
-							component3.Setup(DataManager.DmItem.GetItemStaticBase(gachaResult.itemId), gachaResult.replaced ? 0 : gachaResult.itemNum, new IconItemCtrl.SetupParam());
-							component3.AddOnLongClickListener(delegate(IconItemCtrl x)
-							{
-								TreeHouseFurnitureStatic treeHouseFurnitureStaticData = DataManager.DmTreeHouse.GetTreeHouseFurnitureStaticData(gachaResult.itemId);
-								CanvasManager.HdlTreeHouseFurnitureWindowCtrl.Open(new TreeHouseFurnitureWindowCtrl.SetupParam
-								{
-									thfs = treeHouseFurnitureStaticData
-								});
-							});
-							resultIconBase2.Base.gameObject.SetActive(true);
-							resultIconBase2.Base.SetSiblingIndex(0);
-							if (gachaResult.replaced)
-							{
-								GameObject gameObject5 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Item, resultIconBase2.IconReplaceTr);
-								this.resultIconObjList.Add(gameObject5);
-								IconItemCtrl component4 = gameObject5.GetComponent<IconItemCtrl>();
-								component4.Setup(DataManager.DmItem.GetItemStaticBase(gachaResult.replaceItem.id), gachaResult.replaceItem.num, new IconItemCtrl.SetupParam
-								{
-									useInfo = true,
-									viewItemCount = false
-								});
-								component4.DispNew(gachaResult.replaceItemIsNew);
-								resultIconBase2.BaseExchange.gameObject.SetActive(true);
-								resultIconBase2.BaseExchange.SetSiblingIndex(0);
-								component.ExPlayAnimation(SimpleAnimation.ExPguiStatus.LOOP, null);
-							}
-						}
-					}
-					else
-					{
-						GameObject gameObject6 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Photo, resultIconBase2.IconBaseTr);
+						GameObject gameObject2 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Photo, resultIconBase2.IconBaseTr);
 						resultIconBase2.IconBaseTr.GetComponent<CanvasGroup>().blocksRaycasts = !gachaResult.replaced;
-						this.resultIconObjList.Add(gameObject6);
-						gameObject6.GetComponent<IconPhotoCtrl>().Setup(new IconPhotoCtrl.SetupParam
+						this.resultIconObjList.Add(gameObject2);
+						gameObject2.GetComponent<IconPhotoCtrl>().Setup(new IconPhotoCtrl.SetupParam
 						{
 							ppd = PhotoPackData.MakeMaximum(gachaResult.itemId, false, false)
 						});
-						gameObject6.transform.Find("All/Top/Txt").gameObject.SetActive(false);
+						gameObject2.transform.Find("All/Top/Txt").gameObject.SetActive(false);
 					}
-				}
-				else
-				{
-					GameObject gameObject7 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Chara, resultIconBase2.IconBaseTr);
-					resultIconBase2.IconBaseTr.GetComponent<CanvasGroup>().blocksRaycasts = !gachaResult.replaced;
-					this.resultIconObjList.Add(gameObject7);
-					IconCharaCtrl component5 = gameObject7.GetComponent<IconCharaCtrl>();
-					component5.transform.SetSiblingIndex(0);
-					component5.Setup(DataManager.DmChara.GetUserCharaData(gachaResult.itemId), SortFilterDefine.SortType.LEVEL, false, new CharaWindowCtrl.DetailParamSetting(CharaWindowCtrl.DetailParamSetting.Preset.GACHA_RESULT, null), 0, -1, 0);
-					component5.DispMarkAccessory(false);
-					gameObject7.transform.Find("Txt_Lv").gameObject.SetActive(false);
-					if (gachaResult.replaced)
+					else
 					{
-						GameObject gameObject8 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Item, resultIconBase2.IconReplaceTr);
-						if (gachaResult.replaceItemEx != null)
+						GameObject gameObject3 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Chara, resultIconBase2.IconBaseTr);
+						resultIconBase2.IconBaseTr.GetComponent<CanvasGroup>().blocksRaycasts = !gachaResult.replaced;
+						this.resultIconObjList.Add(gameObject3);
+						IconCharaCtrl component2 = gameObject3.GetComponent<IconCharaCtrl>();
+						component2.transform.SetSiblingIndex(0);
+						component2.Setup(DataManager.DmChara.GetUserCharaData(gachaResult.itemId), SortFilterDefine.SortType.LEVEL, false, new CharaWindowCtrl.DetailParamSetting(CharaWindowCtrl.DetailParamSetting.Preset.GACHA_RESULT, null), 0, -1, 0);
+						component2.DispMarkAccessory(false);
+						gameObject3.transform.Find("Txt_Lv").gameObject.SetActive(false);
+						if (gachaResult.replaced)
 						{
-							gameObject8.transform.localScale = new Vector3(0.7f, 0.7f, 1f);
-						}
-						this.resultIconObjList.Add(gameObject8);
-						IconItemCtrl component6 = gameObject8.GetComponent<IconItemCtrl>();
-						component6.Setup(DataManager.DmItem.GetItemStaticBase(gachaResult.replaceItem.id), gachaResult.replaceItem.num, new IconItemCtrl.SetupParam
-						{
-							useInfo = true,
-							viewItemCount = false
-						});
-						component6.DispNew(gachaResult.replaceItemIsNew);
-						if (gachaResult.replaceItemEx != null)
-						{
-							resultIconBase2.IconReplaceTr.GetComponent<GridLayoutGroup>().cellSize = new Vector2(80f, 80f);
-							GameObject gameObject9 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Item, resultIconBase2.IconReplaceTr);
-							gameObject9.transform.localScale = new Vector3(0.7f, 0.7f, 1f);
-							this.resultIconObjList.Add(gameObject9);
-							IconItemCtrl component7 = gameObject9.GetComponent<IconItemCtrl>();
-							component7.Setup(DataManager.DmItem.GetItemStaticBase(gachaResult.replaceItemEx.id), gachaResult.replaceItemEx.num, new IconItemCtrl.SetupParam
+							GameObject gameObject4 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Item, resultIconBase2.IconReplaceTr);
+							if (gachaResult.replaceItemEx != null)
+							{
+								gameObject4.transform.localScale = new Vector3(0.7f, 0.7f, 1f);
+							}
+							this.resultIconObjList.Add(gameObject4);
+							IconItemCtrl component3 = gameObject4.GetComponent<IconItemCtrl>();
+							component3.Setup(DataManager.DmItem.GetItemStaticBase(gachaResult.replaceItem.id), gachaResult.replaceItem.num, new IconItemCtrl.SetupParam
 							{
 								useInfo = true,
 								viewItemCount = false
 							});
-							component7.DispNew(gachaResult.replaceItemExIsNew);
+							component3.DispNew(gachaResult.replaceItemIsNew);
+							if (gachaResult.replaceItemEx != null)
+							{
+								resultIconBase2.IconReplaceTr.GetComponent<GridLayoutGroup>().cellSize = new Vector2(80f, 80f);
+								GameObject gameObject5 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Item, resultIconBase2.IconReplaceTr);
+								gameObject5.transform.localScale = new Vector3(0.7f, 0.7f, 1f);
+								this.resultIconObjList.Add(gameObject5);
+								IconItemCtrl component4 = gameObject5.GetComponent<IconItemCtrl>();
+								component4.Setup(DataManager.DmItem.GetItemStaticBase(gachaResult.replaceItemEx.id), gachaResult.replaceItemEx.num, new IconItemCtrl.SetupParam
+								{
+									useInfo = true,
+									viewItemCount = false
+								});
+								component4.DispNew(gachaResult.replaceItemExIsNew);
+							}
+							resultIconBase2.BaseExchange.gameObject.SetActive(true);
+							resultIconBase2.BaseExchange.SetSiblingIndex(0);
+							component.ExPlayAnimation(SimpleAnimation.ExPguiStatus.LOOP, null);
 						}
+					}
+				}
+				else if (kind != ItemDef.Kind.TREEHOUSE_FURNITURE)
+				{
+					if (kind != ItemDef.Kind.STICKER)
+					{
+						goto IL_0796;
+					}
+					GameObject gameObject6 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Item, resultIconBase2.IconBaseTr);
+					this.resultIconObjList.Add(gameObject6);
+					IconItemCtrl component5 = gameObject6.GetComponent<IconItemCtrl>();
+					component5.Setup(DataManager.DmSticker.GetStickerStaticData(gachaResult.itemId), gachaResult.itemNum, new IconItemCtrl.SetupParam
+					{
+						useInfo = true,
+						viewItemCount = false
+					});
+					DataManagerSticker.StickerPackData spd = new DataManagerSticker.StickerPackData(new DataManagerSticker.StickerDynamicData
+					{
+						id = gachaResult.itemId
+					});
+					component5.AddOnLongClickListener(delegate(IconItemCtrl x)
+					{
+						CanvasManager.HdlStickerWindowCtrl.Open(new StickerWindowCtrl.SetupParam
+						{
+							spd = spd
+						});
+					});
+					resultIconBase2.BaseExchange.gameObject.SetActive(true);
+					resultIconBase2.BaseExchange.SetSiblingIndex(0);
+				}
+				else
+				{
+					GameObject gameObject7 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Item, resultIconBase2.IconBaseTr);
+					resultIconBase2.IconBaseTr.GetComponent<CanvasGroup>().blocksRaycasts = !gachaResult.replaced;
+					this.resultIconObjList.Add(gameObject7);
+					IconItemCtrl component6 = gameObject7.GetComponent<IconItemCtrl>();
+					component6.Setup(DataManager.DmItem.GetItemStaticBase(gachaResult.itemId), gachaResult.replaced ? 0 : gachaResult.itemNum, new IconItemCtrl.SetupParam());
+					component6.AddOnLongClickListener(delegate(IconItemCtrl x)
+					{
+						TreeHouseFurnitureStatic treeHouseFurnitureStaticData = DataManager.DmTreeHouse.GetTreeHouseFurnitureStaticData(gachaResult.itemId);
+						CanvasManager.HdlTreeHouseFurnitureWindowCtrl.Open(new TreeHouseFurnitureWindowCtrl.SetupParam
+						{
+							thfs = treeHouseFurnitureStaticData
+						});
+					});
+					resultIconBase2.Base.gameObject.SetActive(true);
+					resultIconBase2.Base.SetSiblingIndex(0);
+					if (gachaResult.replaced)
+					{
+						GameObject gameObject8 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Item, resultIconBase2.IconReplaceTr);
+						this.resultIconObjList.Add(gameObject8);
+						IconItemCtrl component7 = gameObject8.GetComponent<IconItemCtrl>();
+						component7.Setup(DataManager.DmItem.GetItemStaticBase(gachaResult.itemId), gachaResult.replaced ? 0 : gachaResult.itemNum, new IconItemCtrl.SetupParam());
+						component7.DispNew(gachaResult.replaceItemIsNew);
 						resultIconBase2.BaseExchange.gameObject.SetActive(true);
 						resultIconBase2.BaseExchange.SetSiblingIndex(0);
 						component.ExPlayAnimation(SimpleAnimation.ExPguiStatus.LOOP, null);
 					}
 				}
+				IL_0907:
 				if (gachaResult.isNew)
 				{
 					resultIconBase2.MarkNew.gameObject.SetActive(true);
+					continue;
 				}
+				continue;
+				IL_0796:
+				GameObject gameObject9 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Item, resultIconBase2.IconBaseTr);
+				resultIconBase2.IconBaseTr.GetComponent<CanvasGroup>().blocksRaycasts = !gachaResult.replaced;
+				this.resultIconObjList.Add(gameObject9);
+				gameObject9.GetComponent<IconItemCtrl>().Setup(DataManager.DmItem.GetItemStaticBase(gachaResult.itemId), gachaResult.replaced ? 0 : gachaResult.itemNum, new IconItemCtrl.SetupParam
+				{
+					useInfo = true,
+					viewItemCount = false
+				});
+				resultIconBase2.Base.gameObject.SetActive(true);
+				resultIconBase2.Base.SetSiblingIndex(0);
+				if (gachaResult.replaced)
+				{
+					GameObject gameObject10 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Item, resultIconBase2.IconReplaceTr);
+					this.resultIconObjList.Add(gameObject10);
+					IconItemCtrl component8 = gameObject10.GetComponent<IconItemCtrl>();
+					component8.Setup(DataManager.DmItem.GetItemStaticBase(gachaResult.replaceItem.id), gachaResult.replaceItem.num, new IconItemCtrl.SetupParam
+					{
+						useInfo = true,
+						viewItemCount = false
+					});
+					component8.DispNew(gachaResult.replaceItemIsNew);
+					resultIconBase2.BaseExchange.gameObject.SetActive(true);
+					resultIconBase2.BaseExchange.SetSiblingIndex(0);
+					component.ExPlayAnimation(SimpleAnimation.ExPguiStatus.LOOP, null);
+					goto IL_0907;
+				}
+				goto IL_0907;
 			}
 		}
 		HashSet<int> hashSet = new HashSet<int>();
@@ -1419,9 +1467,10 @@ public class SelGachaCtrl : MonoBehaviour
 			this.guiDataResult.IsOpenBonusItemWindow = true;
 			CanvasManager.HdlGetItemSetWindowCtrl.Open();
 		}
-		this.guiDataResult.Btn_Party.gameObject.SetActive(!gachaStaticData.IsResultTreeHouseFurnitureInfo);
-		this.guiDataResult.Btn_Friends.gameObject.SetActive(!gachaStaticData.IsResultTreeHouseFurnitureInfo);
-		this.guiDataResult.Btn_TreeHouse.gameObject.SetActive(gachaStaticData.IsResultTreeHouseFurnitureInfo);
+		this.guiDataResult.Btn_Party.gameObject.SetActive(!gachaStaticData.IsResultTreeHouseFurnitureInfo && !gachaStaticData.IsResultStickerInfo);
+		this.guiDataResult.Btn_Friends.gameObject.SetActive(!gachaStaticData.IsResultTreeHouseFurnitureInfo && !gachaStaticData.IsResultStickerInfo);
+		this.guiDataResult.Btn_TreeHouse.gameObject.SetActive(gachaStaticData.IsResultTreeHouseFurnitureInfo && !gachaStaticData.IsResultStickerInfo);
+		this.guiDataResult.Btn_Sticker.gameObject.SetActive(!gachaStaticData.IsResultTreeHouseFurnitureInfo && gachaStaticData.IsResultStickerInfo);
 		this.guiDataResult.Btn_BoxInfo.gameObject.SetActive(DataManagerGacha.Category.Box == gachaStaticData.gachaCategory);
 		this.guiDataResult.Btn_StepInfo.gameObject.SetActive(DataManagerGacha.Category.StepUp == gachaStaticData.gachaCategory);
 		this.guiDataResult.Btn_StepInfo.SetActEnable(this.lastSelectGacha.stepNextGachaId != 0, false, false);
@@ -2300,6 +2349,19 @@ public class SelGachaCtrl : MonoBehaviour
 		this.requestNextSceneCb(SceneManager.SceneName.SceneTreeHouse, null);
 	}
 
+	private void OnClickStickerButton(PguiButtonCtrl button)
+	{
+		if (this.isRequestingNextSceneCb())
+		{
+			return;
+		}
+		if (this.guiDataResult.IsOpenBonusItemWindow)
+		{
+			return;
+		}
+		this.requestNextSceneCb(SceneManager.SceneName.SceneStickerCollection, null);
+	}
+
 	private bool OnChoiceOpenWindow(int index)
 	{
 		if (index != 0 && index == 1)
@@ -2970,6 +3032,7 @@ public class SelGachaCtrl : MonoBehaviour
 			this.Btn_BoxInfo = baseTr.Find("Btn_BoxInfo").GetComponent<PguiButtonCtrl>();
 			this.Btn_StepInfo = baseTr.Find("Btn_StepInfo").GetComponent<PguiButtonCtrl>();
 			this.Btn_TreeHouse = baseTr.Find("Btn_TreeHouse").GetComponent<PguiButtonCtrl>();
+			this.Btn_Sticker = baseTr.Find("Btn_Sticker").GetComponent<PguiButtonCtrl>();
 			this.ResultEffect = baseTr.Find("AEImage_ResultEffect").gameObject;
 			this.ResultAllObj = baseTr.Find("ResultAll").gameObject;
 			this.ResultIconBaseList = new List<SelGachaCtrl.GUIResult.ResultIconBase>();
@@ -2998,6 +3061,8 @@ public class SelGachaCtrl : MonoBehaviour
 		public PguiButtonCtrl Btn_StepInfo;
 
 		public PguiButtonCtrl Btn_TreeHouse;
+
+		public PguiButtonCtrl Btn_Sticker;
 
 		public GameObject ResultEffect;
 

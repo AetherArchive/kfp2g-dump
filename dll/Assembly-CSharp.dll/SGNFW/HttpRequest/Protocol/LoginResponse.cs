@@ -43,5 +43,7 @@ namespace SGNFW.HttpRequest.Protocol
 		public List<ItemBank> item_banks;
 
 		public string offer_parameter;
+
+		public List<Sticker> stickers;
 	}
 }

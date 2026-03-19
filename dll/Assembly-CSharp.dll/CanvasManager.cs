@@ -320,6 +320,25 @@ public class CanvasManager : Singleton<CanvasManager>
 		}
 	}
 
+	public static StickerWindowCtrl HdlStickerWindowCtrl
+	{
+		get
+		{
+			if (null == Singleton<CanvasManager>.Instance.stickerWindowCtrl)
+			{
+				Singleton<CanvasManager>.Instance.stickerWindowCtrl = AssetManager.InstantiateAssetData("SelCmn/GUI/Prefab/GUI_StickerWindow", Singleton<CanvasManager>.Instance.SystemPanel.transform).GetComponent<StickerWindowCtrl>();
+				Singleton<CanvasManager>.Instance.stickerWindowCtrl.transform.SetSiblingIndex(Singleton<CanvasManager>.Instance.SystemFadeMask.GetSiblingIndex());
+				if (null != Singleton<CanvasManager>.Instance.followWindowCtrl)
+				{
+					Singleton<CanvasManager>.Instance.stickerWindowCtrl.transform.SetSiblingIndex(Singleton<CanvasManager>.Instance.followWindowCtrl.transform.GetSiblingIndex() + 1);
+				}
+				Singleton<CanvasManager>.Instance.stickerWindowCtrl.Init();
+				Singleton<CanvasManager>.Instance.stickerWindowCtrl.gameObject.SetActive(false);
+			}
+			return Singleton<CanvasManager>.Instance.stickerWindowCtrl;
+		}
+	}
+
 	public static FollowWindowCtrl HdlFollowWindowCtrl
 	{
 		get
@@ -697,6 +716,12 @@ public class CanvasManager : Singleton<CanvasManager>
 				PhotoFilterWindowCtrl photoFilterWindowCtrl = new PhotoFilterWindowCtrl();
 				photoFilterWindowCtrl.Initialize(gameObject3);
 				Singleton<CanvasManager>.Instance.photoFilterWindowCtrl = photoFilterWindowCtrl;
+				GameObject gameObject4 = AssetManager.InstantiateAssetData("SelCmn/GUI/Prefab/GUI_FilterWindow_Sticker", Singleton<CanvasManager>.Instance.SystemPanel.transform);
+				gameObject4.AddComponent<SafeAreaScaler>();
+				gameObject4.transform.SetSiblingIndex(Singleton<CanvasManager>.Instance.SystemFadeMask.GetSiblingIndex() + 1);
+				StickerFilterWindowCtrl stickerFilterWindowCtrl = new StickerFilterWindowCtrl();
+				stickerFilterWindowCtrl.Initialize(gameObject4);
+				Singleton<CanvasManager>.Instance.stickerFilterWindowCtrl = stickerFilterWindowCtrl;
 			}
 			return Singleton<CanvasManager>.Instance.sortWindowCtrl;
 		}
@@ -763,6 +788,14 @@ public class CanvasManager : Singleton<CanvasManager>
 		get
 		{
 			return Singleton<CanvasManager>.Instance.friendsFilterWindowCtrl;
+		}
+	}
+
+	public static StickerFilterWindowCtrl HdlStickerFilterWindowCtrl
+	{
+		get
+		{
+			return Singleton<CanvasManager>.Instance.stickerFilterWindowCtrl;
 		}
 	}
 
@@ -1842,7 +1875,7 @@ public class CanvasManager : Singleton<CanvasManager>
 			}
 			else if (!string.IsNullOrEmpty(texName))
 			{
-				CanvasManager.<>c__DisplayClass320_0 CS$<>8__locals1 = new CanvasManager.<>c__DisplayClass320_0();
+				CanvasManager.<>c__DisplayClass326_0 CS$<>8__locals1 = new CanvasManager.<>c__DisplayClass326_0();
 				CS$<>8__locals1.isSetFinish = false;
 				Singleton<CanvasManager>.Instance.bgRawImage.SetRawImage(texName, false, false, delegate
 				{
@@ -2437,6 +2470,8 @@ public class CanvasManager : Singleton<CanvasManager>
 
 	private PhotoWindowCtrl photoWindowCtrl;
 
+	private StickerWindowCtrl stickerWindowCtrl;
+
 	private SelQuestCountRecoveryWindowCtrl selQuestCountRecoveryWindowCtrl;
 
 	private RewardListWindowCtrl rewardListWindowCtrl;
@@ -2504,6 +2539,8 @@ public class CanvasManager : Singleton<CanvasManager>
 	private PhotoFilterWindowCtrl photoFilterWindowCtrl;
 
 	private FriendsFilterWindowCtrl friendsFilterWindowCtrl;
+
+	private StickerFilterWindowCtrl stickerFilterWindowCtrl;
 
 	private CanvasManager.ReferenceResource referenseResource;
 
@@ -2577,6 +2614,8 @@ public class CanvasManager : Singleton<CanvasManager>
 			this.Icon_Accessory = (GameObject)Resources.Load("CmnIconFrame/GUI/Prefab/Icon_Accessory");
 			this.Icon_Accessory_Mini = (GameObject)Resources.Load("CmnIconFrame/GUI/Prefab/Icon_Accessory_mini");
 			this.Icon_AccessorySet = (GameObject)Resources.Load("CmnIconFrame/GUI/Prefab/Icon_AccessorySet");
+			this.Icon_Sticker = (GameObject)Resources.Load("CmnIconFrame/GUI/Prefab/Icon_Sticker");
+			this.Card_Sticker = (GameObject)Resources.Load("CmnIconFrame/GUI/Prefab/Card_Sticker");
 		}
 
 		public GameObject Icon_Chara;
@@ -2598,6 +2637,10 @@ public class CanvasManager : Singleton<CanvasManager>
 		public GameObject Icon_Accessory_Mini;
 
 		public GameObject Icon_AccessorySet;
+
+		public GameObject Icon_Sticker;
+
+		public GameObject Card_Sticker;
 	}
 
 	private class TouchEffect

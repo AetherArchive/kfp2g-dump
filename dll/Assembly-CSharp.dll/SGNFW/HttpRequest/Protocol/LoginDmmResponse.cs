@@ -45,5 +45,7 @@ namespace SGNFW.HttpRequest.Protocol
 		public List<Achievement> achievements;
 
 		public List<ItemBank> item_banks;
+
+		public List<Sticker> stickers;
 	}
 }

@@ -129,6 +129,8 @@ public class DataManagerItem
 			return list;
 		case DataManagerItem.DispType.Achievement:
 			return new List<ItemData>(itemList).FindAll((ItemData item) => item.staticData.GetKind() == ItemDef.Kind.ACHIEVEMENT && item.num > 0);
+		case DataManagerItem.DispType.Sticker:
+			return new List<ItemData>(itemList).FindAll((ItemData item) => item.staticData.GetKind() == ItemDef.Kind.STICKER && item.num > 0);
 		default:
 			return new List<ItemData>();
 		}
@@ -160,7 +162,7 @@ public class DataManagerItem
 
 	public List<DataManagerItem.StaminaRecoveryItemData> StaminaRecoveryItemDataList { get; private set; }
 
-	public void UpdateUserDataByServer(List<Item> haveItemList, List<Chara> haveCharaList, List<Achievement> haveAchievementList)
+	public void UpdateUserDataByServer(List<Item> haveItemList, List<Chara> haveCharaList, List<Achievement> haveAchievementList, List<Sticker> haveStickerList)
 	{
 		foreach (Item item2 in haveItemList)
 		{
@@ -186,10 +188,19 @@ public class DataManagerItem
 				this.InsertUpdateUserMap(achievement_id, num2);
 			}
 		}
+		if (haveStickerList != null)
+		{
+			foreach (Sticker sticker in haveStickerList)
+			{
+				int id = sticker.id;
+				int num3 = sticker.num;
+				this.InsertUpdateUserMap(id, num3);
+			}
+		}
 		if (haveItemList.FindIndex((Item item) => item.item_id == 30002 || item.item_id == 30001) >= 0)
 		{
-			int num3 = this.GetUserItemData(30002).num + this.GetUserItemData(30001).num;
-			this.InsertUpdateUserMap(30100, num3);
+			int num4 = this.GetUserItemData(30002).num + this.GetUserItemData(30001).num;
+			this.InsertUpdateUserMap(30100, num4);
 		}
 	}
 
@@ -660,7 +671,8 @@ public class DataManagerItem
 		Photo,
 		PlayItem,
 		Accessory,
-		Achievement
+		Achievement,
+		Sticker
 	}
 
 	public class StaminaRecoveryItemData

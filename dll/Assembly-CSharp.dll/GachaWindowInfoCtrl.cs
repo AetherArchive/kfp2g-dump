@@ -93,13 +93,17 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 			GachaWindowInfoCtrl.RatioLabelItemGUI ratioLabelItemGUI = new GachaWindowInfoCtrl.RatioLabelItemGUI(Object.Instantiate<GameObject>((GameObject)Resources.Load("SceneGacha/GUI/Prefab/GachaInfo_Parts04_Item"), tabInnerFrameGUI.Base.transform).transform);
 			ratioLabelItemGUI.Txt_Kind.text = "インテリア";
 			GachaWindowInfoCtrl.RatioLabelItemGUI ratioLabelItemGUI2 = new GachaWindowInfoCtrl.RatioLabelItemGUI(Object.Instantiate<GameObject>((GameObject)Resources.Load("SceneGacha/GUI/Prefab/GachaInfo_Parts04_Item"), tabInnerFrameGUI.Base.transform).transform);
+			GachaWindowInfoCtrl.RatioLabelItemGUI ratioLabelItemGUI3 = new GachaWindowInfoCtrl.RatioLabelItemGUI(Object.Instantiate<GameObject>((GameObject)Resources.Load("SceneGacha/GUI/Prefab/GachaInfo_Parts04_Item"), tabInnerFrameGUI.Base.transform).transform);
+			ratioLabelItemGUI3.Txt_Kind.text = "シール";
 			List<DataManagerGacha.ProbabilityData.Element> elements = lastRequestRateViewData.GetElements(DataManagerGacha.ProbabilityData.Type.Chara, DataManagerGacha.ProbabilityData.Category.Rarity);
 			List<DataManagerGacha.ProbabilityData.Element> elements2 = lastRequestRateViewData.GetElements(DataManagerGacha.ProbabilityData.Type.Photo, DataManagerGacha.ProbabilityData.Category.Rarity);
 			List<DataManagerGacha.ProbabilityData.Element> elements3 = lastRequestRateViewData.GetElements(DataManagerGacha.ProbabilityData.Type.TreeHouseFurniture, DataManagerGacha.ProbabilityData.Category.Rarity);
 			List<DataManagerGacha.ProbabilityData.Element> elements4 = lastRequestRateViewData.GetElements(DataManagerGacha.ProbabilityData.Type.Item, DataManagerGacha.ProbabilityData.Category.Rarity);
+			List<DataManagerGacha.ProbabilityData.Element> elements5 = lastRequestRateViewData.GetElements(DataManagerGacha.ProbabilityData.Type.Sticker, DataManagerGacha.ProbabilityData.Category.Rarity);
 			ratioLabelFriendsPhotoGUI.baseObj.SetActive(0 < elements[0].rate.Count || 0 < elements2[0].rate.Count);
 			ratioLabelItemGUI.baseObj.SetActive(0 < elements3[0].rate.Count);
 			ratioLabelItemGUI2.baseObj.SetActive(0 < elements4[0].rate.Count);
+			ratioLabelItemGUI3.baseObj.SetActive(0 < elements5[0].rate.Count);
 			int num;
 			int j;
 			for (j = 0; j < ratioLabelFriendsPhotoGUI.charaNumList.Count; j = num)
@@ -163,20 +167,46 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 				}
 				num = l + 1;
 			}
-			int i;
-			for (i = 0; i < ratioLabelItemGUI2.itemNumList.Count; i = num)
+			int m;
+			for (m = 0; m < ratioLabelItemGUI2.itemNumList.Count; m = num)
 			{
-				if (!(null == ratioLabelItemGUI2.itemNumList[i]))
+				if (!(null == ratioLabelItemGUI2.itemNumList[m]))
 				{
-					DataManagerGacha.ProbabilityData.ItemOne itemOne4 = elements4[0].rate.Find((DataManagerGacha.ProbabilityData.ItemOne x) => x.rarity == i);
+					DataManagerGacha.ProbabilityData.ItemOne itemOne4 = elements4[0].rate.Find((DataManagerGacha.ProbabilityData.ItemOne x) => x.rarity == m);
 					if (itemOne4 == null)
 					{
-						ratioLabelItemGUI2.itemNumList[i].text = "-";
+						ratioLabelItemGUI2.itemNumList[m].text = "-";
 					}
 					else
 					{
 						int rarity4 = itemOne4.rarity;
 						ratioLabelItemGUI2.itemNumList[rarity4].text = ((itemOne4.normal > double.Epsilon) ? (itemOne4.normal.ToString() + "%") : "-");
+					}
+				}
+				num = m + 1;
+			}
+			int i;
+			for (i = 0; i < ratioLabelItemGUI3.itemNumList.Count; i = num)
+			{
+				if (!(null == ratioLabelItemGUI3.itemNumList[i]))
+				{
+					if (i < 3)
+					{
+						ratioLabelItemGUI3.itemNumList[i].text = "-";
+						ratioLabelItemGUI3.itemNumList[i].gameObject.SetActive(false);
+					}
+					else
+					{
+						DataManagerGacha.ProbabilityData.ItemOne itemOne5 = elements3[0].rate.Find((DataManagerGacha.ProbabilityData.ItemOne x) => x.rarity == i);
+						if (itemOne5 == null)
+						{
+							ratioLabelItemGUI3.itemNumList[i].text = "-";
+						}
+						else
+						{
+							int rarity5 = itemOne5.rarity;
+							ratioLabelItemGUI3.itemNumList[rarity5].text = ((itemOne5.normal > double.Epsilon) ? (itemOne5.normal.ToString() + "%") : "-");
+						}
 					}
 				}
 				num = i + 1;
@@ -189,21 +219,22 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 			list.Add(DataManagerGacha.ProbabilityData.Type.Photo);
 			list.Add(DataManagerGacha.ProbabilityData.Type.TreeHouseFurniture);
 			list.Add(DataManagerGacha.ProbabilityData.Type.Item);
+			list.Add(DataManagerGacha.ProbabilityData.Type.Sticker);
 			string text = "☆" + (flag ? "4" : "3") + "以上確定時";
 			string text2 = (flag ? "SR" : "R") + "以上確定時";
 			foreach (DataManagerGacha.ProbabilityData.Type type in list)
 			{
-				List<DataManagerGacha.ProbabilityData.Element> elements5 = lastRequestRateViewData.GetElements(type, DataManagerGacha.ProbabilityData.Category.Rarity);
-				if (elements5.Count != 0)
+				List<DataManagerGacha.ProbabilityData.Element> elements6 = lastRequestRateViewData.GetElements(type, DataManagerGacha.ProbabilityData.Category.Rarity);
+				if (elements6.Count != 0)
 				{
 					int num2 = 0;
-					foreach (DataManagerGacha.ProbabilityData.Element element in elements5)
+					foreach (DataManagerGacha.ProbabilityData.Element element in elements6)
 					{
 						num2 += element.rate.Count;
 					}
 					if (num2 != 0)
 					{
-						elements5[0].rate.Sort((DataManagerGacha.ProbabilityData.ItemOne a, DataManagerGacha.ProbabilityData.ItemOne b) => b.rarity - a.rarity);
+						elements6[0].rate.Sort((DataManagerGacha.ProbabilityData.ItemOne a, DataManagerGacha.ProbabilityData.ItemOne b) => b.rarity - a.rarity);
 						GachaWindowInfoCtrl.TotalRatioLabelGUI totalRatioLabelGUI = new GachaWindowInfoCtrl.TotalRatioLabelGUI(Object.Instantiate<GameObject>((GameObject)Resources.Load("SceneGacha/GUI/Prefab/GachaInfo_Parts04"), tabInnerFrameGUI.Base.transform).transform);
 						switch (type)
 						{
@@ -234,8 +265,15 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 							totalRatioLabelGUI.Txt02.text = text2;
 							flag5 = true;
 							break;
+						case DataManagerGacha.ProbabilityData.Type.Sticker:
+							totalRatioLabelGUI.LabelTitle.text = "シール";
+							totalRatioLabelGUI.StarBase.SetActive(false);
+							totalRatioLabelGUI.RarityBase.SetActive(true);
+							totalRatioLabelGUI.Txt02.text = text2;
+							flag5 = true;
+							break;
 						}
-						this.SetupGachaRate(totalRatioLabelGUI, elements5, flag);
+						this.SetupGachaRate(totalRatioLabelGUI, elements6, flag);
 						totalRatioLabelGUI.NumAll03.gameObject.SetActive(flag2);
 						totalRatioLabelGUI.Txt03.SetActive(flag2);
 						totalRatioLabelGUI.NumAll04.gameObject.SetActive(flag3);
@@ -280,7 +318,7 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		this.detailWindowGuiData.gachaDetailTabMap[GachaWindowInfoCtrl.TabType.TabRate].ScrollRect.verticalNormalizedPosition = 1f;
 	}
 
-	private void SetupFriendsPhotoTreeHouseFurnitureItemList()
+	private void SetupFriendsPhotoTreeHouseFurnitureItemStickerList()
 	{
 		DataManagerGacha.GachaStaticData selectGachaStaticData = this.detailWindowGuiData.SelectGachaStaticData;
 		DataManagerGacha.ProbabilityData lastRequestRateViewData = DataManager.DmGacha.GetLastRequestRateViewData();
@@ -289,6 +327,7 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		list.Add(GachaWindowInfoCtrl.TabType.TabPhoto);
 		list.Add(GachaWindowInfoCtrl.TabType.TabTreeHouseFurniture);
 		list.Add(GachaWindowInfoCtrl.TabType.TabItem);
+		list.Add(GachaWindowInfoCtrl.TabType.TabSticker);
 		bool flag = DataManagerGacha.Category.Box == selectGachaStaticData.gachaCategory;
 		DataManagerGacha.GachaStaticTypeData gachaStaticTypeData = ((1 < selectGachaStaticData.typeDataList.Count) ? selectGachaStaticData.typeDataList[1] : selectGachaStaticData.typeDataList[0]);
 		bool flag2 = this.IsDecidedFour(gachaStaticTypeData);
@@ -372,6 +411,9 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 						case GachaWindowInfoCtrl.TabType.TabItem:
 							text = "アイテム";
 							break;
+						case GachaWindowInfoCtrl.TabType.TabSticker:
+							text = "シール";
+							break;
 						default:
 							text = string.Empty;
 							break;
@@ -399,9 +441,9 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 								DataManagerGacha.ProbabilityData.Type type = CS$<>8__locals1.probabilityElement.type;
 								if (type - DataManagerGacha.ProbabilityData.Type.Chara > 1)
 								{
-									if (type - DataManagerGacha.ProbabilityData.Type.Item > 1)
+									if (type - DataManagerGacha.ProbabilityData.Type.Item > 2)
 									{
-										goto IL_05A7;
+										goto IL_05BB;
 									}
 								}
 								else
@@ -416,13 +458,13 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 											pguiImageCtrl.gameObject.SetActive(num3 < CS$<>8__locals1.probabilityElement.rate[0].rarity);
 											num3++;
 										}
-										goto IL_05A7;
+										goto IL_05BB;
 									}
 								}
 								rarityStarBar.RarityText.gameObject.SetActive(true);
 								rarityStarBar.RarityText.text = PrjUtil.Rarity2String(CS$<>8__locals1.probabilityElement.rate[0].rarity);
 							}
-							IL_05A7:
+							IL_05BB:
 							GachaWindowInfoCtrl.ItemInfoLabelGUI itemInfoLabelGUI = new GachaWindowInfoCtrl.ItemInfoLabelGUI(Object.Instantiate<GameObject>((GameObject)Resources.Load("SceneGacha/GUI/Prefab/GachaInfo_Parts03"), tabInnerFrameGUI.Base.transform).transform);
 							ItemStaticBase isb = DataManager.DmItem.GetItemStaticBase(CS$<>8__locals1.probabilityElement.item_id);
 							itemInfoLabelGUI.Icon_Item.Setup(isb, new IconItemCtrl.SetupParam
@@ -452,10 +494,10 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 									}
 									break;
 								}
-								goto IL_072B;
+								goto IL_0743;
 							}
 							case DataManagerGacha.ProbabilityData.Type.Photo:
-								goto IL_072B;
+								goto IL_0743;
 							case DataManagerGacha.ProbabilityData.Type.Item:
 								itemInfoLabelGUI.RarityText.gameObject.SetActive(true);
 								itemInfoLabelGUI.RarityText.text = PrjUtil.Rarity2String(CS$<>8__locals1.probabilityElement.rate[0].rarity);
@@ -463,9 +505,14 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 								flag3 = false;
 								break;
 							case DataManagerGacha.ProbabilityData.Type.TreeHouseFurniture:
-								goto IL_079B;
+								goto IL_07B3;
+							case DataManagerGacha.ProbabilityData.Type.Sticker:
+								itemInfoLabelGUI.RarityText.gameObject.SetActive(true);
+								itemInfoLabelGUI.RarityText.text = PrjUtil.Rarity2String(CS$<>8__locals1.probabilityElement.rate[0].rarity);
+								flag3 = false;
+								break;
 							}
-							IL_085C:
+							IL_08BB:
 							itemInfoLabelGUI.Name.ReplaceTextByDefault(new string[] { "Param01", "Param02", "Param03" }, new string[]
 							{
 								text2,
@@ -507,7 +554,7 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 							itemInfoLabelGUI.Mark_Limited.gameObject.SetActive(false);
 							itemInfoLabelGUI.Mark_New.gameObject.SetActive(false);
 							continue;
-							IL_072B:
+							IL_0743:
 							itemInfoLabelGUI.IconAllObj.SetActive(true);
 							using (List<PguiImageCtrl>.Enumerator enumerator4 = itemInfoLabelGUI.IconAllList.GetEnumerator())
 							{
@@ -517,9 +564,9 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 									pguiImageCtrl3.gameObject.SetActive(num4 < CS$<>8__locals1.probabilityElement.rate[0].rarity);
 									num4++;
 								}
-								goto IL_085C;
+								goto IL_08BB;
 							}
-							IL_079B:
+							IL_07B3:
 							itemInfoLabelGUI.Icon_Item.AddOnLongClickListener(delegate(IconItemCtrl x)
 							{
 								CS$<>8__locals1.<>4__this.OpenTreeHouseFurnitureWindow(isb);
@@ -527,7 +574,7 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 							itemInfoLabelGUI.RarityText.gameObject.SetActive(true);
 							itemInfoLabelGUI.RarityText.text = PrjUtil.Rarity2String(CS$<>8__locals1.probabilityElement.rate[0].rarity);
 							flag3 = false;
-							goto IL_085C;
+							goto IL_08BB;
 						}
 					}
 				}
@@ -629,35 +676,55 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 					string text2 = string.Empty;
 					string text3 = string.Empty;
 					ItemDef.Kind kind = isb.GetKind();
-					if (kind == ItemDef.Kind.CHARA)
+					if (kind <= ItemDef.Kind.PHOTO)
 					{
-						CharaStaticData charaStaticData = DataManager.DmChara.GetCharaStaticData(DataManager.DmItem.ItemId2ChraId(gachaItemdata.itemId));
-						text2 = charaStaticData.baseData.NickName;
+						if (kind != ItemDef.Kind.CHARA)
+						{
+							if (kind != ItemDef.Kind.PHOTO)
+							{
+								goto IL_05F5;
+							}
+						}
+						else
+						{
+							CharaStaticData charaStaticData = DataManager.DmChara.GetCharaStaticData(DataManager.DmItem.ItemId2ChraId(gachaItemdata.itemId));
+							text2 = charaStaticData.baseData.NickName;
+							omakeInfoLabelGUI.IconAllObj.SetActive(true);
+							using (List<PguiImageCtrl>.Enumerator enumerator3 = omakeInfoLabelGUI.IconAllList.GetEnumerator())
+							{
+								while (enumerator3.MoveNext())
+								{
+									PguiImageCtrl pguiImageCtrl = enumerator3.Current;
+									pguiImageCtrl.gameObject.SetActive(num < charaStaticData.baseData.rankLow);
+									num++;
+								}
+								goto IL_063C;
+							}
+						}
 						omakeInfoLabelGUI.IconAllObj.SetActive(true);
 						using (List<PguiImageCtrl>.Enumerator enumerator3 = omakeInfoLabelGUI.IconAllList.GetEnumerator())
 						{
 							while (enumerator3.MoveNext())
 							{
-								PguiImageCtrl pguiImageCtrl = enumerator3.Current;
-								pguiImageCtrl.gameObject.SetActive(num < charaStaticData.baseData.rankLow);
+								PguiImageCtrl pguiImageCtrl2 = enumerator3.Current;
+								pguiImageCtrl2.gameObject.SetActive(num < (int)isb.GetRarity());
 								num++;
 							}
-							goto IL_05F8;
+							goto IL_063C;
 						}
-						goto IL_0507;
-					}
-					if (kind == ItemDef.Kind.PHOTO)
-					{
-						goto IL_0507;
+						goto IL_057A;
 					}
 					if (kind == ItemDef.Kind.TREEHOUSE_FURNITURE)
 					{
-						goto IL_0567;
+						goto IL_057A;
+					}
+					if (kind != ItemDef.Kind.STICKER)
+					{
+						goto IL_05F5;
 					}
 					omakeInfoLabelGUI.RarityText.gameObject.SetActive(true);
 					omakeInfoLabelGUI.RarityText.text = PrjUtil.Rarity2String((int)isb.GetRarity());
-					text3 = string.Format("×{0}", gachaItemdata.itemNum);
-					IL_05F8:
+					IL_063C:
 					omakeInfoLabelGUI.Name.ReplaceTextByDefault(new string[] { "Param01", "Param02", "Param03" }, new string[]
 					{
 						text2,
@@ -683,26 +750,19 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 						continue;
 					}
 					continue;
-					IL_0507:
-					omakeInfoLabelGUI.IconAllObj.SetActive(true);
-					using (List<PguiImageCtrl>.Enumerator enumerator3 = omakeInfoLabelGUI.IconAllList.GetEnumerator())
-					{
-						while (enumerator3.MoveNext())
-						{
-							PguiImageCtrl pguiImageCtrl2 = enumerator3.Current;
-							pguiImageCtrl2.gameObject.SetActive(num < (int)isb.GetRarity());
-							num++;
-						}
-						goto IL_05F8;
-					}
-					IL_0567:
+					IL_057A:
 					omakeInfoLabelGUI.Icon_Item.AddOnLongClickListener(delegate(IconItemCtrl x)
 					{
 						CS$<>8__locals1.<>4__this.OpenTreeHouseFurnitureWindow(isb);
 					});
 					omakeInfoLabelGUI.RarityText.gameObject.SetActive(true);
 					omakeInfoLabelGUI.RarityText.text = PrjUtil.Rarity2String((int)isb.GetRarity());
-					goto IL_05F8;
+					goto IL_063C;
+					IL_05F5:
+					omakeInfoLabelGUI.RarityText.gameObject.SetActive(true);
+					omakeInfoLabelGUI.RarityText.text = PrjUtil.Rarity2String((int)isb.GetRarity());
+					text3 = string.Format("×{0}", gachaItemdata.itemNum);
+					goto IL_063C;
 				}
 			}
 		}
@@ -751,7 +811,7 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		this.detailWindowGuiData.LeftArrow.gameObject.SetActive(this.detailWindowGuiData.SelectGachaStaticData.stepPreviousGachaId != 0);
 		this.detailWindowGuiData.RightArrow.gameObject.SetActive(this.detailWindowGuiData.SelectGachaStaticData.stepNextGachaId != 0);
 		this.SetupRateList();
-		this.SetupFriendsPhotoTreeHouseFurnitureItemList();
+		this.SetupFriendsPhotoTreeHouseFurnitureItemStickerList();
 		this.SetupOptionList();
 	}
 
@@ -883,6 +943,8 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 			return DataManagerGacha.ProbabilityData.Type.TreeHouseFurniture;
 		case GachaWindowInfoCtrl.TabType.TabItem:
 			return DataManagerGacha.ProbabilityData.Type.Item;
+		case GachaWindowInfoCtrl.TabType.TabSticker:
+			return DataManagerGacha.ProbabilityData.Type.Sticker;
 		}
 		return DataManagerGacha.ProbabilityData.Type.Undefined;
 	}
@@ -1000,6 +1062,7 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 			this.gachaDetailTabMap[GachaWindowInfoCtrl.TabType.TabPhoto] = new GachaWindowInfoCtrl.GachaInfoTab(baseTr.Find("Base/Window/Base/Info_Photo"));
 			this.gachaDetailTabMap[GachaWindowInfoCtrl.TabType.TabTreeHouseFurniture] = new GachaWindowInfoCtrl.GachaInfoTab(baseTr.Find("Base/Window/Base/Info_Interior"));
 			this.gachaDetailTabMap[GachaWindowInfoCtrl.TabType.TabItem] = new GachaWindowInfoCtrl.GachaInfoTab(baseTr.Find("Base/Window/Base/Info_Item"));
+			this.gachaDetailTabMap[GachaWindowInfoCtrl.TabType.TabSticker] = new GachaWindowInfoCtrl.GachaInfoTab(baseTr.Find("Base/Window/Base/Info_Sticker"));
 			this.gachaDetailTabMap[GachaWindowInfoCtrl.TabType.TabOption] = new GachaWindowInfoCtrl.GachaInfoTab(baseTr.Find("Base/Window/Base/Info_Option"));
 			this.LeftArrow = baseTr.Find("Base/Window/LeftBtn/Btn_Yaji_Left").GetComponent<PguiButtonCtrl>();
 			this.RightArrow = baseTr.Find("Base/Window/RightBtn/Btn_Yaji_Right").GetComponent<PguiButtonCtrl>();
@@ -1317,6 +1380,7 @@ public class GachaWindowInfoCtrl : MonoBehaviour
 		TabPhoto,
 		TabTreeHouseFurniture,
 		TabItem,
+		TabSticker,
 		TabOption
 	}
 

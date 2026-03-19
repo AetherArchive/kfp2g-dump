@@ -174,38 +174,38 @@ public class RegisterSaveData
 		}
 	}
 
-	private void SortAlbumPhotoList(ref List<PhotoPackData> photoPackList, Dictionary<SortFilterDefine.PhotoAlbumRegistrationStatus, HashSet<int>> registeredPhotoStatusMap)
+	private void SortAlbumPhotoList(ref List<PhotoPackData> photoPackList, Dictionary<SortFilterDefine.RegistrationStatus, HashSet<int>> registeredPhotoStatusMap)
 	{
 		HashSet<int> includePhotoIdHashSet = new HashSet<int>();
-		if (0 < this.includePhotoAlbumRegistrationStatusList.Count && registeredPhotoStatusMap != null)
+		if (0 < this.includeRegistrationStatusList.Count && registeredPhotoStatusMap != null)
 		{
-			HashSet<SortFilterDefine.PhotoAlbumRegistrationStatus> hashSet = new HashSet<SortFilterDefine.PhotoAlbumRegistrationStatus>();
-			foreach (SortFilterDefine.PhotoAlbumRegistrationStatus photoAlbumRegistrationStatus in this.includePhotoAlbumRegistrationStatusList)
+			HashSet<SortFilterDefine.RegistrationStatus> hashSet = new HashSet<SortFilterDefine.RegistrationStatus>();
+			foreach (SortFilterDefine.RegistrationStatus registrationStatus in this.includeRegistrationStatusList)
 			{
-				switch (photoAlbumRegistrationStatus)
+				switch (registrationStatus)
 				{
-				case SortFilterDefine.PhotoAlbumRegistrationStatus.Registered:
-					hashSet.Add(SortFilterDefine.PhotoAlbumRegistrationStatus.Registered);
-					hashSet.Add(SortFilterDefine.PhotoAlbumRegistrationStatus.BreakthroughLimitMax);
-					hashSet.Add(SortFilterDefine.PhotoAlbumRegistrationStatus.GrowthMax);
+				case SortFilterDefine.RegistrationStatus.Registered:
+					hashSet.Add(SortFilterDefine.RegistrationStatus.Registered);
+					hashSet.Add(SortFilterDefine.RegistrationStatus.BreakthroughLimitMax);
+					hashSet.Add(SortFilterDefine.RegistrationStatus.GrowthMax);
 					break;
-				case SortFilterDefine.PhotoAlbumRegistrationStatus.BreakthroughLimitMax:
-					hashSet.Add(SortFilterDefine.PhotoAlbumRegistrationStatus.BreakthroughLimitMax);
-					hashSet.Add(SortFilterDefine.PhotoAlbumRegistrationStatus.GrowthMax);
+				case SortFilterDefine.RegistrationStatus.BreakthroughLimitMax:
+					hashSet.Add(SortFilterDefine.RegistrationStatus.BreakthroughLimitMax);
+					hashSet.Add(SortFilterDefine.RegistrationStatus.GrowthMax);
 					break;
-				case SortFilterDefine.PhotoAlbumRegistrationStatus.GrowthMax:
-					hashSet.Add(SortFilterDefine.PhotoAlbumRegistrationStatus.GrowthMax);
+				case SortFilterDefine.RegistrationStatus.GrowthMax:
+					hashSet.Add(SortFilterDefine.RegistrationStatus.GrowthMax);
 					break;
 				default:
-					hashSet.Add(photoAlbumRegistrationStatus);
+					hashSet.Add(registrationStatus);
 					break;
 				}
 			}
-			foreach (SortFilterDefine.PhotoAlbumRegistrationStatus photoAlbumRegistrationStatus2 in hashSet)
+			foreach (SortFilterDefine.RegistrationStatus registrationStatus2 in hashSet)
 			{
-				if (registeredPhotoStatusMap.ContainsKey(photoAlbumRegistrationStatus2))
+				if (registeredPhotoStatusMap.ContainsKey(registrationStatus2))
 				{
-					includePhotoIdHashSet.UnionWith(registeredPhotoStatusMap[photoAlbumRegistrationStatus2]);
+					includePhotoIdHashSet.UnionWith(registeredPhotoStatusMap[registrationStatus2]);
 				}
 			}
 		}
@@ -215,7 +215,7 @@ public class RegisterSaveData
 		}
 		photoPackList.RemoveAll((PhotoPackData item) => 0 < this.includePhotoRarityList.Count && !this.includePhotoRarityList.Contains(item.staticData.baseData.rarity));
 		photoPackList.RemoveAll((PhotoPackData item) => 0 < this.includePhotoTypeList.Count && !this.includePhotoTypeList.Contains(item.staticData.baseData.type));
-		photoPackList.RemoveAll((PhotoPackData item) => 0 < this.includePhotoAlbumRegistrationStatusList.Count && !includePhotoIdHashSet.Contains(item.staticData.GetId()));
+		photoPackList.RemoveAll((PhotoPackData item) => 0 < this.includeRegistrationStatusList.Count && !includePhotoIdHashSet.Contains(item.staticData.GetId()));
 		PrjUtil.InsertionSort<PhotoPackData>(ref photoPackList, new Comparison<PhotoPackData>(DataManager.DmPhoto.ComparePhotoPackDataNyName));
 		PrjUtil.InsertionSort<PhotoPackData>(ref photoPackList, new Comparison<PhotoPackData>(DataManager.DmPhoto.ComparePhotoPackDataByType));
 		PrjUtil.InsertionSort<PhotoPackData>(ref photoPackList, new Comparison<PhotoPackData>(this.SortPhotoList));
@@ -373,6 +373,22 @@ public class RegisterSaveData
 		}
 	}
 
+	private void SortStickerCollectionList(ref List<DataManagerSticker.StickerPackData> stickerPackList, Dictionary<SortFilterDefine.RegistrationStatus, HashSet<int>> registeredStatusMap)
+	{
+		if (0 < this.includeStickerSearchText.Length)
+		{
+			stickerPackList = stickerPackList.Where<DataManagerSticker.StickerPackData>((DataManagerSticker.StickerPackData item) => item.staticData.name.Contains(this.includeStickerSearchText)).ToList<DataManagerSticker.StickerPackData>();
+		}
+		stickerPackList.RemoveAll((DataManagerSticker.StickerPackData item) => 0 < this.includeStickerRarityList.Count && !this.includeStickerRarityList.Contains((ItemDef.Rarity)item.staticData.rarity));
+		stickerPackList.RemoveAll((DataManagerSticker.StickerPackData item) => 0 < this.includeStickerTypeList.Count && !this.includeStickerTypeList.Contains(item.staticData.stickerType));
+		PrjUtil.InsertionSort<DataManagerSticker.StickerPackData>(ref stickerPackList, new Comparison<DataManagerSticker.StickerPackData>(DataManager.DmSticker.ComparePackDataNyName));
+		PrjUtil.InsertionSort<DataManagerSticker.StickerPackData>(ref stickerPackList, new Comparison<DataManagerSticker.StickerPackData>(this.SortStickerList));
+		if (this.SortOrder)
+		{
+			stickerPackList.Reverse();
+		}
+	}
+
 	public List<int> GetBonusCharaIdList()
 	{
 		List<int> list = new List<int>();
@@ -413,7 +429,7 @@ public class RegisterSaveData
 		{
 			if (SortFilterDefine.RegisterType.PHOTO_ALBUM == this.RegisterType)
 			{
-				this.SortAlbumPhotoList(ref target.photoList, target.photoAlbumRegistrationStatusMap);
+				this.SortAlbumPhotoList(ref target.photoList, target.registrationStatusMap);
 				return;
 			}
 			this.FilteringSortTargetPhotoList(ref target.photoList, target.disableFilterPhotoList, target.lowerDisableSortPhotoList, target.upperDisableSortPhotoList, target.basePhotoPackData);
@@ -429,6 +445,11 @@ public class RegisterSaveData
 			if (target.helperList != null)
 			{
 				this.SortTargetHelperList(ref target.helperList, target.disableFilterHelperList, target.disableSortHelperList);
+				return;
+			}
+			if (target.stickerList != null)
+			{
+				this.SortStickerCollectionList(ref target.stickerList, target.registrationStatusMap);
 			}
 			return;
 		}
@@ -521,6 +542,24 @@ public class RegisterSaveData
 			break;
 		case SortFilterDefine.SortType.BREAKTHROUGH_LIMIT:
 			num = a.dynamicData.levelRank - b.dynamicData.levelRank;
+			break;
+		}
+		return num;
+	}
+
+	private int SortStickerList(DataManagerSticker.StickerPackData a, DataManagerSticker.StickerPackData b)
+	{
+		int num = 0;
+		switch (this.sortType)
+		{
+		case SortFilterDefine.SortType.STICKER_RARITY:
+			num = a.staticData.rarity - b.staticData.rarity;
+			break;
+		case SortFilterDefine.SortType.STICKER_NAME:
+			num = DataManager.DmSticker.ComparePackDataNyName(a, b);
+			break;
+		case SortFilterDefine.SortType.STICKER_COUNT:
+			num = a.dynamicData.num - b.dynamicData.num;
 			break;
 		}
 		return num;
@@ -1445,7 +1484,7 @@ public class RegisterSaveData
 
 	public List<PhotoDef.Type> includePhotoTypeList = new List<PhotoDef.Type>();
 
-	public List<SortFilterDefine.PhotoAlbumRegistrationStatus> includePhotoAlbumRegistrationStatusList = new List<SortFilterDefine.PhotoAlbumRegistrationStatus>();
+	public List<SortFilterDefine.RegistrationStatus> includeRegistrationStatusList = new List<SortFilterDefine.RegistrationStatus>();
 
 	public bool includePhotoBonus;
 
@@ -1508,6 +1547,12 @@ public class RegisterSaveData
 	public List<int> characteristicEffectButtonIdxList = new List<int>();
 
 	public List<int> characteristicResistButtonIdxList = new List<int>();
+
+	public string includeStickerSearchText = "";
+
+	public List<ItemDef.Rarity> includeStickerRarityList = new List<ItemDef.Rarity>();
+
+	public List<DataManagerSticker.StickerType> includeStickerTypeList = new List<DataManagerSticker.StickerType>();
 
 	public Dictionary<List<DataManagerChara.FilterData>, List<CharaPackData>> conditionRegistMemoData = new Dictionary<List<DataManagerChara.FilterData>, List<CharaPackData>>();
 

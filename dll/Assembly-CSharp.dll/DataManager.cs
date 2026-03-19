@@ -238,6 +238,14 @@ public class DataManager : Singleton<DataManager>
 		}
 	}
 
+	public static DataManagerSticker DmSticker
+	{
+		get
+		{
+			return Singleton<DataManager>.Instance.dmSticker;
+		}
+	}
+
 	public static DataManagerIntroductionNewChara DmIntroduction
 	{
 		get
@@ -330,6 +338,7 @@ public class DataManager : Singleton<DataManager>
 		this.dmTreeHouse = new DataManagerTreeHouse(this);
 		this.dmScenario = new DataManagerScenario(this);
 		this.dmAchievement = new DataManagerAchievement(this);
+		this.dmSticker = new DataManagerSticker(this);
 		this.dmIntroduction = new DataManagerIntroductionNewChara(this);
 		this.dmBookmark = new DataManagerBookmark(this);
 		this.dmAssistant = new DataManagerAssistant(this);
@@ -365,7 +374,7 @@ public class DataManager : Singleton<DataManager>
 		this.dmChara.UpdateUserDataByServer(res.charas);
 		this.dmDeck.UpdateUserDataByServer(res.decks);
 		DataManager.DmKemoBoard.UpdateUserDataByServer(res.kemoboard_panels);
-		this.dmItem.UpdateUserDataByServer(res.items, res.charas, res.achievements);
+		this.dmItem.UpdateUserDataByServer(res.items, res.charas, res.achievements, res.stickers);
 		this.dmItem.UpdateUserDataByServer(res.item_banks);
 		this.dmChara.UpdateUserCharasClothesData();
 		this.dmChara.UpdateUserCharasContactData();
@@ -383,6 +392,7 @@ public class DataManager : Singleton<DataManager>
 		this.dmPvp.UpdateReleasePvpSpecialEffectList(res.pvpspecialReleaseIdList, true, false);
 		this.dmScenario.UpdateUserDataByServer(res.assets.player_info);
 		this.dmAchievement.UpdateUserDataByServer(res.achievements);
+		this.dmSticker.UpdateUserDataByServer(res.stickers);
 		this.dmIntroduction.UpdateUserDataByServer(res.assets.player_info);
 		this.dmUserInfo.UpdateUserExpOverflowByServer(res.assets.exp_overflow);
 		this.dmUserInfo.UpdateUserKizunaConfirmByServer(res.assets.kizunaConfirm);
@@ -414,7 +424,7 @@ public class DataManager : Singleton<DataManager>
 		}
 		if (assets.update_item_list != null)
 		{
-			this.dmItem.UpdateUserDataByServer(assets.update_item_list, assets.update_chara_list, assets.update_achievement_list);
+			this.dmItem.UpdateUserDataByServer(assets.update_item_list, assets.update_chara_list, assets.update_achievement_list, assets.update_sticker_list);
 			this.dmHome.UpdateUserDataByServer(assets.update_item_list);
 			this.dmChara.UpdateUserDataByServer(assets.update_item_list);
 			if (assets.update_item_list.Exists((Item x) => ItemDef.Id2Kind(x.item_id) == ItemDef.Kind.CLOTHES))
@@ -486,6 +496,10 @@ public class DataManager : Singleton<DataManager>
 		if (assets.update_sealed_data != null)
 		{
 			this.dmQuest.UpdateQuestCharaSealedByAssets(assets.update_sealed_data);
+		}
+		if (assets.update_sticker_list != null)
+		{
+			this.dmSticker.UpdateUserDataByServer(assets.update_sticker_list);
 		}
 	}
 
@@ -652,6 +666,7 @@ public class DataManager : Singleton<DataManager>
 		DataManager.DmPhoto.InitializeMstData(Singleton<MstManager>.Instance);
 		DataManager.DmChAccessory.InitializeMstData(Singleton<MstManager>.Instance);
 		DataManager.DmAchievement.InitializeMstData(Singleton<MstManager>.Instance);
+		DataManager.DmSticker.InitializeMstData(Singleton<MstManager>.Instance);
 		DataManager.DmGacha.InitializeMstData(Singleton<MstManager>.Instance);
 		IEnumerator IEquest = DataManager.DmQuest.InitializeMstData(Singleton<MstManager>.Instance, DataManager.DmChara.GetEnemyStaticMap());
 		while (IEquest.MoveNext())
@@ -772,6 +787,8 @@ public class DataManager : Singleton<DataManager>
 	private DataManagerScenario dmScenario;
 
 	private DataManagerAchievement dmAchievement;
+
+	private DataManagerSticker dmSticker;
 
 	private DataManagerIntroductionNewChara dmIntroduction;
 

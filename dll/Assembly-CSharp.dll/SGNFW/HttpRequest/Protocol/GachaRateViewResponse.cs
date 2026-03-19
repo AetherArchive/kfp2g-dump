@@ -14,5 +14,7 @@ namespace SGNFW.HttpRequest.Protocol
 		public ItemViewResult gacha_item_result;
 
 		public MasterRoomFurnitureViewResult gacha_master_room_furniture_result;
+
+		public StickerViewResult sticker_view_result;
 	}
 }

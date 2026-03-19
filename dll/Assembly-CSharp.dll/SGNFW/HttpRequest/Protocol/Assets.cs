@@ -24,6 +24,8 @@ namespace SGNFW.HttpRequest.Protocol
 
 		public List<Achievement> update_achievement_list;
 
+		public List<Sticker> update_sticker_list;
+
 		public List<ItemBank> update_item_bank_list;
 
 		public int present_num;

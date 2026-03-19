@@ -395,6 +395,7 @@ public class SelMissionCtrl : MonoBehaviour
 		dispItemList.AddRange(SelMissionCtrl.<AddItemDataToList>g__ItemDataList|17_0(DataManager.DmItem.GetUserDispItemList(itemList, DataManagerItem.DispType.Decoration)));
 		dispItemList.AddRange(SelMissionCtrl.<AddItemDataToList>g__ItemDataList|17_0(DataManager.DmItem.GetUserDispItemList(itemList, DataManagerItem.DispType.Accessory)));
 		dispItemList.AddRange(SelMissionCtrl.<AddItemDataToList>g__ItemDataList|17_0(DataManager.DmItem.GetUserDispItemList(itemList, DataManagerItem.DispType.Achievement)));
+		dispItemList.AddRange(SelMissionCtrl.<AddItemDataToList>g__ItemDataList|17_0(DataManager.DmItem.GetUserDispItemList(itemList, DataManagerItem.DispType.Sticker)));
 	}
 
 	private void ShowItemResultWindow(List<ItemData> dispItemList, List<ItemData> itemList, string windowText, UnityAction specialMissionResult = null)

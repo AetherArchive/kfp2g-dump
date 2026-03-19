@@ -258,11 +258,11 @@ public class PhotoFilterWindowCtrl
 		}
 	}
 
-	public void SetupAlbum(List<SortFilterDefine.PhotoAlbumRegistrationStatus> registTypeList)
+	public void SetupAlbum(List<SortFilterDefine.RegistrationStatus> registTypeList)
 	{
 		for (int i = 0; i < this.winGUI.frameAlbum.buttonList.Count; i++)
 		{
-			this.winGUI.frameAlbum.buttonList[i].SetToggleIndex(registTypeList.Contains(i + SortFilterDefine.PhotoAlbumRegistrationStatus.Unregistered) ? 1 : 0);
+			this.winGUI.frameAlbum.buttonList[i].SetToggleIndex(registTypeList.Contains(i + SortFilterDefine.RegistrationStatus.Unregistered) ? 1 : 0);
 			int btnIdx = i;
 			this.winGUI.frameAlbum.buttonList[i].AllRemoveOnClickListener();
 			this.winGUI.frameAlbum.buttonList[i].AddOnClickListener((PguiToggleButtonCtrl pbc, int toggleIdx) => this.OnClickPhotoAlbumButton(btnIdx, toggleIdx));
@@ -487,15 +487,15 @@ public class PhotoFilterWindowCtrl
 		return array;
 	}
 
-	public List<SortFilterDefine.PhotoAlbumRegistrationStatus> GetPhotoAlbumButtonstatus()
+	public List<SortFilterDefine.RegistrationStatus> GetPhotoAlbumButtonstatus()
 	{
 		List<PguiToggleButtonCtrl> buttonList = this.winGUI.frameAlbum.buttonList;
-		List<SortFilterDefine.PhotoAlbumRegistrationStatus> list = new List<SortFilterDefine.PhotoAlbumRegistrationStatus>();
+		List<SortFilterDefine.RegistrationStatus> list = new List<SortFilterDefine.RegistrationStatus>();
 		for (int i = 0; i < buttonList.Count; i++)
 		{
 			if (buttonList[i].GetToggleIndex() == 1)
 			{
-				list.Add(i + SortFilterDefine.PhotoAlbumRegistrationStatus.Unregistered);
+				list.Add(i + SortFilterDefine.RegistrationStatus.Unregistered);
 			}
 		}
 		return list;

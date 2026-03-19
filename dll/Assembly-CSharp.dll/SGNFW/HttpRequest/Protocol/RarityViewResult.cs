@@ -12,5 +12,7 @@ namespace SGNFW.HttpRequest.Protocol
 		public RarityItems rarity_items;
 
 		public RarityMasterRoomFurnitures rarity_master_room_furnitures;
+
+		public RarityStickers rarity_stickers;
 	}
 }

@@ -71,15 +71,36 @@ public class DataManagerCharaMission
 		{
 			this.dynamicCharaMissionMap[this.staticMissionMap[acceptMission.mission_id].CharaId].MissionMap[acceptMission.mission_id].Received = true;
 		}
-		foreach (Item item in missionBonusAcceptResponse.assets.update_item_list)
+		if (missionBonusAcceptResponse.assets.update_item_list != null)
 		{
-			if (!this.LastResultItemMap.ContainsKey(item.item_id))
+			using (List<Item>.Enumerator enumerator2 = missionBonusAcceptResponse.assets.update_item_list.GetEnumerator())
 			{
-				int item_id = item.item_id;
-				int num = item.item_num - DataManager.DmItem.GetUserItemData(item_id).num;
-				this.LastResultItemMap.Add(item_id, num);
+				while (enumerator2.MoveNext())
+				{
+					Item item = enumerator2.Current;
+					if (!this.LastResultItemMap.ContainsKey(item.item_id))
+					{
+						int item_id = item.item_id;
+						int num = item.item_num - DataManager.DmItem.GetUserItemData(item_id).num;
+						this.LastResultItemMap.Add(item_id, num);
+					}
+				}
+				goto IL_019D;
 			}
 		}
+		if (missionBonusAcceptResponse.assets.update_sticker_list != null)
+		{
+			foreach (Sticker sticker in missionBonusAcceptResponse.assets.update_sticker_list)
+			{
+				if (!this.LastResultItemMap.ContainsKey(sticker.id))
+				{
+					int id = sticker.id;
+					int num2 = sticker.num - DataManager.DmItem.GetUserItemData(id).num;
+					this.LastResultItemMap.Add(id, num2);
+				}
+			}
+		}
+		IL_019D:
 		this.parentData.UpdateUserAssetByAssets(missionBonusAcceptResponse.assets);
 	}
 

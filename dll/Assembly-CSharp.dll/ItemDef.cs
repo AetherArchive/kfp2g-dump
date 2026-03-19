@@ -117,6 +117,7 @@ public class ItemDef
 		new ItemDef.KindData(ItemDef.Kind.CHARA_CONTACT, 500001, 600000),
 		new ItemDef.KindData(ItemDef.Kind.TREEHOUSE_FURNITURE, 600001, 700000),
 		new ItemDef.KindData(ItemDef.Kind.ACHIEVEMENT, 700001, 800000),
+		new ItemDef.KindData(ItemDef.Kind.STICKER, 800001, 900000),
 		new ItemDef.KindData(ItemDef.Kind.CLOTHES, 1000001, 2000000)
 	};
 
@@ -163,6 +164,7 @@ public class ItemDef
 		TREEHOUSE_FURNITURE,
 		ABILITY_RELEASE,
 		ACHIEVEMENT,
+		STICKER,
 		ENEMY_CHARA = 1001,
 		PERFORMANCE_ONLY_OBJECT
 	}

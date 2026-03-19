@@ -202,6 +202,10 @@ public class SortFilterDefine
 		{
 			SortFilterDefine.RegisterType.CHARA_QUEST_ASSISTANT,
 			SortFilterDefine.SortType.LEVEL
+		},
+		{
+			SortFilterDefine.RegisterType.STICKER_COLLECTION,
+			SortFilterDefine.SortType.STICKER_RARITY
 		}
 	};
 
@@ -261,6 +265,13 @@ public class SortFilterDefine
 		SortFilterDefine.SortType.TRY_DAMAGE,
 		SortFilterDefine.SortType.RARITY,
 		SortFilterDefine.SortType.NEW
+	};
+
+	public static readonly List<SortFilterDefine.SortType> StickerSortTypeList = new List<SortFilterDefine.SortType>
+	{
+		SortFilterDefine.SortType.STICKER_RARITY,
+		SortFilterDefine.SortType.STICKER_NAME,
+		SortFilterDefine.SortType.STICKER_COUNT
 	};
 
 	public static readonly Dictionary<SortFilterDefine.SortType, string> SortTypeDispNameMap = new Dictionary<SortFilterDefine.SortType, string>
@@ -336,6 +347,18 @@ public class SortFilterDefine
 		{
 			SortFilterDefine.SortType.TRY_DAMAGE,
 			"Try!!"
+		},
+		{
+			SortFilterDefine.SortType.STICKER_NAME,
+			"なまえ順"
+		},
+		{
+			SortFilterDefine.SortType.STICKER_COUNT,
+			"所持枚数順"
+		},
+		{
+			SortFilterDefine.SortType.STICKER_RARITY,
+			"レアリティ順"
 		}
 	};
 
@@ -389,6 +412,10 @@ public class SortFilterDefine
 
 	public static readonly List<string> friendsFilterMiracleEffectList = new List<string> { "攻撃", "与ダメージ", "被ダメージ", "MP", "体力回復", "攻撃命中率", "回避", "プラズムチャージ", "いかく/かくれみ" };
 
+	public static readonly List<string> stickerFilterRarityList = new List<string> { "R", "SR", "SSR" };
+
+	public static readonly List<string> stickerFilterTypeList = new List<string> { "アイテム", "フレンズ", "フォト", "すぺしゃる" };
+
 	public enum SortType
 	{
 		INVALID,
@@ -410,7 +437,10 @@ public class SortFilterDefine
 		PLASM_POINT,
 		BEAT_DAMAGE,
 		ACTION_DAMAGE,
-		TRY_DAMAGE
+		TRY_DAMAGE,
+		STICKER_RARITY,
+		STICKER_NAME,
+		STICKER_COUNT
 	}
 
 	public enum RegisterType
@@ -447,7 +477,8 @@ public class SortFilterDefine
 		ACCESSORY_SELL,
 		ACCESSORY_EQUIP,
 		CHARA_SHOP_ASSISTANT,
-		CHARA_QUEST_ASSISTANT
+		CHARA_QUEST_ASSISTANT,
+		STICKER_COLLECTION
 	}
 
 	public enum SortFilterType
@@ -457,7 +488,9 @@ public class SortFilterDefine
 		CHARA_FILTER,
 		PHOTO_SORT,
 		PHOTO_FILTER,
-		FOLLOW_SORT
+		FOLLOW_SORT,
+		STICKER_SORT,
+		STICKER_FILTER
 	}
 
 	public enum CharacteristicFilterCategory
@@ -517,7 +550,7 @@ public class SortFilterDefine
 		All
 	}
 
-	public enum PhotoAlbumRegistrationStatus
+	public enum RegistrationStatus
 	{
 		Invalid,
 		Unregistered,
@@ -541,5 +574,18 @@ public class SortFilterDefine
 		AccessoryGrowMaterial,
 		AccessorySell,
 		AccessoryCharaEdit
+	}
+
+	public class RagistrationStatusEqualityComparer : IEqualityComparer<SortFilterDefine.RegistrationStatus>
+	{
+		public bool Equals(SortFilterDefine.RegistrationStatus x, SortFilterDefine.RegistrationStatus y)
+		{
+			return x == y;
+		}
+
+		public int GetHashCode(SortFilterDefine.RegistrationStatus obj)
+		{
+			return (int)obj;
+		}
 	}
 }

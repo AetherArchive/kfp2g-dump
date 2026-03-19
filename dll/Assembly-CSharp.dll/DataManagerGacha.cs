@@ -549,6 +549,7 @@ public class DataManagerGacha
 		PhotoViewResult gacha_photos_result = gachaRateViewResponse.gacha_photos_result;
 		MasterRoomFurnitureViewResult gacha_master_room_furniture_result = gachaRateViewResponse.gacha_master_room_furniture_result;
 		ItemViewResult gacha_item_result = gachaRateViewResponse.gacha_item_result;
+		StickerViewResult sticker_view_result = gachaRateViewResponse.sticker_view_result;
 		DataManagerGacha.ProbabilityData probabilityData = new DataManagerGacha.ProbabilityData
 		{
 			gachaId = this.lastRequestRateViewGachaId,
@@ -587,20 +588,28 @@ public class DataManagerGacha
 			element4.rate.Add(itemOne4);
 		}
 		probabilityData.elements.Add(element4);
+		DataManagerGacha.ProbabilityData.Element element5 = new DataManagerGacha.ProbabilityData.Element(DataManagerGacha.ProbabilityData.Type.Sticker, DataManagerGacha.ProbabilityData.Category.Rarity);
+		element5.rate = new List<DataManagerGacha.ProbabilityData.ItemOne>();
+		foreach (GachaRateRarity gachaRateRarity5 in gacha_rarity_result.rarity_stickers.rarity)
+		{
+			DataManagerGacha.ProbabilityData.ItemOne itemOne5 = new DataManagerGacha.ProbabilityData.ItemOne(gachaRateRarity5.rarity, gachaRateRarity5.normal, gachaRateRarity5.decided, gachaRateRarity5.decided_3, gachaRateRarity5.decided_4, gachaRateRarity5.decided_ceiling);
+			element5.rate.Add(itemOne5);
+		}
+		probabilityData.elements.Add(element5);
 		using (List<GachaRateItem>.Enumerator enumerator2 = gacha_charas_result.pickup.GetEnumerator())
 		{
 			while (enumerator2.MoveNext())
 			{
 				GachaRateItem pickup2 = enumerator2.Current;
 				DataManagerGacha.GachaItemdata gachaItemdata = gachaItemData.Find((DataManagerGacha.GachaItemdata x) => x.itemId == pickup2.item_id && x.itemNum == pickup2.item_num);
-				DataManagerGacha.ProbabilityData.Element element5 = new DataManagerGacha.ProbabilityData.Element(DataManagerGacha.ProbabilityData.Type.Chara, DataManagerGacha.ProbabilityData.Category.PickUp, gachaItemdata, pickup2.remain_num);
-				element5.rate = new List<DataManagerGacha.ProbabilityData.ItemOne>();
-				DataManagerGacha.ProbabilityData.ItemOne itemOne5 = new DataManagerGacha.ProbabilityData.ItemOne(pickup2.normal, pickup2.decided, pickup2.decided_3, pickup2.decided_4, pickup2.decided_ceiling);
+				DataManagerGacha.ProbabilityData.Element element6 = new DataManagerGacha.ProbabilityData.Element(DataManagerGacha.ProbabilityData.Type.Chara, DataManagerGacha.ProbabilityData.Category.PickUp, gachaItemdata, pickup2.remain_num);
+				element6.rate = new List<DataManagerGacha.ProbabilityData.ItemOne>();
+				DataManagerGacha.ProbabilityData.ItemOne itemOne6 = new DataManagerGacha.ProbabilityData.ItemOne(pickup2.normal, pickup2.decided, pickup2.decided_3, pickup2.decided_4, pickup2.decided_ceiling);
 				CharaStaticData charaStaticData = DataManager.DmChara.GetCharaStaticData(pickup2.item_id);
-				itemOne5.rarity = charaStaticData.baseData.rankLow;
-				element5.rate.Add(itemOne5);
-				element5.item_num = pickup2.item_num;
-				probabilityData.elements.Add(element5);
+				itemOne6.rarity = charaStaticData.baseData.rankLow;
+				element6.rate.Add(itemOne6);
+				element6.item_num = pickup2.item_num;
+				probabilityData.elements.Add(element6);
 			}
 		}
 		using (List<GachaRateItem>.Enumerator enumerator2 = gacha_charas_result.other.GetEnumerator())
@@ -609,14 +618,14 @@ public class DataManagerGacha
 			{
 				GachaRateItem other2 = enumerator2.Current;
 				DataManagerGacha.GachaItemdata gachaItemdata2 = gachaItemData.Find((DataManagerGacha.GachaItemdata x) => x.itemId == other2.item_id && x.itemNum == other2.item_num);
-				DataManagerGacha.ProbabilityData.Element element6 = new DataManagerGacha.ProbabilityData.Element(DataManagerGacha.ProbabilityData.Type.Chara, DataManagerGacha.ProbabilityData.Category.Other, gachaItemdata2, other2.remain_num);
-				element6.rate = new List<DataManagerGacha.ProbabilityData.ItemOne>();
-				DataManagerGacha.ProbabilityData.ItemOne itemOne6 = new DataManagerGacha.ProbabilityData.ItemOne(other2.normal, other2.decided, other2.decided_3, other2.decided_4, other2.decided_ceiling);
+				DataManagerGacha.ProbabilityData.Element element7 = new DataManagerGacha.ProbabilityData.Element(DataManagerGacha.ProbabilityData.Type.Chara, DataManagerGacha.ProbabilityData.Category.Other, gachaItemdata2, other2.remain_num);
+				element7.rate = new List<DataManagerGacha.ProbabilityData.ItemOne>();
+				DataManagerGacha.ProbabilityData.ItemOne itemOne7 = new DataManagerGacha.ProbabilityData.ItemOne(other2.normal, other2.decided, other2.decided_3, other2.decided_4, other2.decided_ceiling);
 				CharaStaticData charaStaticData2 = DataManager.DmChara.GetCharaStaticData(other2.item_id);
-				itemOne6.rarity = charaStaticData2.baseData.rankLow;
-				element6.rate.Add(itemOne6);
-				element6.item_num = other2.item_num;
-				probabilityData.elements.Add(element6);
+				itemOne7.rarity = charaStaticData2.baseData.rankLow;
+				element7.rate.Add(itemOne7);
+				element7.item_num = other2.item_num;
+				probabilityData.elements.Add(element7);
 			}
 		}
 		using (List<GachaRateItem>.Enumerator enumerator2 = gacha_photos_result.pickup.GetEnumerator())
@@ -625,14 +634,14 @@ public class DataManagerGacha
 			{
 				GachaRateItem pickup3 = enumerator2.Current;
 				DataManagerGacha.GachaItemdata gachaItemdata3 = gachaItemData.Find((DataManagerGacha.GachaItemdata x) => x.itemId == pickup3.item_id && x.itemNum == pickup3.item_num);
-				DataManagerGacha.ProbabilityData.Element element7 = new DataManagerGacha.ProbabilityData.Element(DataManagerGacha.ProbabilityData.Type.Photo, DataManagerGacha.ProbabilityData.Category.PickUp, gachaItemdata3, pickup3.remain_num);
-				element7.rate = new List<DataManagerGacha.ProbabilityData.ItemOne>();
-				DataManagerGacha.ProbabilityData.ItemOne itemOne7 = new DataManagerGacha.ProbabilityData.ItemOne(pickup3.normal, pickup3.decided, pickup3.decided_3, pickup3.decided_4, pickup3.decided_ceiling);
+				DataManagerGacha.ProbabilityData.Element element8 = new DataManagerGacha.ProbabilityData.Element(DataManagerGacha.ProbabilityData.Type.Photo, DataManagerGacha.ProbabilityData.Category.PickUp, gachaItemdata3, pickup3.remain_num);
+				element8.rate = new List<DataManagerGacha.ProbabilityData.ItemOne>();
+				DataManagerGacha.ProbabilityData.ItemOne itemOne8 = new DataManagerGacha.ProbabilityData.ItemOne(pickup3.normal, pickup3.decided, pickup3.decided_3, pickup3.decided_4, pickup3.decided_ceiling);
 				PhotoStaticData photoStaticData = DataManager.DmPhoto.GetPhotoStaticData(pickup3.item_id);
-				itemOne7.rarity = (int)photoStaticData.GetRarity();
-				element7.rate.Add(itemOne7);
-				element7.item_num = pickup3.item_num;
-				probabilityData.elements.Add(element7);
+				itemOne8.rarity = (int)photoStaticData.GetRarity();
+				element8.rate.Add(itemOne8);
+				element8.item_num = pickup3.item_num;
+				probabilityData.elements.Add(element8);
 			}
 		}
 		using (List<GachaRateItem>.Enumerator enumerator2 = gacha_photos_result.other.GetEnumerator())
@@ -641,14 +650,14 @@ public class DataManagerGacha
 			{
 				GachaRateItem other3 = enumerator2.Current;
 				DataManagerGacha.GachaItemdata gachaItemdata4 = gachaItemData.Find((DataManagerGacha.GachaItemdata x) => x.itemId == other3.item_id && x.itemNum == other3.item_num);
-				DataManagerGacha.ProbabilityData.Element element8 = new DataManagerGacha.ProbabilityData.Element(DataManagerGacha.ProbabilityData.Type.Photo, DataManagerGacha.ProbabilityData.Category.Other, gachaItemdata4, other3.remain_num);
-				element8.rate = new List<DataManagerGacha.ProbabilityData.ItemOne>();
-				DataManagerGacha.ProbabilityData.ItemOne itemOne8 = new DataManagerGacha.ProbabilityData.ItemOne(other3.normal, other3.decided, other3.decided_3, other3.decided_4, other3.decided_ceiling);
+				DataManagerGacha.ProbabilityData.Element element9 = new DataManagerGacha.ProbabilityData.Element(DataManagerGacha.ProbabilityData.Type.Photo, DataManagerGacha.ProbabilityData.Category.Other, gachaItemdata4, other3.remain_num);
+				element9.rate = new List<DataManagerGacha.ProbabilityData.ItemOne>();
+				DataManagerGacha.ProbabilityData.ItemOne itemOne9 = new DataManagerGacha.ProbabilityData.ItemOne(other3.normal, other3.decided, other3.decided_3, other3.decided_4, other3.decided_ceiling);
 				PhotoStaticData photoStaticData2 = DataManager.DmPhoto.GetPhotoStaticData(other3.item_id);
-				itemOne8.rarity = (int)photoStaticData2.GetRarity();
-				element8.rate.Add(itemOne8);
-				element8.item_num = other3.item_num;
-				probabilityData.elements.Add(element8);
+				itemOne9.rarity = (int)photoStaticData2.GetRarity();
+				element9.rate.Add(itemOne9);
+				element9.item_num = other3.item_num;
+				probabilityData.elements.Add(element9);
 			}
 		}
 		using (List<GachaRateItem>.Enumerator enumerator2 = gacha_master_room_furniture_result.pickup.GetEnumerator())
@@ -657,14 +666,14 @@ public class DataManagerGacha
 			{
 				GachaRateItem pickup4 = enumerator2.Current;
 				DataManagerGacha.GachaItemdata gachaItemdata5 = gachaItemData.Find((DataManagerGacha.GachaItemdata x) => x.itemId == pickup4.item_id && x.itemNum == pickup4.item_num);
-				DataManagerGacha.ProbabilityData.Element element9 = new DataManagerGacha.ProbabilityData.Element(DataManagerGacha.ProbabilityData.Type.TreeHouseFurniture, DataManagerGacha.ProbabilityData.Category.PickUp, gachaItemdata5, pickup4.remain_num);
-				element9.rate = new List<DataManagerGacha.ProbabilityData.ItemOne>();
-				DataManagerGacha.ProbabilityData.ItemOne itemOne9 = new DataManagerGacha.ProbabilityData.ItemOne(pickup4.normal, pickup4.decided, pickup4.decided_3, pickup4.decided_4, pickup4.decided_ceiling);
+				DataManagerGacha.ProbabilityData.Element element10 = new DataManagerGacha.ProbabilityData.Element(DataManagerGacha.ProbabilityData.Type.TreeHouseFurniture, DataManagerGacha.ProbabilityData.Category.PickUp, gachaItemdata5, pickup4.remain_num);
+				element10.rate = new List<DataManagerGacha.ProbabilityData.ItemOne>();
+				DataManagerGacha.ProbabilityData.ItemOne itemOne10 = new DataManagerGacha.ProbabilityData.ItemOne(pickup4.normal, pickup4.decided, pickup4.decided_3, pickup4.decided_4, pickup4.decided_ceiling);
 				TreeHouseFurnitureStatic treeHouseFurnitureStaticData = DataManager.DmTreeHouse.GetTreeHouseFurnitureStaticData(pickup4.item_id);
-				itemOne9.rarity = (int)treeHouseFurnitureStaticData.GetRarity();
-				element9.rate.Add(itemOne9);
-				element9.item_num = pickup4.item_num;
-				probabilityData.elements.Add(element9);
+				itemOne10.rarity = (int)treeHouseFurnitureStaticData.GetRarity();
+				element10.rate.Add(itemOne10);
+				element10.item_num = pickup4.item_num;
+				probabilityData.elements.Add(element10);
 			}
 		}
 		using (List<GachaRateItem>.Enumerator enumerator2 = gacha_master_room_furniture_result.other.GetEnumerator())
@@ -673,46 +682,78 @@ public class DataManagerGacha
 			{
 				GachaRateItem other4 = enumerator2.Current;
 				DataManagerGacha.GachaItemdata gachaItemdata6 = gachaItemData.Find((DataManagerGacha.GachaItemdata x) => x.itemId == other4.item_id && x.itemNum == other4.item_num);
-				DataManagerGacha.ProbabilityData.Element element10 = new DataManagerGacha.ProbabilityData.Element(DataManagerGacha.ProbabilityData.Type.TreeHouseFurniture, DataManagerGacha.ProbabilityData.Category.Other, gachaItemdata6, other4.remain_num);
-				element10.rate = new List<DataManagerGacha.ProbabilityData.ItemOne>();
-				DataManagerGacha.ProbabilityData.ItemOne itemOne10 = new DataManagerGacha.ProbabilityData.ItemOne(other4.normal, other4.decided, other4.decided_3, other4.decided_4, other4.decided_ceiling);
+				DataManagerGacha.ProbabilityData.Element element11 = new DataManagerGacha.ProbabilityData.Element(DataManagerGacha.ProbabilityData.Type.TreeHouseFurniture, DataManagerGacha.ProbabilityData.Category.Other, gachaItemdata6, other4.remain_num);
+				element11.rate = new List<DataManagerGacha.ProbabilityData.ItemOne>();
+				DataManagerGacha.ProbabilityData.ItemOne itemOne11 = new DataManagerGacha.ProbabilityData.ItemOne(other4.normal, other4.decided, other4.decided_3, other4.decided_4, other4.decided_ceiling);
 				ItemStaticBase itemStaticBase = DataManager.DmItem.GetItemStaticBase(other4.item_id);
-				itemOne10.rarity = (int)itemStaticBase.GetRarity();
-				element10.rate.Add(itemOne10);
-				element10.item_num = other4.item_num;
-				probabilityData.elements.Add(element10);
+				itemOne11.rarity = (int)itemStaticBase.GetRarity();
+				element11.rate.Add(itemOne11);
+				element11.item_num = other4.item_num;
+				probabilityData.elements.Add(element11);
 			}
 		}
 		using (List<GachaRateItem>.Enumerator enumerator2 = gacha_item_result.pickup.GetEnumerator())
 		{
 			while (enumerator2.MoveNext())
 			{
-				GachaRateItem pickup = enumerator2.Current;
-				DataManagerGacha.GachaItemdata gachaItemdata7 = gachaItemData.Find((DataManagerGacha.GachaItemdata x) => x.itemId == pickup.item_id && x.itemNum == pickup.item_num);
-				DataManagerGacha.ProbabilityData.Element element11 = new DataManagerGacha.ProbabilityData.Element(DataManagerGacha.ProbabilityData.Type.Item, DataManagerGacha.ProbabilityData.Category.PickUp, gachaItemdata7, pickup.remain_num);
-				element11.rate = new List<DataManagerGacha.ProbabilityData.ItemOne>();
-				DataManagerGacha.ProbabilityData.ItemOne itemOne11 = new DataManagerGacha.ProbabilityData.ItemOne(pickup.normal, pickup.decided, pickup.decided_3, pickup.decided_4, pickup.decided_ceiling);
-				ItemStaticBase itemStaticBase2 = DataManager.DmItem.GetItemStaticBase(pickup.item_id);
-				itemOne11.rarity = (int)itemStaticBase2.GetRarity();
-				element11.rate.Add(itemOne11);
-				element11.item_num = pickup.item_num;
-				probabilityData.elements.Add(element11);
+				GachaRateItem pickup5 = enumerator2.Current;
+				DataManagerGacha.GachaItemdata gachaItemdata7 = gachaItemData.Find((DataManagerGacha.GachaItemdata x) => x.itemId == pickup5.item_id && x.itemNum == pickup5.item_num);
+				DataManagerGacha.ProbabilityData.Element element12 = new DataManagerGacha.ProbabilityData.Element(DataManagerGacha.ProbabilityData.Type.Item, DataManagerGacha.ProbabilityData.Category.PickUp, gachaItemdata7, pickup5.remain_num);
+				element12.rate = new List<DataManagerGacha.ProbabilityData.ItemOne>();
+				DataManagerGacha.ProbabilityData.ItemOne itemOne12 = new DataManagerGacha.ProbabilityData.ItemOne(pickup5.normal, pickup5.decided, pickup5.decided_3, pickup5.decided_4, pickup5.decided_ceiling);
+				ItemStaticBase itemStaticBase2 = DataManager.DmItem.GetItemStaticBase(pickup5.item_id);
+				itemOne12.rarity = (int)itemStaticBase2.GetRarity();
+				element12.rate.Add(itemOne12);
+				element12.item_num = pickup5.item_num;
+				probabilityData.elements.Add(element12);
 			}
 		}
 		using (List<GachaRateItem>.Enumerator enumerator2 = gacha_item_result.other.GetEnumerator())
 		{
 			while (enumerator2.MoveNext())
 			{
+				GachaRateItem other5 = enumerator2.Current;
+				DataManagerGacha.GachaItemdata gachaItemdata8 = gachaItemData.Find((DataManagerGacha.GachaItemdata x) => x.itemId == other5.item_id && x.itemNum == other5.item_num);
+				DataManagerGacha.ProbabilityData.Element element13 = new DataManagerGacha.ProbabilityData.Element(DataManagerGacha.ProbabilityData.Type.Item, DataManagerGacha.ProbabilityData.Category.Other, gachaItemdata8, other5.remain_num);
+				element13.rate = new List<DataManagerGacha.ProbabilityData.ItemOne>();
+				DataManagerGacha.ProbabilityData.ItemOne itemOne13 = new DataManagerGacha.ProbabilityData.ItemOne(other5.normal, other5.decided, other5.decided_3, other5.decided_4, other5.decided_ceiling);
+				ItemStaticBase itemStaticBase3 = DataManager.DmItem.GetItemStaticBase(other5.item_id);
+				itemOne13.rarity = (int)itemStaticBase3.GetRarity();
+				element13.rate.Add(itemOne13);
+				element13.item_num = other5.item_num;
+				probabilityData.elements.Add(element13);
+			}
+		}
+		using (List<GachaRateItem>.Enumerator enumerator2 = sticker_view_result.pickup.GetEnumerator())
+		{
+			while (enumerator2.MoveNext())
+			{
+				GachaRateItem pickup = enumerator2.Current;
+				DataManagerGacha.GachaItemdata gachaItemdata9 = gachaItemData.Find((DataManagerGacha.GachaItemdata x) => x.itemId == pickup.item_id && x.itemNum == pickup.item_num);
+				DataManagerGacha.ProbabilityData.Element element14 = new DataManagerGacha.ProbabilityData.Element(DataManagerGacha.ProbabilityData.Type.Sticker, DataManagerGacha.ProbabilityData.Category.PickUp, gachaItemdata9, pickup.remain_num);
+				element14.rate = new List<DataManagerGacha.ProbabilityData.ItemOne>();
+				DataManagerGacha.ProbabilityData.ItemOne itemOne14 = new DataManagerGacha.ProbabilityData.ItemOne(pickup.normal, pickup.decided, pickup.decided_3, pickup.decided_4, pickup.decided_ceiling);
+				DataManagerSticker.StickerStaticData stickerStaticData = DataManager.DmSticker.GetStickerStaticData(pickup.item_id);
+				itemOne14.rarity = (int)stickerStaticData.GetRarity();
+				element14.rate.Add(itemOne14);
+				element14.item_num = pickup.item_num;
+				probabilityData.elements.Add(element14);
+			}
+		}
+		using (List<GachaRateItem>.Enumerator enumerator2 = sticker_view_result.other.GetEnumerator())
+		{
+			while (enumerator2.MoveNext())
+			{
 				GachaRateItem other = enumerator2.Current;
-				DataManagerGacha.GachaItemdata gachaItemdata8 = gachaItemData.Find((DataManagerGacha.GachaItemdata x) => x.itemId == other.item_id && x.itemNum == other.item_num);
-				DataManagerGacha.ProbabilityData.Element element12 = new DataManagerGacha.ProbabilityData.Element(DataManagerGacha.ProbabilityData.Type.Item, DataManagerGacha.ProbabilityData.Category.Other, gachaItemdata8, other.remain_num);
-				element12.rate = new List<DataManagerGacha.ProbabilityData.ItemOne>();
-				DataManagerGacha.ProbabilityData.ItemOne itemOne12 = new DataManagerGacha.ProbabilityData.ItemOne(other.normal, other.decided, other.decided_3, other.decided_4, other.decided_ceiling);
-				ItemStaticBase itemStaticBase3 = DataManager.DmItem.GetItemStaticBase(other.item_id);
-				itemOne12.rarity = (int)itemStaticBase3.GetRarity();
-				element12.rate.Add(itemOne12);
-				element12.item_num = other.item_num;
-				probabilityData.elements.Add(element12);
+				DataManagerGacha.GachaItemdata gachaItemdata10 = gachaItemData.Find((DataManagerGacha.GachaItemdata x) => x.itemId == other.item_id && x.itemNum == other.item_num);
+				DataManagerGacha.ProbabilityData.Element element15 = new DataManagerGacha.ProbabilityData.Element(DataManagerGacha.ProbabilityData.Type.Sticker, DataManagerGacha.ProbabilityData.Category.Other, gachaItemdata10, other.remain_num);
+				element15.rate = new List<DataManagerGacha.ProbabilityData.ItemOne>();
+				DataManagerGacha.ProbabilityData.ItemOne itemOne15 = new DataManagerGacha.ProbabilityData.ItemOne(other.normal, other.decided, other.decided_3, other.decided_4, other.decided_ceiling);
+				DataManagerSticker.StickerStaticData stickerStaticData2 = DataManager.DmSticker.GetStickerStaticData(other.item_id);
+				itemOne15.rarity = (int)stickerStaticData2.GetRarity();
+				element15.rate.Add(itemOne15);
+				element15.item_num = other.item_num;
+				probabilityData.elements.Add(element15);
 			}
 		}
 		this.probabilityDataList.Add(probabilityData);
@@ -978,6 +1019,8 @@ public class DataManagerGacha
 
 		public bool IsResultTreeHouseFurnitureInfo { get; private set; }
 
+		public bool IsResultStickerInfo { get; private set; }
+
 		public int ReplaceGroupId { get; private set; }
 
 		public GachaStaticData()
@@ -1042,6 +1085,7 @@ public class DataManagerGacha
 				this.dayOfWeekFlg = true;
 			}
 			this.IsResultTreeHouseFurnitureInfo = mstGachaData.resultInfoType == 1;
+			this.IsResultStickerInfo = mstGachaData.resultInfoType == 2;
 		}
 
 		public DateTime EndTimeOfDayOfWeek(DateTime nowTime)
@@ -1369,7 +1413,8 @@ public class DataManagerGacha
 			Chara,
 			Photo,
 			Item,
-			TreeHouseFurniture
+			TreeHouseFurniture,
+			Sticker
 		}
 
 		public enum Category

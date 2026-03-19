@@ -1174,7 +1174,8 @@ public class SceneManager : Singleton<SceneManager>
 		ScenePhotoAlbum,
 		SceneTreeHouse,
 		SceneRanking,
-		SceneAchievement
+		SceneAchievement,
+		SceneStickerCollection
 	}
 
 	private enum SceneStatus

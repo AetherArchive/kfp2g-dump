@@ -74,7 +74,7 @@ public class SelPhotoAlbumCtrl : MonoBehaviour
 		}
 		List<PhotoStaticData> list2 = new List<PhotoStaticData>(DataManager.DmPhoto.GetPhotoStaticMap().Values);
 		list2.RemoveAll((PhotoStaticData psd) => TimeManager.Now < psd.baseData.StartDateTime && !albumDataMap.ContainsKey(psd.GetId()));
-		Dictionary<SortFilterDefine.PhotoAlbumRegistrationStatus, HashSet<int>> statusMap = new Dictionary<SortFilterDefine.PhotoAlbumRegistrationStatus, HashSet<int>>();
+		Dictionary<SortFilterDefine.RegistrationStatus, HashSet<int>> statusMap = new Dictionary<SortFilterDefine.RegistrationStatus, HashSet<int>>();
 		HashSet<int> hashSet = new HashSet<int>();
 		HashSet<int> hashSet2 = new HashSet<int>();
 		HashSet<int> hashSet3 = new HashSet<int>();
@@ -110,11 +110,11 @@ public class SelPhotoAlbumCtrl : MonoBehaviour
 			}
 			dummyDataList.Add(new PhotoPackData(photoDynamicData));
 		}
-		statusMap.Add(SortFilterDefine.PhotoAlbumRegistrationStatus.Unregistered, hashSet);
-		statusMap.Add(SortFilterDefine.PhotoAlbumRegistrationStatus.Registered, hashSet2);
-		statusMap.Add(SortFilterDefine.PhotoAlbumRegistrationStatus.BreakthroughLimitMax, hashSet3);
-		statusMap.Add(SortFilterDefine.PhotoAlbumRegistrationStatus.GrowthMax, hashSet4);
-		this.photoAlbumRegistStatusMap = new Dictionary<SortFilterDefine.PhotoAlbumRegistrationStatus, HashSet<int>>(statusMap, new SelPhotoAlbumCtrl.PhotoAlbumRagistrationStatusEqualityComparer());
+		statusMap.Add(SortFilterDefine.RegistrationStatus.Unregistered, hashSet);
+		statusMap.Add(SortFilterDefine.RegistrationStatus.Registered, hashSet2);
+		statusMap.Add(SortFilterDefine.RegistrationStatus.BreakthroughLimitMax, hashSet3);
+		statusMap.Add(SortFilterDefine.RegistrationStatus.GrowthMax, hashSet4);
+		this.photoAlbumRegistStatusMap = new Dictionary<SortFilterDefine.RegistrationStatus, HashSet<int>>(statusMap, new SortFilterDefine.RagistrationStatusEqualityComparer());
 		SortWindowCtrl.RegisterData registerData = new SortWindowCtrl.RegisterData
 		{
 			register = SortFilterDefine.RegisterType.PHOTO_ALBUM,
@@ -124,7 +124,7 @@ public class SelPhotoAlbumCtrl : MonoBehaviour
 			funcGetTargetBaseList = () => new SortWindowCtrl.SortTarget
 			{
 				photoList = new List<PhotoPackData>(dummyDataList),
-				photoAlbumRegistrationStatusMap = new Dictionary<SortFilterDefine.PhotoAlbumRegistrationStatus, HashSet<int>>(statusMap)
+				registrationStatusMap = new Dictionary<SortFilterDefine.RegistrationStatus, HashSet<int>>(statusMap)
 			},
 			funcDisideTarget = delegate(SortWindowCtrl.SortTarget item)
 			{
@@ -165,7 +165,7 @@ public class SelPhotoAlbumCtrl : MonoBehaviour
 			{
 				component.DispDrop(false, 0);
 				component.DispTextParam(false);
-				if (this.photoAlbumRegistStatusMap[SortFilterDefine.PhotoAlbumRegistrationStatus.Unregistered].Contains(photoPackData.staticData.GetId()))
+				if (this.photoAlbumRegistStatusMap[SortFilterDefine.RegistrationStatus.Unregistered].Contains(photoPackData.staticData.GetId()))
 				{
 					component.DispImgDisable(true);
 					if (PhotoDef.AlbumCategory.OverOnceHave == photoPackData.staticData.baseData.albumCategory)
@@ -173,7 +173,7 @@ public class SelPhotoAlbumCtrl : MonoBehaviour
 						component.DispLockNotOwn(true);
 					}
 				}
-				else if (this.photoAlbumRegistStatusMap[SortFilterDefine.PhotoAlbumRegistrationStatus.GrowthMax].Contains(photoPackData.staticData.GetId()))
+				else if (this.photoAlbumRegistStatusMap[SortFilterDefine.RegistrationStatus.GrowthMax].Contains(photoPackData.staticData.GetId()))
 				{
 					component.DispUpto(true);
 					component.DispUptoLv(true);
@@ -182,7 +182,7 @@ public class SelPhotoAlbumCtrl : MonoBehaviour
 						component.DispPhotoChange(true);
 					}
 				}
-				else if (this.photoAlbumRegistStatusMap[SortFilterDefine.PhotoAlbumRegistrationStatus.BreakthroughLimitMax].Contains(photoPackData.staticData.GetId()))
+				else if (this.photoAlbumRegistStatusMap[SortFilterDefine.RegistrationStatus.BreakthroughLimitMax].Contains(photoPackData.staticData.GetId()))
 				{
 					component.DispUpto(true);
 					if (photoPackData.staticData.baseData.imageChangeFlg)
@@ -197,7 +197,7 @@ public class SelPhotoAlbumCtrl : MonoBehaviour
 	private void OnTouchPhotoIcon(IconPhotoCtrl iconPhoto)
 	{
 		SoundManager.Play("prd_se_click", false, false);
-		if (PhotoDef.AlbumCategory.OverOnceHave == iconPhoto.photoStaticData.baseData.albumCategory && this.photoAlbumRegistStatusMap[SortFilterDefine.PhotoAlbumRegistrationStatus.Unregistered].Contains(iconPhoto.photoStaticData.GetId()))
+		if (PhotoDef.AlbumCategory.OverOnceHave == iconPhoto.photoStaticData.baseData.albumCategory && this.photoAlbumRegistStatusMap[SortFilterDefine.RegistrationStatus.Unregistered].Contains(iconPhoto.photoStaticData.GetId()))
 		{
 			CanvasManager.HdlOpenWindowBasic.Setup("入手方法", iconPhoto.photoStaticData.baseData.InfoGetText, PguiOpenWindowCtrl.GetButtonPreset(PguiOpenWindowCtrl.PresetType.CLOSE), true, null, null, false);
 			CanvasManager.HdlOpenWindowBasic.Open();
@@ -207,13 +207,13 @@ public class SelPhotoAlbumCtrl : MonoBehaviour
 		List<PhotoPackData> list = new List<PhotoPackData>();
 		foreach (PhotoPackData photoPackData2 in this.dispPhotoPackList)
 		{
-			if (PhotoDef.AlbumCategory.OverOnceHave != photoPackData2.staticData.baseData.albumCategory || !this.photoAlbumRegistStatusMap[SortFilterDefine.PhotoAlbumRegistrationStatus.Unregistered].Contains(photoPackData2.staticData.GetId()))
+			if (PhotoDef.AlbumCategory.OverOnceHave != photoPackData2.staticData.baseData.albumCategory || !this.photoAlbumRegistStatusMap[SortFilterDefine.RegistrationStatus.Unregistered].Contains(photoPackData2.staticData.GetId()))
 			{
 				PhotoDynamicData photoDynamicData = new PhotoDynamicData();
 				photoDynamicData.dataId = -1L;
 				photoDynamicData.photoId = photoPackData2.staticData.GetId();
 				photoDynamicData.OwnerType = photoPackData2.dynamicData.OwnerType;
-				if (this.photoAlbumRegistStatusMap[SortFilterDefine.PhotoAlbumRegistrationStatus.BreakthroughLimitMax].Contains(photoPackData2.staticData.GetId()) || this.photoAlbumRegistStatusMap[SortFilterDefine.PhotoAlbumRegistrationStatus.GrowthMax].Contains(photoPackData2.staticData.GetId()))
+				if (this.photoAlbumRegistStatusMap[SortFilterDefine.RegistrationStatus.BreakthroughLimitMax].Contains(photoPackData2.staticData.GetId()) || this.photoAlbumRegistStatusMap[SortFilterDefine.RegistrationStatus.GrowthMax].Contains(photoPackData2.staticData.GetId()))
 				{
 					photoDynamicData.level = photoPackData2.staticData.getLimitLevel(4);
 					photoDynamicData.levelRank = 4;
@@ -243,24 +243,11 @@ public class SelPhotoAlbumCtrl : MonoBehaviour
 
 	private List<PhotoPackData> dispPhotoPackList = new List<PhotoPackData>();
 
-	private Dictionary<SortFilterDefine.PhotoAlbumRegistrationStatus, HashSet<int>> photoAlbumRegistStatusMap = new Dictionary<SortFilterDefine.PhotoAlbumRegistrationStatus, HashSet<int>>();
+	private Dictionary<SortFilterDefine.RegistrationStatus, HashSet<int>> photoAlbumRegistStatusMap = new Dictionary<SortFilterDefine.RegistrationStatus, HashSet<int>>();
 
 	private UserOptionData cloneUserOptionData;
 
 	private SortFilterDefine.SortType sortType = SortFilterDefine.DefaultSortTypeMap[SortFilterDefine.RegisterType.PHOTO_ALBUM];
-
-	public class PhotoAlbumRagistrationStatusEqualityComparer : IEqualityComparer<SortFilterDefine.PhotoAlbumRegistrationStatus>
-	{
-		public bool Equals(SortFilterDefine.PhotoAlbumRegistrationStatus x, SortFilterDefine.PhotoAlbumRegistrationStatus y)
-		{
-			return x == y;
-		}
-
-		public int GetHashCode(SortFilterDefine.PhotoAlbumRegistrationStatus obj)
-		{
-			return (int)obj;
-		}
-	}
 
 	public class GUI
 	{

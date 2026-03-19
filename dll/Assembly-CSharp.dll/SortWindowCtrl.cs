@@ -272,6 +272,9 @@ public class SortWindowCtrl : MonoBehaviour
 		case SortFilterDefine.RegisterType.HELP_FOLLOWER:
 			sortFilterType = SortFilterDefine.SortFilterType.FOLLOW_SORT;
 			break;
+		case SortFilterDefine.RegisterType.STICKER_COLLECTION:
+			sortFilterType = SortFilterDefine.SortFilterType.STICKER_SORT;
+			break;
 		}
 		return sortFilterType;
 	}
@@ -295,17 +298,23 @@ public class SortWindowCtrl : MonoBehaviour
 			Transform transform2 = regData.filterButton.transform.Find("BaseImage/Off");
 			if (transform != null && transform2 != null)
 			{
-				bool flag;
-				if (regData.funcGetTargetBaseList().photoList != null)
+				bool flag = regData.funcGetTargetBaseList().photoList != null;
+				bool flag2 = regData.funcGetTargetBaseList().stickerList != null;
+				bool flag3;
+				if (flag)
 				{
-					flag = this.registerSaveMap[register].includePhotoBonus || this.registerSaveMap[register].includePhotoLimit || this.registerSaveMap[register].isFilterFavoritePhotoList[0] || this.registerSaveMap[register].isFilterFavoritePhotoList[1] || 0 < this.registerSaveMap[register].includePhotoRarityList.Count || 0 < this.registerSaveMap[register].includePhotoTypeList.Count || 0 < this.registerSaveMap[register].includePhotoAlbumRegistrationStatusList.Count || 0 < this.registerSaveMap[register].BuffConditionsList.Count || 0 < this.registerSaveMap[register].BuffTargetList.Count || 0 < this.registerSaveMap[register].BuffEffectList.Count || 0 < this.registerSaveMap[register].BuffAbnormalEnablelList.Count || 0 < this.registerSaveMap[register].includePhotoSearchText.Length;
+					flag3 = this.registerSaveMap[register].includePhotoBonus || this.registerSaveMap[register].includePhotoLimit || this.registerSaveMap[register].isFilterFavoritePhotoList[0] || this.registerSaveMap[register].isFilterFavoritePhotoList[1] || 0 < this.registerSaveMap[register].includePhotoRarityList.Count || 0 < this.registerSaveMap[register].includePhotoTypeList.Count || 0 < this.registerSaveMap[register].includeRegistrationStatusList.Count || 0 < this.registerSaveMap[register].BuffConditionsList.Count || 0 < this.registerSaveMap[register].BuffTargetList.Count || 0 < this.registerSaveMap[register].BuffEffectList.Count || 0 < this.registerSaveMap[register].BuffAbnormalEnablelList.Count || 0 < this.registerSaveMap[register].includePhotoSearchText.Length;
+				}
+				else if (flag2)
+				{
+					flag3 = 0 < this.registerSaveMap[register].includeStickerRarityList.Count || 0 < this.registerSaveMap[register].includeStickerTypeList.Count || 0 < this.registerSaveMap[register].includeStickerSearchText.Length;
 				}
 				else
 				{
-					flag = this.registerSaveMap[register].includeCharaAttribute.Count > 0 || this.registerSaveMap[register].includeCharaBonus.Count > 0 || this.registerSaveMap[register].isFilterHanamaru[0] || this.registerSaveMap[register].isFilterHanamaru[1] || this.registerSaveMap[register].isFilterFavoriteList[0] || this.registerSaveMap[register].isFilterFavoriteList[1] || this.registerSaveMap[register].miracleTargetList.Count > 0 || this.registerSaveMap[register].miracleEffectList.Count > 0 || this.registerSaveMap[register].characteristicConditionList.Count > 0 || this.registerSaveMap[register].characteristicTargetList.Count > 0 || this.registerSaveMap[register].characteristicEffectList.Count > 0 || this.registerSaveMap[register].characteristicResistList.Count > 0 || this.registerSaveMap[register].includeFriendsSearchText.Length > 0;
+					flag3 = this.registerSaveMap[register].includeCharaAttribute.Count > 0 || this.registerSaveMap[register].includeCharaBonus.Count > 0 || this.registerSaveMap[register].isFilterHanamaru[0] || this.registerSaveMap[register].isFilterHanamaru[1] || this.registerSaveMap[register].isFilterFavoriteList[0] || this.registerSaveMap[register].isFilterFavoriteList[1] || this.registerSaveMap[register].miracleTargetList.Count > 0 || this.registerSaveMap[register].miracleEffectList.Count > 0 || this.registerSaveMap[register].characteristicConditionList.Count > 0 || this.registerSaveMap[register].characteristicTargetList.Count > 0 || this.registerSaveMap[register].characteristicEffectList.Count > 0 || this.registerSaveMap[register].characteristicResistList.Count > 0 || this.registerSaveMap[register].includeFriendsSearchText.Length > 0;
 				}
-				transform.gameObject.SetActive(flag);
-				transform2.gameObject.SetActive(!flag);
+				transform.gameObject.SetActive(flag3);
+				transform2.gameObject.SetActive(!flag3);
 			}
 		}
 		if (regData.sortButton != null)
@@ -318,15 +327,15 @@ public class SortWindowCtrl : MonoBehaviour
 				{
 				case SortFilterDefine.SortFilterType.CHARA_SORT:
 					transform3.GetComponent<PguiTextCtrl>().text = SortFilterDefine.SortTypeDispNameMap[this.registerSaveMap[register].sortType];
-					goto IL_03F8;
+					goto IL_0469;
 				case SortFilterDefine.SortFilterType.PHOTO_SORT:
 					transform3.GetComponent<PguiTextCtrl>().text = SortFilterDefine.SortTypeDispNameMap[this.registerSaveMap[register].sortType];
-					goto IL_03F8;
+					goto IL_0469;
 				}
 				transform3.GetComponent<PguiTextCtrl>().text = SortFilterDefine.SortTypeDispNameMap[this.registerSaveMap[register].sortType];
 			}
 		}
-		IL_03F8:
+		IL_0469:
 		if (regData.sortUdButton != null)
 		{
 			Transform transform4 = regData.sortUdButton.transform.Find("BaseImage/Img_Up");
@@ -446,7 +455,7 @@ public class SortWindowCtrl : MonoBehaviour
 			CanvasManager.HdlPhotoFilterWindowCtrl.SetupFavorite(registerSaveData.isFilterFavoritePhotoList);
 			if (SortFilterDefine.RegisterType.PHOTO_ALBUM == registerSaveData.RegisterType)
 			{
-				CanvasManager.HdlPhotoFilterWindowCtrl.SetupAlbum(registerSaveData.includePhotoAlbumRegistrationStatusList);
+				CanvasManager.HdlPhotoFilterWindowCtrl.SetupAlbum(registerSaveData.includeRegistrationStatusList);
 			}
 			CanvasManager.HdlPhotoFilterWindowCtrl.SetupSearchText(registerSaveData.includePhotoSearchText);
 			CanvasManager.HdlPhotoFilterWindowCtrl.SetupSearchTextActive();
@@ -472,6 +481,32 @@ public class SortWindowCtrl : MonoBehaviour
 			this.guiData.baseWindow.Open();
 			return;
 		}
+		case SortFilterDefine.SortFilterType.STICKER_SORT:
+		{
+			List<SortFilterDefine.SortType> stickerSortTypeList = SortFilterDefine.StickerSortTypeList;
+			foreach (PguiToggleButtonCtrl pguiToggleButtonCtrl6 in this.guiData.BtnList)
+			{
+				pguiToggleButtonCtrl6.gameObject.SetActive(false);
+			}
+			for (int n = 0; n < stickerSortTypeList.Count; n++)
+			{
+				this.guiData.BtnList[n].gameObject.SetActive(true);
+				this.guiData.Num_TxtList[n].text = SortFilterDefine.SortTypeDispNameMap[stickerSortTypeList[n]];
+			}
+			this.guiData.baseWindow.Setup(PrjUtil.MakeMessage("ソート順の設定"), PrjUtil.MakeMessage("並び順の基準とする条件を設定できます"), PguiOpenWindowCtrl.GetButtonPreset(PguiOpenWindowCtrl.PresetType.CANCEL_OK), true, new PguiOpenWindowCtrl.Callback(this.OnClickWindowButton), null, false);
+			for (int num3 = 0; num3 < stickerSortTypeList.Count; num3++)
+			{
+				this.guiData.BtnList[num3].SetToggleIndex((stickerSortTypeList[num3] == registerSaveData.sortType) ? 1 : 0);
+			}
+			this.guiData.baseWindow.Open();
+			return;
+		}
+		case SortFilterDefine.SortFilterType.STICKER_FILTER:
+			CanvasManager.HdlStickerFilterWindowCtrl.SetupRarity(registerSaveData.includeStickerRarityList);
+			CanvasManager.HdlStickerFilterWindowCtrl.SetupType(registerSaveData.includeStickerTypeList);
+			CanvasManager.HdlStickerFilterWindowCtrl.SetupSearchText(registerSaveData.includeStickerSearchText);
+			CanvasManager.HdlStickerFilterWindowCtrl.Open();
+			return;
 		default:
 			return;
 		}
@@ -499,12 +534,20 @@ public class SortWindowCtrl : MonoBehaviour
 			if (registerData.filterButton == button)
 			{
 				this.currentFilterType = ((this.currentSortTarget.photoList != null) ? SortFilterDefine.SortFilterType.PHOTO_FILTER : SortFilterDefine.SortFilterType.CHARA_FILTER);
+				if (regType == SortFilterDefine.RegisterType.STICKER_COLLECTION)
+				{
+					this.currentFilterType = SortFilterDefine.SortFilterType.STICKER_FILTER;
+				}
 				this.Open();
 				return;
 			}
 			if (registerData.sortButton == button)
 			{
-				if (this.currentSortTarget.photoList == null)
+				if (regType == SortFilterDefine.RegisterType.STICKER_COLLECTION)
+				{
+					this.currentFilterType = ((this.currentSortTarget.stickerList != null) ? SortFilterDefine.SortFilterType.STICKER_SORT : SortFilterDefine.SortFilterType.CHARA_SORT);
+				}
+				else if (this.currentSortTarget.photoList == null)
 				{
 					this.currentFilterType = ((this.currentSortTarget.helperList != null) ? SortFilterDefine.SortFilterType.FOLLOW_SORT : SortFilterDefine.SortFilterType.CHARA_SORT);
 				}
@@ -566,6 +609,10 @@ public class SortWindowCtrl : MonoBehaviour
 			case SortFilterDefine.SortFilterType.FOLLOW_SORT:
 				registerSaveData.sortType = SortFilterDefine.HelperSortTypeList[this.guiData.BtnList.FindIndex((PguiToggleButtonCtrl item) => item.GetToggleIndex() == 1)];
 				this.RegistFriendsSort();
+				break;
+			case SortFilterDefine.SortFilterType.STICKER_SORT:
+				registerSaveData.sortType = SortFilterDefine.StickerSortTypeList[this.guiData.BtnList.FindIndex((PguiToggleButtonCtrl item) => item.GetToggleIndex() == 1)];
+				this.RegistStickerSort();
 				break;
 			}
 			break;
@@ -649,7 +696,7 @@ public class SortWindowCtrl : MonoBehaviour
 		registerSaveData.isFilterFavoritePhotoList = CanvasManager.HdlPhotoFilterWindowCtrl.GetFavoriteButtonStatus();
 		if (SortFilterDefine.RegisterType.PHOTO_ALBUM == registerSaveData.RegisterType)
 		{
-			registerSaveData.includePhotoAlbumRegistrationStatusList = CanvasManager.HdlPhotoFilterWindowCtrl.GetPhotoAlbumButtonstatus();
+			registerSaveData.includeRegistrationStatusList = CanvasManager.HdlPhotoFilterWindowCtrl.GetPhotoAlbumButtonstatus();
 		}
 		registerSaveData.includePhotoBonus = CanvasManager.HdlPhotoFilterWindowCtrl.GetInvalidBonus();
 		if (!DataManager.DmPhoto.IsBonusActive())
@@ -696,6 +743,31 @@ public class SortWindowCtrl : MonoBehaviour
 		registerSaveData.SolutionList(ref this.currentSortTarget, null);
 		this.currentSortTarget.sortType = registerSaveData.sortType;
 		this.currentSortTarget.includePhotoBonus = registerSaveData.includePhotoBonus;
+		registerData.funcDisideTarget(this.currentSortTarget);
+		this.DecorationRegisterButton(registerData);
+		this.SortTypeDataMap[this.currentRegisterType] = new DataManagerGameStatus.UserFlagData.SortTypeData(this.currentRegisterType, this.currentSortTarget.sortType, registerSaveData.SortOrder);
+	}
+
+	public void RegistStickerSort()
+	{
+		SortWindowCtrl.RegisterData registerData = this.registerMap[this.currentRegisterType];
+		RegisterSaveData registerSaveData = this.registerSaveMap[this.currentRegisterType];
+		registerSaveData.SolutionList(ref this.currentSortTarget, null);
+		this.currentSortTarget.sortType = registerSaveData.sortType;
+		registerData.funcDisideTarget(this.currentSortTarget);
+		this.DecorationRegisterButton(registerData);
+		this.SortTypeDataMap[this.currentRegisterType] = new DataManagerGameStatus.UserFlagData.SortTypeData(this.currentRegisterType, this.currentSortTarget.sortType, registerSaveData.SortOrder);
+	}
+
+	public void RegistStickerFilter()
+	{
+		SortWindowCtrl.RegisterData registerData = this.registerMap[this.currentRegisterType];
+		RegisterSaveData registerSaveData = this.registerSaveMap[this.currentRegisterType];
+		registerSaveData.includeStickerRarityList = CanvasManager.HdlStickerFilterWindowCtrl.GetRarityButtonstatus();
+		registerSaveData.includeStickerTypeList = CanvasManager.HdlStickerFilterWindowCtrl.GetTypeButtonstatus();
+		registerSaveData.includeStickerSearchText = CanvasManager.HdlStickerFilterWindowCtrl.GetSearchText();
+		registerSaveData.SolutionList(ref this.currentSortTarget, null);
+		this.currentSortTarget.sortType = registerSaveData.sortType;
 		registerData.funcDisideTarget(this.currentSortTarget);
 		this.DecorationRegisterButton(registerData);
 		this.SortTypeDataMap[this.currentRegisterType] = new DataManagerGameStatus.UserFlagData.SortTypeData(this.currentRegisterType, this.currentSortTarget.sortType, registerSaveData.SortOrder);
@@ -843,6 +915,10 @@ public class SortWindowCtrl : MonoBehaviour
 			{
 				this.helperList = new List<HelperPackData>(st.helperList);
 			}
+			if (st.stickerList != null)
+			{
+				this.stickerList = new List<DataManagerSticker.StickerPackData>(st.stickerList);
+			}
 			if (st.disableFilterPhotoList != null)
 			{
 				this.disableFilterPhotoList = new List<PhotoPackData>(st.disableFilterPhotoList);
@@ -871,9 +947,9 @@ public class SortWindowCtrl : MonoBehaviour
 			{
 				this.disableSortHelperList = new List<HelperPackData>(st.disableSortHelperList);
 			}
-			if (st.photoAlbumRegistrationStatusMap != null)
+			if (st.registrationStatusMap != null)
 			{
-				this.photoAlbumRegistrationStatusMap = new Dictionary<SortFilterDefine.PhotoAlbumRegistrationStatus, HashSet<int>>(st.photoAlbumRegistrationStatusMap);
+				this.registrationStatusMap = new Dictionary<SortFilterDefine.RegistrationStatus, HashSet<int>>(st.registrationStatusMap);
 			}
 			if (st.basePhotoPackData != null)
 			{
@@ -891,6 +967,8 @@ public class SortWindowCtrl : MonoBehaviour
 
 		public List<HelperPackData> helperList;
 
+		public List<DataManagerSticker.StickerPackData> stickerList;
+
 		public List<PhotoPackData> disableFilterPhotoList;
 
 		public List<CharaPackData> disableFilterCharaList;
@@ -905,7 +983,7 @@ public class SortWindowCtrl : MonoBehaviour
 
 		public List<HelperPackData> disableSortHelperList;
 
-		public Dictionary<SortFilterDefine.PhotoAlbumRegistrationStatus, HashSet<int>> photoAlbumRegistrationStatusMap;
+		public Dictionary<SortFilterDefine.RegistrationStatus, HashSet<int>> registrationStatusMap;
 
 		public PhotoPackData basePhotoPackData;
 

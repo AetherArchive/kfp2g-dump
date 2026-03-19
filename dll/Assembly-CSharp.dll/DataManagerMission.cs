@@ -427,9 +427,9 @@ public class DataManagerMission
 				}
 				else
 				{
-					Dictionary<int, int> missionBonusResultItemMap = this.MissionBonusResultItemMap;
+					Dictionary<int, int> dictionary = this.MissionBonusResultItemMap;
 					int num3 = content_id;
-					missionBonusResultItemMap[num3] += (int)num2;
+					dictionary[num3] += (int)num2;
 				}
 			}
 		}
@@ -441,10 +441,10 @@ public class DataManagerMission
 				{
 					this.MissionBonusResultItemMap.Add(photo.item_id, 0);
 				}
-				Dictionary<int, int> missionBonusResultItemMap2 = this.MissionBonusResultItemMap;
+				Dictionary<int, int> missionBonusResultItemMap = this.MissionBonusResultItemMap;
 				int num3 = photo.item_id;
-				int num4 = missionBonusResultItemMap2[num3] + 1;
-				missionBonusResultItemMap2[num3] = num4;
+				int num4 = missionBonusResultItemMap[num3] + 1;
+				missionBonusResultItemMap[num3] = num4;
 			}
 		}
 		if (missionBonusAcceptResponse.assets.update_accessory_list != null)
@@ -455,10 +455,10 @@ public class DataManagerMission
 				{
 					this.MissionBonusResultItemMap.Add(accessory.item_id, 0);
 				}
-				Dictionary<int, int> missionBonusResultItemMap3 = this.MissionBonusResultItemMap;
+				Dictionary<int, int> missionBonusResultItemMap2 = this.MissionBonusResultItemMap;
 				int num4 = accessory.item_id;
-				int num3 = missionBonusResultItemMap3[num4] + 1;
-				missionBonusResultItemMap3[num4] = num3;
+				int num3 = missionBonusResultItemMap2[num4] + 1;
+				missionBonusResultItemMap2[num4] = num3;
 			}
 		}
 		if (missionBonusAcceptResponse.assets.update_achievement_list != null)
@@ -469,18 +469,35 @@ public class DataManagerMission
 				{
 					this.MissionBonusResultItemMap.Add(achievement.achievement_id, 0);
 				}
-				Dictionary<int, int> missionBonusResultItemMap4 = this.MissionBonusResultItemMap;
+				Dictionary<int, int> missionBonusResultItemMap3 = this.MissionBonusResultItemMap;
 				int num3 = achievement.achievement_id;
-				int num4 = missionBonusResultItemMap4[num3];
-				missionBonusResultItemMap4[num3] = num4 + 1;
+				int num4 = missionBonusResultItemMap3[num3];
+				missionBonusResultItemMap3[num3] = num4 + 1;
+			}
+		}
+		if (missionBonusAcceptResponse.assets.update_sticker_list != null)
+		{
+			foreach (Sticker sticker in missionBonusAcceptResponse.assets.update_sticker_list)
+			{
+				int num5 = sticker.num - DataManager.DmItem.GetUserItemData(sticker.id).num;
+				if (!this.MissionBonusResultItemMap.ContainsKey(sticker.id))
+				{
+					this.MissionBonusResultItemMap.Add(sticker.id, num5);
+				}
+				else
+				{
+					Dictionary<int, int> dictionary = this.MissionBonusResultItemMap;
+					int num4 = sticker.id;
+					dictionary[num4] += num5;
+				}
 			}
 		}
 		this.parentData.UpdateUserAssetByAssets(missionBonusAcceptResponse.assets);
-		using (List<AcceptMission>.Enumerator enumerator6 = missionBonusAcceptRequest.accept_mission_list.GetEnumerator())
+		using (List<AcceptMission>.Enumerator enumerator7 = missionBonusAcceptRequest.accept_mission_list.GetEnumerator())
 		{
-			while (enumerator6.MoveNext())
+			while (enumerator7.MoveNext())
 			{
-				AcceptMission serverMission = enumerator6.Current;
+				AcceptMission serverMission = enumerator7.Current;
 				DataManagerMission.StaticMissionData staticMission = this.staticMissionDataList.Find((DataManagerMission.StaticMissionData item) => item.MissionId == serverMission.mission_id);
 				if (staticMission != null)
 				{

@@ -49,6 +49,10 @@ public class IconItemCtrl : MonoBehaviour
 		{
 			Object.Destroy(this.iconAccessory.gameObject);
 		}
+		if (this.iconSticker)
+		{
+			Object.Destroy(this.iconSticker.gameObject);
+		}
 	}
 
 	public void Setup(ItemStaticBase isb)
@@ -117,6 +121,10 @@ public class IconItemCtrl : MonoBehaviour
 		{
 			this.iconAccessory.gameObject.SetActive(false);
 		}
+		if (this.iconSticker)
+		{
+			this.iconSticker.gameObject.SetActive(false);
+		}
 		this.dispNum = num;
 		switch (isb.GetRarity())
 		{
@@ -161,7 +169,140 @@ public class IconItemCtrl : MonoBehaviour
 			this.TouchPanel.gameObject.SetActive(true);
 		}
 		ItemDef.Kind kind = isb.GetKind();
-		if (kind <= ItemDef.Kind.RANK_UP)
+		if (kind > ItemDef.Kind.PHOTO_FRAME_UP)
+		{
+			if (kind <= ItemDef.Kind.CLOTHES)
+			{
+				if (kind == ItemDef.Kind.FURNITURE)
+				{
+					this.SetFurnitureIcon(isb as HomeFurnitureStatic);
+					goto IL_0B24;
+				}
+				if (kind != ItemDef.Kind.CLOTHES)
+				{
+					goto IL_0B10;
+				}
+			}
+			else
+			{
+				switch (kind)
+				{
+				case ItemDef.Kind.ACCESSORY_ITEM:
+				{
+					this.itemTexture.gameObject.SetActive(false);
+					this.rareFrame.gameObject.SetActive(false);
+					this.TouchPanel.gameObject.SetActive(false);
+					if (this.iconAccessory == null)
+					{
+						Transform transform = base.transform.Find("Icon_Other");
+						if (!enableIconScale)
+						{
+							transform.localScale = new Vector3(1f, 1f, 1f);
+						}
+						GameObject gameObject = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Accessory, transform);
+						this.iconAccessory = gameObject.GetComponent<IconAccessoryCtrl>();
+					}
+					this.iconAccessory.gameObject.SetActive(true);
+					DataManagerCharaAccessory.AccessoryData accessoryData = DataManager.DmChAccessory.GetAccessoryData(isb.GetId());
+					this.iconAccessory.SetupByAccessoryData(accessoryData, true, useMaxDetail);
+					this.iconAccessory.DispRarity(false);
+					goto IL_0B24;
+				}
+				case ItemDef.Kind.LOTTERY_ITEM:
+				case ItemDef.Kind.KEMOBOARD:
+				case ItemDef.Kind.PICNIC_PLAYITEM:
+					goto IL_0B10;
+				case ItemDef.Kind.CHARA_CONTACT:
+					break;
+				case ItemDef.Kind.PROMOTE_EXT:
+				{
+					CharaStaticData charaStaticData = DataManager.DmChara.GetCharaStaticData(DataManager.DmItem.ItemId2ChraId(isb.GetId()));
+					this.charaIcon03.transform.parent.gameObject.SetActive(true);
+					if (charaStaticData != null)
+					{
+						this.charaIcon03.SetRawImage(charaStaticData.GetMiniIconName(), true, false, null);
+					}
+					this.itemTexture.SetRawImage("Texture2D/Icon_Item/icon_item_gembase03", true, false, null);
+					goto IL_0B24;
+				}
+				case ItemDef.Kind.TREEHOUSE_FURNITURE:
+				{
+					TreeHouseFurnitureStatic treeHouseFurnitureStatic = isb as TreeHouseFurnitureStatic;
+					CharaStaticData charaStaticData2 = ((treeHouseFurnitureStatic.iconCharaId <= 0) ? null : DataManager.DmChara.GetCharaStaticData(treeHouseFurnitureStatic.iconCharaId));
+					this.charaIconDress.gameObject.SetActive(charaStaticData2 != null);
+					if (charaStaticData2 != null)
+					{
+						this.charaIconDress.SetRawImage(charaStaticData2.GetMiniIconName(), true, false, null);
+					}
+					this.itemTexture.SetRawImage(isb.GetIconName(), true, false, null);
+					goto IL_0B24;
+				}
+				default:
+				{
+					if (kind != ItemDef.Kind.STICKER)
+					{
+						goto IL_0B10;
+					}
+					if (this.itemTexture != null)
+					{
+						this.itemTexture.gameObject.SetActive(false);
+					}
+					if (this.rareFrame != null)
+					{
+						this.rareFrame.gameObject.SetActive(false);
+					}
+					if (this.TouchPanel != null)
+					{
+						this.TouchPanel.gameObject.SetActive(false);
+					}
+					if (this.iconSticker == null)
+					{
+						Transform transform2 = base.transform.Find("Icon_Other");
+						if (!enableIconScale)
+						{
+							transform2.localScale = new Vector3(1f, 1f, 1f);
+						}
+						GameObject gameObject2 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Sticker, transform2);
+						this.iconSticker = gameObject2.GetComponent<IconStickerCtrl>();
+					}
+					this.iconSticker.gameObject.SetActive(true);
+					DataManagerSticker.StickerStaticData stickerStaticData = DataManager.DmSticker.GetStickerStaticData(isb.GetId());
+					DataManagerSticker.StickerPackData stickerPackData = new DataManagerSticker.StickerPackData(new DataManagerSticker.StickerDynamicData
+					{
+						id = stickerStaticData.GetId()
+					});
+					this.iconSticker.Setup(new IconStickerCtrl.SetupParam
+					{
+						spd = stickerPackData
+					});
+					this.iconSticker.DispStickerChange(false);
+					this.iconSticker.DisableImg();
+					if (useInfo)
+					{
+						this.iconSticker.AddOnLongClickListener(delegate(IconStickerCtrl x)
+						{
+							this.OpenInfo(viewItemCount);
+						});
+						this.iconSticker.AddOnLongClickEndListener(delegate(IconStickerCtrl x)
+						{
+							this.CloseInfo();
+						});
+						goto IL_0B24;
+					}
+					goto IL_0B24;
+				}
+				}
+			}
+			CharaStaticData charaStaticData3 = DataManager.DmChara.GetCharaStaticData(DataManager.DmItem.ItemId2ChraId(isb.GetId()));
+			this.charaIconDress.gameObject.SetActive(charaStaticData3 != null);
+			if (charaStaticData3 != null)
+			{
+				this.charaIconDress.SetRawImage(charaStaticData3.GetMiniIconName(), true, false, null);
+			}
+			this.itemTexture.SetRawImage(isb.GetIconName(), true, false, null);
+			goto IL_0B24;
+		}
+		if (kind <= ItemDef.Kind.PHOTO)
 		{
 			if (kind == ItemDef.Kind.CHARA)
 			{
@@ -171,19 +312,19 @@ public class IconItemCtrl : MonoBehaviour
 				this.TouchPanel.gameObject.SetActive(false);
 				if (this.iconChara == null)
 				{
-					Transform transform = base.transform.Find("Icon_Other");
+					Transform transform3 = base.transform.Find("Icon_Other");
 					if (!enableIconScale)
 					{
-						transform.localScale = new Vector3(1f, 1f, 1f);
+						transform3.localScale = new Vector3(1f, 1f, 1f);
 					}
-					GameObject gameObject = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Chara, transform);
-					this.iconChara = gameObject.GetComponent<IconCharaCtrl>();
+					GameObject gameObject3 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Chara, transform3);
+					this.iconChara = gameObject3.GetComponent<IconCharaCtrl>();
 				}
 				this.iconChara.gameObject.SetActive(true);
 				CharaPackData charaPackData = CharaPackData.MakeInitial(DataManager.DmItem.ItemId2ChraId(isb.GetId()));
 				this.iconChara.Setup(charaPackData, SortFilterDefine.SortType.INVALID, false, useMaxDetail ? new CharaWindowCtrl.DetailParamSetting(CharaWindowCtrl.DetailParamSetting.Preset.DISPLAY, null) : null, 0, -1, 0);
 				this.iconChara.DispRarity(false);
-				goto IL_098E;
+				goto IL_0B24;
 			}
 			if (kind == ItemDef.Kind.PHOTO)
 			{
@@ -192,13 +333,13 @@ public class IconItemCtrl : MonoBehaviour
 				this.TouchPanel.gameObject.SetActive(false);
 				if (this.iconPhoto == null)
 				{
-					Transform transform2 = base.transform.Find("Icon_Other");
+					Transform transform4 = base.transform.Find("Icon_Other");
 					if (!enableIconScale)
 					{
-						transform2.localScale = new Vector3(1f, 1f, 1f);
+						transform4.localScale = new Vector3(1f, 1f, 1f);
 					}
-					GameObject gameObject2 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Photo, transform2);
-					this.iconPhoto = gameObject2.GetComponent<IconPhotoCtrl>();
+					GameObject gameObject4 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Photo, transform4);
+					this.iconPhoto = gameObject4.GetComponent<IconPhotoCtrl>();
 					this.iconPhoto.transform.Find("AEImage_Eff_Change").gameObject.SetActive(false);
 					this.iconPhoto.transform.Find("All").gameObject.GetComponent<AELayerConstraint>().enabled = false;
 					RectTransform rectTransform = this.iconPhoto.transform.Find("All").transform as RectTransform;
@@ -229,90 +370,21 @@ public class IconItemCtrl : MonoBehaviour
 					this.iconPhoto.DispDrop(false, 0);
 				}
 				this.iconPhoto.DispPhotoChange(isDispChangePhoto);
-				goto IL_098E;
-			}
-			if (kind == ItemDef.Kind.RANK_UP)
-			{
-				CharaStaticData charaStaticData = DataManager.DmChara.GetCharaStaticData(DataManager.DmItem.ItemId2ChraId(isb.GetId()));
-				this.charaIcon02.transform.parent.gameObject.SetActive(true);
-				if (charaStaticData != null)
-				{
-					this.charaIcon02.SetRawImage(charaStaticData.GetMiniIconName(), true, false, null);
-				}
-				this.itemTexture.SetRawImage("Texture2D/Icon_Item/icon_item_gembase02", true, false, null);
-				goto IL_098E;
+				goto IL_0B24;
 			}
 		}
 		else
 		{
-			if (kind > ItemDef.Kind.FURNITURE)
+			if (kind == ItemDef.Kind.RANK_UP)
 			{
-				if (kind != ItemDef.Kind.CLOTHES)
-				{
-					switch (kind)
-					{
-					case ItemDef.Kind.ACCESSORY_ITEM:
-					{
-						this.itemTexture.gameObject.SetActive(false);
-						this.rareFrame.gameObject.SetActive(false);
-						this.TouchPanel.gameObject.SetActive(false);
-						if (this.iconAccessory == null)
-						{
-							Transform transform3 = base.transform.Find("Icon_Other");
-							if (!enableIconScale)
-							{
-								transform3.localScale = new Vector3(1f, 1f, 1f);
-							}
-							GameObject gameObject3 = Object.Instantiate<GameObject>(CanvasManager.RefResource.Icon_Accessory, transform3);
-							this.iconAccessory = gameObject3.GetComponent<IconAccessoryCtrl>();
-						}
-						this.iconAccessory.gameObject.SetActive(true);
-						DataManagerCharaAccessory.AccessoryData accessoryData = DataManager.DmChAccessory.GetAccessoryData(isb.GetId());
-						this.iconAccessory.SetupByAccessoryData(accessoryData, true, useMaxDetail);
-						this.iconAccessory.DispRarity(false);
-						goto IL_098E;
-					}
-					case ItemDef.Kind.LOTTERY_ITEM:
-					case ItemDef.Kind.KEMOBOARD:
-					case ItemDef.Kind.PICNIC_PLAYITEM:
-						goto IL_097A;
-					case ItemDef.Kind.CHARA_CONTACT:
-						break;
-					case ItemDef.Kind.PROMOTE_EXT:
-					{
-						CharaStaticData charaStaticData2 = DataManager.DmChara.GetCharaStaticData(DataManager.DmItem.ItemId2ChraId(isb.GetId()));
-						this.charaIcon03.transform.parent.gameObject.SetActive(true);
-						if (charaStaticData2 != null)
-						{
-							this.charaIcon03.SetRawImage(charaStaticData2.GetMiniIconName(), true, false, null);
-						}
-						this.itemTexture.SetRawImage("Texture2D/Icon_Item/icon_item_gembase03", true, false, null);
-						goto IL_098E;
-					}
-					case ItemDef.Kind.TREEHOUSE_FURNITURE:
-					{
-						TreeHouseFurnitureStatic treeHouseFurnitureStatic = isb as TreeHouseFurnitureStatic;
-						CharaStaticData charaStaticData3 = ((treeHouseFurnitureStatic.iconCharaId <= 0) ? null : DataManager.DmChara.GetCharaStaticData(treeHouseFurnitureStatic.iconCharaId));
-						this.charaIconDress.gameObject.SetActive(charaStaticData3 != null);
-						if (charaStaticData3 != null)
-						{
-							this.charaIconDress.SetRawImage(charaStaticData3.GetMiniIconName(), true, false, null);
-						}
-						this.itemTexture.SetRawImage(isb.GetIconName(), true, false, null);
-						goto IL_098E;
-					}
-					default:
-						goto IL_097A;
-					}
-				}
 				CharaStaticData charaStaticData4 = DataManager.DmChara.GetCharaStaticData(DataManager.DmItem.ItemId2ChraId(isb.GetId()));
-				this.charaIconDress.gameObject.SetActive(charaStaticData4 != null);
+				this.charaIcon02.transform.parent.gameObject.SetActive(true);
 				if (charaStaticData4 != null)
 				{
-					this.charaIconDress.SetRawImage(charaStaticData4.GetMiniIconName(), true, false, null);
+					this.charaIcon02.SetRawImage(charaStaticData4.GetMiniIconName(), true, false, null);
 				}
-				this.itemTexture.SetRawImage(isb.GetIconName(), true, false, null);
-				goto IL_098E;
+				this.itemTexture.SetRawImage("Texture2D/Icon_Item/icon_item_gembase02", true, false, null);
+				goto IL_0B24;
 			}
 			if (kind == ItemDef.Kind.PHOTO_FRAME_UP)
 			{
@@ -327,17 +399,12 @@ public class IconItemCtrl : MonoBehaviour
 					this.cover01.gameObject.SetActive(true);
 				}
 				this.itemTexture.SetRawImage("Texture2D/Icon_Item/icon_item_gembase01", true, false, null);
-				goto IL_098E;
-			}
-			if (kind == ItemDef.Kind.FURNITURE)
-			{
-				this.SetFurnitureIcon(isb as HomeFurnitureStatic);
-				goto IL_098E;
+				goto IL_0B24;
 			}
 		}
-		IL_097A:
+		IL_0B10:
 		this.itemTexture.SetRawImage(isb.GetIconName(), true, false, null);
-		IL_098E:
+		IL_0B24:
 		this.itemStaticBase = isb;
 		if (useInfo)
 		{
@@ -606,6 +673,8 @@ public class IconItemCtrl : MonoBehaviour
 	private IconPhotoCtrl iconPhoto;
 
 	private IconAccessoryCtrl iconAccessory;
+
+	private IconStickerCtrl iconSticker;
 
 	private Transform touchPanel;
 

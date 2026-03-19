@@ -164,6 +164,8 @@ public class UserOptionData
 
 	public bool SpPvp3x { get; set; }
 
+	public int stickerIconSizeCollection { get; set; }
+
 	public void SetupDefault()
 	{
 		if (Vector2Int.zero == this.DefaultScreen)
@@ -212,6 +214,7 @@ public class UserOptionData
 		this.LastPlaySpPvpSeasonId = 0;
 		this.CurrentSpPvpDifficultyTab = 1;
 		this.SpPvp3x = false;
+		this.stickerIconSizeCollection = 3;
 		SceneManager.SetOption(new int[] { this.DisplayDirection, this.Quality, this.VolumeBGM, this.VolumeSE, this.VolumeVOICE });
 	}
 
@@ -221,7 +224,7 @@ public class UserOptionData
 		{
 			if (optionList.FindAll((int item) => item != 0).Count > 0)
 			{
-				if (optionList.Count < 59)
+				if (optionList.Count < 60)
 				{
 					this.SetupDefault();
 					return;
@@ -322,6 +325,7 @@ public class UserOptionData
 				this.CurrentSpPvpDifficultyTab = optionList[54];
 				this.SpPvp3x = optionList[56] != 0;
 				this.FrameRate = optionList[58];
+				this.stickerIconSizeCollection = optionList[59];
 				SceneManager.SetOption(new int[] { this.DisplayDirection, this.Quality, this.VolumeBGM, this.VolumeSE, this.VolumeVOICE });
 				return;
 			}
@@ -391,7 +395,8 @@ public class UserOptionData
 			this.LastPlayQuestOneIdList[12],
 			this.SpPvp3x ? 1 : 0,
 			this.LastPlayQuestOneIdList[13],
-			this.FrameRate
+			this.FrameRate,
+			this.stickerIconSizeCollection
 		};
 	}
 
@@ -470,7 +475,8 @@ public class UserOptionData
 			LastPlayQuestOneIdByMainScenario = this.LastPlayQuestOneIdByMainScenario,
 			LastPlaySpPvpSeasonId = this.LastPlaySpPvpSeasonId,
 			CurrentSpPvpDifficultyTab = this.CurrentSpPvpDifficultyTab,
-			SpPvp3x = this.SpPvp3x
+			SpPvp3x = this.SpPvp3x,
+			stickerIconSizeCollection = this.stickerIconSizeCollection
 		};
 	}
 
@@ -547,6 +553,7 @@ public class UserOptionData
 		SP_PVP_3X,
 		LAST_PLAY_QUEST_ONE_STORY3,
 		FRAME_RATE,
+		STICKER_ICON_SIZE_COLLECTION,
 		MAX
 	}
 }

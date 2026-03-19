@@ -145,6 +145,10 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		{
 			this.windowCoroutine = this.OpenBuffInfoWindow();
 		}
+		else if (button == this.guiData.Btn_Sticker)
+		{
+			this.requestNextScene = SceneManager.SceneName.SceneStickerCollection;
+		}
 		else if (button == this.guiData.Btn_Pvp)
 		{
 			if (this.pvpLck == 0)
@@ -1191,6 +1195,7 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 			this.Btn_MissionEvent2 = baseTr.Find("HomeMenu/LayoutGroup/Btn_09").GetComponent<PguiButtonCtrl>();
 			this.Btn_Profile = baseTr.Find("Header/InfoAll/Btn_Profile").GetComponent<PguiButtonCtrl>();
 			this.Btn_KizunaBuff = baseTr.Find("HomeMenu/LayoutGroup/Btn_10").GetComponent<PguiButtonCtrl>();
+			this.Btn_Sticker = baseTr.Find("HomeMenu/Btn_11").GetComponent<PguiButtonCtrl>();
 			this.Present_Badge = this.Btn_Present.transform.Find("BaseImage/Badges/Cmn_Badge").gameObject;
 			this.Present_Badge_Num = this.Btn_Present.transform.Find("BaseImage/Badges/Cmn_Badge/Num").GetComponent<PguiTextCtrl>();
 			this.Mission_New = this.Btn_Mission.transform.Find("BaseImage/Mark_New").gameObject;
@@ -1291,6 +1296,8 @@ public class PguiCmnMenuCtrl : MonoBehaviour
 		public PguiButtonCtrl Btn_TreeHouse;
 
 		public PguiButtonCtrl Btn_KizunaBuff;
+
+		public PguiButtonCtrl Btn_Sticker;
 
 		public PguiImageCtrl RankGage_Gage;
 
